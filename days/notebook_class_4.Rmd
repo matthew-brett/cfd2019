@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/days/notebook_class_4.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/days/notebook_class_4.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        # Notebook for class 4
+
+This is the notebook I was typing into in class 4, with some notes.
+
+First we explored different data types.
+
+```{python}
+my_float = 1.0
+```
+
+```{python}
+my_float
+```
+
+We can see what type of thing a variable refers to with the `type` function.  We will see more of functions later.
+
+```{python}
+type(my_float)
+```
+
+Notice the lack of a decimal point in the following statement.
+
+```{python}
+my_other_thing = 1
+```
+
+This gives us an `int`:
+
+```{python}
+my_other_thing
+```
+
+```{python}
+type(my_other_thing)
+```
+
+We are about to make a string.  Here I am trying to make the string "I love Python", but I get an error - why?
+
+```{python}
+my_string = I love python
+```
+
+It looked there was a problem with the spaces, so I replace the spaces with underscores:
+
+```{python}
+my_string = I_love_python
+```
+
+Now it becomes clear that Python thought that I was trying to refer to a variable name that does not exist.
+
+Here's a string - it needs quotes:
+
+```{python}
+my_string = "I love python"
+```
+
+```{python}
+my_string
+```
+
+```{python}
+type(my_string)
+```
+
+Notice that Python displays strings with quotes, by default (at least in the Notebook):
+
+```{python}
+'I love python'
+```
+
+If you use the `print` function, it does not add the quotes.
+
+```{python}
+print(my_string)
+```
+
+Here I go through the class exercise:
+
+```{python}
+a = 1.0
+b = 1
+c = 'Hello'
+```
+
+Here I add a float to itself:
+
+```{python}
+a + a
+```
+
+The addition produces a `float`:
+
+```{python}
+type(a + a)
+```
+
+Adding two `int`s gives an `int`:
+
+```{python}
+b + b
+```
+
+Adding two strings concatenates the strings:
+
+```{python}
+c + c
+```
+
+Adding a `float` to an `int` gives a `float`:
+
+```{python}
+a + b
+```
+
+Python won't let you add `float`s (or `int`s) to a string:
+
+```{python}
+a + c
+```
+
+Remember *assignment* - a name, followed by `=`, followed by an expression:
+
+```{python}
+a = 1
+```
+
+It sets the value of `a` (in this case):
+
+```{python}
+a
+```
+
+Here is a *comparison* expression.  `<` is a *comparison operator*, and returns the result of the comparison _less than_.
+
+```{python}
+a < 10
+```
+
+Here we look at the value returned from this expression:
+
+```{python}
+my_logical = a < 10
+```
+
+```{python}
+my_logical
+```
+
+It's a `bool` type (Boolean).
+
+```{python}
+type(my_logical)
+```
+
+Booleans can be either `True` or `False`:
+
+```{python}
+a > 10
+```
+
+Remember assignment (again). It has the single `=` between the name (on the left) and the expression (on the right).
+
+```{python}
+a = 1
+```
+
+Here is something very different - an equality comparison operator.  This is two equals signs: `==`.  It's an expression.  It tests whether the thing on the left is equal to the thing on the right, returning `True` or `False`.
+
+```{python}
+a == 1
+```
+
+Now we consider *call expressions*.
+
+```{python}
+a = 2 / 3
+```
+
+```{python}
+a
+```
+
+Here we *call* the function `round`, with the *argument* `a` - the number we want it to round.
+
+```{python}
+round(a)
+```
+
+We can pass `round` two arguments.  The second argument is the number of decimal points we want it to round to.
+
+```{python}
+round(a, 2)
+```
+
+We can also give this argument a *name*.  In that case, it is called a *keyword argument*.
+
+```{python}
+round(a, ndigits=2)
+```
+
+To find what the names of the arguments are, look at the help:
+
+```{python}
+round?
+```
+
+We have to get the name of the argument right, otherwise Python
+complains.
+
+```{python}
+round(a, number_of_digits=2)
+```
+
+Check the names, from the help:
+
+```{python}
+round?
+```
+
+Now we get on to arrays.
+
+```{python}
+import numpy as np
+```
+
+Here I am calling a function with no arguments.  It's a call expression, but in this case, the function needs no arguments.  It returns a single random number:
+
+```{python}
+np.random.uniform()
+```
+
+Once we have checked the help, we find there is a `size` argument, that we can specify.  This allows us to ask for 100 random numbers.
+
+```{python}
+np.random.uniform(size=100)
+```
+
+Here I put these into a variable:
+
+```{python}
+randoms = np.random.uniform(size=100)
+```
+
+It's a new type - `array`:
+
+```{python}
+type(randoms)
+```
+
+One of the things that `array`s have, is a *length*.  We can get that with the `len` function:
+
+```{python}
+len(randoms)
+```
+
+```{python}
+randoms
+```
+
+Here we do a comparison on a single random number:
+
+```{python}
+a_random = np.random.uniform()
+a_random
+```
+
+For our simulation, we want to check whether the random number is less than 0.26.  If so, we label this as a black juror.
+
+```{python}
+a_random < 0.26
+```
+
+We want to do this 100 times.  We can do this with arrays, in one shot:
+
+```{python}
+black_yn = randoms < 0.26
+black_yn
+```
+
+Now we can use the `np.count_nonzero` function to count how many `True` values there are.   This is our first simulation of a jury pool, of 100 jurors.
+
+```{python}
+np.count_nonzero(black_yn)
+```
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

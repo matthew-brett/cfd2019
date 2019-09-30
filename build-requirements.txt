@@ -1,0 +1,13 @@
+# Pip requirements
+bs4
+tqdm
+numpy
+pyyaml
+nbformat
+nbclean
+jupytext>=0.8
+num2words
+# To allow static build / upload
+ghp-import
+# Also need requirements for running notebooks
+-r requirements.txt

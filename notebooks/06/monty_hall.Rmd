@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/06/monty_hall.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/06/monty_hall.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        # The Monty Hall problem
+
+The [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem) is
+a problem in probability, originally posed by [Steve
+Selvin](https://en.wikipedia.org/wiki/Steve_Selvin), a professor of
+Biostatistics at Berkeley.
+
+The setup is the following:
+
+* You are a contestant on a game show.
+* The host, [Monty Hall](https://en.wikipedia.org/wiki/Monty_Hall), shows you
+  three closed and identical doors.
+* Behind one of the doors, is a car.  Behind the other two doors, there is
+  a goat.
+
+![Monty Hall illustration](/dsfe/images/monty_hall_goat.png)
+
+* Assume for a moment you'd rather have a car than a goat.
+* Monty offers you the choice of any of the three doors.  You chose a door, but
+  Monty leaves the door closed for now.
+* Monty tells you he is going to open one of the other doors that has a goat
+  behind it.  He does, there is a goat behind it.  Call this "the goat reveal".
+* Now he asks you the following question:  Do you want to stick with your
+  original choice of door, do you want to change your choice to the remaining
+  door, or does it make no difference which you chose?
+
+It turns out this is a trickier problem than it might first appear.  Among many
+others, a very famous mathematician [Paul
+Erdős](https://en.wikipedia.org/wiki/Paul_Erd%C5%91s), got the answer wrong. He
+had to be convinced with a computer simulation.  That's what we will do now.
+
+For the simulation, we will need:
+
+* `np.random.choice` \- see [the iteration page](../05/iteration) for an
+  introduction.
+* `np.sort` \- see [sorting arrays](sorting_arrays).
+
+
+## The simulation
+
+As ever, we start with the simplest thing we can think of, which is to simulate
+one trial.
+
+```{python}
+import numpy as np
+```
+
+First we make an array of the things that can be behind the doors.  There are two goats and one car.
+
+```{python}
+doors = np.array(['car', 'goat', 'goat'])
+doors
+```
+
+Next we shuffle, to simulate the fact that the object behind each door is random, on each trial.
+
+```{python}
+np.random.shuffle(doors)
+doors
+```
+
+Next we use `np.random.choice` to choose randomly between the three doors.  We
+choose one of 0, 1, or 2 for the first, second and third door, respectively.
+
+```{python}
+my_door_index = np.random.choice([0, 1, 2])
+my_door_index
+```
+
+We peek behind our selected door to see what we would have got, if we stayed with our selected door.
+
+```{python}
+stay_result = doors[my_door_index]
+stay_result
+```
+
+Next we replace whatever was behind our chosen door, with the string "mine", to indicate this was the one we chose.
+
+```{python}
+doors[my_door_index] = 'mine'
+doors
+```
+
+We now have two possibilities.  The two remaining doors could have:
+
+1. "car" and "goat" (in either order) or
+1. "goat" and "goat".
+
+We can use `np.sort` to make it more obvious which situation we are in.  It
+will put "car" in the first position, if it's present, then "goat". Last will
+be the string "mine" that we put in when we chose our door.
+
+```{python}
+doors = np.sort(doors)
+doors
+```
+
+When Monty does his goat reveal, our two options above drop to one.
+
+* "car" and "goat" become "car"
+* "goat" and "goat" become "goat"
+
+All we need to do then, is to take the first element in the sorted array.  It
+will be "car" if the car was present, otherwise it will be "goat".
+
+```{python}
+switch_result = doors[0]
+switch_result
+```
+
+## Your turn - try many trials
+
+That's one trial.   Now let's do that 10000 times.  Fill in the code you need from the statements above.
+
+```{python}
+# Make 10000 trials.
+n_tries = 10000
+# Array of 10000 length 4 (or less) strings, to store results of stay strategy
+stay_results = np.zeros(n_tries, dtype='U4')
+# 10000 length 4 (or less) strings, to store results of switch strategy
+switch_results = np.zeros(n_tries, dtype='U4')
+# Use a "for" loop to repeat the indented block 10000 times.
+for i in range(n_tries):
+    # Same code as above, for one trial
+    # Make the doors array
+    doors = np.array(['car', 'goat', 'goat'])
+    # Shuffle
+
+    # Choose your door at random
+
+    # Get the result from your chosen door
+
+    # Fill your chosen door with 'mine'
+
+    # Sort the doors.  The car will be first if present.
+
+    # Get the result for switch
+
+    # Store the results for stay and switch in their arrays
+```
+
+Check the proportion of the Stay choices that resulted in a "car".
+
+```{python}
+np.count_nonzero(stay_results == 'car') / n_tries
+```
+
+Check the proportion of the Switch choices that resulted in a "car".
+
+```{python}
+np.count_nonzero(switch_results == 'goat') / n_tries
+```
+
+Would you chose Stay or Switch?
+
+Can you explain why your choice worked better, now you've done the simulation?
+
+## Another way of doing the simulation
+
+See [Monty Hall with lists](../extra/monty_hall_lists) for another way of doing
+this simulation, using [lists](../05/lists) instead of arrays.
+
+## Exercises
+
+Now try the [simulation exercises](../exercises/simulation).
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

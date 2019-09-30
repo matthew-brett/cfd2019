@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/08/finding_lines.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/08/finding_lines.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        In [The Mean and Slopes](mean_and_slopes), we were looking for the best slope
+to predict one vector of values from another vector of values.
+
+Specifically, we wanted our slope to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values.
+
+By analogy with [The Mean as Predictor](mean_meaning), we decided to choose our line to minimize the average prediction errors, and the sum of squared prediction errors.
+
+We found a solution, by trying many slopes, and choosing the slope giving use the smallest error.
+
+Now we might ask the question, what if we wanted a line that had a (not zero) intercept, as well as a slope?
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib inline
+# Make plots look a little bit more fancy
+plt.style.use('fivethirtyeight')
+# Print to 2 decimal places, show tiny values as 0
+np.set_printoptions(precision=2, suppress=True)
+import pandas as pd
+```
+
+You can download the
+data from [gender_stats.csv](/dsfe/data/gender_stats.csv).
+
+We fetch the data and process it again:
+
+```{python}
+# Load the data file
+gender_data = pd.read_csv('gender_stats.csv')
+
+# Make new data frame with only MMR and FR
+just_mmr_fr = gender_data[['mat_mort_ratio', 'fert_rate']]
+
+# Drop the NaN values, and make into arrays.
+clean_mmr_fr = just_mmr_fr.dropna()
+mmr = np.array(clean_mmr_fr['mat_mort_ratio'])
+fert = np.array(clean_mmr_fr['fert_rate'])
+```
+
+In [The Mean and Slopes](mean_and_slopes), we did a search for the best slope, like this:
+
+```{python}
+def sos_error(slope):
+    # Sum of squared error as a function of slope
+    fitted = fert * slope  # 'fert' comes from the top level
+    error = mmr - fitted     # 'mmr' comes from the top level
+    return np.sum(error ** 2)
+```
+
+```{python}
+# Slopes to try
+some_slopes = np.arange(50, 110, 0.1)
+n_slopes = len(some_slopes)
+# Try all these slopes, calculate and record sum of squared error
+sos_errors = np.zeros(n_slopes)
+for i in np.arange(n_slopes):
+    slope = some_slopes[i]
+    sos_errors[i] = sos_error(slope)
+# The slope minimizing the sum of squared error
+# This is the slope corresponding to an intercept of 0.
+best_i0_slope = some_slopes[np.argmin(sos_errors)]
+best_i0_slope
+```
+
+What if we also have a not-zero intercept.  How do we search for a slope as well as an intercept?
+
+First we define a function, that gives the sum of squared error from our line, that has both a slope, and an intercept.
+
+```{python}
+def sos_si_error(inter_slope):
+    # inter_slope has two elements, the intercept value, and the slope value
+    intercept = inter_slope[0]
+    slope = inter_slope[1]
+    fitted = intercept + fert * slope
+    error = mmr - fitted
+    return np.sum(error ** 2)
+```
+
+Here we pass the new function an intercept value of 0 and the slope value we  found with our search:
+
+```{python}
+sos_si_error([0, best_i0_slope])
+```
+
+Of course this gives us the same error as our original function, that assumed an intercept of 0:
+
+```{python}
+sos_error(best_i0_slope)
+```
+
+We can pass in an intercept value as well.  In this case, adding the intercept value makes the error goes up:
+
+```{python}
+sos_si_error([-100, best_i0_slope])
+```
+
+Another value for the intercept makes the error go down:
+
+```{python}
+sos_si_error([-2, best_i0_slope])
+```
+
+When we found the slope, we tried lots of slopes, and chose the best one.  What do we do when we are trying to find the best slope *and* the best intercept?
+
+We can do the same thing, but this time, instead of searching over many slopes, we search over many combinations of slopes and intercepts.
+
+```{python}
+# Some slopes and intercepts to try
+some_intercepts = np.arange(-300, 50)
+n_intercepts = len(some_intercepts)
+print('Number of intercepts to try:', n_intercepts)
+some_slopes = np.arange(0, 200)
+n_slopes = len(some_slopes)
+print('Number of slopes to try:', n_slopes)
+```
+
+When we searched many slopes, we collected the errors in a one-dimensional array, with each element carrying the error for a single slope.  For example, if we are trying 200 slopes, we make a one-dimensional array of length 200, to store the matching error values.
+
+Now we are going to search for many slopes and many intercepts.  We need a two-dimensional array, where the rows (say) correspond to the different intercept values we try, and the columns (say) correspond to the slope values we try.  If we try 350 intercepts and 200 slopes, we need a two-dimensional array shape (350, 200) to store the corresponding errors.
+
+For each of the 350 possible intercepts, we try all 200 possible slopes.  We fill in the corresponding values in the array, to have 350 * 200 error values, for the 350 * 200 possible pairs of intercept and slope.
+
+```{python}
+# Make the two-dimensional array to store the errors.
+errors = np.zeros((n_intercepts, n_slopes))
+# Try all possible intercepts
+for inter_i in np.arange(n_intercepts):
+    inter = some_intercepts[inter_i]
+    # For each intercept, try all possible slopes
+    for slope_i in np.arange(n_slopes):
+        s = some_slopes[slope_i]
+        # Fill the corresponding position in the error array
+        errors[inter_i, slope_i] = sos_si_error([inter, s])
+```
+
+We now have the error for all pair of intercepts and slopes.  We can display this as an array, to see where the minimum might be.  The smallest values will be black, the largest will be white:
+
+```{python}
+# Show the error array as an image.
+# Black corresponds to low values, white to high values.
+plt.imshow(errors, cmap='gray')
+plt.colorbar()
+```
+
+The minimum over all pairs of intercepts and slopes is somewhere in the black area in the middle of that array.
+
+We find the smallest error from the whole array:
+
+```{python}
+min_error = np.min(errors)
+min_error
+```
+
+Notice that this error is lower than the error we found when we assumed the intercept was zero:
+
+```{python}
+sos_error(best_i0_slope)
+```
+
+Using the tricks from [where and argmin](where_and_argmin), we find the row and column indices for the minimum value:
+
+```{python}
+rows, cols = np.where(errors == min_error)
+rows, cols
+```
+
+We can now get the corresponding intercept and slope pair:
+
+```{python}
+# The intercept giving the minimum error (with the slope below).
+best_intercept = some_intercepts[rows]
+best_intercept
+```
+
+```{python}
+# The slope giving the minimum error (with the intercept above).
+best_si_slope = some_slopes[cols]
+best_si_slope
+```
+
+We calculate the predicted values for our new best line:
+
+```{python}
+si_predicted = best_intercept + fert * best_si_slope
+```
+
+Plot the new line along with our original line, that assumed a zero intercept.
+
+```{python}
+si_predicted = best_intercept + fert * best_si_slope
+just_s_predicted = fert * best_i0_slope
+plt.plot(fert, mmr, 'o')
+plt.plot(fert, just_s_predicted, 'o', color='red', label='Slope only')
+plt.plot(fert, si_predicted, 'o', color='green', label='Slope and intercept')
+plt.legend()
+plt.axis([0, 8, -200, 1500])
+plt.title('Best-fit lines with and without intercept')
+```
+
+Now you know about [optimization](optimization), you will not be surprised to discover that Scipy `minimize` can also do the search for the intercept and slope pair for us.  We send `minimize` the function we are trying to minimize, and a starting guess for the intercept and slope.  In this case, we start with a guess of `[0, 100]`, but any reasonable guess will do.
+
+```{python}
+from scipy.optimize import minimize
+minimize(sos_si_error, [0, 100])
+```
+
+We won't spend any time justifying this, but this is also the answer we get from traditional fitting of the least-squares line, as implemented, for example, in the Scipy `linregress` function:
+
+```{python}
+from scipy.stats import linregress
+linregress(fert, mmr)
+```
+
+Notice the values for `slope` and `intercept` in the output above.
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Data Science for Everyone</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Data Science for Everyone">
+<meta property="og:title" content="Data Science for Everyone">
+<meta property="og:url" content="https://matthew-brett.github.io/dsfe/notebooks/05/lists.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/dsfe/notebooks/05/lists.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/dsfe",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/dsfe/feed.xml" type="application/atom+xml" rel="alternate" title="Data Science for Everyone Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/dsfe/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/dsfe/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/dsfe/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/dsfe/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/dsfe/">
+          <img src="/dsfe/images/dsfe_logo.png" class="masthead_logo" />
+          Data Science for Everyone
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/dsfe/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/dsfe/chapters/01/intro">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        # Lists
+
+The data structures that we use most often in data science are:
+
+* arrays, from `numpy`;
+* data frames, from `pandas`.
+
+There is another data structure for containing sequences of values
+- the `list`.
+
+You have already seen these in passing, when we created arrays.  Now we cover them in more detail.
+
+## Creating a list
+
+You make a list like this:
+
+```{python}
+my_list = [1, 2, 3]
+my_list
+```
+
+More formally, you define a list like this:
+
+1. the open square bracket character `[`, followed by
+1. a sequence of zero of more values, separated by commas, followed by
+1. the close square bracket character `]`.
+
+We defined the list above with `[1, 2, 3]`.
+
+Here is a list with one value:
+
+```{python}
+another_list = [99]
+another_list
+```
+
+As implied above, the list can be empty, in which case there is nothing between the `[` and the `]`:
+
+```{python}
+empty_list = []
+empty_list
+```
+
+A list is of type `list`:
+
+```{python}
+type(my_list)
+```
+
+## Lists and arrays
+
+We will soon need the Numpy library for the examples:
+
+```{python}
+import numpy as np
+```
+
+A list is a container, like an array.  Like an array, it contains an
+ordered sequence of values.  Like an array, it can be empty, or it can
+contain any number of values.
+
+You can *convert a list into an array*, like this
+
+```{python}
+my_list = [4, 5, 6]
+my_list
+```
+
+```{python}
+my_array = np.array(my_list)
+my_array
+```
+
+In fact, you have already seen us do this, as a convenient way to
+create a new array - for example:
+
+```{python}
+# Define a list and immediately convert to an array
+another_array = np.array([10, 20, 30])
+another_array
+```
+
+You can also *convert an array into a list*, using the `list` function:
+
+```{python}
+list(another_array)
+```
+
+Like arrays, you can *index* into a list, to get the individual values.  Consider this list:
+
+```{python}
+my_list = [4, 5, 6]
+```
+
+Like arrays (and every other kind of sequence in Python), the first element is at index (offset) 0:
+
+```{python}
+# Get the first value
+my_list[0]
+```
+
+Accordingly, the third element is at index (offset) 2:
+
+```{python}
+# Get the third value
+my_list[2]
+```
+
+## Differences between lists and arrays
+
+### A list can contain a mix of types
+
+The elements in a list can be of any type, and there can be many different types in a list.  For example, here is a list that mixes integers, floating point values, and strings.
+
+```{python}
+mixed_list = [1, 1.1, 'Ho ho ho']
+mixed_list
+```
+
+The elements in an array must all be of the same type \- say \- all
+numbers, or all strings.  If we now create an array from this list, Numpy will try and find a type that works for all the elements, and will convert the elements to that type:
+
+```{python}
+unmixed_array = np.array(mixed_list)
+unmixed_array
+```
+
+Notice that Numpy has converted all the elements to strings, as you can see from the quotes around the values.
+
+## A list is always one-dimensional
+
+You have already seen that an array can have two (or more) dimensions.  Here is a two-dimensional array of random numbers:
+
+```{python}
+two_d_array = np.random.uniform(size=[5, 3])
+two_d_array
+```
+
+Lists only have one dimension.
+
+### Lists can contain lists
+
+You may be able to see a way of making a list that is rather like an
+array with two dimensions.  Remember that a list can contain elements
+of *any type*.  That means that a list can contain elements of type
+`list`. Here is a list where the first element is also a list:
+
+```{python}
+small_list = [21, 22, 23]
+funky_list = [small_list, 1, 1.1]
+funky_list
+```
+
+As usual, I can get the first element of `funky_list` by indexing:
+
+```{python}
+element_at_0 = funky_list[0]
+element_at_0
+```
+
+That first element is a list.  As usual, I can index in that first element too.  Here I ask for the second element from `element_at_0`:
+
+```{python}
+element_at_0[1]
+```
+
+Putting that all together in one line, I can get the second element of the first element with:
+
+```{python}
+funky_list[0][1]
+```
+
+Read this carefully from left to right.  `funky_list` is the initial
+list.  The `[0]` after `funky_list` gives me the first element of that
+list. The `[1]` after that, gives me the second element from the result
+of the previous expressions. `funky_list[0][1]` puts several
+expressions together in sequence; this is a very common pattern that
+you will see often in Python programs. Learning to read them carefully
+is one of the skills you will pick up, as you learn Python, and data
+science.
+
+## Appending to a list
+
+You have already seen *methods*.  These are functions attached to
+values.  For example, you have seen that a data frame, has a `count`
+method, that, when called, gives the number of rows in the data frame.
+
+Lists have several very useful methods.  One of the most useful is `append`.   Use it to append values to a list.
+
+```{python}
+# An empty list
+my_list = []
+my_list
+```
+
+Append a value to the empty list:
+
+```{python}
+my_list.append(1)
+my_list
+```
+
+Append another value:
+
+```{python}
+my_list.append(1.1)
+my_list
+```
+
+And another:
+
+```{python}
+my_list.append('Ho ho ho')
+my_list
+```
+
+For some more operations with lists, see [More on
+lists](../extra/more_on_lists).
+
+## What do these square brackets mean?
+
+You have seen two uses of square brackets on this page.
+
+The first use, is where the opening square bracket is the start of an expression for a new list, like this:
+
+```{python}
+a_new_list = [1, 2, 3]
+```
+
+The `[` is the start of the expression, because the line above is an
+assignment statement, with a variable name, followed by `=` followed by an expression.  The expression is `[1, 2, 3]`, and the `[` is the first character in the expression.
+
+The second use, is to ask Python to get a value from another value.
+Technically, this use is called *indexing*. For example, we do this
+when we index into a list:
+
+```{python}
+first_value = a_new_list[0]
+```
+
+Here the `[` refers back to `a_new_list`.  It tells Python "please get
+a value from `a_new_list`".  Between the `[` and the `]` is the
+information that Python must use to get the value.
+
+Here is another example of square brackets in use:
+
+```{python}
+my_array = np.array([1, 2, 3])
+```
+
+Which use of square brackets is that?  List creation, or indexing?
+Why?
+
+How about:
+
+```{python}
+a_new_list[0] = 99
+```
+
+? Why?  Or:
+
+```{python}
+a_new_list.append([101, 'one oh one'])
+```
+
+?
+
+Remember the [data frame introduction](../04/data_frame_intro)?  In
+that you saw
+
+```
+gdp = gender_data['gdp']
+```
+
+Which use of square brackets was that?
+
+Look through the [data frame introduction](../04/data_frame_intro)
+page.  There are several other examples of the use of square brackets.  Which use are they?
+
+Now look at [More on arrays](../03/More_on_Arrays).   Which uses do you see there?
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/dsfe/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/dsfe/assets/js/lunr/lunr.min.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-store.js"></script>
+<script src="/dsfe/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>
