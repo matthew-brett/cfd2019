@@ -13,5 +13,5 @@ permalink: /classes
 
 | Week | Date       | Class                        |
 | ---- | ---------- | ---------------------------- |
-| 1    |  30 Sept   | [class 0](class_0)   |
+| 1    |  30 Sept   | [class 0](classes/class_0)   |
 | 1    |  3 Oct     | class 1                      |
