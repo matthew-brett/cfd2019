@@ -6,6 +6,8 @@ permalink: /why
 
 # Why study data science?
 
+For more recent version of this page, see the [why data science? chapter](chapters/01/why-data-science).
+
 ## You can study a wider variety of data
 
 * Everything that you can store on your computer.
