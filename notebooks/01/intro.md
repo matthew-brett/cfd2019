@@ -1,10 +1,9 @@
 ## About this textbook
 
-This is the textbook for the first year undergraduate course in data science at
-the University of Birmingham.
+This is the textbook for the first year undergraduate course in coding for data
+analysis at the University of Birmingham.
 
-The course is called "Data science for everyone" because we designed it to be
-useful to students from any discipline.
+Coding for data analysis can also be called **data science**.
 
 We go into some detail about what we mean by "Data science" in the [next
 section](what-is-data-science), but here is the one-line summary:
