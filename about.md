@@ -15,6 +15,8 @@ programming and uses some very basic mathematics, but you do not need to have
 any previous experience in programming, or great interest / ability in
 mathematics.
 
+See [about the course](course) for various notes and policies.
+
 Parts of the course use the material from the [excellent
 textbook](https://www.inferentialthinking.com) for Berkeley's course
 [Foundations of Data Science](http://data8.org).
