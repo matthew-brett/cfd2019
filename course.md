@@ -11,8 +11,9 @@ Various notes and policies for the course.
 ## Prior background
 
 Data science uses code to analyze messy data.  We aim to teach you that in the
-course.  To do the course, you do not need any previous experience of using code or computing programming.  We expect a large proportion of the students will
-be starting from scratch.
+course.  To do the course, you do not need any previous experience of using
+code or computing programming.  We expect a large proportion of the students
+will be starting from scratch.
 
 One advantage of data science methods is that we can use code to express
 *algorithms* that the logical steps of the analysis.  It turns out that
@@ -69,9 +70,9 @@ to find out how well you are doing, and to help us find out what we have
 taught you, and what we have failed to teach, so we can do better in the next
 class.
 
-There are two types graded assessments.  These are:
+There are two types of graded assessments.  These are:
 
-1. 4 smallish coursework assignments through the term: 5% each.
+1. Four graded coursework assignments through the term: 5% each.
 1. A structured data analysis due at end of Autumn semester: 80% of the course
    mark).  More details will follow.
 

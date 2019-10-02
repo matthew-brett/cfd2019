@@ -6,12 +6,10 @@ permalink: /days/class_1
 
 # Day 1 (the second day)
 
-* [Why code?](../chapters/02/to_code)
-* [The Jupyter
-  Notebook](https://www.dataquest.io/blog/jupyter-notebook-tutorial). We
-  covered up to around the end of the "Cells" section, but the rest of the
-  tutorial is also useful.
-* [Plotting the Classics](../chapters/01/Plotting_the_Classics)
+* [Admin stuff](../course) including grading, working together.
+* [Using the Jupyter Notebook](../chapters/01/using_jupyter)
 * [Literary Characters](../chapters/01/Literary_Characters)
-* [Exercise 2](../exercises/exercise_2)
-* [Second assignment](../assignments/assignment_2)
+* [Exercise](../exercises/exercise_2)
+    * [Another exercise if you have time](../assignments/assignment_2)
+* [A sampling problem](../chapters/02/sampling_problem)
+* [Functions](../chapters/02/functions)
