@@ -1,0 +1,41 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# Using Jupyter notebooks
+
+```{python active="", eval=FALSE}
+This is a cell.
+
+It's a cell with text - a text cell.
+
+If you are in the classic Jupyter Notebook interface (rather than reading this in the textbook), you will see the Jupyter Menu near the top of the page, with headings "File", "Edit" and so on.
+
+Underneath that, by default, you may see a row of icons - the "Toolbar".
+
+In the toolbar, you may see icons to run the current cell, among others.
+```
+
+This is another text cell.
+
+The next cell is a code cell.
+
+We are going to use some code 
+
+```{python}
+# Adding
+# Multiplying
+# Dividing
+# Comments
+```
