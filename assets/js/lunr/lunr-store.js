@@ -34,6 +34,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/tools_techniques",
         "teaser":null},{
+        "title": "1.5 Using the Jupyter notebook",
+        "excerpt":"Using Jupyter notebooks This is a cell. It’s a cell with text - a text cell. If you are in the classic Jupyter Notebook interface (rather than reading this in the textbook), you will see the Jupyter Menu near the top of the page, with headings “File”, “Edit” and so...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/01/using_jupyter",
+        "teaser":null},{
         "title": "1.1 What is data science?",
         "excerpt":"What is data science? The combination of the words data and science do not give much hint as to what data science might mean. Most science has data, and most work in science is analyzing data. Because the name data science can cover such a broad range of subjects, ithas...","categories": [],
         "tags": [],
@@ -44,27 +49,32 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/why-data-science",
         "teaser":null},{
-        "title": "2.6 Call expressions",
+        "title": "2.7 Call expressions",
         "excerpt":"Call expressions invoke functions, which are named operations. The name ofthe function appears first, followed by expressions in parentheses. abs(-12)12round(5 - 1.3)4max(2, 2 + 3, 4)5In this last example, the max function is called on three arguments: 2,5, and 4. The value of each expression within parentheses is passed to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Calls",
         "teaser":null},{
-        "title": "2.3 Expressions",
+        "title": "2.4 Expressions",
         "excerpt":"Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Expressions",
         "teaser":null},{
-        "title": "2.5 Names",
+        "title": "2.6 Names",
         "excerpt":"You have already seen expressions. You saw in variables that we often want to give names to theresults of expressions. Now we get a little more formal about what that looks like in Python. When Python gives a name to a value, that is an assignment statement. A statement is...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Names",
+        "teaser":null},{
+        "title": "2.2 Functions",
+        "excerpt":"This is a very short introduction to functions. We will soon go into more detail on functions, in the page on call expressions. For now, we start with something simple, the function cos. Remember functions from mathematics? We might write something like this, in mathematics: You can read $cos(0)$ as:...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/02/functions",
         "teaser":null},{
         "title": "2.1 A sampling problem",
         "excerpt":"A sampling problem We will soon find that we will need to think about randomness and probabilityin order to give sensible answer to many questions. We start with a legal question, about race discrimination in jury selection. Attribution This page is partly from Jury_Selection of the UC Berkeley course -...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/sampling_problem",
         "teaser":null},{
-        "title": "2.2 A simpler problem",
+        "title": "2.3 A simpler problem",
         "excerpt":"A simpler problem Imagine a family with four children. What is the probability that the family will have exactly three girls? There are various ways to answer this question. One way, is to usesimulation. Simulation makes a model of the problem. We use the model to generatesimulated data. If the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/three_girls",
@@ -74,7 +84,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/to_code",
         "teaser":null},{
-        "title": "2.4 Variables",
+        "title": "2.5 Variables",
         "excerpt":"Variables are - things that vary. You remember variables like $x$ and $y$ from mathematics. In mathematics, we can use names, such as $x$ and $y$, to represent any value. In the piece of mathematics below, we define $y$ given any value for $x$: When we have some value for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/variables",
