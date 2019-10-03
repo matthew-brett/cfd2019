@@ -35,7 +35,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/tools_techniques",
         "teaser":null},{
         "title": "1.5 Using the Jupyter notebook",
-        "excerpt":"Using Jupyter notebooks This is a cell. It’s a cell with text - a text cell. If you are in the classic Jupyter Notebook interface (rather than reading this in the textbook), you will see the Jupyter Menu near the top of the page, with headings “File”, “Edit” and so...","categories": [],
+        "excerpt":"Using Jupyter notebooks This is a cell. It’s a cell with text - a text cell. A text cell can have formatting, such as links. For example, see Notebook basics for another introduction to the notebook interface. See that page for an introduction to the notebook Dashboard, where you can...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/using_jupyter",
         "teaser":null},{

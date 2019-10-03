@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>1.5 Using the Jupyter notebook - Coding for Data - 2019 edition</title>
-<meta name="description" content="Using Jupyter notebooksThis is a cell.">
+<meta name="description" content="Using Jupyter notebooks">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/01/using_jupyter">
 
 
-  <meta property="og:description" content="Using Jupyter notebooksThis is a cell.">
+  <meta property="og:description" content="Using Jupyter notebooks">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-02T23:50:07+01:00">
+  <meta property="article:published_time" content="2019-10-03T09:31:23+01:00">
 
 
 
@@ -992,8 +992,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="1.5 Using the Jupyter notebook">
-      <meta itemprop="description" content="Using Jupyter notebooksThis is a cell.">
-      <meta itemprop="datePublished" content="October 02, 2019">
+      <meta itemprop="description" content="Using Jupyter notebooks">
+      <meta itemprop="datePublished" content="October 03, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1022,25 +1022,119 @@
 
 
           <h1 id="using-jupyter-notebooks">Using Jupyter notebooks</h1>
+
 <p>This is a cell.</p>
 
 <p>It’s a cell with text - a text cell.</p>
+
+<p>A text cell can have formatting, such as links.</p>
+
+<p>For example, see <a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html">Notebook basics</a> for another introduction to the notebook interface.</p>
+
+<p>See that page for an introduction to the notebook Dashboard, where you can open notebooks from a file listing, or create new ones.</p>
 
 <p>If you are in the classic Jupyter Notebook interface (rather than reading this in the textbook), you will see the Jupyter Menu near the top of the page, with headings “File”, “Edit” and so on.</p>
 
 <p>Underneath that, by default, you may see a row of icons - the “Toolbar”.</p>
 
-<p>In the toolbar, you may see icons to run the current cell, among others.
+<p>In the toolbar, you may see icons to run the current cell, among others.</p>
+
+<p>Here’s a picture, for those of you reading this in textbook form.</p>
+
+<p><img src="https://jupyter-notebook.readthedocs.io/en/stable/_images/menubar_toolbar.png" alt="" /></p>
+
+<p>To move from one cell to the next, you can click the run icon in the toolbar, but it is more efficient to press the Shift key, and press Enter (with Shift still held down).  We will write this as Shift-Enter.
 This is another text cell.</p>
 
 <p>The next cell is a code cell.</p>
 
-<p>We are going to use some code</p>
+<p>The code cell is for Python code (actually, you can type code in other languages too, but we won’t be using that feature).</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Adding
-# Multiplying
-# Dividing
-# Comments
+<p>Here we will be using Python like a calculator.</p>
+
+<p>Our problem is the following:</p>
+
+<p>Alex and Billie are at a restaurant, getting ready to order. They don’t have much money, so they are calculating their expected bill before they order.</p>
+
+<p>Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at £9.25.  First they calculate their combined bill.</p>
+
+<p>Press Shift-Enter in the cell below, to see the total:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.75
+</code></pre></div></div>
+
+<p>The cell above is Python code.  As you would predict, Python understands numbers like <code class="highlighter-rouge">10.50</code>, and it understands <code class="highlighter-rouge">+</code> between the numbers as an instruction to add the numbers.</p>
+
+<p>When you press Shift-Enter, Python makes its own representation of <code class="highlighter-rouge">10.50</code>, and its own representation of <code class="highlighter-rouge">9.25</code>, and then runs the <em>addition</em> operation on these two, which results in Python’s representation of <code class="highlighter-rouge">19.75</code>.</p>
+
+<p>Finally, Python sends back the <code class="highlighter-rouge">19.75</code>.  The notebook detects that Python sent back a value, and shows it to us.</p>
+
+<p>This is exactly what a calculator would do.</p>
+
+<p>Unlike a calculator, we can also put notes next to our calculations, to remind us what they are for.   One way of doing this is to use a “comment”.</p>
+
+<p>A comment is some text that the computer will ignore.  In Python, you can make a comment by starting a line with the <code class="highlighter-rouge">#</code> (hash) character.  For example, the next cell is a code cell, but when you run it, it does not show any result.  In this case, that is because the computer sees the <code class="highlighter-rouge">#</code> at the beginning of the line, and then ignores the rest.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This bit of text is for me to read, and the computer to ignore.
+</span></code></pre></div></div>
+
+<p>Many of the code cells you see will have comments in them, to explain what the code is doing.</p>
+
+<p>Practice writing comments for your own code.  It is a very good habit to get into.  You will find that experienced programmers write many comments on their code.</p>
+
+<p>Let’s continue with Alex and Billie’s struggle with their bill.</p>
+
+<p>They realize that they will also need to pay a tip.</p>
+
+<p>They think a 15% tip is reasonable.  Now they need to multiply their total bill by 0.15, to get the tip.  Given the bill is about £20, the tip will be about £3.</p>
+
+<p>In Python, as for your calculator, <code class="highlighter-rouge">*</code> means multiplication.</p>
+
+<p>What about this?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The bill plus tip - with a mistake.
+</span><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span> <span class="o">*</span> <span class="mf">0.15</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11.8875
+</code></pre></div></div>
+
+<p>Oops, that isn’t doing the right calculation.</p>
+
+<p>Python follows the normal rules of multiplication before addition.</p>
+
+<p>See <a href="https://en.wikipedia.org/wiki/Order_of_operations">https://en.wikipedia.org/wiki/Order_of_operations</a>.</p>
+
+<p>In the case above, that means Python first calculates <code class="highlighter-rouge">9.25 * 0.15</code> (to get <code class="highlighter-rouge">1.3875</code>) and then adds the result to <code class="highlighter-rouge">10.50</code>, to get <code class="highlighter-rouge">11.8875</code>.</p>
+
+<p>We need to tell Python to do the addition and then the multiplication.  We do this with round brackets (parentheses):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The bill plus tip - mistake fixed.
+</span><span class="p">(</span><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.15</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
+</code></pre></div></div>
+
+<p>Now your turn.  Calculate Alex and Billie’s bill including the tip:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The bill, including the tip
+# Type your code below.
+</span></code></pre></div></div>
+
+<p>Alex and Billie are each going to pay half the bill.   Calculate half the bill (where the bill is the total bill including the tip):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Half the total bill, including the tip
+# Type your code below.
+</span></code></pre></div></div>
+
+<p>Alex is planning to drink three cherry colas, each at £1.50.   Billie is going to have a glass of wine, at £3.50.  Now what is their combined bill, plus tip?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The total bill, including drinks, and the tip.
+# Type your code below.
 </span></code></pre></div></div>
 
 
