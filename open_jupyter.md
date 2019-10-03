@@ -27,4 +27,6 @@ In the Spotlight Search bar that comes up, type "terminal".  Select the "Termina
 
 A terminal window should open.  You can type commands in this window to run other applications.
 
-Type `jupyter notebook` and press return.  After a short while you should get a web browser window with the [Jupyter notebook dashboard].
+Type `jupyter notebook` at the terminal prompt and press return.
+After a short while you should get a web browser window with the
+[Jupyter notebook dashboard].
