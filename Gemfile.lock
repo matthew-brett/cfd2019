@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/jekyll/jekyll-sitemap.git
+  remote: https://github.com/jekyll/jekyll-sitemap.git
   revision: c3fca1fa6a87ad81d46c207123e226b8a542d08d
   branch: master
   specs:
