@@ -6,12 +6,9 @@ permalink: /classes/class_2
 
 # Day 2 (the third day)
 
-* Continuing from last week - [Another Kind of
-  Character](../chapters/01/Another_Kind_Of_Character)
-* Some revision on changing stuff in Notebooks - [Exercise 2](../exercises/exercise_2)
+* [Literary Characters](../chapters/01/Literary_Characters)
+* [Exercise](../exercises/exercise_2)
+    * [Another exercise if you have time](../assignments/assignment_2)
 * [A sampling problem](../chapters/02/sampling_problem)
 * [A simpler problem](../chapters/02/three_girls)
-
-We also discussed *simulation* - see the first part of the [simulation chapter of the Berkeley textbook](https://www.inferentialthinking.com/chapters/09/3/Simulation) for more background.
-
-Assignment is [assignment 3](../assignments/assignment_3)
+* [Functions](../chapters/02/functions)
