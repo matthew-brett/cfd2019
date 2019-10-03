@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Class 17
-permalink: /days/class_17
+permalink: /classes/class_17
 ---
 
 # Day 17 (the eighteenth day)

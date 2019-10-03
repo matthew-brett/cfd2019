@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Class 19
-permalink: /days/class_19
+permalink: /classes/class_19
 ---
 
 # Day 19 (the twentieth day)
