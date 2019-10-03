@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Coding for Data - 2019 edition">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/08/optimization.Rmd">
+<meta property="og:title" content="Opening Jupyter on your laptop">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/open_jupyter">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/08/optimization.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/open_jupyter">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    
+    <meta itemprop="headline" content="Opening Jupyter on your laptop">
     
     
     
@@ -174,189 +174,36 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!--  -->
+          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Opening Jupyter on your laptop
+</h1> -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        In [The Mean and Slopes](mean_and_slopes), we used a simple but slow way to
-find the slope that best predicted one vector of values from another vector of
-values.
+        <h1 id="opening-jupyter-on-your-laptop">Opening Jupyter on your laptop</h1>
 
-First we go back to find that slope.
+<p>Make sure you have followed the instructions in the <a href="setup">setup
+page</a>.</p>
 
-```{python}
-import numpy as np
-import matplotlib.pyplot as plt
-# %matplotlib inline
-# Make plots look a little bit more fancy
-plt.style.use('fivethirtyeight')
-# Print to 2 decimal places, show tiny values as 0
-np.set_printoptions(precision=2, suppress=True)
-import pandas as pd
-```
+<h2 id="start-jupyter-on-windows">Start Jupyter on Windows</h2>
 
-Download the [gender_stats.csv](/cfd2019/data/gender_stats.csv) file
-to the same directory as this notebook, if you are running on your own computer.
+<p>Press the Start key.  You should see an entry in the program
+list called “Anaconda 64-bit”.  This is a list of commands
+installed by the Anaconda installer.  Select “Jupyter notebook”.
+After a short time, a web page will open with the <a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html#The-Notebook-dashboard">Jupyter
+notebook dashboard</a>.</p>
 
-Fetch and process the data:
+<h2 id="start-jupyter-on-mac">Start Jupyter on Mac</h2>
 
-```{python}
-# Load the data file
-gender_data = pd.read_csv('gender_stats.csv')
-# Make new data frame with only MMR and FR
-just_mmr_fr = gender_data[['mat_mort_ratio', 'fert_rate']]
-# Drop the NaN values, and make into arrays.
-clean_mmr_fr = just_mmr_fr.dropna()
-mmr = np.array(clean_mmr_fr['mat_mort_ratio'])
-fert = np.array(clean_mmr_fr['fert_rate'])
-```
+<p>Open Spotlight by clicking on the magnifying glass icon in the top right of screen, or holding down the control key with the space bar.</p>
 
-Our criterion is the sum of squared error:
+<p>In the Spotlight Search bar that comes up, type “terminal”.  Select the “Terminal” app that should come up as the first option.</p>
 
-```{python}
-def sos_error(slope):
-    fitted = fert * slope  # 'fert' comes from the top level
-    error = mmr - fitted     # 'mmr' comes from the top level
-    return np.sum(error ** 2)
-```
+<p>A terminal window should open.  You can type commands in this window to run other applications.</p>
 
-We found the best slope by trying a very large number of slopes, and recording, for each slope, the sum of squared error.  We chose the slope from the slopes that we tried, that gave us the lowest sum of squared error.
-
-```{python}
-# Slopes to try
-some_slopes = np.arange(50, 110, 0.1)
-n_slopes = len(some_slopes)
-# Try all these slopes, calculate and record sum of squared error
-sos_errors = np.zeros(n_slopes)
-for i in np.arange(n_slopes):
-    slope = some_slopes[i]
-    sos_errors[i] = sos_error(slope)
-# The slope minimizing the sum of squared error
-best_slope = some_slopes[np.argmin(sos_errors)]
-best_slope
-```
-
-At the end, of [the mean and slopes](mean_and_slopes) notebook, we saw that
-a function in Scipy called `minimize` can do this work for us, relatively
-quickly.
-
-```{python}
-from scipy.optimize import minimize
-minimize(sos_error, 100)
-```
-
-What we are doing, with our slow dumb technique, and with the `minimize`
-function, is something called [mathematical
-optimization](https://en.wikipedia.org/wiki/Mathematical_optimization).  We
-use *optimization* when we have some *function* that takes one or more
-*parameters*.  We want to chose, or *optimize* the parameters to give us some
-desired output from the function. 
-
-In our case our *function* is the sum of squared error, `sos_error`.  The *parameter* is the slope.  We are trying to find the value for the parameter that *minimizes* the result of calling the function `sos_error`.
-
-One way of doing this minimization, is the slow dumb way.  We just try a huge number of values for the parameter (the slope), and chose the value that gives us the lowest output value (the sum of squared error).
-
-This is such a common problem, that there has been an enormous amount of theoretical and practical work on building algorithms to make process of searching for the minimum value more efficient.
-
-This notebook is to give you an idea of how you might do this, and therefore, the kind of things that `minimize` can do, to search quickly for the best parameter.
-
-Let's look again at the shape of the curve relating the slope to the sum of squared error:
-
-```{python}
-plt.plot(some_slopes, sos_errors)
-plt.xlabel('Candidate slopes')
-plt.ylabel('Sum of squared error')
-plt.title('SSE as a function of slope')
-```
-
-This is the *function* we are trying minimize.  Specifically, we are trying to
-optimize the function that gives the *SSE* as a function of the *slope*
-parameter.
-
-We want to avoid trying every possible value for the slope.
-
-So, we are going to start with one value for the slope, say 100, then see if there is a good way to chose the next value to try.
-
-Looking at the graph, we see that, when the slope is far away from the minimum, the sum of squared error (on the y axis) changes very quickly as the slope changes.  That is, the function has a steep *gradient*.
-
-Maybe we could check what the gradient is, at our starting value of 100, by calculating the sum of squares (y) value, and then calculating the sum of squares (y) value when we increase the slope by a tiny amount.  This is the change in y for a very small change in x.  We divide the change in y by the change in x, to get the gradient:
-
-```{python}
-def sos_error_gradient(x, dx=0.0001):
-    # Gradient of the sos_error at this value of x
-    # sos_error at this x value.
-    sos_0 = sos_error(x)
-    # sos_error a tiny bit to the right on the x axis.
-    sos_1 = sos_error(x + dx)
-    # gradient is y difference divided by x difference.
-    return (sos_1 - sos_0) / dx
-```
-
-```{python}
-# The y value of the function.
-sos_error(100)
-```
-
-```{python}
-# The gradient of the function at this point.
-sos_error_gradient(100)
-```
-
-A large positive gradient means the x value (slope) that we tried is still far to the *right* of the minimum. This might encourage us to try an x value that is well to the left.  We could call this a large step in x, and therefore a large *step size*.
-
-A large negative gradient means the x value (slope) that we tried is still far to the *left* of the minimum.   This might encourage us to try an x value that is well to the right.
-
-As the gradients get small, we want to take smaller steps, so we don't miss the minimum.
-
-The general idea then, is to chose our step sizes in proportion to the gradient of the function.
-
-This is the optimization technique known as [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent).
-
-Here it is in action, using code modified from the Wikipedia page above.
-
-We try new x (slope) values by making big jumps when the gradient is steep, and small jumps when the gradient is shallow.
-
-```{python}
-next_x = 100 # We start the search at x=100
-gamma = 0.0001 # Step size multiplier
-precision = 0.00001 # Desired precision of result
-max_iters = 1000 # Maximum number of iterations
-
-for i in np.arange(max_iters):
-    # Go to the next x value
-    current_x = next_x
-    # Estimate the gradient
-    gradient = sos_error_gradient(current_x)
-    # Use gradient to choose the next x value to try.
-    # This takes negative steps when the gradient is positive
-    # and positive steps when the gradient is negative.
-    next_x = current_x - gamma * gradient
-    step = next_x - current_x
-    print('x: {:0.5f}; step {:0.5f}; gradient {:0.2f}'.format(
-        current_x, step, gradient))
-    # When the step size is equal to or smaller than the desired
-    # precision, we are near enough.
-    if abs(step) <= precision:
-        # Break out of the loop.
-        break
-
-print("Minimum at", next_x)
-```
-
-As you can see, by doing this, we save ourselves from trying a very large number of other potential x values (slopes), and we focus in on the minimum very quickly.
-
-This is just one method among many for optimizing our search for the minimum
-of a function.  Now you know what kind of thing it is doing, we will just let
-`miminize` do its job for us:
-
-```{python}
-# Use float to show us the final result in higher precision
-result = minimize(sos_error, 100)
-float(result.x)
-```
+<p>Type <code class="highlighter-rouge">jupyter notebook</code> and press return.  After a short while you should get a web browser window with the <a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html#The-Notebook-dashboard">Jupyter notebook dashboard</a>.</p>
 
         
       </section>
