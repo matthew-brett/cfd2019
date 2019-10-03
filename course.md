@@ -70,11 +70,15 @@ to find out how well you are doing, and to help us find out what we have
 taught you, and what we have failed to teach, so we can do better in the next
 class.
 
-There are two types of graded assessments.  These are:
+## Assessments
 
-1. Four graded coursework assignments through the term: 5% each.
-1. A structured data analysis due at end of Autumn semester: 80% of the course
-   mark).  More details will follow.
+1. Four sets of smallish homework problems (20%)
+2. Structured data analysis due at end of first semester: (20%)
+3. Group data analysis project due at end of second semester, on
+   data chosen by the group.   Each group member submits an
+   explanation of their own role with evidence from these public
+   records.  Project report of 5000 words: (60%)  More details
+   will follow.
 
 ## Working together
 
