@@ -195,7 +195,7 @@ For example, see [Notebook basics](https://jupyter-notebook.readthedocs.io/en/st
 See that page for an introduction to the notebook Dashboard, where you can open notebooks from a file listing, or create new ones.
 
 
-If you are in the classic Jupyter Notebook interface (rather than reading this in the textbook), you will see the Jupyter Menu near the top of the page, with headings "File", "Edit" and so on. 
+If you are in the classic Jupyter Notebook interface (rather than reading this in the textbook), you will see the Jupyter Menu near the top of the page, with headings "File", "Edit" and so on.
 
 Underneath that, by default, you may see a row of icons - the "Toolbar".
 
@@ -208,7 +208,7 @@ Here's a picture, for those of you reading this in textbook form.
 
 To move from one cell to the next, you can click the run icon in the toolbar, but it is more efficient to press the Shift key, and press Enter (with Shift still held down).  We will write this as Shift-Enter.
 
-```{python active="", eval=FALSE}
+
 This is another text cell.
 
 The next cell is a code cell.
@@ -224,7 +224,6 @@ Alex and Billie are at a restaurant, getting ready to order. They don't have muc
 Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at £9.25.  First they calculate their combined bill.
 
 Press Shift-Enter in the cell below, to see the total:
-```
 
 ```{python}
 10.50 + 9.25
