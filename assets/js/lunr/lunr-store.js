@@ -355,7 +355,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/functions_values_exercises",
         "teaser":null},{
         "title": "Interesting, no?",
-        "excerpt":"Assignment 3 For this assignment, you will probably eventually need the power operator. As in introduction, the multiplication operator is the * sign, as in: 10.50 * 331.5It tells Python to multiply the values on the left by the value on the right. The power operator is **. It works...","categories": [],
+        "excerpt":"For this assignment, you will probably eventually need the power operator. As in introduction, the multiplication operator is the * sign, as in: 10.50 * 331.5It tells Python to multiply the values on the left by the value on the right. The power operator is **. It works like this:...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/interesting",
         "teaser":null},{
