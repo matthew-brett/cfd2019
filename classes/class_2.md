@@ -10,4 +10,3 @@ permalink: /classes/class_2
 * [A simpler problem](../chapters/02/three_girls)
 * [Introduction to variables](../chapters/02/variables_intro)
 * [Interest, exercise](../chapters/exercises/interesting)
-* [Introduction to functions](../chapters/02/functions)
