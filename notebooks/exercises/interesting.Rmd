@@ -5,7 +5,7 @@ jupyter:
       extension: .Rmd
       format_name: rmarkdown
       format_version: '1.0'
-      jupytext_version: 0.8.2
+      jupytext_version: 0.8.4
   kernelspec:
     display_name: Python 3
     language: python
@@ -19,17 +19,46 @@ jupyter:
     name: python
     nbconvert_exporter: python
     pygments_lexer: ipython3
-    version: 3.6.5
+    version: 3.7.0
 ---
 
 # Assignment 3
 
+For this assignment, you will probably eventually need the *power* operator.
 
-For this assignment, you will need the information in:
+As in introduction, the *multiplication* operator is the `*` sign, as in:
 
-* [Expressions](https://matthew-brett.github.io/dsfe/chapters/02/Expressions)
-* [Names](https://matthew-brett.github.io/dsfe/chapters/02/Names).
+```{python}
+10.50 * 3
+```
 
+It tells Python to multiply the values on the left by the value on the right.
+
+The *power* operator is `**`.  It works like this:
+
+```{python}
+2 ** 4
+```
+
+The line above tells Python to calculate the number to the left (here 2) *to
+the power of* the number to the right, here 4.  In other words, the calculation
+`2 ** 4` in Python is the same as:
+
+```
+2 * 2 * 2 * 2
+```
+
+Likewise:
+
+```{python}
+3.5 ** 5
+```
+
+results in the same calculation as:
+
+```{python}
+3.5 * 3.5 * 3.5 * 3.5 * 3.5
+```
 
 Don't forget to execute the cells in the notebook, that I've written for you.
 
@@ -39,9 +68,8 @@ Don't forget to execute the cells in the notebook, that I've written for you.
 
 In what follows, you will see me using *comments*.  Comments start with a hash character - `#`.  Python ignores everything after the hash character.  This is useful to write text for you or others to read, inside your code.
 
-```{python active="", eval=FALSE}
+
 For example, try executing the following cell.
-```
 
 ```{python}
 # This is just a comment.  Python ignores it.  It's just for show.
@@ -157,6 +185,8 @@ Fill in the cell below, to show how much I will owe after 52 weeks.  You will pr
 
 
 Can you calculate roughly what the weekly interest rate has to be, in order to correspond to the 10% annual interest that I started with?   There are several ways to do this, but you can try trial and error, if you like.
+
+**Note** - this is relatively hard, so don't worry if it is not obvious how to do this.
 
 ```{python}
 # Your code to estimate the right weekly interest rate.

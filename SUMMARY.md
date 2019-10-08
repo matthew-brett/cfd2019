@@ -64,7 +64,7 @@
   * [9.6 Accuracy of the classifier](notebooks/09/Accuracy_of_the_Classifier.ipynb)
 * [10. The end of the beginning](notebooks/10/end_of_beginning.md)
 * [Exercises](notebooks/exercises/exercises.md)
-  * [Interesting, no?](exercises/interesting.ipynb)
+  * [Interesting, no?](notebooks/exercises/interesting.ipynb)
   * [Thinking about names](exercises/names.md)
   * [Three girl simulations](notebooks/exercises/three_girl_simulations.ipynb)
   * [Array indexing](notebooks/exercises/array_indexing.ipynb)

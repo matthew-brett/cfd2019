@@ -15,3 +15,4 @@ permalink: /classes
 | ---- | ---------- | ---------------------------- |
 | 1    |  30 Sept   | [class 0](classes/class_0)   |
 | 1    |  3 Oct     | [class 1](classes/class_1)   |
+| 2    |  8 Oct     | [class 2](classes/class_2)   |
