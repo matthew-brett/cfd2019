@@ -1,12 +1,20 @@
-## Surviving the computer
+Computers have vastly extended the range of tasks we can do, in data analysis,
+as for many other fields.  But, they can be awkward partners, because we have
+to use some of our mental energy to communicate with the computer.
 
-Computers have vastly extended the range of tasks we can do, in data analysis, as for many other fields.  But - they can be awkward partners - because we have to use some of our mental energy to communicate with the computer.
+This means that, if we are not careful, the computer can make us dumb, by
+taking up enough mental energy that we stop thinking carefully about the task
+at hand.  This is particularly dangerous when programming, because programming
+needs careful logical thought.
 
-This means that, if we are not careful, the computer can make us dumb, by taking up enough mental energy that we stop thinking carefully about the task at hand.  This is particularly dangerous when programming, because programming needs careful logical thought.
+For example, consider {% cite mueller2014pen %}.  In their study 1, the
+authors asked students to take notes while listening to TED talks, and answer
+questions about the talks afterwards.  They randomly allocated students into
+two groups, where one group took notes with a pen and a notebook, and the
+other typed notes into a laptop.  The group that took notes on a laptop were
+less able to answer questions about ideas in the talks.
 
-Just for example, consider {% cite mueller2014pen %}.  In their study 1, the authors asked students to take notes while listening to TED talks, and answer questions about the talks afterwards.  They randomly allocated students into two groups, where one group took notes with a pen and a notebook, and the other typed notes into a laptop.  The group that took notes on a laptop were less able to answer questions about the talks that needed careful thought.
-
-The students with the laptops are us, programming.  We have to be careful about the dulling effect that using the computer can have, on logical thought.
+The students with the laptops are us, programming.  We have to be careful about the dulling effect that using the computer can have, on our ability to think straight.
 
 Experienced programmers know this problem, and they use tricks to deal with them.
 
@@ -20,7 +28,7 @@ When *working* on the computer, have a piece of paper and a pen next to you on y
 
 [Pair programming](https://en.wikipedia.org/wiki/Pair_programming) is
 a standard technique that programmers use to improve the quality of their work
-and accelerate learning.  It is particularly useful early in learning, and with new tasks {% lui2006pair %}.
+and accelerate learning.  It is particularly useful early in learning, and with new tasks {% cite lui2006pair %}.
 
 Pair programming has a standard form.
 
@@ -34,3 +42,7 @@ You will likely find that, when you are the driver, you think a lot slower
 than the navigator, because you are thinking about two things, the task, and
 interacting with the computer.  When you switch to being the navigator, you
 will find that you can think more quickly and carefully.
+
+## References
+
+{% bibliography --cited %}
