@@ -93,13 +93,18 @@ In our case:
 
 What will Python do with this line?
 
-First it works on the RHS, and does what it did before; it makes it's own
+First it works on the RHS, and does what it did before; it makes its own
 representation of `10.50`.  This thing that it made is a *value*.  (We could
 also call it an *object*, but don't worry about that for now).
 
 Next it looks at the LHS, and sees `a`.  It realizes that this is a *name* that we want to give the new *value*.  Then it stores the new value 10.50 with the label `a`, in its *workspace*. Next time we use the label `a` Python will look in its workspace for the label `a`, it will find 10.50, and return it to us.
 
-You can read `a = 10.50` as "'a' gets the value 10.50".  Here we just run the same line again, but with a comment to remind us what is happening:
+You can read `a = 10.50` as:
+
+> 'a' gets the value 10.50
+
+Here we just run the same line again, but with a comment to remind us what is
+happening:
 
 ```{python}
 # 'a' gets the value 10.50
@@ -128,13 +133,13 @@ a + b
 
 We read the first two lines as:
 
-* "'a' gets the value 10.50"
-* "'b' gets the value 9.25"
-* calculate 'a + b' and show the result.
+* 'a' gets the value 10.50.
+* 'b' gets the value 9.25.
+* Calculate 'a + b' and show the result.
 
 The second line tells Python that is should give the label `b` to the value 9.25.
 
-What is happening in the third line `a + b`.
+What is happening in the third line `a + b`?
 
 Python sees `a`, and replaces it with the value for `a`: its own representation of the number 10.50.
 
@@ -144,7 +149,7 @@ Noting the `+` it then calculates the result of adding the value 10.50 to the va
 
 Finally, it makes something we can show on the screen for this value, 19.75, and shows it to us: `19.75`.
 
-So `a + b` results in exactly the same result as `10.50 + 9.25`.
+So `a + b` ends up with exactly the same calculation, and result, as `10.50 + 9.25`.
 
 ## Variables
 
@@ -198,7 +203,8 @@ bandersnatch = alex_main + billie_main
 bandersnatch
 ```
 
-This allows us to do our original calculation of the bill plus tip in a rather simple and readable way:
+Putting the total in its own variable allows us to do our original calculation
+of the bill plus tip in a rather simple and readable way:
 
 ```{python}
 # The bill plus tip, again.
@@ -222,5 +228,7 @@ alex_main = 8.95
 ```
 
 Now re-run the cell above - what do you see?
+
+## End note
 
 Variables are the heart of coding.  By using good variable names, we can write down our calculations in a way that is easy to understand.  We can make calculations more general, and therefore more useful, but using variables instead of values like `10.50`, so that the calculation works for any valid number, that we put into the variable.
