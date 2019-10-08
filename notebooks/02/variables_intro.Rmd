@@ -223,12 +223,21 @@ Remember when we calculated the total bill before tip:
 ```
 
 To recap, when you run this code (by typing Shift-Enter) Python makes its own
-representation of `10.50`, and its own representation of `9.25`.
+representation of `10.50`:
+
+![](../../images/value_10_50.svg)
+
+It also makes its own representation of `9.25`:
+
+![](../../images/value_9_25.svg)
 
 Python then runs the *addition* operation on these two, which results in
 Python's representation of `19.75`.
 
-Finally, Python sends back the `19.75`.  The notebook detects that Python sent back a value, and shows it to us.
+![](../../images/value_19_75.svg)
+
+Finally, Python sends back the `19.75`.  The notebook detects that Python sent
+back a value, and shows it to us.
 
 ## Variables
 
@@ -266,6 +275,8 @@ representation of `10.50`.  This thing that it made is a *value*.  (We could
 also call it an *object*, but don't worry about that for now).
 
 Next it looks at the LHS, and sees `a`.  It realizes that this is a *name* that we want to give the new *value*.  Then it stores the new value 10.50 with the label `a`, in its *workspace*. Next time we use the label `a` Python will look in its workspace for the label `a`, it will find 10.50, and return it to us.
+
+![](../../images/a_equal_10_50.svg)
 
 You can read `a = 10.50` as:
 
