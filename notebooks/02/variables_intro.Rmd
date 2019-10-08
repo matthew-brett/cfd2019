@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Assignment 2 - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>Tools - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
 <meta property="og:title" content="Coding for Data - 2019 edition">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/assignments/assignment_3.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/02/variables_intro.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/assignments/assignment_3.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/02/variables_intro.Rmd">
 
 
 
@@ -181,145 +181,225 @@
 
       <section class="page__content" itemprop="text">
         
-        # Assignment 3
+        Remember the problem in [the first notebook](../01/using_jupyter).
 
+Alex and Billie are at a restaurant, getting ready to order. They don't have much money, so they are calculating their expected bill before they order.
 
-For this assignment, you will need the information in:
+Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at £9.25.  They also want to add a tip of 15%.
 
-* [Expressions](https://matthew-brett.github.io/dsfe/chapters/02/Expressions)
-* [Names](https://matthew-brett.github.io/dsfe/chapters/02/Names).
-
-
-Don't forget to execute the cells in the notebook, that I've written for you.
-
-
-## Comments
-
-
-In what follows, you will see me using *comments*.  Comments start with a hash character - `#`.  Python ignores everything after the hash character.  This is useful to write text for you or others to read, inside your code.
-
-```{python active="", eval=FALSE}
-For example, try executing the following cell.
-```
+Here's the calculation for the tip.
 
 ```{python}
-# This is just a comment.  Python ignores it.  It's just for show.
+# The bill plus tip - mistake fixed.
+(10.50 + 9.25) * 0.15
 ```
 
-Nothing happens - Python ignored everything after the hash character.
-
-
-## The problem
-
-
-The problem is my bank.
-
-I have a credit card debt of £500.
-
-Let's give that debt amount, a *name*:
+We then had to add this to the total before tip, to get the grand total:
 
 ```{python}
-# This is the amount I owe at the moment
-my_debt = 500
+# The bill, including the tip
+10.50 + 9.25 + (10.50 + 9.25) * 0.15
 ```
 
-At the moment, the bank is nice enough to charge me 10% interest per year.   Let's give that a name too.
+But - what if Alex changes her mind, and wants to have the aubergine gratin, for £8.95?  We have to type the whole calculation out again, but change the previous £10.50 (the fish) to the current £8.95 (the aubergine), like this:
+
 
 ```{python}
-interest_rate = 0.1
+# The bill, including the tip, with Alex having aubergine.
+8.95 + 9.25 + (8.95 + 9.25) * 0.15
 ```
 
-The amount of interest, after one year, is therefore:
+We would like a way to give labels to these numbers, to make our calculations easier to read, and easier to repeat.
+
+We need *variables*.
+
+## An interlude - thinking like the computer.
+
+Remember when we calculated the total bill before tip:
 
 ```{python}
-interest = my_debt * interest_rate
-interest
+# Total bill, before tip.
+10.50 + 9.25
 ```
 
-Then my total new debt will be:
+To recap, when you run this code (by typing Shift-Enter) Python makes its own
+representation of `10.50`, and its own representation of `9.25`.
+
+Python then runs the *addition* operation on these two, which results in
+Python's representation of `19.75`.
+
+Finally, Python sends back the `19.75`.  The notebook detects that Python sent back a value, and shows it to us.
+
+## Variables
+
+Now consider this:
 
 ```{python}
-my_debt + interest
+a = 10.50
+b = 9.25
+a + b
 ```
 
-I can also calculate my total new debt all in one go by multiplying by `1 + interest_rate` - in my case - `1.1`.
+The first two lines in the cell above are *assignment statements*.
+
+Let's consider the first line.
 
 ```{python}
-debt_increaser = 1 + interest_rate
-debt_increaser
+a = 10.50
 ```
+
+Like all assignment statements, this assignment statement has two parts, and
+these are (wait for it):
+
+* The left hand side (to the left of the equals sign `=`).
+* The right hand side (to the right of the equals sign `=`).
+
+In our case:
+
+* The Left Hand Side (LHS) is `a`.
+* The Right Hand Side (RHS) is `10.50`.
+
+What will Python do with this line?
+
+First it works on the RHS, and does what it did before; it makes its own
+representation of `10.50`.  This thing that it made is a *value*.  (We could
+also call it an *object*, but don't worry about that for now).
+
+Next it looks at the LHS, and sees `a`.  It realizes that this is a *name* that we want to give the new *value*.  Then it stores the new value 10.50 with the label `a`, in its *workspace*. Next time we use the label `a` Python will look in its workspace for the label `a`, it will find 10.50, and return it to us.
+
+You can read `a = 10.50` as:
+
+> 'a' gets the value 10.50
+
+Here we just run the same line again, but with a comment to remind us what is
+happening:
 
 ```{python}
-my_debt * debt_increaser
+# 'a' gets the value 10.50
+a = 10.50
 ```
 
-## Now your turn
-
-
-Add your code to the cell below, and execute it, to show my total debt after two years.  Your code will probably start with:
-
-```
-my_debt * debt_increaser
-```
+Let's use the new label `a` by putting it on a line on its own, in a code cell.
 
 ```{python}
-# Show my debt after two years.
-# Your code below this comment
+# Show the value of "a"
+a
 ```
 
-Fill in the next cell, in the same way, to show my debt after three years.
+What happened here?
+
+Remember that, when Python sees the label `a` it will look in its workspace for `a`.  If it finds `a`, it will return the value for `a`.  This is 10.50.  Finally, Jupyter makes the value 10.50 into something it can print to show us, and we see `10.50`.
+
+Now we go back to the original three lines.  Run this cell:
 
 ```{python}
-# Show my debt after three years.
+# Set 'a' and 'b', then show the result of adding 'a' and 'b'.
+a = 10.50
+b = 9.25
+a + b
 ```
 
-Now show my debt after 10 years.   You might want to use the *power* operator `**` to do this.
+We read the first two lines as:
+
+* 'a' gets the value 10.50.
+* 'b' gets the value 9.25.
+* Calculate 'a + b' and show the result.
+
+The second line tells Python that is should give the label `b` to the value 9.25.
+
+What is happening in the third line `a + b`?
+
+Python sees `a`, and replaces it with the value for `a`: its own representation of the number 10.50.
+
+Then it sees `b` and replaces it with the value for `b`: its own representation of the number 9.25.
+
+Noting the `+` it then calculates the result of adding the value 10.50 to the value 9.25, and this generates a new value, 19.75.
+
+Finally, it makes something we can show on the screen for this value, 19.75, and shows it to us: `19.75`.
+
+So `a + b` ends up with exactly the same calculation, and result, as `10.50 + 9.25`.
+
+## Variables
+
+`a` and `b` above are *variables*.  Variables are labels attached to values.
+
+Here we have used single-letter names for the variables, but we can use
+multiple letters in the names.  We can even use the *underscore* character `_`
+in the name. Python doesn't care whether the names are single letters, or
+multiple letters, it just uses the name as a label to refer to the value.  So
+we could write the same calculations like this:
 
 ```{python}
-# Show my debt after ten years.
+# Different, longer names.
+alpha = 10.50
+beta = 9.25
+alpha + beta
 ```
 
-## An offer from the bank
+All this does exactly the same as the cell with the names `a` and `b`, except now the label we use for 10.50 is `alpha` and the label for 9.25 is `beta`.
 
-
-The bank has just sent me a nice letter explaining that they are going to start charging me interest every week instead of every year.   They value me as a customer, so, instead of dividing the annual interest rate by 52, they are going to divide it by 53 instead.   But - is that a good offer?
-
-
-Here is their proposed weekly interest rate:
+You will find it very useful to use good variable names.  A good variable name is a name that reminds you what the value represents.  For example, we could write this:
 
 ```{python}
-weekly_interest_rate = interest_rate / 53
-weekly_interest_rate
+# Better variable names
+alex_main = 10.50
+billie_main = 9.25
+alex_main + billie_main
 ```
 
-That corresponds to:
+Here the names remind us what the values mean.  Python doesn't care though - it just sees a label, it doesn't try and work out what the label means.  We choose good variable names for us, the people reading the program.  Python doesn't care either way.
+
+Finally, we might also put the total into its own variable, like this:
 
 ```{python}
-weekly_debt_increaser = 1 + weekly_interest_rate
-weekly_debt_increaser
+# Total gets its own variable.
+alex_main = 10.50
+billie_main = 9.25
+total = alex_main + billie_main
+# Show the value attached to the 'total' variable.
+total
 ```
 
-So, starting from my original debt, I will owe this much after one week:
+Again, the name `total` is a good one, because it reminds us what the value means, but it is nothing special to Python - we could have called it `bandersnatch` and we would get the same result:
 
 ```{python}
-# What I owe, after one week, on the new deal
-my_debt * weekly_debt_increaser
+# Total variable, with funny name.
+alex_main = 10.50
+billie_main = 9.25
+bandersnatch = alex_main + billie_main
+# Show the value attached to the 'bandersnatch' variable.
+bandersnatch
 ```
 
-Fill in the cell below, to show how much I will owe after 52 weeks.  You will probably want `**` here again.
+Putting the total in its own variable allows us to do our original calculation
+of the bill plus tip in a rather simple and readable way:
 
 ```{python}
-# Show my debt after 52 weeks, on the new deal
+# The bill plus tip, again.
+total + total * 0.15
 ```
 
-## For extra cool points
-
-
-Can you calculate roughly what the weekly interest rate has to be, in order to correspond to the 10% annual interest that I started with?   There are several ways to do this, but you can try trial and error, if you like.
+It also means that we can change our minds about the individual amounts, but still keep the same bit of code.  Here's the calculation of the total and tip, again.
 
 ```{python}
-# Your code to estimate the right weekly interest rate.
+# Calculate total and total plus tip, again.
+total = alex_main + billie_main
+# Calculate and show the result.
+total + total * 0.15
 ```
+
+Now Alex has changed her mind, all we need to do is change her variable:
+
+```{python}
+# Alex wants the aubergine gratin.
+alex_main = 8.95
+```
+
+Now re-run the cell above - what do you see?
+
+## End note
+
+Variables are the heart of coding.  By using good variable names, we can write down our calculations in a way that is easy to understand.  We can make calculations more general, and therefore more useful, but using variables instead of values like `10.50`, so that the calculation works for any valid number, that we put into the variable.
 
         
       </section>
