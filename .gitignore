@@ -114,3 +114,6 @@ vendor/
 _chapters/
 _data/textbook.yml
 images/chapters/
+
+# Mac cruft
+.DS_Store
