@@ -22,8 +22,6 @@ jupyter:
     version: 3.7.0
 ---
 
-# Assignment 3
-
 For this assignment, you will probably eventually need the *power* operator.
 
 As in introduction, the *multiplication* operator is the `*` sign, as in:
