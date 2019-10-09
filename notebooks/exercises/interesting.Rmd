@@ -268,16 +268,30 @@ Then my total new debt will be:
 my_debt + interest
 ```
 
-I can also calculate my total new debt all in one go by multiplying by `1 + interest_rate` - in my case - `1.1`.
+There is a short cut to calculate my total debt after one year.
+
+Remember the total debt is the original debt plus interest, which is `my_debt +
+my_debt * interest_rate`.  I could also write this as `my_debt * 1 + my_debt *
+interest_rate`, and then I could write that as `my_debt * (1 + interest_rate)`.
+
+Now make a new variable `debt_increaser` that is equal to `1 + interest_rate`.
 
 ```{python}
 debt_increaser = 1 + interest_rate
 debt_increaser
 ```
 
+This variable allows me to calculate `my_debt + my_debt * interest_rate` in a
+more compact way, like this:
+
 ```{python}
 my_debt * debt_increaser
 ```
+
+Because of the definition of `debt_increaser` above, this is mathematically
+equal to `my_debt * (1 + interest_rate)`, which in turn is mathematically equal
+to `my_debt * 1 + my_debt * interest_rate` which is `my_debt + my_debt *
+interest_rate` - the calculation we want.
 
 ## Now your turn
 

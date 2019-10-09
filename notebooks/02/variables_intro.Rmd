@@ -318,6 +318,8 @@ We read the first two lines as:
 
 The second line tells Python that is should give the label `b` to the value 9.25.
 
+![](../../images/b_equal_9_25.svg)
+
 What is happening in the third line `a + b`?
 
 Python sees `a`, and replaces it with the value for `a`: its own representation of the number 10.50.
