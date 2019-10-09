@@ -349,7 +349,9 @@ beta = 9.25
 alpha + beta
 ```
 
-All this does exactly the same as the cell with the names `a` and `b`, except now the label we use for 10.50 is `alpha` and the label for 9.25 is `beta`.
+All this does exactly the same as the cell with the names `a` and `b`, except now the label we use for 10.50 is `alpha` and the label for 9.25 is `beta`.  For example, now the label `alpha` points to the value 10.50:
+
+![](../../images/alpha_equal_10_50.svg)
 
 You will find it very useful to use good variable names.  A good variable name is a name that reminds you what the value represents.  For example, we could write this:
 
