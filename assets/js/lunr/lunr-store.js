@@ -54,17 +54,17 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/why-data-science",
         "teaser":null},{
-        "title": "2.6 Call expressions",
+        "title": "2.8 Call expressions",
         "excerpt":"Call expressions invoke functions, which are named operations. The name ofthe function appears first, followed by expressions in parentheses. abs(-12)12round(5 - 1.3)4max(2, 2 + 3, 4)5In this last example, the max function is called on three arguments: 2,5, and 4. The value of each expression within parentheses is passed to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Calls",
         "teaser":null},{
-        "title": "2.3 Expressions",
+        "title": "2.5 Expressions",
         "excerpt":"Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Expressions",
         "teaser":null},{
-        "title": "2.5 Names",
+        "title": "2.7 Names",
         "excerpt":"You have already seen expressions. You saw in variables that we often want to give names to theresults of expressions. Now we get a little more formal about what that looks like in Python. When Python gives a name to a value, that is an assignment statement. A statement is...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Names",
@@ -89,7 +89,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/to_code",
         "teaser":null},{
-        "title": "2.4 Variables",
+        "title": "2.6 More on variables",
         "excerpt":"Variables are - things that vary. You remember variables like $x$ and $y$ from mathematics. In mathematics, we can use names, such as $x$ and $y$, to represent any value. In the piece of mathematics below, we define $y$ given any value for $x$: When we have some value for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/variables",
