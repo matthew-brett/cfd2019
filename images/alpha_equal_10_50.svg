@@ -10,13 +10,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="253.28036mm"
+   width="306.00806mm"
    height="175.11638mm"
-   viewBox="0 0 253.28037 175.11638"
+   viewBox="0 0 306.00806 175.11638"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="a_equal_10_50.svg">
+   sodipodi:docname="alpha_equal_10_50.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -27,7 +27,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="298.89666"
+     inkscape:cx="498.18238"
      inkscape:cy="305.80955"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -57,7 +57,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(58.497129,-15.162051)">
+     transform="translate(111.22481,-15.162051)">
     <image
        y="15.162051"
        x="28.234823"
@@ -102,17 +102,17 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="-56.847614"
-       y="105.23379"
+       x="-110.63364"
+       y="105.98974"
        id="text4290"><tspan
          sodipodi:role="line"
          id="tspan4288"
-         x="-56.847614"
-         y="105.23379"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">a</tspan></text>
+         x="-110.63364"
+         y="105.98974"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">alpha</tspan></text>
     <image
        y="89.26429"
-       x="-42.21994"
+       x="-41.161606"
        id="image4351"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGYAAAD/CAQAAAAZZhjgAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElN
