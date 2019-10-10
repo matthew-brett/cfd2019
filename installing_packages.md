@@ -4,6 +4,8 @@ title: Installing packages
 permalink: /installing_packages
 ---
 
+# Installing packages
+
 Here are the instructions for installing a Python package on your system.
 
 In this case we will be installing the [okpy](https://okpy.org) package, for
