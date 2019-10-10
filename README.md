@@ -23,15 +23,19 @@ Chris Holdgraf for putting that together.
 
 Say your Github username is `my-gh-user`.
 
-Go to the repository page <https://github.com/matthew-brett/dsfe>.
+Go to the repository page that houses this README - for example <https://github.co/matthew-brett/dsfe>.
 
 Click on "Fork" button near top right, to make your own fork of the
-repository, that will now be at `https://github.com/my-gh-user/dsfe`.
+repository, that will now be at `https://github.com/my-gh-user/<repo-name>` where `<repo-name>` is the name of the repository housing this README.
 
 **Before you clone the repository**, make sure you are working in
 a case-sensitive filesystem.  The default macOS filesystem is not
 case-sensitive, see the section "Case-sensitive files on the Mac" near
 the end, before you continue, and clone into this new filesystem.
+
+The following assumes that the README is in
+<https://github.com/matthew-brett/dsfe>.  The name of the repository is
+therefore `dsfe`.  Substitute URL and repository name throughout.
 
 Clone the main repo:
 
