@@ -40,7 +40,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/surviving_computers",
         "teaser":null},{
         "title": "1.6 About the software",
-        "excerpt":"You have already jumped into the technology, but now we step back and name theparts. You have been working in the Jupyter Notebook. This is an interface that allows us to interact with the Python programming language. There are many ways of installing Python and the Jupyter Notebook. The bestway...","categories": [],
+        "excerpt":"The parts You have already jumped into the technology, but now we step back and name theparts. You have been working in the Jupyter Notebook. This is an interface that allows us to interact with the Python programming language. There are many ways of installing Python and the Jupyter Notebook....","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/the_software",
         "teaser":null},{
