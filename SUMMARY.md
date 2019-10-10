@@ -10,7 +10,7 @@
     * [1.4.1 Literary characters](notebooks/01/Literary_Characters.ipynb)
     * [1.4.2 Another kind of character](notebooks/01/Another_Kind_Of_Character.ipynb)
   * [1.5 Surviving the computer](notebooks/01/surviving_computers.md)
-  * [1.6 About the software](notebooks/01/the_software.ipynb)
+  * [1.6 About the software](notebooks/01/the_software.md)
   * [1.7 Using the Jupyter notebook](notebooks/01/using_jupyter.ipynb)
   * [1.8 More on the Jupyter notebook](notebooks/01/more_on_jupyter.ipynb)
 * [2. Programming](notebooks/02/to_code.md)
