@@ -4,6 +4,8 @@ title: Background reading
 permalink: /background_reading
 ---
 
+# Background reading
+
 This course has a rather different focus from many introductory courses to
 Python. Typical courses in Python are for people who want to learn
 "programming" in the abstract, and there are some very good books and online
