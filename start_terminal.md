@@ -19,9 +19,24 @@ sent to the computer.  Usually the commands will names of programs
 
 ## Opening the terminal - Windows
 
-Go to the start menu.  Select the menu option "Anaconda (64-bit)".  Then select the option "Anaconda command prompt".  You should see a window like this:
+Go to the start menu.  Select the menu option "Anaconda (64-bit)".
+
+![](images/anaconda_menu_top.png)
+
+Then select the option "Anaconda command prompt".
+
+![](images/anaconda_menu_prompt.png)
+
+You should see a window like this:
+
+![](images/anaconda_terminal.png)
 
 To test, type the command `dir` and press Enter.  You should see a listing of files in the directory that the terminal started in, rather like this:
+
+![](images/cmd_dir.png)
+
+where the files on your computer will be the different from the first few files
+that you see in this listing.
 
 ## Opening the terminal - Mac
 
@@ -49,6 +64,9 @@ Type `terminal` in this window.  The first option that comes up is almost invari
 ![](images/spotlight_terminal.png)
 
 Select this by pressing Enter, and you should see the Terminal application window, as above.
+
+If you see a window where there doesn't seem to be a prompt, that has several
+lines starting with something like `[I 11:39:53.621 NotebookApp]`, then you have got to the Terminal window that Jupyter is using; you need a new window.  Choose "New Window" from the "Shell" menu in the menu bar to start a new window.  That window should be fresh, and look like the window at the top of the page.
 
 ## Opening the terminal - Linux
 

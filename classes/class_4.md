@@ -6,8 +6,11 @@ permalink: /classes/class_4
 
 # Day 4 (the fifth day)
 
-* [A sampling problem](../chapters/02/sampling_problem)
 * [A simpler problem](../chapters/02/three_girls)
+* [First pass, three girls](../chapters/02/first_pass_three_girls)
+* [Expressions](../chapters/02/Expressions)
+* [Variables](../chapters/02/variables)
+* [Names](../chapters/02/Names)
 
 ## Agenda
 
