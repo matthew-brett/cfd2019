@@ -1,20 +1,5 @@
----
-jupyter:
-  jupytext:
-    notebook_metadata_filter: all,-language_info
-    split_at_heading: true
-    text_representation:
-      extension: .Rmd
-      format_name: rmarkdown
-      format_version: '1.1'
-      jupytext_version: 1.2.4
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
----
+# The parts
 
-<!-- #region -->
 You have already jumped into the technology, but now we step back and [name the
 parts](https://en.wikipedia.org/wiki/Naming_of_Parts).
 
@@ -89,4 +74,3 @@ various important Python libraries.
 Anaconda is an application that can install Python and various libraries with a few clicks.  It is built and maintained by a company, also called Anaconda, but they give away the distribution for free, for various reasons.
 
 Anaconda is a very good option for Windows, because Windows is a relatively complicated platform for building code, such as Python and its libraries.  As a result, some of the other methods of installing Python libraries do not work as well on Windows as they do for other platforms.   Because Anaconda works on Windows and Mac and Linux, it is easier to deal with installation problems for a class; everyone is likely to have similar problems, and you (the student) will be using the same installation as us (the instructors).
-<!-- #endregion -->
