@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Exercise 3 - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>Installing packages - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
