@@ -12,3 +12,4 @@ permalink: /classes/class_3
 * [Expressions](../chapters/02/Expressions)
 * [Variables](../chapters/02/variables)
 * [Names](../chapters/02/Names)
+* [Opening terminal](../start_terminal)
