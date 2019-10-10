@@ -1,21 +1,4 @@
----
-jupyter:
-  jupytext:
-    metadata_filter:
-      notebook:
-        additional: all
-        excluded:
-        - language_info
-    text_representation:
-      extension: .Rmd
-      format_name: rmarkdown
-      format_version: '1.0'
-      jupytext_version: 0.8.6
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
----
+# The parts
 
 You have already jumped into the technology, but now we step back and [name the
 parts](https://en.wikipedia.org/wiki/Naming_of_Parts).
