@@ -6,11 +6,8 @@ permalink: /classes/class_3
 
 # Day 3 (the fourth day)
 
-* [A sampling problem](../chapters/02/sampling_problem)
-* [A simpler problem](../chapters/02/three_girls)
-
-* [Expressions](../chapters/02/Expressions)
-* [Variables](../chapters/02/variables)
-* [Names](../chapters/02/Names)
-
-Assignment is [assignment 4](../assignments/assignment_4)
+* [About the software](../chapters/01/the_software)
+* [More on Jupyter](../chapters/01/more_on_jupyter)
+* [Introduction to functions](../chapters/02/functions)
+* [Opening the terminal](../start_terminal)
+* [Installing packages](../installing_packages)

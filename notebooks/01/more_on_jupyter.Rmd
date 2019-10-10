@@ -1,0 +1,60 @@
+---
+jupyter:
+  jupytext:
+    metadata_filter:
+      notebook:
+        additional: all
+        excluded:
+        - language_info
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.6
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+As you heard in [about the software](the_software), Jupyter is an *interface* that allows you to run Python code and see the results.
+
+It consists of two parts:
+
+* The web client (the thing you are looking at now, if you are running this
+  notebook in Jupyter);
+* The kernel (that does the work of running code, and generating results).
+
+For example, consider this cell, where I make a new variable `a`, and display the value of `a`:
+
+```{python}
+a = 10.50
+a
+```
+
+I type this code in the web client.
+
+When I press Shift-Enter, or Run the cell via the web interface, this sends a *message* to the *kernel*.
+
+The message says something like:
+
+> Here is some Python code: "a = 1" and "a".  Run this code, and show me any
+> results.
+
+The kernel accepts the message, runs the code in Python, and then sends back any results, in this case, as text to display (the text representation of the value 10.50).
+
+The web client shows the results.
+
+## The prompts
+
+Notice the prompts for the code cells.  Before I have run the cell, there is an empty prompt, like this `In [ ]:`.  `In` means "Input", meaning, this is a cell where you input code.
+
+```{python}
+b = 9.25
+```
+
+Then, when you run the cell, the prompt changes to something like `In [1]:` where 1 means this is the first piece of code that the kernel ran.
+
+If there is any output, you will now see the *output* from that cell, with a prefix `Out [1]:` where 1 is the same number as the number for the input cell.  This is output from the first piece of code that the kernel ran.
+
+In the next part of the notebook, we will play with the kernel.  Watch the board while I go through it.
