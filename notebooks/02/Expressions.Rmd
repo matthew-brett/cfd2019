@@ -25,7 +25,7 @@ jupyter:
 
 Programming languages are much simpler than human languages. Nonetheless,
 there are some rules of grammar to learn in any language, and that is where we
-will begin. In this text, we will use the [Python](https://www.python.org/)
+will begin. In this text, we are using the [Python](https://www.python.org/)
 programming language. Learning the grammar rules is essential, and the same
 rules used in the most basic programs are also central to more sophisticated
 programs.
@@ -33,8 +33,8 @@ programs.
 
 Programs contain *expressions*.
 
-You can think of an expression as a recipe that returns a value.  For example,
-this is an expression:
+You can think of an expression as a *recipe that returns a value*.  For
+example, this is an expression:
 
 ```{python}
 3 * 4
@@ -42,6 +42,7 @@ this is an expression:
 
 Notice that the Notebook displays the value.  This the *value* that the
 expression returns.
+
 
 An expression can describe to the computer how to combine pieces of data. In
 our example, we have a multiplication expression that consists of a `*` symbol
@@ -63,21 +64,73 @@ For example, consider this code, and the resulting error:
 3 * * 4
 ```
 
-Small changes to an expression can change its meaning entirely. Below, the
-space between the `*`'s has been removed. Because `**` appears between two
+Small changes to an expression can change its meaning entirely. Below, we
+removed the space between the `*`'s. Because `**` appears between two
 numerical expressions, the expression is a well-formed *exponentiation*
-expression (the first number raised to the power of the second: 3 times 3
-times 3 times 3). The symbols `*` and `**` are called *operators*, and the
+expression (the first number raised to the power of the second: 3 times
+3 times 3 times 3). The symbols `*` and `**` are called *operators*, and the
 values they combine are called *operands*.
 
 ```{python}
 3 ** 4
 ```
 
-**Common Operators.** Data science often involves combining numerical values,
-and the set of operators in a programming language are designed to so that
-expressions can be used to express any sort of arithmetic. In Python, the
-following operators are essential.
+
+## Walking a mile in Python's shoes
+
+
+To think about expressions, we often need to remind ourselves what Python does when it sees the code for an expression.
+
+We look again at:
+
+```{python}
+3 * 4
+```
+
+It is an expression because it is a recipe that returns a value.  We see the
+notebook display the value.
+
+Now consider this expression:
+
+```{python}
+3
+```
+
+It's an expression because it returns a value.  We see the notebook display the value.
+
+More specifically, when Python sees the code `3`, it generates a computer representation of the number 3.
+
+We will use *CR* as a shorthand for *computer representation*.  To repeat then,
+the expression `3` causes Python to make and return a CR of the number 3.
+
+The Notebook then makes a human-readable display for the computer representation, and shows it to us.
+
+We will uses *HR* as a shorthand for *human readable*.  You can also read HR as *human representation*.
+
+In this case the HR `3` is the same as the code we typed, but this isn't always
+so.  Consider the expression we saw above:
+
+```{python}
+3 * 4
+```
+
+Python does the following:
+
+* makes a CR of the number 3;
+* makes a CR of the number 4;
+* adds the CR of 3 and the CR of 4 to get a CR of 7.
+
+The CR of 7 is the value returned from the expression.  The notebook turns that
+into something that humans can read easily - the HR of 7 - which is `7`.
+
+
+## Common Operators
+
+
+We often want to combine numerical values, and the set of operators in
+a programming language are designed to so that expressions can be used to
+express any sort of arithmetic. In Python, the following operators are
+essential.
 
 | Expression Type | Operator | Example    | Value     |
 |-----------------|----------|------------|-----------|
@@ -89,7 +142,11 @@ following operators are essential.
 | Exponentiation  | `**`     | `2 ** 0.5` | `1.41421` |
 
 
-Python expressions obey the same familiar rules of *precedence* as in algebra:
+## Operator precedence
+
+
+Python expressions obey the same familiar rules of
+[precedence](https://en.wikipedia.org/wiki/Order_of_operations) as in algebra:
 multiplication and division occur before addition and subtraction. Parentheses
 can be used to group together smaller expressions within a larger expression.
 
@@ -106,16 +163,17 @@ Here we force `1 + 2` *before* the multiplication by 3.
 (1 + 2) * 3
 ```
 
-In the expression above, the `1 + 2` is a sub-expression within the whole
+In the expression above, the `1 + 2` is a *sub-expression* within the whole
 expression `(1 + 2) * 3`.  When Python sees this line, it finds the expression
-`(1 + 2)` and evaluates that to get `3`.  Then it evaluates `3 * 3` to get
-`9`.
+`(1 + 2)` and evaluates that to get `3`.  Then it evaluates `3 * 3` to get `9`.
 
 As you learn to program, you will learn to think about what Python is doing,
 and the logical steps it follows.  Over time, you will find it easier to
 predict what it will do, and understand why.
 
-### Example ###
+
+## Example
+
 
 Here, from the Washington Post in the early 1980s, is a graph that attempts to
 compare the earnings of doctors with the earnings of other professionals over
