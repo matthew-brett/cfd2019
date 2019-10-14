@@ -21,8 +21,7 @@
   * [2.5 A first pass](notebooks/02/first_pass_three_girls.ipynb)
   * [2.6 Expressions](notebooks/02/Expressions.ipynb)
   * [2.7 Call expressions](notebooks/02/Calls.ipynb)
-  * [2.8 Compound expressions and
-    sub-expressons](notebooks/02/sub_expressions.ipynb)
+  * [2.8 Sub-expressions](notebooks/02/sub_expressions.ipynb)
   * [2.9 Names and variables](notebooks/02/Names.ipynb)
 * [3. Data types](notebooks/03/data_types.ipynb)
   * [3.1 Numbers](notebooks/03/Numbers.ipynb)
