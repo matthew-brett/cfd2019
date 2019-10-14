@@ -98,7 +98,7 @@ Now continue replacing:
 * `'Lydia'` with `'Mina'`
 * `'Wickham'` with `'Seward'`
 * `'Bingley'` with `'Helsing'`
-* `'Jane'` with `'Quincy'`
+* `'Jane'` with `'Quincey'`
 
 Try running the cell with shift-Enter.
 
