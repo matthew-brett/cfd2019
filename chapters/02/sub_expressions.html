@@ -3,38 +3,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2.7 More on variables - Coding for Data - 2019 edition</title>
-<meta name="description" content="Variables are - things that vary.">
+<!-- begin _includes/seo.html --><title>2.8 Sub-expressions - Coding for Data - 2019 edition</title>
+<meta name="description" content="The expressions page introduced the idea of expressions as:">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="2.7 More on variables">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/02/variables">
+<meta property="og:title" content="2.8 Sub-expressions">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/02/sub_expressions">
 
 
-  <meta property="og:description" content="Variables are - things that vary.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-10-10T21:35:08+01:00">
+  <meta property="og:description" content="The expressions page introduced the idea of expressions as:">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-10-14T21:29:53+01:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/02/variables">
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/02/sub_expressions">
 
 
 
@@ -359,7 +359,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/variables" class="level_1">2.7 More on variables</a></li>
+            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.7 Call expressions</a></li>
           
             
             
@@ -369,7 +369,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.8 Names</a></li>
+            <li><a href="/cfd2019/chapters/02/sub_expressions" class="level_1">2.8 Sub-expressions</a></li>
           
             
             
@@ -379,7 +379,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.9 Call expressions</a></li>
+            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.9 Names and variables</a></li>
           
         </ul>
         
@@ -1051,15 +1051,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="2.7 More on variables">
-      <meta itemprop="description" content="Variables are - things that vary.">
-      <meta itemprop="datePublished" content="October 10, 2019">
+      <meta itemprop="headline" content="2.8 Sub-expressions">
+      <meta itemprop="description" content="The expressions page introduced the idea of expressions as:">
+      <meta itemprop="datePublished" content="October 14, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">2.7 More on variables
+            <h1 id="page-title" class="page__title" itemprop="headline">2.8 Sub-expressions
 </h1>
           </header>
         
@@ -1075,7 +1075,7 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#variables-in-expressions">Variables in expressions</a></li>
+  <li><a href="#sub-expressions">Sub-expressions</a></li>
 </ul>
     </nav>
   </aside>
@@ -1086,99 +1086,169 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/02/variables.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F02%2Fvariables.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/02/sub_expressions.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F02%2Fsub_expressions.ipynb">Interact</a>
 
 
-          <p>Variables are - things that vary.</p>
+          <p>The <a href="Expressions">expressions</a> page introduced the idea of expressions as:</p>
 
-<p>You remember variables like $x$ and $y$ from mathematics.</p>
+<blockquote>
+  <p>a recipe that returns a value.</p>
+</blockquote>
 
-<p>In mathematics, we can use names, such as $x$ and $y$, to represent any value.</p>
+<p>When Python <em>evaluates</em> an expression, it follows the recipe to return the
+value.</p>
 
-<p>In the piece of mathematics below, we define $y$ given any value for $x$:</p>
+<p>In this page we go into a little more detail on expressions, and we consider sub-expressions.</p>
 
-<script type="math/tex; mode=display">y = 3x + 2</script>
+<p>We do this to get used to the more general idea in programming, of building
+complex things from simple building blocks, according to simple rules.</p>
 
-<p>When we have some value for $x$, we can get the corresponding value of $y$.</p>
+<p>A large part of learning how to program is understanding what the computer is doing as a result of the code you type.  You can do this by breaking down code into simpler building blocks, and understanding how the parts are combined.</p>
 
-<p>We give $x$ some value:</p>
+<p>Consider this expression:</p>
 
-<script type="math/tex; mode=display">x = 4</script>
-
-<p>We apply the rule above to give a value to $y$:</p>
-
-<script type="math/tex; mode=display">y = 3 * x + 2 \\
-= 3 * 4 + 2 \\
-= 14</script>
-
-<p>“x” is a name that refers to a value.  We use the name to <em>represent</em> the
-value.  In the expression above, $x$ represents the value 4.  Of course we
-could give $x$ any value.</p>
-
-<p>Variables in Python work in the same way.</p>
-
-<p>Variables are <em>names</em> given to <em>values</em>.  We can use the name to refer to the
-value in calculations.</p>
-
-<p>For example, here I say that the <em>name</em> <code class="highlighter-rouge">x</code> refers to the <em>value</em> 4:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.15</span>
 </code></pre></div></div>
 
-<p>Now I can calculate a value, using that name:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
+<p>Here is the full process that Python goes through, when evaluating <code class="highlighter-rouge">(10.50 + 9.25) * 0.15</code>. Python will:</p>
+
+<ul>
+  <li>evaluate the expression <code class="highlighter-rouge">10.50</code> to give the computer representation (CR) of 10.50;</li>
+  <li>evaluate the expression <code class="highlighter-rouge">9.25</code> to give the CR of 10.50;</li>
+  <li>evaluate the expression 10.50 <code class="highlighter-rouge">+</code> 9.25 to give the CR of 19.75;</li>
+  <li>evaluate the expression 19.75 <code class="highlighter-rouge">*</code> 0.15 to give the CR of 2.9625.</li>
+</ul>
+
+<h2 id="sub-expressions">Sub-expressions</h2>
+
+<p>A <em>compound</em> expression is an expression made up of smaller <em>sub-expressions</em>.</p>
+
+<p>A <em>sub-expression</em> is a smaller part of the compound expression, that Python will evaluate as part of evaluating the compound expression.</p>
+
+<p>For example: here is a compound expression, made up of two sub-expressions:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span>
 </code></pre></div></div>
 
-<h2 id="variables-in-expressions">Variables in expressions</h2>
-
-<p>This is an <em>expression</em>.  You have seen expressions with numbers, but here we
-have an expression with numbers and a variable.  When Python sees the variable
-name <code class="highlighter-rouge">x</code> in this expression, it <em>evaluates</em> <code class="highlighter-rouge">x</code>, and gets the value that it
-refers to.  After Python has evaluated <code class="highlighter-rouge">x</code> to get 4, it ends up with this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.75
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
+<p>The two sub-expressions are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">10.50</code>: an expression that returns the CR of the number 10.50;</li>
+  <li><code class="highlighter-rouge">9.25</code>: an expression that returns the CR of the number 9.25.</li>
+</ul>
+
+<p>When Python evaluates <code class="highlighter-rouge">10.50 + 9.25</code>, it first evaluates these two sub-expressions, then evaluates the final result by adding the results of these two sub-expressions.</p>
+
+<p>Reconsider:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.15</span>
 </code></pre></div></div>
 
-<p>I can also give a name to the <em>result</em> of this expression - such as <code class="highlighter-rouge">y</code>:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span>
+<p>There are four sub-expressions here:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">10.50</code> as above;</li>
+  <li><code class="highlighter-rouge">9.25</code> as above;</li>
+  <li><code class="highlighter-rouge">0.15</code> returns the CR of the number 0.15;</li>
+  <li><code class="highlighter-rouge">(10.50 + 9.25)</code> is a compound expression that is itself a sub-expression of
+the full expression above.  It returns the CR of the
+number 19.75.</li>
+</ul>
+
+<p>Each of these sub-expressions will be evaluated in the process of evaluating <code class="highlighter-rouge">(10.50 + 9.25) * 0.15</code>.</p>
+
+<p>Now consider:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span> <span class="o">*</span> <span class="mf">0.15</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11.8875
 </code></pre></div></div>
 
-<p>If I change <code class="highlighter-rouge">x</code>, I change the result:</p>
+<p>Be careful - remember the rules of <a href="https://en.wikipedia.org/wiki/Order_of_operations">operator precedence</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="n">y</span>
+<p>Let’s think again what Python will do here.  It will:</p>
+
+<ul>
+  <li>evaluate the expression <code class="highlighter-rouge">10.50</code> to gives the CR of 10.50;</li>
+  <li>evaluate the expression <code class="highlighter-rouge">9.25</code> to gives the CR of 10.50;</li>
+  <li>(because of the precedence rules) evaluate  9.25 <code class="highlighter-rouge">*</code> 1.15 to give the
+CR of 1.3875;</li>
+  <li>evaluate 10.50 <code class="highlighter-rouge">*</code> 1.3875 to give the CR of 11.8875.</li>
+</ul>
+
+<p>So, these are the sub-expressions:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">10.50</code>;</li>
+  <li><code class="highlighter-rouge">9.25</code>;</li>
+  <li><code class="highlighter-rouge">0.15</code>;</li>
+  <li><code class="highlighter-rouge">9.25 * 0.15</code>.</li>
+</ul>
+
+<p>Note that <code class="highlighter-rouge">10.50 + 9.25</code> is <em>not</em> a sub-expression, because this does not return a value, in the process of evaluating the whole expression.  The value that <code class="highlighter-rouge">9.25</code> is involved in is 9.25 * 1.3875, where 1.3875 is the value that comes back from <code class="highlighter-rouge">9.25 * 0.15</code> above.</p>
+
+<p>Let’s say I have imported my <code class="highlighter-rouge">cos</code> function (see the <a href="functions">functions</a> page):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the cos function from the numpy library.
+</span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17
+<p>Now consider:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Variables are essential in mathematics, to express general rules for
-calculation.  For the same reason, variables are essential in Python.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+</code></pre></div></div>
 
-<p>In mathematics, we usually prefer variables with very short names - $x$ or $y$
-or $p$.  This makes them easier to read on the page.</p>
+<p><code class="highlighter-rouge">cos(0)</code> is an expression, because it is a recipe that returns a value.   In fact, it is a <a href="Calls">call expression</a>.</p>
 
-<p>In Python, and other programming languages, we can use variables with longer
-names, and we usually do, because we use so many variables.  Giving them
-longer names helps us remember what the variables are for.</p>
+<p>There is one sub-expression to this expression, which is:</p>
 
-<p><a href="Names">Next</a> we go into more detail about names and expressions.</p>
+<ul>
+  <li><code class="highlighter-rouge">0</code> returns the CR of 0;</li>
+</ul>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div></div>
+
+<p>has three sub-expressions:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">0</code> returns the CR of 0;</li>
+  <li><code class="highlighter-rouge">cos( )</code> with argument 0, from above, returns the CR of the number 1;</li>
+  <li><code class="highlighter-rouge">2</code> returns the CR of 2.</li>
+</ul>
+
+<p>Finally, let’s say I have defined this variable:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">10.50</span>
+</code></pre></div></div>
+
+<p>Here is an expression:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.5
+</code></pre></div></div>
+
+<p>It is an expression because it is a recipe that returns a value - in this
+case, the CR of the number 10.50.</p>
 
           
         </section>
@@ -1195,11 +1265,11 @@ longer names helps us remember what the variables are for.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/02/Expressions" class="pagination--pager" title="2.6 Expressions
+      <a href="/cfd2019/chapters/02/Calls" class="pagination--pager" title="2.7 Call expressions
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/02/Names" class="pagination--pager" title="2.8 Names
+      <a href="/cfd2019/chapters/02/Names" class="pagination--pager" title="2.9 Names and variables
 ">Next</a>
     
   </nav>

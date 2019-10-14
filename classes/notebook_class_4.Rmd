@@ -195,7 +195,7 @@ my_float = 1.0
 my_float
 ```
 
-We can see what type of thing a variable refers to with the `type` function.  We will see more of functions later.
+We can see what type of thing a variable refers to with the `type` function.  We will see more on functions later.
 
 ```{python}
 type(my_float)

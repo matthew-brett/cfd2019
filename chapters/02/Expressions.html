@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>2.6 Expressions - Coding for Data - 2019 edition</title>
-<meta name="description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
+<meta name="description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we are using the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/02/Expressions">
 
 
-  <meta property="og:description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
+  <meta property="og:description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we are using the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-10T21:35:08+01:00">
+  <meta property="article:published_time" content="2019-10-14T21:29:53+01:00">
 
 
 
@@ -359,7 +359,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/variables" class="level_1">2.7 More on variables</a></li>
+            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.7 Call expressions</a></li>
           
             
             
@@ -369,7 +369,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.8 Names</a></li>
+            <li><a href="/cfd2019/chapters/02/sub_expressions" class="level_1">2.8 Sub-expressions</a></li>
           
             
             
@@ -379,7 +379,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.9 Call expressions</a></li>
+            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.9 Names and variables</a></li>
           
         </ul>
         
@@ -1052,8 +1052,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="2.6 Expressions">
-      <meta itemprop="description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
-      <meta itemprop="datePublished" content="October 10, 2019">
+      <meta itemprop="description" content="Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we are using the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are also central to more sophisticatedprograms.">
+      <meta itemprop="datePublished" content="October 14, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1075,6 +1075,9 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
+  <li><a href="#walking-a-mile-in-pythons-shoes">Walking a mile in Python’s shoes</a></li>
+  <li><a href="#common-operators">Common Operators</a></li>
+  <li><a href="#operator-precedence">Operator precedence</a></li>
   <li><a href="#example">Example</a></li>
 </ul>
     </nav>
@@ -1092,15 +1095,15 @@
 
           <p>Programming languages are much simpler than human languages. Nonetheless,
 there are some rules of grammar to learn in any language, and that is where we
-will begin. In this text, we will use the <a href="https://www.python.org/">Python</a>
+will begin. In this text, we are using the <a href="https://www.python.org/">Python</a>
 programming language. Learning the grammar rules is essential, and the same
 rules used in the most basic programs are also central to more sophisticated
 programs.</p>
 
 <p>Programs contain <em>expressions</em>.</p>
 
-<p>You can think of an expression as a recipe that returns a value.  For example,
-this is an expression:</p>
+<p>You can think of an expression as a <em>recipe that returns a value</em>.  For
+example, this is an expression:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
@@ -1136,11 +1139,11 @@ SyntaxError: invalid syntax
 
 </code></pre></div></div>
 
-<p>Small changes to an expression can change its meaning entirely. Below, the
-space between the <code class="highlighter-rouge">*</code>’s has been removed. Because <code class="highlighter-rouge">**</code> appears between two
+<p>Small changes to an expression can change its meaning entirely. Below, we
+removed the space between the <code class="highlighter-rouge">*</code>’s. Because <code class="highlighter-rouge">**</code> appears between two
 numerical expressions, the expression is a well-formed <em>exponentiation</em>
-expression (the first number raised to the power of the second: 3 times 3
-times 3 times 3). The symbols <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">**</code> are called <em>operators</em>, and the
+expression (the first number raised to the power of the second: 3 times
+3 times 3 times 3). The symbols <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">**</code> are called <em>operators</em>, and the
 values they combine are called <em>operands</em>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span>
@@ -1149,10 +1152,66 @@ values they combine are called <em>operands</em>.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>81
 </code></pre></div></div>
 
-<p><strong>Common Operators.</strong> Data science often involves combining numerical values,
-and the set of operators in a programming language are designed to so that
-expressions can be used to express any sort of arithmetic. In Python, the
-following operators are essential.</p>
+<h2 id="walking-a-mile-in-pythons-shoes">Walking a mile in Python’s shoes</h2>
+
+<p>To think about expressions, we often need to remind ourselves what Python does when it sees the code for an expression.</p>
+
+<p>We look again at:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>It is an expression because it is a recipe that returns a value.  We see the
+notebook display the value.</p>
+
+<p>Now consider this expression:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>It’s an expression because it returns a value.  We see the notebook display the value.</p>
+
+<p>More specifically, when Python sees the code <code class="highlighter-rouge">3</code>, it generates a computer representation of the number 3.</p>
+
+<p>We will use <em>CR</em> as a shorthand for <em>computer representation</em>.  To repeat then,
+the expression <code class="highlighter-rouge">3</code> causes Python to make and return a CR of the number 3.</p>
+
+<p>The Notebook then makes a human-readable display for the computer representation, and shows it to us.</p>
+
+<p>We will uses <em>HR</em> as a shorthand for <em>human readable</em>.  You can also read HR as <em>human representation</em>.</p>
+
+<p>In this case the HR <code class="highlighter-rouge">3</code> is the same as the code we typed, but this isn’t always
+so.  Consider the expression we saw above:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>Python does the following:</p>
+
+<ul>
+  <li>makes a CR of the number 3;</li>
+  <li>makes a CR of the number 4;</li>
+  <li>adds the CR of 3 and the CR of 4 to get a CR of 7.</li>
+</ul>
+
+<p>The CR of 7 is the value returned from the expression.  The notebook turns that
+into something that humans can read easily - the HR of 7 - which is <code class="highlighter-rouge">7</code>.</p>
+
+<h2 id="common-operators">Common Operators</h2>
+
+<p>We often want to combine numerical values, and the set of operators in
+a programming language are designed to so that expressions can be used to
+express any sort of arithmetic. In Python, the following operators are
+essential.</p>
 
 <table>
   <thead>
@@ -1203,7 +1262,10 @@ following operators are essential.</p>
   </tbody>
 </table>
 
-<p>Python expressions obey the same familiar rules of <em>precedence</em> as in algebra:
+<h2 id="operator-precedence">Operator precedence</h2>
+
+<p>Python expressions obey the same familiar rules of
+<a href="https://en.wikipedia.org/wiki/Order_of_operations">precedence</a> as in algebra:
 multiplication and division occur before addition and subtraction. Parentheses
 can be used to group together smaller expressions within a larger expression.</p>
 
@@ -1224,16 +1286,15 @@ Here we force <code class="highlighter-rouge">1 + 2</code> <em>before</em> the m
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
 </code></pre></div></div>
 
-<p>In the expression above, the <code class="highlighter-rouge">1 + 2</code> is a sub-expression within the whole
+<p>In the expression above, the <code class="highlighter-rouge">1 + 2</code> is a <em>sub-expression</em> within the whole
 expression <code class="highlighter-rouge">(1 + 2) * 3</code>.  When Python sees this line, it finds the expression
-<code class="highlighter-rouge">(1 + 2)</code> and evaluates that to get <code class="highlighter-rouge">3</code>.  Then it evaluates <code class="highlighter-rouge">3 * 3</code> to get
-<code class="highlighter-rouge">9</code>.</p>
+<code class="highlighter-rouge">(1 + 2)</code> and evaluates that to get <code class="highlighter-rouge">3</code>.  Then it evaluates <code class="highlighter-rouge">3 * 3</code> to get <code class="highlighter-rouge">9</code>.</p>
 
 <p>As you learn to program, you will learn to think about what Python is doing,
 and the logical steps it follows.  Over time, you will find it easier to
 predict what it will do, and understand why.</p>
 
-<h3 id="example">Example</h3>
+<h2 id="example">Example</h2>
 
 <p>Here, from the Washington Post in the early 1980s, is a graph that attempts to
 compare the earnings of doctors with the earnings of other professionals over
@@ -1315,7 +1376,7 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/02/variables" class="pagination--pager" title="2.7 More on variables
+      <a href="/cfd2019/chapters/02/Calls" class="pagination--pager" title="2.7 Call expressions
 ">Next</a>
     
   </nav>

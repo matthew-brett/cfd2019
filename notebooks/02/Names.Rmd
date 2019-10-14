@@ -181,61 +181,21 @@
 
       <section class="page__content" itemprop="text">
         
-        You have already seen [expressions](Expressions).
+        As you've already seen in the [introduction to variables](variables_intro),
+Python gives names to values using an *assignment* statement. In an
+assignment, a *name* is followed by `=`, which is followed by any
+[expression](Expressions). The value of the expression to the right of `=` is
+*assigned* to the name. Once a name has a value assigned to it, the value will
+be substituted for that name in future expressions.
 
-You saw in [variables](variables) that we often want to give names to the
-results of expressions.
-
-Now we get a little more formal about what that looks like in Python.
-
-When Python gives a name to a value, that is an *assignment statement*.
+To repeat, when Python gives a name to a value, that is an *assignment
+statement*.
 
 A *statement* is a piece of code that performs an action.
 
-Here is an assignment statement:
-
-```{python}
-x = 4
-```
-
-Let's break the statement down in more detail.
-
-The statement has three parts:
-
-1. A *left hand side* (LHS), to the left of the equals sign `=`.  In the
-   expression above, the LHS is `x`;
-2. The equals sign `=`;
-3. The *right hand side* (RHS), to the right of the equals sign.  This is an
-   *expression*, that gives a value.  In our case, the RHS is 4.
-
-The assignment statement gives a *name* (on the LHS) to a *value* (on the
-RHS).
-
-Whenever you see a name, then `=`, then an expression, that is an assignment
-statement.
-
-It is often useful to describe what Python statements are doing, in words.
-
-For the expression above, we can say "x gets the value 4".
-
-We call `x` a *variable*.
-
-Once a variable gets a value, the name *evaluates* to its value.
-
-For example, here we ask Python to evaluate an expression:
-
-```
-3 * x + 2
-```
-
-`3 * x + 2` is an *expression*.  By entering the expression in a cell on its
-own, we ask Python to *evaluate* the expression.  First it evaluates the
-variable `x` to get 4.  Then it evaluates the rest to get `3 * 4 + 2` = 14.
-
-Remember, an assignment gives a name (on the LHS) to the value (on the RHS).
 
 Here are two assignment statements, giving values to the names `a` and `b`.
-Then we use these variaables in an expression.  The Notebook shows the result.
+Then we use these variables in an expression.  The Notebook shows the human-readable display of the expression return value.
 
 ```{python}
 a = 10
@@ -243,9 +203,13 @@ b = 20
 a + b
 ```
 
-In the expression `a + b` above, Python evaluates the variable `a` to get 10,
-it evaluates the variable `b` to get 20, and then adds them, to give the final
-result of the expression.
+In the expression `a + b` above, Python evaluates the variable `a` to get
+a computer representation (CR) of the number 10, it evaluates the variable `b`
+to get the CR of 20, and then adds them, to give the final result of the
+expression; a CR of 30.
+
+Finally, the notebook creates a human-readable (HR) version of the result, and
+shows that to us.
 
 A variable can be used in the expression to the right of `=`.
 
@@ -265,11 +229,12 @@ quarter = 4
 Now we have changed the value of `quarter` What do you think will happen to
 the value of `half` above?  Will it change, or will it stay the same?
 
-Remember that an expression evaluates its variables before returning the
+Remember that an expression *evaluates* its variables before returning the
 result.  In the cell above, the expression `half = 2 * quarter` evaluated
-`quarter`, to get 0.25, and then evalulated 2 * 0.25, to give 0.5.  When we
-changed `quarter` in the next cell, it did not affect the value that we have
-already given to `half`:
+`quarter`, to get the CR of 0.25, and then evaluated 2 * 0.25, to give the CR
+of 0.5.  `half` has this value - the CR of 0.5.  When we changed `quarter` in
+the next cell, it did not affect the value that we have already given to
+`half`:
 
 ```{python}
 half

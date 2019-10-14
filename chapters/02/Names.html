@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2.8 Names - Coding for Data - 2019 edition</title>
-<meta name="description" content="You have already seen expressions.">
+<!-- begin _includes/seo.html --><title>2.9 Names and variables - Coding for Data - 2019 edition</title>
+<meta name="description" content="As you’ve already seen in the introduction to variables,Python gives names to values using an assignment statement. In anassignment, a name is followed by =, which is followed by anyexpression. The value of the expression to the right of = isassigned to the name. Once a name has a value assigned to it, the value willbe substituted for that name in future expressions.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="2.8 Names">
+<meta property="og:title" content="2.9 Names and variables">
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/02/Names">
 
 
-  <meta property="og:description" content="You have already seen expressions.">
+  <meta property="og:description" content="As you’ve already seen in the introduction to variables,Python gives names to values using an assignment statement. In anassignment, a name is followed by =, which is followed by anyexpression. The value of the expression to the right of = isassigned to the name. Once a name has a value assigned to it, the value willbe substituted for that name in future expressions.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-10T21:35:08+01:00">
+  <meta property="article:published_time" content="2019-10-14T21:29:53+01:00">
 
 
 
@@ -359,7 +359,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/variables" class="level_1">2.7 More on variables</a></li>
+            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.7 Call expressions</a></li>
           
             
             
@@ -369,7 +369,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.8 Names</a></li>
+            <li><a href="/cfd2019/chapters/02/sub_expressions" class="level_1">2.8 Sub-expressions</a></li>
           
             
             
@@ -379,7 +379,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.9 Call expressions</a></li>
+            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.9 Names and variables</a></li>
           
         </ul>
         
@@ -1051,15 +1051,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="2.8 Names">
-      <meta itemprop="description" content="You have already seen expressions.">
-      <meta itemprop="datePublished" content="October 10, 2019">
+      <meta itemprop="headline" content="2.9 Names and variables">
+      <meta itemprop="description" content="As you’ve already seen in the introduction to variables,Python gives names to values using an assignment statement. In anassignment, a name is followed by =, which is followed by anyexpression. The value of the expression to the right of = isassigned to the name. Once a name has a value assigned to it, the value willbe substituted for that name in future expressions.">
+      <meta itemprop="datePublished" content="October 14, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">2.8 Names
+            <h1 id="page-title" class="page__title" itemprop="headline">2.9 Names and variables
 </h1>
           </header>
         
@@ -1090,61 +1090,20 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F02%2FNames.ipynb">Interact</a>
 
 
-          <p>You have already seen <a href="Expressions">expressions</a>.</p>
+          <p>As you’ve already seen in the <a href="variables_intro">introduction to variables</a>,
+Python gives names to values using an <em>assignment</em> statement. In an
+assignment, a <em>name</em> is followed by <code class="highlighter-rouge">=</code>, which is followed by any
+<a href="Expressions">expression</a>. The value of the expression to the right of <code class="highlighter-rouge">=</code> is
+<em>assigned</em> to the name. Once a name has a value assigned to it, the value will
+be substituted for that name in future expressions.</p>
 
-<p>You saw in <a href="variables">variables</a> that we often want to give names to the
-results of expressions.</p>
-
-<p>Now we get a little more formal about what that looks like in Python.</p>
-
-<p>When Python gives a name to a value, that is an <em>assignment statement</em>.</p>
+<p>To repeat, when Python gives a name to a value, that is an <em>assignment
+statement</em>.</p>
 
 <p>A <em>statement</em> is a piece of code that performs an action.</p>
 
-<p>Here is an assignment statement:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
-</code></pre></div></div>
-
-<p>Let’s break the statement down in more detail.</p>
-
-<p>The statement has three parts:</p>
-
-<ol>
-  <li>A <em>left hand side</em> (LHS), to the left of the equals sign <code class="highlighter-rouge">=</code>.  In the
-expression above, the LHS is <code class="highlighter-rouge">x</code>;</li>
-  <li>The equals sign <code class="highlighter-rouge">=</code>;</li>
-  <li>The <em>right hand side</em> (RHS), to the right of the equals sign.  This is an
-<em>expression</em>, that gives a value.  In our case, the RHS is 4.</li>
-</ol>
-
-<p>The assignment statement gives a <em>name</em> (on the LHS) to a <em>value</em> (on the
-RHS).</p>
-
-<p>Whenever you see a name, then <code class="highlighter-rouge">=</code>, then an expression, that is an assignment
-statement.</p>
-
-<p>It is often useful to describe what Python statements are doing, in words.</p>
-
-<p>For the expression above, we can say “x gets the value 4”.</p>
-
-<p>We call <code class="highlighter-rouge">x</code> a <em>variable</em>.</p>
-
-<p>Once a variable gets a value, the name <em>evaluates</em> to its value.</p>
-
-<p>For example, here we ask Python to evaluate an expression:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 * x + 2
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">3 * x + 2</code> is an <em>expression</em>.  By entering the expression in a cell on its
-own, we ask Python to <em>evaluate</em> the expression.  First it evaluates the
-variable <code class="highlighter-rouge">x</code> to get 4.  Then it evaluates the rest to get <code class="highlighter-rouge">3 * 4 + 2</code> = 14.</p>
-
-<p>Remember, an assignment gives a name (on the LHS) to the value (on the RHS).</p>
-
 <p>Here are two assignment statements, giving values to the names <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>.
-Then we use these variaables in an expression.  The Notebook shows the result.</p>
+Then we use these variables in an expression.  The Notebook shows the human-readable display of the expression return value.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
@@ -1154,9 +1113,13 @@ Then we use these variaables in an expression.  The Notebook shows the result.</
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
 </code></pre></div></div>
 
-<p>In the expression <code class="highlighter-rouge">a + b</code> above, Python evaluates the variable <code class="highlighter-rouge">a</code> to get 10,
-it evaluates the variable <code class="highlighter-rouge">b</code> to get 20, and then adds them, to give the final
-result of the expression.</p>
+<p>In the expression <code class="highlighter-rouge">a + b</code> above, Python evaluates the variable <code class="highlighter-rouge">a</code> to get
+a computer representation (CR) of the number 10, it evaluates the variable <code class="highlighter-rouge">b</code>
+to get the CR of 20, and then adds them, to give the final result of the
+expression; a CR of 30.</p>
+
+<p>Finally, the notebook creates a human-readable (HR) version of the result, and
+shows that to us.</p>
 
 <p>A variable can be used in the expression to the right of <code class="highlighter-rouge">=</code>.</p>
 
@@ -1177,11 +1140,12 @@ result of the expression.</p>
 <p>Now we have changed the value of <code class="highlighter-rouge">quarter</code> What do you think will happen to
 the value of <code class="highlighter-rouge">half</code> above?  Will it change, or will it stay the same?</p>
 
-<p>Remember that an expression evaluates its variables before returning the
+<p>Remember that an expression <em>evaluates</em> its variables before returning the
 result.  In the cell above, the expression <code class="highlighter-rouge">half = 2 * quarter</code> evaluated
-<code class="highlighter-rouge">quarter</code>, to get 0.25, and then evalulated 2 * 0.25, to give 0.5.  When we
-changed <code class="highlighter-rouge">quarter</code> in the next cell, it did not affect the value that we have
-already given to <code class="highlighter-rouge">half</code>:</p>
+<code class="highlighter-rouge">quarter</code>, to get the CR of 0.25, and then evaluated 2 * 0.25, to give the CR
+of 0.5.  <code class="highlighter-rouge">half</code> has this value - the CR of 0.5.  When we changed <code class="highlighter-rouge">quarter</code> in
+the next cell, it did not affect the value that we have already given to
+<code class="highlighter-rouge">half</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">half</span>
 </code></pre></div></div>
@@ -1246,11 +1210,13 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/02/variables" class="pagination--pager" title="2.7 More on variables
+      <a href="/cfd2019/chapters/02/sub_expressions" class="pagination--pager" title="2.8 Sub-expressions
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/02/Calls" class="pagination--pager" title="2.9 Call expressions
+      <a href="/cfd2019/chapters/03/data_types" class="pagination--pager" title="
+  Data types
+
 ">Next</a>
     
   </nav>

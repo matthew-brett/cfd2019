@@ -64,18 +64,18 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/why-data-science",
         "teaser":null},{
-        "title": "2.9 Call expressions",
-        "excerpt":"Call expressions invoke functions, which are named operations. The name ofthe function appears first, followed by expressions in parentheses. abs(-12)12round(5 - 1.3)4max(2, 2 + 3, 4)5In this last example, the max function is called on three arguments: 2,5, and 4. The value of each expression within parentheses is passed to...","categories": [],
+        "title": "2.7 Call expressions",
+        "excerpt":"Call expressions invoke functions, which are named operations.The name of the function appears first, followed by expressions inparentheses. For example, abs is a function that returns the absolute value of the inputargument: abs(-12)12round is a function that returns the input argument rounded to the nearest integer (counting number). round(5 -...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Calls",
         "teaser":null},{
         "title": "2.6 Expressions",
-        "excerpt":"Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we will use the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are...","categories": [],
+        "excerpt":"Programming languages are much simpler than human languages. Nonetheless,there are some rules of grammar to learn in any language, and that is where wewill begin. In this text, we are using the Pythonprogramming language. Learning the grammar rules is essential, and the samerules used in the most basic programs are...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Expressions",
         "teaser":null},{
-        "title": "2.8 Names",
-        "excerpt":"You have already seen expressions. You saw in variables that we often want to give names to theresults of expressions. Now we get a little more formal about what that looks like in Python. When Python gives a name to a value, that is an assignment statement. A statement is...","categories": [],
+        "title": "2.9 Names and variables",
+        "excerpt":"As you’ve already seen in the introduction to variables,Python gives names to values using an assignment statement. In anassignment, a name is followed by =, which is followed by anyexpression. The value of the expression to the right of = isassigned to the name. Once a name has a value...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/Names",
         "teaser":null},{
@@ -94,6 +94,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/sampling_problem",
         "teaser":null},{
+        "title": "2.8 Sub-expressions",
+        "excerpt":"The expressions page introduced the idea of expressions as: a recipe that returns a value. When Python evaluates an expression, it follows the recipe to return thevalue. In this page we go into a little more detail on expressions, and we consider sub-expressions. We do this to get used to...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/02/sub_expressions",
+        "teaser":null},{
         "title": "2.2 A simpler problem",
         "excerpt":"A simpler problem Imagine a family with four children. What is the probability that the family will have exactly three girls? There are various ways to answer this question. One way, is to usesimulation. Simulation makes a model of the problem. We use the model to generatesimulated data. If the...","categories": [],
         "tags": [],
@@ -103,11 +108,6 @@ var store = [{
         "excerpt":"An ode to code Computer languages like Python andR are - languages. They express ideas. Computer languages consist of series of statements. The statements defineactions to take on data in the memory of the computer, or the devicesconnected to it, such as the network. Statements also express the logic of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/to_code",
-        "teaser":null},{
-        "title": "2.7 More on variables",
-        "excerpt":"Variables are - things that vary. You remember variables like $x$ and $y$ from mathematics. In mathematics, we can use names, such as $x$ and $y$, to represent any value. In the piece of mathematics below, we define $y$ given any value for $x$: When we have some value for...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/02/variables",
         "teaser":null},{
         "title": "2.3 Introduction to variables",
         "excerpt":"Remember the problem in the first notebook. Alex and Billie are at a restaurant, getting ready to order. They don’t have much money, so they are calculating their expected bill before they order. Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at...","categories": [],

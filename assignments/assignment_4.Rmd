@@ -181,31 +181,21 @@
 
       <section class="page__content" itemprop="text">
         
-        # Assignment 4
+        # Sub-expressions and variables
 
 
 ## Breaking down expressions
 
 
 The most important idea in Computer Science is that complicated, useful things
-can be built by putting together simple parts according to simple rules. Python
-code is an important example of this principle. Once you understand the basic
-rules, you can code with confidence. These exercises are designed to give you
-some practice with those rules.
+can be built by putting together simple parts according to simple rules.
+Python code is an important example of this principle. Once you understand the
+basic rules, you can code with confidence. These exercises are designed to
+give you some practice with those rules.
 
-First, a brief review of sub-expressions.
 
-You can take any Python expression that has a value and combine it with other
-expressions. For example, you can combine two number-valued expressions by
-putting a + between them to add their values together. This forms a new, larger
-expression called a compound expression. The expressions that were combined
-together are called sub-expressions. Any smaller part of an expression, that is in itself an expression, is a subexpression.
-
-You can tell if something is a sub-expression by checking whether it would make
-sense to write it in a line by itself. For example, in the expression 2 * 3, 2
-is a sub-expression, but 2 * isn't, because 2 * isn't a valid expression. (Try
-executing it!)
-
+First make sure you have read and understood the sub-expressions page in the
+textbook.
 
 **Question 1.** List all the sub-expressions of the following expression:
 
@@ -257,7 +247,24 @@ In the next cell, write the missing expression.
 ...
 ```
 
-**Question 4.** Consider the following expression:
+**Question 4.**  List all the sub-expressions of the following expression:
+
+`a + 5 * b`
+
+Here is a list of almost all the sub-expressions of that expression.  One is
+missing.
+
+1. `a`
+2. `5`
+3. `b`
+
+In the next cell, write the missing expression.  Careful!  There is a difference between this question and the previous one.
+
+```{python}
+...
+```
+
+**Question 5.** Consider the following expression:
 
 `(1 + 2) * ((3 / 4) ** 5)`
 
@@ -278,7 +285,7 @@ In the next cell, write the missing expression.
 ...
 ```
 
-**Question 5.** List all the sub-expressions of the following expression:
+**Question 6.** List all the sub-expressions of the following expression:
 
 `(((2 ** 3) / 4) / 5) - 6`
 
@@ -297,7 +304,7 @@ Put each sub-expression on its own line in the next cell.
 ...
 ```
 
-**Question 6.**.  Where are the variables now?
+**Question 7.**.  Where are the variables now?
 
 Consider the following cell.  Execute it, to show the value of y.
 
@@ -324,7 +331,7 @@ slightly cryptic error message.  Explain in the text cell below, in your own
 words, what's wrong with the code.
 
 ```{python}
-4 = 2 + 2
+8 = 4 + 4
 ```
 
 *Write your answer here, replacing this text.*
