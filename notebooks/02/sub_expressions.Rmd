@@ -37,41 +37,7 @@ complex things from simple building blocks, according to simple rules.
 
 A large part of learning how to program is understanding what the computer is doing as a result of the code you type.  You can do this by breaking down code into simpler building blocks, and understanding how the parts are combined.
 
-In the [expressions](Expressions) page, we saw this simple expression:
-
-```{python}
-3 * 4
-```
-
-It is an expression because it is a recipe that returns a value.  We see the notebook display the value.
-
-Now consider this expression:
-
-```{python}
-3
-```
-
-It's an expression because it returns a value.  We see the notebook display the value.
-
-More specifically, when Python sees the code `3`, it generates a computer representation of the number 3.
-
-The Notebook then makes a human-readable display for the computer representation, and shows it to us.  In this case the human-readable representation is the same as the code we typed, but this isn't always so.  Consider the expression we saw above:
-
-```{python}
-3 * 4
-```
-
-Python does the following:
-
-* makes a computer representation of the number 3;
-* makes a computer representation of the number 4;
-* adds the representation of 3 and the representation of 4 to get
-  a representation of 7.
-
-The representation of 7 is the value returned from the expression.  The
-notebook turns that into something that humans can read easily - `7`.
-
-Now consider:
+Consider this expression:
 
 ```{python}
 (10.50 + 9.25) * 0.15
@@ -79,10 +45,10 @@ Now consider:
 
 Here is the full process that Python goes through, when evaluating `(10.50 + 9.25) * 0.15`. Python will:
 
-* evaluate the expression `10.50` to gives the computer representation of 10.50;
-* evaluate the expression `9.25` to gives the computer representation of 10.50;
-* evaluate the expression 10.50 `+` 9.25 to give the computer representation of 19.75;
-* evaluate the expression 19.75 `*` 0.15 to give the computer representation of 2.9625.
+* evaluate the expression `10.50` to give the computer representation (CR) of 10.50;
+* evaluate the expression `9.25` to give the CR of 10.50;
+* evaluate the expression 10.50 `+` 9.25 to give the CR of 19.75;
+* evaluate the expression 19.75 `*` 0.15 to give the CR of 2.9625.
 
 ## Sub-expressions
 
@@ -98,8 +64,8 @@ For example: here is a compound expression, made up of two sub-expressions:
 
 The two sub-expressions are:
 
-* `10.50`: an expression that returns the computer representation of the number 10.50;
-* `9.25`: an expression that returns the computer representation of the number 9.25.
+* `10.50`: an expression that returns the CR of the number 10.50;
+* `9.25`: an expression that returns the CR of the number 9.25.
 
 When Python evaluates `10.50 + 9.25`, it first evaluates these two sub-expressions, then evaluates the final result by adding the results of these two sub-expressions.
 
@@ -113,9 +79,9 @@ There are four sub-expressions here:
 
 * `10.50` as above;
 * `9.25` as above;
-* `0.15` returns the computer representation of the number 0.15;
+* `0.15` returns the CR of the number 0.15;
 * `(10.50 + 9.25)` is a compound expression that is itself a sub-expression of
-  the full expression above.  It returns the computer representation of the
+  the full expression above.  It returns the CR of the
   number 19.75.
 
 Each of these sub-expressions will be evaluated in the process of evaluating `(10.50 + 9.25) * 0.15`.
@@ -130,11 +96,11 @@ Be careful - remember the rules of [operator precedence](https://en.wikipedia.or
 
 Let's think again what Python will do here.  It will:
 
-* evaluate the expression `10.50` to gives the computer representation of 10.50;
-* evaluate the expression `9.25` to gives the computer representation of 10.50;
+* evaluate the expression `10.50` to gives the CR of 10.50;
+* evaluate the expression `9.25` to gives the CR of 10.50;
 * (because of the precedence rules) evaluate  9.25 `*` 1.15 to give the
-  computer representation of 1.3875;
-* evaluate 10.50 `*` 1.3875 to give the computer representation of 11.8875.
+  CR of 1.3875;
+* evaluate 10.50 `*` 1.3875 to give the CR of 11.8875.
 
 So, these are the sub-expressions:
 
@@ -162,7 +128,7 @@ cos(0)
 
 There is one sub-expression to this expression, which is:
 
-* `0` returns the computer representation of 0;
+* `0` returns the CR of 0;
 
 ```{python}
 cos(0) + 2
@@ -170,10 +136,9 @@ cos(0) + 2
 
 has three sub-expressions:
 
-* `0` returns the computer representation of 0;
-* `cos( )` with argument 0, from above, returns the computer representation of
-  the number 1;
-* `2` returns the computer representation of 2.
+* `0` returns the CR of 0;
+* `cos( )` with argument 0, from above, returns the CR of the number 1;
+* `2` returns the CR of 2.
 
 
 Finally, let's say I have defined this variable:
@@ -188,5 +153,5 @@ Here is an expression:
 a
 ```
 
-It is an expression because it is a recipe that returns a value - in this case,
-the computer representation of the number 10.50.
+It is an expression because it is a recipe that returns a value - in this
+case, the CR of the number 10.50.
