@@ -21,4 +21,4 @@ permalink: /classes/class_4
 
 ## Assignment
 
-Assignment is [assignment 5](../assignments/assignment_5)
+Assignment is [assignment 4](../assignments/assignment_4)
