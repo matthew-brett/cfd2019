@@ -7,7 +7,9 @@ redirect_from: /assignment_4
 
 # Assignment 4
 
-Download [this notebook](assignment_4.ipynb) to your Desktop (or wherever you
+First read [this page on sub-expressions](../chapters/02/sub_exppressions).
+
+Then download [this notebook](assignment_4.ipynb) to your Desktop (or wherever you
 like).   Open it with the Jupyter Notebook. Follow the instructions in the
 Notebook, filling in the bits of code and text that you need.
 
