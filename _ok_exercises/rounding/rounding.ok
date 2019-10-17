@@ -1,0 +1,12 @@
+{
+  "name": "Rounding with Function Calls",
+  "src": [
+    "rouding.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "grading"
+  ]
+}
