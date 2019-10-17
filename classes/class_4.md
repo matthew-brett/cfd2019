@@ -6,34 +6,19 @@ permalink: /classes/class_4
 
 # Day 4 (the fifth day)
 
-* [A simpler problem](../chapters/02/three_girls)
+## Admin
+
+* [Background reading](../background_reading)
+
+## Today
+
 * [First pass, three girls](../chapters/02/first_pass_three_girls)
 * [Expressions](../chapters/02/Expressions)
-* [Variables](../chapters/02/variables)
-* [Names](../chapters/02/Names)
-
-## Agenda
-
-* data types (ints, floats, strings, logical)
-* [exercise 3](../exercises/exercise_3)
-* comparisons (``>``, ``==``)
-* call expressions - `round`
-* keyword arguments - `ndigits`
-* arrays.
-
-See the [notebook from class](notebook_class_4.ipynb).
-
-## Background
-
+* [Names and variables](../chapters/02/Names)
+* Exercise [funny names](../exercises/names)
+* [Compound expressions and sub-expressions](../chapters/02/sub_expressions).
 * [Call expressions](../chapters/02/Calls)
-* [Data types](../chapters/03/data_types)
-* [Numbers](../chapters/03/Numbers)
-* [Strings](../chapters/03/Strings)
-* [Comparison](../chapters/03/Comparison)
-* [Arrays](../chapters/03/Arrays)
-* [Ranges](../chapters/03/Ranges)
-* [More on arrays](../chapters/03/More_on_Arrays)
 
 ## Assignment
 
-Assignment is [assignment 5](../assignments/assignment_5)
+Assignment is [assignment 4](../assignments/assignment_4)

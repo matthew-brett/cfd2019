@@ -23,26 +23,57 @@ jupyter:
     version: 3.5.2
 ---
 
-*Call expressions* invoke functions, which are named operations. The name of
-the function appears first, followed by expressions in parentheses.
+*Call expressions* invoke [functions](functions), which are named operations.
+The name of the function appears first, followed by expressions in
+parentheses.
+
+For example, `abs` is a function that returns the absolute value of the input
+argument:
 
 ```{python}
 abs(-12)
 ```
+
+`round` is a function that returns the input argument rounded to the nearest integer (counting number).
 
 ```{python}
 round(5 - 1.3)
 ```
 
 ```{python}
-max(2, 2 + 3, 4)
+max(2, 5, 4)
 ```
 
 In this last example, the `max` function is *called* on three *arguments*: 2,
 5, and 4. The value of each expression within parentheses is passed to the
 function, and the function *returns* the final value of the full call
-expression. The `max` function can take any number of arguments and returns
-the maximum.
+expression. You separate the expressions with commas: `,`. The `max` function
+can take any number of arguments and returns the maximum.
+
+
+Many functions, like `max` can accept a variable number of arguments.
+
+`round` is an example.  If you call `round` with one argument, it returns the number rounded to the nearest integer, as you have already seen:
+
+```{python}
+round(3.3333)
+```
+
+You can also call round with two arguments, where the first argument is the number you want to round, and the second argument is the number of decimal places you want to round to:
+
+```{python}
+# Rounding to 0 decimal places.
+round(3.3333, 0)
+```
+
+Notice that the result looks slightly different from the result of `round(3.3333)` above.  We will get onto the these differences in the [numbers](../03/Numbers) section.
+
+You can also round to - say - 2 decimal places, like this:
+
+```{python}
+# Rounding to 2 decimal places.
+round(3.3333, 2)
+```
 
 A few functions are available by default, such as `abs` and `round`, but most
 functions that are built into the Python language are stored in a collection

@@ -68,15 +68,13 @@ five.3 = 5
 five-point-three = 5
 ```
 
-Try and work out what each of these expressions will return.  Are they valid
-expressions?  Will they give an error?  When you have the answer, try entering
-the expression as cells in the Notebook:
+Look at these blocks of lines below, and try and work out what each of these
+expressions will return.  Are they valid expressions?  Will they give an
+error?
 
-```
-a = 5
-b = 3
-a + b * 4
-```
+Don't enter the lines into the notebook until you have worked out your answer.
+When you do have an answer, try entering the expression as cells in the
+notebook:
 
 ```
 a = 5
@@ -121,6 +119,5 @@ my_variable == 5
 my_variable * 4
 ```
 
-Hint: look carefully at the equals in the first statement.
-
-{% data8page Names %}
+Hint: look carefully at the equals in the first statement.  You may want to do
+a web-search to see what is going on.
