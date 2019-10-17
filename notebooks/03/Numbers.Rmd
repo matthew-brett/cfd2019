@@ -196,7 +196,7 @@ languages) distinguishes between two different types of numbers:
   some limitations.
 
 The type of a number is evident from the way it is displayed: `int` values
-have no decimal point and `float` values always have a decimal point. 
+have no decimal point and `float` values always have a decimal point.
 
 ```{python}
 # Some int values
@@ -237,7 +237,7 @@ values are displayed using scientific notation.
 
 ## Float Values
 
-Float values are very flexible, but they do have limits. 
+Float values are very flexible, but they do have limits.
 
 1. A `float` can represent extremely large and extremely small numbers. There
    are limits, but you will rarely encounter them.

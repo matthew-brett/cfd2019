@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-15T18:25:26+01:00">
+  <meta property="article:published_time" content="2019-10-17T09:15:23+01:00">
 
 
 
@@ -1053,7 +1053,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="2.7 Call expressions">
       <meta itemprop="description" content="Call expressions invoke functions, which are named operations.The name of the function appears first, followed by expressions inparentheses.">
-      <meta itemprop="datePublished" content="October 15, 2019">
+      <meta itemprop="datePublished" content="October 17, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1120,8 +1120,36 @@ argument:</p>
 <p>In this last example, the <code class="highlighter-rouge">max</code> function is <em>called</em> on three <em>arguments</em>: 2,
 5, and 4. The value of each expression within parentheses is passed to the
 function, and the function <em>returns</em> the final value of the full call
-expression. The <code class="highlighter-rouge">max</code> function can take any number of arguments and returns
-the maximum.</p>
+expression. You separate the expressions with commas: <code class="highlighter-rouge">,</code>. The <code class="highlighter-rouge">max</code> function
+can take any number of arguments and returns the maximum.</p>
+
+<p>Many functions, like <code class="highlighter-rouge">max</code> can accept a variable number of arguments.</p>
+
+<p><code class="highlighter-rouge">round</code> is an example.  If you call <code class="highlighter-rouge">round</code> with one argument, it returns the number rounded to the nearest integer, as you have already seen:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mf">3.3333</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>You can also call round with two arguments, where the first argument is the number you want to round, and the second argument is the number of decimal places you want to round to.   If you don’t pass this second argument, <code class="highlighter-rouge">round</code> assumes you mean 0, corresponding to no decimal places, and rounding to the nearest integer:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The same as above, rounding to 0 decimal places.
+</span><span class="nb">round</span><span class="p">(</span><span class="mf">3.3333</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div></div>
+
+<p>You can also round to - say - 2 decimal places, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rounding to 2 decimal places.
+</span><span class="nb">round</span><span class="p">(</span><span class="mf">3.3333</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.33
+</code></pre></div></div>
 
 <p>A few functions are available by default, such as <code class="highlighter-rouge">abs</code> and <code class="highlighter-rouge">round</code>, but most
 functions that are built into the Python language are stored in a collection

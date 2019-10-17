@@ -155,7 +155,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes",
         "teaser":null},{
         "title": "3. Data types",
-        "excerpt":"Types of things Every object in Python, has a type. We can show what type of thing something is, by calling type, like this: type(1)inttype(1.0)floata = 1type(a)intIf you get stuck in some code, it is often useful to check what types the objects are. We will use multiple types when...","categories": [],
+        "excerpt":"Types of things Every value in Python, has a type. We can show what type of thing something is, by calling type, like this: type(1)inta = 1type(a)intIf you get stuck in some code, it is often useful to check what the type of your values are. We will use multiple...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/data_types",
         "teaser":null},{
