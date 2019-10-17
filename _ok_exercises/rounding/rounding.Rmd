@@ -1,0 +1,87 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# Rounding with Function Calls
+
+
+These exercises give you practice calling functions in Python.
+
+```{python}
+# Run this cell to set up the notebook, but please don't change it.
+# These lines load the tests.
+from client.api.notebook import Notebook
+ok = Notebook('rounding.ok')
+```
+
+**Question 1.** Using the function `round`, round the number 1.23456789 to the nearest integer.  Give the result the name `rounded`.
+
+```{python}
+rounded = 1
+rounded
+```
+
+```{python}
+_ = ok.grade('q1')
+```
+
+**Question 2.** Round 1.23456789 to the nearest *thousandth* (.001).
+
+*Hint:* Running `round?` in a code cell will show you Python's documentation for the `round` function.
+
+```{python}
+less_rounded = ...
+less_rounded
+```
+
+```{python}
+_ = ok.grade('q2')
+```
+
+Suppose you're counting all the small donations made to a political candidate.  The donations were:
+
+* 32.25
+* 15.00
+* 24.45
+
+You need to report the total rounded to the nearest dollar.
+
+**Question 3.** First you decide to round *each donation* individually and then add up those 3 rounded amounts.  Compute that.
+
+```{python}
+# You probably want something starting: round(32.25) + ...
+sum_of_rounded_amounts = ...
+sum_of_rounded_amounts
+```
+
+```{python}
+_ = ok.grade('q3')
+```
+
+**Question 4.** You suspect this method doesn't work quite right.  To check, you decide to try a different method: Adding up the donations, and then rounding the total.  Compute that.
+
+```{python}
+rounded_sum = ...
+rounded_sum
+```
+
+```{python}
+_ = ok.grade('q4')
+```
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
