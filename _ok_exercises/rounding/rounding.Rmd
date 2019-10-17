@@ -28,7 +28,7 @@ ok = Notebook('rounding.ok')
 **Question 1.** Using the function `round`, round the number 1.23456789 to the nearest integer.  Give the result the name `rounded`.
 
 ```{python}
-rounded = 1
+rounded = ...
 rounded
 ```
 

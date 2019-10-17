@@ -2,6 +2,7 @@
 """ Build exercise
 """
 
+import os
 import os.path as op
 from argparse import ArgumentParser
 from subprocess import check_call
@@ -19,7 +20,7 @@ def read_nb(fname):
 
 def clear_directory(fname):
     path = path_of(fname)
-    check_call(['git', 'clean', '-fxd', '.'], pwd=path)
+    check_call(['git', 'clean', '-fxd', '.'], cwd=path)
 
 
 def path_of(fname):
@@ -50,10 +51,14 @@ def write_nb(nb, fname):
         nbformat.write(nb, f)
 
 
-def pack_exercise(fname):
-    path = path_of(fname)
-    zip_fname = op.basename(fname) + '.zip'
-    files = [f for f in glob(op.join(path, '*')) if not f.endswith('.Rmd')]
+def pack_exercise(fname, out_path=None):
+    path = op.relpath(path_of(fname), '.')
+    if out_path is None:
+        out_path = os.getcwd()
+    froot = op.splitext(op.basename(fname))[0]
+    zip_fname = op.join(out_path, froot + '.zip')
+    listing = glob(op.join(path, '**'), recursive=True)
+    files = [f for f in listing if not f.endswith('.Rmd')]
     with ZipFile(zip_fname, 'w') as zip_obj:
         for fn in files:
             zip_obj.write(fn)
@@ -65,23 +70,25 @@ def get_parser():
                         help='Notebook(s) to clean')
     parser.add_argument('--execute', action='store_true',
                         help='If specified, execute notebooks before cleaning')
+    parser.add_argument('--out-path', default=os.getcwd(),
+                        help='Output path for zipped exercise (default pwd)')
     return parser
 
 
-def process_nb(fname, execute=False):
+def process_nb(fname, execute=False, out_path=None):
     clear_directory(fname)
     nb = read_nb(fname)
     if execute:
         nb = execute_nb(nb, path_of(fname))
     nb = clear_outputs(nb)
     write_nb(nb, ipynb_fname(fname))
-    pack_exercise(fname)
+    pack_exercise(fname, out_path)
 
 
 def main():
     args = get_parser().parse_args()
     for fname in args.notebook:
-        process_nb(fname, execute=args.execute)
+        process_nb(fname, execute=args.execute, out_path=args.out_path)
 
 
 if __name__ == '__main__':
