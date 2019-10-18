@@ -16,4 +16,4 @@ permalink: /classes/class_2
 
 ## Assignment
 
-* TBA
+* [Interest, exercise](../chapters/exercises/interesting)
