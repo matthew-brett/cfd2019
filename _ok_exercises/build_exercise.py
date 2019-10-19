@@ -5,7 +5,7 @@
 import os
 import os.path as op
 from argparse import ArgumentParser
-from subprocess import check_call
+import shutil
 from glob import glob
 from zipfile import ZipFile
 
@@ -20,7 +20,13 @@ def read_nb(fname):
 
 def clear_directory(fname):
     path = path_of(fname)
-    check_call(['git', 'clean', '-fxd', '.'], cwd=path)
+    for basename in ('.ok_storage',):
+        pth = op.join(path, basename)
+        if op.exists(pth):
+            os.unlink(pth)
+    pycache = op.join(path, 'tests', '__pycache__')
+    if op.isdir(pycache):
+        shutil.rmtree(pycache)
 
 
 def path_of(fname):
@@ -51,6 +57,21 @@ def write_nb(nb, fname):
         nbformat.write(nb, f)
 
 
+def good_fname(fname):
+    fn = op.basename(fname)
+    if fn.startswith('.'):
+        return False
+    if fn.endswith('.Rmd'):
+        return False
+    if fn.startswith('test_'):
+        return False
+    if fn == ('__pycache__'):
+        return False
+    if fn.endswith('.pyc'):
+        return False
+    return True
+
+
 def pack_exercise(fname, out_path=None):
     path = op.relpath(path_of(fname), '.')
     if out_path is None:
@@ -58,7 +79,7 @@ def pack_exercise(fname, out_path=None):
     froot = op.splitext(op.basename(fname))[0]
     zip_fname = op.join(out_path, froot + '.zip')
     listing = glob(op.join(path, '**'), recursive=True)
-    files = [f for f in listing if not f.endswith('.Rmd')]
+    files = [f for f in listing if good_fname(f)]
     with ZipFile(zip_fname, 'w') as zip_obj:
         for fn in files:
             zip_obj.write(fn)
