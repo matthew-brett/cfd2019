@@ -65,6 +65,8 @@ def good_fname(fname):
         return False
     if fn.startswith('test_'):
         return False
+    if 'solution' in fn:
+        return False
     if fn == ('__pycache__'):
         return False
     if fn.endswith('.pyc'):
