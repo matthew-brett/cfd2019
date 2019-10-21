@@ -72,7 +72,7 @@ class.
 
 There are two types of graded assessments.  These are:
 
-1. Four graded coursework assignments through the term: 5% each.
+1. Two graded coursework assignments through the term: 10% each.
 1. A structured data analysis due at end of Autumn semester: 80% of the course
    mark).  More details will follow.
 
