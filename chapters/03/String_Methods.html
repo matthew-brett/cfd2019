@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>7.2 Conditional statements - Coding for Data - 2019 edition</title>
-<meta name="description" content="Conditional Statements">
+<!-- begin _includes/seo.html --><title>3.2.1 String methods - Coding for Data - 2019 edition</title>
+<meta name="description" content="From an existing string, related strings can be constructed using string methods, which are functions that operate on strings. These methods are called by placing a dot after the string, then calling the function.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="7.2 Conditional statements">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/conditional_statements">
+<meta property="og:title" content="3.2.1 String methods">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/03/String_Methods">
 
 
-  <meta property="og:description" content="Conditional Statements">
+  <meta property="og:description" content="From an existing string, related strings can be constructed using string methods, which are functions that operate on strings. These methods are called by placing a dot after the string, then calling the function.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/conditional_statements">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/03/String_Methods">
 
 
 
@@ -1071,15 +1071,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="7.2 Conditional statements">
-      <meta itemprop="description" content="Conditional Statements">
+      <meta itemprop="headline" content="3.2.1 String methods">
+      <meta itemprop="description" content="From an existing string, related strings can be constructed using string methods, which are functions that operate on strings. These methods are called by placing a dot after the string, then calling the function.">
       <meta itemprop="datePublished" content="October 22, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">7.2 Conditional statements
+            <h1 id="page-title" class="page__title" itemprop="headline">3.2.1 String methods
 </h1>
           </header>
         
@@ -1091,234 +1091,65 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#conditional-statements">Conditional Statements</a></li>
-  <li><a href="#the-general-form">The General Form</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/07/conditional_statements.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F07%2Fconditional_statements.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/03/String_Methods.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F03%2FString_Methods.ipynb">Interact</a>
 
 
-          <h3 id="conditional-statements">Conditional Statements</h3>
+          <p>From an existing string, related strings can be constructed using string methods, which are functions that operate on strings. These methods are called by placing a dot after the string, then calling the function.</p>
 
-<p>In many situations, actions and results depends on a specific set of
-conditions being satisfied. For example, individuals in randomized
-controlled trials receive the treatment if they have been assigned to
-the treatment group. A gambler makes money if she wins her bet.</p>
+<p>For example, the following method generates an uppercased version of a string.</p>
 
-<p>In this section we will learn how to describe such situations using
-code. A <em>conditional statement</em> is a multi-line statement that allows
-Python to choose among different alternatives based on the truth value
-of an expression. While conditional statements can appear anywhere,
-they appear most often within the body of a function in order to
-express alternative behavior depending on argument values.</p>
-
-<p>A conditional statement always begins with an <code class="highlighter-rouge">if</code> header, which is a single line followed by an indented body. The body is only executed if the expression directly following <code class="highlighter-rouge">if</code> (called the <em>if expression</em>) evaluates to a true value. If the <em>if expression</em> evaluates to a false value, then the body of the <code class="highlighter-rouge">if</code> is skipped.</p>
-
-<p>Let us start defining a function that returns the string <code class="highlighter-rouge">'Positive'</code>  for a positive number:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Positive'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"loud"</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Let us work through what Python will do when we evaluate <code class="highlighter-rouge">classify(3)</code>.</p>
-
-<ol>
-  <li>Evaluate <code class="highlighter-rouge">classify</code> to the internal representation (IR) of the
-function;</li>
-  <li>Evaluate <code class="highlighter-rouge">3</code> to give the IR of the integer 3</li>
-  <li>
-    <p>Call the IR of the function, with the IR of int 3. So:</p>
-
-    <ol>
-      <li>Python enters function world</li>
-      <li>The new variable <code class="highlighter-rouge">x</code> gets the value IR of int 3.</li>
-      <li>Python executes the function body</li>
-    </ol>
-  </li>
-</ol>
-
-<p>All this is revision from <a href="functions">functions</a>.</p>
-
-<p>What happens in the function body, with <code class="highlighter-rouge">x = 3</code>?</p>
-
-<ol>
-  <li>Python evaluates the <em>if expression</em> <code class="highlighter-rouge">x &gt; 0</code>.  The result is the
-IR of <code class="highlighter-rouge">True</code>.  This is a true value, so Python executes the body
-of the if statement.</li>
-  <li>The body of the if statement is the single line <code class="highlighter-rouge">return
-'Positive'</code>.  <code class="highlighter-rouge">'Positive'</code> evaluates to the IR of the string
-<code class="highlighter-rouge">'Positive'</code>.  <code class="highlighter-rouge">return</code> exits function world, returning this
-value.</li>
-</ol>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'LOUD'
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Positive'
+<p>Perhaps the most important method is <code class="highlighter-rouge">replace</code>, which replaces all instances of a substring within the string. The <code class="highlighter-rouge">replace</code> method takes two arguments, the text to be replaced and its replacement.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'hitchhiker'</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'hi'</span><span class="p">,</span> <span class="s">'ma'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">classify</code> function returns <code class="highlighter-rouge">'Positive'</code> if the input is a
-positive number, like <code class="highlighter-rouge">3</code>. But if the input is not a positive number,
-such as <code class="highlighter-rouge">-3</code>, then this happens, in the function body:</p>
-
-<ol>
-  <li><code class="highlighter-rouge">x</code> has the value IR of int -3.</li>
-  <li><code class="highlighter-rouge">x &gt; 0</code> evaluates to <code class="highlighter-rouge">False</code>, so Python skips the body of the if
-statement.</li>
-  <li>The function body ends without executing a <code class="highlighter-rouge">return</code> statement.</li>
-</ol>
-
-<p>So, the function body finishes without a <code class="highlighter-rouge">return</code>, and the function
-returns <a href="none">None</a>.  This is invisible to us, so it looks like the
-function returns nothing at all:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'matchmaker'
 </code></pre></div></div>
 
-<p>We can catch the result, and check it is <code class="highlighter-rouge">None</code> (see the <a href="none">None
-page</a>.</p>
+<p>String methods can also be invoked using variable names, as long as those
+names are bound to strings. So, for instance, the following two-step process
+generates the word “degrade” starting from “train” by first creating “ingrain”
+and then applying a second replacement.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">r</span> <span class="ow">is</span> <span class="bp">None</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span> <span class="o">=</span> <span class="s">"train"</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'t'</span><span class="p">,</span> <span class="s">'ing'</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'in'</span><span class="p">,</span> <span class="s">'de'</span><span class="p">)</span>
+<span class="n">u</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'degrade'
 </code></pre></div></div>
 
-<p>Let us refine our function to return <code class="highlighter-rouge">Not positive</code> if the input is a
-negative number. We can do this by adding an <code class="highlighter-rouge">else</code> clause.  If the <em>if
-expression</em> evaluates to a true value, then Python executes the first
-clause, after the if expression, as before.  If it evaluates to a false value, Python executes the clause following the <code class="highlighter-rouge">else</code>, instead.</p>
+<p>Note that the line <code class="highlighter-rouge">t = s.replace('t', 'ing')</code> doesn’t change the string <code class="highlighter-rouge">s</code>,
+which is still “train”.  The method call <code class="highlighter-rouge">s.replace('t', 'ing')</code> just has
+a value, which is the string “ingrain”.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Positive'</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Not positive'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span>
 </code></pre></div></div>
 
-<p>Imagine we evaluate <code class="highlighter-rouge">classify(-3)</code> again.  Python enters function world, and sets <code class="highlighter-rouge">x</code> to have the value IR of int -3.  It checks <code class="highlighter-rouge">x &gt; 0</code> and finds a false value, so it skips the first clause, and executes the clause following <code class="highlighter-rouge">else:</code>.  This <code class="highlighter-rouge">return</code>s <code class="highlighter-rouge">'Not positive'</code>.</p>
-
-<p>Now imagine we prefer our function to return <code class="highlighter-rouge">'Negative</code> for negative values and <code class="highlighter-rouge">Zero</code> if the input value is 0.  It seems like we need three clauses, one each for positive, negative and 0 values.</p>
-
-<p>We can do this by adding an <code class="highlighter-rouge">elif</code> clause, where <code class="highlighter-rouge">elif</code> is Python’s
-shorthand for the phrase “else if”.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Positive'</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Zero'</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Negative'</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'train'
 </code></pre></div></div>
 
-<p>Now <code class="highlighter-rouge">classify</code> returns the correct answer when the input is -3, 0, or 3:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Positive'
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Zero'
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Negative'
-</code></pre></div></div>
-
-<p>If the input is 3, Python enters function world, sets <code class="highlighter-rouge">x</code> to have the value 3, and evaluates the if expression <code class="highlighter-rouge">x &lt; 0</code>.  The expression is a true value, so Python executes the first clause and <code class="highlighter-rouge">return</code>s <code class="highlighter-rouge">'Positive'</code>.</p>
-
-<p>If the input is 0, Python enters function world, sets <code class="highlighter-rouge">x</code> to have the value 0, and evaluates the if expression <code class="highlighter-rouge">x &lt; 0</code>.  The expression is a false value, so Python moves on to the next clause, which is <code class="highlighter-rouge">elif x == 0:</code>. This has another <em>if expression</em> <code class="highlighter-rouge">x == 0</code>.  It is a true value, so Python executes this clause, and <code class="highlighter-rouge">return</code>s <code class="highlighter-rouge">'Zero</code>.</p>
-
-<p>If the input is -3, Python enters function world, sets <code class="highlighter-rouge">x</code> to have the value -3, and evaluates the if expression <code class="highlighter-rouge">x &lt; 0</code>.  The expression is a false value, so Python moves on to the next clause, which is <code class="highlighter-rouge">elif x == 0</code>. This expression is also a false, value so Python moves to the next clause, which is the <code class="highlighter-rouge">else:</code> clause, and executes that, <code class="highlighter-rouge">return</code>ing <code class="highlighter-rouge">'Negative'</code>.</p>
-
-<p>We can have as many <code class="highlighter-rouge">elif</code> clauses as we want.  For example, imagine we
-want to classify the number into one of the following categories:</p>
-
-<ol>
-  <li>above 10 (<code class="highlighter-rouge">'Large positive'</code>)</li>
-  <li>from (not including) 0 through 10 (<code class="highlighter-rouge">'Small positive'</code>)</li>
-  <li>exactly 0 (<code class="highlighter-rouge">'Zero'</code>)</li>
-  <li>from (not including) 0 through -10 (<code class="highlighter-rouge">'Small negative'</code>)</li>
-  <li>below -10 (<code class="highlighter-rouge">'Large negative'</code>)</li>
-</ol>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Large positive'</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Small positive'</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Zero'</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span>  <span class="c1"># Greater than or equal to
-</span>        <span class="k">return</span> <span class="s">'Small negative'</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s">'Large negative'</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Large negative'
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Zero'
-</code></pre></div></div>
-
-<h3 id="the-general-form">The General Form</h3>
-
-<p>A conditional statement can also have multiple clauses with multiple bodies, and only one of those bodies can ever be executed. The general format of a multi-clause conditional statement appears below.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if &lt;if expression&gt;:
-    &lt;if body&gt;
-elif &lt;elif expression 0&gt;:
-    &lt;elif body 0&gt;
-elif &lt;elif expression 1&gt;:
-    &lt;elif body 1&gt;
-...
-else:
-    &lt;else body&gt;
-</code></pre></div></div>
-
-<p>There is always exactly one <code class="highlighter-rouge">if</code> clause, but there can be any number of
-<code class="highlighter-rouge">elif</code> clauses. Python will evaluate the <code class="highlighter-rouge">if</code> and <code class="highlighter-rouge">elif</code> expressions in
-the headers in order until one is found that is a true value, then
-execute the corresponding body. The <code class="highlighter-rouge">else</code> clause is optional. When an
-<code class="highlighter-rouge">else</code> header is provided, its <em>else body</em> is executed only if none of
-the header expressions of the previous clauses are true. The <code class="highlighter-rouge">else</code>
-clause must always come at the end (or not at all).</p>
-
-<p>Now try the <a href="../exercises/conditional_statements_exercises">exercises</a>.</p>
+<p>This is the first time we’ve seen methods, but methods are not unique to strings.  As we will see shortly, other types of objects can have them.</p>
 
 <div class="isa_info">
 <i class="fa fa-info-circle"></i>
 This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Conditional_Statements.ipynb">
-Conditional_Statements</a>
+<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/String_Methods.ipynb">
+String_Methods</a>
 notebook from the UC Berkeley course.  See the Berkeley course section of the
 <a href="/cfd2019/license">license</a>
 </div>
@@ -1339,13 +1170,11 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/07/functions_as_values" class="pagination--pager" title="7.1 Functions as values
+      <a href="/cfd2019/chapters/03/Strings" class="pagination--pager" title="3.2 Strings
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/08/mean" class="pagination--pager" title="
-  The mean and straight line relationships
-
+      <a href="/cfd2019/chapters/03/Comparison" class="pagination--pager" title="3.3 Comparison
 ">Next</a>
     
   </nav>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 6 - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>License - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Class 6">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/classes/class_6">
+<meta property="og:title" content="Coding for Data - 2019 edition">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/03/lists.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/classes/class_6">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/03/lists.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 6">
+    
     
     
     
@@ -174,41 +174,126 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 6
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-6-the-seventh-day">Day 6 (the seventh day)</h1>
+        Thus far we have seen the following data types:
 
-<ul>
-  <li><a href="../chapters/03/Strings">Strings</a></li>
-  <li><a href="../chapters/03/String_Methods">String methods</a></li>
-  <li>Practice with OKpy: Download and extract <a href="../exercises/strings_vars.zip">strings,
-variables exercise</a>.</li>
-  <li><a href="../chapters/03/Comparison">Comparison</a></li>
-  <li>More practice with OKpy: Download and extract <a href="../exercises/data_types.zip">data types
-exercise</a>.</li>
-  <li>As an alternative: <a href="../exercises/exercise_3">Exercise 3</a></li>
-  <li><a href="../chapters/03/lists">Lists</a></li>
-  <li><a href="../chapters/03/Arrays">Arrays</a></li>
-  <li><a href="../chapters/03/Ranges">Ranges</a></li>
-  <li><a href="../chapters/03/More_on_Arrays">More on arrays</a></li>
-</ul>
+* integer (counting number) - `int`.
+* floating point number (number with decimal point) - `float`.
+* string (text) - `str`.
+* boolean (True or False value) - `bool`.
 
-<!---
-# Consider this later.
-* [3.8 Reply to the Supreme Court](../chapters/03/reply_supreme)
-* [3.9 Revision - three girls](../chapters/03/three_girls)
-* [4. Data frames](../chapters/04/data_frames)
-* [4.1 Introduction to data frames](../chapters/04/data_frame_intro)
-* [3.10 Selecting with arrays](../chapters/03/array_indexing)
-* [4.1 Introduction to data frames](../chapters/04/data_frame_intro)
-* [Data frame exercises](../chapters/exercises/df_exercises)
--->
+In data analysis, we often want to collect together several numbers, or
+strings, into a *sequence*.
+
+For example, remember our problem of the three girls in a family of four.
+
+You have seen that we can make four random values, that can be 0 or 1, like this:
+
+```{python}
+# Fetch the "randint" function from the Numpy library.
+from numpy.random import randint
+```
+
+```{python}
+# Get four random numbers between 0 and 1.
+a = randint(2)
+b = randint(2)
+c = randint(2)
+d = randint(2)
+```
+
+Here, each random number gets its own variable.   Then we added the numbers like this:
+
+```{python}
+a + b + c + d
+```
+
+This gave us the number of girls for one simulated family.
+
+Now imagine that we were trying to simulate a family of 12 children.  We would
+have to give each child their own variable `a` through `l` (small L), and then have a long line like this:
+
+```
+a + b + c + d + e + f + g + h + i + j + k + l
+```
+
+That would be annoying in this case, and impractical when we have to simulate
+larger units, such as the 100 members of Robert Swain's jury panel.
+
+Sequences are part of the solution to this problem.  Sequences are values that contain zero or more other values.  There are various types of sequences, but the two we will use the most are:
+
+* Lists - `list`
+* Arrays - `np.array`
+
+We will see arrays soon.   This page is about *lists*.
+
+
+## Making a list
+
+You make a list using *square brackets* - `[` and `]`.
+
+Here we make a list that contains three integers:
+
+```{python}
+my_numbers = [1, 2, 3]
+my_numbers
+```
+
+`[1, 2, 3]` is a *list expression* because it is a recipe that results in
+a value that is a list).  We confirm it is an expression by showing that the notebook displays a value:
+
+```{python}
+[1, 2, 3]
+```
+
+What kind of value is it?
+
+```{python}
+type(my_numbers)
+```
+
+Lists can be empty.  To make an empty list, put nothing inside the square brackets, like this:
+
+```{python}
+my_empty_list = []
+my_empty_list
+```
+
+## Functions and lists
+
+Python has some built-in functions that operate on sequences, like lists.
+
+One of these is the function `len`.  Here is a *call expression*, using the function `len` on our list:
+
+```{python}
+len(my_numbers)
+```
+
+As you might predict, calling `len` with the list as an argument, returns the number of elements in the list.
+
+Another function that operates on lists is `sum`.  This adds all the elements in the list together, and returns the result:
+
+```{python}
+sum(my_numbers)
+```
+
+Now we have another way of solving the problem of making the family of four
+children above.  Use Control-Enter a few times on the cell below to convince
+yourself it returns numbers between 0 and 4 - simulated numbers of girls in
+a family of four children.
+
+```{python}
+# Get four random numbers between 0 and 1, put them in a list.
+family = [randint(2), randint(2), randint(2), randint(2)]
+# Add all the values in the list
+sum(family)
+```
 
         
       </section>
