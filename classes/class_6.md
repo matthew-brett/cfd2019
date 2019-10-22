@@ -8,8 +8,12 @@ permalink: /classes/class_6
 
 * [Strings](../chapters/03/Strings)
 * [String methods](../chapters/03/String_Methods)
+* Practice with OKpy: Download and extract [strings,
+  variables exercise](../exercises/strings_vars.zip).
 * [Comparison](../chapters/03/Comparison)
-* [Exercise 3](../exercises/exercise_3)
+* More practice with OKpy: Download and extract [data types
+  exercise](../exercises/data_types.zip).
+* As an alternative: [Exercise 3](../exercises/exercise_3)
 * [Lists](../chapters/03/lists)
 * [Arrays](../chapters/03/Arrays)
 * [Ranges](../chapters/03/Ranges)
