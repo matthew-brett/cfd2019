@@ -1,0 +1,108 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# Strings and variables
+
+
+Strings are Python's way of storing bits of text.
+
+Variables have names, and it can be confusing when you are looking at a name, or a string.
+
+This notebook is to practice the distinction between the two.
+
+```{python}
+# Run this cell to set up the notebook, but please don't change it.
+# These lines load the tests.
+from client.api.notebook import Notebook
+ok = Notebook('strings_vars.ok')
+```
+
+Who isn't a Marvel fan? (that's rhetorical - if you aren't, please, just grin and bear it).
+
+
+In the next cell, make a variable with name `title` that has the value `"Captain "`.  Notice that `"Captain "` is a string, and `title` is a variable name.  Notice too that the string has a space at the end.
+
+```{python}
+title = ...
+```
+
+```{python}
+_ = ok.grade('q_captain')
+```
+
+Now make another string with name `person`, and value `"Marvel"`.
+
+```{python}
+person = ...
+```
+
+```{python}
+_ = ok.grade('q_marvel')
+```
+
+Now use `title` and `person` to make a new variable `character`, that has the value `"Captain Marvel"`:
+
+```{python}
+character = ...
+# Display the result
+character
+```
+
+```{python}
+_ = ok.grade('q_capt_marvel')
+```
+
+Here I'm trying to make a new variable `another_character` by appending the string `"America"` to the value of `title`, but there's a mistake.  Fix the mistake.
+
+```{python}
+another_character = title + America
+# Display the result
+another_character
+```
+
+```{python}
+_ = ok.grade('q_capt_america')
+```
+
+Here I'm trying to make a new variable `third_character` by appending the string `"Carter"` to the string `"Agent "`, to get the value `"Peggy Carter"`, but there's are some mistakes.  Fix the mistake.
+
+```{python}
+"third_character" = Peggy + Carter
+# Display the result
+third_character
+```
+
+```{python}
+_ = ok.grade('q_peggy_carter')
+```
+
+In an [alternative universe](https://en.wikipedia.org/wiki/Alternative_versions_of_Captain_America#Civil_War), our own Captain America has become General America.  Use string methods to substitute "General" for "Captain" in `another_character`:
+
+```{python}
+# Edit the line below to do the substitution.
+alternative_character = another_character...
+# Display the result
+alternative_character
+```
+
+```{python}
+_ = ok.grade('q_gen_america')
+```
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once.
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
