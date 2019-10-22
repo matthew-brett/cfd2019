@@ -19,3 +19,4 @@ permalink: /classes
 | 2    | 10 Oct     | [class 3](classes/class_3)   |
 | 3    | 15 Oct     | [class 4](classes/class_4)   |
 | 3    | 17 Oct     | [class 5](classes/class_5)   |
+| 4    | 22 Oct     | [class 6](classes/class_6)   |
