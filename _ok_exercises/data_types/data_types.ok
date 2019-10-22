@@ -1,7 +1,7 @@
 {
-  "name": "Strings, variables",
+  "name": "Data types",
   "src": [
-    "strings_vars.ipynb"
+    "data_types.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"
