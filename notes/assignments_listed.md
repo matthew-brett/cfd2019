@@ -17,3 +17,15 @@ As of `eeced9`:
 * exercises/exercise_2 : Alice in Wonderland, editing.
 * exercises/exercise_3 : making and combining things of different types.
 * exercises/names : some errors with names of variables
+
+## In exercises tab of textbook
+
+* Array indexing
+* More simulations
+* Data frames
+* Brexit analysis
+* For loops
+* Money and death
+* Function exercises
+* Function as values exercises
+* Conditional statement exercises
