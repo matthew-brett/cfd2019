@@ -76,7 +76,7 @@ another_character
 _ = ok.grade('q_capt_america')
 ```
 
-Here I'm trying to make a new variable `third_character` by appending the string `"Carter"` to the string `"Agent "`, to get the value `"Peggy Carter"`, but there's are some mistakes.  Fix the mistake.
+Here I'm trying to make a new variable `third_character` by appending the string `"Carter"` to the string `"Peggy "`, to get the value `"Peggy Carter"`, but there are some mistakes.  Fix the mistakes.
 
 ```{python}
 "third_character" = Peggy + Carter
