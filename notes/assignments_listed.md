@@ -29,3 +29,15 @@ As of `eeced9`:
 * Function exercises
 * Function as values exercises
 * Conditional statement exercises
+
+## data8assets
+
+### su17
+
+* lab01 : as homework1.  Expressions, nested expressions.
+* lab02 : strings, arrays
+* lab03 : working with tables, sorting, selecting.
+* lab04 : functions and visualizations.
+
+* hw01 : study types. Some expressions.
+* hw02 : study types. Arrays and tables.
