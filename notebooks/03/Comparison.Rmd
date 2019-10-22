@@ -29,8 +29,24 @@ A *Boolean* value is a value that can only be True or False.  It is called
 Boole](https://en.wikipedia.org/wiki/George_Boole)
 
 Boolean values most often arise from comparison operators. Python includes a
-variety of operators that compare values. For example, `3` is larger than `1 +
-1`.
+variety of operators that compare values. For example, `3` is larger than `1`:
+
+```{python}
+3 > 1
+```
+
+`>` is the *greater than* comparison operator.  It takes the value to the left and asks if it is greater than the value to right.   The answer can only be `True` or `False`.
+
+The value `True` indicates that the comparison is valid; Python has confirmed
+this simple fact about the relationship between `3` and `1`.
+
+Python uses the special `bool` type for values that can only be `True` or `False`.
+
+```{python}
+type(3 > 1)
+```
+
+Here we confirm to ourselves that `3` is greater than the result of the expression `1 + 1`:
 
 ```{python}
 3 > 1 + 1
@@ -72,7 +88,7 @@ in assignment.   Here is assignment.
 a = 4
 ```
 
-Notice it does not display a value.
+Notice it does not display a value, because it is an assignment, and not an expression.
 
 ``==`` is different - it's a comparison operator like `<` or `>`.  It checks
 whether two values are equal, and returns True or False:
@@ -80,6 +96,9 @@ whether two values are equal, and returns True or False:
 ```{python}
 a == 4
 ```
+
+This is an expression, because `==` is an operator, to say how values should
+be combined, like `+` or `*`.
 
 Strings can also be compared, and their order is alphabetical. A shorter
 string is less than a longer string that begins with the shorter string.
