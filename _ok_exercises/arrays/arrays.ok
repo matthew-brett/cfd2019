@@ -1,0 +1,14 @@
+{
+  "name": "Arrays",
+  "src": [
+    "arrays.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "backup"
+  ]
+}

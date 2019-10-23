@@ -1,0 +1,372 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# Array exercises
+
+Initialize the OK tests to get started.
+
+```{python}
+from client.api.notebook import Notebook
+ok = Notebook('arrays.ok')
+```
+
+Up to now, we haven't done much that you couldn't do yourself by hand, without
+going through the trouble of learning Python.  Computers are most useful when
+you can use a small amount of code to *do the same action* to *many different
+things*.
+
+For example, in the time it takes you to calculate the 18% tip on a restaurant
+bill, a laptop can calculate 18% tips for every restaurant bill paid by every
+human on Earth that day.  (That's if you're pretty fast at doing arithmetic in
+your head!)
+
+**Arrays** are how we put many values in one place so that we can operate on them as a group. For example, if `billions_of_numbers` is an array of numbers, the expression
+
+```
+.18 * billions_of_numbers
+```
+
+gives a new array of numbers that's the result of multiplying *each number* in
+`billions_of_numbers` by .18 (18%).  Arrays are not limited to numbers; we can
+also put all the words in a book into an array of strings.
+
+Concretely, an array is a **collection of values of the same type**, like a column in an Excel spreadsheet. 
+
+<img src="excel_array.jpg">
+
+
+## Making arrays
+
+
+You can type in the data that goes in an array yourself, but that's not
+typically how programs work. Normally, we create arrays by loading them from
+an external source, like a data file.
+
+First, though, let's learn how to do it the hard way.
+
+Arrays are provided by a package called [NumPy](http://www.numpy.org/)
+(pronounced "NUM-pie" or, if you prefer to pronounce things incorrectly,
+"NUM-pee").  The package is called `numpy`, but it's standard to rename it
+`np` for brevity.  You can do that with:
+
+```{python}
+import numpy as np
+```
+
+Now, to create an array, first make a *list* with the values you want to put
+in the array.  Then create the array by using the `array` function from Numpy.
+Run this cell to see an example:
+
+```{python}
+values = [0.125, 4.75, -1.3]
+np.array(values)
+```
+
+Each value in an array (in the above case, the numbers 0.125, 4.75, and -1.3)
+is called an *element* of that array.
+
+Arrays themselves are also values, just like numbers and strings.  That means
+you can assign them names or use them as arguments to functions.
+
+
+**Question 1.1.1.** Make an *array* containing the numbers 1, 2, and 3, in
+that order.  Name it `small_numbers`.
+
+```{python}
+small_numbers = np.array([1, 2, 3])
+small_numbers
+```
+
+```{python}
+_ = ok.grade('q411')
+```
+
+**Question 1.1.2.** Make an array containing the numbers 0, 1, -1, $\pi$, and
+$e$, in that order.  Name it `interesting_numbers`.  *Hint:* the Numpy `np`
+module has the value $\pi$ as `np.pi`.  It also has the value $e$.
+
+```{python}
+interesting_numbers = np.array([0, 1, -1, np.pi, np.e])
+interesting_numbers
+```
+
+```{python}
+_ = ok.grade('q412')
+```
+
+## Ranges
+
+
+Very often in data science, we want to work with many numbers that are evenly spaced within some range.  NumPy provides a special function for this called `arange`.  `np.arange(start, stop, space)` produces an array with all the numbers starting at `start` and counting up by `space`, stopping before `stop` is reached.
+
+For example, the value of `np.arange(1, 6, 2)` is an array with elements 1, 3, and 5 -- it starts at 1 and counts up by 2, then stops before 6.  In other words, it's equivalent to `make_array(1, 3, 5)`.
+
+`np.arange(4, 9, 1)` is an array with elements 4, 5, 6, 7, and 8.  (It doesn't contain 9 because `np.arange` stops *before* the stop value is reached.)
+
+**Question 1.1.1.1.** Use `np.arange` to create an array with the multiples of 99 from 0 up to (**and including**) 9999.  (So its elements are 0, 99, 198, 297, etc.)
+
+```{python}
+multiples_of_99 = np.arange(0, 10000, 99)
+multiples_of_99
+```
+
+```{python}
+_ = ok.grade('q4111')
+```
+
+## Temperature readings
+
+
+NOAA (the US National Oceanic and Atmospheric Administration) operates weather
+stations that measure surface temperatures at different sites around the
+United States.  The hourly readings are [publicly
+available](http://www.ncdc.noaa.gov/qclcd/QCLCD?prior=N).
+
+Suppose we download all the hourly data from the Oakland, California site for
+the month of December 2015.  To analyze the data, we want to know when each
+reading was taken, but we find that the data don't include the timestamps of
+the readings (the time at which each one was taken).
+
+However, we know the first reading was taken at the first instant of December
+2015 (midnight on December 1st) and each subsequent reading was taken exactly
+1 hour after the last.
+
+**Question 1.1.1.2.** Create an array of the *time, in seconds, since the
+start of the month* at which each hourly reading was taken.  Name it
+`collection_times`.
+
+*Hint 1:* There were 31 days in December, which is equivalent to ($31 \times
+24$) hours or ($31 \times 24 \times 60 \times 60$) seconds.  So your array
+should have $31 \times 24$ elements in it.
+
+*Hint 2:* The `len` function works on arrays, too.  If your `collection_times`
+isn't passing the tests, check its length and make sure it has $31 \times 24$
+elements.
+
+```{python}
+collection_times = np.arange(0, 31*24*60*60, 60 * 60)
+collection_times
+```
+
+```{python}
+_ = ok.grade('q4112')
+```
+
+## Working with single elements of arrays ("indexing")
+
+
+Let's work with a more interesting dataset.  The next cell creates an array called `population` that includes estimated world populations in every year from **1950** to roughly the present.  (The estimates come from the [US Census Bureau website](http://www.census.gov/population/international/data/worldpop/table_population.php).)
+
+Rather than type in the data manually, we've loaded them from a file on your computer called `world_population.csv`.  You'll learn how to do that next week.
+
+```{python}
+# Don't worry too much about what goes on in this cell.
+import pandas as pd
+population = pd.read_csv("world_population.csv")["Population"].values
+population
+```
+
+Here's how we get the first element of `population`, which is the world population in the first year in the dataset, 1950.
+
+```{python}
+population.item(0)
+```
+
+The value of that expression is the number 2557628654 (around 2.5 billion), because that's the first thing in the array `population`.
+
+Notice that we wrote `.item(0)`, not `.item(1)`, to get the first element.  This is a weird convention in computer science.  0 is called the *index* of the first item.  It's the number of elements that appear *before* that item.  So 3 is the index of the 4th item.
+
+Here are some more examples.  In the examples, we've given names to the things we get out of `population`.  Read and run each cell.
+
+```{python}
+# The third element in the array is the population
+# in 1952.
+population_1952 = population.item(2)
+population_1952
+```
+
+```{python}
+# The thirteenth element in the array is the population
+# in 1962 (which is 1950 + 12).
+population_1962 = population.item(12)
+population_1962
+```
+
+```{python}
+# The 66th element is the population in 2015.
+population_2015 = population.item(65)
+population_2015
+```
+
+```{python tags=c("raises-exception")}
+# The array has only 66 elements, so this doesn't work.
+# (There's no element with 66 other elements before it.)
+population_2016 = population.item(66)
+population_2016
+```
+
+```{python}
+# Since make_array returns an array, we can call .item(3)
+# on its output to get its 4th element.
+np.array([-1, -3, 4, -2]).item(3)
+```
+
+**Question 1.2.1.** Set `population_1973` to the world population in 1973, by
+getting the appropriate element from `population` using `item`.
+
+```{python}
+population_1973 =  population.item(23)
+population_1973
+```
+
+```{python}
+_ = ok.grade('q421')
+```
+
+## Doing something to every element of an array
+
+
+Arrays are primarily useful for doing the same operation many times, so we don't often have to use `.item` and work with single elements.
+
+### Logarithms
+
+Here is one simple question we might ask about world population:
+
+> How big was the population in *orders of magnitude* in each year?
+
+The logarithm function is one way of measuring how big a number is. The logarithm (base 10) of a number increases by 1 every time we multiply the number by 10. It's like a measure of how many decimal digits the number has, or how big it is in orders of magnitude.
+
+We could try to answer our question like this, using the `log10` function from the `np` module and the `item` method you just saw:
+
+```{python}
+population_1950_magnitude = np.log10(population.item(0))
+population_1951_magnitude = np.log10(population.item(1))
+population_1952_magnitude = np.log10(population.item(2))
+population_1953_magnitude = np.log10(population.item(3))
+# And so on
+```
+
+But this is tedious and doesn't take full advantage of the fact that we are
+using a computer.
+
+Instead, NumPy's version of `log10` can take the logarithm of *each element*
+of an array.  It takes a single array of numbers as its argument.  It returns
+an array of the same length, where the first element of the result is the
+logarithm of the first element of the argument, and so on.
+
+**Question 1.3.1.** Use Numpy to compute the logarithms of the world population in every year.  Give the result (an array of 66 numbers) the name `population_magnitudes`.  Your code should be very short.
+
+```{python}
+population_magnitudes = np.log10(population)
+population_magnitudes
+```
+
+```{python}
+_ = ok.grade('q431')
+```
+
+<img src="array_logarithm.jpg">
+
+This is called *elementwise* application of the function, since it operates separately on each element of the array it's called on.  The textbook's section on arrays has a useful list of NumPy functions that are designed to work elementwise, like `np.log10`.
+
+
+## Arithmetic
+
+
+Arithmetic also works elementwise on arrays.  For example, you can divide all the population numbers by 1 billion to get numbers in billions:
+
+
+```{python}
+population_in_billions = population / 1000000000
+population_in_billions
+```
+
+You can do the same with addition, subtraction, multiplication, and exponentiation (`**`). For example, you can calculate a tip on several restaurant bills at once (in this case just 3):
+
+
+```{python}
+restaurant_bills = np.array([20.12, 39.90, 31.01])
+print("Restaurant bills:\t", restaurant_bills)
+tips = .2 * restaurant_bills
+print("Tips:\t\t\t", tips)
+```
+
+<img src="array_multiplication.jpg">
+
+
+**Question 1.3.2.** Suppose the total charge at a restaurant is the original
+bill plus the tip.  That means we can multiply the original bill by 1.2 to get
+the total charge.  Compute the total charge for each bill in
+`restaurant_bills`.
+
+```{python}
+total_charges = restaurant_bills * 1.2
+total_charges
+```
+
+```{python}
+_ = ok.grade('q432')
+```
+
+**Question 1.3.3.** `more_restaurant_bills.csv` contains 100,000 bills!  Compute the total charge for each one.  How is your code different?
+
+```{python}
+# Don't worry about the next two lines.  They get the data into an array.
+bills_table = pd.read_table("more_restaurant_bills.csv")
+more_restaurant_bills = bills_table["Bill"].values
+
+# Your code here.  It will use the more_restaurant_bills variable.
+more_total_charges = more_restaurant_bills * 1.2
+more_total_charges
+```
+
+```{python}
+_ = ok.grade('q433')
+```
+
+The function `sum` takes a single array of numbers as its argument.  It returns the sum of all the numbers in that array (so it returns a single number, not an array).
+
+**Question 1.3.4.** What was the sum of all the bills in `more_restaurant_bills`, *including tips*?
+
+```{python}
+sum_of_bills = sum(more_total_charges)
+sum_of_bills
+```
+
+```{python}
+_ = ok.grade('q434')
+```
+
+**Question 1.3.5.** The powers of 2 ($2^0 = 1$, $2^1 = 2$, $2^2 = 4$, etc) arise frequently in computer science.  (For example, you may have noticed that storage on smartphones or USBs come in powers of 2, like 16 GB, 32 GB, or 64 GB.)  Use `np.arange` and the exponentiation operator `**` to compute the first 30 powers of 2, starting from `2^0`.
+
+```{python}
+powers_of_2 = 2 ** np.arange(30)
+powers_of_2
+```
+
+```{python}
+_ = ok.grade('q435')
+```
+
+Congratulations, you're done with the assignment!  Be sure to:
+
+- **run all the tests** (the next cell has a shortcut for that), 
+- **Save and Checkpoint** from the `File` menu,
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
