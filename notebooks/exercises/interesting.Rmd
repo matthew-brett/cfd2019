@@ -240,39 +240,56 @@ Nothing happens - Python ignored everything after the hash character.
 
 The problem is my bank.
 
-I have a credit card debt of £500.
+At the beginning of this year, I have a credit card debt of £500.  Call this
+year the *first year*, or *year 1*.
 
-Let's give that debt amount, a *name*:
+At the moment, the bank will charge me 10% interest per year.
+
+At the end of the first year, the bank will add 10% to my current debt of
+£500, so my new debt, at the start of the second year, will be £550.
+
+At the end of the second year, the bank will add 10% of my debt of £550.  10%
+of £550 is £55, so my debt at the start of the third year is £605.
+
+| Year | Starting debt | 10% interest |
+|------|---------------|--------------|
+| 1    | 500           | 50           |
+| 2    | 550           | 55           |
+| 3    | 605           | 60.5         |
+
+Let's give my original debt amount, a *name*:
 
 ```{python}
-# This is the amount I owe at the moment
+# This is the amount I owe at the beginning of the first year.
 my_debt = 500
 ```
 
-At the moment, the bank is nice enough to charge me 10% interest per year.   Let's give that a name too.
+The bank charges 10% interest per year.  Put another way, they calculate the
+interest by multiplying my current debt by 0.1.  Let's give that a name too.
 
 ```{python}
 interest_rate = 0.1
 ```
 
-The amount of interest, after one year, is therefore:
+The amount of interest at the end of the first year is therefore:
 
 ```{python}
 interest = my_debt * interest_rate
 interest
 ```
 
-Then my total new debt will be:
+Then my total new debt at the start of the second year will be:
 
 ```{python}
 my_debt + interest
 ```
 
-There is a short cut to calculate my total debt after one year.
+There is a short cut to calculate my total debt at the start of the second
+year.
 
 Remember the total debt is the original debt plus interest, which is `my_debt +
 my_debt * interest_rate`.  I could also write this as `my_debt * 1 + my_debt *
-interest_rate`, and then I could write that as `my_debt * (1 + interest_rate)`.
+interest_rate`, and this is also equal to `my_debt * (1 + interest_rate)`.
 
 Now make a new variable `debt_increaser` that is equal to `1 + interest_rate`.
 
@@ -296,33 +313,42 @@ interest_rate` - the calculation we want.
 ## Now your turn
 
 
-Add your code to the cell below, and execute it, to show my total debt after two years.  Your code will probably start with:
+Add your code to the cell below, and execute it, to show my total debt at the beginning of the third year.  Your code will probably start with:
 
 ```
 my_debt * debt_increaser
 ```
+
+You should get the same answer as the table above.
 
 ```{python}
 # Show my debt after two years.
 # Your code below this comment
 ```
 
-Fill in the next cell, in the same way, to show my debt after three years.
+Fill in the next cell, in the same way, to show my debt at the beginning of the fourth year.
 
 ```{python}
-# Show my debt after three years.
+# Show my debt at the beginning of the fourth year.
 ```
 
-Now show my debt after 10 years.   You might want to use the *power* operator `**` to do this.
+You might want to use a pencil and paper to do the calculation that continues
+from the table above, to check your answer is correct.
+
+Now show my debt after 10 years - at the beginning of the eleventh year.   You
+might want to use the *power* operator `**` to do this.  If you need a
+refresher on powers, you may remember that, if I have some number `x` then `x
+** 4` (read as "x to the power of four") is another way of writing `x * x * x
+* x`.
 
 ```{python}
-# Show my debt after ten years.
+# Show my debt at the beginning of the eleventh year.
 ```
 
 ## An offer from the bank
 
 
-The bank has just sent me a nice letter explaining that they are going to start charging me interest every week instead of every year.   They value me as a customer, so, instead of dividing the annual interest rate by 52, they are going to divide it by 53 instead.   But - is that a good offer?
+The bank has just sent me a friendly letter explaining that they are going to start charging me interest every week instead of every year.   They value me as a customer, so, instead of dividing the annual interest rate by 52, they are going to divide it by 53 instead.   But - is that a good offer?
 
 
 Here is their proposed weekly interest rate:
