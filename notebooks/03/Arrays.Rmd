@@ -183,30 +183,95 @@
         
         # Arrays
 
-While there are many kinds of collections in Python, we will work primarily
-with arrays in this class.
+There are several kinds of sequences in Python.  A [list](lists) is one.  However, the sequence type that we will use most in the class, is the array.
 
 The `numpy` package, abbreviated `np` in programs, provides Python programmers
 with convenient and powerful functions for creating and manipulating arrays.
 
 ```{python}
+# Load the numpy package, and call it "np".
 import numpy as np
 ```
 
-Arrays often contain numbers, but the can also contain strings or other types
-of values.  However, a single array can only contain a single kind of data.
-(It usually doesn't make sense to group together unlike data anyway.)
+## Creating arrays
 
-For example:
+
+The `array` function from the Numpy package creates an array from single values, or sequences of values.
+
+For example, remember `my_list`?
+
+```{python}
+my_list = [1, 2, 3]
+```
+
+This is a `list`:
+
+```{python}
+type(my_list)
+```
+
+The `array` function from Numpy can make an array from this list:
+
+```{python}
+my_array = np.array(my_list)
+my_array
+```
+
+As you can see from the display above, this is an array.  We confirm it with `type`:
+
+```{python}
+type(my_array)
+```
+
+We can also create the list and then the array in one call, like this:
+
+```{python}
+my_array = np.array([1, 2, 3])
+my_array
+```
+
+Here `[1, 2, 3]` is an *expression* that returns a list. `np.array` then operates on the returned list, to create an array.
+
+Arrays often contain numbers, but, like lists, they can also contain strings
+or other types of values.  However, a single array can only contain a single
+kind of data. (It usually doesn't make sense to group together unlike data
+anyway.)
+
+For example,
 
 ```{python}
 english_parts_of_speech = np.array(["noun", "pronoun", "verb", "adverb", "adjective", "conjunction", "preposition", "interjection"])
 english_parts_of_speech
 ```
 
-Returning to the temperature data, we create arrays of average daily [high
-temperatures](http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt)
-for the decades surrounding 1850, 1900, 1950, and 2000.
+We have not seen this yet, but Python allows us to spread expressions between
+round and square brackets across many lines.  It knows that the expression has
+not finished yet because it is waiting for the closing bracket.  For example, this cell works in the exactly the same way as the cell above, and may be easier to read:
+
+```{python}
+# An expression between brackets spread across many lines.
+english_parts_of_speech = np.array(
+    ["noun",
+    "pronoun",
+    "verb",
+    "adverb",
+    "adjective",
+    "conjunction",
+    "preposition",
+    "interjection"]
+    )
+english_parts_of_speech
+```
+
+Below, we collect four different temperatures into a list called `temps`.
+These are the [estimated average daily high
+temperatures](http://berkeleyearth.lbl.gov/regions/global-land) over all land
+on Earth (in degrees Celsius) for the decades surrounding 1850, 1900, 1950,
+and 2000, respectively, expressed as deviations from the average absolute high
+temperature between 1951 and 1980, which was 14.48 degrees.
+
+If you are interested, you can get more data from [this file of daily high
+temperatures](http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt).
 
 ```{python}
 baseline_high = 14.48
@@ -216,6 +281,9 @@ highs = np.array([baseline_high - 0.880,
                   baseline_high + 0.684])
 highs
 ```
+
+## Calculations with arrays
+
 
 Arrays can be used in arithmetic expressions to compute over their contents.
 When an array is combined with a single number, that number is combined with
@@ -229,13 +297,14 @@ to Fahrenheit by writing the familiar conversion formula.
 <img src="/cfd2019/images/array_arithmetic.png">
 
 
-Arrays also have *methods*, which are functions that operate on the array
-values. The `mean` of a collection of numbers is its average value: the sum
-divided by the length. Each pair of parentheses in the examples below is part
-of a call expression; it's calling a function with no arguments to perform a
-computation on the array called `highs`.
+As we saw for strings, arrays have *methods*, which are functions that
+operate on the array values. The `mean` of a collection of numbers is its
+average value: the sum divided by the length. Each pair of parentheses in the
+examples below is part of a call expression; it's calling a function with no
+arguments to perform a computation on the array called `highs`.
 
 ```{python}
+# The number of elements in the array
 highs.size
 ```
 
@@ -247,7 +316,8 @@ highs.sum()
 highs.mean()
 ```
 
-#### Functions on Arrays
+## Functions on Arrays
+
 
 Numpy provides various useful functions for operating on arrays.
 

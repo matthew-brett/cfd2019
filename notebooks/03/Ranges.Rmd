@@ -186,9 +186,11 @@ each separated by a regular interval.  Ranges are useful in
 a surprisingly large number of situations, so it is worthwhile to
 learn about them.
 
-We will use the Numpy module, which we always rename as `np`, like this:
+We will use the Numpy package to make ranges.  When we load the Numpy package,
+we always rename it as `np`, like this:
 
 ```{python}
+# Load the Numpy package.
 import numpy as np
 ```
 
@@ -204,6 +206,8 @@ A range always includes its `start` value, but does not include its
 `end` value.  It counts up by `step`, and it stops before it gets to
 the `end`.
 
+Here is what `np.arange` does when you pass only one argument:
+
     np.arange(end): An array starting with 0 of increasing consecutive integers, stopping before end.
 
 ```{python}
@@ -213,7 +217,10 @@ np.arange(5)
 Notice how the array starts at 0 and goes only up to 4, not to the end value
 of 5.
 
+Put another way, `np.arange(end)` creates an array of increasing consecutive
+integers starting at 0 up to *but not including* the `end` value.
 
+If you pass two arguments to `np.arange`:
 
     np.arange(start, end): An array of consecutive increasing integers from start, stopping before end.
 
@@ -221,6 +228,7 @@ of 5.
 np.arange(3, 9)
 ```
 
+If you pass three arguments:
 
     np.arange(start, end, step): A range with a difference of step between each pair of consecutive values, starting from start and stopping before end.
 

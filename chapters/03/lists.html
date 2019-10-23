@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-23T16:54:38+01:00">
+  <meta property="article:published_time" content="2019-10-23T23:56:28+01:00">
 
 
 
@@ -1114,13 +1114,15 @@
           <p>Thus far we have seen the following data types:</p>
 
 <ul>
-  <li>integer (counting number) - <code class="highlighter-rouge">int</code></li>
-  <li>floating point number (number with decimal point) - <code class="highlighter-rouge">float</code></li>
+  <li>integer (counting number) - <code class="highlighter-rouge">int</code>.</li>
+  <li>floating point number (number with decimal point) - <code class="highlighter-rouge">float</code>.</li>
   <li>string (text) - <code class="highlighter-rouge">str</code>.</li>
+  <li>boolean (True or False value) - <code class="highlighter-rouge">bool</code>.</li>
 </ul>
 
 <p>In data analysis, we often want to collect together several numbers, or
-strings, into a <em>sequence</em>.</p>
+strings, into a <em>sequence</em>.  This allows us to collect values together into
+one place, and refer to all the values with a single name.  Now that we can refer to all the values with a single name, we can write code that works on the whole sequence at once.</p>
 
 <p>For example, remember our problem of the three girls in a family of four.</p>
 
@@ -1142,7 +1144,7 @@ strings, into a <em>sequence</em>.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <p>This gave us the number of girls for one simulated family.</p>
@@ -1204,6 +1206,15 @@ a value that is a list).  We confirm it is an expression by showing that the not
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
 </code></pre></div></div>
 
+<p>A list can have any kind of value as its elements.  For example, here is a list of strings:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Captain"</span><span class="p">,</span> <span class="s">"Agent"</span><span class="p">,</span> <span class="s">"Jessica"</span><span class="p">,</span> <span class="s">"Luke"</span><span class="p">]</span>
+<span class="n">some_strings</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Captain', 'Agent', 'Jessica', 'Luke']
+</code></pre></div></div>
+
 <h2 id="functions-and-lists">Functions and lists</h2>
 
 <p>Python has some built-in functions that operate on sequences, like lists.</p>
@@ -1227,7 +1238,9 @@ a value that is a list).  We confirm it is an expression by showing that the not
 </code></pre></div></div>
 
 <p>Now we have another way of solving the problem of making the family of four
-children above.</p>
+children above.  Use Control-Enter a few times on the cell below to convince
+yourself it returns numbers between 0 and 4 - simulated numbers of girls in
+a family of four children.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get four random numbers between 0 and 1, put them in a list.
 </span><span class="n">family</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
@@ -1235,7 +1248,7 @@ children above.</p>
 </span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
 

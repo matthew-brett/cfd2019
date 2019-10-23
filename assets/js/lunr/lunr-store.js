@@ -99,7 +99,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/sub_expressions",
         "teaser":null},{
-        "title": "2.4 A simpler problem",
+        "title": "2.2 A simpler problem",
         "excerpt":"A simpler problem Imagine a family with four children. What is the probability that the family will have exactly three girls? There are various ways to answer this question. One way, is to usesimulation. Simulation makes a model of the problem. We use the model to generatesimulated data. If the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/three_girls",
@@ -109,13 +109,13 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/to_code",
         "teaser":null},{
-        "title": "2.2 Introduction to variables",
+        "title": "2.3 Introduction to variables",
         "excerpt":"Remember the problem in the first notebook. Alex and Billie are at a restaurant, getting ready to order. They don’t have much money, so they are calculating their expected bill before they order. Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/variables_intro",
         "teaser":null},{
-        "title": "3.4 Arrays",
-        "excerpt":"Arrays While there are many kinds of collections in Python, we will work primarilywith arrays in this class. The numpy package, abbreviated np in programs, provides Python programmerswith convenient and powerful functions for creating and manipulating arrays. import numpy as npArrays often contain numbers, but the can also contain strings...","categories": [],
+        "title": "3.5 Arrays",
+        "excerpt":"Arrays There are several kinds of sequences in Python. A list is one. However, the sequence type that we will use most in the class, is the array. The numpy package, abbreviated np in programs, provides Python programmerswith convenient and powerful functions for creating and manipulating arrays. # Load the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Arrays",
         "teaser":null},{
@@ -134,8 +134,8 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Numbers",
         "teaser":null},{
-        "title": "3.5 Ranges",
-        "excerpt":"A range is an array of numbers in increasing or decreasing order,each separated by a regular interval. Ranges are useful ina surprisingly large number of situations, so it is worthwhile tolearn about them. We will use the Numpy module, which we always rename as np, like this: import numpy as...","categories": [],
+        "title": "3.6 Ranges",
+        "excerpt":"A range is an array of numbers in increasing or decreasing order,each separated by a regular interval. Ranges are useful ina surprisingly large number of situations, so it is worthwhile tolearn about them. We will use the Numpy package to make ranges. When we load the Numpy package,we always rename...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Ranges",
         "teaser":null},{
@@ -165,7 +165,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/data_types",
         "teaser":null},{
         "title": "3.4 Lists",
-        "excerpt":"Thus far we have seen the following data types: integer (counting number) - int floating point number (number with decimal point) - float string (text) - str.In data analysis, we often want to collect together several numbers, orstrings, into a sequence. For example, remember our problem of the three girls...","categories": [],
+        "excerpt":"Thus far we have seen the following data types: integer (counting number) - int. floating point number (number with decimal point) - float. string (text) - str. boolean (True or False value) - bool.In data analysis, we often want to collect together several numbers, orstrings, into a sequence. This allows...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/lists",
         "teaser":null},{
