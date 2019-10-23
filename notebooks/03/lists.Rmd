@@ -20,7 +20,8 @@ Thus far we have seen the following data types:
 * boolean (True or False value) - `bool`.
 
 In data analysis, we often want to collect together several numbers, or
-strings, into a *sequence*.
+strings, into a *sequence*.  This allows us to collect values together into
+one place, and refer to all the values with a single name.  Now that we can refer to all the values with a single name, we can write code that works on the whole sequence at once.
 
 For example, remember our problem of the three girls in a family of four.
 
@@ -94,6 +95,13 @@ Lists can be empty.  To make an empty list, put nothing inside the square bracke
 ```{python}
 my_empty_list = []
 my_empty_list
+```
+
+A list can have any kind of value as its elements.  For example, here is a list of strings:
+
+```{python}
+some_strings = ["Captain", "Agent", "Jessica", "Luke"]
+some_strings
 ```
 
 ## Functions and lists
