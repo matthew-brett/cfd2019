@@ -99,7 +99,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/sub_expressions",
         "teaser":null},{
-        "title": "2.2 A simpler problem",
+        "title": "2.4 A simpler problem",
         "excerpt":"A simpler problem Imagine a family with four children. What is the probability that the family will have exactly three girls? There are various ways to answer this question. One way, is to usesimulation. Simulation makes a model of the problem. We use the model to generatesimulated data. If the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/three_girls",
@@ -109,7 +109,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/to_code",
         "teaser":null},{
-        "title": "2.3 Introduction to variables",
+        "title": "2.2 Introduction to variables",
         "excerpt":"Remember the problem in the first notebook. Alex and Billie are at a restaurant, getting ready to order. They don’t have much money, so they are calculating their expected bill before they order. Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/variables_intro",
