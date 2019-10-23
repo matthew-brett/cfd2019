@@ -97,8 +97,8 @@ What happens if you use `str` to convert `b` to an string?
 
 What happens if you use `float` to convert `c` into a floating point value?
 
-```{python}
-# Convert "b" into an string, show the result
+```{python tags=c("raises-exception")}
+# Convert "c" into a floating point value
 ...
 ```
 
