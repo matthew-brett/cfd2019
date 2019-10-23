@@ -6,10 +6,16 @@ permalink: /classes/class_7
 
 # Day 7 (the eighth day)
 
-* [Lists](../chapters/03/lists)
-* [Arrays](../chapters/03/Arrays)
-* [Ranges](../chapters/03/Ranges)
-* [More on arrays](../chapters/03/More_on_Arrays)
+* [Extracting zip files](../extracting)
+
+* [Lists](../chapters/03/lists).
+* [Arrays](../chapters/03/Arrays).
+* [Ranges](../chapters/03/Ranges).
+* Download and extract [arrays exercise](../exercises/arrays.zip).
+
+## Assignment
+
+Finish and submit arrays exercise.
 
 <!---
 # Consider this later.
