@@ -14,6 +14,10 @@ jupyter:
 
 # Array exercises
 
+This exercise is an edited version of a lab from [the Berkeley data science
+course](https://github.com/data-8/data8assets/tree/gh-pages/materials/su17/lab/lab02),
+with thanks.
+
 Initialize the OK tests to get started.
 
 ```{python}
@@ -110,7 +114,7 @@ _ = ok.grade('q412')
 
 Very often in data science, we want to work with many numbers that are evenly spaced within some range.  NumPy provides a special function for this called `arange`.  `np.arange(start, stop, space)` produces an array with all the numbers starting at `start` and counting up by `space`, stopping before `stop` is reached.
 
-For example, the value of `np.arange(1, 6, 2)` is an array with elements 1, 3, and 5 -- it starts at 1 and counts up by 2, then stops before 6.  In other words, it's equivalent to `make_array(1, 3, 5)`.
+For example, the value of `np.arange(1, 6, 2)` is an array with elements 1, 3, and 5 -- it starts at 1 and counts up by 2, then stops before 6.  In other words, it's equivalent to `np.array([1, 3, 5])`.
 
 `np.arange(4, 9, 1)` is an array with elements 4, 5, 6, 7, and 8.  (It doesn't contain 9 because `np.arange` stops *before* the stop value is reached.)
 
@@ -217,7 +221,7 @@ population_2016
 ```
 
 ```{python}
-# Since make_array returns an array, we can call .item(3)
+# Since np.array returns an array, we can call .item(3)
 # on its output to get its 4th element.
 np.array([-1, -3, 4, -2]).item(3)
 ```
@@ -324,7 +328,7 @@ _ = ok.grade('q432')
 ```{python}
 # Don't worry about the next two lines.  They get the data into an array.
 bills_table = pd.read_table("more_restaurant_bills.csv")
-more_restaurant_bils = bills_table["Bill"].values
+more_restaurant_bills = bills_table["Bill"].values
 
 # Your code here.  It will use the more_restaurant_bills variable.
 more_total_charges = ...
