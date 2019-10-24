@@ -1,0 +1,12 @@
+{
+  "name": "Strings, variables",
+  "src": [
+    "strings_vars.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "grading"
+  ]
+}

@@ -1,0 +1,113 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+Here you explore types of things, and converting between them.
+
+```{python}
+# Run this cell to set up the notebook, but please don't change it.
+# These lines load the tests.
+from client.api.notebook import Notebook
+ok = Notebook('data_types.ok')
+```
+
+This is an integer (counting number):
+
+```{python}
+# Run this cell
+a = 10
+```
+
+Use `type` to confirm that this is a value of `int` type:
+
+```{python}
+# Your code here.  It should use type to display the type of the value in "a"
+...
+```
+
+```{python}
+_ = ok.grade('q_type_int')
+```
+
+This is a floating point number.
+
+```{python}
+b = 1.1
+```
+
+Use `type` to confirm that this is a value of `float` type:
+
+```{python}
+# Your code here.  It should use type to display the type of the value in "b"
+...
+```
+
+```{python}
+_ = ok.grade('q_type_float')
+```
+
+This is a string:
+
+```{python}
+c = "some text"
+```
+
+Use `type` to confirm that this is a value of `str` type:
+
+```{python}
+# Your code here.  It should use type to display the type of the value in "c"
+...
+```
+
+```{python}
+_ = ok.grade('q_type_string')
+```
+
+Show what you get when you use the 'float' function to convert the value in `a` into a float.
+
+```{python}
+# Convert "a" into a float, show the result.
+...
+```
+
+What happens if you use `int` to convert `b` to an integer?
+
+```{python}
+# Convert "b" into an integer, show the result
+...
+```
+
+What happens if you use `str` to convert `b` to an string?
+
+```{python}
+# Convert "b" into an string, show the result
+...
+```
+
+What happens if you use `float` to convert `c` into a floating point value?
+
+```{python tags=c("raises-exception")}
+# Convert "c" into a floating point value
+...
+```
+
+Now, if you have time - make new code cells below and try:
+
+* `a + b`
+* `a + c`
+* `b + c`
+
+Try converting `a`, `b`, `c` to Boolean (True / False) values with the `bool` function.
+
+Try converting a Boolean value to `int`, `float` and `str`.

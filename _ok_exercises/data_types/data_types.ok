@@ -1,0 +1,12 @@
+{
+  "name": "Data types",
+  "src": [
+    "data_types.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "grading"
+  ]
+}

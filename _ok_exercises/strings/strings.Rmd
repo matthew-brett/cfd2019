@@ -1,0 +1,379 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python [default]
+    language: python
+    name: python3
+---
+
+# Strings
+
+This exercise is an edited version of a lab from [the Berkeley data science
+course](https://github.com/data-8/data8assets/tree/gh-pages/materials/su17/lab/lab02),
+with thanks.
+
+So far, we've only used Python to manipulate numbers.  There's a lot more to
+life than numbers, so Python lets us represent many other types of data in
+programs.
+
+In this lab, you'll first see how to represent and manipulate another fundamental type of data: text.  A piece of text is called a *string* in Python.
+
+You'll also see how to invoke *methods*.  A method is very similar to a function.  It just looks a little different because it's tied to a particular piece of data (like a piece of text or a number).
+
+Initialize the OK tests to get started.
+
+```{python}
+# Don't change this cell; just run it.
+from client.api.notebook import Notebook
+ok = Notebook('strings.ok')
+```
+
+**Submission**: Once you're finished, select "Save and Checkpoint" in the File menu and upload the file to Canvas.
+
+# 1. Review: The building blocks of Python code
+
+The two building blocks of Python code are *expressions* and *statements*.  An
+**expression** is a piece of code that
+
+* is self-contained, meaning it would make sense to write it on a line by
+  itself, and
+* usually has a value.
+
+
+Here are two expressions that both evaluate to 3:
+
+```{python}
+3
+```
+
+```{python}
+5 - 2
+```
+
+One important form of an expression is the **call expression**, which first
+names a function and then describes its arguments. The function returns some
+value, based on its arguments. Some important mathematical functions are
+
+| Function | Description                                                   |
+|----------|---------------------------------------------------------------|
+| `abs`    | Returns the absolute value of its argument                    |
+| `max`    | Returns the maximum of all its arguments                      |
+| `min`    | Returns the minimum of all its arguments                      |
+| `pow`    | Raises its first argument to the power of its second argument |
+| `round`  | Round its argument to the nearest integer                     |
+
+Here are two call expressions that both evaluate to 3
+
+```{python}
+abs(2 - 5)
+```
+
+```{python}
+max(round(2.8), min(pow(2, 10), -1 * pow(2, 10)))
+```
+
+All these expressions but the first are **compound expressions**, meaning that
+they are actually combinations of several smaller expressions.  `2 + 3`
+combines the expressions `2` and `3` by addition.  In this case, `2` and `3`
+are called **subexpressions** because they're expressions that are part of
+a larger expression.
+
+A **statement** is a whole line of code.  Some statements are just expressions.
+The expressions listed above are examples.
+
+Other statements *make something happen* rather than *having a value*.  After
+they are run, something in the world has changed.  For example, an **assignment
+statement** assigns a value to a name.
+
+A good way to think about this is that we're **evaluating the right-hand side** of the equals sign and **assigning it to the left-hand side**. Here are some assignment statements:
+
+```{python}
+height = 1.3
+```
+
+```{python}
+the_number_five = abs(-5)
+```
+
+```{python}
+absolute_height_difference = abs(height - 1.688)
+```
+
+A key idea in programming is that large, interesting things can be built by
+combining many simple, uninteresting things.  The key to understanding
+a complicated piece of code is breaking it down into its simple components.
+
+For example, a lot is going on in the last statement above, but it's really
+just a combination of a few things.  This picture describes what's going on.
+
+<img src="statement.jpg">
+
+**Question 1.1.** In the next cell, assign the name `new_year` to the larger number among the following two numbers:
+
+1. the absolute value of $2^{5}-2^{11}-2^0$, and 
+2. $5 \times 13 \times 31 + 5$.
+
+Try to use just one statement (one line of code).
+
+```{python}
+new_year = ...
+new_year
+```
+
+Check your work by executing the next cell.
+
+```{python}
+_ = ok.grade('q11')
+```
+
+# 2. Text
+
+Programming doesn't just concern numbers. Text is one of the most common types
+of values used in programs. 
+
+A snippet of text is represented by a **string value** in Python. The word
+"*string*" is a programming term for a sequence of characters. A string might
+contain a single character, a word, a sentence, or a whole book.
+
+To distinguish text data from actual code, we demarcate strings by putting
+quotation marks around them. Single quotes (`'`) and double quotes (`"`) are
+both valid, but the types of opening and closing quotation marks must match.
+The contents can be any sequence of characters, including numbers and symbols. 
+
+We've seen strings before in `print` statements.  Below, two different strings are passed as arguments to the `print` function.
+
+```{python}
+print("I <3", 'Data Science')
+```
+
+Just like names can be given to numbers, names can be given to string values.
+The names and strings aren't required to be similar in any way. Any name can be
+assigned to any string.
+
+```{python}
+one = 'two'
+plus = '*'
+print(one, plus, one)
+```
+
+**Question 2.1.** Yuri Gagarin was the first person to travel through outer space.  When he emerged from his capsule upon landing on Earth, he [reportedly](https://en.wikiquote.org/wiki/Yuri_Gagarin) had the following conversation with a woman and girl who saw the landing:
+
+> The woman asked: "Can it be that you have come from outer space?"
+> Gagarin replied: "As a matter of fact, I have!"
+
+The cell below contains unfinished code.  Fill in the `...`s so that it prints
+out this conversation *exactly* as it appears above.
+
+```{python}
+woman_asking = ...
+woman_quote = '"Can it be that you have come from outer space?"'
+gagarin_reply = 'Gagarin replied:'
+gagarin_quote = ...
+
+print(woman_asking, woman_quote)
+print(gagarin_reply, gagarin_quote)
+```
+
+```{python}
+_ = ok.grade('q21')
+```
+
+## 2.1. String Methods
+
+
+Strings can be transformed using **methods**, which are functions that involve
+an existing string and some other arguments. One example is the `replace`
+method, which replaces all instances of some part of a string with some
+alternative. 
+
+A method is invoked on a string by placing a `.` after the string value, then
+the name of the method, and finally parentheses containing the arguments.
+Here's a sketch, where the `<` and `>` symbols aren't part of the syntax; they
+just mark the boundaries of sub-expressions.  A call expression that calls
+a method on a string has the following structure:
+
+    <expression that evaluates to a string>.<method name>(<argument>, <argument>, ...)
+
+**Try to predict the output of these examples**, then execute them.
+
+```{python}
+# Replace one letter
+'Hello'.replace('o', 'a')
+```
+
+```{python}
+# Replace a sequence of letters, which appears twice
+'hitchhiker'.replace('hi', 'ma')
+```
+
+Once a name is bound to a string value, methods can be invoked on that name as
+well. The name is still bound to the original string, so a new name is needed
+to capture the result. 
+
+```{python}
+sharp = 'edged'
+hot = sharp.replace('ed', 'ma')
+print('sharp:', sharp)
+print('hot:', hot)
+```
+
+You can call functions on the results of other functions.  For example,
+
+```{python}
+max(abs(-5), abs(3))
+```
+
+has value 5.  Similarly, you can invoke methods on the results of other method
+(or function) calls.
+
+```{python}
+# Calling replace on the output of another call to
+# replace
+'train'.replace('t', 'ing').replace('in', 'de')
+```
+
+Here's a picture of how Python evaluates a "chained" method call like that:
+
+<img src="chaining_method_calls.jpg"/>
+
+
+**Question 2.1.1.** Assign strings to the names `you` and `this` so that the final expression evaluates to a 10-letter English word with three double letters in a row.
+
+This isn't the right answer, but the word 'tattooee' is an 8 letter example of such a word because it has double 't' followed by double 'o' followed by double 'e'.
+
+*Hint 1:* Remember, having a piece of paper next to the computer is useful.  When you get stuck, go to the paper, and write out the problem.  Reason about the solution on the piece of paper.
+
+*Hint 2:* After you guess at some values for `you` and `this`, it's helpful to see the value of the variable `the`.  Try printing the value of `the` by adding a line like this:
+
+```
+print(the)
+```
+
+*Hint 3:* Run the tests if you're stuck.  They'll often give you help.
+
+```{python}
+you = ...
+this = ...
+a = 'beeper'
+the = a.replace('p', you)
+the.replace('bee', this)
+```
+
+```{python}
+_ = ok.grade('q211')
+```
+
+Other string methods do not take any arguments at all, because the original
+string is all that's needed to compute the result. In this case, parentheses
+are still needed, but there's nothing in between the parentheses. Here are some
+methods that work that way:
+
+|Method name|Value|
+|-|-|
+|`lower`|a lowercased version of the string|
+|`upper`|an uppercased version of the string|
+|`capitalize`|a version with the first letter capitalized|
+|`title`|a version with the first letter of every word capitalized||
+
+
+```{python}
+'unIverSITy of caliFORnia'.title()
+```
+
+All these string methods are useful, but most programmers don't memorize their
+names or how to use them.  In the "real world," people usually just search the
+internet for documentation and examples. A complete [list of string
+methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+appears in the Python language documentation. [Stack
+Overflow](http://stackoverflow.com) has a huge database of answered questions
+that often demonstrate how to use these methods to achieve various ends.
+
+
+## 2.2. Converting to and from Strings
+
+
+Strings and numbers are different *types* of values, even when a string contains the digits of a number. For example, evaluating the following cell causes an error because an integer cannot be added to a string.
+
+```{python tags=c("raises-exception")}
+8 + "8"
+```
+
+However, there are built-in functions to convert numbers to strings and strings to numbers. 
+
+*   `int`:   Converts a string of digits to an integer ("int") value
+*   `float`: Converts a string of digits, perhaps with a decimal point, to
+    a decimal ("float") value
+*   `str`:   Converts any value to a string
+
+**Try to predict what the following cell will evaluate to**, then evaluate it.
+
+```{python}
+8 + int("8")
+```
+
+Suppose you're writing a program that looks for dates in a text, and you want
+your program to find the amount of time that elapsed between two years it has
+identified.  It doesn't make sense to subtract two texts, but you can first
+convert the text containing the years into numbers.
+
+**Question 2.2.1.** Finish the code below to compute the number of years that
+elapsed between `one_year` and `another_year`.  Don't just write the numbers
+`1618` and `1648` (or `30`); use a conversion function to turn the given text
+data into numbers.
+
+```{python}
+# Some text data:
+one_year = "1618"
+another_year = "1648"
+
+# Complete the next line.  Note that we can't just write:
+#   another_year - one_year
+# If you don't see why, try seeing what happens when you
+# write that here.
+difference = ...
+difference
+```
+
+```{python}
+_ = ok.grade('q221')
+```
+
+## 2.3. Strings as function arguments
+
+String values, like numbers, can be arguments to functions and can be returned
+by functions.  The function `len` takes a single string as its argument and
+returns the number of characters in the string: its **len**-gth.
+
+Note that it doesn't count *words*. `len("one small step for man")` is 22, not
+5.
+
+**Question 2.3.1.**  Use `len` to find out the number of characters in the very long string in the next cell.  (It's the first sentence of the English translation of the French [Declaration of the Rights of Man](http://avalon.law.yale.edu/18th_century/rightsof.asp).)  The length of a string is the total number of characters in it, including things like spaces and punctuation.  Assign `sentence_length` to that number.
+
+```{python}
+a_very_long_sentence = "The representatives of the French people, organized as a National Assembly, believing that the ignorance, neglect, or contempt of the rights of man are the sole cause of public calamities and of the corruption of governments, have determined to set forth in a solemn declaration the natural, unalienable, and sacred rights of man, in order that this declaration, being constantly before all the members of the Social body, shall remind them continually of their rights and duties; in order that the acts of the legislative power, as well as those of the executive power, may be compared at any moment with the objects and purposes of all political institutions and may thus be more respected, and, lastly, in order that the grievances of the citizens, based hereafter upon simple and incontestable principles, shall tend to the maintenance of the constitution and redound to the happiness of all."
+sentence_length = ...
+sentence_length
+```
+
+```{python}
+_ = ok.grade('q231')
+```
+
+You're done with this assignment!
+
+Be sure to run the tests and verify that they all pass, then choose **Save and
+Checkpoint** from the **File** menu.
+
+You can run the cell below to run all the tests in one go.
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
