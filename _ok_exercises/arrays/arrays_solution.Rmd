@@ -213,8 +213,8 @@ population_2015
 ```{python tags=c("raises-exception")}
 # The array has only 66 elements, so this doesn't work.
 # (There's no element with 66 other elements before it.)
-population_2016 = population.item(66)
-population_2016
+# population_2016 = population.item(66)
+# population_2016
 ```
 
 ```{python}
