@@ -58,7 +58,7 @@ ship: clean rebuild-notebooks textbook
 serve: components
 	bundle exec jekyll serve
 
-make continuous-build:
+continuous-build:
 	while true; do \
 		(make rebuild-notebooks || tput bel) ; \
 		sleep 5; \
