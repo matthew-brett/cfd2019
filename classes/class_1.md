@@ -6,10 +6,6 @@ permalink: /classes/class_1
 
 # Day 1 (the second day)
 
-* [About the software](../chapters/01/the_software)
+* [Admin stuff](../course) including grading, working together.
 * [Starting Jupyter](../open_jupyter)
 * [Using the Jupyter Notebook](../chapters/01/using_jupyter)
-
-## Assignment
-
-* [Pride and Prejudice and Zombies](../assignments/assignment_2)
