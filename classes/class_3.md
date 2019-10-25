@@ -18,4 +18,4 @@ permalink: /classes/class_3
 * [Names and variables](../chapters/02/Names).
 * Practice with OKpy: Download and extract [names
   exercise](../exercises/basic_names.zip).
-  * On [extracting archives](extracting).
+  * On [extracting archives](../extracting).
