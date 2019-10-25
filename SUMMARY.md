@@ -1,6 +1,6 @@
 # Summary
 
-* [1. Coding for data](notebooks/01/intro.md)
+* [1. Data science for everyone](notebooks/01/intro.md)
   * [1.1 What is data science?](notebooks/01/what-is-data-science.md)
   * [1.2 Why data science?](notebooks/01/why-data-science.md)
   * [1.3 Tools and techniques](notebooks/01/tools_techniques.md)
