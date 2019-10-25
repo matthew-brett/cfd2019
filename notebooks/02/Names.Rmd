@@ -71,6 +71,8 @@ quarter = 4
 Now we have changed the value of `quarter` What do you think will happen to
 the value of `half` above?  Will it change, or will it stay the same?
 
+Try working out the answer before reading further.
+
 Remember that an expression *evaluates* its variables before returning the
 result.  In the cell above, the expression `half = 2 * quarter` evaluated
 `quarter`, to get the CR of 0.25, and then evaluated 2 * 0.25, to give the CR
