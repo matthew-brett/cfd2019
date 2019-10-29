@@ -1,6 +1,6 @@
 # Summary
 
-* [1. Coding for data](notebooks/01/intro.md)
+* [1. Data science for everyone](notebooks/01/intro.md)
   * [1.1 What is data science?](notebooks/01/what-is-data-science.md)
   * [1.2 Why data science?](notebooks/01/why-data-science.md)
   * [1.3 Tools and techniques](notebooks/01/tools_techniques.md)
@@ -31,8 +31,11 @@
   * [3.4 Lists](notebooks/03/lists.ipynb)
   * [3.5 Arrays](notebooks/03/Arrays.ipynb)
   * [3.6 Ranges](notebooks/03/Ranges.ipynb)
+  * [3.7 Append](notebooks/03/numpy_append.ipynb)
+  * [3.8 Function arguments](notebooks/03/function_arguments.ipynb)
+  * [3.9 Leaping ahead](notebooks/03/leaping_ahead.ipynb)
+  * [3.10 Iteration with For loops](notebooks/03/iteration.ipynb)
   * [3.7 More on arrays](notebooks/03/More_on_Arrays.ipynb)
-  * [3.8 Arrays and axes](notebooks/03/arrays_and_axes.ipynb)
   * [3.9 Reply to the Supreme Court](notebooks/03/reply_supreme.ipynb)
   * [3.10 Revision - three girls](notebooks/03/three_girls.ipynb)
   * [3.11 Selecting with arrays](notebooks/03/array_indexing.ipynb)
@@ -41,7 +44,6 @@
 * [5. Permutations](notebooks/05/permutation.md)
   * [5.1 Population and permutation](notebooks/05/population_permutation.ipynb)
   * [5.2 lists](notebooks/05/lists.ipynb)
-  * [5.3 Iteration with For loops](notebooks/05/iteration.ipynb)
   * [5.4 Indentation, indentation](notebooks/05/indentation.ipynb)
   * [5.5 Ones and zeros](notebooks/05/ones_zeros.ipynb)
   * [5.6 A permutation test](notebooks/05/brexit_ages.ipynb)
