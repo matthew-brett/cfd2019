@@ -23,14 +23,8 @@ jupyter:
 ---
 
 ```{python}
-# HIDDEN
-# The standard set of libraries we need
+# Load the Numpy package, and rename to "np"
 import numpy as np
-import matplotlib.pyplot as plt
-# %matplotlib inline
-
-# Make plots look a little bit more fancy
-plt.style.use('fivethirtyeight')
 ```
 
 ### Iteration ###
@@ -38,27 +32,23 @@ plt.style.use('fivethirtyeight')
 It is often the case in programming – especially when dealing with randomness
 – that we want to repeat a process multiple times.
 
-Consider the numpy function `random.choice`. It claims to choose randomly
-between the elements on an array that we pass it.  Here we make an array of
-strings containing two choices:
+We know the numpy function `random.randint` claims to choose randomly
+between the integers in the range we specify.
 
+We have been choosing randomly between 0 and 1 with:
 
 ```{python}
-coin = np.array(['Heads', 'Tails'])
+coin = np.random.randint(2)
+coin
 ```
 
-We use `np.random.choice` to choose randomly between these two elements:
+We might want to check this really does in fact pick 0 or 1 with
+about the same probability.  To do that, we could start by running
+the following cell many times to see if we get roughly equal numbers of
+0 and 1.
 
 ```{python}
-np.random.choice(coin)
-```
-
-We might want to check whether `np.random.choice` does in fact pick either
-option with about the same probability.  To do that, we could start by runing
-the following cell many times to see if we get roughly equal numbers of `"Heads"` and `"Tails"`.
-
-```{python}
-np.random.choice(coin)
+np.random.randint(2)
 ```
 
 We might want to re-run code with slightly different input or other slightly
@@ -66,12 +56,12 @@ different behavior. We could copy-paste the code multiple times, but that's
 tedious and prone to typos, and if we wanted to do it a thousand times or
 a million times, forget it.
 
-A more automated solution is to use a `for` statement to loop over the contents
-of a sequence. This is called *iteration*. A `for` statement begins with the
-word `for`, followed by a name we want to give each item in the sequence,
-followed by the word `in`, and ending with an expression that evaluates to
-a sequence. The indented body of the `for` statement is executed once *for each
-item in that sequence*.
+A more automated solution is to use a `for` statement to loop over the
+contents of a sequence. This is called *iteration*. A `for` statement begins
+with the word `for`, followed by a name we want to give each item in the
+sequence, followed by the word `in`, and ending with an expression that
+evaluates to a sequence. The indented body of the `for` statement is executed
+once *for each item in that sequence*.
 
 ```{python}
 for i in np.arange(3):
@@ -81,57 +71,38 @@ for i in np.arange(3):
 It is instructive to imagine code that exactly replicates a `for` statement
 without the `for` statement.  (This is called *unrolling* the loop.)  A `for`
 statement simple replicates the code inside it, but before each iteration, it
-assigns a new value from the given sequence to the name we chose.  For example,
-here is an unrolled version of the loop above:
+assigns a new value from the given sequence to the name we chose.  For
+example, here is an unrolled version of the loop above:
 
 ```{python}
-i = np.arange(3)[0]
+i = 0
 print(i)
-i = np.arange(3)[1]
+i = 1
 print(i)
-i = np.arange(3)[2]
+i = 2
 print(i)
 ```
 
-Notice that the name `i` is arbitrary, just like any name we assign with `=`.  For example, the following `for` loop works in just the same way as the `for` loop above:
+Notice that the name `i` is arbitrary, just like any name we assign with `=`.
+For example, the following `for` loop works in just the same way as the `for`
+loop above:
 
 ```{python}
 for my_variable in np.arange(3):
     print(my_variable)
 ```
 
-In the next example, we use a `for` statement in a more realistic way:
-we print the results of five random choices:
+In the next example, we use a `for` statement in a more realistic way: we
+print the results of five random integers:
 
 ```{python}
 for i in np.arange(5):
-    print(np.random.choice(coin))
+    print(np.random.randint(2))
 ```
 
-In this case, we simply perform exactly the same (random) action several times,
-so the code inside our `for` statement does not actually refer to the variable
-`i`.
-
-
-### Collecting results with lists
-
-While the `for` statement above does simulate the results of five
-tosses of a coin, the results are simply printed and aren't in a form
-that we can use for computation. Thus a typical use of a `for`
-statement is to create an array of results, by augmenting it each time.
-
-We can use the `append` method of a list do do this.  As you saw in the page on [lists](lists), we can use the `append` method of a list to append a value to the list.
-
-
-```{python}
-# A list with two strings
-pets = ['Cat', 'Dog']
-```
-
-```{python}
-pets.append('Rabbit')
-pets
-```
+In this case, we simply perform exactly the same (random) action several
+times, so the code inside our `for` statement does not actually refer to the
+variable `i`.
 
 ### Example: Counting the Number of Heads ###
 
@@ -140,11 +111,11 @@ an array. We will start by creating an empty array and then appending
 the result of each toss.
 
 ```{python}
-# An empty list
-tosses = []
+# An empty array.
+tosses = np.array([])
 
 for i in np.arange(5):
-    tosses.append(np.random.choice(coin))
+    tosses = np.append(tosses, np.random.randint(2))
 
 tosses
 ```
@@ -152,35 +123,28 @@ tosses
 Let us rewrite the cell with the `for` statement unrolled:
 
 ```{python}
-# An empty list
-tosses = []
+# An empty array.
+tosses = np.array([])
 
-i = np.arange(5)[0]
-tosses.append(np.random.choice(coin))
-i = np.arange(5)[1]
-tosses.append(np.random.choice(coin))
-i = np.arange(5)[2]
-tosses.append(np.random.choice(coin))
-i = np.arange(5)[3]
-tosses.append(np.random.choice(coin))
-i = np.arange(5)[4]
-tosses.append(np.random.choice(coin))
+i = 0
+tosses = np.append(tosses, np.random.randint(2))
+i = 1
+tosses = np.append(tosses, np.random.randint(2))
+i = 2
+tosses = np.append(tosses, np.random.randint(2))
+i = 3
+tosses = np.append(tosses, np.random.randint(2))
+i = 4
+tosses = np.append(tosses, np.random.randint(2))
 
 tosses
 ```
 
-We have captured the results in an list, but we want to give ourselves
-the ability to use array methods to do computations.  To do this, we convert the list into an array:
-
-```{python}
-toss_arr = np.array(tosses)
-```
-
-Now we have an array, we can use `np.count_nonzero` to count the
+Now we have an array, we can use `np.sum` to count the
 number of heads in the five tosses.
 
 ```{python}
-np.count_nonzero(toss_arr == 'Heads')
+np.sum(tosses)
 ```
 
 Iteration is a powerful technique. For example, by running exactly the
@@ -188,13 +152,13 @@ same code for 1000 tosses instead of 5, we can count the number of
 heads in 1000 tosses.
 
 ```{python}
-tosses = []
+# An empty array.
+tosses = np.array([])
 
 for i in np.arange(1000):
-    tosses.append(np.random.choice(coin))
+    tosses = np.append(tosses, np.random.randint(2))
 
-toss_arr = np.array(tosses)
-np.count_nonzero(toss_arr == 'Heads')
+tosses
 ```
 
 ### Example: Number of Heads in 100 Tosses ###
@@ -217,14 +181,10 @@ The histogram of our results will give us some insight into how many
 heads are likely.
 
 
-As a preliminary, note that `np.random.choice` takes an optional
-second argument that specifies the number of choices to make. By
-default, the choices are made with replacement, meaning that there is
-the same chance of getting a `Head` for all the choices returned. Here
-is a simulation of 10 tosses of a coin:
+As y'all have already seen, `np.randint` can take a `size` argument, to return an array of random integers:
 
 ```{python}
-np.random.choice(coin, 10)
+np.random.randint(2, size=10)
 ```
 
 Now let's study 100 tosses. We will start by creating an empty array
@@ -234,12 +194,12 @@ a coin 100 times, count the number of heads, and append it to `heads`.
 ```{python}
 N = 10000
 
-head_counts = []
+head_counts = np.array([])
 
 for i in np.arange(N):
-    tosses = np.random.choice(coin, 100)
-    n_heads = np.count_nonzero(tosses == 'Heads')
-    head_counts.append(n_heads)
+    tosses = np.random.randint(2, size=100)
+    n_heads = np.sum(tosses)
+    head_counts = np.append(head_counts, n_heads)
 
 head_counts
 ```
@@ -247,7 +207,21 @@ head_counts
 Here is a histogram of the data, with bins of width 1 centered at each
 value of the number of heads.
 
+This is the first time we have used plotting, so please accept this piece of code to initialize the plotting first:
+
 ```{python}
+# Please don't worry about this bit of code for now.
+# It sets up plotting in the notebook.
+import matplotlib.pyplot as plt
+%matplotlib inline
+# Fancy plots
+plt.style.use('fivethirtyeight')
+```
+
+Now we do the histogram:
+
+```{python}
+# Again, don't worry about the details here.
 plt.hist(head_counts, bins=np.arange(30.5, 69.6, 1));
 ```
 
