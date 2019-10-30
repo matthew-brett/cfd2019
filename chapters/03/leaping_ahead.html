@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-29T16:43:10+00:00">
+  <meta property="article:published_time" content="2019-10-30T13:47:07+00:00">
 
 
 
@@ -1093,7 +1093,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.9 Leaping ahead">
       <meta itemprop="description" content="We are still building up to a solution for the three girlsproblem.">
-      <meta itemprop="datePublished" content="October 29, 2019">
+      <meta itemprop="datePublished" content="October 30, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1110,6 +1110,15 @@
 
 <!-- TOC will only show up if it has at least one item -->
 
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#for-loops">For loops.</a></li>
+</ul>
+    </nav>
+  </aside>
 
 
           
@@ -1153,7 +1162,7 @@ an array that simulates a family of four children:</p>
 <span class="n">family</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 0, 0, 1])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 0, 0, 0])
 </code></pre></div></div>
 
 <p>We represented girls with a value of one. We can count the number of girls by using the <code class="highlighter-rouge">np.sum</code> function on the <code class="highlighter-rouge">family</code> array:</p>
@@ -1162,7 +1171,7 @@ an array that simulates a family of four children:</p>
 <span class="n">count</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>We want to build up a lot of counts, in the <code class="highlighter-rouge">counts</code> array, so we start by appending the <code class="highlighter-rouge">count</code> value:</p>
@@ -1172,7 +1181,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.])
 </code></pre></div></div>
 
 <p>We can do this again in a single cell, like this:</p>
@@ -1185,7 +1194,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2., 2.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 2.])
 </code></pre></div></div>
 
 <p>To add another family, we just repeat the same:</p>
@@ -1198,7 +1207,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2., 2., 2.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 2., 1.])
 </code></pre></div></div>
 
 <p>Obviously this is getting a bit boring and repetitive. Surely we can do better.</p>
@@ -1217,7 +1226,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2., 2., 1., ..., 2., 0., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2., 4., 2., ..., 3., 4., 1.])
 </code></pre></div></div>
 
 <p>Now we have a count of the number of girls, from 10000 simulated families:</p>
@@ -1228,7 +1237,84 @@ an array that simulates a family of four children:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10000
 </code></pre></div></div>
 
-<p>How did that work?  On to <a href="Iteration">iteration with for loops</a>.</p>
+<p>Our next problem is to find how many of these <code class="highlighter-rouge">counts</code> are equal to 3.</p>
+
+<p>Remember <a href="Comparison">comparison</a>?</p>
+
+<p>Imagine I have some value <code class="highlighter-rouge">count</code>, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">count</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>I can use the <code class="highlighter-rouge">==</code> comparison to test if <code class="highlighter-rouge">count</code> is equal to 3:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A comparison expression, asking whether "count" is equal to 3.
+</span><span class="n">count</span> <span class="o">==</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>What do you think we will get if do the same test on all 10000 values in <code class="highlighter-rouge">counts</code>?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False, ...,  True, False, False])
+</code></pre></div></div>
+
+<p>This is a new 10000 element array of True and False values.  It is called a <em>Boolean array</em>.  We will see many more of these.</p>
+
+<p>Next we will use a Numpy function called <code class="highlighter-rouge">count_nonzero</code>.   It counts the number of values in an array that are not equivalent to 0.   It turns out that <code class="highlighter-rouge">False</code> is equivalent to 0, but <code class="highlighter-rouge">True</code> is not:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_booleans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">my_booleans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>This means that <code class="highlighter-rouge">count_nonzero</code> returns the number of True values in a Boolean array.  Now we can count how many of the <code class="highlighter-rouge">counts</code> array were equal to 3.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The Boolean array, with True where counts equal to 3, False otherwise.
+</span><span class="n">has_3_girls</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="c1"># Number of counts values equal to 3.
+</span><span class="n">n_3_girls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">has_3_girls</span><span class="p">)</span>
+<span class="n">n_3_girls</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2478
+</code></pre></div></div>
+
+<p>Finally we estimate the probability by dividing the number of times we saw 3 by the number of trials:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Estimate probability of 3 girls.
+</span><span class="n">n_3_girls</span> <span class="o">/</span> <span class="mi">10000</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2478
+</code></pre></div></div>
+
+<h2 id="for-loops">For loops.</h2>
+
+<p>The new part of this story is the <em>for loop</em>.  On to <a href="Iteration">iteration with for
+loops</a>.</p>
 
           
         </section>

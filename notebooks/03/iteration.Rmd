@@ -227,9 +227,53 @@ for i in np.arange(3):
     print(i)
 ```
 
-It is instructive to imagine code that exactly replicates a `for` statement
+## The idea behind a for loop
+
+The for loop takes a sequence of things (in our case, the sequence 0, 1, 2), and, for each element in the sequence, it does some task.   The task is the indented part of the for loop, also called the *body* of the for loop.
+
+This is a common pattern where we take a series of things, and perform the
+same steps on each.  For example, imagine a librarian describing the sequence
+of steps that he goes through, in issuing a stack of books.  He might say
+something like:
+
+    For each **book** in the stack of books to issue:
+        Open **book** to first page
+        Stamp first page of **book**
+        Close **book**
+        Hand **book** to reader.
+
+Imagine a passport control officer describing their work:
+
+    For each **person** in the immigration line:
+        Ask **person** for their passport.
+        Check passport photo against face of **person**.
+        Scan passport to check against database.
+        Return passport to **person**.
+        Allow **person** through to customs.
+
+In either case, we take a sequence of things (books, people), and for each
+element in that sequence (each book, each person) we perform a task (issuing
+the book, checking the person's passport).  We have indented the steps of
+task that we perform for each (book, person); this is the *task definition*.  In the for loop, the task definition is also called the *body* of the for loop.
+
+## Unrolling the loop
+
+Here is the actual Python for loop.
+
+```{python}
+for i in np.arange(3):
+    print(i)
+```
+
+We can read that as:
+
+    For each value in the sequence `np.arange(3)`:
+        Put the value into the variable `i`
+        Execute the statement `print(i)`.
+
+It is instructive to imagine code that exactly replicates the `for` statement
 without the `for` statement.  (This is called *unrolling* the loop.)  A `for`
-statement simple replicates the code inside it, but before each iteration, it
+statement simply replicates the code inside it, but before each iteration, it
 assigns a new value from the given sequence to the name we chose.  For
 example, here is an unrolled version of the loop above:
 

@@ -375,7 +375,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/exercises",
         "teaser":null},{
         "title": "For loops",
-        "excerpt":"For loop exercises import numpy as npBad fors You may remember you can print a number (or anything else) with the print function, like this: print(5)5This for loop is meant to print out the numbers from 0 through 5, but it isn’tright yet. Fix: for i in range(5): print(i)01234This for...","categories": [],
+        "excerpt":"For loop exercises import numpy as npYou may remember you can print a number (or anything else) with the print function, like this: print(5)5Use a for loop to print out all the numbers from 3 through 7, one number on each line. # Your code here.Make an empty array called...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/for_loops",
         "teaser":null},{

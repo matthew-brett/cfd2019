@@ -273,7 +273,68 @@ Now we have a count of the number of girls, from 10000 simulated families:
 len(counts)
 ```
 
-How did that work?  On to [iteration with for loops](Iteration).
+Our next problem is to find how many of these `counts` are equal to 3.
+
+Remember [comparison](Comparison)?
+
+Imagine I have some value `count`, like this:
+
+```{python}
+count = 3
+count
+```
+
+I can use the `==` comparison to test if `count` is equal to 3:
+
+```{python}
+# A comparison expression, asking whether "count" is equal to 3.
+count == 3
+```
+
+What do you think we will get if do the same test on all 10000 values in `counts`?
+
+```{python}
+counts == 3
+```
+
+This is a new 10000 element array of True and False values.  It is called a *Boolean array*.  We will see many more of these.
+
+Next we will use a Numpy function called `count_nonzero`.   It counts the number of values in an array that are not equivalent to 0.   It turns out that `False` is equivalent to 0, but `True` is not:
+
+```{python}
+np.count_nonzero(False)
+```
+
+```{python}
+np.count_nonzero(True)
+```
+
+```{python}
+my_booleans = np.array([True, False, True])
+np.count_nonzero(my_booleans)
+```
+
+This means that `count_nonzero` returns the number of True values in a Boolean array.  Now we can count how many of the `counts` array were equal to 3.
+
+```{python}
+# The Boolean array, with True where counts equal to 3, False otherwise.
+has_3_girls = counts == 3
+# Number of counts values equal to 3.
+n_3_girls = np.count_nonzero(has_3_girls)
+n_3_girls
+```
+
+Finally we estimate the probability by dividing the number of times we saw 3 by the number of trials:
+
+```{python}
+# Estimate probability of 3 girls.
+n_3_girls / 10000
+```
+
+## For loops.
+
+The new part of this story is the *for loop*.  On to [iteration with for
+loops](Iteration).
 
         
       </section>
