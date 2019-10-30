@@ -140,7 +140,7 @@ Between the parentheses, we have the function signature.  This specifies how man
 Finally there is a colon `:` signifying the end of the signature.
 
 As in [for loops](../05/iteration), the colon signifies that the next
-bit of code must be [indented](../05/indentation).
+bit of code must be [indented](../03/indentation).
 
 Here is the indented part:
 
