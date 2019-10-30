@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>9.1 Standard scores - Coding for Data - 2019 edition</title>
-<meta name="description" content="Describing distributions">
+<!-- begin _includes/seo.html --><title>3.7 Arrays and axes - Coding for Data - 2019 edition</title>
+<meta name="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="9.1 Standard scores">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/09/standard_scores">
+<meta property="og:title" content="3.7 Arrays and axes">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes">
 
 
-  <meta property="og:description" content="Describing distributions">
+  <meta property="og:description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/09/standard_scores">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes">
 
 
 
@@ -1091,15 +1091,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="9.1 Standard scores">
-      <meta itemprop="description" content="Describing distributions">
+      <meta itemprop="headline" content="3.7 Arrays and axes">
+      <meta itemprop="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
       <meta itemprop="datePublished" content="October 30, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">9.1 Standard scores
+            <h1 id="page-title" class="page__title" itemprop="headline">3.7 Arrays and axes
 </h1>
           </header>
         
@@ -1115,9 +1115,9 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#describing-distributions">Describing distributions</a></li>
-  <li><a href="#chronic-kidney-disease">Chronic kidney disease</a></li>
-  <li><a href="#the-standard-deviation">The standard deviation</a></li>
+  <li><a href="#starting-with-one-dimension">Starting with one dimension</a></li>
+  <li><a href="#two-dimensions">Two-dimensions</a></li>
+  <li><a href="#operations-on-axes">Operations on axes</a></li>
 </ul>
     </nav>
   </aside>
@@ -1128,410 +1128,188 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/09/standard_scores.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F09%2Fstandard_scores.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/03/arrays_and_axes.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F03%2Farrays_and_axes.ipynb">Interact</a>
 
 
-          <h2 id="describing-distributions">Describing distributions</h2>
+          <ul>
+  <li>We return to Numpy <code class="highlighter-rouge">array</code>s.</li>
+  <li>Arrays can be two-dimensional.</li>
+  <li>An array with two dimensions has <em>rows</em> and <em>columns</em>.  The rows and
+columns are the two <em>axes</em> of the array.</li>
+  <li>We can ask Numpy to do operations over rows or columns, using the
+<code class="highlighter-rouge">axis</code> keyword argument.</li>
+</ul>
 
-<p>We have seen several examples of <em>distributions</em>.</p>
+<h2 id="starting-with-one-dimension">Starting with one dimension</h2>
 
-<p>We can describe distributions as having a <em>center</em>, and a <em>spread</em>.</p>
-
-<p>In <a href="../08/mean_meaning">the mean as predictor</a>, we saw that the mean is a useful measure of the center of a distribution.</p>
-
-<p>What measure should we use for the spread?</p>
-
-<h2 id="chronic-kidney-disease">Chronic kidney disease</h2>
-
-<p>We’re going to work with a data set that was collected to help doctors diagnose chronic kidney disease (CKD).  Each row in the data set represents a single patient who was treated in the past and whose diagnosis is known.  For each patient, we have a bunch of measurements from a blood test.</p>
-
-<p>You will see more of this dataset soon.</p>
-
-<p>If you are running on your laptop, you should download the
-<a href="/cfd2019/data/ckd.csv">ckd.csv</a> file to the same
-directory as this notebook.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ckd.csv'</span><span class="p">)</span>
-<span class="n">ckd_full</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We need Numpy
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<p>Here I make an array that contains three random numbers, using the <code class="highlighter-rouge">size</code> keyword argument:</p>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Age</th>
-      <th>Blood Pressure</th>
-      <th>Specific Gravity</th>
-      <th>Albumin</th>
-      <th>Sugar</th>
-      <th>Red Blood Cells</th>
-      <th>Pus Cell</th>
-      <th>Pus Cell clumps</th>
-      <th>Bacteria</th>
-      <th>Blood Glucose Random</th>
-      <th>...</th>
-      <th>Packed Cell Volume</th>
-      <th>White Blood Cell Count</th>
-      <th>Red Blood Cell Count</th>
-      <th>Hypertension</th>
-      <th>Diabetes Mellitus</th>
-      <th>Coronary Artery Disease</th>
-      <th>Appetite</th>
-      <th>Pedal Edema</th>
-      <th>Anemia</th>
-      <th>Class</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>48</td>
-      <td>70</td>
-      <td>1.005</td>
-      <td>4</td>
-      <td>0</td>
-      <td>normal</td>
-      <td>abnormal</td>
-      <td>present</td>
-      <td>notpresent</td>
-      <td>117</td>
-      <td>...</td>
-      <td>32</td>
-      <td>6700</td>
-      <td>3.9</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>poor</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>53</td>
-      <td>90</td>
-      <td>1.020</td>
-      <td>2</td>
-      <td>0</td>
-      <td>abnormal</td>
-      <td>abnormal</td>
-      <td>present</td>
-      <td>notpresent</td>
-      <td>70</td>
-      <td>...</td>
-      <td>29</td>
-      <td>12100</td>
-      <td>3.7</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>poor</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>63</td>
-      <td>70</td>
-      <td>1.010</td>
-      <td>3</td>
-      <td>0</td>
-      <td>abnormal</td>
-      <td>abnormal</td>
-      <td>present</td>
-      <td>notpresent</td>
-      <td>380</td>
-      <td>...</td>
-      <td>32</td>
-      <td>4500</td>
-      <td>3.8</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>poor</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>68</td>
-      <td>80</td>
-      <td>1.010</td>
-      <td>3</td>
-      <td>2</td>
-      <td>normal</td>
-      <td>abnormal</td>
-      <td>present</td>
-      <td>present</td>
-      <td>157</td>
-      <td>...</td>
-      <td>16</td>
-      <td>11000</td>
-      <td>2.6</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>poor</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>61</td>
-      <td>80</td>
-      <td>1.015</td>
-      <td>2</td>
-      <td>0</td>
-      <td>abnormal</td>
-      <td>abnormal</td>
-      <td>notpresent</td>
-      <td>notpresent</td>
-      <td>173</td>
-      <td>...</td>
-      <td>24</td>
-      <td>9200</td>
-      <td>3.2</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>poor</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 25 columns</p>
-</div>
-</div>
-
-<p>We will use this dataset to get a couple of variables (columns) and therefore a couple of distributions.</p>
-
-<p>Let’s start with the White Blood Cell Count, usually abbreviated as WBC.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'White Blood Cell Count'</span><span class="p">]</span>
-<span class="n">wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">three_randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">three_randoms</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/09/standard_scores_3_0.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.90388631, 0.82412237, 0.53515193])
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count      158.000000
-mean      8475.949367
-std       3126.880181
-min       3800.000000
-25%       6525.000000
-50%       7800.000000
-75%       9775.000000
-max      26400.000000
-Name: White Blood Cell Count, dtype: float64
+<p>Remember, this is a value of type <code class="highlighter-rouge">array</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">three_randoms</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Compare this to Hemoglobin concentrations:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'Hemoglobin'</span><span class="p">]</span>
-<span class="n">hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin'</span><span class="p">);</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/09/standard_scores_6_0.png" alt="png" /></p>
+<p>We can compare all the values in this array to a single number.   In that case, we get a new array, with a <code class="highlighter-rouge">True</code> value in the positions where the comparison was True, and <code class="highlighter-rouge">False</code> values otherwise:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms_compared</span> <span class="o">=</span> <span class="n">three_randoms</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">randoms_compared</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    158.000000
-mean      13.687342
-std        2.882204
-min        3.100000
-25%       12.600000
-50%       14.250000
-75%       15.775000
-max       17.800000
-Name: Hemoglobin, dtype: float64
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False])
 </code></pre></div></div>
 
-<p>Notice that we can’t easily plot these two on the same axes, because their units are so different.</p>
+<p>We also found that we can apply functions to these arrays.  For example, we found that <code class="highlighter-rouge">np.count_nonzero</code> returns the number of elements that are not 0.</p>
 
-<p>We could try and fix this by subtracting the mean, as a center value, so the values are now <em>deviations</em> from the mean.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc_deviations</span> <span class="o">=</span> <span class="n">wbc</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
-<span class="n">wbc_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count deviations'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">randoms_compared</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/09/standard_scores_10_0.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
-<span class="n">hgb_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin deviations'</span><span class="p">);</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/09/standard_scores_11_0.png" alt="png" /></p>
+<p>This works because the function considers <code class="highlighter-rouge">False</code> to be equal to 0 and <code class="highlighter-rouge">True</code> to be equal to 1:</p>
 
-<p>The deviations each have a mean very very close to zero, and therefore, they have the same center:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc_deviations</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_deviations</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(-1.8420145858692217e-13, 7.195369476051647e-16)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
-<p>We still cannot plot them on the same axes, because the WBC values have a very different <em>spread</em>.  They will completely dominate the x axis of the graph.  We can’t reasonably compare the WBC deviations to the Hemoglobin deviations, because they have such different units.</p>
-
-<p>We would like a measure of the spread of the distribution, so we can set the two distributions to have the same spread.</p>
-
-<h2 id="the-standard-deviation">The standard deviation</h2>
-
-<p>In the <a href="../08/mean_meaning">mean as predictor</a> section, we found that mean was the best value to use as a predictor, to minimize the sum of <em>squared</em> deviations.</p>
-
-<p>Maybe we could get an idea of the typical <em>squared</em> deviation, as a measure of spread?</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0   -2.487342
-1   -4.187342
-2   -2.887342
-3   -8.087342
-4   -5.987342
-5   -3.887342
-6   -1.187342
-7   -3.687342
-8   -3.187342
-9   -3.887342
-Name: Hemoglobin, dtype: float64
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq</span> <span class="o">=</span> <span class="n">hgb_deviations</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">hgb_dev_sq</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<h2 id="two-dimensions">Two-dimensions</h2>
+
+<p>The array <code class="highlighter-rouge">three_randoms</code> is a one dimensional array, with three elements.</p>
+
+<p>We can also create two-dimensional arrays.   Here is an array with 10 <em>rows</em> and 3 <em>columns</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">bigger_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     6.186869
-1    17.533831
-2     8.336743
-3    65.405097
-4    35.848261
-5    15.111426
-6     1.409780
-7    13.596489
-8    10.159148
-9    15.111426
-Name: Hemoglobin, dtype: float64
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.02596777, 0.9470903 , 0.87231221],
+       [0.86801308, 0.19408375, 0.49500772],
+       [0.40497925, 0.70997381, 0.30334715],
+       [0.04544569, 0.68891276, 0.45360271],
+       [0.73894637, 0.37386174, 0.56527314],
+       [0.95163925, 0.80949387, 0.47239711],
+       [0.11811301, 0.90871291, 0.74968087],
+       [0.28542697, 0.34889547, 0.92713794],
+       [0.60657067, 0.93029806, 0.25293416],
+       [0.15248105, 0.63277876, 0.96330331]])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'HGB squared deviations'</span><span class="p">)</span>
+<p>Notice that we made the one-dimensional array with <code class="highlighter-rouge">size=3</code>.  We make the two-dimensional array by passing two numbers to <code class="highlighter-rouge">size</code>.  We pass two numbers with something like <code class="highlighter-rouge">size=(10, 3)</code>, as we did above.  We haven’t covered this way of specifying a pair of numbers yet.  For the moment, we hope you will take our word for it.</p>
+
+<p>You can probably predict what will happen when we compare this two-dimensional array to 0.5.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_compared</span> <span class="o">=</span> <span class="n">bigger_array</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">bigger_compared</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'HGB squared deviations')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False, False],
+       [False,  True,  True],
+       [ True, False,  True],
+       [ True, False,  True],
+       [False,  True, False],
+       [False, False,  True],
+       [ True, False, False],
+       [ True,  True, False],
+       [False, False,  True],
+       [ True, False, False]])
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/09/standard_scores_20_1.png" alt="png" /></p>
+<p>As before, there is now a True at each position where there number was less than 0.5, with False everywhere else.</p>
 
-<p>The center, or typical value, of this distribution, could be the <em>mean</em>.</p>
+<p>Can you predict what will happen with <code class="highlighter-rouge">np.count_nonzero</code>?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_dev_sq</span><span class="p">)</span>
-<span class="n">hgb_dev_sq_mean</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
 </code></pre></div></div>
 
-<p>This is the <em>mean squared deviation</em>.  This is also called the <em>variance</em>.  Numpy has a function to calculate that in one shot:</p>
+<p>You can probably see that <code class="highlighter-rouge">np.count_nonzero</code> is counting the number of True values in any position in the array.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The mean squared deviation is the variance
-</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<h2 id="operations-on-axes">Operations on axes</h2>
+
+<p>What if we want to see how many True values there are in each column?</p>
+
+<p>To do this, we need the <code class="highlighter-rouge">axis</code> keyword to <code class="highlighter-rouge">np.count_nonzero</code>, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
 </code></pre></div></div>
 
-<p>The mean squared deviation is a good indicator of the typical squared deviation.  What should we used for some measure of the typical devation?</p>
+<p>You will see that we have one value per column, where each value is the count of True values in that column.</p>
 
-<p>We could take the square root of the mean squared deviation, like this:</p>
+<p>Why <code class="highlighter-rouge">axis=0</code>?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">hgb_dev_sq_mean</span><span class="p">)</span>
+<p>The array has two dimensions, and therefore, two <em>axes</em>.  The first axis
+is the rows, the second axis is the columns.</p>
+
+<p>Why <code class="highlighter-rouge">0</code>?  Python thinks of sequences as starting at position 0.  The
+element at position 0 is the first element in the sequence.  Thus,
+<code class="highlighter-rouge">axis=0</code> means the first axis.</p>
+
+<p>Now imagine looking down the first axis in our array.  The first axis is
+the rows, so we are looking down the rows.  First you see the first
+element in the first row, then you see the first element in the second
+row, and so on.  So, if we are doing a count of not-0 elements over the
+first axis (rows), we do this:</p>
+
+<ul>
+  <li>count the number of not-0 element going down the first element in the
+row, then</li>
+  <li>count the number of not-0 element going down the second element in the
+row, then</li>
+  <li>count the number of not-0 element going down the third element in the
+row.</li>
+</ul>
+
+<p>The result is three values, one for each element in the row.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
 </code></pre></div></div>
 
-<p>This is a measure of the spread of the distribution.  It is a measure of the typical or average deviation.</p>
+<p>Because of the reasoning above, these the counts for each column (there are 3 columns).</p>
 
-<p>It is also called the <em>standard deviation</em>.</p>
+<p>What if we want the counts for each row?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 2, 1, 1, 1, 2, 1, 1])
 </code></pre></div></div>
 
-<p>We can make our distribution have a standard center <em>and</em> a standard spread by dividing our mean-centered distribution, by the standard deviation.  Then the distribution will have a standard deviation very close to 1.</p>
-
-<p>This version of the distribution, with mean 0 and standard deviation of 1, is called the <em>standardized</em> distribution.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">standardized_hgb</span> <span class="o">=</span> <span class="n">hgb_deviations</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
-<span class="n">standardized_hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin')
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/09/standard_scores_30_1.png" alt="png" /></p>
-
-<p>We can make a function to do this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_hgb_again</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
-<span class="n">std_hgb_again</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin, again'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin, again')
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/09/standard_scores_33_1.png" alt="png" /></p>
-
-<p>If we do the same to the WBC, we can compare values of the distributions:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_wbc</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
-<span class="n">std_wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized White Blood Cell Count'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized White Blood Cell Count')
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/09/standard_scores_35_1.png" alt="png" /></p>
-
-<p>Every value in standardized units gives the deviation of the original value from its mean, in terms of the number of standard deviations.</p>
+<p><code class="highlighter-rouge">axis=1</code> asks for the count over the second axis.  If we look over the
+second axis, we look over the first element in the first row, then the
+second element in the first row, then the third element in the first
+row.  So, counting over <code class="highlighter-rouge">axis=1</code>, gives the counts for each row.   We
+get one count for each row, so 10 counts.</p>
 
           
         </section>
@@ -1548,13 +1326,11 @@ Name: Hemoglobin, dtype: float64
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/09/classification" class="pagination--pager" title="
-  Classification
-
+      <a href="/cfd2019/chapters/03/More_on_Arrays" class="pagination--pager" title="3.6 More on arrays
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/09/Nearest_Neighbors" class="pagination--pager" title="9.2 Nearest neighbors
+      <a href="/cfd2019/chapters/03/reply_supreme" class="pagination--pager" title="3.8 Reply to the Supreme Court
 ">Next</a>
     
   </nav>

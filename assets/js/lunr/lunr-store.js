@@ -99,7 +99,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/sub_expressions",
         "teaser":null},{
-        "title": "2.2 A simpler problem",
+        "title": "2.4 A simpler problem",
         "excerpt":"A simpler problem Imagine a family with four children. What is the probability that the family will have exactly three girls? There are various ways to answer this question. One way, is to usesimulation. Simulation makes a model of the problem. We use the model to generatesimulated data. If the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/three_girls",
@@ -109,7 +109,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/to_code",
         "teaser":null},{
-        "title": "2.3 Introduction to variables",
+        "title": "2.2 Introduction to variables",
         "excerpt":"Remember the problem in the first notebook. Alex and Billie are at a restaurant, getting ready to order. They don’t have much money, so they are calculating their expected bill before they order. Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/variables_intro",
@@ -124,7 +124,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Comparison",
         "teaser":null},{
-        "title": "3.7 More on arrays",
+        "title": "3.6 More on arrays",
         "excerpt":"More on Arrays It’s often necessary to compute something that involves data from more thanone array. If two arrays are of the same size, Python makes it easy to docalculations involving both arrays. For our first example, we return once more to the temperature data. Thistime, we create arrays of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/More_on_Arrays",
@@ -149,10 +149,15 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Strings",
         "teaser":null},{
-        "title": "3.11 Selecting with arrays",
+        "title": "3.10 Selecting with arrays",
         "excerpt":"Selecting values from an array import numpy as npnp.set_printoptions(precision=2, suppress=True)We use arrays all the time, in data science. One of the most common tasks we have to do on arrays, is to select values. We do this with array slicing. We do array slicing when we follow the array variable...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/array_indexing",
+        "teaser":null},{
+        "title": "3.7 Arrays and axes",
+        "excerpt":"We return to Numpy arrays. Arrays can be two-dimensional. An array with two dimensions has rows and columns. The rows andcolumns are the two axes of the array. We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.Starting with one dimension # We need Numpyimport...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes",
         "teaser":null},{
         "title": "3. Data types",
         "excerpt":"Types of things Every value in Python, has a type. We can show what type of thing something is, by calling type, like this: type(1)inta = 1type(a)intIf you get stuck in some code, it is often useful to check what the type of your values are. We will use multiple...","categories": [],
@@ -184,12 +189,12 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/numpy_append",
         "teaser":null},{
-        "title": "3.9 Reply to the Supreme Court",
+        "title": "3.8 Reply to the Supreme Court",
         "excerpt":"Our task has been to reply to the Supreme Court ontheir judgment in the appeal of Robert Swain. Remember, Robert Swain appealed his death sentence, for rape, on thebasis that the jury selection was biased against black people. His trial had a jury pool, of 100, from which the jury...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/reply_supreme",
         "teaser":null},{
-        "title": "3.10 Revision - three girls",
+        "title": "3.9 Revision - three girls",
         "excerpt":"Three girls In which we solve the three-girls-in-family problem. The problem If there is a family of four children, what is the chance thatfamily will consist of exactly three girls and one boy? We decided we could simulate this situation, by taking fourrandom numbers, between 0 and 1. For each...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/three_girls",
