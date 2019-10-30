@@ -28,11 +28,53 @@ jupyter:
 import numpy as np
 ```
 
+## Bad fors
+
 You may remember you can print a number (or anything else) with the `print` function, like this:
 
 ```{python}
 print(5)
 ```
+
+This for loop is meant to print out the numbers from 0 through 5, but it isn't
+right yet.  Fix:
+
+```{python}
+for i in range(5):
+    print(i)
+```
+
+This for loop is meant to print out the numbers fro 2 through 5, but it
+isn't right yet.  Fix:
+
+```{python}
+for i in range(5):
+    print(i)
+```
+
+This for loop is meant to print out the numbers from -5 through 4, but it
+does not work as it should.  Fix:
+
+```{python}
+for my_var in range(-5, 5):
+    print(i)
+```
+
+This for loop is meant to print out the numbers from 10 through 15, but it gives an error.  See if you can spot the problem.  Fix:
+
+```{python tags=c("raises-exception")}
+for v in range(10, 16)
+    print(v)
+```
+
+This for loop is meant to print out the numbers from 10 through 25, in steps of 5, but it gives an error.  See if you can spot the problem.  Fix:
+
+```{python tags=c("raises-exception")}
+for i in range(10, 26, 5)
+print(i)
+```
+
+## More fors
 
 Use a `for` loop to print out all the numbers from 3 through 7, one number on each line.
 
@@ -40,11 +82,11 @@ Use a `for` loop to print out all the numbers from 3 through 7, one number on ea
 # Your code here.
 ```
 
-Make an empty list called `my_list`.  Use a `for` loop to append all the numbers between 0 and 10 (inclusive) to `my_list`.  Show the list at the end of the loop.
+Make an empty array called `my_array`.  Use a `for` loop to append all the numbers between 0 and 10 (inclusive) to `my_array`.  Show the array at the end of the loop.
 
 ```{python}
 # Your code here.
-my_list = []
+my_array = np.array([])
 ```
 
 Make a new variable `total` equal to 0. Use a `for` loop to add all the
