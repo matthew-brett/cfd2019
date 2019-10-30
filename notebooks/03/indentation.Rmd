@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
 <meta property="og:title" content="Coding for Data - 2019 edition">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/05/indentation.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/03/indentation.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/05/indentation.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/03/indentation.Rmd">
 
 
 
