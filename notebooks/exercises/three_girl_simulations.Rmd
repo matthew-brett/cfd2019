@@ -183,38 +183,46 @@
         
         ## Exercises on the three-girl simulation problem
 
-These exercises follow on from the [three girls section](../03/three_girls).
+These exercises follow on from the three girls solution in [leaping
+ahead](../03/leaping_ahead), and the [reply to the Supreme
+Court](../03/reply_supreme).
+
+You may want to refer back to those pages for inspiration.
 
 Run this cell first:
 
 ```{python}
+# Load the Numpy package, and rename to "np"
 import numpy as np
 ```
 
-### 10000 families
+### Three girls in a family of four
 
-Now you have seen how to simulate 10 families, with a 2D array.
-Copy and paste from the code above, into the cell below, and
-change what you need to change, to simulate 10000 families of
-4 children.  It will have these steps:
-
-* make a 2D array of random numbers between 0 and 1, with 10000
-  rows and 4 columns.
-* make a new array of the same shape, with `True` where the random
-  number corresponds to "girl" and `False` when the number corresponds to "boy"
-* count the number of girls (`True` values) in each row.
-* count the number of times there were exactly 3 girls.
-* divide by the number of rows to give an estimate for the
-  proportion of 4-child families with exactly 3 girls.
+Remember the solution to this problem, from [leaping ahead](../03/leaping_ahead):
 
 ```{python}
-# Simulate 10000 families of 4 children.
-# Show proportion with 3 girls.
-# Your code below
+# Reset the counts array to empty.
+counts = np.array([])
+
+# Repeat the indented stuff 10000 times.
+for i in np.arange(10000):
+    # The procedure for one family.
+    family = np.random.randint(0, 2, 4)
+    count = np.sum(family)
+    # Store the count in the counts array.
+    counts = np.append(counts, count)
+
+# True where counts has the value 3, False otherwise.
+has_3_girls = counts == 3
+
+# Number of counts values equal to 3.
+n_3_girls = np.count_nonzero(has_3_girls)
+
+# Estimate and show probability of 3 girls.
+n_3_girls / 10000
 ```
 
-
-### No girls in a family of 4.
+### No girls in a family of four
 
 Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.
 
@@ -227,7 +235,10 @@ For extra points - the answer above is easier to work out with
 probability than the chance of three girls.  What's the exact answer, from probability?
 
 
-### 3 girls in a family of 5.
+Edit this code cell to give your answer.
+
+
+### Three girls in a family of five
 
 Simulate the chances that a family with 5 children will have
 exactly 3 girls.
@@ -239,12 +250,14 @@ exactly 3 girls.
 ```
 
 
-### 3 or fewer girls in a family of 5.
+### Three or fewer girls in a family of five
 
 Simulate the chances that a family with 5 children will have 3 or
 fewer girls.
 
-Hint: `<=` tests whether the thing on the left is *less than or equal to* the thing on the right.
+Hint: you may remember from the [Comparison page](../03/Comparison) that `<=`
+tests whether the thing on the left is *less than or equal to* the thing on
+the right.
 
 ```{python}
 3 <= 4
@@ -266,13 +279,8 @@ my_array <= 2
 Hints done, now:
 
 ```{python}
-# Proportion of families of 5 children with 3 or fewer girls.
-# Your code below
-```
-
-```{python}
 # Simulate 10000 families of 5 children.
-# Show proportion with 3 girls.
+# Show the proportion of families of 5 children with 3 or fewer girls.
 # Your code below
 ```
 
@@ -288,6 +296,22 @@ UK](https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-bri
 is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.
 
 With that probability of having a girl, what are the chances of having exactly three girls in a family of four?
+
+Hint 1: you may want to use `np.random.uniform`.  Check the help with `np.random.uniform?` followed by Shift-Enter in a new cell.  It works like this:
+
+```{python}
+# An array of four random numbers between 0 and 1.
+np.random.uniform(0, 1, size=4)
+```
+
+Hint 2: Let's say I have a random number `x` between 0 and 1:
+
+```{python}
+x = np.random.uniform(0, 1)
+x
+```
+
+The probability that that `x` will be less than - say - 0.25, is 0.25.
 
 ```{python}
 # Simulate 10000 familes of 4 children.

@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>7.1 Functions - Coding for Data - 2019 edition</title>
-<meta name="description" content="Functions">
+<!-- begin _includes/seo.html --><title>5.2 lists - Coding for Data - 2019 edition</title>
+<meta name="description" content="Lists">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="7.1 Functions">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/functions">
+<meta property="og:title" content="5.2 lists">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/05/lists">
 
 
-  <meta property="og:description" content="Functions">
+  <meta property="og:description" content="Lists">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/functions">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/05/lists">
 
 
 
@@ -1071,15 +1071,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="7.1 Functions">
-      <meta itemprop="description" content="Functions">
+      <meta itemprop="headline" content="5.2 lists">
+      <meta itemprop="description" content="Lists">
       <meta itemprop="datePublished" content="October 30, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">7.1 Functions
+            <h1 id="page-title" class="page__title" itemprop="headline">5.2 lists
 </h1>
           </header>
         
@@ -1095,21 +1095,20 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#functions-are-like-recipes">Functions are like recipes</a></li>
-  <li><a href="#revision-on-variables">Revision on variables</a></li>
-  <li><a href="#defining-a-function">Defining a function</a></li>
-  <li><a href="#function-world">Function world</a>
+  <li><a href="#creating-a-list">Creating a list</a></li>
+  <li><a href="#lists-and-arrays">Lists and arrays</a></li>
+  <li><a href="#differences-between-lists-and-arrays">Differences between lists and arrays</a>
     <ul>
-      <li><a href="#variables-defined-in-functions-have-local-scope">Variables defined in functions have local scope</a></li>
-      <li><a href="#the-function-has-limited-access-to-variables-outside-the-function">The function has limited access to variables outside the function</a></li>
+      <li><a href="#a-list-can-contain-a-mix-of-types">A list can contain a mix of types</a></li>
     </ul>
   </li>
-  <li><a href="#python-checks-the-function-signature">Python checks the function signature</a></li>
-  <li><a href="#function-arguments-are-expressions">Function arguments are expressions</a></li>
-  <li><a href="#functions-can-have-many-arguments">Functions can have many arguments</a></li>
-  <li><a href="#functions-can-have-no-arguments">Functions can have no arguments</a></li>
-  <li><a href="#without-a-return-statement-functions-return-none">Without a return statement, functions return None</a></li>
-  <li><a href="#end-of-the-introduction">End of the introduction</a></li>
+  <li><a href="#a-list-is-always-one-dimensional">A list is always one-dimensional</a>
+    <ul>
+      <li><a href="#lists-can-contain-lists">Lists can contain lists</a></li>
+    </ul>
+  </li>
+  <li><a href="#appending-to-a-list">Appending to a list</a></li>
+  <li><a href="#what-do-these-square-brackets-mean">What do these square brackets mean?</a></li>
 </ul>
     </nav>
   </aside>
@@ -1120,461 +1119,334 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/07/functions.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F07%2Ffunctions.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/05/lists.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F05%2Flists.ipynb">Interact</a>
 
 
-          <h1 id="functions">Functions</h1>
+          <h1 id="lists">Lists</h1>
 
-<p>We have already used functions.</p>
+<p>The data structures that we use most often in data science are:</p>
 
-<p>For example, we have used the <code class="highlighter-rouge">round</code> function:</p>
+<ul>
+  <li>arrays, from <code class="highlighter-rouge">numpy</code>;</li>
+  <li>data frames, from <code class="highlighter-rouge">pandas</code>.</li>
+</ul>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">3.1415</span>
+<p>There is another data structure for containing sequences of values</p>
+<ul>
+  <li>the <code class="highlighter-rouge">list</code>.</li>
+</ul>
+
+<p>You have already seen these in passing, when we created arrays.  Now we cover them in more detail.</p>
+
+<h2 id="creating-a-list">Creating a list</h2>
+
+<p>You make a list like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">my_list</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Call the "round" function
-</span><span class="n">b</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
-</code></pre></div></div>
-
-<p>We will soon find that we often need to define our own functions.
-Before we do, we need to go into more detail about what functions are.</p>
-
-<h2 id="functions-are-like-recipes">Functions are like recipes</h2>
-
-<p>Thanks to <a href="https://www.inferentialthinking.com/chapters/08/Functions_and_Tables">the Berkeley
-team</a>
-for this metaphor.</p>
-
-<p>A recipe is the <em>procedure</em> to go from <em>ingredients</em> to a <em>meal</em>.</p>
-
-<p>A function is the <em>procedure</em> to go from the <em>arguments</em> to the
-<em>return value</em>.</p>
-
-<p>For example, I might have a recipe with the procedure to go from the
-ingredients: two eggs; butter; and cheese - to the meal - a cheese
-omelette.</p>
-
-<p>The function <code class="highlighter-rouge">range</code> has the procedure to go from the arguments - two
-numbers, to the return value, which is the value of the first argument
-rounded to the number of digits specified in the second.</p>
-
-<p>I could call my recipe “two egg cheese omelette”, or “recipe number
-4”.  Whatever I called it, it would be the same recipe.  I might
-prefer a name that describes what the recipe makes, to help me
-remember.</p>
-
-<p>Likewise, the name <code class="highlighter-rouge">range</code> refers to a procedure above.  I could give it another name, like <code class="highlighter-rouge">my_function</code>, but <code class="highlighter-rouge">range</code> is a good name, because it helps me remember what the procedure does.</p>
-
-<p>I say <code class="highlighter-rouge">range</code> has a procedure, but we can’t see what that procedure
-is, it’s buried inside the internal workings of Python.</p>
-
-<p>Now we are going to write our own function, where we can see the
-procedure.</p>
-
-<h2 id="revision-on-variables">Revision on variables</h2>
-
-<p>Here is an <em>assignment statement</em>:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-</code></pre></div></div>
-
-<p>As we know, we can read this as “The variable ‘a’ gets the value 2”.</p>
-
-<p>We also know that we have, on the left, a variable name, ‘a’, and on
-the right, an expression, that gives a value.</p>
-
-<p>In this case, the expression on the right is <code class="highlighter-rouge">2</code>. Python evaluates
-this expression, to make its own internal representation of the
-integer 2.  Call this: IR of int 2.</p>
-
-<p>After Python executes this statement, the name “a” points to the IR of int 2.</p>
-
-<p>To continue the revision:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">4</span>
-</code></pre></div></div>
-
-<p>The right side <code class="highlighter-rouge">a * 4</code> is an expression.  Python evaluates the
-expression.  First it gets the value of <code class="highlighter-rouge">a</code>.  This is the IR of int 2.
-Next it gets the value of <code class="highlighter-rouge">4</code>.  This is the IR of int 4. Then it
-multiplies these results to get an IR of int 8.</p>
-
-<p>“b” now points to the IR of int 8.</p>
-
-<p>Finally:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
-</code></pre></div></div>
-
-<p>“a” no longer points the IR of int 2, it points to the IR of int 3.</p>
-
-<p>What value does “b” have now?</p>
-
-<p>The same value as it had before.  It pointed to the IR of int
-8 before.  Changing <code class="highlighter-rouge">a</code> has no effect on <code class="highlighter-rouge">b</code>.</p>
-
-<h2 id="defining-a-function">Defining a function</h2>
-
-<p>We define our function called <code class="highlighter-rouge">double</code>.  It accepts one argument
-(ingredient), call that <code class="highlighter-rouge">x</code>.  It’s procedure is to multiply the
-argument by 2.  The return value is the argument multiplied by 2.</p>
-
-<p>Here it is:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="n">d</span>
-</code></pre></div></div>
-
-<p>Let’s look at the first line:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def double(x):
-</code></pre></div></div>
-
-<p>The first word <code class="highlighter-rouge">def</code> tells Python we are defining a function.</p>
-
-<p>The next word <code class="highlighter-rouge">double</code> is the name we will give to our function.</p>
-
-<p>Between the parentheses, we have the function signature.  This specifies how many arguments the function has.  In our case, there is only one argument, named <code class="highlighter-rouge">x</code>.</p>
-
-<p>Finally there is a colon <code class="highlighter-rouge">:</code> signifying the end of the signature.</p>
-
-<p>As in <a href="../05/iteration">for loops</a>, the colon signifies that the next
-bit of code must be <a href="../03/indentation">indented</a>.</p>
-
-<p>Here is the indented part:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    d = x * 2
-    return d
-</code></pre></div></div>
-
-<p>This is the <em>body</em> of the function.   It gives the function procedure; it defines what the function will do to its arguments, and what result it should return.</p>
-
-<p>For example, here we <em>call</em> the function we just created:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
-</code></pre></div></div>
-
-<p>Notice that <code class="highlighter-rouge">double(4)</code> is a <a href="../02/Calls">call expression</a>.</p>
-
-<p>So, what just happened?</p>
+<p>More formally, you define a list like this:</p>
 
 <ol>
-  <li>Python finds what <code class="highlighter-rouge">double</code> points to.  It points to internal
-representation of our function (procedure).</li>
-  <li>Next it sees the parenthesis <code class="highlighter-rouge">(</code> and sees that we want to <em>call</em>
-our function.</li>
-  <li>Now Python knows we want to call the function, it knows that
-there are one or more <em>expressions</em> inside the parentheses.  In
-our case there is one, <code class="highlighter-rouge">4</code>.  As usual, it evaluates this
-expression to the IR of int 4.</li>
-  <li>
-    <p>Now Python does the <em>call</em>.  To do this it:</p>
-
-    <ol>
-      <li>Puts itself into <em>function world</em> (more on this later).</li>
-      <li>Sets the new variable <code class="highlighter-rouge">x</code> to have the value IR of int 4, from
-above.</li>
-      <li>Executes the code in the function body (procedure).</li>
-      <li>The first line <code class="highlighter-rouge">d = x * 2</code> is an assignment statement.  <code class="highlighter-rouge">x</code>
-evaluates to IR of int 4, 2 evaluates to IR of int 2, so <code class="highlighter-rouge">d</code>
-has the value IR of int 8.  This is how the statement would
-work anywhere in Python, function body or not.</li>
-      <li>The next line starts with <code class="highlighter-rouge">return</code>.  This is a <em>return
-statement</em>. When Python sees a <code class="highlighter-rouge">return</code> statement, it evaluates
-the expression to the right, to get the <em>return value</em>, then</li>
-      <li>Pulls itself out of <em>function world</em>.</li>
-      <li>Gives the <em>return value</em> as the final result of the call
-expression.  This is IR of int 8.</li>
-    </ol>
-  </li>
+  <li>the open square bracket character <code class="highlighter-rouge">[</code>, followed by</li>
+  <li>a sequence of zero of more values, separated by commas, followed by</li>
+  <li>the close square bracket character <code class="highlighter-rouge">]</code>.</li>
 </ol>
 
-<p>We can run the function with any values for the argument.</p>
+<p>We defined the list above with <code class="highlighter-rouge">[1, 2, 3]</code>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<p>Here is a list with one value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">]</span>
+<span class="n">another_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[99]
+</code></pre></div></div>
+
+<p>As implied above, the list can be empty, in which case there is nothing between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">empty_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<p>A list is of type <code class="highlighter-rouge">list</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
+</code></pre></div></div>
+
+<h2 id="lists-and-arrays">Lists and arrays</h2>
+
+<p>We will soon need the Numpy library for the examples:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>A list is a container, like an array.  Like an array, it contains an
+ordered sequence of values.  Like an array, it can be empty, or it can
+contain any number of values.</p>
+
+<p>You can <em>convert a list into an array</em>, like this</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[4, 5, 6]
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([4, 5, 6])
+</code></pre></div></div>
+
+<p>In fact, you have already seen us do this, as a convenient way to
+create a new array - for example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define a list and immediately convert to an array
+</span><span class="n">another_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">another_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10, 20, 30])
+</code></pre></div></div>
+
+<p>You can also <em>convert an array into a list</em>, using the <code class="highlighter-rouge">list</code> function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">list</span><span class="p">(</span><span class="n">another_array</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[10, 20, 30]
+</code></pre></div></div>
+
+<p>Like arrays, you can <em>index</em> into a list, to get the individual values.  Consider this list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Like arrays (and every other kind of sequence in Python), the first element is at index (offset) 0:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the first value
+</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
-<p>This time round, everything happened in the same way as before, except
-Python found the <em>argument</em> inside the parentheses evaluated to IR of
-int 2.  Thus, in <em>function world</em>, <code class="highlighter-rouge">x</code> gets the value IR of 2, and the <em>return value</em> becomes IR of int 4.</p>
+<p>Accordingly, the third element is at index (offset) 2:</p>
 
-<h2 id="function-world">Function world</h2>
-
-<p>I cryptically used the term <em>function world</em> for the state that Python goes into when it calls a function.</p>
-
-<p>This state has two important features.</p>
-
-<h3 id="variables-defined-in-functions-have-local-scope">Variables defined in functions have local scope</h3>
-
-<p>The first feature of function world is that all variables defined
-inside function world, get thrown away when we leave function world.</p>
-
-<p>We can see this if we run the following code in a notebook cell.  This
-code runs in our usual top-level world, and so, not inside a function.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span>
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-10-e983f374794d&gt; in &lt;module&gt;
-----&gt; 1 d
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError: name 'd' is not defined
-</code></pre></div></div>
-
-<p>Notice that, in the function, we set <code class="highlighter-rouge">d</code> to point to the result of <code class="highlighter-rouge">x * 2</code>.  We called the function a couple of times, so we executed this statement a couple of times.  But the <code class="highlighter-rouge">d</code> in the function, gets thrown away, when we come back from function world.</p>
-
-<p>In technical terms, this is called <em>scope</em>.   The <em>scope</em> of
-a variable, is the pieces of code in which the variable is visible.
-<code class="highlighter-rouge">d</code> can only be seen inside the function.  Its scope is the function.  We can also say that its scope is piece of code where it is defined, that is, it has <em>local</em> scope.</p>
-
-<p>The same is true for <code class="highlighter-rouge">x</code>, the argument variable:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span>
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-11-6fcf9dfbd479&gt; in &lt;module&gt;
-----&gt; 1 x
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError: name 'x' is not defined
-</code></pre></div></div>
-
-<h3 id="the-function-has-limited-access-to-variables-outside-the-function">The function has limited access to variables outside the function</h3>
-
-<p>We have not seen this yet, but function world has limited access to variables defined at the top level.</p>
-
-<p>We won’t go into much detail here, but the summary is that functions can see the values of variables defined at the top level, but they can’t change what top level variables point to.  For example, say you have a variable <code class="highlighter-rouge">a</code> at the top level.  A function can see and use the value of <code class="highlighter-rouge">a</code>, but it cannot change top-level <code class="highlighter-rouge">a</code> to point to a different value.   We will come back to this later.</p>
-
-<h2 id="python-checks-the-function-signature">Python checks the function signature</h2>
-
-<p>The signature for <code class="highlighter-rouge">double</code> is <code class="highlighter-rouge">(a)</code>.  That tells Python to expect one
-and only one argument.  If we try to call it with no arguments
-(nothing inside the parentheses), we get an error:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-021efdc17f44&gt; in &lt;module&gt;
-----&gt; 1 double()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() missing 1 required positional argument: 'x'
-</code></pre></div></div>
-
-<p>If we try and call it with more than one argument, we get an error.  We separate arguments with commas.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-13-00307dcfcdd5&gt; in &lt;module&gt;
-----&gt; 1 double(2, 3)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() takes 1 positional argument but 2 were given
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-14-deb0fdbc1222&gt; in &lt;module&gt;
-----&gt; 1 double(2, 3, 4)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() takes 1 positional argument but 3 were given
-</code></pre></div></div>
-
-<h2 id="function-arguments-are-expressions">Function arguments are expressions</h2>
-
-<p>Remember that Python knows that the arguments to a function are
-expressions, and evaluates them, before running the function.</p>
-
-<p>For example:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
-</code></pre></div></div>
-
-<p>All the procedure is the same as above.  Python evaluates the
-expression <code class="highlighter-rouge">2 + 3</code>, to get IR of int 5, then goes into function world,
-sets <code class="highlighter-rouge">x</code> to have the value IR of int 5, and continues from there.</p>
-
-<h2 id="functions-can-have-many-arguments">Functions can have many arguments</h2>
-
-<p>Now we define a new function:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-</code></pre></div></div>
-
-<p>The new thing here is that the function signature <code class="highlighter-rouge">(a, b)</code> has two arguments, separated by commas.  We need to give the function two values, when we call it:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the third value
+</span><span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
 </code></pre></div></div>
 
-<p>If we do not give it exactly two arguments, we get an error.</p>
+<h2 id="differences-between-lists-and-arrays">Differences between lists and arrays</h2>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<h3 id="a-list-can-contain-a-mix-of-types">A list can contain a mix of types</h3>
+
+<p>The elements in a list can be of any type, and there can be many different types in a list.  For example, here is a list that mixes integers, floating point values, and strings.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s">'Ho ho ho'</span><span class="p">]</span>
+<span class="n">mixed_list</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1, 'Ho ho ho']
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<p>The elements in an array must all be of the same type - say - all
+numbers, or all strings.  If we now create an array from this list, Numpy will try and find a type that works for all the elements, and will convert the elements to that type:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unmixed_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mixed_list</span><span class="p">)</span>
+<span class="n">unmixed_array</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-18-64960a6c4018&gt; in &lt;module&gt;
-----&gt; 1 multiply(2)
-
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['1', '1.1', 'Ho ho ho'], dtype='&lt;U32')
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() missing 1 required positional argument: 'b'
+<p>Notice that Numpy has converted all the elements to strings, as you can see from the quotes around the values.</p>
+
+<h2 id="a-list-is-always-one-dimensional">A list is always one-dimensional</h2>
+
+<p>You have already seen that an array can have two (or more) dimensions.  Here is a two-dimensional array of random numbers:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">two_d_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">two_d_array</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.99088945, 0.40117229, 0.14229089],
+       [0.151262  , 0.93252174, 0.45384583],
+       [0.16908648, 0.1994969 , 0.97077281],
+       [0.20885273, 0.40019192, 0.27822629],
+       [0.87493618, 0.35252061, 0.78758106]])
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+<p>Lists only have one dimension.</p>
+
+<h3 id="lists-can-contain-lists">Lists can contain lists</h3>
+
+<p>You may be able to see a way of making a list that is rather like an
+array with two dimensions.  Remember that a list can contain elements
+of <em>any type</em>.  That means that a list can contain elements of type
+<code class="highlighter-rouge">list</code>. Here is a list where the first element is also a list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">small_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">funky_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">small_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+<span class="n">funky_list</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[21, 22, 23], 1, 1.1]
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-19-9581b07c2e6f&gt; in &lt;module&gt;
-----&gt; 1 multiply(2, 3, 4)
+<p>As usual, I can get the first element of <code class="highlighter-rouge">funky_list</code> by indexing:</p>
 
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">element_at_0</span> <span class="o">=</span> <span class="n">funky_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">element_at_0</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() takes 2 positional arguments but 3 were given
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[21, 22, 23]
 </code></pre></div></div>
 
-<h2 id="functions-can-have-no-arguments">Functions can have no arguments</h2>
+<p>That first element is a list.  As usual, I can index in that first element too.  Here I ask for the second element from <code class="highlighter-rouge">element_at_0</code>:</p>
 
-<p>Perhaps the recipe analogy breaks down here, but sometimes functions take no arguments.  For example:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">element_at_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Notice - nothing between the parentheses
-</span>
-<span class="k">def</span> <span class="nf">biased_coin</span><span class="p">():</span>
-    <span class="c1"># A single random number
-</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
-    <span class="c1"># A biased coin
-</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.45</span>
-    <span class="k">return</span> <span class="n">result</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22
 </code></pre></div></div>
 
-<p>When we call the function, we have no arguments, so no expressions between the parentheses.</p>
+<p>Putting that all together in one line, I can get the second element of the first element with:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">funky_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22
 </code></pre></div></div>
 
-<p>As you would expect by now, if we try and send an argument, Python will complain:</p>
+<p>Read this carefully from left to right.  <code class="highlighter-rouge">funky_list</code> is the initial
+list.  The <code class="highlighter-rouge">[0]</code> after <code class="highlighter-rouge">funky_list</code> gives me the first element of that
+list. The <code class="highlighter-rouge">[1]</code> after that, gives me the second element from the result
+of the previous expressions. <code class="highlighter-rouge">funky_list[0][1]</code> puts several
+expressions together in sequence; this is a very common pattern that
+you will see often in Python programs. Learning to read them carefully
+is one of the skills you will pick up, as you learn Python, and data
+science.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">(</span><span class="mf">0.45</span><span class="p">)</span>
+<h2 id="appending-to-a-list">Appending to a list</h2>
+
+<p>You have already seen <em>methods</em>.  These are functions attached to
+values.  For example, you have seen that a data frame, has a <code class="highlighter-rouge">count</code>
+method, that, when called, gives the number of rows in the data frame.</p>
+
+<p>Lists have several very useful methods.  One of the most useful is <code class="highlighter-rouge">append</code>.   Use it to append values to a list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty list
+</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">my_list</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<p>Append a value to the empty list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">my_list</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-23-256c7c6a08cf&gt; in &lt;module&gt;
-----&gt; 1 biased_coin(0.45)
-
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1]
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: biased_coin() takes 0 positional arguments but 1 was given
+<p>Append another value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">my_list</span>
 </code></pre></div></div>
 
-<h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>
-
-<p>Our functions so far all have a <code class="highlighter-rouge">return</code> statement.  This is not true of every function.</p>
-
-<p>If your function does not have a return statement, the function returns the value <a href="none">None</a>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">silent_addition</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1]
 </code></pre></div></div>
 
-<p>Notice that the body of this function has no <code class="highlighter-rouge">return</code> statement.  When we call it, it returns <code class="highlighter-rouge">None</code>:</p>
+<p>And another:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">silent_addition</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">result</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'Ho ho ho'</span><span class="p">)</span>
+<span class="n">my_list</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="ow">is</span> <span class="bp">None</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1, 'Ho ho ho']
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<p>For some more operations with lists, see <a href="../extra/more_on_lists">More on
+lists</a>.</p>
+
+<h2 id="what-do-these-square-brackets-mean">What do these square brackets mean?</h2>
+
+<p>You have seen two uses of square brackets on this page.</p>
+
+<p>The first use, is where the opening square bracket is the start of an expression for a new list, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
 
-<h2 id="end-of-the-introduction">End of the introduction</h2>
+<p>The <code class="highlighter-rouge">[</code> is the start of the expression, because the line above is an
+assignment statement, with a variable name, followed by <code class="highlighter-rouge">=</code> followed by an expression.  The expression is <code class="highlighter-rouge">[1, 2, 3]</code>, and the <code class="highlighter-rouge">[</code> is the first character in the expression.</p>
 
-<p>That’s it for the introduction.  For a less basic description, have
-a look at the <a href="../extra/data8_functions">Berkeley introduction to
-functions</a>.</p>
+<p>The second use, is to ask Python to get a value from another value.
+Technically, this use is called <em>indexing</em>. For example, we do this
+when we index into a list:</p>
 
-<p>Now try the <a href="../exercises/function_exercises">exercises</a>.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_value</span> <span class="o">=</span> <span class="n">a_new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Here the <code class="highlighter-rouge">[</code> refers back to <code class="highlighter-rouge">a_new_list</code>.  It tells Python “please get
+a value from <code class="highlighter-rouge">a_new_list</code>”.  Between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code> is the
+information that Python must use to get the value.</p>
+
+<p>Here is another example of square brackets in use:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Which use of square brackets is that?  List creation, or indexing?
+Why?</p>
+
+<p>How about:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+</code></pre></div></div>
+
+<p>? Why?  Or:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">101</span><span class="p">,</span> <span class="s">'one oh one'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>?</p>
+
+<p>Remember the <a href="../04/data_frame_intro">data frame introduction</a>?  In
+that you saw</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp = gender_data['gdp']
+</code></pre></div></div>
+
+<p>Which use of square brackets was that?</p>
+
+<p>Look through the <a href="../04/data_frame_intro">data frame introduction</a>
+page.  There are several other examples of the use of square brackets.  Which use are they?</p>
+
+<p>Now look at <a href="../03/More_on_Arrays">More on arrays</a>.   Which uses do you see there?</p>
 
           
         </section>
@@ -1591,11 +1463,11 @@ functions</a>.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/07/none" class="pagination--pager" title="7.2 None
+      <a href="/cfd2019/chapters/05/population_permutation" class="pagination--pager" title="5.1 Population and permutation
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/07/functions_as_values" class="pagination--pager" title="7.1 Functions as values
+      <a href="/cfd2019/chapters/05/indentation" class="pagination--pager" title="5.4 Indentation, indentation
 ">Next</a>
     
   </nav>

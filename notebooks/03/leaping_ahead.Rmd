@@ -236,6 +236,7 @@ We can do this again in a single cell, like this:
 # A second family
 family = np.random.randint(0, 2, 4)
 count = np.sum(family)
+
 # Store the count in the counts array.
 counts = np.append(counts, count)
 counts
@@ -247,6 +248,7 @@ To add another family, we just repeat the same:
 # A third family
 family = np.random.randint(0, 2, 4)
 count = np.sum(family)
+
 # Store the count in the counts array.
 counts = np.append(counts, count)
 counts
@@ -254,11 +256,13 @@ counts
 
 Obviously this is getting a bit boring and repetitive. Surely we can do better.
 
-Yes indeed, we can use a *for loop*.  Here's a preview:
+Yes indeed, we can use a *for loop*.  We will see much more of for loops [very
+soon](Iteration).  Here's a preview:
 
 ```{python}
 # Reset the counts array to empty.
 counts = np.array([])
+
 # Repeat the indented stuff 10000 times.
 for i in np.arange(10000):
     # The procedure for one family.
@@ -321,6 +325,7 @@ This means that `count_nonzero` returns the number of True values in a Boolean a
 ```{python}
 # The Boolean array, with True where counts equal to 3, False otherwise.
 has_3_girls = counts == 3
+
 # Number of counts values equal to 3.
 n_3_girls = np.count_nonzero(has_3_girls)
 n_3_girls
@@ -330,6 +335,34 @@ Finally we estimate the probability by dividing the number of times we saw 3 by 
 
 ```{python}
 # Estimate probability of 3 girls.
+n_3_girls / 10000
+```
+
+## The whole thing
+
+Here then is the whole solution to three girl problem.
+
+It is make from the combination of the code in the cells above.
+
+```{python}
+# Reset the counts array to empty.
+counts = np.array([])
+
+# Repeat the indented stuff 10000 times.
+for i in np.arange(10000):
+    # The procedure for one family.
+    family = np.random.randint(0, 2, 4)
+    count = np.sum(family)
+    # Store the count in the counts array.
+    counts = np.append(counts, count)
+
+# True where counts has the value 3, False otherwise.
+has_3_girls = counts == 3
+
+# Number of counts values equal to 3.
+n_3_girls = np.count_nonzero(has_3_girls)
+
+# Estimate and show probability of 3 girls.
 n_3_girls / 10000
 ```
 

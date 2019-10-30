@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-30T16:42:33+00:00">
+  <meta property="article:published_time" content="2019-10-30T18:48:28+00:00">
 
 
 
@@ -524,7 +524,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/03/More_on_Arrays" class="level_1">3.12 More on arrays</a></li>
+            <li><a href="/cfd2019/chapters/03/reply_supreme" class="level_1">3.12 Reply to the Supreme Court</a></li>
           
             
             
@@ -534,7 +534,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/03/reply_supreme" class="level_1">3.13 Reply to the Supreme Court</a></li>
+            <li><a href="/cfd2019/chapters/03/More_on_Arrays" class="level_1">3.13 More on arrays</a></li>
           
             
             
@@ -544,17 +544,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/03/three_girls" class="level_1">3.14 Revision - three girls</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.15 Selecting with arrays</a></li>
+            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting with arrays</a></li>
           
         </ul>
         
@@ -1107,10 +1097,10 @@
       <ul class="toc__menu">
   <li><a href="#exercises-on-the-three-girl-simulation-problem">Exercises on the three-girl simulation problem</a>
     <ul>
-      <li><a href="#10000-families">10000 families</a></li>
-      <li><a href="#no-girls-in-a-family-of-4">No girls in a family of 4.</a></li>
-      <li><a href="#3-girls-in-a-family-of-5">3 girls in a family of 5.</a></li>
-      <li><a href="#3-or-fewer-girls-in-a-family-of-5">3 or fewer girls in a family of 5.</a></li>
+      <li><a href="#three-girls-in-a-family-of-four">Three girls in a family of four</a></li>
+      <li><a href="#no-girls-in-a-family-of-four">No girls in a family of four</a></li>
+      <li><a href="#three-girls-in-a-family-of-five">Three girls in a family of five</a></li>
+      <li><a href="#three-or-fewer-girls-in-a-family-of-five">Three or fewer girls in a family of five</a></li>
       <li><a href="#more-realistic-simulation">More realistic simulation</a></li>
     </ul>
   </li>
@@ -1130,37 +1120,47 @@
 
           <h2 id="exercises-on-the-three-girl-simulation-problem">Exercises on the three-girl simulation problem</h2>
 
-<p>These exercises follow on from the <a href="../03/three_girls">three girls section</a>.</p>
+<p>These exercises follow on from the three girls solution in <a href="../03/leaping_ahead">leaping
+ahead</a>, and the <a href="../03/reply_supreme">reply to the Supreme
+Court</a>.</p>
+
+<p>You may want to refer back to those pages for inspiration.</p>
 
 <p>Run this cell first:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the Numpy package, and rename to "np"
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<h3 id="10000-families">10000 families</h3>
+<h3 id="three-girls-in-a-family-of-four">Three girls in a family of four</h3>
 
-<p>Now you have seen how to simulate 10 families, with a 2D array.
-Copy and paste from the code above, into the cell below, and
-change what you need to change, to simulate 10000 families of
-4 children.  It will have these steps:</p>
+<p>Remember the solution to this problem, from <a href="../03/leaping_ahead">leaping ahead</a>:</p>
 
-<ul>
-  <li>make a 2D array of random numbers between 0 and 1, with 10000
-rows and 4 columns.</li>
-  <li>make a new array of the same shape, with <code class="highlighter-rouge">True</code> where the random
-number corresponds to “girl” and <code class="highlighter-rouge">False</code> when the number corresponds to “boy”</li>
-  <li>count the number of girls (<code class="highlighter-rouge">True</code> values) in each row.</li>
-  <li>count the number of times there were exactly 3 girls.</li>
-  <li>divide by the number of rows to give an estimate for the
-proportion of 4-child families with exactly 3 girls.</li>
-</ul>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Reset the counts array to empty.
+</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 4 children.
-# Show proportion with 3 girls.
-# Your code below
-</span></code></pre></div></div>
+<span class="c1"># Repeat the indented stuff 10000 times.
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="c1"># The procedure for one family.
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+    <span class="c1"># Store the count in the counts array.
+</span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
 
-<h3 id="no-girls-in-a-family-of-4">No girls in a family of 4.</h3>
+<span class="c1"># True where counts has the value 3, False otherwise.
+</span><span class="n">has_3_girls</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="c1"># Number of counts values equal to 3.
+</span><span class="n">n_3_girls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">has_3_girls</span><span class="p">)</span>
+
+<span class="c1"># Estimate and show probability of 3 girls.
+</span><span class="n">n_3_girls</span> <span class="o">/</span> <span class="mi">10000</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2484
+</code></pre></div></div>
+
+<h3 id="no-girls-in-a-family-of-four">No girls in a family of four</h3>
 
 <p>Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.</p>
 
@@ -1171,7 +1171,9 @@ proportion of 4-child families with exactly 3 girls.</li>
 <p>For extra points - the answer above is easier to work out with
 probability than the chance of three girls.  What’s the exact answer, from probability?</p>
 
-<h3 id="3-girls-in-a-family-of-5">3 girls in a family of 5.</h3>
+<p>Edit this code cell to give your answer.</p>
+
+<h3 id="three-girls-in-a-family-of-five">Three girls in a family of five</h3>
 
 <p>Simulate the chances that a family with 5 children will have
 exactly 3 girls.</p>
@@ -1181,12 +1183,14 @@ exactly 3 girls.</p>
 # Your code below
 </span></code></pre></div></div>
 
-<h3 id="3-or-fewer-girls-in-a-family-of-5">3 or fewer girls in a family of 5.</h3>
+<h3 id="three-or-fewer-girls-in-a-family-of-five">Three or fewer girls in a family of five</h3>
 
 <p>Simulate the chances that a family with 5 children will have 3 or
 fewer girls.</p>
 
-<p>Hint: <code class="highlighter-rouge">&lt;=</code> tests whether the thing on the left is <em>less than or equal to</em> the thing on the right.</p>
+<p>Hint: you may remember from the <a href="../03/Comparison">Comparison page</a> that <code class="highlighter-rouge">&lt;=</code>
+tests whether the thing on the left is <em>less than or equal to</em> the thing on
+the right.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">4</span>
 </code></pre></div></div>
@@ -1215,12 +1219,8 @@ fewer girls.</p>
 
 <p>Hints done, now:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of families of 5 children with 3 or fewer girls.
-# Your code below
-</span></code></pre></div></div>
-
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 families of 5 children.
-# Show proportion with 3 girls.
+# Show the proportion of families of 5 children with 3 or fewer girls.
 # Your code below
 </span></code></pre></div></div>
 
@@ -1236,6 +1236,26 @@ UK</a>
 is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.</p>
 
 <p>With that probability of having a girl, what are the chances of having exactly three girls in a family of four?</p>
+
+<p>Hint 1: you may want to use <code class="highlighter-rouge">np.random.uniform</code>.  Check the help with <code class="highlighter-rouge">np.random.uniform?</code> followed by Shift-Enter in a new cell.  It works like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An array of four random numbers between 0 and 1.
+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.76167893, 0.92267953, 0.05972004, 0.96513454])
+</code></pre></div></div>
+
+<p>Hint 2: Let’s say I have a random number <code class="highlighter-rouge">x</code> between 0 and 1:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8747775171882247
+</code></pre></div></div>
+
+<p>The probability that that <code class="highlighter-rouge">x</code> will be less than - say - 0.25, is 0.25.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simulate 10000 familes of 4 children.
 </span><span class="n">chance_of_girl</span> <span class="o">=</span> <span class="mf">0.487</span>
