@@ -8,13 +8,11 @@ permalink: /classes/class_9
 
 * [Indentation](../chapters/03/indentation)
 * [Fix me exercise](../exercises/fix_me)
+* Back to end of [leaping ahead](../chapters/03/leaping_ahead)
 * [Reply to the Supreme Court](../chapters/03/reply_supreme)
-* [Revision - three girls](../chapters/03/three_girls)
-
-## Assignment
-
-* [For loop exercises](../chapters/exercises/for_loops)
+* [Three girl simulations](../exercises/three_girl_simulations)
 
 <!---
 Comparison practice.
+* [For loop exercises](../chapters/exercises/for_loops)
 -->
