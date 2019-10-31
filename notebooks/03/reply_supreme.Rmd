@@ -57,54 +57,64 @@ Finally we make 10000 jury pools, each of 100 members, and see what we get.
 ```{python}
 # Import the array library
 import numpy as np
-# Make the floating point numbers print nicely.
-# This does not affect the calculations, only the display.
-np.set_printoptions(precision=2, suppress=True)
 ```
 
 Here is one jury pool, and the number of black people we get in our simulation.
 
 ```{python}
-# Make 100 random numbers between 0 and 1
-randoms = np.random.uniform(size=100)
-# Say values < 0.26 correspond to black jurors.
-black_yn = randoms < 0.26
+# Make 100 random integers from 0 through 99
+randoms = np.random.randint(0, 100, size=100)
+# Say values < 26 correspond to black jurors.
+# 26 of the numbers 0 through 99 are less than 26 (so 26% or p=0.26).
+black_yn = randoms < 26
 # We now have True for black jurors and False otherwise.
 # Count the number of Trues
 np.count_nonzero(black_yn)
 ```
 
 That is one estimate, for the number of black people we can expect, if our
-model is correct.  We can run that a few times to get a range of values.   If
-we run it only a few times, we might be unlucky, and get some results that are
-not representative.  It is safer to run it a huge number of times, to make sure
-we've got an idea of the variation.
+model is correct.  Call this one *trial*. We can run that a few times to get a
+range of values.   If we run it only a few times, we might be unlucky, and get
+some results that are not representative.  It is safer to run it a huge number
+of times, to make sure we've got an idea of the variation.
 
 
-We do that, by using a two-dimensional array.
+Next we get ready to store the results of each estimate.
+
+```{python}
+# Make an empty counts array, to append to.
+counts = np.array([])
+```
+
+We repeat the code from the cell above, but now, we append to the `counts` array:
+
+```{python}
+randoms = np.random.randint(0, 100, size=100)
+black_yn = randoms < 26
+count = np.count_nonzero(black_yn)
+counts = np.append(counts, count)
+counts
+```
+
+Run the cell above a few times, perhaps with Control-Enter, to see the `counts` array extending, for each time we run the cell.
+
+
+Now we collect the result of many trials, by using a for loop.
 
 We will start by making 10 jury pools, to get warmed up.  Later we will use
 a much higher number.
 
 ```{python}
-# Make an array with 10 rows, and 100 columns.
-# Each row corresponds to one jury pool
-randoms_2d = np.random.uniform(size=(10, 100))
-```
-
-Next we label each element in the array as `True` (black juror) or `False`
-(white juror).
-
-```{python}
-# Set True for black jurors
-black_yn_2d = randoms_2d < 0.26
-```
-
-We count how many `True` values we have in each *row*:
-
-```{python}
-black_counts = np.count_nonzero(black_yn_2d, axis=1)
-black_counts
+# Make a new empty counts array, to append to.
+counts = np.array([])
+for i in np.arange(100):
+    # This code is the same as the cell above, but indented,
+    # so we run it all, for each time through the for loop.
+    randoms = np.random.randint(0, 100, size=100)
+    black_yn = randoms < 26
+    count = np.count_nonzero(black_yn)
+    counts = np.append(counts, count)
+counts
 ```
 
 Each of these values is one estimate for how many black jurors we should
@@ -116,9 +126,16 @@ To get a better estimate, let us do the same thing, but with 10000 jury pools,
 and therefore, 10000 estimates.
 
 ```{python}
-randoms_2d_big = np.random.uniform(size=(10000, 100))
-black_yn_big = randoms_2d_big < 0.26
-black_counts_big = np.count_nonzero(black_yn_big, axis=1)
+# Make a new empty counts array, to append to.
+counts = np.array([])
+for i in np.arange(10000):
+    # This code is the same as the cell above, but indented,
+    # so we run it all, for each time through the for loop.
+    randoms = np.random.randint(0, 100, size=100)
+    black_yn = randoms < 26
+    count = np.count_nonzero(black_yn)
+    counts = np.append(counts, count)
+counts
 ```
 
 If you ran this cell yourself, you will notice that it runs very fast, in much
@@ -132,33 +149,33 @@ Remember, the function `len` shows us the length of the array, and therefore,
 the number of values in this one-dimensional array.
 
 ```{python}
-len(black_counts_big)
+len(counts)
 ```
 
 Next we want to have a look at the spread of these values.  To do this, we plot
-a histogram.  Here is how to do that, in Python:
+a histogram.  Here is how to do that, in Python.  Don't worry about the details, we will go into this more soon.
 
 ```{python}
-# Load the plotting library
+# Please don't worry about this bit of code for now.
+# It sets up plotting in the notebook.
 import matplotlib.pyplot as plt
+%matplotlib inline
+# Fancy plots
+plt.style.use('fivethirtyeight')
 ```
 
-```{python}
-# A special command to tell the Notebook to show us
-# the plots inside the Notebook
-# %matplotlib inline
-```
+Now show the histogram.
 
 ```{python}
 # Do the histogram of our 10000 estimates.
-plt.hist(black_counts_big)
+plt.hist(counts)
 ```
 
 It looks as if 8 is nowhere on the spread of our estimates.  How many times did
 we get a value less than or equal to 8, in all our 10000 estimates?
 
 ```{python}
-counts_are_low = black_counts_big < 9
+counts_are_low = counts <= 8
 np.count_nonzero(counts_are_low)
 ```
 
@@ -166,7 +183,7 @@ In 10000 random jury pools, we never see a value as low as 8.  We can ask Numpy
 to show us the minimum value that we do see, by using the `np.min` function:
 
 ```{python}
-np.min(black_counts_big)
+np.min(counts)
 ```
 
 We have run an analysis assuming that the jurors were selected at random.  On
