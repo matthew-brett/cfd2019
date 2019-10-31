@@ -236,7 +236,7 @@ same steps on each.  For example, imagine a librarian describing the sequence
 of steps that he goes through, in issuing a stack of books.  He might say
 something like:
 
-    For each **book** in the stack of books to issue:
+    For each **book** in (the stack of books to issue):
         Open **book** to first page
         Stamp first page of **book**
         Close **book**
@@ -244,7 +244,7 @@ something like:
 
 Imagine a passport control officer describing their work:
 
-    For each **person** in the immigration line:
+    For each **person** of (the people in the immigration line):
         Ask **person** for their passport.
         Check passport photo against face of **person**.
         Scan passport to check against database.
@@ -255,6 +255,15 @@ In either case, we take a sequence of things (books, people), and for each
 element in that sequence (each book, each person) we perform a task (issuing
 the book, checking the person's passport).  We have indented the steps of
 task that we perform for each (book, person); this is the *task definition*.  In the for loop, the task definition is also called the *body* of the for loop.
+
+In the loops above, we did something with each element in the sequence.  Fir the first loop, the element is one book. The librarian opened, stamped, moved the book.  In the second loop, the element is a person in the immigration line; the officer takes their passport and checks it, and then allows them through.
+
+This is not always the case - sometimes we just want to repeat some action a set amount of times.  For example, when you go on a flight, you may see a member of the cabin crew going through the cabin, clicking a clicker for each passenger.  This is to count the number of passengers.  That loop might be:
+
+    For each **passenger** of the (passengers in the aircraft):
+        Press the clicker
+
+Notice that the body of the loop is "Press the clicker", but that doesn't involve the particular **passenger**.  The loop, here, is just a way of repeating the same action multiple times.
 
 ## Unrolling the loop
 
@@ -270,6 +279,10 @@ We can read that as:
     For each value in the sequence `np.arange(3)`:
         Put the value into the variable `i`
         Execute the statement `print(i)`.
+
+* `i` is the *loop variable*;
+* `np.arange(3)` is the *sequence*;
+* `print(i)` is the *body* of the loop.
 
 It is instructive to imagine code that exactly replicates the `for` statement
 without the `for` statement.  (This is called *unrolling* the loop.)  A `for`
@@ -294,6 +307,22 @@ loop above:
 for my_variable in np.arange(3):
     print(my_variable)
 ```
+
+* `my_variable` is the *loop variable*;
+* `np.arange(3)` is the *sequence*;
+* `print(my_variable)` is the *body* of the loop.
+
+As in the examples above, the body of the loop need not use the loop variable.  We might just use the loop to repeat something several times.  Here is an old-school comedy policeman:
+
+```{python}
+for i in np.arange(3):
+    print("Hello")
+```
+
+* `i` is the *loop variable*;
+* `np.arange(3)` is the *sequence*;
+* `print("Hello")` is the *body* of the loop.  It does not use the loop
+  variable.
 
 In the next example, we use a `for` statement in a more realistic way: we
 print the results of five random integers:

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-30T18:48:28+00:00">
+  <meta property="article:published_time" content="2019-10-31T09:45:11+00:00">
 
 
 
@@ -1073,7 +1073,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.10 Iteration with For loops">
       <meta itemprop="description" content="# Load the Numpy package, and rename to &quot;np&quot;import numpy as np">
-      <meta itemprop="datePublished" content="October 30, 2019">
+      <meta itemprop="datePublished" content="October 31, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1141,7 +1141,7 @@ the following cell many times to see if we get roughly equal numbers of
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>We might want to re-run code with slightly different input or other slightly
@@ -1175,7 +1175,7 @@ same steps on each.  For example, imagine a librarian describing the sequence
 of steps that he goes through, in issuing a stack of books.  He might say
 something like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **book** in the stack of books to issue:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **book** in (the stack of books to issue):
     Open **book** to first page
     Stamp first page of **book**
     Close **book**
@@ -1184,7 +1184,7 @@ something like:</p>
 
 <p>Imagine a passport control officer describing their work:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **person** in the immigration line:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **person** of (the people in the immigration line):
     Ask **person** for their passport.
     Check passport photo against face of **person**.
     Scan passport to check against database.
@@ -1196,6 +1196,16 @@ something like:</p>
 element in that sequence (each book, each person) we perform a task (issuing
 the book, checking the person’s passport).  We have indented the steps of
 task that we perform for each (book, person); this is the <em>task definition</em>.  In the for loop, the task definition is also called the <em>body</em> of the for loop.</p>
+
+<p>In the loops above, we did something with each element in the sequence.  Fir the first loop, the element is one book. The librarian opened, stamped, moved the book.  In the second loop, the element is a person in the immigration line; the officer takes their passport and checks it, and then allows them through.</p>
+
+<p>This is not always the case - sometimes we just want to repeat some action a set amount of times.  For example, when you go on a flight, you may see a member of the cabin crew going through the cabin, clicking a clicker for each passenger.  This is to count the number of passengers.  That loop might be:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **passenger** of the (passengers in the aircraft):
+    Press the clicker
+</code></pre></div></div>
+
+<p>Notice that the body of the loop is “Press the clicker”, but that doesn’t involve the particular <strong>passenger</strong>.  The loop, here, is just a way of repeating the same action multiple times.</p>
 
 <h2 id="unrolling-the-loop">Unrolling the loop</h2>
 
@@ -1217,6 +1227,12 @@ task that we perform for each (book, person); this is the <em>task definition</e
     Put the value into the variable `i`
     Execute the statement `print(i)`.
 </code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">i</code> is the <em>loop variable</em>;</li>
+  <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
+  <li><code class="highlighter-rouge">print(i)</code> is the <em>body</em> of the loop.</li>
+</ul>
 
 <p>It is instructive to imagine code that exactly replicates the <code class="highlighter-rouge">for</code> statement
 without the <code class="highlighter-rouge">for</code> statement.  (This is called <em>unrolling</em> the loop.)  A <code class="highlighter-rouge">for</code>
@@ -1252,6 +1268,31 @@ loop above:</p>
 
 </code></pre></div></div>
 
+<ul>
+  <li><code class="highlighter-rouge">my_variable</code> is the <em>loop variable</em>;</li>
+  <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
+  <li><code class="highlighter-rouge">print(my_variable)</code> is the <em>body</em> of the loop.</li>
+</ul>
+
+<p>As in the examples above, the body of the loop need not use the loop variable.  We might just use the loop to repeat something several times.  Here is an old-school comedy policeman:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
+Hello
+Hello
+
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">i</code> is the <em>loop variable</em>;</li>
+  <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
+  <li><code class="highlighter-rouge">print("Hello")</code> is the <em>body</em> of the loop.  It does not use the loop
+variable.</li>
+</ul>
+
 <p>In the next example, we use a <code class="highlighter-rouge">for</code> statement in a more realistic way: we
 print the results of five random integers:</p>
 
@@ -1260,10 +1301,10 @@ print the results of five random integers:</p>
 </code></pre></div></div>
 
 <div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
-1
+0
 0
 1
-0
+1
 
 </code></pre></div></div>
 
@@ -1286,7 +1327,7 @@ the result of each toss.</p>
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 1., 0., 1., 0.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 1., 0., 0., 1.])
 </code></pre></div></div>
 
 <p>Let us rewrite the cell with the <code class="highlighter-rouge">for</code> statement unrolled:</p>
@@ -1308,7 +1349,7 @@ the result of each toss.</p>
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 0., 0., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 0., 0., 1.])
 </code></pre></div></div>
 
 <p>Now we have an array, we can use <code class="highlighter-rouge">np.sum</code> to count the
@@ -1317,7 +1358,7 @@ number of heads in the five tosses.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
 </code></pre></div></div>
 
 <p>Iteration is a powerful technique. For example, by running exactly the
@@ -1333,65 +1374,65 @@ heads in 1000 tosses.</p>
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 0., 1., 1., 0., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 0.,
-       1., 0., 1., 1., 0., 0., 1., 1., 0., 1., 1., 1., 1., 0., 1., 0., 1.,
-       0., 0., 1., 1., 1., 1., 0., 0., 1., 1., 0., 1., 1., 1., 1., 1., 0.,
-       0., 0., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1., 0., 1., 0., 0., 1.,
-       1., 0., 0., 1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1.,
-       0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0., 1., 0., 0.,
-       1., 1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 1., 0., 0., 0.,
-       1., 0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 1., 1., 0., 0.,
-       1., 0., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0., 1., 1., 1.,
-       1., 1., 0., 0., 0., 0., 1., 0., 1., 1., 0., 0., 1., 1., 1., 1., 1.,
-       1., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0., 1., 0., 1., 0., 0., 0.,
-       1., 0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 1., 1., 0., 0., 0., 0.,
-       0., 1., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0.,
-       0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1.,
-       1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 0., 0., 1., 0., 0., 1., 1.,
-       1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0., 1., 0., 0., 1., 1., 0.,
-       1., 0., 1., 1., 1., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 0.,
-       1., 1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 1., 0., 0., 0., 1.,
-       0., 1., 1., 0., 0., 0., 0., 1., 0., 1., 1., 0., 0., 1., 0., 0., 0.,
-       1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 0., 0., 0., 0., 0., 1., 1.,
-       0., 1., 0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 1.,
-       0., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 0., 1., 1., 1., 1.,
-       0., 0., 1., 1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 0., 0., 0., 1.,
-       0., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1.,
-       0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 1., 1., 1., 0.,
-       1., 1., 1., 0., 1., 1., 1., 1., 0., 0., 0., 1., 1., 0., 0., 0., 1.,
-       1., 1., 0., 1., 1., 0., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 1.,
-       1., 0., 1., 1., 1., 0., 0., 0., 1., 0., 1., 0., 1., 0., 0., 1., 0.,
-       0., 1., 1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1.,
-       0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 0., 1.,
-       0., 0., 0., 1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 1., 1., 0., 1.,
-       1., 0., 0., 0., 0., 1., 1., 1., 0., 0., 1., 1., 0., 0., 0., 1., 0.,
-       0., 1., 0., 1., 0., 0., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0.,
-       1., 0., 1., 1., 1., 1., 1., 0., 0., 1., 0., 1., 0., 1., 0., 1., 1.,
-       1., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0., 1., 0., 1., 0., 1.,
-       0., 1., 0., 0., 1., 0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 0.,
-       0., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 1., 1., 1., 0.,
-       0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 1., 1., 1.,
-       1., 0., 0., 1., 0., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 0., 0.,
-       0., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 0., 1., 1., 0.,
-       1., 0., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 0., 1., 0., 0., 0.,
-       0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 0., 1., 1., 1., 0., 1.,
-       1., 1., 0., 1., 1., 1., 1., 1., 0., 0., 0., 1., 0., 1., 0., 1., 0.,
-       1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 1., 1., 1., 1., 1., 1.,
-       1., 0., 0., 1., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 0., 1.,
-       1., 1., 0., 1., 1., 1., 0., 0., 0., 1., 0., 0., 1., 0., 0., 1., 0.,
-       1., 0., 0., 0., 0., 0., 0., 1., 0., 1., 1., 1., 1., 0., 1., 1., 0.,
-       1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 0., 0., 0.,
-       1., 0., 1., 1., 1., 1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1.,
-       0., 0., 1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 0., 1., 1., 1., 0.,
-       0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0.,
-       0., 1., 1., 0., 1., 0., 1., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0.,
-       0., 1., 0., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 0., 1., 1., 1.,
-       0., 0., 0., 0., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 0., 1.,
-       0., 0., 0., 1., 0., 1., 1., 0., 1., 0., 1., 0., 0., 0., 1., 0., 0.,
-       1., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 1.,
-       0., 0., 1., 0., 1., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1.,
-       1., 0., 1., 1., 1., 0., 1., 0., 1., 1., 1., 0., 1., 1., 0., 1., 0.,
-       0., 1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 1., 1., 1., 0., 1., 1., 0.,
+       0., 0., 1., 1., 1., 0., 1., 1., 0., 0., 0., 1., 0., 1., 0., 0., 1.,
+       0., 1., 1., 0., 1., 1., 1., 0., 1., 1., 1., 1., 1., 0., 1., 0., 1.,
+       1., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0., 0., 0., 1., 1., 0.,
+       0., 1., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 1., 1., 1., 0., 0.,
+       0., 0., 1., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 1., 0., 0.,
+       1., 1., 0., 0., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1.,
+       1., 0., 1., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 0., 0.,
+       1., 1., 1., 1., 0., 0., 0., 0., 0., 1., 1., 1., 1., 0., 0., 1., 0.,
+       0., 1., 0., 0., 0., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1., 1., 0.,
+       1., 1., 1., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 1., 0., 1., 0.,
+       0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 1.,
+       0., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 0.,
+       1., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 1., 1.,
+       0., 0., 1., 0., 1., 1., 0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 0.,
+       0., 0., 1., 0., 1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 1.,
+       1., 0., 0., 0., 1., 0., 1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0.,
+       0., 0., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 1.,
+       0., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 0., 1.,
+       1., 1., 1., 0., 1., 1., 1., 1., 1., 0., 1., 0., 0., 0., 1., 0., 0.,
+       0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1., 1., 1., 0., 0.,
+       0., 1., 1., 0., 0., 1., 1., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1.,
+       0., 1., 0., 1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 1., 0., 0., 0.,
+       0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1., 1., 0., 0.,
+       0., 1., 1., 1., 1., 0., 1., 0., 0., 0., 0., 1., 1., 0., 1., 1., 1.,
+       1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 1., 0., 0., 0., 0., 1.,
+       0., 1., 1., 1., 1., 1., 1., 0., 0., 1., 1., 1., 1., 0., 1., 1., 1.,
+       1., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 1., 0., 1.,
+       0., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 1.,
+       1., 0., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 0., 0., 0., 1., 0.,
+       1., 1., 0., 0., 1., 1., 0., 1., 0., 1., 0., 1., 1., 1., 1., 0., 1.,
+       0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 1., 1., 0.,
+       0., 1., 1., 0., 0., 0., 0., 1., 0., 1., 0., 1., 1., 1., 1., 1., 0.,
+       0., 1., 0., 0., 1., 1., 1., 0., 1., 1., 0., 0., 1., 1., 1., 0., 0.,
+       0., 1., 0., 0., 0., 0., 0., 1., 1., 0., 1., 1., 0., 0., 0., 0., 0.,
+       1., 0., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 0.,
+       1., 1., 0., 1., 0., 1., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0.,
+       0., 1., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0.,
+       0., 0., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 0.,
+       0., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 1.,
+       0., 1., 1., 0., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 0., 0.,
+       0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 0., 1., 0., 1., 0.,
+       1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1.,
+       0., 0., 1., 0., 1., 1., 1., 1., 1., 0., 0., 0., 0., 1., 0., 0., 1.,
+       1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 1., 1., 1., 1., 1., 0.,
+       1., 0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1.,
+       1., 0., 0., 0., 1., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 0., 1.,
+       1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1., 0., 1., 0., 0., 0.,
+       1., 0., 1., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 0.,
+       0., 1., 1., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0.,
+       1., 0., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 1., 1.,
+       1., 1., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1., 1., 0.,
+       1., 1., 0., 1., 0., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 0., 1.,
+       1., 1., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1., 1., 0.,
+       1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 0.,
+       1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1.,
+       0., 1., 0., 1., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 0., 0., 1.,
+       0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 1., 1.])
 </code></pre></div></div>
 
 <h3 id="example-number-of-heads-in-100-tosses">Example: Number of Heads in 100 Tosses</h3>
@@ -1420,7 +1461,7 @@ heads are likely.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 1, 1, 0, 1, 1, 0, 1, 1])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 0, 1, 0, 1, 1, 1, 1])
 </code></pre></div></div>
 
 <p>Now let’s study 100 tosses. We will start by creating an empty array
@@ -1439,7 +1480,7 @@ a coin 100 times, count the number of heads, and append it to <code class="highl
 <span class="n">head_counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([39., 54., 53., ..., 53., 53., 55.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([45., 50., 44., ..., 49., 45., 52.])
 </code></pre></div></div>
 
 <p>Here is a histogram of the data, with bins of width 1 centered at each
@@ -1461,7 +1502,7 @@ value of the number of heads.</p>
 </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">head_counts</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">30.5</span><span class="p">,</span> <span class="mf">69.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/03/iteration_31_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/03/iteration_33_0.png" alt="png" /></p>
 
 <p>Not surprisingly, the histogram looks roughly symmetric around 50
 heads. The height of the bar at 50 is about 8% per unit. Since each
@@ -1513,7 +1554,7 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/03/More_on_Arrays" class="pagination--pager" title="3.7 More on arrays
+      <a href="/cfd2019/chapters/03/indentation" class="pagination--pager" title="3.11 Indentation, indentation
 ">Next</a>
     
   </nav>
