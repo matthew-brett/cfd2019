@@ -197,17 +197,17 @@ between the integers in the range we specify.
 We have been choosing randomly between 0 and 1 with:
 
 ```{python}
-coin = np.random.randint(2)
+coin = np.random.randint(0, 2)
 coin
 ```
 
 We might want to check this really does in fact pick 0 or 1 with
 about the same probability.  To do that, we could start by running
 the following cell many times to see if we get roughly equal numbers of
-0 and 1.
+0s and 1s.
 
 ```{python}
-np.random.randint(2)
+np.random.randint(0, 2)
 ```
 
 We might want to re-run code with slightly different input or other slightly
@@ -236,32 +236,55 @@ same steps on each.  For example, imagine a librarian describing the sequence
 of steps that he goes through, in issuing a stack of books.  He might say
 something like:
 
-    For each **book** in (the stack of books to issue):
-        Open **book** to first page
-        Stamp first page of **book**
-        Close **book**
-        Hand **book** to reader.
+     Get the stack of books to issue from the reader
+     Put stack of books to issue on my left
+     For each *book* in [the stack of books on my left]:
+         Open *book* to first page
+         Stamp first page of *book*
+         Close *book*
+         Put *book* onto stack on my right
+     (Now I have finished processing all the books)
+     Hand stack of books on my right to reader
 
-Imagine a passport control officer describing their work:
+Imagine a passport control officer describing their procedure at work:
 
-    For each **person** of (the people in the immigration line):
-        Ask **person** for their passport.
-        Check passport photo against face of **person**.
+    Sign into computer at immigration station
+    Open immigration station
+    For each *person* of [the people in the immigration line]:
+        Ask *person* for their passport.
+        Check passport photo against face of *person*.
         Scan passport to check against database.
-        Return passport to **person**.
-        Allow **person** through to customs.
+        Return passport to *person*.
+        Allow *person* through to customs.
+    (Now I have finished processing all the people in the line)
+    Close immigration station
+    Sign out of computer at immigration station
 
 In either case, we take a sequence of things (books, people), and for each
 element in that sequence (each book, each person) we perform a task (issuing
 the book, checking the person's passport).  We have indented the steps of
-task that we perform for each (book, person); this is the *task definition*.  In the for loop, the task definition is also called the *body* of the for loop.
+the task that we perform for each (book, person); this is the *task
+definition*.  In the for loop, the task definition is also called the *body*
+of the for loop.
 
-In the loops above, we did something with each element in the sequence.  Fir the first loop, the element is one book. The librarian opened, stamped, moved the book.  In the second loop, the element is a person in the immigration line; the officer takes their passport and checks it, and then allows them through.
+In the loops above, we did something with each element in the sequence.  For
+the first loop, the element is one book. The librarian opened, stamped, moved
+the book.  In the second loop, the element is a person in the immigration
+line; the officer takes their passport and checks it, and then allows them
+through.
 
-This is not always the case - sometimes we just want to repeat some action a set amount of times.  For example, when you go on a flight, you may see a member of the cabin crew going through the cabin, clicking a clicker for each passenger.  This is to count the number of passengers.  That loop might be:
+This is not always the case - sometimes we just want to repeat some action a
+set amount of times.  For example, when you go on a flight, you may see a
+member of the cabin crew going through the cabin, clicking a clicker once for
+each passenger.  This is to count the number of passengers.  That loop might
+be:
 
-    For each **passenger** of the (passengers in the aircraft):
+    Get clicker from equipment cupboard
+    For each *passenger* of the [passengers in the aircraft]:
         Press the clicker
+    (Now I have finished counting the passengers)
+    Report number on clicker to ground staff
+    Put clicker back in cuboard
 
 Notice that the body of the loop is "Press the clicker", but that doesn't involve the particular **passenger**.  The loop, here, is just a way of repeating the same action multiple times.
 
@@ -276,9 +299,9 @@ for i in np.arange(3):
 
 We can read that as:
 
-    For each value in the sequence `np.arange(3)`:
-        Put the value into the variable `i`
-        Execute the statement `print(i)`.
+    For each value in the sequence "np.arange(3)":
+        Put the value into the variable "i"
+        Execute the statement "print(i)"
 
 * `i` is the *loop variable*;
 * `np.arange(3)` is the *sequence*;
@@ -329,7 +352,7 @@ print the results of five random integers:
 
 ```{python}
 for i in np.arange(5):
-    print(np.random.randint(2))
+    print(np.random.randint(0, 2))
 ```
 
 In this case, we simply perform exactly the same (random) action several
@@ -347,7 +370,7 @@ the result of each toss.
 tosses = np.array([])
 
 for i in np.arange(5):
-    tosses = np.append(tosses, np.random.randint(2))
+    tosses = np.append(tosses, np.random.randint(0, 2))
 
 tosses
 ```
@@ -359,15 +382,15 @@ Let us rewrite the cell with the `for` statement unrolled:
 tosses = np.array([])
 
 i = 0
-tosses = np.append(tosses, np.random.randint(2))
+tosses = np.append(tosses, np.random.randint(0, 2))
 i = 1
-tosses = np.append(tosses, np.random.randint(2))
+tosses = np.append(tosses, np.random.randint(0, 2))
 i = 2
-tosses = np.append(tosses, np.random.randint(2))
+tosses = np.append(tosses, np.random.randint(0, 2))
 i = 3
-tosses = np.append(tosses, np.random.randint(2))
+tosses = np.append(tosses, np.random.randint(0, 2))
 i = 4
-tosses = np.append(tosses, np.random.randint(2))
+tosses = np.append(tosses, np.random.randint(0, 2))
 
 tosses
 ```
@@ -388,7 +411,7 @@ heads in 1000 tosses.
 tosses = np.array([])
 
 for i in np.arange(1000):
-    tosses = np.append(tosses, np.random.randint(2))
+    tosses = np.append(tosses, np.random.randint(0, 2))
 
 tosses
 ```
@@ -416,7 +439,7 @@ heads are likely.
 As y'all have already seen, `np.randint` can take a `size` argument, to return an array of random integers:
 
 ```{python}
-np.random.randint(2, size=10)
+np.random.randint(0, 2, size=10)
 ```
 
 Now let's study 100 tosses. We will start by creating an empty array
@@ -429,7 +452,7 @@ N = 10000
 head_counts = np.array([])
 
 for i in np.arange(N):
-    tosses = np.random.randint(2, size=100)
+    tosses = np.random.randint(0, 2, size=100)
     n_heads = np.sum(tosses)
     head_counts = np.append(head_counts, n_heads)
 

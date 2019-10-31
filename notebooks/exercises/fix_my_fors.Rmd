@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
 <meta property="og:title" content="Coding for Data - 2019 edition">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/exercises/fix_me.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/exercises/fix_my_fors.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/exercises/fix_me.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/exercises/fix_my_fors.Rmd">
 
 
 
@@ -191,13 +191,13 @@ with some information about which bit of the code caused the problem.  A logic
 error is where the code does run, but does not do what it was intended to do.
 Run the cells to see the error, and then fix them to work correctly.
 
-```{python}
+```{python tags=c("raises-exception")}
 # Print the numbers 0 through 2
 for my_var in np.arange(3)
     print(my_var)
 ```
 
-```{python}
+```{python tags=c("raises-exception")}
 # Add up all the numbers from 3 through 10
 total = 0
 for i in np.arange(3, 11):
@@ -205,13 +205,13 @@ total = total + i
 print(total)
 ```
 
-```{python}
+```{python tags=c("raises-exception")}
 # Print all the numbers between 5 and 9
 for p in 56789:
     print(p)
 ```
 
-```{python}
+```{python tags=c("raises-exception")}
 # Add all numbers from 3 down to -2, inclusive
 total = 0
 for i = np.arange(3, -4, -1):
@@ -219,7 +219,7 @@ for i = np.arange(3, -4, -1):
 print(total)
 ```
 
-```{python}
+```{python tags=c("raises-exception")}
 # Add up the squares of all the even numbers from -2 to 20
 total = 0
 for v in np.arange(-2, 21):
@@ -237,7 +237,7 @@ print(total)
 ```
 
 ```{python}
-# Print all the numbers starting rom 100, and subtracting 7
+# Print all the numbers starting from 100, and subtracting 7
 # up to the last positive number.  The first three
 # numbers you will print will be 100, 93, 86
 for i in np.arange(100, 7, 7):

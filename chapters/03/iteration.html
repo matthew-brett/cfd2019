@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-31T10:33:07+00:00">
+  <meta property="article:published_time" content="2019-10-31T15:13:00+00:00">
 
 
 
@@ -910,6 +910,26 @@
 
             
 
+            <li><a href="/cfd2019/chapters/exercises/for_loops" class="level_1">For loop exercises</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/fix_my_fors" class="level_1">Fix my fors</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
             <li><a href="/cfd2019/chapters/exercises/three_girl_simulations" class="level_1">Three girl simulations</a></li>
           
             
@@ -1126,22 +1146,22 @@ between the integers in the range we specify.</p>
 
 <p>We have been choosing randomly between 0 and 1 with:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">coin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">coin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">coin</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>We might want to check this really does in fact pick 0 or 1 with
 about the same probability.  To do that, we could start by running
 the following cell many times to see if we get roughly equal numbers of
-0 and 1.</p>
+0s and 1s.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>We might want to re-run code with slightly different input or other slightly
@@ -1175,34 +1195,57 @@ same steps on each.  For example, imagine a librarian describing the sequence
 of steps that he goes through, in issuing a stack of books.  He might say
 something like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **book** in (the stack of books to issue):
-    Open **book** to first page
-    Stamp first page of **book**
-    Close **book**
-    Hand **book** to reader.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Get the stack of books to issue from the reader
+ Put stack of books to issue on my left
+ For each *book* in [the stack of books on my left]:
+     Open *book* to first page
+     Stamp first page of *book*
+     Close *book*
+     Put *book* onto stack on my right
+ (Now I have finished processing all the books)
+ Hand stack of books on my right to reader
 </code></pre></div></div>
 
-<p>Imagine a passport control officer describing their work:</p>
+<p>Imagine a passport control officer describing their procedure at work:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **person** of (the people in the immigration line):
-    Ask **person** for their passport.
-    Check passport photo against face of **person**.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sign into computer at immigration station
+Open immigration station
+For each *person* of [the people in the immigration line]:
+    Ask *person* for their passport.
+    Check passport photo against face of *person*.
     Scan passport to check against database.
-    Return passport to **person**.
-    Allow **person** through to customs.
+    Return passport to *person*.
+    Allow *person* through to customs.
+(Now I have finished processing all the people in the line)
+Close immigration station
+Sign out of computer at immigration station
 </code></pre></div></div>
 
 <p>In either case, we take a sequence of things (books, people), and for each
 element in that sequence (each book, each person) we perform a task (issuing
 the book, checking the person’s passport).  We have indented the steps of
-task that we perform for each (book, person); this is the <em>task definition</em>.  In the for loop, the task definition is also called the <em>body</em> of the for loop.</p>
+the task that we perform for each (book, person); this is the <em>task
+definition</em>.  In the for loop, the task definition is also called the <em>body</em>
+of the for loop.</p>
 
-<p>In the loops above, we did something with each element in the sequence.  Fir the first loop, the element is one book. The librarian opened, stamped, moved the book.  In the second loop, the element is a person in the immigration line; the officer takes their passport and checks it, and then allows them through.</p>
+<p>In the loops above, we did something with each element in the sequence.  For
+the first loop, the element is one book. The librarian opened, stamped, moved
+the book.  In the second loop, the element is a person in the immigration
+line; the officer takes their passport and checks it, and then allows them
+through.</p>
 
-<p>This is not always the case - sometimes we just want to repeat some action a set amount of times.  For example, when you go on a flight, you may see a member of the cabin crew going through the cabin, clicking a clicker for each passenger.  This is to count the number of passengers.  That loop might be:</p>
+<p>This is not always the case - sometimes we just want to repeat some action a
+set amount of times.  For example, when you go on a flight, you may see a
+member of the cabin crew going through the cabin, clicking a clicker once for
+each passenger.  This is to count the number of passengers.  That loop might
+be:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each **passenger** of the (passengers in the aircraft):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get clicker from equipment cupboard
+For each *passenger* of the [passengers in the aircraft]:
     Press the clicker
+(Now I have finished counting the passengers)
+Report number on clicker to ground staff
+Put clicker back in cuboard
 </code></pre></div></div>
 
 <p>Notice that the body of the loop is “Press the clicker”, but that doesn’t involve the particular <strong>passenger</strong>.  The loop, here, is just a way of repeating the same action multiple times.</p>
@@ -1223,9 +1266,9 @@ task that we perform for each (book, person); this is the <em>task definition</e
 
 <p>We can read that as:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each value in the sequence `np.arange(3)`:
-    Put the value into the variable `i`
-    Execute the statement `print(i)`.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each value in the sequence "np.arange(3)":
+    Put the value into the variable "i"
+    Execute the statement "print(i)"
 </code></pre></div></div>
 
 <ul>
@@ -1297,13 +1340,13 @@ variable.</li>
 print the results of five random integers:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
-0
-0
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 1
+1
+0
 1
 
 </code></pre></div></div>
@@ -1322,12 +1365,12 @@ the result of each toss.</p>
 </span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 1., 0., 0., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 1.])
 </code></pre></div></div>
 
 <p>Let us rewrite the cell with the <code class="highlighter-rouge">for</code> statement unrolled:</p>
@@ -1336,20 +1379,20 @@ the result of each toss.</p>
 </span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 0., 0., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 1., 0., 1., 1.])
 </code></pre></div></div>
 
 <p>Now we have an array, we can use <code class="highlighter-rouge">np.sum</code> to count the
@@ -1369,70 +1412,70 @@ heads in 1000 tosses.</p>
 </span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 1., 1., 1., 0., 1., 1., 0.,
-       0., 0., 1., 1., 1., 0., 1., 1., 0., 0., 0., 1., 0., 1., 0., 0., 1.,
-       0., 1., 1., 0., 1., 1., 1., 0., 1., 1., 1., 1., 1., 0., 1., 0., 1.,
-       1., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0., 0., 0., 1., 1., 0.,
-       0., 1., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 1., 1., 1., 0., 0.,
-       0., 0., 1., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 1., 0., 0.,
-       1., 1., 0., 0., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1.,
-       1., 0., 1., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 0., 0.,
-       1., 1., 1., 1., 0., 0., 0., 0., 0., 1., 1., 1., 1., 0., 0., 1., 0.,
-       0., 1., 0., 0., 0., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1., 1., 0.,
-       1., 1., 1., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 1., 0., 1., 0.,
-       0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 1.,
-       0., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 0.,
-       1., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 1., 1.,
-       0., 0., 1., 0., 1., 1., 0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 0.,
-       0., 0., 1., 0., 1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 1.,
-       1., 0., 0., 0., 1., 0., 1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0.,
-       0., 0., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 1.,
-       0., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 0., 1.,
-       1., 1., 1., 0., 1., 1., 1., 1., 1., 0., 1., 0., 0., 0., 1., 0., 0.,
-       0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1., 1., 1., 0., 0.,
-       0., 1., 1., 0., 0., 1., 1., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1.,
-       0., 1., 0., 1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 1., 0., 0., 0.,
-       0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1., 1., 0., 0.,
-       0., 1., 1., 1., 1., 0., 1., 0., 0., 0., 0., 1., 1., 0., 1., 1., 1.,
-       1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 1., 0., 0., 0., 0., 1.,
-       0., 1., 1., 1., 1., 1., 1., 0., 0., 1., 1., 1., 1., 0., 1., 1., 1.,
-       1., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 1., 0., 1.,
-       0., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 1.,
-       1., 0., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 0., 0., 0., 1., 0.,
-       1., 1., 0., 0., 1., 1., 0., 1., 0., 1., 0., 1., 1., 1., 1., 0., 1.,
-       0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 1., 1., 0.,
-       0., 1., 1., 0., 0., 0., 0., 1., 0., 1., 0., 1., 1., 1., 1., 1., 0.,
-       0., 1., 0., 0., 1., 1., 1., 0., 1., 1., 0., 0., 1., 1., 1., 0., 0.,
-       0., 1., 0., 0., 0., 0., 0., 1., 1., 0., 1., 1., 0., 0., 0., 0., 0.,
-       1., 0., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 0.,
-       1., 1., 0., 1., 0., 1., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0.,
-       0., 1., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0.,
-       0., 0., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 0.,
-       0., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 1.,
-       0., 1., 1., 0., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 0., 0.,
-       0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 0., 1., 0., 1., 0.,
-       1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1.,
-       0., 0., 1., 0., 1., 1., 1., 1., 1., 0., 0., 0., 0., 1., 0., 0., 1.,
-       1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 1., 1., 1., 1., 1., 0.,
-       1., 0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1.,
-       1., 0., 0., 0., 1., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 0., 1.,
-       1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1., 0., 1., 0., 0., 0.,
-       1., 0., 1., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 0.,
-       0., 1., 1., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0.,
-       1., 0., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 1., 1.,
-       1., 1., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1., 1., 0.,
-       1., 1., 0., 1., 0., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 0., 1.,
-       1., 1., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1., 1., 0.,
-       1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 0.,
-       1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1.,
-       0., 1., 0., 1., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 0., 0., 1.,
-       0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0.,
-       0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 1., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1.,
+       1., 1., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0., 1., 1., 1., 1., 0.,
+       1., 0., 1., 1., 1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0., 1., 0.,
+       1., 0., 0., 0., 0., 0., 1., 0., 0., 1., 0., 0., 0., 0., 1., 1., 0.,
+       0., 1., 0., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 0.,
+       0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 0., 1., 0., 1., 1., 0., 1.,
+       0., 1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 1., 1., 0., 0., 1., 0.,
+       1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 0.,
+       1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1., 1.,
+       1., 1., 1., 0., 0., 0., 0., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1.,
+       1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 1., 0., 1., 1., 1., 1., 0.,
+       1., 1., 0., 1., 0., 1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 1.,
+       1., 1., 0., 1., 1., 1., 0., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0.,
+       0., 1., 1., 1., 0., 1., 1., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1.,
+       1., 1., 1., 0., 0., 0., 1., 1., 1., 0., 1., 1., 1., 1., 0., 0., 1.,
+       0., 0., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1., 0., 0., 1.,
+       0., 1., 0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0., 1.,
+       1., 1., 0., 1., 0., 0., 1., 1., 1., 0., 1., 0., 0., 0., 0., 0., 1.,
+       0., 1., 1., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0.,
+       1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1.,
+       1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1.,
+       0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1., 0.,
+       1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 1., 1., 0., 0., 0.,
+       0., 0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 1., 0., 1., 0., 1., 0.,
+       1., 1., 1., 1., 0., 1., 1., 0., 1., 0., 1., 1., 0., 0., 0., 1., 0.,
+       1., 0., 1., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 0., 1., 0.,
+       0., 0., 1., 0., 1., 1., 1., 1., 0., 1., 1., 1., 1., 1., 1., 0., 1.,
+       1., 0., 0., 0., 0., 1., 0., 0., 1., 0., 1., 0., 1., 1., 1., 0., 0.,
+       0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0., 0., 0., 1., 1., 0.,
+       0., 0., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 1., 1.,
+       1., 0., 1., 0., 1., 1., 1., 1., 1., 1., 0., 0., 1., 0., 0., 1., 0.,
+       0., 1., 1., 1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0., 1.,
+       0., 1., 1., 1., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1.,
+       1., 0., 1., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1., 0.,
+       0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 0., 1., 0.,
+       1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 0., 0., 0., 0.,
+       1., 1., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 0.,
+       0., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 1.,
+       0., 1., 0., 1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 0., 1., 1., 1., 1.,
+       0., 1., 1., 1., 0., 0., 1., 1., 1., 0., 0., 0., 0., 0., 1., 0., 1.,
+       0., 0., 1., 1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1., 1.,
+       0., 0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1., 1., 0., 1., 0.,
+       1., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1.,
+       1., 0., 0., 1., 0., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0., 0., 0.,
+       1., 0., 0., 1., 1., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 0., 0.,
+       1., 1., 1., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 0., 0.,
+       0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1.,
+       0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 0., 1., 0., 1., 0.,
+       0., 0., 0., 1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 0., 0.,
+       0., 0., 1., 1., 1., 1., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1., 1.,
+       1., 1., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 0., 1., 0., 0., 1.,
+       0., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 1.,
+       1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 0., 0., 1.,
+       0., 1., 0., 0., 0., 1., 0., 0., 1., 0., 0., 1., 0., 1., 0., 0., 0.,
+       1., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 1., 0., 0., 1.,
+       0., 1., 0., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 0.,
+       0., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0., 0.])
 </code></pre></div></div>
 
 <h3 id="example-number-of-heads-in-100-tosses">Example: Number of Heads in 100 Tosses</h3>
@@ -1458,10 +1501,10 @@ heads are likely.</p>
 
 <p>As y’all have already seen, <code class="highlighter-rouge">np.randint</code> can take a <code class="highlighter-rouge">size</code> argument, to return an array of random integers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 0, 1, 0, 1, 1, 1, 1])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 1, 1, 0, 1, 1, 0, 1])
 </code></pre></div></div>
 
 <p>Now let’s study 100 tosses. We will start by creating an empty array
@@ -1473,14 +1516,14 @@ a coin 100 times, count the number of heads, and append it to <code class="highl
 <span class="n">head_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">n_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
     <span class="n">head_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">head_counts</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>
 
 <span class="n">head_counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([45., 50., 44., ..., 49., 45., 52.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([43., 41., 57., ..., 53., 44., 52.])
 </code></pre></div></div>
 
 <p>Here is a histogram of the data, with bins of width 1 centered at each
