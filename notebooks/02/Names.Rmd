@@ -84,6 +84,49 @@ the next cell, it did not affect the value that we have already given to
 half
 ```
 
+## Reassigning variables
+
+You can change (reassign) the value of a variable.  Let's say we start with:
+
+```{python}
+a = 5
+a
+```
+
+At this stage the variable `a` has the value 5.
+
+If you want, you can then *change* the value of `a`, like this:
+
+```{python}
+a = 7
+a
+```
+
+Now the variable `a` has the value 7.  You can call this *reassigning* a variable.
+
+Now consider this piece of code:
+
+```{python}
+a = 10
+a = a + 1
+```
+
+What value will `a` have?
+
+Remember that Python will evaluate the right hand side (RHS) of `a = a + 1`.
+The RHS is `a + 1`. This has two sub-expressions, `a` (which evaluates to the
+CR of 10) and `1` (which evaluates to a CR of 1), so the value returned from `a
+\+ 1` is the CR of 11.  After this Python sets the left-hand-side name `a` to
+have this value.   So:
+
+```{python}
+a
+```
+
+See [this chapter in Think Like a Computer
+Scientist](https://runestone.academy/runestone/books/published/thinkcspy/SimplePythonData/Reassignment.html)
+for more explanation of variables and reassignment.
+
 ## Rules for variable names
 
 Variable names must start with a letter, but can contain both letters and
