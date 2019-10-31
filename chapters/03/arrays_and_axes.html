@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1.5 Surviving the computer - Coding for Data - 2019 edition</title>
-<meta name="description" content="Computers have vastly extended the range of tasks we can do, in data analysis,as for many other fields.  But, they can be awkward partners, because we haveto use some of our mental energy to communicate with the computer.">
+<!-- begin _includes/seo.html --><title>3.7 Arrays and axes - Coding for Data - 2019 edition</title>
+<meta name="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="1.5 Surviving the computer">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/01/surviving_computers">
+<meta property="og:title" content="3.7 Arrays and axes">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes">
 
 
-  <meta property="og:description" content="Computers have vastly extended the range of tasks we can do, in data analysis,as for many other fields.  But, they can be awkward partners, because we haveto use some of our mental energy to communicate with the computer.">
+  <meta property="og:description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/01/surviving_computers">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes">
 
 
 
@@ -1071,15 +1071,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="1.5 Surviving the computer">
-      <meta itemprop="description" content="Computers have vastly extended the range of tasks we can do, in data analysis,as for many other fields.  But, they can be awkward partners, because we haveto use some of our mental energy to communicate with the computer.">
+      <meta itemprop="headline" content="3.7 Arrays and axes">
+      <meta itemprop="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
       <meta itemprop="datePublished" content="October 31, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">1.5 Surviving the computer
+            <h1 id="page-title" class="page__title" itemprop="headline">3.7 Arrays and axes
 </h1>
           </header>
         
@@ -1095,8 +1095,9 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#have-a-piece-of-paper-and-a-pen-next-to-you">Have a piece of paper and a pen next to you</a></li>
-  <li><a href="#work-in-pairs">Work in pairs</a></li>
+  <li><a href="#starting-with-one-dimension">Starting with one dimension</a></li>
+  <li><a href="#two-dimensions">Two-dimensions</a></li>
+  <li><a href="#operations-on-axes">Operations on axes</a></li>
 </ul>
     </nav>
   </aside>
@@ -1105,56 +1106,190 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/03/arrays_and_axes.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F03%2Farrays_and_axes.ipynb">Interact</a>
 
-          <p>Computers have vastly extended the range of tasks we can do, in data analysis,
-as for many other fields.  But, they can be awkward partners, because we have
-to use some of our mental energy to communicate with the computer.</p>
 
-<p>This means that, if we are not careful, the computer can make us dumb, by
-taking up enough mental energy that we stop thinking carefully about the task
-at hand.  This is particularly dangerous when programming, because programming
-needs careful logical thought.</p>
+          <ul>
+  <li>We return to Numpy <code class="highlighter-rouge">array</code>s.</li>
+  <li>Arrays can be two-dimensional.</li>
+  <li>An array with two dimensions has <em>rows</em> and <em>columns</em>.  The rows and
+columns are the two <em>axes</em> of the array.</li>
+  <li>We can ask Numpy to do operations over rows or columns, using the
+<code class="highlighter-rouge">axis</code> keyword argument.</li>
+</ul>
 
-<p>For example, consider <a class="citation" href="#mueller2014pen">(Mueller &amp; Oppenheimer, 2014)</a>.  In their study 1, the
-authors asked students to take notes while listening to TED talks, and answer
-questions about the talks afterwards.  They randomly allocated students into
-two groups, where one group took notes with a pen and a notebook, and the
-other typed notes into a laptop.  The group that took notes on a laptop were
-less able to answer questions about ideas in the talks.</p>
+<h2 id="starting-with-one-dimension">Starting with one dimension</h2>
 
-<p>The students with the laptops are us, programming.  We have to be careful about the dulling effect that using the computer can have, on our ability to think straight.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We need Numpy
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
 
-<p>Experienced programmers know this problem, and they use tricks to deal with them.</p>
+<p>Here I make an array that contains three random numbers, using the <code class="highlighter-rouge">size</code> keyword argument:</p>
 
-<p>Among these tricks, are the following.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">three_randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">three_randoms</span>
+</code></pre></div></div>
 
-<h3 id="have-a-piece-of-paper-and-a-pen-next-to-you">Have a piece of paper and a pen next to you</h3>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.90388631, 0.82412237, 0.53515193])
+</code></pre></div></div>
 
-<p>When <em>working</em> on the computer, have a piece of paper and a pen next to you on your desk.  When you notice that you don’t fully understand an error or a task on the computer, stop, move the laptop out of the way, and write down your problem on a piece of paper.  Give yourself some time to reflect on what the problem is, and how to solve it.  Only then, you can return to the computer and try your solutions, or do more research.   You will find that disengaging from the computer is a) difficult and b) very productive in releasing you from the various mental traps that it is easy to fall into when you get stuck on the computer.</p>
+<p>Remember, this is a value of type <code class="highlighter-rouge">array</code>:</p>
 
-<h3 id="work-in-pairs">Work in pairs</h3>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">three_randoms</span><span class="p">)</span>
+</code></pre></div></div>
 
-<p><a href="https://en.wikipedia.org/wiki/Pair_programming">Pair programming</a> is
-a standard technique that programmers use to improve the quality of their work
-and accelerate learning.  It is particularly useful early in learning, and with new tasks <a class="citation" href="#lui2006pair">(Lui &amp; Chan, 2006)</a>.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
+</code></pre></div></div>
 
-<p>Pair programming has a standard form.</p>
+<p>We can compare all the values in this array to a single number.   In that case, we get a new array, with a <code class="highlighter-rouge">True</code> value in the positions where the comparison was True, and <code class="highlighter-rouge">False</code> values otherwise:</p>
 
-<p>One member of the team is the <em>driver</em>.  They sit in front of the keyboard and type.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms_compared</span> <span class="o">=</span> <span class="n">three_randoms</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">randoms_compared</span>
+</code></pre></div></div>
 
-<p>The other member of the team is the <em>navigator</em>.  They do not use their own laptop, but observe the driver as they work, offering advice, and acting as a sounding board for the driver.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False])
+</code></pre></div></div>
 
-<p>The pair should alternate roles, for example, changing places for each exercise.</p>
+<p>We also found that we can apply functions to these arrays.  For example, we found that <code class="highlighter-rouge">np.count_nonzero</code> returns the number of elements that are not 0.</p>
 
-<p>You will likely find that, when you are the driver, you think a lot slower
-than the navigator, because you are thinking about two things, the task, and
-interacting with the computer.  When you switch to being the navigator, you
-will find that you can think more quickly and carefully.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">randoms_compared</span><span class="p">)</span>
+</code></pre></div></div>
 
-<h2 id="references">References</h2>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
 
-<ol class="bibliography"><li><span id="mueller2014pen">Mueller, P. A., &amp; Oppenheimer, D. M. (2014). The pen is mightier than the keyboard: Advantages of longhand over laptop note taking. <i>Psychological Science</i>, <i>25</i>(6), 1159–1168.</span></li>
-<li><span id="lui2006pair">Lui, K. M., &amp; Chan, K. C. C. (2006). Pair programming productivity: Novice–novice vs. expert–expert. <i>International Journal of Human-Computer Studies</i>, <i>64</i>(9), 915–925. Retrieved from http://www.cs.utexas.edu/users/mckinley/305j/pair-hcs-2006.pdf</span></li></ol>
+<p>This works because the function considers <code class="highlighter-rouge">False</code> to be equal to 0 and <code class="highlighter-rouge">True</code> to be equal to 1:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<h2 id="two-dimensions">Two-dimensions</h2>
+
+<p>The array <code class="highlighter-rouge">three_randoms</code> is a one dimensional array, with three elements.</p>
+
+<p>We can also create two-dimensional arrays.   Here is an array with 10 <em>rows</em> and 3 <em>columns</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">bigger_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.02596777, 0.9470903 , 0.87231221],
+       [0.86801308, 0.19408375, 0.49500772],
+       [0.40497925, 0.70997381, 0.30334715],
+       [0.04544569, 0.68891276, 0.45360271],
+       [0.73894637, 0.37386174, 0.56527314],
+       [0.95163925, 0.80949387, 0.47239711],
+       [0.11811301, 0.90871291, 0.74968087],
+       [0.28542697, 0.34889547, 0.92713794],
+       [0.60657067, 0.93029806, 0.25293416],
+       [0.15248105, 0.63277876, 0.96330331]])
+</code></pre></div></div>
+
+<p>Notice that we made the one-dimensional array with <code class="highlighter-rouge">size=3</code>.  We make the two-dimensional array by passing two numbers to <code class="highlighter-rouge">size</code>.  We pass two numbers with something like <code class="highlighter-rouge">size=(10, 3)</code>, as we did above.  We haven’t covered this way of specifying a pair of numbers yet.  For the moment, we hope you will take our word for it.</p>
+
+<p>You can probably predict what will happen when we compare this two-dimensional array to 0.5.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_compared</span> <span class="o">=</span> <span class="n">bigger_array</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
+<span class="n">bigger_compared</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False, False],
+       [False,  True,  True],
+       [ True, False,  True],
+       [ True, False,  True],
+       [False,  True, False],
+       [False, False,  True],
+       [ True, False, False],
+       [ True,  True, False],
+       [False, False,  True],
+       [ True, False, False]])
+</code></pre></div></div>
+
+<p>As before, there is now a True at each position where there number was less than 0.5, with False everywhere else.</p>
+
+<p>Can you predict what will happen with <code class="highlighter-rouge">np.count_nonzero</code>?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
+</code></pre></div></div>
+
+<p>You can probably see that <code class="highlighter-rouge">np.count_nonzero</code> is counting the number of True values in any position in the array.</p>
+
+<h2 id="operations-on-axes">Operations on axes</h2>
+
+<p>What if we want to see how many True values there are in each column?</p>
+
+<p>To do this, we need the <code class="highlighter-rouge">axis</code> keyword to <code class="highlighter-rouge">np.count_nonzero</code>, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
+</code></pre></div></div>
+
+<p>You will see that we have one value per column, where each value is the count of True values in that column.</p>
+
+<p>Why <code class="highlighter-rouge">axis=0</code>?</p>
+
+<p>The array has two dimensions, and therefore, two <em>axes</em>.  The first axis
+is the rows, the second axis is the columns.</p>
+
+<p>Why <code class="highlighter-rouge">0</code>?  Python thinks of sequences as starting at position 0.  The
+element at position 0 is the first element in the sequence.  Thus,
+<code class="highlighter-rouge">axis=0</code> means the first axis.</p>
+
+<p>Now imagine looking down the first axis in our array.  The first axis is
+the rows, so we are looking down the rows.  First you see the first
+element in the first row, then you see the first element in the second
+row, and so on.  So, if we are doing a count of not-0 elements over the
+first axis (rows), we do this:</p>
+
+<ul>
+  <li>count the number of not-0 element going down the first element in the
+row, then</li>
+  <li>count the number of not-0 element going down the second element in the
+row, then</li>
+  <li>count the number of not-0 element going down the third element in the
+row.</li>
+</ul>
+
+<p>The result is three values, one for each element in the row.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
+</code></pre></div></div>
+
+<p>Because of the reasoning above, these the counts for each column (there are 3 columns).</p>
+
+<p>What if we want the counts for each row?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 2, 1, 1, 1, 2, 1, 1])
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">axis=1</code> asks for the count over the second axis.  If we look over the
+second axis, we look over the first element in the first row, then the
+second element in the first row, then the third element in the first
+row.  So, counting over <code class="highlighter-rouge">axis=1</code>, gives the counts for each row.   We
+get one count for each row, so 10 counts.</p>
 
           
         </section>
@@ -1171,11 +1306,11 @@ will find that you can think more quickly and carefully.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/01/Another_Kind_Of_Character" class="pagination--pager" title="1.4.2 Another kind of character
+      <a href="/cfd2019/chapters/03/More_on_Arrays" class="pagination--pager" title="3.6 More on arrays
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/01/the_software" class="pagination--pager" title="1.6 About the software
+      <a href="/cfd2019/chapters/03/reply_supreme" class="pagination--pager" title="3.8 Reply to the Supreme Court
 ">Next</a>
     
   </nav>
