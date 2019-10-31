@@ -71,6 +71,8 @@
 * [Exercises](notebooks/exercises/exercises.md)
   * [Interesting, no?](notebooks/exercises/interesting.ipynb)
   * [Thinking about names](exercises/names.md)
+  * [For loop exercises](notebooks/exercises/for_loops.ipynb)
+  * [Fix my fors](notebooks/exercises/fix_my_fors.ipynb)
   * [Three girl simulations](notebooks/exercises/three_girl_simulations.ipynb)
   * [Array indexing](notebooks/exercises/array_indexing.ipynb)
   * [More simulations](notebooks/exercises/simulation.ipynb)

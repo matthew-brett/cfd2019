@@ -65,7 +65,8 @@ Here is one jury pool, and the number of black people we get in our simulation.
 # Make 100 random integers from 0 through 99
 randoms = np.random.randint(0, 100, size=100)
 # Say values < 26 correspond to black jurors.
-black_yn = randoms < 0.26
+# 26 of the numbers 0 through 99 are less than 26 (so 26% or p=0.26).
+black_yn = randoms < 26
 # We now have True for black jurors and False otherwise.
 # Count the number of Trues
 np.count_nonzero(black_yn)
@@ -89,7 +90,7 @@ We repeat the code from the cell above, but now, we append to the `counts` array
 
 ```{python}
 randoms = np.random.randint(0, 100, size=100)
-black_yn = randoms < 0.26
+black_yn = randoms < 26
 count = np.count_nonzero(black_yn)
 counts = np.append(counts, count)
 counts
@@ -110,7 +111,7 @@ for i in np.arange(100):
     # This code is the same as the cell above, but indented,
     # so we run it all, for each time through the for loop.
     randoms = np.random.randint(0, 100, size=100)
-    black_yn = randoms < 0.26
+    black_yn = randoms < 26
     count = np.count_nonzero(black_yn)
     counts = np.append(counts, count)
 counts
@@ -131,7 +132,7 @@ for i in np.arange(10000):
     # This code is the same as the cell above, but indented,
     # so we run it all, for each time through the for loop.
     randoms = np.random.randint(0, 100, size=100)
-    black_yn = randoms < 0.26
+    black_yn = randoms < 26
     count = np.count_nonzero(black_yn)
     counts = np.append(counts, count)
 counts

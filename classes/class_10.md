@@ -6,20 +6,12 @@ permalink: /classes/class_10
 
 # Day 10 (the eleventh day)
 
-## Announcements
+* [Three girl simulations](../notebooks/exercises/three_girl_simulations)
+* [More on arrays](../notebooks/03/More_on_Arrays)
 
-* Reading week?
-* Who's doing what?
-* Project deadlines - see [project page](../project).
-
-## Schedule
-
-* Project group rules
-* Forming your group
-* Designing your pitch
-* Brave pitchers
-
-## Assignment
-
-* Forming teams
-* Preparing your project data pitch.
+<!---
+total = total + 1
+Practice comparison.
+Array indexing.
+Adding arrays
+-->
