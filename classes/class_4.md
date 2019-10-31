@@ -8,17 +8,15 @@ permalink: /classes/class_4
 
 ## Admin
 
-* [Background reading](../background_reading)
+Next week is reading week - no class on Friday.
 
 ## Today
 
-* [First pass, three girls](../chapters/02/first_pass_three_girls)
-* [Expressions](../chapters/02/Expressions)
-* [Names and variables](../chapters/02/Names)
-* Exercise [funny names](../exercises/names)
-* [Compound expressions and sub-expressions](../chapters/02/sub_expressions).
 * [Call expressions](../chapters/02/Calls)
+* Practice with OKpy: Download and extract [rounding
+  exercise](../exercises/rounding.zip).  You should extract the zip file using the instructions in the [extracting zip file page](../extracting).
+* [Data types](../chapters/03/data_types).
+* [Numbers](../chapters/03/Numbers).
+* [Strings](../chapters/03/Strings).
 
-## Assignment
-
-Assignment is [assignment 4](../assignments/assignment_4)
+Assignment will be homework 1.
