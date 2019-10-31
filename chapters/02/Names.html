@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-10-31T15:26:24+00:00">
+  <meta property="article:published_time" content="2019-10-31T18:02:49+00:00">
 
 
 
@@ -1115,6 +1115,7 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
+  <li><a href="#reassigning-variables">Reassigning variables</a></li>
   <li><a href="#rules-for-variable-names">Rules for variable names</a></li>
 </ul>
     </nav>
@@ -1194,6 +1195,54 @@ the next cell, it did not affect the value that we have already given to
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
 </code></pre></div></div>
+
+<h2 id="reassigning-variables">Reassigning variables</h2>
+
+<p>You can change (reassign) the value of a variable.  Let’s say we start with:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+</code></pre></div></div>
+
+<p>At this stage the variable <code class="highlighter-rouge">a</code> has the value 5.</p>
+
+<p>If you want, you can then <em>change</em> the value of <code class="highlighter-rouge">a</code>, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">a</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+</code></pre></div></div>
+
+<p>Now the variable <code class="highlighter-rouge">a</code> has the value 7.  You can call this <em>reassigning</em> a variable.</p>
+
+<p>Now consider this piece of code:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>What value will <code class="highlighter-rouge">a</code> have?</p>
+
+<p>Remember that Python will evaluate the right hand side (RHS) of <code class="highlighter-rouge">a = a + 1</code>.
+The RHS is <code class="highlighter-rouge">a + 1</code>. This has two sub-expressions, <code class="highlighter-rouge">a</code> (which evaluates to the
+CR of 10) and <code class="highlighter-rouge">1</code> (which evaluates to a CR of 1), so the value returned from <code class="highlighter-rouge">a
+\+ 1</code> is the CR of 11.  After this Python sets the left-hand-side name <code class="highlighter-rouge">a</code> to
+have this value.   So:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+</code></pre></div></div>
+
+<p>See <a href="https://runestone.academy/runestone/books/published/thinkcspy/SimplePythonData/Reassignment.html">this chapter in Think Like a Computer
+Scientist</a>
+for more explanation of variables and reassignment.</p>
 
 <h2 id="rules-for-variable-names">Rules for variable names</h2>
 
