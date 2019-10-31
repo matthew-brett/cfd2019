@@ -6,10 +6,15 @@ permalink: /classes/class_9
 
 # Day 9 (the tenth day)
 
-* [Indentation](../chapters/05/indentation)
-* [Fix me exercise](../exercises/fix_me.ipynb)
-* [Ones zeros](../chapters/05/ones_zeros)
-* [Brexit ages](../chapters/05/brexit_ages)
+* [Indentation](../chapters/03/indentation)
+* [For loop exercises](../chapters/exercises/for_loops)
+* Back to end of [leaping ahead](../chapters/03/leaping_ahead)
+* [Reply to the Supreme Court](../chapters/03/reply_supreme)
 
-Your optional assignment is the [Money and death
-exercise](../chapters/exercises/money_and_death).
+## Assignment
+
+* [Fix me exercise](../chapters/exercises/fix_my_fors)
+
+<!---
+Comparison practice.
+-->
