@@ -19,3 +19,7 @@ permalink: /classes/class_3
 * Practice with OKpy: Download and extract [names
   exercise](../exercises/basic_names.zip).
   * On [extracting archives](../extracting).
+
+## Assignment
+
+Assignment is [assignment 4](../assignments/assignment_4)
