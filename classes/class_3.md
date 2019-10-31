@@ -6,16 +6,8 @@ permalink: /classes/class_3
 
 # Day 3 (the fourth day)
 
-## Admin
-
-* [Background reading](../background_reading).
-
-## Agenda
-
-* [Introduction to functions](../chapters/02/functions).
-* [First pass, three girls](../chapters/02/first_pass_three_girls).
-* [Expressions](../chapters/02/Expressions).
-* [Names and variables](../chapters/02/Names).
-* Practice with OKpy: Download and extract [names
-  exercise](../exercises/basic_names.zip).
-  * On [extracting archives](../extracting).
+* [About the software](../chapters/01/the_software)
+* [More on Jupyter](../chapters/01/more_on_jupyter)
+* [Introduction to functions](../chapters/02/functions)
+* [Opening the terminal](../start_terminal)
+* [Installing packages](../installing_packages)
