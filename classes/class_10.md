@@ -10,8 +10,8 @@ permalink: /classes/class_10
 * [More on arrays](../notebooks/03/More_on_Arrays)
 
 <!---
-total = total + 1
-Practice comparison.
+total = total + 1 - see 02/Names
+Practice comparison
 Array indexing.
 Adding arrays
 -->

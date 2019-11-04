@@ -16,5 +16,5 @@ permalink: /classes/class_9
 * [Fix me exercise](../chapters/exercises/fix_my_fors)
 
 <!---
-Comparison practice.
+For loop exercises need to change.  They use conditionals.  The factorials task is hard.
 -->
