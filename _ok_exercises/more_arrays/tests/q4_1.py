@@ -7,7 +7,7 @@ test = {
         {
           'code': r"""
           >>> print(first_product, second_product, third_product, fourth_product)
-          6594 663168 6660320568 -39250
+          6594 663168 66603168 -39250
           """,
           'hidden': False,
           'locked': False

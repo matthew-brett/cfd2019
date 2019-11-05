@@ -7,7 +7,7 @@ test = {
         {
           'code': r"""
           >>> fixed_products
-          array([      66234,     6661248, 66900162648,     -394250])
+          array([    66234,   6661248, 669001248,   -394250])
           """,
           'hidden': False,
           'locked': False

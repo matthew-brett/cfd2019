@@ -80,10 +80,12 @@ Strings have a method called `join`.  `join` takes one argument, an array of str
 ```{python}
 #<- without_commas = ...
 #<- with_commas = ...
-#<-
-# These lines are just to print out your answers.
 without_commas = ' '.join(book_title_words)
 with_commas = ', '.join(book_title_words)
+#<-
+# These lines are just to print out your answers.
+print(without_commas)
+print(with_commas)
 #<-
 ```
 
@@ -179,7 +181,7 @@ _ = ok.grade('q3_4')
 
 
 
-**Question 1.** Multiply the numbers 42, 4224, 42422424, and -250 by 157.  For this question, **don't** use arrays.
+**Question 1.** Multiply the numbers 42, 4224, 424224, and -250 by 157.  For this question, **don't** use arrays.
 
 ```{python}
 #<- first_product = ...
@@ -188,7 +190,7 @@ _ = ok.grade('q3_4')
 #<- fourth_product = ...
 first_product = 42 * 157
 second_product = 4224 * 157
-third_product = 42422424 * 157
+third_product = 424224 * 157
 fourth_product = -250 * 157
 #<-
 print(first_product, second_product, third_product, fourth_product)
@@ -204,7 +206,7 @@ _ = ok.grade('q4_1')
 ```{python}
 #<- numbers = ...
 #<- products = ...
-numbers = np.array([42, 4224, 42422424, -250])
+numbers = np.array([42, 4224, 424224, -250])
 products = numbers * 157
 #<-
 products
