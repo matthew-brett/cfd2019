@@ -1,0 +1,378 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# More arrays
+
+Please complete this notebook by filling in the cells provided. Before you begin, execute the following cell to load the provided tests. Each time you start your server, you will need to execute this cell again to load the tests.
+
+```{python}
+# Don't change this cell; just run it.
+import numpy as np  # The array library.
+import pandas as pd  # A library for working with data tables.
+
+# The OKpy testing system.
+from client.api.notebook import Notebook
+ok = Notebook('more_arrays.ok')
+```
+
+**Important**: The `ok` tests don't always tell you that your answer is correct. More often, they help catch careless mistakes. It's up to you to ensure that your answer is correct. If you're not sure, ask someone (not for the answer, but for some guidance about your approach).
+
+
+Once you're finished, select "Save and Checkpoint" in the File menu.
+
+## Creating Arrays
+
+
+**Question 1.** Make an array called `weird_numbers` containing the following numbers (in the given order):
+
+1. -2
+2. the sine of 1.2
+3. 3
+4. 5 to the power of the cosine of 1.2
+
+*Hint:* `sin` and `cos` are functions in the `np` module.
+
+```{python}
+#<- weird_numbers = ...
+#<- weird_numbers
+weird_numbers = np.array([-2, np.sin(1.2), 3, 5 ** np.cos(1.2)])
+```
+
+```{python}
+_ = ok.grade('q2_1')
+```
+
+**Question 2.** Make an array called `book_title_words` containing the following three strings: "Eats", "Shoots", and "and Leaves".
+
+```{python}
+#<- book_title_words = ...
+book_title_words = np.array(["Eats", "Shoots", "and Leaves"])
+#<-
+book_title_words
+#<-
+```
+
+```{python}
+_ = ok.grade('q2_2')
+```
+
+Strings have a method called `join`.  `join` takes one argument, an array of strings.  It returns a single string.  Specifically, the value of `a_string.join(an_array)` is a single string that's the [concatenation](https://en.wikipedia.org/wiki/Concatenation) ("putting together") of all the strings in `an_array`, **except** `a_string` is inserted in between each string
+
+**Question 3.** Use the array `book_title_words` and the method `join` to make two strings:
+
+1. "Eats Shoots and Leaves" (call this one `without_commas`)
+2. "Eats, Shoots, and Leaves" (call this one `with_commas`)
+
+*Hint:* If you're not sure what `join` does, first try just calling, for example, `"foo".join(book_title_words)` .
+
+```{python}
+#<- without_commas = ...
+#<- with_commas = ...
+without_commas = ' '.join(book_title_words)
+with_commas = ', '.join(book_title_words)
+#<-
+# These lines are just to print out your answers.
+print(without_commas)
+print(with_commas)
+#<-
+```
+
+```{python}
+_ = ok.grade('q2_3')
+```
+
+## 3. Indexing Arrays
+
+
+These exercises give you practice accessing individual elements of arrays.  In Python (and in many programming languages), elements are accessed by *index*, so the first element is the element at index 0.  
+
+
+**Question 1.** The cell below creates an array of some numbers.  Set `third_element` to the third element of `some_numbers`.
+
+```{python}
+#<-
+some_numbers = np.array([-1, -3, -6, -10, -15])
+
+#<-
+#<- third_element = ...
+third_element = some_numbers[2]
+#<-
+third_element
+#<-
+```
+
+```{python}
+_ = ok.grade('q3_1')
+```
+
+**Question 2.** The next cell creates a table that displays some information about the elements of `some_numbers` and their order.  Run the cell to see the partially-completed table, then fill in the missing information in the cell (the strings that are currently "???") to complete the table.
+
+Don't worry about the code to create the "DataFrame"; we will cover that
+later.
+
+```{python}
+#- Replace in ??? placeholders in the next lines.
+#<- names = np.array(["first", "second", "???", "???", "fifth"])
+#<- index = np.array(["???", "1", "2", "???", "4"])
+names = np.array(["first", "second", "third", "fourth", "fifth"])
+index = np.array(["0", "1", "2", "3", "4"])
+#<-
+# Don't worry about this code below.
+elements_of_some_numbers = pd.DataFrame()
+elements_of_some_numbers['English name for position'] = names
+elements_of_some_numbers['Index'] = index
+elements_of_some_numbers['Element'] = some_numbers
+elements_of_some_numbers
+#<-
+```
+
+```{python}
+_ = ok.grade('q3_2')
+```
+
+**Question 3.** You'll sometimes want to find the *last* element of an array.  Suppose an array has 142 elements.  What is the index of its last element?
+
+```{python}
+#<- index_of_last_element = ...
+index_of_last_element = 141
+```
+
+```{python}
+_ = ok.grade('q3_3')
+```
+
+More often, you don't know the number of elements in an array, its *length*.  (For example, it might be a large dataset you found on the Internet.)  The function `len` takes a single argument, an array, and returns the `len`gth of that array (an integer).
+
+**Question 4.** The cell below loads an array called `president_birth_years`.
+The last element in that array is the most recent birth year of any deceased
+president. Assign that year to `most_recent_birth_year`.  Again, don't worry
+about the code to read the data.
+
+```{python}
+#<-
+# Read the birth years from a data file.
+president_birth_years = pd.read_csv("president_births.csv")['Birth Year'].values
+
+#<-
+#<- most_recent_birth_year = ...
+most_recent_birth_year = president_birth_years[-1]
+#<-
+most_recent_birth_year
+#<-
+```
+
+```{python}
+_ = ok.grade('q3_4')
+```
+
+## 4. Basic Array Arithmetic
+
+
+
+**Question 1.** Multiply the numbers 42, 4224, 424224, and -250 by 157.  For this question, **don't** use arrays.
+
+```{python}
+#<- first_product = ...
+#<- second_product = ...
+#<- third_product = ...
+#<- fourth_product = ...
+first_product = 42 * 157
+second_product = 4224 * 157
+third_product = 424224 * 157
+fourth_product = -250 * 157
+#<-
+print(first_product, second_product, third_product, fourth_product)
+#<-
+```
+
+```{python}
+_ = ok.grade('q4_1')
+```
+
+**Question 2.** Now, do the same calculation, but using an array called `numbers` and only a single multiplication (`*`) operator.  Store the 4 results in an array named `products`.
+
+```{python}
+#<- numbers = ...
+#<- products = ...
+numbers = np.array([42, 4224, 424224, -250])
+products = numbers * 157
+#<-
+products
+#<-
+```
+
+```{python}
+_ = ok.grade('q4_2')
+```
+
+**Question 3.** Oops, we made a typo!  Instead of 157, we wanted to multiply each number by 1577.  Compute the fixed products in the cell below using array arithmetic.  Notice that your job is really easy if you previously defined an array containing the 4 numbers.
+
+```{python}
+#<- fixed_products = ...
+fixed_products = numbers * 1577
+#<-
+fixed_products
+#<-
+```
+
+```{python}
+_ = ok.grade('q4_3')
+```
+
+**Question 4.** We've loaded an array of temperatures in the next cell.  Each number is the highest temperature observed on a day at a climate observation station, mostly from the US.  Since they're from the US government agency [NOAA](noaa.gov), all the temperatures are in Fahrenheit.  Convert them all to Celsius by first subtracting 32 from them, then multiplying the results by $\frac{5}{9}$. Round each result to the nearest integer using the `np.round` function.
+
+```{python}
+#- Don't worry about this code to read the data.
+#<-
+max_temperatures = pd.read_csv("temperatures.csv")["Daily Max Temperature"].values
+
+#<-
+#<- celsius_max_temperatures = ...
+celsius_max_temperatures = np.round((max_temperatures - 32) * 5 / 9)
+#<-
+celsius_max_temperatures
+#<-
+```
+
+```{python}
+_ = ok.grade('q4_4')
+```
+
+**Question 5.** The cell below loads all the *lowest* temperatures from each day (in Fahrenheit).  Compute the size of the daily temperature range for each day.  That is, compute the difference between each daily maximum temperature and the corresponding daily minimum temperature.   
+
+**Give your answer in Celsius!**.
+
+You should round your minimum celsius values before subtracting.
+
+```{python}
+#- Read in the data array for min temperatures
+#<-
+min_temperatures = pd.read_csv("temperatures.csv")["Daily Min Temperature"].values
+
+celsius_temperature_ranges = ...
+celsius_temperature_ranges
+#<-
+celsius_temperature_ranges = celsius_max_temperatures - np.round((min_temperatures - 32) * 5 / 9)
+celsius_temperature_ranges
+```
+
+```{python}
+_ = ok.grade('q4_5')
+```
+
+## 5. Old Faithful
+
+
+
+Old Faithful is a geyser in Yellowstone that erupts every 44 to 125 minutes (according to [Wikipedia](https://en.wikipedia.org/wiki/Old_Faithful)). People are [often told that the geyser erupts every hour](http://yellowstone.net/geysers/old-faithful/), but in fact the waiting time between eruptions is more variable. Let's take a look.
+
+
+**Question 1.** The first line below assigns `waiting_times` to an array of 272 consecutive waiting times between eruptions, taken from a classic 1938 dataset. Assign the names `shortest`, `longest`, and `average` so that the `print` statement is correct.
+
+*Hint*: check the various array functions in the [Arrays page of the textbook](https://matthew-brett.github.io/cfd2019/chapters/03/Arrays).
+
+```{python}
+#<-
+# Load the data into an array.
+waiting_times = pd.read_csv('old_faithful.csv')['waiting'].values
+
+shortest = ...
+longest = ...
+average = ...
+#<-
+shortest = np.min(waiting_times)
+longest = np.max(waiting_times)
+average = np.mean(waiting_times)
+#<-
+print("Old Faithful erupts every", shortest, "to", longest, "minutes and every", average, "minutes on average.")
+#<-
+```
+
+```{python}
+_ = ok.grade('q5_1')
+```
+
+**Question 2.** Assign `biggest_decrease` to the biggest decrease in waiting time between two consecutive eruptions. For example, the third eruption occurred after 74 minutes and the fourth after 62 minutes, so the decrease in waiting time was 74 - 62 = 12 minutes.
+
+*Hint*: check the various array functions in the [Arrays page of the textbook](https://matthew-brett.github.io/cfd2019/chapters/03/Arrays).
+
+*Hint*: think about how to distinguish an increase from a decrease.
+
+```{python}
+#<- biggest_decrease = ...
+biggest_decrease = np.abs(np.min(np.diff(waiting_times)))
+#<-
+biggest_decrease
+#<-
+```
+
+```{python}
+_ = ok.grade('q5_2')
+```
+
+**Question 3.** If you expected Old Faithful to erupt every hour, you would expect to wait a total of `60 * k` minutes to see `k` eruptions. Set `difference_from_expected` to an array with 272 elements, where the element at index `i` is the absolute difference between the expected and actual total amount of waiting time to see the first `i+1` eruptions.  *Hint*: You'll need to compare a cumulative sum to a range.
+
+For example, since the first three waiting times are 79, 54, and 74, the total waiting time for 3 eruptions is 79 + 54 + 74 = 207. The expected waiting time for 3 eruptions is 60 * 3 = 180. Therefore, `difference_from_expected.item(2)` should be $|207 - 180| = 27$.
+
+*Hint* - first make an array `expected` that has the expected waiting times.
+
+*Hint* - think about what the first value in `expected` will be.
+
+*Hint* - check the [array function page](https://matthew-brett.github.io/cfd2019/chapters/03/Arrays) again for useful functions to help calculate the cumulative sum.
+
+```{python}
+#<-
+expected = ...
+difference_from_expected = ...
+difference_from_expected
+#<-
+expected = np.arange(1, 273) * 60
+difference_from_expected = np.abs(np.cumsum(waiting_times) - expected)
+```
+
+```{python}
+_ = ok.grade('q5_3')
+```
+
+**Question 4.** If instead you guess that each waiting time will be the same as the previous waiting time, how many minutes would your guess differ from the actual time, averaging over every wait time except the first one.
+
+For example, since the first three waiting times are 79, 54, and 74, the average difference between your guess and the actual time for just the second and third eruption would be $\frac{|79-54|+ |54-74|}{2} = 22.5$.
+
+```{python}
+#<-
+average_error = ...
+#<-
+error = np.abs(np.diff(waiting_times))
+average_error = np.mean(error)
+#<-
+average_error
+#<-
+```
+
+```{python}
+_ = ok.grade('q5_4')
+```
+
+## And finally
+
+
+- **run all the tests** (the next cell has a shortcut for that), 
+- **Save and Checkpoint** from the `File` menu,
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
