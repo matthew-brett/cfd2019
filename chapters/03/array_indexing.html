@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-05T15:12:27+00:00">
+  <meta property="article:published_time" content="2019-11-05T16:13:28+00:00">
 
 
 
@@ -1184,6 +1184,32 @@ which elements we want, followed by <code class="highlighter-rouge">]</code> (cl
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
 </code></pre></div></div>
 
+<p>Often we need to get the last item from an array.   If we know how many elements the array has, we could use the number of elements, minus 1 (why?) to get the last element.</p>
+
+<p>I know that <code class="highlighter-rouge">my_array</code> is three elements long, so getting the last element, is the same as the cell above:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div></div>
+
+<p>There is a short-cut to getting the last element.  You can use minus numbers as an index, where the number after the minus is the offset from the <em>length</em> of the array (the number of elements).  In this case the length is 3, so index -1 will give one back from 3, therefore, element 2:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div></div>
+
+<p>You can use larger numbers after the minus to get further offsets from the length of the array:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+</code></pre></div></div>
+
 <p>At first this will take some time to get used to, that the first
 value is at index position 0.  There are good reasons for this,
 and many programming languages have this convention, but it does a while to get this habit of mind.</p>
@@ -1207,7 +1233,7 @@ a Boolean array between the square brackets.</p>
 <span class="n">randoms</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.82, 0.06, 0.52, 0.18])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.07, 0.93, 0.81, 0.17])
 </code></pre></div></div>
 
 <p>Here is a Boolean array, created from applying a comparison to an array:</p>
@@ -1216,7 +1242,7 @@ a Boolean array between the square brackets.</p>
 <span class="n">less_than_0p5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False,  True])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False, False,  True])
 </code></pre></div></div>
 
 <p>As you have already seen, we can do things like count the number
@@ -1238,7 +1264,7 @@ in <code class="highlighter-rouge">randoms</code> for which the corresponding el
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms</span><span class="p">[</span><span class="n">less_than_0p5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.06, 0.18])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.07, 0.17])
 </code></pre></div></div>
 
 <p>We have selected the numbers in <code class="highlighter-rouge">random</code> that are less than 0.5.</p>

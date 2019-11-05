@@ -227,6 +227,26 @@ my_array[1]
 my_array[2]
 ```
 
+Often we need to get the last item from an array.   If we know how many elements the array has, we could use the number of elements, minus 1 (why?) to get the last element.
+
+I know that `my_array` is three elements long, so getting the last element, is the same as the cell above:
+
+```{python}
+my_array[2]
+```
+
+There is a short-cut to getting the last element.  You can use minus numbers as an index, where the number after the minus is the offset from the *length* of the array (the number of elements).  In this case the length is 3, so index -1 will give one back from 3, therefore, element 2:
+
+```{python}
+my_array[-1]
+```
+
+You can use larger numbers after the minus to get further offsets from the length of the array:
+
+```{python}
+my_array[-2]
+```
+
 At first this will take some time to get used to, that the first
 value is at index position 0.  There are good reasons for this,
 and many programming languages have this convention, but it does a while to get this habit of mind.

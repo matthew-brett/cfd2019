@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 10 - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>Dataset for DSfE course - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Class 10">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/classes/class_10">
+<meta property="og:title" content="Coding for Data - 2019 edition">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/03/Untitled.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/classes/class_10">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/03/Untitled.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 10">
+    
     
     
     
@@ -174,30 +174,14 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 10
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-10-the-eleventh-day">Day 10 (the eleventh day)</h1>
-
-<ul>
-  <li><a href="../notebooks/03/More_on_Arrays">More on arrays</a></li>
-  <li><a href="../notebooks/03/array_indexing">Array indexing</a></li>
-  <li><a href="../exercises/more_on_arrays.zip">More on arrays exercise</a></li>
-</ul>
-
-<!---
-total = total + 1 - see 02/Names
-Practice comparison
-Array indexing.
-Adding arrays
-* [Three girl simulations](../notebooks/exercises/three_girl_simulations)
--->
-
+        
         
       </section>
 
