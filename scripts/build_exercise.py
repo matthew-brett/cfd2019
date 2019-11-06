@@ -59,17 +59,18 @@ def write_nb(nb, fname):
 
 def good_fname(fname):
     fn = op.basename(fname)
-    if fn.startswith('.'):
+    froot, ext = op.splitext(fname)
+    if froot.startswith('.'):
         return False
-    if fn.endswith('.Rmd'):
+    if ext in ('.Rmd', '.pyc'):
         return False
-    if fn.startswith('test_'):
+    if froot.startswith('test_'):
         return False
-    if 'solution' in fn:
+    if froot.endswith('solution'):
+        return False
+    if froot.endswith('template'):
         return False
     if fn == ('__pycache__'):
-        return False
-    if fn.endswith('.pyc'):
         return False
     return True
 
