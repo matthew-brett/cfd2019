@@ -3,38 +3,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>3.7 Arrays and axes - Coding for Data - 2019 edition</title>
-<meta name="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
+<!-- begin _includes/seo.html --><title>3.15 Filling arrays - Coding for Data - 2019 edition</title>
+<meta name="description" content="Making and filling arrays.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="3.7 Arrays and axes">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes">
+<meta property="og:title" content="3.15 Filling arrays">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/03/filling_arrays">
 
 
-  <meta property="og:description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-11-06T00:55:49+00:00">
+  <meta property="og:description" content="Making and filling arrays.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-11-07T09:14:44+00:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes">
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/03/filling_arrays">
 
 
 
@@ -544,7 +544,17 @@
 
             
 
-            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting with arrays</a></li>
+            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting in arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/filling_arrays" class="level_1">3.15 Filling arrays</a></li>
           
         </ul>
         
@@ -604,17 +614,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/05/ones_zeros" class="level_1">5.2 Ones and zeros</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.3 A permutation test</a></li>
+            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.2 A permutation test</a></li>
           
         </ul>
         
@@ -1091,15 +1091,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="3.7 Arrays and axes">
-      <meta itemprop="description" content="  We return to Numpy arrays.  Arrays can be two-dimensional.  An array with two dimensions has rows and columns.  The rows andcolumns are the two axes of the array.  We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.">
-      <meta itemprop="datePublished" content="November 06, 2019">
+      <meta itemprop="headline" content="3.15 Filling arrays">
+      <meta itemprop="description" content="Making and filling arrays.">
+      <meta itemprop="datePublished" content="November 07, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">3.7 Arrays and axes
+            <h1 id="page-title" class="page__title" itemprop="headline">3.15 Filling arrays
 </h1>
           </header>
         
@@ -1115,9 +1115,8 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#starting-with-one-dimension">Starting with one dimension</a></li>
-  <li><a href="#two-dimensions">Two-dimensions</a></li>
-  <li><a href="#operations-on-axes">Operations on axes</a></li>
+  <li><a href="#making-and-filling-arrays">Making and filling arrays.</a></li>
+  <li><a href="#using-array-assignment-for-simulations">Using array assignment for simulations</a></li>
 </ul>
     </nav>
   </aside>
@@ -1128,188 +1127,202 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/03/arrays_and_axes.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F03%2Farrays_and_axes.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/03/filling_arrays.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F03%2Ffilling_arrays.ipynb">Interact</a>
 
 
-          <ul>
-  <li>We return to Numpy <code class="highlighter-rouge">array</code>s.</li>
-  <li>Arrays can be two-dimensional.</li>
-  <li>An array with two dimensions has <em>rows</em> and <em>columns</em>.  The rows and
-columns are the two <em>axes</em> of the array.</li>
-  <li>We can ask Numpy to do operations over rows or columns, using the
-<code class="highlighter-rouge">axis</code> keyword argument.</li>
-</ul>
+          <h2 id="making-and-filling-arrays">Making and filling arrays.</h2>
 
-<h2 id="starting-with-one-dimension">Starting with one dimension</h2>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We need Numpy
-</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<p>Here I make an array that contains three random numbers, using the <code class="highlighter-rouge">size</code> keyword argument:</p>
+<p>You have seen how to create arrays from a sequence of values:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">three_randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">three_randoms</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.90388631, 0.82412237, 0.53515193])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
 </code></pre></div></div>
 
-<p>Remember, this is a value of type <code class="highlighter-rouge">array</code>:</p>
+<p>You have also seen how to create arrays that are sequential integers, using <code class="highlighter-rouge">np.arange</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">three_randoms</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4])
 </code></pre></div></div>
 
-<p>We can compare all the values in this array to a single number.   In that case, we get a new array, with a <code class="highlighter-rouge">True</code> value in the positions where the comparison was True, and <code class="highlighter-rouge">False</code> values otherwise:</p>
+<p>We often find that we want to create an empty or default array, that we will fill later.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">randoms_compared</span> <span class="o">=</span> <span class="n">three_randoms</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
-<span class="n">randoms_compared</span>
+<p>Numpy has routines for that.  The main ones we will use are <code class="highlighter-rouge">np.zeros</code> and <code class="highlighter-rouge">np.ones</code>.</p>
+
+<p>You can guess what they do:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False, False])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 0., 0., 0.])
 </code></pre></div></div>
 
-<p>We also found that we can apply functions to these arrays.  For example, we found that <code class="highlighter-rouge">np.count_nonzero</code> returns the number of elements that are not 0.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">randoms_compared</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 1.])
 </code></pre></div></div>
 
-<p>This works because the function considers <code class="highlighter-rouge">False</code> to be equal to 0 and <code class="highlighter-rouge">True</code> to be equal to 1:</p>
+<p>These arrays aren’t very useful at the moment; usually, we will want to fill in the elements of these arrays with other values.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div></div>
+<p>We can do that using <em>assignment</em>.</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
-</code></pre></div></div>
+<p>Remember the basic assignment statement.  We have so far learned that the assignment statement is a <em>name</em> followed by <code class="highlighter-rouge">=</code> followed by an expression (a recipe that returns a value).</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An assignment statement
+</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">a</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
-<h2 id="two-dimensions">Two-dimensions</h2>
+<p>Here the left hand side (LHS) is <code class="highlighter-rouge">a</code>.</p>
 
-<p>The array <code class="highlighter-rouge">three_randoms</code> is a one dimensional array, with three elements.</p>
+<p>The right hand side (RHS) is an expression: <code class="highlighter-rouge">1</code>.</p>
 
-<p>We can also create two-dimensional arrays.   Here is an array with 10 <em>rows</em> and 3 <em>columns</em>.</p>
+<p>We can read <code class="highlighter-rouge">a = 1</code> as “a gets the value 1.”  We can also read it as: “Make the location called ‘a’ point to the value 1.”</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">bigger_array</span>
+<p>So far, the left hand side (LHS) has always been a <em>name</em>.</p>
+
+<p>In fact, the LHS can be anything we can <em>assign</em> to.</p>
+
+<p>Remember too that we can retrieve values from an array by <em>indexing</em>.</p>
+
+<p>Here is an example array:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.02596777, 0.9470903 , 0.87231221],
-       [0.86801308, 0.19408375, 0.49500772],
-       [0.40497925, 0.70997381, 0.30334715],
-       [0.04544569, 0.68891276, 0.45360271],
-       [0.73894637, 0.37386174, 0.56527314],
-       [0.95163925, 0.80949387, 0.47239711],
-       [0.11811301, 0.90871291, 0.74968087],
-       [0.28542697, 0.34889547, 0.92713794],
-       [0.60657067, 0.93029806, 0.25293416],
-       [0.15248105, 0.63277876, 0.96330331]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
 </code></pre></div></div>
 
-<p>Notice that we made the one-dimensional array with <code class="highlighter-rouge">size=3</code>.  We make the two-dimensional array by passing two numbers to <code class="highlighter-rouge">size</code>.  We pass two numbers with something like <code class="highlighter-rouge">size=(10, 3)</code>, as we did above.  We haven’t covered this way of specifying a pair of numbers yet.  For the moment, we hope you will take our word for it.</p>
+<p>We can retrieve one or more values by indexing:</p>
 
-<p>You can probably predict what will happen when we compare this two-dimensional array to 0.5.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bigger_compared</span> <span class="o">=</span> <span class="n">bigger_array</span> <span class="o">&lt;</span> <span class="mf">0.5</span>
-<span class="n">bigger_compared</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False, False],
-       [False,  True,  True],
-       [ True, False,  True],
-       [ True, False,  True],
-       [False,  True, False],
-       [False, False,  True],
-       [ True, False, False],
-       [ True,  True, False],
-       [False, False,  True],
-       [ True, False, False]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
-<p>As before, there is now a True at each position where there number was less than 0.5, with False everywhere else.</p>
-
-<p>Can you predict what will happen with <code class="highlighter-rouge">np.count_nonzero</code>?</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 6,  7,  8,  9, 10])
 </code></pre></div></div>
 
-<p>You can probably see that <code class="highlighter-rouge">np.count_nonzero</code> is counting the number of True values in any position in the array.</p>
+<p>In fact we can use these exact same specifications on the LHS of an assignment statement:</p>
 
-<h2 id="operations-on-axes">Operations on axes</h2>
-
-<p>What if we want to see how many True values there are in each column?</p>
-
-<p>To do this, we need the <code class="highlighter-rouge">axis</code> keyword to <code class="highlighter-rouge">np.count_nonzero</code>, like this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 99,  3,  4,  5,  6,  7,  8,  9, 10])
 </code></pre></div></div>
 
-<p>You will see that we have one value per column, where each value is the count of True values in that column.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">my_array</span>
+</code></pre></div></div>
 
-<p>Why <code class="highlighter-rouge">axis=0</code>?</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  1,  99,   3,   4,   5, 100, 100, 100, 100, 100])
+</code></pre></div></div>
 
-<p>The array has two dimensions, and therefore, two <em>axes</em>.  The first axis
-is the rows, the second axis is the columns.</p>
-
-<p>Why <code class="highlighter-rouge">0</code>?  Python thinks of sequences as starting at position 0.  The
-element at position 0 is the first element in the sequence.  Thus,
-<code class="highlighter-rouge">axis=0</code> means the first axis.</p>
-
-<p>Now imagine looking down the first axis in our array.  The first axis is
-the rows, so we are looking down the rows.  First you see the first
-element in the first row, then you see the first element in the second
-row, and so on.  So, if we are doing a count of not-0 elements over the
-first axis (rows), we do this:</p>
+<p>When you use array indexing on the LHS, it means <em>specify the elements to assign</em>.  So:</p>
 
 <ul>
-  <li>count the number of not-0 element going down the first element in the
-row, then</li>
-  <li>count the number of not-0 element going down the second element in the
-row, then</li>
-  <li>count the number of not-0 element going down the third element in the
-row.</li>
+  <li><code class="highlighter-rouge">my_array[5]</code> on the RHS means - get the value at offset 5 in <code class="highlighter-rouge">my_array</code></li>
+  <li><code class="highlighter-rouge">my_array[5]</code> on the LHS means - use this location to store the data returned from the RHS.</li>
 </ul>
 
-<p>The result is three values, one for each element in the row.</p>
+<p>So we can read <code class="highlighter-rouge">my_array[1] = 99</code> as “Make the location ‘my_array[5]’ point to the value 99.”.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<p>Remember too that we can get array values using Boolean arrays:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create the Boolean array
+</span><span class="n">another_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">are_gt_2</span> <span class="o">=</span> <span class="n">another_array</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="n">are_gt_2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6, 3, 5])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True,  True, False, False,  True, False, False,  True])
 </code></pre></div></div>
 
-<p>Because of the reasoning above, these the counts for each column (there are 3 columns).</p>
-
-<p>What if we want the counts for each row?</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">bigger_compared</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the values by indexing with the Boolean array.
+# Return only the values of 'another_array' where the Boolean array has True.
+</span><span class="n">another_array</span><span class="p">[</span><span class="n">are_gt_2</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 2, 2, 1, 1, 1, 2, 1, 1])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 5, 3])
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">axis=1</code> asks for the count over the second axis.  If we look over the
-second axis, we look over the first element in the first row, then the
-second element in the first row, then the third element in the first
-row.  So, counting over <code class="highlighter-rouge">axis=1</code>, gives the counts for each row.   We
-get one count for each row, so 10 counts.</p>
+<p>Given what you know, what do you think would happen with:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>another_array[are_gt_3] = 10
+another_array
+</code></pre></div></div>
+
+<p>Try it.</p>
+
+<h2 id="using-array-assignment-for-simulations">Using array assignment for simulations</h2>
+
+<p>So far this is a bit abstract, but we will often use this kind of assignment when we create arrays, and then fill them in.</p>
+
+<p>For example, remember the solution to the three girls problem.  Our first approach to this, in <a href="leaping_ahead">leaping ahead</a> was to use <code class="highlighter-rouge">np.append</code> to append values to the end of an array, as we run through the loop:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Reset the counts array to empty.
+</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+
+<span class="c1"># Repeat the indented stuff 10000 times.
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="c1"># The procedure for one family.
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+    <span class="c1"># Store the count in the counts array.
+</span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+<span class="c1"># Proportion
+</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2514
+</code></pre></div></div>
+
+<p>This works fine for relatively small numbers of iterations, such as 10000 (yes, that is small for the computer!).  Try changing the 10000 above to 1000000 and you will find it becomes very slow.  This is because it is inefficient to make a new array each time we go through the loop, which is what we have to do using <code class="highlighter-rouge">np.append</code>.   Each new array is one element longer than the last, so by the end of the one million iterations we will be making a new array of nearly one million values for each time through the loop.</p>
+
+<p>It is much more efficient to:</p>
+
+<ul>
+  <li>Create an empty array to store the results</li>
+  <li>Fill in each element for each time we go through the loop.</li>
+</ul>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Reset the counts array to empty (all zeros)
+</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="c1"># Repeat the indented stuff 10000 times.
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="c1"># The procedure for one family.
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+    <span class="c1"># Fill in the corresponding value in the counts array.
+</span>    <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+
+<span class="c1"># Proportion
+</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2525
+</code></pre></div></div>
+
+<p>We will use loops like these many times to solve problems in statistics.</p>
 
           
         </section>
@@ -1326,11 +1339,13 @@ get one count for each row, so 10 counts.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/03/More_on_Arrays" class="pagination--pager" title="3.6 More on arrays
+      <a href="/cfd2019/chapters/03/array_indexing" class="pagination--pager" title="3.14 Selecting in arrays
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/03/reply_supreme" class="pagination--pager" title="3.8 Reply to the Supreme Court
+      <a href="/cfd2019/chapters/04/data_frames" class="pagination--pager" title="
+  Data frames
+
 ">Next</a>
     
   </nav>

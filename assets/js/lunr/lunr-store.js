@@ -19,7 +19,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/computational-tools",
         "teaser":null},{
-        "title": "1. Data science for everyone",
+        "title": "1. Coding for data",
         "excerpt":"About this textbook This is the textbook for the first year undergraduate course indata science at the University of Birmingham. We go into some detail about what we mean by “Data science” inthe next section, but here is theone-line summary: Data science is an approach to data analysis with a...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/intro",
@@ -124,7 +124,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Comparison",
         "teaser":null},{
-        "title": "3.6 More on arrays",
+        "title": "3.13 More on arrays",
         "excerpt":"More on Arrays It’s often necessary to compute something that involves data from more thanone array. If two arrays are of the same size, Python makes it easy to docalculations involving both arrays. For our first example, we return once more to the temperature data. Thistime, we create arrays of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/More_on_Arrays",
@@ -149,20 +149,20 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Strings",
         "teaser":null},{
-        "title": "3.14 Selecting with arrays",
+        "title": "3.14 Selecting in arrays",
         "excerpt":"Selecting values from an array import numpy as npWe use arrays all the time, in data science. One of the most common tasks we have to do on arrays, is to select values. We do this with array slicing. We do array slicing when we follow the array variable name...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/array_indexing",
-        "teaser":null},{
-        "title": "3.7 Arrays and axes",
-        "excerpt":"We return to Numpy arrays. Arrays can be two-dimensional. An array with two dimensions has rows and columns. The rows andcolumns are the two axes of the array. We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.Starting with one dimension # We need Numpyimport...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes",
         "teaser":null},{
         "title": "3. Data types",
         "excerpt":"Types of things Every value in Python, has a type. We can show what type of thing something is, by calling type, like this: type(1)inta = 1type(a)intIf you get stuck in some code, it is often useful to check what the type of your values are. We will use multiple...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/data_types",
+        "teaser":null},{
+        "title": "3.15 Filling arrays",
+        "excerpt":"Making and filling arrays. import numpy as npYou have seen how to create arrays from a sequence of values: np.array([1, 2, 3])array([1, 2, 3])You have also seen how to create arrays that are sequential integers, using np.arange: np.arange(5)array([0, 1, 2, 3, 4])We often find that we want to create an...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/filling_arrays",
         "teaser":null},{
         "title": "3.8 Function arguments",
         "excerpt":"So far we have used function arguments in a basic way; this is the way that is familiar from mathematics: # Load the Numpy package, and rename to \"np\"import numpy as npnp.cos(0)1.0Here is another Numpy function, from the random sub-package of the Numpy library. We get to the sub-packages with...","categories": [],
@@ -199,11 +199,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/reply_supreme",
         "teaser":null},{
-        "title": "3.9 Revision - three girls",
-        "excerpt":"Three girls In which we solve the three-girls-in-family problem. The problem If there is a family of four children, what is the chance thatfamily will consist of exactly three girls and one boy? We decided we could simulate this situation, by taking fourrandom numbers, between 0 and 1. For each...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/three_girls",
-        "teaser":null},{
         "title": "4.1 Introduction to data frames",
         "excerpt":"Introduction to data frames Start by loading the usual plotting libraries. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')Pandas is a Python package thatimplements data frames, and functions that operate on dataframes. import pandas as pdData frames and series We start by...","categories": [],
         "tags": [],
@@ -214,17 +209,12 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/04/data_frames",
         "teaser":null},{
-        "title": "5.6 A permutation test",
+        "title": "5.3 A permutation test",
         "excerpt":"Now we have for loops and ranges, we cansolve the problem in population, permutation. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again, we get...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
         "teaser":null},{
-        "title": "5.2 lists",
-        "excerpt":"Lists The data structures that we use most often in data science are: arrays, from numpy; data frames, from pandas.There is another data structure for containing sequences of values the list.You have already seen these in passing, when we created arrays. Now we cover them in more detail. Creating a...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/lists",
-        "teaser":null},{
-        "title": "5.5 Ones and zeros",
+        "title": "5.2 Ones and zeros",
         "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/ones_zeros",
@@ -410,12 +400,12 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/money_and_death",
         "teaser":null},{
         "title": "More simulations",
-        "excerpt":"Simulation exercises import numpy as npThree girls Of all families with exactly four children, what proportion have exactly threegirls? Solve by simulation. Penalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of...","categories": [],
+        "excerpt":"Simulation exercises import numpy as npPenalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of scoring. In the last 15 penalties she has taken, she has been trying a new technique.She scored...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/simulation",
         "teaser":null},{
         "title": "Three girl simulations",
-        "excerpt":"Exercises on the three-girl simulation problem These exercises follow on from the three girls solution in leapingahead, and the reply to the SupremeCourt. You may want to refer back to those pages for inspiration. Run this cell first: # Load the Numpy package, and rename to \"np\"import numpy as npThree...","categories": [],
+        "excerpt":"Exercises on the three-girl simulation problem These exercises follow on from the three girls solution in filling arrays, and the reply to the SupremeCourt. You may want to refer back to those pages for inspiration. Run this cell first: # Load the Numpy package, and rename to \"np\"import numpy as...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/three_girl_simulations",
         "teaser":null},{

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-06T00:55:49+00:00">
+  <meta property="article:published_time" content="2019-11-07T09:14:44+00:00">
 
 
 
@@ -544,7 +544,17 @@
 
             
 
-            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting with arrays</a></li>
+            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting in arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/filling_arrays" class="level_1">3.15 Filling arrays</a></li>
           
         </ul>
         
@@ -604,17 +614,7 @@
 
             
 
-            <li><a href="/cfd2019/chapters/05/ones_zeros" class="level_1">5.2 Ones and zeros</a></li>
-          
-            
-            
-
-            
-            
-
-            
-
-            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.3 A permutation test</a></li>
+            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.2 A permutation test</a></li>
           
         </ul>
         
@@ -1093,7 +1093,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="More simulations">
       <meta itemprop="description" content="Simulation exercises">
-      <meta itemprop="datePublished" content="November 06, 2019">
+      <meta itemprop="datePublished" content="November 07, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1115,7 +1115,6 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#three-girls">Three girls</a></li>
   <li><a href="#penalty-shootout-technique">Penalty shootout technique</a></li>
   <li><a href="#aim-big">Aim big</a></li>
   <li><a href="#blackjack">Blackjack</a>
@@ -1143,13 +1142,6 @@
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<h2 id="three-girls">Three girls</h2>
-
-<p>Of all families with exactly four children, what proportion have exactly three
-girls?</p>
-
-<p>Solve by simulation.</p>
-
 <h2 id="penalty-shootout-technique">Penalty shootout technique</h2>
 
 <p>Jen is the penalty taker for her football team.</p>
@@ -1172,8 +1164,7 @@ John’s chances?</p>
 
 <p>Solve by simulation.</p>
 
-<p>Hint: look at <code class="highlighter-rouge">np.random.randint</code>.  Read the help, carefully.  Look at
-<code class="highlighter-rouge">np.sum</code>.</p>
+<p>Hint: consider <code class="highlighter-rouge">np.random.randint</code>.  Read the help with <code class="highlighter-rouge">np.random.randint?</code>.</p>
 
 <h2 id="blackjack">Blackjack</h2>
 
@@ -1207,29 +1198,24 @@ a total rank of 21?</p>
 
 <p>Assume the cards are drawn as they were for the problem above.</p>
 
-<p>Now the ace can count as 1 or as 11, whichever gives a total of
-\21.  Now what are the chances of a total rank of 21?</p>
+<p>Now the ace can count as 1 or as 11, whichever gives a total of 21.  Now what are the chances of a total rank of 21?</p>
 
 <p>Hint: you can change values of 1 to 11 like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make an example array
-</span><span class="n">some_cards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+</span><span class="n">some_cards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">some_cards</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  3,  5,  1],
-       [ 2, 10,  1,  4],
-       [ 3, 10, 10,  1]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1,  3,  5,  1,  2, 10,  1,  4])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make True for positions where card == 1
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a Boolean array that has True for positions where some_cards == 1
 </span><span class="n">card_eq_1</span> <span class="o">=</span> <span class="n">some_cards</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="n">card_eq_1</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False, False,  True],
-       [False, False,  True, False],
-       [False, False, False,  True]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False, False,  True, False, False,  True, False])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># In the found positions, change the value to 11
@@ -1237,9 +1223,7 @@ a total rank of 21?</p>
 <span class="n">some_cards</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[11,  3,  5, 11],
-       [ 2, 10, 11,  4],
-       [ 3, 10, 10, 11]])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11,  3,  5, 11,  2, 10, 11,  4])
 </code></pre></div></div>
 
 <p>You might want to use this kind of trick more than once in your solution.</p>

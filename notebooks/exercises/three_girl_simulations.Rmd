@@ -183,8 +183,7 @@
         
         ## Exercises on the three-girl simulation problem
 
-These exercises follow on from the three girls solution in [leaping
-ahead](../03/leaping_ahead), and the [reply to the Supreme
+These exercises follow on from the three girls solution in [filling arrays](../03/filling_arrays), and the [reply to the Supreme
 Court](../03/reply_supreme).
 
 You may want to refer back to those pages for inspiration.
@@ -198,28 +197,23 @@ import numpy as np
 
 ### Three girls in a family of four
 
-Remember the solution to this problem, from [leaping ahead](../03/leaping_ahead):
+Remember the solution to this problem, from [filling arrays](../03/filling_arrays):
 
 ```{python}
-# Reset the counts array to empty.
-counts = np.array([])
+# Reset the counts array to empty (all zeros)
+counts = np.zeros(10000)
 
 # Repeat the indented stuff 10000 times.
 for i in np.arange(10000):
     # The procedure for one family.
     family = np.random.randint(0, 2, 4)
     count = np.sum(family)
-    # Store the count in the counts array.
-    counts = np.append(counts, count)
+    # Fill in the corresponding value in the counts array.
+    counts[i] = count
 
-# True where counts has the value 3, False otherwise.
-has_3_girls = counts == 3
-
-# Number of counts values equal to 3.
-n_3_girls = np.count_nonzero(has_3_girls)
-
-# Estimate and show probability of 3 girls.
-n_3_girls / 10000
+# Proportion
+prop_3_girls = np.count_nonzero(counts == 3) / 10000
+prop_3_girls
 ```
 
 ### No girls in a family of four
@@ -236,7 +230,6 @@ probability than the chance of three girls.  What's the exact answer, from proba
 
 
 Edit this code cell to give your answer.
-
 
 ### Three girls in a family of five
 
