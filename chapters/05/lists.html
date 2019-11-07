@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Monty Hall with lists - Coding for Data - 2019 edition</title>
-<meta name="description" content="The Monty Hall problem, with lists">
+<!-- begin _includes/seo.html --><title>5.2 lists - Coding for Data - 2019 edition</title>
+<meta name="description" content="Lists">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Monty Hall with lists">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/extra/monty_hall_lists">
+<meta property="og:title" content="5.2 lists">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/05/lists">
 
 
-  <meta property="og:description" content="The Monty Hall problem, with lists">
+  <meta property="og:description" content="Lists">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/extra/monty_hall_lists">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/05/lists">
 
 
 
@@ -1091,15 +1091,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="Monty Hall with lists">
-      <meta itemprop="description" content="The Monty Hall problem, with lists">
+      <meta itemprop="headline" content="5.2 lists">
+      <meta itemprop="description" content="Lists">
       <meta itemprop="datePublished" content="November 07, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">Monty Hall with lists
+            <h1 id="page-title" class="page__title" itemprop="headline">5.2 lists
 </h1>
           </header>
         
@@ -1115,8 +1115,20 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#simulating-one-trial">Simulating one trial</a></li>
-  <li><a href="#many-trials">Many trials.</a></li>
+  <li><a href="#creating-a-list">Creating a list</a></li>
+  <li><a href="#lists-and-arrays">Lists and arrays</a></li>
+  <li><a href="#differences-between-lists-and-arrays">Differences between lists and arrays</a>
+    <ul>
+      <li><a href="#a-list-can-contain-a-mix-of-types">A list can contain a mix of types</a></li>
+    </ul>
+  </li>
+  <li><a href="#a-list-is-always-one-dimensional">A list is always one-dimensional</a>
+    <ul>
+      <li><a href="#lists-can-contain-lists">Lists can contain lists</a></li>
+    </ul>
+  </li>
+  <li><a href="#appending-to-a-list">Appending to a list</a></li>
+  <li><a href="#what-do-these-square-brackets-mean">What do these square brackets mean?</a></li>
 </ul>
     </nav>
   </aside>
@@ -1127,129 +1139,334 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/extra/monty_hall_lists.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2Fextra%2Fmonty_hall_lists.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/05/lists.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F05%2Flists.ipynb">Interact</a>
 
 
-          <h1 id="the-monty-hall-problem-with-lists">The Monty Hall problem, with lists</h1>
+          <h1 id="lists">Lists</h1>
 
-<p>You have already seen a simulation of <a href="../06/monty_hall">the Monty Hall
-Problem</a> using arrays.</p>
+<p>The data structures that we use most often in data science are:</p>
 
-<p>We use arrays often in data science, but sometimes, it is more efficient to use
-Python <a href="../05/lists">lists</a>.</p>
+<ul>
+  <li>arrays, from <code class="highlighter-rouge">numpy</code>;</li>
+  <li>data frames, from <code class="highlighter-rouge">pandas</code>.</li>
+</ul>
 
-<p>To follow along in this section, you will also need <a href="more_on_lists">more on
+<p>There is another data structure for containing sequences of values</p>
+<ul>
+  <li>the <code class="highlighter-rouge">list</code>.</li>
+</ul>
+
+<p>You have already seen these in passing, when we created arrays.  Now we cover them in more detail.</p>
+
+<h2 id="creating-a-list">Creating a list</h2>
+
+<p>You make a list like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
+</code></pre></div></div>
+
+<p>More formally, you define a list like this:</p>
+
+<ol>
+  <li>the open square bracket character <code class="highlighter-rouge">[</code>, followed by</li>
+  <li>a sequence of zero of more values, separated by commas, followed by</li>
+  <li>the close square bracket character <code class="highlighter-rouge">]</code>.</li>
+</ol>
+
+<p>We defined the list above with <code class="highlighter-rouge">[1, 2, 3]</code>.</p>
+
+<p>Here is a list with one value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">another_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">99</span><span class="p">]</span>
+<span class="n">another_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[99]
+</code></pre></div></div>
+
+<p>As implied above, the list can be empty, in which case there is nothing between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">empty_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<p>A list is of type <code class="highlighter-rouge">list</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
+</code></pre></div></div>
+
+<h2 id="lists-and-arrays">Lists and arrays</h2>
+
+<p>We will soon need the Numpy library for the examples:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>A list is a container, like an array.  Like an array, it contains an
+ordered sequence of values.  Like an array, it can be empty, or it can
+contain any number of values.</p>
+
+<p>You can <em>convert a list into an array</em>, like this</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[4, 5, 6]
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([4, 5, 6])
+</code></pre></div></div>
+
+<p>In fact, you have already seen us do this, as a convenient way to
+create a new array - for example:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define a list and immediately convert to an array
+</span><span class="n">another_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">another_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10, 20, 30])
+</code></pre></div></div>
+
+<p>You can also <em>convert an array into a list</em>, using the <code class="highlighter-rouge">list</code> function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">list</span><span class="p">(</span><span class="n">another_array</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[10, 20, 30]
+</code></pre></div></div>
+
+<p>Like arrays, you can <em>index</em> into a list, to get the individual values.  Consider this list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Like arrays (and every other kind of sequence in Python), the first element is at index (offset) 0:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the first value
+</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>Accordingly, the third element is at index (offset) 2:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the third value
+</span><span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<h2 id="differences-between-lists-and-arrays">Differences between lists and arrays</h2>
+
+<h3 id="a-list-can-contain-a-mix-of-types">A list can contain a mix of types</h3>
+
+<p>The elements in a list can be of any type, and there can be many different types in a list.  For example, here is a list that mixes integers, floating point values, and strings.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s">'Ho ho ho'</span><span class="p">]</span>
+<span class="n">mixed_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1, 'Ho ho ho']
+</code></pre></div></div>
+
+<p>The elements in an array must all be of the same type - say - all
+numbers, or all strings.  If we now create an array from this list, Numpy will try and find a type that works for all the elements, and will convert the elements to that type:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unmixed_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mixed_list</span><span class="p">)</span>
+<span class="n">unmixed_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['1', '1.1', 'Ho ho ho'], dtype='&lt;U32')
+</code></pre></div></div>
+
+<p>Notice that Numpy has converted all the elements to strings, as you can see from the quotes around the values.</p>
+
+<h2 id="a-list-is-always-one-dimensional">A list is always one-dimensional</h2>
+
+<p>You have already seen that an array can have two (or more) dimensions.  Here is a two-dimensional array of random numbers:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">two_d_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">two_d_array</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.99088945, 0.40117229, 0.14229089],
+       [0.151262  , 0.93252174, 0.45384583],
+       [0.16908648, 0.1994969 , 0.97077281],
+       [0.20885273, 0.40019192, 0.27822629],
+       [0.87493618, 0.35252061, 0.78758106]])
+</code></pre></div></div>
+
+<p>Lists only have one dimension.</p>
+
+<h3 id="lists-can-contain-lists">Lists can contain lists</h3>
+
+<p>You may be able to see a way of making a list that is rather like an
+array with two dimensions.  Remember that a list can contain elements
+of <em>any type</em>.  That means that a list can contain elements of type
+<code class="highlighter-rouge">list</code>. Here is a list where the first element is also a list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">small_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">funky_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">small_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+<span class="n">funky_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[21, 22, 23], 1, 1.1]
+</code></pre></div></div>
+
+<p>As usual, I can get the first element of <code class="highlighter-rouge">funky_list</code> by indexing:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">element_at_0</span> <span class="o">=</span> <span class="n">funky_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">element_at_0</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[21, 22, 23]
+</code></pre></div></div>
+
+<p>That first element is a list.  As usual, I can index in that first element too.  Here I ask for the second element from <code class="highlighter-rouge">element_at_0</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">element_at_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22
+</code></pre></div></div>
+
+<p>Putting that all together in one line, I can get the second element of the first element with:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">funky_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>22
+</code></pre></div></div>
+
+<p>Read this carefully from left to right.  <code class="highlighter-rouge">funky_list</code> is the initial
+list.  The <code class="highlighter-rouge">[0]</code> after <code class="highlighter-rouge">funky_list</code> gives me the first element of that
+list. The <code class="highlighter-rouge">[1]</code> after that, gives me the second element from the result
+of the previous expressions. <code class="highlighter-rouge">funky_list[0][1]</code> puts several
+expressions together in sequence; this is a very common pattern that
+you will see often in Python programs. Learning to read them carefully
+is one of the skills you will pick up, as you learn Python, and data
+science.</p>
+
+<h2 id="appending-to-a-list">Appending to a list</h2>
+
+<p>You have already seen <em>methods</em>.  These are functions attached to
+values.  For example, you have seen that a data frame, has a <code class="highlighter-rouge">count</code>
+method, that, when called, gives the number of rows in the data frame.</p>
+
+<p>Lists have several very useful methods.  One of the most useful is <code class="highlighter-rouge">append</code>.   Use it to append values to a list.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty list
+</span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<p>Append a value to the empty list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1]
+</code></pre></div></div>
+
+<p>Append another value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1]
+</code></pre></div></div>
+
+<p>And another:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'Ho ho ho'</span><span class="p">)</span>
+<span class="n">my_list</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 1.1, 'Ho ho ho']
+</code></pre></div></div>
+
+<p>For some more operations with lists, see <a href="../extra/more_on_lists">More on
 lists</a>.</p>
 
-<h2 id="simulating-one-trial">Simulating one trial</h2>
+<h2 id="what-do-these-square-brackets-mean">What do these square brackets mean?</h2>
 
-<p>To operate on lists we use the Python standard <code class="highlighter-rouge">random</code> module, instead of the Numpy <code class="highlighter-rouge">random</code> module.  The Numpy module always returns arrays, but in our case, we want to return lists.</p>
+<p>You have seen two uses of square brackets on this page.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<p>The first use, is where the opening square bracket is the start of an expression for a new list, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>In particular, we are going to use the <code class="highlighter-rouge">shuffle</code> function in the Python
-standard <code class="highlighter-rouge">random</code> module.</p>
+<p>The <code class="highlighter-rouge">[</code> is the start of the expression, because the line above is an
+assignment statement, with a variable name, followed by <code class="highlighter-rouge">=</code> followed by an expression.  The expression is <code class="highlighter-rouge">[1, 2, 3]</code>, and the <code class="highlighter-rouge">[</code> is the first character in the expression.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="s">'car'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">]</span>
-<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
-<span class="n">doors</span>
+<p>The second use, is to ask Python to get a value from another value.
+Technically, this use is called <em>indexing</em>. For example, we do this
+when we index into a list:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_value</span> <span class="o">=</span> <span class="n">a_new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['goat', 'car', 'goat']
+<p>Here the <code class="highlighter-rouge">[</code> refers back to <code class="highlighter-rouge">a_new_list</code>.  It tells Python “please get
+a value from <code class="highlighter-rouge">a_new_list</code>”.  Between the <code class="highlighter-rouge">[</code> and the <code class="highlighter-rouge">]</code> is the
+information that Python must use to get the value.</p>
+
+<p>Here is another example of square brackets in use:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p>Here we chose a door at random.  We use the standard <code class="highlighter-rouge">random.choice</code> instead of
-<code class="highlighter-rouge">np.random.choice</code>.</p>
+<p>Which use of square brackets is that?  List creation, or indexing?
+Why?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_door_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">my_door_index</span>
+<p>How about:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<p>? Why?  Or:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_new_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">101</span><span class="p">,</span> <span class="s">'one oh one'</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p>We get the result of staying with our original choice, and remove that option from the list of available doors.</p>
+<p>?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stay_result</span> <span class="o">=</span> <span class="n">doors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">my_door_index</span><span class="p">)</span>
-<span class="n">stay_result</span>
+<p>Remember the <a href="../04/data_frame_intro">data frame introduction</a>?  In
+that you saw</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp = gender_data['gdp']
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'car'
-</code></pre></div></div>
+<p>Which use of square brackets was that?</p>
 
-<p>We are left with the two doors that Monty has to choose from.</p>
+<p>Look through the <a href="../04/data_frame_intro">data frame introduction</a>
+page.  There are several other examples of the use of square brackets.  Which use are they?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['goat', 'goat']
-</code></pre></div></div>
-
-<p>Behind one of these doors, Monty knows there is a goat.  He opens the door.  We simulate that by removing the first door with a goat behind it.</p>
-
-<p><a href="more_on_lists">Remember</a>, <code class="highlighter-rouge">remove</code> removes only the first instance of “goat”, leaving the second, if there is one.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'goat'</span><span class="p">)</span>
-<span class="n">doors</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['goat']
-</code></pre></div></div>
-
-<p>Now we have only one remaining door.  The item behind that door is the result from switching from our original door.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">switch_result</span> <span class="o">=</span> <span class="n">doors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">switch_result</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'goat'
-</code></pre></div></div>
-
-<h2 id="many-trials">Many trials.</h2>
-
-<p>That’s one trial.   Now let’s do that 100000 times.</p>
-
-<p>Here we are using <code class="highlighter-rouge">range</code> instead of <code class="highlighter-rouge">np.arange</code>.  <code class="highlighter-rouge">range</code> is the standard
-Python equivalent of <code class="highlighter-rouge">np.arange</code>; it has the same effect, in this case, when we
-use it in a loop.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make 10000 trials.
-</span><span class="n">n_tries</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="c1"># Lists to store results from stay and switch strategy
-</span><span class="n">stay_results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">switch_results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_tries</span><span class="p">):</span>
-    <span class="c1"># Same code as above, for one trial
-</span>    <span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="s">'car'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">]</span>
-    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
-    <span class="n">my_door_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-    <span class="n">stay_result</span> <span class="o">=</span> <span class="n">doors</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">my_door_index</span><span class="p">)</span>
-    <span class="n">doors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'goat'</span><span class="p">)</span>
-    <span class="n">switch_result</span> <span class="o">=</span> <span class="n">doors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># Put results into result lists
-</span>    <span class="n">stay_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stay_result</span><span class="p">)</span>
-    <span class="n">switch_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">switch_result</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>We use the <code class="highlighter-rouge">count</code> method of the list to count the number of “car” element in
-each list, and divide by the length of the list, to get the proportion of
-successes.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stay_results</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'car'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.33259
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">switch_results</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'car'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.66741
-</code></pre></div></div>
-
-<p>Compare this solution to the <a href="../06/monty_hall">solution using arrays</a>.  Which solution is easier to read and understand?</p>
+<p>Now look at <a href="../03/More_on_Arrays">More on arrays</a>.   Which uses do you see there?</p>
 
           
         </section>
@@ -1266,11 +1483,11 @@ successes.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/extra/more_on_lists" class="pagination--pager" title="More on lists
+      <a href="/cfd2019/chapters/05/population_permutation" class="pagination--pager" title="5.1 Population and permutation
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/extra/data8_functions" class="pagination--pager" title="Berkeley introduction to functions
+      <a href="/cfd2019/chapters/05/iteration" class="pagination--pager" title="5.3 Iteration with For loops
 ">Next</a>
     
   </nav>
