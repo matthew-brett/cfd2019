@@ -85,12 +85,28 @@ exactly 3 girls.
 #- Simulate 10000 families of 5 children.
 #- Show proportion with 3 girls.
 #- Your code below
+# Reset the counts array to empty (all zeros)
+counts = np.zeros(10000)
+
+# Repeat the indented stuff 10000 times.
+for i in np.arange(10000):
+    # The procedure for one family.
+    family = np.random.randint(0, 2, 5)
+    count = np.sum(family)
+    # Fill in the corresponding value in the counts array.
+    counts[i] = count
+
+# Proportion
+p_3_of_5 = np.count_nonzero(counts == 3) / 10000
 #<- p_3_of_5 = ...
 #<-
 p_3_of_5
 #<-
 ```
 
+```{python}
+_ = ok.grade('q_three_of_five')
+```
 
 ### Three or fewer girls in a family of five
 
