@@ -125,7 +125,7 @@ another_array[are_gt_2]
 Given what you know, what do you think would happen with:
 
 ```
-another_array[are_gt_3] = 10
+another_array[are_gt_2] = 10
 another_array
 ```
 
