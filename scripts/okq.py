@@ -35,7 +35,7 @@ test = {{
         }},
         {{
           'code': r"""
-          >>> 0 < {v_name} < 1
+          >>> False
           True
           """,
           'hidden': False,
@@ -51,6 +51,14 @@ test = {{
 }}
 '''
 
+
+def check_out_dir(out_dir):
+    if not op.exists(out_dir):
+        os.makedirs(out_dir)
+        with open(op.join(out_dir, '__init__.py'), 'wt') as fobj:
+            fobj.write('# Init for tests')
+
+
 def main():
     parser = ArgumentParser()
     parser.add_argument('v_name', help='variable name')
@@ -61,11 +69,8 @@ def main():
     v_name = args.v_name
     q_name = v_name if args.q_name is None else args.q_name
     out_dir = args.out_dir
-    if not op.exists(out_dir):
-        os.makedirs(out_dir)
-        with open(op.join(out_dir, '__init__.py'), 'wt') as fobj:
-            fobj.write('# Init for tests')
-    out_fname = op.join(out_dir, f'q{q_name}.py')
+    check_out_dir(out_dir)
+    out_fname = op.join(out_dir, f'q_{q_name}.py')
     with open(out_fname, 'wt') as fobj:
         fobj.write(TEMPLATE_Q.format(**locals()))
 
