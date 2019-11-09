@@ -1,13 +1,14 @@
+
 test = {
-  'name': 'Question no_girls',
+  'name': 'Question r_three_of_four',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> # You need to set the value for 'p_3_of_5'
-          >>> 'p_3_of_5' in vars()
+          >>> # You need to set the value for 'p_r3_of_4'
+          >>> 'p_r3_of_4' in vars()
           True
           """,
           'hidden': False,
@@ -15,17 +16,21 @@ test = {
         },
         {
           'code': r"""
-          >>> # You haven't changed the value for 'p_3_of_5'
+          >>> # You haven't changed the value for 'p_r3_of_4'
           >>> # from its initial state (of ...)
-          >>> p_3_of_5 != ...
+          >>> p_r3_of_4 != ...
           True
           """,
           'hidden': False,
           'locked': False
         },
         {
+          # n = 10000
+          # # Take 10000 samples of 10000 trials of this problem.
+          # res = np.sum(np.random.binomial(4, 0.487, (n, n)) == 3, axis=1) / n
+          # np.quantile(res, [0.005, 0.995])
           'code': r"""
-          >>> 0.3 < p_3_of_5 < 0.34
+          >>> 0.226 < p_r3_of_4 < 0.248
           True
           """,
           'hidden': False,
