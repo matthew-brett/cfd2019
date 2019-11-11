@@ -8,4 +8,8 @@ permalink: /classes/class_11
 
 * [Filling arrays](../chapters/03/filling_arrays)
 * [Three girl simulations exercise](../exercises/three_girls.zip)
-* [More simulations](../chapters/exercises/simulation)
+* [More simulations exercise](../exercises/simulation.zip)
+
+## Assignments
+
+Complete the simulation exercises above.
