@@ -1,6 +1,7 @@
 ---
 jupyter:
   jupytext:
+    notebook_metadata_filter: all,-language_info
     split_at_heading: true
     text_representation:
       extension: .Rmd
@@ -92,6 +93,7 @@ three cards add up to 21?
 10, jack, queen and king all count as 10.  For example, one way of getting 21
 is a seven, a four and a king.
 
+
 ### Simple version
 
 Assume the three cards are each dealt from the top of a full shuffled deck.
@@ -103,19 +105,35 @@ Therefore, the procedure is:
 Assume that the ace counts as 1.  What are the chances of getting
 a total rank of 21?
 
-Hint: start with this array:
-
-```{python}
-ranks = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10])
-```
+Hint: look at the array `ranks` in the code cell below.
 
 Investigate `np.random.choice` to use this array for the problem.
+
+```{python}
+#<-
+# Ranks of all the cards in one suit.
+ranks = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10])
+#<-
+#<- p_total_21 = ...
+rank_totals = np.zeros(10000)
+for i in np.arange(10000):
+    cards = np.random.choice(ranks, 3)
+    rank_totals[i] = np.sum(cards)
+p_total_21 = np.count_nonzero(rank_totals == 21) / 10000
+#<--
+p_total_21
+```
+
+```{python}
+_ = ok.grade('q_3_simple_blackjack')
+```
 
 ## Less simple version
 
 Assume the cards are drawn as they were for the problem above.
 
-Now the ace can count as 1 or as 11, whichever gives a total of 21.  Now what are the chances of a total rank of 21?
+Now the ace can count as 1 or as 11, whichever gives a total of 21.  Now what
+are the chances of a total rank of 21?
 
 Hint: you can change values of 1 to 11 like this:
 
@@ -138,3 +156,29 @@ some_cards
 ```
 
 You might want to use this kind of trick more than once in your solution.
+
+```{python}
+#<-
+rank_totals_1 = np.zeros(10000)
+rank_totals_11 = np.zeros(10000)
+#<-
+for i in np.arange(10000):
+    cards = np.random.choice(ranks, 3)
+    rank_totals_1[i] = np.sum(cards)
+    cards[cards == 1] = 11
+    rank_totals_11[i] = np.sum(cards)
+rt_11s = rank_totals_11 == 21
+rank_totals_1[rt_11s] = 21
+p_flex_total_21 = np.count_nonzero(rank_totals_1 == 21) / 10000
+#<- p_flex_total_21 = ...
+#<--
+p_flex_total_21
+```
+
+```{python}
+_ = ok.grade('q_4_flexi_blackjack')
+```
+
+```{python}
+
+```
