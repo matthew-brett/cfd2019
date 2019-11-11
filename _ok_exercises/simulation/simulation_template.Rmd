@@ -132,14 +132,28 @@ _ = ok.grade('q_3_simple_blackjack')
 
 Assume the cards are drawn as they were for the problem above.
 
-Now the ace can count as 1 or as 11, whichever gives a total of 21.  Now what
-are the chances of a total rank of 21?
+Now the ace can count as 1 or as 11, whichever gives a total of 21.  To make things a bit simpler, the two options are:
 
-Hint: you can change values of 1 to 11 like this:
+* all aces in a hand count as 1, OR
+* all aces in a hand count as 11.
+
+Your job is to choose the option from the list above, that gives you 21, if that is possible.
+
+For example, if you have a hand (Ace, Ace, 9), then your two options are ranks
+(1, 1, 9) (for a total of 21) or (11, 11, 9) (for a total of 31), in which
+case you would choose the ace = 1 rank.  On the other hand, you might have
+(Ace, 2, 8) in which case you would chose the ace = 11 rank.  In this
+simplified case (Ace, Ace, 8) can only give 10 (for ace=1) or 30 (for ace=11).
+
+In this situation, what are the chances of a total rank of 21?
+
+The hints below are for one way of solving this case.   There are other ways of solving this case; feel free to chose the method you prefer.
+
+*Hint 1*: you can change values of 1 to 11 like this:
 
 ```{python}
 # Make an example array
-some_cards = np.array([1, 3, 5, 1, 2, 10, 1, 4])
+some_cards = np.array([1, 3, 5, 1, 2])
 some_cards
 ```
 
@@ -155,13 +169,22 @@ some_cards[card_eq_1] = 11
 some_cards
 ```
 
-You might want to use this kind of trick more than once in your solution.
+*Hint 2*: You might want to use this kind of trick more than once in your
+solution.
+
+*Hint 3*: You might consider having two arrays of results for each hand, one for the case where aces count as 1 and the other for case where aces count as 11, like this:
 
 ```{python}
-#<-
+# Initialize result arrays.
 rank_totals_1 = np.zeros(10000)
 rank_totals_11 = np.zeros(10000)
-#<-
+```
+
+Here is the cell for your solution:
+
+```{python}
+rank_totals_1 = np.zeros(10000)
+rank_totals_11 = np.zeros(10000)
 for i in np.arange(10000):
     cards = np.random.choice(ranks, 3)
     rank_totals_1[i] = np.sum(cards)
@@ -179,6 +202,4 @@ p_flex_total_21
 _ = ok.grade('q_4_flexi_blackjack')
 ```
 
-```{python}
-
-```
+You may have found that allowing aces to count as 11 didn't greatly improve your chances of getting 21.  Why is that?
