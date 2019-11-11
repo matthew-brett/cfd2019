@@ -203,3 +203,16 @@ _ = ok.grade('q_4_flexi_blackjack')
 ```
 
 You may have found that allowing aces to count as 11 didn't greatly improve your chances of getting 21.  Why is that?
+
+## Done.
+
+Congratulations, you're done with the assignment!  Be sure to:
+
+- **run all the tests** (the next cell has a shortcut for that),
+- **Save and Checkpoint** from the `File` menu,
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
