@@ -19,7 +19,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/computational-tools",
         "teaser":null},{
-        "title": "1. Coding for data",
+        "title": "1. Data science for everyone",
         "excerpt":"About this textbook This is the textbook for the first year undergraduate course indata science at the University of Birmingham. We go into some detail about what we mean by “Data science” inthe next section, but here is theone-line summary: Data science is an approach to data analysis with a...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/intro",
@@ -124,7 +124,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Comparison",
         "teaser":null},{
-        "title": "3.13 More on arrays",
+        "title": "3.12 More on arrays",
         "excerpt":"More on Arrays It’s often necessary to compute something that involves data from more thanone array. If two arrays are of the same size, Python makes it easy to docalculations involving both arrays. For our first example, we return once more to the temperature data. Thistime, we create arrays of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/More_on_Arrays",
@@ -199,8 +199,13 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/reply_supreme",
         "teaser":null},{
+        "title": "3.14 Revision - three girls",
+        "excerpt":"Three girls In which we solve the three-girls-in-family problem. The problem If there is a family of four children, what is the chance thatfamily will consist of exactly three girls and one boy? We decided we could simulate this situation, by taking fourrandom numbers, between 0 and 1. For each...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/three_girls",
+        "teaser":null},{
         "title": "4.1 Introduction to data frames",
-        "excerpt":"Introduction to data frames Start by loading the usual plotting libraries. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')Pandas is a Python package thatimplements data frames, and functions that operate on dataframes. import pandas as pdData frames and series We start by...","categories": [],
+        "excerpt":"Introduction to data frames Pandas is a Python package thatimplements data frames, and functions that operate on dataframes. # Load the Pands data science library, call it 'pd'import pandas as pdWe will also use the usual Numpy array library: # Load the Numpy array library, call it 'np'import numpy as...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/04/data_frame_intro",
         "teaser":null},{

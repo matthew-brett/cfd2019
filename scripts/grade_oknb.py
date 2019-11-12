@@ -140,7 +140,7 @@ def get_args():
                        'default is "tests" directory in path of notebook(s)')
     args = parser.parse_args()
     if args.tests_path is None:
-        if len(args.nb_fname) > 0:
+        if len(args.nb_fname) > 1:
             raise RuntimeError('Must specify --tests-path for more than one '
                                'notebook')
         args.tests_path = op.join(op.dirname(args.nb_fname[0]), 'tests')
