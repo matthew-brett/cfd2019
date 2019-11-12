@@ -18,7 +18,7 @@ Homework 2 available tomorrow.
 ## Schedule
 
 * [Introduction to data frames](../chapters/04/data_frame_intro)
-* [Data frame exercise](../chapters/exercises/df_exercises)
+* [Data frames exercise](../exercises/data_frames.zip)
 
 <!---
 * Pandas data frames.

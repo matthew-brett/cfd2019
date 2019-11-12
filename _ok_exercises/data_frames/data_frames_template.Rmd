@@ -1,0 +1,457 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+  language_info:
+    codemirror_mode:
+      name: ipython
+      version: 3
+    file_extension: .py
+    mimetype: text/x-python
+    name: python
+    nbconvert_exporter: python
+    pygments_lexer: ipython3
+    version: 3.7.0
+---
+
+# Data frames
+
+This assignment is about *data frames*, which let us work with multiple arrays
+of data about the same things.
+
+First, set up the tests and imports by running the cell below.
+
+```{python}
+# Run this cell.
+
+# The Numpy array library.
+import numpy as np
+# The Pandas data science library.
+import pandas as pd
+
+# These lines load the tests.
+from client.api.notebook import Notebook
+ok = Notebook('data_frames.ok')
+```
+
+## Introduction
+
+For a collection of things in the world, an array is useful for describing
+a single attribute of each thing. For example, among the collection of US
+States, an array could describe the land area of each. Tables extend this idea
+by describing multiple attributes for each element of a collection.
+
+In most data science applications, we have data about many entities, but we
+also have several kinds of data about each entity.
+
+For example, in the cell below we have two arrays. The first one contains the
+world population in each year (as
+[estimated](http://www.census.gov/population/international/data/worldpop/table_population.php)
+by the US Census Bureau), and the second contains the years themselves (in
+order, so the first elements in the population and the years arrays
+correspond).
+
+```{python}
+population_amounts = pd.read_csv("world_population.csv")["Population"].values
+years = np.arange(1950, 2015+1)
+print("Population column:", population_amounts)
+print("Years column:", years)
+```
+
+Suppose we want to answer this question:
+
+> When did world population cross 6 billion?
+
+You could technically answer this question just from staring at the arrays, but
+it's a bit convoluted, since you would have to count the position where the
+population first crossed 6 billion, then find the corresponding element in the
+years array. In cases like these, it might be easier to put the data into
+a *Data Frame*, a 2-dimensional type of dataset.
+
+The cell below:
+
+- creates an empty table called `population` using the expression
+  `pd.DataFrame()`,
+- adds the "Population" column by *indexing* into the new data frame, and
+- adds the "Year" column in the same way, and
+- evaluates `population` so that we can see the table.
+
+The strings `"Year"` and `"Population"` are column labels that we have chosen.
+Their names `population_amounts` and `years` were assigned above to two arrays
+of the same length.
+
+```{python}
+# Make an empty data frame
+population = pd.DataFrame()
+# Put in the "Population" column.
+population["Population"] = population_amounts
+# Put in the "Years" column.
+population["Years"] = years
+# Evaluate the result (to show it).
+population
+```
+
+As when we *assigned values* into arrays by *indexing*, so we can assign
+columns into the data frame by indexing.
+
+Remember we can set values in an array like this:
+
+```{python}
+a = np.zeros(4)
+a[2] = 99
+a
+```
+
+The line `a[2] = 99` says "get the location of the element of `a` at offset 2,
+and put the value 99 into this location."
+
+Consider the line:
+
+```{python}
+population["Population"] = population_amounts
+```
+
+Read this as "Create a new column called 'Population' in the `population` data
+frame, get its location, and put the values of `population_amounts` into that
+location."
+
+
+Now the data are all together in a single table! It's much easier to parse this
+data--if you need to know what the population was in 1959, for example, you can
+tell from a single glance. We'll revisit this table later.
+
+
+## Creating Tables
+
+**Question 2.1.** In the cell below, we've created 2 arrays. Using the steps
+above, make a data frame `top_10_movies`, and insert two columns called
+"Rating" and "Name", which hold `top_10_movie_ratings` and `top_10_movie_names`
+respectively.
+
+```{python}
+#<-
+top_10_movie_ratings = np.array(
+     [9.2, 9.2, 9., 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.8])
+top_10_movie_names = np.array([
+        'The Shawshank Redemption (1994)',
+        'The Godfather (1972)',
+        'The Godfather: Part II (1974)',
+        'Pulp Fiction (1994)',
+        "Schindler's List (1993)",
+        'The Lord of the Rings: The Return of the King (2003)',
+        '12 Angry Men (1957)',
+        'The Dark Knight (2008)',
+        'Il buono, il brutto, il cattivo (1966)',
+        'The Lord of the Rings: The Fellowship of the Ring (2001)'])
+
+#<-
+#<- top_10_movies = ...
+top_10_movies = pd.DataFrame()
+top_10_movies["Rating"] = top_10_movie_ratings
+top_10_movies["Name"] = top_10_movie_names
+#<-
+# We've put this next line here so your table will get printed out when you
+# run this cell.
+top_10_movies
+#<-
+```
+
+```{python}
+_ = ok.grade('q2_1')
+```
+
+### Loading a data frame from a file
+
+
+In most cases, we aren't going to go through the trouble of typing in all the
+data manually. Instead, we can use Pandas functions.
+
+`pd.read_csv` needs one argument, a path to a data file (a string) and
+returns a data frame.  There are many formats for data files, but CSV
+("comma-separated values") is the most common.
+
+
+**Question 2.2.** The file `imdb.csv` contains a table of information about the 250 highest-rated movies on IMDb.  Load it as a table called `imdb`.
+
+```{python}
+#<- imdb = ...
+imdb = pd.read_csv('imdb.csv')
+#<--
+imdb
+```
+
+```{python}
+_ = ok.grade('q2_2')
+```
+
+Notice the row of ellipses "..." in the center of the data frame output.  This
+data frame is big enough that only a few of its rows are displayed, but the
+others are still there.  As you see at the end of the data frame display, there
+are 250 movies in total.
+
+Where did `imdb.csv` come from? Take a look at [the assignment's folder](./). You should see a file called `imdb.csv`.
+
+Open up the `imdb.csv` file in that folder and look at the format. What do you notice? The `.csv` filename ending says that this file is in the [CSV (comma-separated value) format](http://edoceo.com/utilitas/csv-file-format).
+
+
+## Analyzing datasets
+
+
+With just a few data frame methods, we can answer some interesting questions about the IMDb dataset.
+
+If we want just the ratings of the movies, we can get a Series that contains the data in that column.  A Series is Pandas way of storing the column from a data frame
+
+```{python}
+rating = imdb["Rating"]
+rating
+```
+
+```{python}
+type(rating)
+```
+
+You can make the series into an array like this:
+
+```{python}
+rating_array = np.array(rating)
+rating_array
+```
+
+
+The value of that expression is an array, exactly the same kind of thing you'd get if you typed in `np.array([8.4, 8.3, 8.3, ...])`.
+
+
+**Question 4.1.** Find the rating of the highest-rated movie in the dataset.
+
+*Hint:* You can sort an array with the Numpy function `np.sort`.
+
+```{python}
+#<- highest_rating = ...
+sorted_ratings = np.sort(rating_array)
+highest_rating = sorted_ratings[-1]
+#<--
+highest_rating
+```
+
+```{python}
+_ = ok.grade('q4_1')
+```
+
+That's not very useful, though.  You'd probably want to know the *name* of the
+movie whose rating you found!  To do that, we can sort the entire data frame by
+rating, which ensures that the ratings and titles will stay together.
+
+```{python}
+imdb.sort_values("Rating")
+```
+
+Well, that actually doesn't help much, either -- we sorted the movies from lowest -> highest ratings.  To look at the highest-rated movies, sort in reverse order:
+
+```{python}
+imdb.sort_values("Rating", ascending=False)
+```
+
+(The `ascending=False` bit is called an *optional argument*. It has a default
+value of `True`, so when you explicitly tell the function `ascending=False`,
+then the function will sort in descending order.)
+
+So there are actually 2 highest-rated movies in the dataset: *The Shawshank Redemption* and *The Godfather*.
+
+Some details about `sort_values`:
+
+1. The first argument to `sort_values` is the name of a column to sort by.
+2. If the column has strings in it, `sort` will sort alphabetically; if the
+   column has numbers, it will sort numerically.
+3. The value of `imdb.sort_values("Rating")` is a *copy of `imdb`*; the `imdb`
+   table doesn't get modified. For example, if we called
+   `imdb.sort_values("Rating")`, then evaluating `imdb` by itself would still
+   return the unsorted table.
+4. Rows always stick together when a table is sorted.  It wouldn't make sense
+   to sort just one column and leave the other columns alone.  For example, in
+   this case, if we somehow sorted just the "Rating" column, the movies would
+   all end up with the wrong ratings.
+
+**Question 4.2.** Create a version of `imdb` that's sorted chronologically,
+with the earliest movies first.  Call it `imdb_by_year`.
+
+```{python}
+#<- imdb_by_year = ...
+imdb_by_year = imdb.sort_values('Year')
+#<--
+imdb_by_year
+```
+
+```{python}
+_ = ok.grade('q4_2')
+```
+
+**Question 4.3.** What's the title of the earliest movie in the dataset?  You
+could just look this up from the output of the previous cell.  Instead, write
+Python code to find out.
+
+*Hint:* Starting with `imdb_by_year`, extract the Title column to get a series, then convert to an array and use indexing to get the first item.
+
+```{python}
+#<- earliest_movie_title = ...
+titles = np.array(imdb_by_year['Title'])
+earliest_movie_title = titles[0]
+#<--
+earliest_movie_title
+```
+
+```{python}
+_ = ok.grade('q4_3')
+```
+
+## Finding pieces of a dataset
+
+
+Suppose you're interested in movies from the 1940s.  Sorting the data frame by
+year doesn't help you, because the 1940s are in the middle of the dataset.
+
+Instead, we use *Boolean indexing* to select the rows we want.
+
+The trick is this:
+
+1. First make a Boolean array or Series that has one (True or False) value for
+   each row in the array. The array has True in the position of rows we want to
+   select and False for rows we want to drop.
+2. Make a new data frame by *indexing* into the original data frame with the
+   Boolean array or Series.
+
+First let's create the Boolean Series.  The array should have True for rows where the "Decade" value is equal to 1940, and False otherwise.
+
+```{python}
+# Get the Decade column as a Series
+decade = imdb["Decade"]
+# Compare the values to 1940 to make a Boolean Series
+is_forties = decade == 1940
+is_forties
+```
+
+Next select rows from the `imdb` data frame by indexing with this Boolean series:
+
+```{python}
+forties = imdb[is_forties]
+forties
+```
+
+
+**Question 5.1.** Compute the average rating of movies from the 1940s.
+
+*Hint:* The function `np.mean` computes the average of an array of numbers.
+
+```{python}
+#<- average_rating_in_forties = ...
+average_rating_in_forties = np.mean(forties["Rating"])
+#<--
+average_rating_in_forties
+```
+
+```{python}
+_ = ok.grade('q5_1')
+```
+
+**Question 5.2.** Create a data frame called `ninety_nine` containing the movies that came out in the year 1999.
+
+```{python}
+#<- ninety_nine = ...
+is_99 = imdb["Year"] == 1999
+ninety_nine = imdb[is_99]
+#<--
+ninety_nine
+```
+
+```{python}
+_ = ok.grade('q5_2')
+```
+
+So far we've only been finding where a column is *exactly* equal to a certain value.  We can create our Boolean Series or array using any of the usual conditional operators, such as `!=, >, >=, <, <=`.
+
+
+**Question 5.3.** Find all the movies with a rating higher than 8.5.  Put their
+data in a table called `really_highly_rated`.
+
+```{python}
+#<- really_highly_rated = ...
+is_high = imdb["Rating"] > 8.5
+really_highly_rated = imdb[is_high]
+#<--
+really_highly_rated
+```
+
+```{python}
+_ = ok.grade('q5_3')
+```
+
+**Question 5.4.** Find the average rating for movies released in the 20th century and the average rating for movies released in the 21st century for the movies in `imdb`.
+
+*Hint*: Think of the steps you need to do (take the average, find the ratings, find movies released in 20th/21st centuries), and try to put them in an order that makes sense.
+
+```{python}
+#<- average_20th_century_rating = ...
+#<- average_21st_century_rating = ...
+years = imdb['Year']
+average_20th_century_rating = np.mean(imdb[years < 2000]["Rating"])
+average_21st_century_rating = np.mean(imdb[years >= 2000]["Rating"])
+#<-
+print("Average 20th century rating:", average_20th_century_rating)
+print("Average 21st century rating:", average_21st_century_rating)
+#<-
+```
+
+```{python}
+_ = ok.grade('q5_4')
+```
+
+The function `len` tells you how many rows are in a data frame.
+
+```{python}
+num_movies_in_dataset = len(imdb)
+num_movies_in_dataset
+```
+
+**Question 5.5.** Use `len` (and arithmetic) to find the *proportion* of movies
+in the dataset that were released in the 20th century, and the proportion from
+the 21st century.
+
+*Hint:* The *proportion* of movies released in the 20th century is the *number*
+of movies released in the 20th century, divided by the *total number* of
+movies.
+
+```{python}
+#<- proportion_in_20th_century = ...
+#<- proportion_in_21st_century = ...
+proportion_in_20th_century = len(imdb[years < 2000]) / len(imdb)
+proportion_in_21st_century = len(imdb[years >= 2000]) / len(imdb)
+#<-
+print("Proportion in 20th century:", proportion_in_20th_century)
+print("Proportion in 21st century:", proportion_in_21st_century)
+#<-
+```
+
+```{python}
+_ = ok.grade('q5_5')
+```
+
+## Done
+
+You're finished with the assignment!  Be sure to...
+
+- **run all the tests** (the next cell has a shortcut for that), 
+- **Save and Checkpoint** from the `File` menu,
+- **run the last cell to submit your work**,
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
