@@ -66,11 +66,15 @@ def good_fname(fname):
         return False
     if froot.startswith('test_'):
         return False
+    if froot.startswith('notes'):
+        return False
     if froot.endswith('solution'):
         return False
     if froot.endswith('template'):
         return False
     if fn == ('__pycache__'):
+        return False
+    if fn == ('tests-extended'):
         return False
     return True
 
