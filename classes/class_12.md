@@ -8,22 +8,25 @@ permalink: /classes/class_12
 
 ## Announcements
 
-* Please review the [data page](../projects/data)
-* A reminder about the [project schedule](../project)
+Please remember these:
+
+* [Three girl simulations exercise](../exercises/three_girls.zip)
+* [More simulations exercise](../exercises/simulation.zip)
+
+Homework 2 available tomorrow.
 
 ## Schedule
 
-* Data pitches
-* Team mixer
-* A brief introduction to [Github](https://github.com)
-* [None](../chapters/07/none)
-* [Functions](../chapters/07/functions)
+* [Introduction to data frames](../chapters/04/data_frame_intro)
+* [Data frame exercise](../chapters/exercises/df_exercises)
 
-## Assignment
-
-* Make a [Github](https://github.com) account.  I suggest you make an
-  [education](https://education.github.com/students) account; you get
-  some free swag, and some useful features.
-* Add your Github user name to the class spreadsheet.
-* **Form groups**.  Seriously.
-* **Email me with your group and data description**
+<!---
+* Pandas data frames.
+* The notebook and the working directory.
+* Getting columns from a data frame.
+* Selecting rows from the data frame with booleans and `.loc`.
+* Sorting the data frame.  `ascending=False`.
+* Bar plots.
+* .head
+* missing data
+-->
