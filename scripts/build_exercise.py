@@ -59,7 +59,7 @@ def write_nb(nb, fname):
 
 def good_fname(fname):
     fn = op.basename(fname)
-    froot, ext = op.splitext(fname)
+    froot, ext = op.splitext(fn)
     if froot.startswith('.'):
         return False
     if ext in ('.Rmd', '.pyc'):
@@ -72,9 +72,9 @@ def good_fname(fname):
         return False
     if froot.endswith('template'):
         return False
-    if fn == ('__pycache__'):
-        return False
-    if fn == ('tests-extended'):
+    if fn in ('__pycache__',
+              'tests-extended',
+              'Makefile'):
         return False
     return True
 
