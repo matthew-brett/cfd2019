@@ -1,3 +1,11 @@
+# Remainder of lab03 exercise
+
+I was working through the lab03 exercise, and
+
+1. Wrote some extra tutorial I didn't need (below);
+1. Didn't get to the latter part of the exercise (further below).
+
+## A bit of extra tutorial from me
 
 Sometimes we want to be able to combine several different criteria to select
 rows.  For example, we might want to find all the movies with ratings from 7
@@ -29,6 +37,8 @@ has True in positions where both of these Series have a True in the correspondin
 between_7_8 = np.logical_and(is_ge_7, is_le_8)
 between_7_8.head(10)
 ```
+
+## Remainder of exercise
 
 **Question 5.6.** Here's a challenge: Find the number of movies that came out in *even* years.
 
