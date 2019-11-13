@@ -207,10 +207,13 @@ Again, we get the ages for the Leavers and the Remainers:
 
 ```{python}
 # Drop rows where age is 0
-good_data = audit_data.loc[audit_data['numage'] != 0]
+age_not_0 = audit_data['numage'] != 0
+good_data = audit_data[age_not_0]
 # Get data frames for leavers and remainers
-remain_ages = good_data[good_data['cut15'] == 1]['numage']
-leave_ages = good_data[good_data['cut15'] == 2]['numage']
+is_remain = good_data['cut15'] == 1
+remain_ages = good_data[is_remain]['numage']
+is_leave = good_data['cut15'] == 2
+leave_ages = good_data[is_leave]['numage']
 ```
 
 ```{python}

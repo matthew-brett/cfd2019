@@ -392,13 +392,12 @@ data frames.
 ```
 
 Use `age_not_0` to select rows in the `mini_brexit` data frame where the value
-is `True`, and throw away the rows where the value is `False`.  To do this, use
-the `loc` function attached to the data frame.  It *locates* values:
+is `True`, and throw away the rows where the value is `False`.  To do this, index into the data frame with the Boolean Series you created above.
 
 ```{python}
-# Select rows in the data frame where the age is not equal to 0 Make a new data
-# frame called "good_brexit" that only contains these rows.  Your code will start
-# good_brexit = mini_brexit.loc?
+# Select rows in the data frame where the age is not equal to 0.
+# Make a new data # frame called "good_brexit" that only contains these rows. 
+# good_brexit = ...
 
 ```
 

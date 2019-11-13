@@ -214,7 +214,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/04/data_frames",
         "teaser":null},{
-        "title": "5.3 A permutation test",
+        "title": "5.2 A permutation test",
         "excerpt":"Now we have for loops and ranges, we cansolve the problem in population, permutation. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again, we get...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
