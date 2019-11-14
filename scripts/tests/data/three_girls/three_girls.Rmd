@@ -20,42 +20,52 @@ Court](../03/reply_supreme).
 
 You may want to refer back to those pages for inspiration.
 
-Run this cell first:
-
 ```{python}
-# Load the Numpy package, and rename to "np"
-import numpy as np
+# Don't change this cell; just run it.
+import numpy as np  # The array library.
+
+# The OKpy testing system.
+from client.api.notebook import Notebook
+ok = Notebook('three_girls.ok')
 ```
 
 ### Three girls in a family of four
 
-Remember the solution to this problem, from [filling arrays](../03/filling_arrays):
+Remember the solution to this problem, from [filling arrays](../03/filling_arrays)?  Here is a version of that solution:
 
 ```{python}
 # Reset the counts array to empty (all zeros)
-counts = np.zeros(10000)
+counts_girls = np.zeros(10000)
 
 # Repeat the indented stuff 10000 times.
 for i in np.arange(10000):
     # The procedure for one family.
     family = np.random.randint(0, 2, 4)
     count = np.sum(family)
-    # Fill in the corresponding value in the counts array.
-    counts[i] = count
+    # Fill in the corresponding value in the counts_girls array.
+    counts_girls[i] = count
 
 # Proportion
-prop_3_girls = np.count_nonzero(counts == 3) / 10000
-prop_3_girls
+p_3_girls = np.count_nonzero(counts_girls == 3) / 10000
+p_3_girls
 ```
 
 ### No girls in a family of four
 
 Estimate the chances that a 4-child family will have no girls.  You can copy the code from the cell above, and modify it, or you may be able to use variables from the code above, to get the answer, without repeating the simulation.
 
+
+
 ```{python}
-# Show proportion with 0 girls.
-# Your code below
+#- Calculate proportion with 0 girls.
+p_no_girls = ...
+p_no_girls
 ```
+
+```{python}
+_ = ok.grade('q_1_no_girls')
+```
+
 
 For extra points - the answer above is easier to work out with
 probability than the chance of three girls.  What's the exact answer, from probability?
@@ -69,11 +79,16 @@ Simulate the chances that a family with 5 children will have
 exactly 3 girls.
 
 ```{python}
-# Simulate 10000 families of 5 children.
-# Show proportion with 3 girls.
-# Your code below
+#- Simulate 10000 families of 5 children.
+#- Show proportion with 3 girls.
+#- Your code below
+p_3_of_5 = ...
+p_3_of_5
 ```
 
+```{python}
+_ = ok.grade('q_2_three_of_five')
+```
 
 ### Three or fewer girls in a family of five
 
@@ -104,10 +119,24 @@ my_array <= 2
 Hints done, now:
 
 ```{python}
-# Simulate 10000 families of 5 children.
-# Show the proportion of families of 5 children with 3 or fewer girls.
-# Your code below
+#- Simulate 10000 families of 5 children.
+#- Show the proportion of families of 5 children with 3 or fewer girls.
+#- Your code below
+p_3_or_fewer = ...
+p_3_or_fewer
 ```
+
+```{python}
+_ = ok.grade('q_3_three_or_fewer')
+```
+
+For extra points - the answer above is easier to work out with
+probability than the chance of three girls.  What's the exact answer, from probability?
+
+Hint - you may have got most of the way there with your previous probability answer.
+
+
+Edit this code cell to give your answer.
 
 ### More realistic simulation
 
@@ -126,7 +155,7 @@ Hint 1: you may want to use `np.random.uniform`.  Check the help with `np.random
 
 ```{python}
 # An array of four random numbers between 0 and 1.
-np.random.uniform(0, 1, size=4)
+np.random.uniform(0, 1, 4)
 ```
 
 Hint 2: Let's say I have a random number `x` between 0 and 1:
@@ -136,11 +165,33 @@ x = np.random.uniform(0, 1)
 x
 ```
 
-The probability that that `x` will be less than - say - 0.25, is 0.25.
+The probability that that some returned `x` will be less than - say - 0.25, is 0.25.
 
 ```{python}
-# Simulate 10000 familes of 4 children.
+#- Estimate more accurate chance of having exactly 3 girls
+#- in a family of four.
 chance_of_girl = 0.487
-# Estimate chance of having exactly 3 girls.
-# Your code here
+p_r3_of_4 = ...
+p_r3_of_4
+```
+
+```{python}
+# It is possible, but highly unlikely, that this test will fail even
+# when you have the right calculation, because your answer is a little
+# random, and it may be very unusual.  If the test fails, and you think
+# your answer is right, run it again a few times.
+_ = ok.grade('q_4_r_three_of_four')
+```
+
+## Done.
+
+Congratulations, you're done with the assignment!  Be sure to:
+
+- **run all the tests** (the next cell has a shortcut for that), 
+- **Save and Checkpoint** from the `File` menu,
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
 ```

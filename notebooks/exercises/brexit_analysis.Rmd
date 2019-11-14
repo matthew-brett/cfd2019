@@ -128,22 +128,19 @@ audit_data.columns
 ```
 
 To reduce clutter, we first make a new data frame that just has the two
-questions we are interested in.   To do this we first make a list with the names of the columns we want:
+questions we are interested in:
 
-```{python}
-desired_columns = ["numage", "cut15"]
-```
-
-Then we use this list, to make a new data frame, that only has the named columns, like this:
 
 ```{python}
 # Select the age and Brexit vote questions only
-mini_brexit = audit_data[['numage', 'cut15']]
+mini_brexit = pd.DataFrame()
+mini_brexit['numage'] = audit_data['numage']
+mini_brexit['cut15'] = audit_data['cut15']
 mini_brexit
 ```
 
-To get started on exploring, we make a new variable `ages` that refers to the
-`numage` column in the `mini_brexit` data frame.
+To get started on exploring, we make a new variable `ages` that refers
+to the `numage` column in the `mini_brexit` data frame.
 
 ```{python}
 # Make a new variable "ages" that refers to the "numage" column in "mini_brexit"
@@ -233,13 +230,12 @@ data frames.
 ```
 
 Use `age_not_0` to select rows in the `mini_brexit` data frame where the value
-is `True`, and throw away the rows where the value is `False`.  To do this, use
-the `loc` function attached to the data frame.  It *locates* values:
+is `True`, and throw away the rows where the value is `False`.  To do this, index into the data frame with the Boolean Series you created above.
 
 ```{python}
-# Select rows in the data frame where the age is not equal to 0 Make a new data
-# frame called "good_brexit" that only contains these rows.  Your code will start
-# good_brexit = mini_brexit.loc?
+# Select rows in the data frame where the age is not equal to 0.
+# Make a new data # frame called "good_brexit" that only contains these rows. 
+# good_brexit = ...
 
 ```
 
