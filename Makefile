@@ -45,7 +45,8 @@ github: kill-server build check-site
 
 clean:
 	python scripts/clean.py
-	rm _bibliography/references.bib
+	rm -f _bibliography/references.bib
+	rm -rf ipynb
 
 ship: clean rebuild-notebooks textbook
 

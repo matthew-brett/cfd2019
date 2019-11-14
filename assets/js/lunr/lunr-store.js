@@ -219,11 +219,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
         "teaser":null},{
-        "title": "5.2 Ones and zeros",
-        "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/ones_zeros",
-        "teaser":null},{
         "title": "5. Permutations",
         "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
         "tags": [],
