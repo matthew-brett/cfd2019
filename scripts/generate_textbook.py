@@ -9,8 +9,10 @@ from tqdm import tqdm
 import numpy as np
 from glob import glob
 from uuid import uuid4
+import re
 import argparse
 
+from jinja2 import Template
 
 CONTENT_EXTS = ('.ipynb', '.md', '.Rmd')
 
@@ -150,6 +152,20 @@ class SiteBuilder:
             textbook_yaml = yaml.load(ff.read())
         textbook_yaml = {} if textbook_yaml is None else textbook_yaml
         self.textbook_yaml = textbook_yaml
+        # Output directory for processed notebooks.
+        # None means leave in input notebook folder.
+        self.nb_folder = None
+        self.nb_folder_name = self.site_yaml.get('nb_folder_name')
+        if self.nb_folder_name:
+            self.nb_folder = op.join(site_root, self.nb_folder_name)
+            mkdir_if_missing(self.nb_folder)
+        self.site_dict = self._get_site_dict()
+
+    def _get_site_dict(self):
+        site = {}
+        sy = self.site_yaml
+        site['baseurl'] = sy['url'] + sy['baseurl']
+        return site
 
     def _prepare_link(self, link):
         """Prep the formatting for a link."""
@@ -231,6 +247,32 @@ class SiteBuilder:
                 os.makedirs(op.dirname(new_path))
             sh.copy2(ifile, new_path)
 
+    def _fill_markdown(self, source):
+        # Remove any tags.
+        source = re.sub("{% .*? %}", "", source)
+        template = Template(source)
+        return template.render(site=self.site_dict)
+
+    def _proc_out_nb(self, nb_fname):
+        with open(nb_fname, 'rt') as fobj:
+            nb = nbf.read(fobj, 4)
+        for cell in nb.cells:
+            if cell['cell_type'] == 'code':
+                cell['outputs'] = []
+            elif cell['cell_type'] == 'markdown':
+                cell['source'] = self._fill_markdown(cell['source'])
+        with open(nb_fname, 'wt') as fobj:
+            nbf.write(nb, fobj)
+
+    def _copy_clean_notebook(self, link):
+        out_dir = op.dirname(link).replace(
+            self.notebooks_folder_name, self.nb_folder_name)
+        out_path = op.join(out_dir, op.basename(link))
+        mkdir_if_missing(out_dir)
+        sh.copy2(link, out_dir)
+        self._proc_out_nb(out_path)
+        return op.sep.join([out_dir, op.basename(link)])
+
     def _process_notebook(self, link, new_folder):
         # Create a temporary version of the notebook we can modify
         site_yaml = self.site_yaml
@@ -268,7 +310,10 @@ class SiteBuilder:
                       new_file_path,
                       files,
                       ix_file,
-                      title):
+                      title,
+                      nb_link=None,
+                     ):
+        nb_link = link.lstrip('./') if nb_link is None else nb_link
         # Collect previous/next md file for pagination
         if ix_file == 0:
             prev_page_link = ''
@@ -296,7 +341,7 @@ class SiteBuilder:
         yaml_fm = ['---']
 
         if link.endswith('.ipynb'):
-            yaml_fm += ['interact_link: {}'.format(link.lstrip('./'))]
+            yaml_fm += ['interact_link: {}'.format(nb_link)]
         yaml_fm += ["title: '{}'".format(title)]
         page_link = self._prepare_link(link)
         yaml_fm += ["permalink: '{}'".format(page_link)]
@@ -352,7 +397,10 @@ class SiteBuilder:
             mkdir_if_missing(new_folder)
 
             # Convert notebooks or just copy md if no notebook.
+            nb_link = None
             if link.endswith('.ipynb'):
+                if self.nb_folder:
+                    nb_link = self._copy_clean_notebook(link)
                 self._process_notebook(link, new_folder)
             elif link.endswith('.md'):
                 # If a non-notebook file, just copy it over.
@@ -364,7 +412,8 @@ class SiteBuilder:
                                out_md_file_path,
                                files,
                                ix_file,
-                               title)
+                               title,
+                               nb_link)
             n_built_files += 1
 
         print("\n***\nGenerated {} new files\nSkipped {} already-built files"
