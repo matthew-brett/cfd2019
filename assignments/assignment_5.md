@@ -9,8 +9,8 @@ redirect_from: /assignment_5
 
 For this assignment, you will need the background from these pages:
 
-* [3.7 Arrays and axes](../chapters/03/arrays_and_axes)
-* [3.8 Reply to the Supreme Court](../chapters/03/reply_supreme)
+* [Reply to the Supreme Court](../chapters/03/reply_supreme)
+* [Filling arrays](../chapters/03/filling_arrays)
 
 At the time I wrote this, you can find the following on the [Wikipedia
 page for Burkitt's
