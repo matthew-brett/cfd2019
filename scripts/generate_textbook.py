@@ -258,8 +258,11 @@ class SiteBuilder:
             nb = nbf.read(fobj, 4)
         for cell in nb.cells:
             if cell['cell_type'] == 'code':
+                # Clear output.
+                cell['execution_count'] = None
                 cell['outputs'] = []
             elif cell['cell_type'] == 'markdown':
+                # Process markup.
                 cell['source'] = self._fill_markdown(cell['source'])
         with open(nb_fname, 'wt') as fobj:
             nbf.write(nb, fobj)
