@@ -19,7 +19,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/computational-tools",
         "teaser":null},{
-        "title": "1. Data science for everyone",
+        "title": "1. Coding for data",
         "excerpt":"About this textbook This is the textbook for the first year undergraduate course indata science at the University of Birmingham. We go into some detail about what we mean by “Data science” inthe next section, but here is theone-line summary: Data science is an approach to data analysis with a...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/intro",
@@ -124,7 +124,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Comparison",
         "teaser":null},{
-        "title": "3.12 More on arrays",
+        "title": "3.13 More on arrays",
         "excerpt":"More on Arrays It’s often necessary to compute something that involves data from more thanone array. If two arrays are of the same size, Python makes it easy to docalculations involving both arrays. For our first example, we return once more to the temperature data. Thistime, we create arrays of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/More_on_Arrays",
@@ -199,11 +199,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/reply_supreme",
         "teaser":null},{
-        "title": "3.14 Revision - three girls",
-        "excerpt":"Three girls In which we solve the three-girls-in-family problem. The problem If there is a family of four children, what is the chance thatfamily will consist of exactly three girls and one boy? We decided we could simulate this situation, by taking fourrandom numbers, between 0 and 1. For each...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/three_girls",
-        "teaser":null},{
         "title": "4.1 Introduction to data frames",
         "excerpt":"Introduction to data frames Pandas is a Python package thatimplements data frames, and functions that operate on dataframes. # Load the Pands data science library, call it 'pd'import pandas as pdWe will also use the usual Numpy array library: # Load the Numpy array library, call it 'np'import numpy as...","categories": [],
         "tags": [],
@@ -213,6 +208,11 @@ var store = [{
         "excerpt":"Many forms of data can be organized into data tables. Data tables are often called data frames. A data table or data frame has rows and columns. The rows may represent observations, such as people ina clinical trial, or sports teams. The columns representvariables - each variable is some type...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/04/data_frames",
+        "teaser":null},{
+        "title": "4.2 Data frames, Series and arrays",
+        "excerpt":"We have now come across three important structures that Python uses to store and access data: arrays data frames seriesHere we stop to go back over the differences between these structures, and how to convert between them. Data frames We start by loading a data frame from a Comma Separated...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/04/df_series_arrays",
         "teaser":null},{
         "title": "5.2 A permutation test",
         "excerpt":"Now we have for loops and ranges, we cansolve the problem in population, permutation. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again, we get...","categories": [],

@@ -458,40 +458,41 @@ there is little relationship between GDP and maternal mortality.
 rich_gender_data.plot.scatter('gdp_us_billion', 'mat_mort_ratio')
 ```
 
+One thing that stands out is the very high value at around 180.   Which country does this refer to?  We can use sorting to find out.
+
 ## Sorting data frames
 
 
 Data frames have a method `sort_value`.  This returns a new data frame with the
 rows sorted by the values in the column we specify.
 
-Here are the first five rows of the original data frame:
+Here are the first five rows of the data frame of the rich countries:
 
 ```{python}
-gender_data.head()
+rich_gender_data.head()
 ```
 
-We can make a new data frame where the rows are sorted by the values in the
-`gdp_us_billion` column:
+We are interested to find which of these richer countries has a high maternal mortality ratio.  To do this, we can make a new data frame where the rows are sorted by the values in the
+`mat_mort_ratio` column:
 
 ```{python}
-gender_data_by_gdp = gender_data.sort_values('gdp_us_billion')
-gender_data_by_gdp.head()
+rich_by_mmr = rich_gender_data.sort_values('mat_mort_ratio')
+rich_by_mmr.head()
 ```
 
-Notice that the rows are in *ascending* order of `gdp_us_billion`.  You can
-imagine, that we often want *descending* order.  As usual you can explore how
+Notice that the rows are in *ascending* order of `mat_mort_ratio`.  To find the countries with high maternal mortality, we might prefer to sort in *descending* order.  As usual you can explore how
 you might do this by looking at the help for the `sort_values` method with:
 
 ```
-gender_data.sort_values?
+rich_by_mmr.sort_values?
 ```
 
 in a new cell.   If you do that, you discover the `ascending` argument, that
 you can use like this:
 
 ```{python}
-by_descending_gdp = gender_data.sort_values('gdp_us_billion', ascending=False)
-by_descending_gdp.head()
+rich_by_descending_mmr = rich_gender_data.sort_values('mat_mort_ratio', ascending=False)
+rich_by_descending_mmr.head()
 ```
 
 As you might have guessed by now, `Series` also have a `sort_values` method.
@@ -499,8 +500,57 @@ For a Series, you don't have to specify the column to sort from, because you
 are using the Series values.
 
 ```{python}
-gdp.sort_values(ascending=False)
+rich_mmr = rich_gender_data['mat_mort_ratio']
+type(rich_mmr)
 ```
+
+```{python}
+rich_mmr.sort_values(ascending=False)
+```
+
+## Calculation on data frames
+
+
+We can calculate with Pandas Series, just as we can with arrays.
+
+For example, now we know that India has both a high GDP, and a high maternal mortality ratio, we wonder whether this is because India also has a large population, and therefore, relatively little money per person to spend on health care.
+
+So, we would like know the GDP per capita.  Luckily the data frame as a column "population":
+
+```{python}
+rich_population = rich_by_descending_mmr["population"]
+rich_population
+```
+
+We can divide the GDP by the population in millions to get US billion dollars per million population.
+
+This works exactly as it does for arrays:
+
+```{python}
+rich_gdp = rich_by_descending_mmr["gdp_us_billion"]
+rich_gdp
+```
+
+```{python}
+gdp_per_million = rich_gdp / rich_population
+gdp_per_million
+```
+
+Notice that the result is *elementwise* division, that is Python divides
+each element in `rich_gdp` by the *corresponding* element in
+`rich_population`.
+
+
+Remember that India is the first country in the `rich_by_descending_mmr`
+data frame.  It also has by far the lowest GDP per million population of
+any of this selection of rich countries.   Here's a plot of
+`gdp_per_million` against the corresponding values in `mat_mort_ratio`:
+
+```{python}
+plt.scatter(gdp_per_million, rich_by_descending_mmr['mat_mort_ratio'])
+```
+
+It does look as if low income per person predisposes to high maternal mortality.
 
         
       </section>

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-13T17:20:10+00:00">
+  <meta property="article:published_time" content="2019-11-14T09:43:05+00:00">
 
 
 
@@ -581,6 +581,16 @@
 
             <li><a href="/cfd2019/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/df_series_arrays" class="level_1">4.2 Data frames, Series and arrays</a></li>
+          
         </ul>
         
       </li>
@@ -1093,7 +1103,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="4.1 Introduction to data frames">
       <meta itemprop="description" content="Introduction to data frames">
-      <meta itemprop="datePublished" content="November 13, 2019">
+      <meta itemprop="datePublished" content="November 14, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1121,6 +1131,7 @@
   <li><a href="#showing-the-top-5-values-with-the-head-method">Showing the top 5 values with the head method</a></li>
   <li><a href="#selecting-rows">Selecting rows</a></li>
   <li><a href="#sorting-data-frames">Sorting data frames</a></li>
+  <li><a href="#calculation-on-data-frames">Calculation on data frames</a></li>
 </ul>
     </nav>
   </aside>
@@ -1220,7 +1231,7 @@ columns.</p>
       <td>NaN</td>
       <td>48.721939</td>
       <td>NaN</td>
-      <td>1.037444e+05</td>
+      <td>0.103744</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1232,7 +1243,7 @@ columns.</p>
       <td>2.834598</td>
       <td>40.109708</td>
       <td>444.00</td>
-      <td>3.271584e+07</td>
+      <td>32.715838</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1244,7 +1255,7 @@ columns.</p>
       <td>2.447546</td>
       <td>NaN</td>
       <td>501.25</td>
-      <td>2.693754e+07</td>
+      <td>26.937545</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1256,7 +1267,7 @@ columns.</p>
       <td>2.836021</td>
       <td>47.201082</td>
       <td>29.25</td>
-      <td>2.888280e+06</td>
+      <td>2.888280</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1268,7 +1279,7 @@ columns.</p>
       <td>7.260281</td>
       <td>47.123345</td>
       <td>NaN</td>
-      <td>7.954740e+04</td>
+      <td>0.079547</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1280,7 +1291,7 @@ columns.</p>
       <td>2.581168</td>
       <td>48.789260</td>
       <td>6.00</td>
-      <td>9.080299e+06</td>
+      <td>9.080299</td>
     </tr>
     <tr>
       <th>6</th>
@@ -1292,7 +1303,7 @@ columns.</p>
       <td>2.782216</td>
       <td>48.915810</td>
       <td>53.75</td>
-      <td>4.297667e+07</td>
+      <td>42.976675</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1304,7 +1315,7 @@ columns.</p>
       <td>1.916016</td>
       <td>46.782180</td>
       <td>27.25</td>
-      <td>2.904683e+06</td>
+      <td>2.904683</td>
     </tr>
     <tr>
       <th>8</th>
@@ -1316,7 +1327,7 @@ columns.</p>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>5.542200e+04</td>
+      <td>0.055422</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1328,7 +1339,7 @@ columns.</p>
       <td>3.676514</td>
       <td>48.291463</td>
       <td>NaN</td>
-      <td>9.887240e+04</td>
+      <td>0.098872</td>
     </tr>
     <tr>
       <th>10</th>
@@ -1340,7 +1351,7 @@ columns.</p>
       <td>6.292381</td>
       <td>48.576707</td>
       <td>6.00</td>
-      <td>2.344456e+07</td>
+      <td>23.444560</td>
     </tr>
     <tr>
       <th>11</th>
@@ -1352,7 +1363,7 @@ columns.</p>
       <td>8.504276</td>
       <td>48.556078</td>
       <td>4.00</td>
-      <td>8.566294e+06</td>
+      <td>8.566294</td>
     </tr>
     <tr>
       <th>12</th>
@@ -1364,7 +1375,7 @@ columns.</p>
       <td>1.197249</td>
       <td>46.157363</td>
       <td>25.25</td>
-      <td>9.531856e+06</td>
+      <td>9.531856</td>
     </tr>
     <tr>
       <th>13</th>
@@ -1376,7 +1387,7 @@ columns.</p>
       <td>4.433749</td>
       <td>50.481971</td>
       <td>747.25</td>
-      <td>9.907015e+06</td>
+      <td>9.907015</td>
     </tr>
     <tr>
       <th>14</th>
@@ -1388,7 +1399,7 @@ columns.</p>
       <td>8.221003</td>
       <td>48.864675</td>
       <td>7.00</td>
-      <td>1.122850e+07</td>
+      <td>11.228495</td>
     </tr>
     <tr>
       <th>15</th>
@@ -1400,7 +1411,7 @@ columns.</p>
       <td>2.206916</td>
       <td>47.211127</td>
       <td>417.50</td>
-      <td>1.029371e+07</td>
+      <td>10.293715</td>
     </tr>
     <tr>
       <th>16</th>
@@ -1412,7 +1423,7 @@ columns.</p>
       <td>3.021246</td>
       <td>48.217520</td>
       <td>384.25</td>
-      <td>1.759739e+07</td>
+      <td>17.597395</td>
     </tr>
     <tr>
       <th>17</th>
@@ -1424,7 +1435,7 @@ columns.</p>
       <td>0.860447</td>
       <td>50.460564</td>
       <td>194.75</td>
-      <td>1.593712e+08</td>
+      <td>159.371214</td>
     </tr>
     <tr>
       <th>18</th>
@@ -1436,7 +1447,7 @@ columns.</p>
       <td>4.243437</td>
       <td>48.310802</td>
       <td>10.75</td>
-      <td>7.220151e+06</td>
+      <td>7.220151</td>
     </tr>
     <tr>
       <th>19</th>
@@ -1448,7 +1459,7 @@ columns.</p>
       <td>2.976386</td>
       <td>49.116838</td>
       <td>15.25</td>
-      <td>1.349810e+06</td>
+      <td>1.349810</td>
     </tr>
     <tr>
       <th>20</th>
@@ -1460,7 +1471,7 @@ columns.</p>
       <td>3.308626</td>
       <td>NaN</td>
       <td>81.50</td>
-      <td>3.819036e+05</td>
+      <td>0.381904</td>
     </tr>
     <tr>
       <th>21</th>
@@ -1472,7 +1483,7 @@ columns.</p>
       <td>6.841021</td>
       <td>48.634905</td>
       <td>11.75</td>
-      <td>3.574396e+06</td>
+      <td>3.574396</td>
     </tr>
     <tr>
       <th>22</th>
@@ -1484,7 +1495,7 @@ columns.</p>
       <td>3.876601</td>
       <td>48.685741</td>
       <td>4.00</td>
-      <td>9.480348e+06</td>
+      <td>9.480348</td>
     </tr>
     <tr>
       <th>23</th>
@@ -1496,7 +1507,7 @@ columns.</p>
       <td>3.744844</td>
       <td>48.317238</td>
       <td>29.25</td>
-      <td>3.517636e+05</td>
+      <td>0.351764</td>
     </tr>
     <tr>
       <th>24</th>
@@ -1508,7 +1519,7 @@ columns.</p>
       <td>NaN</td>
       <td>48.423588</td>
       <td>NaN</td>
-      <td>6.510080e+04</td>
+      <td>0.065101</td>
     </tr>
     <tr>
       <th>25</th>
@@ -1520,7 +1531,7 @@ columns.</p>
       <td>4.192031</td>
       <td>48.464175</td>
       <td>218.25</td>
-      <td>1.056280e+07</td>
+      <td>10.562803</td>
     </tr>
     <tr>
       <th>26</th>
@@ -1532,7 +1543,7 @@ columns.</p>
       <td>3.773473</td>
       <td>47.784577</td>
       <td>49.50</td>
-      <td>2.041595e+08</td>
+      <td>204.159544</td>
     </tr>
     <tr>
       <th>27</th>
@@ -1544,7 +1555,7 @@ columns.</p>
       <td>4.828680</td>
       <td>48.878181</td>
       <td>28.00</td>
-      <td>2.833384e+05</td>
+      <td>0.283338</td>
     </tr>
     <tr>
       <th>28</th>
@@ -1556,7 +1567,7 @@ columns.</p>
       <td>2.335194</td>
       <td>48.523699</td>
       <td>23.75</td>
-      <td>4.115812e+05</td>
+      <td>0.411581</td>
     </tr>
     <tr>
       <th>29</th>
@@ -1568,7 +1579,7 @@ columns.</p>
       <td>2.706908</td>
       <td>49.572296</td>
       <td>161.75</td>
-      <td>7.759054e+05</td>
+      <td>0.775905</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1592,7 +1603,7 @@ columns.</p>
       <td>NaN</td>
       <td>48.846884</td>
       <td>NaN</td>
-      <td>3.370340e+04</td>
+      <td>0.033703</td>
     </tr>
     <tr>
       <th>187</th>
@@ -1604,7 +1615,7 @@ columns.</p>
       <td>1.725194</td>
       <td>42.929245</td>
       <td>892.25</td>
-      <td>1.357402e+07</td>
+      <td>13.574024</td>
     </tr>
     <tr>
       <th>188</th>
@@ -1616,7 +1627,7 @@ columns.</p>
       <td>2.037809</td>
       <td>48.270471</td>
       <td>380.75</td>
-      <td>7.230904e+06</td>
+      <td>7.230904</td>
     </tr>
     <tr>
       <th>189</th>
@@ -1628,7 +1639,7 @@ columns.</p>
       <td>3.183842</td>
       <td>48.213034</td>
       <td>21.00</td>
-      <td>6.838499e+07</td>
+      <td>68.384986</td>
     </tr>
     <tr>
       <th>190</th>
@@ -1640,7 +1651,7 @@ columns.</p>
       <td>1.976367</td>
       <td>48.260680</td>
       <td>33.25</td>
-      <td>8.363844e+06</td>
+      <td>8.363844</td>
     </tr>
     <tr>
       <th>191</th>
@@ -1652,7 +1663,7 @@ columns.</p>
       <td>1.349303</td>
       <td>48.906879</td>
       <td>43.50</td>
-      <td>5.465637e+06</td>
+      <td>5.465637</td>
     </tr>
     <tr>
       <th>192</th>
@@ -1664,7 +1675,7 @@ columns.</p>
       <td>1.140440</td>
       <td>48.337367</td>
       <td>240.25</td>
-      <td>1.212718e+06</td>
+      <td>1.212718</td>
     </tr>
     <tr>
       <th>193</th>
@@ -1676,7 +1687,7 @@ columns.</p>
       <td>3.987285</td>
       <td>47.697931</td>
       <td>129.25</td>
-      <td>1.059094e+05</td>
+      <td>0.105909</td>
     </tr>
     <tr>
       <th>194</th>
@@ -1688,7 +1699,7 @@ columns.</p>
       <td>3.071370</td>
       <td>NaN</td>
       <td>63.25</td>
-      <td>1.353877e+06</td>
+      <td>1.353877</td>
     </tr>
     <tr>
       <th>195</th>
@@ -1700,7 +1711,7 @@ columns.</p>
       <td>4.118771</td>
       <td>48.142132</td>
       <td>63.25</td>
-      <td>1.114441e+07</td>
+      <td>11.144409</td>
     </tr>
     <tr>
       <th>196</th>
@@ -1712,7 +1723,7 @@ columns.</p>
       <td>4.189521</td>
       <td>48.789477</td>
       <td>17.50</td>
-      <td>7.703435e+07</td>
+      <td>77.034345</td>
     </tr>
     <tr>
       <th>197</th>
@@ -1724,7 +1735,7 @@ columns.</p>
       <td>15.506929</td>
       <td>47.472414</td>
       <td>NaN</td>
-      <td>1.091000e+04</td>
+      <td>0.010910</td>
     </tr>
     <tr>
       <th>198</th>
@@ -1736,7 +1747,7 @@ columns.</p>
       <td>2.648609</td>
       <td>50.666580</td>
       <td>429.50</td>
-      <td>5.228132e+07</td>
+      <td>52.281324</td>
     </tr>
     <tr>
       <th>199</th>
@@ -1748,7 +1759,7 @@ columns.</p>
       <td>2.014349</td>
       <td>50.099485</td>
       <td>366.50</td>
-      <td>3.886534e+07</td>
+      <td>38.865339</td>
     </tr>
     <tr>
       <th>200</th>
@@ -1760,7 +1771,7 @@ columns.</p>
       <td>3.960185</td>
       <td>48.984198</td>
       <td>24.25</td>
-      <td>4.530270e+07</td>
+      <td>45.302704</td>
     </tr>
     <tr>
       <th>201</th>
@@ -1772,7 +1783,7 @@ columns.</p>
       <td>6.044403</td>
       <td>48.295555</td>
       <td>15.50</td>
-      <td>3.419977e+06</td>
+      <td>3.419977</td>
     </tr>
     <tr>
       <th>202</th>
@@ -1784,7 +1795,7 @@ columns.</p>
       <td>8.121961</td>
       <td>48.758830</td>
       <td>14.00</td>
-      <td>3.185582e+08</td>
+      <td>318.558175</td>
     </tr>
     <tr>
       <th>203</th>
@@ -1796,7 +1807,7 @@ columns.</p>
       <td>3.118842</td>
       <td>48.387434</td>
       <td>37.00</td>
-      <td>3.078450e+07</td>
+      <td>30.784500</td>
     </tr>
     <tr>
       <th>204</th>
@@ -1808,7 +1819,7 @@ columns.</p>
       <td>4.365757</td>
       <td>48.536415</td>
       <td>45.75</td>
-      <td>1.094206e+05</td>
+      <td>0.109421</td>
     </tr>
     <tr>
       <th>205</th>
@@ -1820,7 +1831,7 @@ columns.</p>
       <td>1.587088</td>
       <td>48.400934</td>
       <td>97.00</td>
-      <td>3.073452e+07</td>
+      <td>30.734524</td>
     </tr>
     <tr>
       <th>206</th>
@@ -1832,7 +1843,7 @@ columns.</p>
       <td>NaN</td>
       <td>47.581520</td>
       <td>NaN</td>
-      <td>2.958540e+04</td>
+      <td>0.029585</td>
     </tr>
     <tr>
       <th>207</th>
@@ -1844,7 +1855,7 @@ columns.</p>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.041414e+05</td>
+      <td>0.104141</td>
     </tr>
     <tr>
       <th>208</th>
@@ -1856,7 +1867,7 @@ columns.</p>
       <td>3.779501</td>
       <td>48.021053</td>
       <td>54.75</td>
-      <td>9.074240e+07</td>
+      <td>90.742400</td>
     </tr>
     <tr>
       <th>209</th>
@@ -1868,7 +1879,7 @@ columns.</p>
       <td>3.689874</td>
       <td>47.301617</td>
       <td>82.50</td>
-      <td>2.588964e+05</td>
+      <td>0.258896</td>
     </tr>
     <tr>
       <th>210</th>
@@ -1880,7 +1891,7 @@ columns.</p>
       <td>5.697059</td>
       <td>48.350049</td>
       <td>54.75</td>
-      <td>1.922250e+05</td>
+      <td>0.192225</td>
     </tr>
     <tr>
       <th>211</th>
@@ -1892,7 +1903,7 @@ columns.</p>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.813820e+06</td>
+      <td>1.813820</td>
     </tr>
     <tr>
       <th>212</th>
@@ -1904,7 +1915,7 @@ columns.</p>
       <td>1.417836</td>
       <td>44.470076</td>
       <td>399.75</td>
-      <td>2.624661e+07</td>
+      <td>26.246608</td>
     </tr>
     <tr>
       <th>213</th>
@@ -1916,7 +1927,7 @@ columns.</p>
       <td>4.241441</td>
       <td>48.516298</td>
       <td>143.75</td>
-      <td>5.417721e+07</td>
+      <td>54.177209</td>
     </tr>
     <tr>
       <th>214</th>
@@ -1928,7 +1939,7 @@ columns.</p>
       <td>2.687290</td>
       <td>49.934484</td>
       <td>233.75</td>
-      <td>1.563322e+07</td>
+      <td>15.633220</td>
     </tr>
     <tr>
       <th>215</th>
@@ -1940,7 +1951,7 @@ columns.</p>
       <td>2.695188</td>
       <td>49.529875</td>
       <td>398.00</td>
-      <td>1.542096e+07</td>
+      <td>15.420964</td>
     </tr>
   </tbody>
 </table>
@@ -2289,7 +2300,7 @@ function.</p>
       <td>NaN</td>
       <td>48.721939</td>
       <td>NaN</td>
-      <td>1.037444e+05</td>
+      <td>0.103744</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2301,7 +2312,7 @@ function.</p>
       <td>2.834598</td>
       <td>40.109708</td>
       <td>444.00</td>
-      <td>3.271584e+07</td>
+      <td>32.715838</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2313,7 +2324,7 @@ function.</p>
       <td>2.447546</td>
       <td>NaN</td>
       <td>501.25</td>
-      <td>2.693754e+07</td>
+      <td>26.937545</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2325,7 +2336,7 @@ function.</p>
       <td>2.836021</td>
       <td>47.201082</td>
       <td>29.25</td>
-      <td>2.888280e+06</td>
+      <td>2.888280</td>
     </tr>
     <tr>
       <th>4</th>
@@ -2337,7 +2348,7 @@ function.</p>
       <td>7.260281</td>
       <td>47.123345</td>
       <td>NaN</td>
-      <td>7.954740e+04</td>
+      <td>0.079547</td>
     </tr>
     <tr>
       <th>5</th>
@@ -2349,7 +2360,7 @@ function.</p>
       <td>2.581168</td>
       <td>48.789260</td>
       <td>6.00</td>
-      <td>9.080299e+06</td>
+      <td>9.080299</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2361,7 +2372,7 @@ function.</p>
       <td>2.782216</td>
       <td>48.915810</td>
       <td>53.75</td>
-      <td>4.297667e+07</td>
+      <td>42.976675</td>
     </tr>
     <tr>
       <th>7</th>
@@ -2373,7 +2384,7 @@ function.</p>
       <td>1.916016</td>
       <td>46.782180</td>
       <td>27.25</td>
-      <td>2.904683e+06</td>
+      <td>2.904683</td>
     </tr>
     <tr>
       <th>8</th>
@@ -2385,7 +2396,7 @@ function.</p>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>5.542200e+04</td>
+      <td>0.055422</td>
     </tr>
     <tr>
       <th>9</th>
@@ -2397,7 +2408,7 @@ function.</p>
       <td>3.676514</td>
       <td>48.291463</td>
       <td>NaN</td>
-      <td>9.887240e+04</td>
+      <td>0.098872</td>
     </tr>
     <tr>
       <th>10</th>
@@ -2409,7 +2420,7 @@ function.</p>
       <td>6.292381</td>
       <td>48.576707</td>
       <td>6.00</td>
-      <td>2.344456e+07</td>
+      <td>23.444560</td>
     </tr>
     <tr>
       <th>11</th>
@@ -2421,7 +2432,7 @@ function.</p>
       <td>8.504276</td>
       <td>48.556078</td>
       <td>4.00</td>
-      <td>8.566294e+06</td>
+      <td>8.566294</td>
     </tr>
     <tr>
       <th>12</th>
@@ -2433,7 +2444,7 @@ function.</p>
       <td>1.197249</td>
       <td>46.157363</td>
       <td>25.25</td>
-      <td>9.531856e+06</td>
+      <td>9.531856</td>
     </tr>
     <tr>
       <th>13</th>
@@ -2445,7 +2456,7 @@ function.</p>
       <td>4.433749</td>
       <td>50.481971</td>
       <td>747.25</td>
-      <td>9.907015e+06</td>
+      <td>9.907015</td>
     </tr>
     <tr>
       <th>14</th>
@@ -2457,7 +2468,7 @@ function.</p>
       <td>8.221003</td>
       <td>48.864675</td>
       <td>7.00</td>
-      <td>1.122850e+07</td>
+      <td>11.228495</td>
     </tr>
     <tr>
       <th>15</th>
@@ -2469,7 +2480,7 @@ function.</p>
       <td>2.206916</td>
       <td>47.211127</td>
       <td>417.50</td>
-      <td>1.029371e+07</td>
+      <td>10.293715</td>
     </tr>
     <tr>
       <th>16</th>
@@ -2481,7 +2492,7 @@ function.</p>
       <td>3.021246</td>
       <td>48.217520</td>
       <td>384.25</td>
-      <td>1.759739e+07</td>
+      <td>17.597395</td>
     </tr>
     <tr>
       <th>17</th>
@@ -2493,7 +2504,7 @@ function.</p>
       <td>0.860447</td>
       <td>50.460564</td>
       <td>194.75</td>
-      <td>1.593712e+08</td>
+      <td>159.371214</td>
     </tr>
     <tr>
       <th>18</th>
@@ -2505,7 +2516,7 @@ function.</p>
       <td>4.243437</td>
       <td>48.310802</td>
       <td>10.75</td>
-      <td>7.220151e+06</td>
+      <td>7.220151</td>
     </tr>
     <tr>
       <th>19</th>
@@ -2517,7 +2528,7 @@ function.</p>
       <td>2.976386</td>
       <td>49.116838</td>
       <td>15.25</td>
-      <td>1.349810e+06</td>
+      <td>1.349810</td>
     </tr>
     <tr>
       <th>20</th>
@@ -2529,7 +2540,7 @@ function.</p>
       <td>3.308626</td>
       <td>NaN</td>
       <td>81.50</td>
-      <td>3.819036e+05</td>
+      <td>0.381904</td>
     </tr>
     <tr>
       <th>21</th>
@@ -2541,7 +2552,7 @@ function.</p>
       <td>6.841021</td>
       <td>48.634905</td>
       <td>11.75</td>
-      <td>3.574396e+06</td>
+      <td>3.574396</td>
     </tr>
     <tr>
       <th>22</th>
@@ -2553,7 +2564,7 @@ function.</p>
       <td>3.876601</td>
       <td>48.685741</td>
       <td>4.00</td>
-      <td>9.480348e+06</td>
+      <td>9.480348</td>
     </tr>
     <tr>
       <th>23</th>
@@ -2565,7 +2576,7 @@ function.</p>
       <td>3.744844</td>
       <td>48.317238</td>
       <td>29.25</td>
-      <td>3.517636e+05</td>
+      <td>0.351764</td>
     </tr>
     <tr>
       <th>24</th>
@@ -2577,7 +2588,7 @@ function.</p>
       <td>NaN</td>
       <td>48.423588</td>
       <td>NaN</td>
-      <td>6.510080e+04</td>
+      <td>0.065101</td>
     </tr>
     <tr>
       <th>25</th>
@@ -2589,7 +2600,7 @@ function.</p>
       <td>4.192031</td>
       <td>48.464175</td>
       <td>218.25</td>
-      <td>1.056280e+07</td>
+      <td>10.562803</td>
     </tr>
     <tr>
       <th>26</th>
@@ -2601,7 +2612,7 @@ function.</p>
       <td>3.773473</td>
       <td>47.784577</td>
       <td>49.50</td>
-      <td>2.041595e+08</td>
+      <td>204.159544</td>
     </tr>
     <tr>
       <th>27</th>
@@ -2613,7 +2624,7 @@ function.</p>
       <td>4.828680</td>
       <td>48.878181</td>
       <td>28.00</td>
-      <td>2.833384e+05</td>
+      <td>0.283338</td>
     </tr>
     <tr>
       <th>28</th>
@@ -2625,7 +2636,7 @@ function.</p>
       <td>2.335194</td>
       <td>48.523699</td>
       <td>23.75</td>
-      <td>4.115812e+05</td>
+      <td>0.411581</td>
     </tr>
     <tr>
       <th>29</th>
@@ -2637,7 +2648,7 @@ function.</p>
       <td>2.706908</td>
       <td>49.572296</td>
       <td>161.75</td>
-      <td>7.759054e+05</td>
+      <td>0.775905</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2661,7 +2672,7 @@ function.</p>
       <td>NaN</td>
       <td>48.846884</td>
       <td>NaN</td>
-      <td>3.370340e+04</td>
+      <td>0.033703</td>
     </tr>
     <tr>
       <th>187</th>
@@ -2673,7 +2684,7 @@ function.</p>
       <td>1.725194</td>
       <td>42.929245</td>
       <td>892.25</td>
-      <td>1.357402e+07</td>
+      <td>13.574024</td>
     </tr>
     <tr>
       <th>188</th>
@@ -2685,7 +2696,7 @@ function.</p>
       <td>2.037809</td>
       <td>48.270471</td>
       <td>380.75</td>
-      <td>7.230904e+06</td>
+      <td>7.230904</td>
     </tr>
     <tr>
       <th>189</th>
@@ -2697,7 +2708,7 @@ function.</p>
       <td>3.183842</td>
       <td>48.213034</td>
       <td>21.00</td>
-      <td>6.838499e+07</td>
+      <td>68.384986</td>
     </tr>
     <tr>
       <th>190</th>
@@ -2709,7 +2720,7 @@ function.</p>
       <td>1.976367</td>
       <td>48.260680</td>
       <td>33.25</td>
-      <td>8.363844e+06</td>
+      <td>8.363844</td>
     </tr>
     <tr>
       <th>191</th>
@@ -2721,7 +2732,7 @@ function.</p>
       <td>1.349303</td>
       <td>48.906879</td>
       <td>43.50</td>
-      <td>5.465637e+06</td>
+      <td>5.465637</td>
     </tr>
     <tr>
       <th>192</th>
@@ -2733,7 +2744,7 @@ function.</p>
       <td>1.140440</td>
       <td>48.337367</td>
       <td>240.25</td>
-      <td>1.212718e+06</td>
+      <td>1.212718</td>
     </tr>
     <tr>
       <th>193</th>
@@ -2745,7 +2756,7 @@ function.</p>
       <td>3.987285</td>
       <td>47.697931</td>
       <td>129.25</td>
-      <td>1.059094e+05</td>
+      <td>0.105909</td>
     </tr>
     <tr>
       <th>194</th>
@@ -2757,7 +2768,7 @@ function.</p>
       <td>3.071370</td>
       <td>NaN</td>
       <td>63.25</td>
-      <td>1.353877e+06</td>
+      <td>1.353877</td>
     </tr>
     <tr>
       <th>195</th>
@@ -2769,7 +2780,7 @@ function.</p>
       <td>4.118771</td>
       <td>48.142132</td>
       <td>63.25</td>
-      <td>1.114441e+07</td>
+      <td>11.144409</td>
     </tr>
     <tr>
       <th>196</th>
@@ -2781,7 +2792,7 @@ function.</p>
       <td>4.189521</td>
       <td>48.789477</td>
       <td>17.50</td>
-      <td>7.703435e+07</td>
+      <td>77.034345</td>
     </tr>
     <tr>
       <th>197</th>
@@ -2793,7 +2804,7 @@ function.</p>
       <td>15.506929</td>
       <td>47.472414</td>
       <td>NaN</td>
-      <td>1.091000e+04</td>
+      <td>0.010910</td>
     </tr>
     <tr>
       <th>198</th>
@@ -2805,7 +2816,7 @@ function.</p>
       <td>2.648609</td>
       <td>50.666580</td>
       <td>429.50</td>
-      <td>5.228132e+07</td>
+      <td>52.281324</td>
     </tr>
     <tr>
       <th>199</th>
@@ -2817,7 +2828,7 @@ function.</p>
       <td>2.014349</td>
       <td>50.099485</td>
       <td>366.50</td>
-      <td>3.886534e+07</td>
+      <td>38.865339</td>
     </tr>
     <tr>
       <th>200</th>
@@ -2829,7 +2840,7 @@ function.</p>
       <td>3.960185</td>
       <td>48.984198</td>
       <td>24.25</td>
-      <td>4.530270e+07</td>
+      <td>45.302704</td>
     </tr>
     <tr>
       <th>201</th>
@@ -2841,7 +2852,7 @@ function.</p>
       <td>6.044403</td>
       <td>48.295555</td>
       <td>15.50</td>
-      <td>3.419977e+06</td>
+      <td>3.419977</td>
     </tr>
     <tr>
       <th>202</th>
@@ -2853,7 +2864,7 @@ function.</p>
       <td>8.121961</td>
       <td>48.758830</td>
       <td>14.00</td>
-      <td>3.185582e+08</td>
+      <td>318.558175</td>
     </tr>
     <tr>
       <th>203</th>
@@ -2865,7 +2876,7 @@ function.</p>
       <td>3.118842</td>
       <td>48.387434</td>
       <td>37.00</td>
-      <td>3.078450e+07</td>
+      <td>30.784500</td>
     </tr>
     <tr>
       <th>204</th>
@@ -2877,7 +2888,7 @@ function.</p>
       <td>4.365757</td>
       <td>48.536415</td>
       <td>45.75</td>
-      <td>1.094206e+05</td>
+      <td>0.109421</td>
     </tr>
     <tr>
       <th>205</th>
@@ -2889,7 +2900,7 @@ function.</p>
       <td>1.587088</td>
       <td>48.400934</td>
       <td>97.00</td>
-      <td>3.073452e+07</td>
+      <td>30.734524</td>
     </tr>
     <tr>
       <th>206</th>
@@ -2901,7 +2912,7 @@ function.</p>
       <td>NaN</td>
       <td>47.581520</td>
       <td>NaN</td>
-      <td>2.958540e+04</td>
+      <td>0.029585</td>
     </tr>
     <tr>
       <th>207</th>
@@ -2913,7 +2924,7 @@ function.</p>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.041414e+05</td>
+      <td>0.104141</td>
     </tr>
     <tr>
       <th>208</th>
@@ -2925,7 +2936,7 @@ function.</p>
       <td>3.779501</td>
       <td>48.021053</td>
       <td>54.75</td>
-      <td>9.074240e+07</td>
+      <td>90.742400</td>
     </tr>
     <tr>
       <th>209</th>
@@ -2937,7 +2948,7 @@ function.</p>
       <td>3.689874</td>
       <td>47.301617</td>
       <td>82.50</td>
-      <td>2.588964e+05</td>
+      <td>0.258896</td>
     </tr>
     <tr>
       <th>210</th>
@@ -2949,7 +2960,7 @@ function.</p>
       <td>5.697059</td>
       <td>48.350049</td>
       <td>54.75</td>
-      <td>1.922250e+05</td>
+      <td>0.192225</td>
     </tr>
     <tr>
       <th>211</th>
@@ -2961,7 +2972,7 @@ function.</p>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.813820e+06</td>
+      <td>1.813820</td>
     </tr>
     <tr>
       <th>212</th>
@@ -2973,7 +2984,7 @@ function.</p>
       <td>1.417836</td>
       <td>44.470076</td>
       <td>399.75</td>
-      <td>2.624661e+07</td>
+      <td>26.246608</td>
     </tr>
     <tr>
       <th>213</th>
@@ -2985,7 +2996,7 @@ function.</p>
       <td>4.241441</td>
       <td>48.516298</td>
       <td>143.75</td>
-      <td>5.417721e+07</td>
+      <td>54.177209</td>
     </tr>
     <tr>
       <th>214</th>
@@ -2997,7 +3008,7 @@ function.</p>
       <td>2.687290</td>
       <td>49.934484</td>
       <td>233.75</td>
-      <td>1.563322e+07</td>
+      <td>15.633220</td>
     </tr>
     <tr>
       <th>215</th>
@@ -3009,7 +3020,7 @@ function.</p>
       <td>2.695188</td>
       <td>49.529875</td>
       <td>398.00</td>
-      <td>1.542096e+07</td>
+      <td>15.420964</td>
     </tr>
   </tbody>
 </table>
@@ -3065,7 +3076,7 @@ function.</p>
       <td>NaN</td>
       <td>48.721939</td>
       <td>NaN</td>
-      <td>103744.4</td>
+      <td>0.103744</td>
     </tr>
     <tr>
       <th>1</th>
@@ -3077,7 +3088,7 @@ function.</p>
       <td>2.834598</td>
       <td>40.109708</td>
       <td>444.00</td>
-      <td>32715838.4</td>
+      <td>32.715838</td>
     </tr>
     <tr>
       <th>2</th>
@@ -3089,7 +3100,7 @@ function.</p>
       <td>2.447546</td>
       <td>NaN</td>
       <td>501.25</td>
-      <td>26937544.8</td>
+      <td>26.937545</td>
     </tr>
     <tr>
       <th>3</th>
@@ -3101,7 +3112,7 @@ function.</p>
       <td>2.836021</td>
       <td>47.201082</td>
       <td>29.25</td>
-      <td>2888280.2</td>
+      <td>2.888280</td>
     </tr>
     <tr>
       <th>4</th>
@@ -3113,7 +3124,7 @@ function.</p>
       <td>7.260281</td>
       <td>47.123345</td>
       <td>NaN</td>
-      <td>79547.4</td>
+      <td>0.079547</td>
     </tr>
   </tbody>
 </table>
@@ -3218,7 +3229,7 @@ what we want.</p>
       <td>6.292381</td>
       <td>48.576707</td>
       <td>6.00</td>
-      <td>2.344456e+07</td>
+      <td>23.444560</td>
     </tr>
     <tr>
       <th>26</th>
@@ -3230,7 +3241,7 @@ what we want.</p>
       <td>3.773473</td>
       <td>47.784577</td>
       <td>49.50</td>
-      <td>2.041595e+08</td>
+      <td>204.159544</td>
     </tr>
     <tr>
       <th>32</th>
@@ -3242,7 +3253,7 @@ what we want.</p>
       <td>7.546247</td>
       <td>48.808926</td>
       <td>7.25</td>
-      <td>3.551712e+07</td>
+      <td>35.517119</td>
     </tr>
     <tr>
       <th>35</th>
@@ -3254,7 +3265,7 @@ what we want.</p>
       <td>3.015530</td>
       <td>46.297964</td>
       <td>28.75</td>
-      <td>1.364446e+09</td>
+      <td>1364.446000</td>
     </tr>
     <tr>
       <th>49</th>
@@ -3266,7 +3277,7 @@ what we want.</p>
       <td>8.542615</td>
       <td>48.568695</td>
       <td>6.25</td>
-      <td>8.128164e+07</td>
+      <td>81.281645</td>
     </tr>
     <tr>
       <th>58</th>
@@ -3278,7 +3289,7 @@ what we want.</p>
       <td>6.545739</td>
       <td>48.722231</td>
       <td>5.00</td>
-      <td>4.655313e+07</td>
+      <td>46.553128</td>
     </tr>
     <tr>
       <th>63</th>
@@ -3290,7 +3301,7 @@ what we want.</p>
       <td>8.920420</td>
       <td>48.772050</td>
       <td>8.75</td>
-      <td>6.630210e+07</td>
+      <td>66.302099</td>
     </tr>
     <tr>
       <th>67</th>
@@ -3302,7 +3313,7 @@ what we want.</p>
       <td>7.720655</td>
       <td>48.791809</td>
       <td>9.25</td>
-      <td>6.464156e+07</td>
+      <td>64.641557</td>
     </tr>
     <tr>
       <th>88</th>
@@ -3314,7 +3325,7 @@ what we want.</p>
       <td>1.292666</td>
       <td>49.497234</td>
       <td>185.25</td>
-      <td>1.293743e+09</td>
+      <td>1293.742537</td>
     </tr>
     <tr>
       <th>94</th>
@@ -3326,7 +3337,7 @@ what we want.</p>
       <td>6.984374</td>
       <td>48.407573</td>
       <td>4.00</td>
-      <td>6.037880e+07</td>
+      <td>60.378795</td>
     </tr>
     <tr>
       <th>97</th>
@@ -3338,7 +3349,7 @@ what we want.</p>
       <td>8.496074</td>
       <td>48.744199</td>
       <td>5.75</td>
-      <td>1.272971e+08</td>
+      <td>127.297102</td>
     </tr>
     <tr>
       <th>104</th>
@@ -3350,7 +3361,7 @@ what we want.</p>
       <td>3.915606</td>
       <td>48.023388</td>
       <td>12.00</td>
-      <td>5.072721e+07</td>
+      <td>50.727212</td>
     </tr>
     <tr>
       <th>124</th>
@@ -3362,7 +3373,7 @@ what we want.</p>
       <td>3.225839</td>
       <td>48.906296</td>
       <td>40.00</td>
-      <td>1.242034e+08</td>
+      <td>124.203450</td>
     </tr>
     <tr>
       <th>164</th>
@@ -3374,7 +3385,7 @@ what we want.</p>
       <td>3.731354</td>
       <td>48.968070</td>
       <td>25.25</td>
-      <td>1.437935e+08</td>
+      <td>143.793504</td>
     </tr>
     <tr>
       <th>202</th>
@@ -3386,7 +3397,7 @@ what we want.</p>
       <td>8.121961</td>
       <td>48.758830</td>
       <td>14.00</td>
-      <td>3.185582e+08</td>
+      <td>318.558175</td>
     </tr>
   </tbody>
 </table>
@@ -3412,19 +3423,21 @@ there is little relationship between GDP and maternal mortality.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f82f027bd30&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11b1c4710&gt;
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/04/data_frame_intro_59_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/04/data_frame_intro_60_1.png" alt="png" /></p>
+
+<p>One thing that stands out is the very high value at around 180.   Which country does this refer to?  We can use sorting to find out.</p>
 
 <h2 id="sorting-data-frames">Sorting data frames</h2>
 
 <p>Data frames have a method <code class="highlighter-rouge">sort_value</code>.  This returns a new data frame with the
 rows sorted by the values in the column we specify.</p>
 
-<p>Here are the first five rows of the original data frame:</p>
+<p>Here are the first five rows of the data frame of the rich countries:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -3459,277 +3472,276 @@ rows sorted by the values in the column we specify.</p>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Aruba</td>
-      <td>ABW</td>
-      <td>1.66325</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>48.721939</td>
-      <td>NaN</td>
-      <td>103744.4</td>
+      <th>10</th>
+      <td>Australia</td>
+      <td>AUS</td>
+      <td>1.86150</td>
+      <td>1422.994116</td>
+      <td>4256.058988</td>
+      <td>6.292381</td>
+      <td>48.576707</td>
+      <td>6.00</td>
+      <td>23.444560</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Afghanistan</td>
-      <td>AFG</td>
-      <td>4.95450</td>
-      <td>19.961015</td>
-      <td>161.138034</td>
-      <td>2.834598</td>
-      <td>40.109708</td>
-      <td>444.00</td>
-      <td>32715838.4</td>
+      <th>26</th>
+      <td>Brazil</td>
+      <td>BRA</td>
+      <td>1.79525</td>
+      <td>2198.765606</td>
+      <td>1303.199104</td>
+      <td>3.773473</td>
+      <td>47.784577</td>
+      <td>49.50</td>
+      <td>204.159544</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Angola</td>
-      <td>AGO</td>
-      <td>6.12300</td>
-      <td>111.936542</td>
-      <td>254.747970</td>
-      <td>2.447546</td>
-      <td>NaN</td>
-      <td>501.25</td>
-      <td>26937544.8</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Albania</td>
-      <td>ALB</td>
-      <td>1.76925</td>
-      <td>12.327586</td>
-      <td>574.202694</td>
-      <td>2.836021</td>
-      <td>47.201082</td>
-      <td>29.25</td>
-      <td>2888280.2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Andorra</td>
-      <td>AND</td>
-      <td>NaN</td>
-      <td>3.197538</td>
-      <td>4421.224933</td>
-      <td>7.260281</td>
-      <td>47.123345</td>
-      <td>NaN</td>
-      <td>79547.4</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-<p>We can make a new data frame where the rows are sorted by the values in the
-<code class="highlighter-rouge">gdp_us_billion</code> column:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data_by_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">)</span>
-<span class="n">gender_data_by_gdp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>country_name</th>
-      <th>country_code</th>
-      <th>fert_rate</th>
-      <th>gdp_us_billion</th>
-      <th>health_exp_per_cap</th>
-      <th>health_exp_pub</th>
-      <th>prim_ed_girls</th>
-      <th>mat_mort_ratio</th>
-      <th>population</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>197</th>
-      <td>Tuvalu</td>
-      <td>TUV</td>
-      <td>NaN</td>
-      <td>0.036470</td>
-      <td>563.500592</td>
-      <td>15.506929</td>
-      <td>47.472414</td>
-      <td>NaN</td>
-      <td>10910.0</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>Nauru</td>
-      <td>NRU</td>
-      <td>NaN</td>
-      <td>0.106391</td>
-      <td>611.020856</td>
-      <td>4.527932</td>
-      <td>49.409439</td>
-      <td>NaN</td>
-      <td>11695.4</td>
-    </tr>
-    <tr>
-      <th>102</th>
-      <td>Kiribati</td>
-      <td>KIR</td>
-      <td>3.74525</td>
-      <td>0.177431</td>
-      <td>179.372383</td>
-      <td>8.279184</td>
-      <td>49.557255</td>
-      <td>95.0</td>
-      <td>110481.6</td>
-    </tr>
-    <tr>
-      <th>125</th>
-      <td>Marshall Islands</td>
-      <td>MHL</td>
-      <td>NaN</td>
-      <td>0.184319</td>
-      <td>657.059335</td>
-      <td>14.302529</td>
-      <td>48.397282</td>
-      <td>NaN</td>
-      <td>52882.8</td>
-    </tr>
-    <tr>
-      <th>153</th>
-      <td>Palau</td>
-      <td>PLW</td>
-      <td>2.22000</td>
-      <td>0.254840</td>
-      <td>1389.993077</td>
-      <td>6.623460</td>
-      <td>46.425690</td>
-      <td>NaN</td>
-      <td>21112.6</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-<p>Notice that the rows are in <em>ascending</em> order of <code class="highlighter-rouge">gdp_us_billion</code>.  You can
-imagine, that we often want <em>descending</em> order.  As usual you can explore how
-you might do this by looking at the help for the <code class="highlighter-rouge">sort_values</code> method with:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gender_data.sort_values?
-</code></pre></div></div>
-
-<p>in a new cell.   If you do that, you discover the <code class="highlighter-rouge">ascending</code> argument, that
-you can use like this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">by_descending_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">by_descending_gdp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>country_name</th>
-      <th>country_code</th>
-      <th>fert_rate</th>
-      <th>gdp_us_billion</th>
-      <th>health_exp_per_cap</th>
-      <th>health_exp_pub</th>
-      <th>prim_ed_girls</th>
-      <th>mat_mort_ratio</th>
-      <th>population</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>202</th>
-      <td>United States</td>
-      <td>USA</td>
-      <td>1.860875</td>
-      <td>17369.124600</td>
-      <td>9060.068657</td>
-      <td>8.121961</td>
-      <td>48.758830</td>
-      <td>14.00</td>
-      <td>3.185582e+08</td>
+      <th>32</th>
+      <td>Canada</td>
+      <td>CAN</td>
+      <td>1.60030</td>
+      <td>1708.473627</td>
+      <td>4616.539134</td>
+      <td>7.546247</td>
+      <td>48.808926</td>
+      <td>7.25</td>
+      <td>35.517119</td>
     </tr>
     <tr>
       <th>35</th>
       <td>China</td>
       <td>CHN</td>
-      <td>1.558750</td>
+      <td>1.55875</td>
       <td>10182.790479</td>
       <td>657.748859</td>
       <td>3.015530</td>
       <td>46.297964</td>
       <td>28.75</td>
-      <td>1.364446e+09</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>Japan</td>
-      <td>JPN</td>
-      <td>1.430000</td>
-      <td>5106.024760</td>
-      <td>3687.126279</td>
-      <td>8.496074</td>
-      <td>48.744199</td>
-      <td>5.75</td>
-      <td>1.272971e+08</td>
+      <td>1364.446000</td>
     </tr>
     <tr>
       <th>49</th>
       <td>Germany</td>
       <td>DEU</td>
-      <td>1.450000</td>
+      <td>1.45000</td>
       <td>3601.226158</td>
       <td>4909.659884</td>
       <td>8.542615</td>
       <td>48.568695</td>
       <td>6.25</td>
-      <td>8.128164e+07</td>
+      <td>81.281645</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We are interested to find which of these richer countries has a high maternal mortality ratio.  To do this, we can make a new data frame where the rows are sorted by the values in the
+<code class="highlighter-rouge">mat_mort_ratio</code> column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_by_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mat_mort_ratio'</span><span class="p">)</span>
+<span class="n">rich_by_mmr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country_name</th>
+      <th>country_code</th>
+      <th>fert_rate</th>
+      <th>gdp_us_billion</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>94</th>
+      <td>Italy</td>
+      <td>ITA</td>
+      <td>1.3900</td>
+      <td>2005.983980</td>
+      <td>3266.984094</td>
+      <td>6.984374</td>
+      <td>48.407573</td>
+      <td>4.00</td>
+      <td>60.378795</td>
     </tr>
     <tr>
-      <th>67</th>
-      <td>United Kingdom</td>
-      <td>GBR</td>
-      <td>1.842500</td>
-      <td>2768.864417</td>
-      <td>3357.983675</td>
-      <td>7.720655</td>
-      <td>48.791809</td>
-      <td>9.25</td>
-      <td>6.464156e+07</td>
+      <th>58</th>
+      <td>Spain</td>
+      <td>ESP</td>
+      <td>1.3075</td>
+      <td>1299.724261</td>
+      <td>2963.832825</td>
+      <td>6.545739</td>
+      <td>48.722231</td>
+      <td>5.00</td>
+      <td>46.553128</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Japan</td>
+      <td>JPN</td>
+      <td>1.4300</td>
+      <td>5106.024760</td>
+      <td>3687.126279</td>
+      <td>8.496074</td>
+      <td>48.744199</td>
+      <td>5.75</td>
+      <td>127.297102</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Australia</td>
+      <td>AUS</td>
+      <td>1.8615</td>
+      <td>1422.994116</td>
+      <td>4256.058988</td>
+      <td>6.292381</td>
+      <td>48.576707</td>
+      <td>6.00</td>
+      <td>23.444560</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Germany</td>
+      <td>DEU</td>
+      <td>1.4500</td>
+      <td>3601.226158</td>
+      <td>4909.659884</td>
+      <td>8.542615</td>
+      <td>48.568695</td>
+      <td>6.25</td>
+      <td>81.281645</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Notice that the rows are in <em>ascending</em> order of <code class="highlighter-rouge">mat_mort_ratio</code>.  To find the countries with high maternal mortality, we might prefer to sort in <em>descending</em> order.  As usual you can explore how
+you might do this by looking at the help for the <code class="highlighter-rouge">sort_values</code> method with:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rich_by_mmr.sort_values?
+</code></pre></div></div>
+
+<p>in a new cell.   If you do that, you discover the <code class="highlighter-rouge">ascending</code> argument, that
+you can use like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_by_descending_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mat_mort_ratio'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">rich_by_descending_mmr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country_name</th>
+      <th>country_code</th>
+      <th>fert_rate</th>
+      <th>gdp_us_billion</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>88</th>
+      <td>India</td>
+      <td>IND</td>
+      <td>2.44925</td>
+      <td>2019.005411</td>
+      <td>241.572477</td>
+      <td>1.292666</td>
+      <td>49.497234</td>
+      <td>185.25</td>
+      <td>1293.742537</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Brazil</td>
+      <td>BRA</td>
+      <td>1.79525</td>
+      <td>2198.765606</td>
+      <td>1303.199104</td>
+      <td>3.773473</td>
+      <td>47.784577</td>
+      <td>49.50</td>
+      <td>204.159544</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>Mexico</td>
+      <td>MEX</td>
+      <td>2.25700</td>
+      <td>1188.802780</td>
+      <td>1081.208948</td>
+      <td>3.225839</td>
+      <td>48.906296</td>
+      <td>40.00</td>
+      <td>124.203450</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>China</td>
+      <td>CHN</td>
+      <td>1.55875</td>
+      <td>10182.790479</td>
+      <td>657.748859</td>
+      <td>3.015530</td>
+      <td>46.297964</td>
+      <td>28.75</td>
+      <td>1364.446000</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>Russian Federation</td>
+      <td>RUS</td>
+      <td>1.72450</td>
+      <td>1822.691700</td>
+      <td>1755.506635</td>
+      <td>3.731354</td>
+      <td>48.968070</td>
+      <td>25.25</td>
+      <td>143.793504</td>
     </tr>
   </tbody>
 </table>
@@ -3740,73 +3752,130 @@ you can use like this:</p>
 For a Series, you don’t have to specify the column to sort from, because you
 are using the Series values.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">rich_mmr</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    17369.124600
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_mmr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88     185.25
+26      49.50
+124     40.00
+35      28.75
+164     25.25
+202     14.00
+104     12.00
+67       9.25
+63       8.75
+32       7.25
+49       6.25
+10       6.00
+97       5.75
+58       5.00
+94       4.00
+Name: mat_mort_ratio, dtype: float64
+</code></pre></div></div>
+
+<h2 id="calculation-on-data-frames">Calculation on data frames</h2>
+
+<p>We can calculate with Pandas Series, just as we can with arrays.</p>
+
+<p>For example, now we know that India has both a high GDP, and a high maternal mortality ratio, we wonder whether this is because India also has a large population, and therefore, relatively little money per person to spend on health care.</p>
+
+<p>So, we would like know the GDP per capita.  Luckily the data frame as a column “population”:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_population</span> <span class="o">=</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">"population"</span><span class="p">]</span>
+<span class="n">rich_population</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88     1293.742537
+26      204.159544
+124     124.203450
+35     1364.446000
+164     143.793504
+202     318.558175
+104      50.727212
+67       64.641557
+63       66.302099
+32       35.517119
+49       81.281645
+10       23.444560
+97      127.297102
+58       46.553128
+94       60.378795
+Name: population, dtype: float64
+</code></pre></div></div>
+
+<p>We can divide the GDP by the population in millions to get US billion dollars per million population.</p>
+
+<p>This works exactly as it does for arrays:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gdp</span> <span class="o">=</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">"gdp_us_billion"</span><span class="p">]</span>
+<span class="n">rich_gdp</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88      2019.005411
+26      2198.765606
+124     1188.802780
 35     10182.790479
-97      5106.024760
-49      3601.226158
+164     1822.691700
+202    17369.124600
+104     1346.751162
 67      2768.864417
 63      2647.649725
-26      2198.765606
-88      2019.005411
-94      2005.983980
-164     1822.691700
 32      1708.473627
+49      3601.226158
 10      1422.994116
-104     1346.751162
+97      5106.024760
 58      1299.724261
-124     1188.802780
-86       902.944866
-196      895.175577
-143      819.285000
-166      707.936120
-33       676.642359
-6        550.980968
-181      540.626904
-155      503.311262
-14       494.221836
-141      486.113579
-90       479.398094
-144      457.585186
-11       407.494276
-189      406.136904
-205      376.146268
-           ...     
-210        0.799887
-209        0.782876
-204        0.730107
-8          0.640500
-41         0.603919
-51         0.513035
-193        0.439179
-65         0.319321
-177        0.314540
-153        0.254840
-125        0.184319
-102        0.177431
-146        0.106391
-197        0.036470
-0               NaN
-45              NaN
-46              NaN
-57              NaN
-70              NaN
-109             NaN
-118             NaN
-120             NaN
-139             NaN
-157             NaN
-161             NaN
-173             NaN
-183             NaN
-185             NaN
-186             NaN
-206             NaN
-Name: gdp_us_billion, Length: 216, dtype: float64
+94      2005.983980
+Name: gdp_us_billion, dtype: float64
 </code></pre></div></div>
 
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp_per_million</span> <span class="o">=</span> <span class="n">rich_gdp</span> <span class="o">/</span> <span class="n">rich_population</span>
+<span class="n">gdp_per_million</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88      1.560593
+26     10.769840
+124     9.571415
+35      7.462949
+164    12.675758
+202    54.524184
+104    26.548890
+67     42.834123
+63     39.933121
+32     48.102821
+49     44.305528
+10     60.696133
+97     40.111084
+58     27.919161
+94     33.223319
+dtype: float64
+</code></pre></div></div>
+
+<p>Notice that the result is <em>elementwise</em> division, that is Python divides
+each element in <code class="highlighter-rouge">rich_gdp</code> by the <em>corresponding</em> element in
+<code class="highlighter-rouge">rich_population</code>.</p>
+
+<p>Remember that India is the first country in the <code class="highlighter-rouge">rich_by_descending_mmr</code>
+data frame.  It also has by far the lowest GDP per million population of
+any of this selection of rich countries.   Here’s a plot of
+<code class="highlighter-rouge">gdp_per_million</code> against the corresponding values in <code class="highlighter-rouge">mat_mort_ratio</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp_per_million</span><span class="p">,</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x118fa93c8&gt;
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/04/data_frame_intro_80_1.png" alt="png" /></p>
+
+<p>It does look as if low income per person predisposes to high maternal mortality.</p>
 
           
         </section>
@@ -3829,9 +3898,7 @@ Name: gdp_us_billion, Length: 216, dtype: float64
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/05/permutation" class="pagination--pager" title="
-  Permutations
-
+      <a href="/cfd2019/chapters/04/df_series_arrays" class="pagination--pager" title="4.2 Data frames, Series and arrays
 ">Next</a>
     
   </nav>

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-13T17:20:10+00:00">
+  <meta property="article:published_time" content="2019-11-14T09:43:05+00:00">
 
 
 
@@ -581,6 +581,16 @@
 
             <li><a href="/cfd2019/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/df_series_arrays" class="level_1">4.2 Data frames, Series and arrays</a></li>
+          
         </ul>
         
       </li>
@@ -1093,7 +1103,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Brexit analysis">
       <meta itemprop="description" content="Brexit - the data analysis">
-      <meta itemprop="datePublished" content="November 13, 2019">
+      <meta itemprop="datePublished" content="November 14, 2019">
       
 
       <div class="page__inner-wrap">
@@ -2757,15 +2767,12 @@ dictionary:</p>
 </code></pre></div></div>
 
 <p>To reduce clutter, we first make a new data frame that just has the two
-questions we are interested in.   To do this we first make a list with the names of the columns we want:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">desired_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">"numage"</span><span class="p">,</span> <span class="s">"cut15"</span><span class="p">]</span>
-</code></pre></div></div>
-
-<p>Then we use this list, to make a new data frame, that only has the named columns, like this:</p>
+questions we are interested in:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the age and Brexit vote questions only
-</span><span class="n">mini_brexit</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[[</span><span class="s">'numage'</span><span class="p">,</span> <span class="s">'cut15'</span><span class="p">]]</span>
+</span><span class="n">mini_brexit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">mini_brexit</span><span class="p">[</span><span class="s">'numage'</span><span class="p">]</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[</span><span class="s">'numage'</span><span class="p">]</span>
+<span class="n">mini_brexit</span><span class="p">[</span><span class="s">'cut15'</span><span class="p">]</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[</span><span class="s">'cut15'</span><span class="p">]</span>
 <span class="n">mini_brexit</span>
 </code></pre></div></div>
 
@@ -3104,8 +3111,8 @@ questions we are interested in.   To do this we first make a list with the names
 </div>
 </div>
 
-<p>To get started on exploring, we make a new variable <code class="highlighter-rouge">ages</code> that refers to the
-<code class="highlighter-rouge">numage</code> column in the <code class="highlighter-rouge">mini_brexit</code> data frame.</p>
+<p>To get started on exploring, we make a new variable <code class="highlighter-rouge">ages</code> that refers
+to the <code class="highlighter-rouge">numage</code> column in the <code class="highlighter-rouge">mini_brexit</code> data frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a new variable "ages" that refers to the "numage" column in "mini_brexit"
 </span><span class="n">ages</span> <span class="o">=</span> <span class="n">mini_brexit</span><span class="p">[</span><span class="s">"numage"</span><span class="p">]</span>

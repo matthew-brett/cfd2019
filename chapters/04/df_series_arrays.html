@@ -1,0 +1,2655 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>4.2 Data frames, Series and arrays - Coding for Data - 2019 edition</title>
+<meta name="description" content="We have now come across three important structures that Python uses to store and access data:">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Coding for Data - 2019 edition">
+<meta property="og:title" content="4.2 Data frames, Series and arrays">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/04/df_series_arrays">
+
+
+  <meta property="og:description" content="We have now come across three important structures that Python uses to store and access data:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-11-14T09:43:05+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/04/df_series_arrays">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/cfd2019",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/cfd2019/feed.xml" type="application/atom+xml" rel="alternate" title="Coding for Data - 2019 edition Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cfd2019/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/cfd2019/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/cfd2019/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/cfd2019/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/cfd2019/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/01/intro"><span class="nav__sub-title">1. Coding for data</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/what-is-data-science" class="level_1">1.1 What is data science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/why-data-science" class="level_1">1.2 Why data science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/tools_techniques" class="level_1">1.3 Tools and techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/computational-tools" class="level_2">1.3.1 Computational tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/statistical-techniques" class="level_2">1.3.2 Statistical techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Plotting_the_Classics" class="level_1">1.4 Plotting the classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Literary_Characters" class="level_2">1.4.1 Literary characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Another_Kind_Of_Character" class="level_2">1.4.2 Another kind of character</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/surviving_computers" class="level_1">1.5 Surviving the computer</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/the_software" class="level_1">1.6 About the software</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/using_jupyter" class="level_1">1.7 Using the Jupyter notebook</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/more_on_jupyter" class="level_1">1.8 More on the Jupyter notebook</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/variables_intro" class="level_1">2.3 Introduction to variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/functions" class="level_1">2.4 Introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/first_pass_three_girls" class="level_1">2.5 A first pass</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Expressions" class="level_1">2.6 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.7 Call expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/sub_expressions" class="level_1">2.8 Sub-expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.9 Names and variables</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/String_Methods" class="level_2">3.2.1 String methods</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/lists" class="level_1">3.4 Lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Arrays" class="level_1">3.5 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Ranges" class="level_1">3.6 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/numpy_append" class="level_1">3.7 Append</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/function_arguments" class="level_1">3.8 Function arguments</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/leaping_ahead" class="level_1">3.9 Leaping ahead</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/iteration" class="level_1">3.10 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/indentation" class="level_1">3.11 Indentation, indentation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/reply_supreme" class="level_1">3.12 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/More_on_Arrays" class="level_1">3.13 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting in arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/filling_arrays" class="level_1">3.15 Filling arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/df_series_arrays" class="level_1">4.2 Data frames, Series and arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/05/permutation"><span class="nav__sub-title">5. Permutations</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/population_permutation" class="level_1">5.1 Population and permutation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.2 A permutation test</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/06/more_simulation"><span class="nav__sub-title">6. More on simulation</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/06/sorting_arrays" class="level_1">6.1 Sorting arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/06/monty_hall" class="level_1">6.2 Monty hall problem</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/07/more_building_blocks"><span class="nav__sub-title">7. More building blocks</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/none" class="level_1">7.2 None</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/functions" class="level_1">7.1 Functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/functions_as_values" class="level_1">7.1 Functions as values</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/conditional_statements" class="level_1">7.2 Conditional statements</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/08/mean"><span class="nav__sub-title">8. The mean and straight line relationships</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/mean_meaning" class="level_1">8.1 The mean as a predictor</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/where_and_argmin" class="level_1">8.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/mean_and_slopes" class="level_1">8.3 Mean and slopes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/optimization" class="level_1">8.4 Optimization</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/finding_lines" class="level_1">8.5 Finding lines</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">8.6 Believable slopes</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/09/classification"><span class="nav__sub-title">9. Classification</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/standard_scores" class="level_1">9.1 Standard scores</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Nearest_Neighbors" class="level_1">9.2 Nearest neighbors</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Training_and_Testing" class="level_1">9.3 Training and testing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Rows_of_Tables" class="level_1">9.4 Rows of tables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Implementing_the_Classifier" class="level_1">9.5 Implementing the classifier</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Accuracy_of_the_Classifier" class="level_1">9.6 Accuracy of the classifier</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/10/end_of_beginning"><span class="nav__sub-title">10. The end of the beginning</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/interesting" class="level_1">Interesting, no?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/exercises/names" class="level_1">Thinking about names</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/for_loops" class="level_1">For loop exercises</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/fix_my_fors" class="level_1">Fix my fors</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/three_girl_simulations" class="level_1">Three girl simulations</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/array_indexing" class="level_1">Array indexing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/simulation" class="level_1">More simulations</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/df_exercises" class="level_1">Data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/brexit_analysis" class="level_1">Brexit analysis</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/for_loops" class="level_1">For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/money_and_death" class="level_1">Money and death</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/function_exercises" class="level_1">Function exercises</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/functions_values_exercises" class="level_1">Function as values exercises</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/exercises/conditional_statements_exercises" class="level_1">Conditional statement exercises</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/extra/extra"><span class="nav__sub-title">Extra pages</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/more_on_lists" class="level_1">More on lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/monty_hall_lists" class="level_1">Monty Hall with lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/data8_functions" class="level_1">Berkeley introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_deviations" class="level_1">Deviations around the mean</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="4.2 Data frames, Series and arrays">
+      <meta itemprop="description" content="We have now come across three important structures that Python uses to store and access data:">
+      <meta itemprop="datePublished" content="November 14, 2019">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">4.2 Data frames, Series and arrays
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#data-frames">Data frames</a>
+    <ul>
+      <li><a href="#indexing-into-data-frames">Indexing into data frames</a></li>
+    </ul>
+  </li>
+  <li><a href="#series-and-array">Series and array</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/04/df_series_arrays.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F04%2Fdf_series_arrays.ipynb">Interact</a>
+
+
+          <p>We have now come across three important structures that Python uses to store and access data:</p>
+
+<ul>
+  <li>arrays</li>
+  <li>data frames</li>
+  <li>series</li>
+</ul>
+
+<p>Here we stop to go back over the differences between these structures, and how to convert between them.</p>
+
+<h2 id="data-frames">Data frames</h2>
+
+<p>We start by loading a data frame from a Comma Separated Value file (CSV
+file).</p>
+
+<p>The data file we will load is a table with average
+<a href="https://ratemyprofessors.com">https://ratemyprofessors.com</a> scores across all professors teaching
+a particular academic discipline.</p>
+
+<p>See the <a href="../03/array_indexing">array indexing page</a> for more detail.</p>
+
+<p>Each row in this table corresponds to one <em>discipline</em>.  Each column corresponds to a different <em>rating</em>.</p>
+
+<p>If you are running on your laptop, you should download
+the <a href="/cfd2019/data/rate_my_course.csv">rate_my_course.csv</a>
+file to the same directory as this notebook.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the Numpy library, rename to "np"
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># Load the Pandas data science library, rename to "pd"
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read the file.
+</span><span class="n">courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the first five rows.
+</span><span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>23343</td>
+      <td>3.756147</td>
+      <td>3.821866</td>
+      <td>3.791364</td>
+      <td>3.162754</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+      <td>3.641526</td>
+      <td>3.566867</td>
+      <td>3.063322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+      <td>3.701530</td>
+      <td>3.657641</td>
+      <td>2.710459</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>11179</td>
+      <td>3.909520</td>
+      <td>3.887536</td>
+      <td>3.900949</td>
+      <td>3.316210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>History</td>
+      <td>11145</td>
+      <td>3.788818</td>
+      <td>3.753642</td>
+      <td>3.773746</td>
+      <td>3.053803</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>The <code class="highlighter-rouge">pd.read_csv</code> function returned this table in a structure called a <em>data frame</em>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">courses</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+</code></pre></div></div>
+
+<p>The data frame is a two-dimensional structure. It has rows, and columns.   We can see the number of rows and columns with:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">courses</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(75, 6)
+</code></pre></div></div>
+
+<p>This means there are 75 rows.  In this case, each row corresponds to one discpline.</p>
+
+<p>There are 6 columns.  In this case, each column corresponds to a different student rating.</p>
+
+<p>Passing the data frame to the Python <code class="highlighter-rouge">len</code> function shows us the number of rows:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">courses</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>75
+</code></pre></div></div>
+
+<h3 id="indexing-into-data-frames">Indexing into data frames</h3>
+
+<p>There are two simple ways of indexing into data frames.</p>
+
+<p>We index into a data frame to get a subset of of the data.</p>
+
+<p>To index into anything, we can give the name of thing - in this case <code class="highlighter-rouge">courses</code> - followed by an opening square bracket <code class="highlighter-rouge">[</code>, followed by something to specify which subset of the data we want, followed by a closing square bracket <code class="highlighter-rouge">]</code>.</p>
+
+<p>The two simple ways of indexing into a data frame are:</p>
+
+<ul>
+  <li>Indexing with a string to get a column.</li>
+  <li>Indexing with a Boolean sequence to get a subset of the rows.</li>
+</ul>
+
+<p>When we index with a string, the string should be a column name:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easiness</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="s">'Easiness'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>The result is a <em>series</em>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">easiness</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+</code></pre></div></div>
+
+<p>The Series is a structure that holds the data for a single column.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easiness</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     3.162754
+1     3.063322
+2     2.710459
+3     3.316210
+4     3.053803
+5     2.652054
+6     3.379829
+7     3.172033
+8     3.057758
+9     2.910078
+10    3.115357
+11    3.395819
+12    3.132724
+13    2.784706
+14    3.277406
+15    2.854413
+16    2.785668
+17    3.248045
+18    3.430916
+19    3.542273
+20    3.138076
+21    3.468012
+22    3.344138
+23    2.885714
+24    3.469440
+25    3.244433
+26    3.194300
+27    3.338846
+28    3.144567
+29    2.868762
+        ...   
+45    3.324156
+46    3.276412
+47    3.180846
+48    3.423021
+49    3.674701
+50    3.314322
+51    3.199716
+52    2.978182
+53    2.977254
+54    3.471498
+55    2.825019
+56    3.178866
+57    2.887940
+58    3.323158
+59    3.365544
+60    2.830455
+61    3.606082
+62    3.002857
+63    3.267099
+64    3.882635
+65    3.275238
+66    3.402397
+67    3.541439
+68    3.468333
+69    2.969417
+70    2.863504
+71    3.106727
+72    3.309636
+73    2.799135
+74    3.109118
+Name: Easiness, Length: 75, dtype: float64
+</code></pre></div></div>
+
+<p>We will come back to the Series soon.</p>
+
+<p>Notice that, if your string specifying the column name does not match a column name exactly, you will get a long error.   This gives you some practice in reading long error messages - skip to the end first, you will often see the most helpful information there.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The exact column name starts with capital E
+</span><span class="n">courses</span><span class="p">[</span><span class="s">'easiness'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError                                  Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   3077             try:
+-&gt; 3078                 return self._engine.get_loc(key)
+   3079             except KeyError:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError: 'easiness'
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError                                  Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-10-cd3826a0b407&gt; in &lt;module&gt;
+      1 # The exact column name starts with capital E
+----&gt; 2 courses['easiness']
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/frame.py in __getitem__(self, key)
+   2686             return self._getitem_multilevel(key)
+   2687         else:
+-&gt; 2688             return self._getitem_column(key)
+   2689 
+   2690     def _getitem_column(self, key):
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/frame.py in _getitem_column(self, key)
+   2693         # get column
+   2694         if self.columns.is_unique:
+-&gt; 2695             return self._get_item_cache(key)
+   2696 
+   2697         # duplicate columns &amp; possible reduce dimensionality
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
+   2487         res = cache.get(item)
+   2488         if res is None:
+-&gt; 2489             values = self._data.get(item)
+   2490             res = self._box_item_values(item, values)
+   2491             cache[item] = res
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/internals.py in get(self, item, fastpath)
+   4113 
+   4114             if not isna(item):
+-&gt; 4115                 loc = self.items.get_loc(item)
+   4116             else:
+   4117                 indexer = np.arange(len(self.items))[isna(self.items)]
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   3078                 return self._engine.get_loc(key)
+   3079             except KeyError:
+-&gt; 3080                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+   3081 
+   3082         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError: 'easiness'
+</code></pre></div></div>
+
+<p>You have just seen indexing into the data frame with a string to get the data for one column.</p>
+
+<p>The other simple way of indexing into a data frame is with a Boolean sequence.</p>
+
+<p>A Boolean sequence is a sequence of values, all of which are either True or False.  Examples of sequences are series and arrays.</p>
+
+<p>For example, imagine we only wanted to look at courses with an easiness rating of greater than 3.25.</p>
+
+<p>We first make the Boolean sequence, by asking the question <code class="highlighter-rouge">&gt; 3.25</code> of the values in the “Easiness” column, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_easy</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="mf">3.25</span>
+</code></pre></div></div>
+
+<p>This is a series that has True and False values:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">is_easy</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_easy</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     False
+1     False
+2     False
+3      True
+4     False
+5     False
+6      True
+7     False
+8     False
+9     False
+10    False
+11     True
+12    False
+13    False
+14     True
+15    False
+16    False
+17    False
+18     True
+19     True
+20    False
+21     True
+22     True
+23    False
+24     True
+25    False
+26    False
+27     True
+28    False
+29    False
+      ...  
+45     True
+46     True
+47    False
+48     True
+49     True
+50     True
+51    False
+52    False
+53    False
+54     True
+55    False
+56    False
+57    False
+58     True
+59     True
+60    False
+61     True
+62    False
+63     True
+64     True
+65     True
+66     True
+67     True
+68     True
+69    False
+70    False
+71    False
+72     True
+73    False
+74    False
+Name: Easiness, Length: 75, dtype: bool
+</code></pre></div></div>
+
+<p>It has True values where the corresponding row had an “Easiness” score greater than 3.25, and False values where the corresponding row had an “Easiness” score of less than or equal to 3.25.</p>
+
+<p>We can index into the data frame with this Boolean series.</p>
+
+<p>When we do this, we ask the data frame to give us a new version of itself, that only has the rows where there was a True value in the Boolean series:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_courses</span> <span class="o">=</span> <span class="n">courses</span><span class="p">[</span><span class="n">is_easy</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>The result is a data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">easy_courses</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+</code></pre></div></div>
+
+<p>The data frame contains only the rows where the “Easiness” score is greater than 3.25:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_courses</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>11179</td>
+      <td>3.909520</td>
+      <td>3.887536</td>
+      <td>3.900949</td>
+      <td>3.316210</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Communications</td>
+      <td>6940</td>
+      <td>3.867349</td>
+      <td>3.878602</td>
+      <td>3.875019</td>
+      <td>3.379829</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Sociology</td>
+      <td>4839</td>
+      <td>3.740980</td>
+      <td>3.748169</td>
+      <td>3.746962</td>
+      <td>3.395819</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Languages</td>
+      <td>3867</td>
+      <td>3.772780</td>
+      <td>3.917949</td>
+      <td>3.846951</td>
+      <td>3.277406</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Education</td>
+      <td>2544</td>
+      <td>3.707429</td>
+      <td>3.806128</td>
+      <td>3.758211</td>
+      <td>3.430916</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Music</td>
+      <td>2455</td>
+      <td>3.844509</td>
+      <td>3.787804</td>
+      <td>3.818114</td>
+      <td>3.542273</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Health</td>
+      <td>1937</td>
+      <td>3.891177</td>
+      <td>3.884729</td>
+      <td>3.891213</td>
+      <td>3.468012</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Humanities</td>
+      <td>1897</td>
+      <td>3.806969</td>
+      <td>3.816299</td>
+      <td>3.813569</td>
+      <td>3.344138</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Criminal Justice</td>
+      <td>1786</td>
+      <td>4.056685</td>
+      <td>4.033779</td>
+      <td>4.046702</td>
+      <td>3.469440</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Social Science</td>
+      <td>1412</td>
+      <td>3.683555</td>
+      <td>3.691133</td>
+      <td>3.690262</td>
+      <td>3.338846</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Theater</td>
+      <td>1078</td>
+      <td>3.876633</td>
+      <td>3.821503</td>
+      <td>3.851837</td>
+      <td>3.584508</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Physical Education</td>
+      <td>991</td>
+      <td>4.078698</td>
+      <td>4.030797</td>
+      <td>4.057719</td>
+      <td>3.832250</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Spanish</td>
+      <td>584</td>
+      <td>3.854932</td>
+      <td>3.993716</td>
+      <td>3.928750</td>
+      <td>3.349743</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Art</td>
+      <td>574</td>
+      <td>3.797073</td>
+      <td>3.799216</td>
+      <td>3.800157</td>
+      <td>3.268293</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Ethnic Studies</td>
+      <td>481</td>
+      <td>3.533597</td>
+      <td>3.578337</td>
+      <td>3.556923</td>
+      <td>3.387630</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Film</td>
+      <td>450</td>
+      <td>3.788933</td>
+      <td>3.764689</td>
+      <td>3.778689</td>
+      <td>3.324156</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Women's Studies</td>
+      <td>393</td>
+      <td>3.639949</td>
+      <td>3.652087</td>
+      <td>3.646743</td>
+      <td>3.276412</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Government</td>
+      <td>374</td>
+      <td>3.957540</td>
+      <td>3.916070</td>
+      <td>3.938663</td>
+      <td>3.423021</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>351</td>
+      <td>4.133191</td>
+      <td>4.101197</td>
+      <td>4.119345</td>
+      <td>3.674701</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Social Work</td>
+      <td>317</td>
+      <td>3.770726</td>
+      <td>3.834700</td>
+      <td>3.806246</td>
+      <td>3.314322</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Hospitality</td>
+      <td>267</td>
+      <td>3.697228</td>
+      <td>3.744607</td>
+      <td>3.719476</td>
+      <td>3.471498</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Foreign Language</td>
+      <td>209</td>
+      <td>3.914641</td>
+      <td>4.057751</td>
+      <td>3.991675</td>
+      <td>3.323158</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Religious Studies</td>
+      <td>193</td>
+      <td>3.932746</td>
+      <td>3.985751</td>
+      <td>3.962280</td>
+      <td>3.365544</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Child Development</td>
+      <td>171</td>
+      <td>3.950585</td>
+      <td>4.008070</td>
+      <td>3.979766</td>
+      <td>3.606082</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>French</td>
+      <td>162</td>
+      <td>3.775370</td>
+      <td>3.943086</td>
+      <td>3.860679</td>
+      <td>3.267099</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>148</td>
+      <td>4.159392</td>
+      <td>4.188919</td>
+      <td>4.177500</td>
+      <td>3.882635</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>Modern Languages</td>
+      <td>147</td>
+      <td>3.858503</td>
+      <td>3.971293</td>
+      <td>3.916259</td>
+      <td>3.275238</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>Agriculture</td>
+      <td>146</td>
+      <td>3.767466</td>
+      <td>3.863219</td>
+      <td>3.820068</td>
+      <td>3.402397</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>Kinesiology</td>
+      <td>132</td>
+      <td>3.995000</td>
+      <td>3.972879</td>
+      <td>3.988712</td>
+      <td>3.541439</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Nutrition</td>
+      <td>120</td>
+      <td>3.815167</td>
+      <td>3.844333</td>
+      <td>3.831500</td>
+      <td>3.468333</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Linguistics</td>
+      <td>110</td>
+      <td>3.749000</td>
+      <td>3.834545</td>
+      <td>3.798182</td>
+      <td>3.309636</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>The way this works can be easier to see when we use a smaller data frame.</p>
+
+<p>Here we take the first eight rows from the data frame, by using the <code class="highlighter-rouge">head</code> method.</p>
+
+<p>The <code class="highlighter-rouge">head</code> method can take an argument, which is the number of rows we want.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_8</span> <span class="o">=</span> <span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The result is a new data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">first_8</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_8</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>23343</td>
+      <td>3.756147</td>
+      <td>3.821866</td>
+      <td>3.791364</td>
+      <td>3.162754</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+      <td>3.641526</td>
+      <td>3.566867</td>
+      <td>3.063322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+      <td>3.701530</td>
+      <td>3.657641</td>
+      <td>2.710459</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>11179</td>
+      <td>3.909520</td>
+      <td>3.887536</td>
+      <td>3.900949</td>
+      <td>3.316210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>History</td>
+      <td>11145</td>
+      <td>3.788818</td>
+      <td>3.753642</td>
+      <td>3.773746</td>
+      <td>3.053803</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Chemistry</td>
+      <td>7346</td>
+      <td>3.387174</td>
+      <td>3.538980</td>
+      <td>3.465485</td>
+      <td>2.652054</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Communications</td>
+      <td>6940</td>
+      <td>3.867349</td>
+      <td>3.878602</td>
+      <td>3.875019</td>
+      <td>3.379829</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Business</td>
+      <td>6120</td>
+      <td>3.640327</td>
+      <td>3.680503</td>
+      <td>3.663332</td>
+      <td>3.172033</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We index into the new data frame with a string, to get the “Easiness” column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easiness_first_8</span> <span class="o">=</span> <span class="n">first_8</span><span class="p">[</span><span class="s">"Easiness"</span><span class="p">]</span>
+<span class="n">easiness_first_8</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.162754
+1    3.063322
+2    2.710459
+3    3.316210
+4    3.053803
+5    2.652054
+6    3.379829
+7    3.172033
+Name: Easiness, dtype: float64
+</code></pre></div></div>
+
+<p>This Boolean series has True where the “Easiness” score is greater than 3.25, and False otherwise:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_easy_first_8</span> <span class="o">=</span> <span class="n">easiness_first_8</span> <span class="o">&gt;</span> <span class="mf">3.25</span>
+<span class="n">is_easy_first_8</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
+1    False
+2    False
+3     True
+4    False
+5    False
+6     True
+7    False
+Name: Easiness, dtype: bool
+</code></pre></div></div>
+
+<p>We index into the <code class="highlighter-rouge">first_8</code> data frame with this Boolean series, to select the rows where <code class="highlighter-rouge">is_easy_first_8</code> has True, and throw away the rows where it has False.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_first_8</span> <span class="o">=</span> <span class="n">first_8</span><span class="p">[</span><span class="n">is_easy_first_8</span><span class="p">]</span>
+<span class="n">easy_first_8</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>11179</td>
+      <td>3.909520</td>
+      <td>3.887536</td>
+      <td>3.900949</td>
+      <td>3.316210</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Communications</td>
+      <td>6940</td>
+      <td>3.867349</td>
+      <td>3.878602</td>
+      <td>3.875019</td>
+      <td>3.379829</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Oh dear, Psychology looks pretty easy.</p>
+
+<h2 id="series-and-array">Series and array</h2>
+
+<p>The series, as you have seen, is the structure that Pandas uses to store the data from a column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_8</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>23343</td>
+      <td>3.756147</td>
+      <td>3.821866</td>
+      <td>3.791364</td>
+      <td>3.162754</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+      <td>3.641526</td>
+      <td>3.566867</td>
+      <td>3.063322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+      <td>3.701530</td>
+      <td>3.657641</td>
+      <td>2.710459</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>11179</td>
+      <td>3.909520</td>
+      <td>3.887536</td>
+      <td>3.900949</td>
+      <td>3.316210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>History</td>
+      <td>11145</td>
+      <td>3.788818</td>
+      <td>3.753642</td>
+      <td>3.773746</td>
+      <td>3.053803</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Chemistry</td>
+      <td>7346</td>
+      <td>3.387174</td>
+      <td>3.538980</td>
+      <td>3.465485</td>
+      <td>2.652054</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Communications</td>
+      <td>6940</td>
+      <td>3.867349</td>
+      <td>3.878602</td>
+      <td>3.875019</td>
+      <td>3.379829</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Business</td>
+      <td>6120</td>
+      <td>3.640327</td>
+      <td>3.680503</td>
+      <td>3.663332</td>
+      <td>3.172033</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easiness_first_8</span> <span class="o">=</span> <span class="n">first_8</span><span class="p">[</span><span class="s">"Easiness"</span><span class="p">]</span>
+<span class="n">easiness_first_8</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.162754
+1    3.063322
+2    2.710459
+3    3.316210
+4    3.053803
+5    2.652054
+6    3.379829
+7    3.172033
+Name: Easiness, dtype: float64
+</code></pre></div></div>
+
+<p>You can index into a series, but this indexing is powerful and sophisticated, so we will not use that for now.</p>
+
+<p>For now, you can convert the series to an array, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easi_8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">easiness_first_8</span><span class="p">)</span>
+<span class="n">easi_8</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.16275414, 3.06332232, 2.71045949, 3.31620986, 3.0538026 ,
+       2.65205418, 3.37982853, 3.17203268])
+</code></pre></div></div>
+
+<p>Then you can use the usual <a href="../03/array_indexing">array indexing</a> to get the values you want:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The first value
+</span><span class="n">easi_8</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.1627541447114904
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The first five values
+</span><span class="n">easi_8</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.16275414, 3.06332232, 2.71045949, 3.31620986, 3.0538026 ])
+</code></pre></div></div>
+
+<p>You can think of a data frame as sequence of columns, where each column is series.</p>
+
+<p>Here I take two columns from the data frame, as series:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">disciplines</span> <span class="o">=</span> <span class="n">first_8</span><span class="p">[</span><span class="s">'Discipline'</span><span class="p">]</span>
+<span class="n">disciplines</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0           English
+1       Mathematics
+2           Biology
+3        Psychology
+4           History
+5         Chemistry
+6    Communications
+7          Business
+Name: Discipline, dtype: object
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clarity</span> <span class="o">=</span> <span class="n">first_8</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span>
+<span class="n">clarity</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.756147
+1    3.487379
+2    3.608331
+3    3.909520
+4    3.788818
+5    3.387174
+6    3.867349
+7    3.640327
+Name: Clarity, dtype: float64
+</code></pre></div></div>
+
+<p>I can make a new data frame by inserting these two columns:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A new data frame
+</span><span class="n">thinner_courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">thinner_courses</span><span class="p">[</span><span class="s">'Discpline'</span><span class="p">]</span> <span class="o">=</span> <span class="n">disciplines</span>
+<span class="n">thinner_courses</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clarity</span>
+<span class="n">thinner_courses</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discpline</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>3.756147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>3.487379</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>3.608331</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>3.909520</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>History</td>
+      <td>3.788818</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Chemistry</td>
+      <td>3.387174</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Communications</td>
+      <td>3.867349</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Business</td>
+      <td>3.640327</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/cfd2019/chapters/04/data_frame_intro" class="pagination--pager" title="4.1 Introduction to data frames
+">Previous</a>
+    
+    
+      <a href="/cfd2019/chapters/05/permutation" class="pagination--pager" title="
+  Permutations
+
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/cfd2019/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/cfd2019/assets/js/lunr/lunr.min.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-store.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

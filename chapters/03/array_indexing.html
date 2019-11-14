@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-13T17:20:10+00:00">
+  <meta property="article:published_time" content="2019-11-14T09:43:05+00:00">
 
 
 
@@ -581,6 +581,16 @@
 
             <li><a href="/cfd2019/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/df_series_arrays" class="level_1">4.2 Data frames, Series and arrays</a></li>
+          
         </ul>
         
       </li>
@@ -1093,7 +1103,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.14 Selecting in arrays">
       <meta itemprop="description" content="Selecting values from an array">
-      <meta itemprop="datePublished" content="November 13, 2019">
+      <meta itemprop="datePublished" content="November 14, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1152,8 +1162,23 @@ which elements we want, followed by <code class="highlighter-rouge">]</code> (cl
 <p>The <em>index</em> of the first value is 0, the index of the second value is 2, and so on.</p>
 
 <p>We start by loading data from a Comma Separated Value file (CSV
-file).  If you are running on your laptop, you should download
-the <a href="/cfd2019/data/rate_my_course.csv">gender_stats.csv</a>
+file).</p>
+
+<p>This is summary data that <a href="https://asrosen.com">Andrew Rosen</a> downloaded
+from <a href="https://www.ratemyprofessors.com">https://www.ratemyprofessors.com</a> for an analysis he reported in
+<a href="https://asrosen.com/wp-content/uploads/2018/07/postprint_rmp-1.pdf">a 2018
+paper</a>.
+The data file here is from the <a href="https://www.tandfonline.com/doi/suppl/10.1080/02602938.2016.1276155">supplementary
+material</a>;
+it has the average rating across academic discipline for all professors
+in a particular discipline who have more than 20 ratings.</p>
+
+<p>See <a href="https://github.com/matthew-brett/datasets/tree/master/good_and_easy">this
+summary</a>
+for more detail.</p>
+
+<p>If you are running on your laptop, you should download
+the <a href="/cfd2019/data/rate_my_course.csv">rate_my_course.csv</a>
 file to the same directory as this notebook.</p>
 
 <p>Don’t worry about the next cell.  It just loads the data we need from a data file.  We will come on the machinery to do this very soon.</p>
