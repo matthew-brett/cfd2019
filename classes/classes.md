@@ -21,3 +21,4 @@ permalink: /classes
 | 4    |  25 Oct    | [class 3](classes/class_3)   |
 | 5    |  1 Nov     | [class 4](classes/class_4)   |
 | 6    |  8 Nov     | Reading week                 |
+| 7    |  15 Nov    | [class 5](classes/class_5)   |

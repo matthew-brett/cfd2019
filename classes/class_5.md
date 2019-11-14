@@ -6,11 +6,12 @@ permalink: /classes/class_5
 
 # Day 5 (the sixth day)
 
-* [Call expressions](../chapters/02/Calls)
-* Practice with OKpy: Download and extract [rounding
-  exercise](../exercises/rounding.zip).  You should extract the zip file using the instructions in the [extracting zip file page](../extracting).
-* [Data types](../chapters/03/data_types).
-* [Numbers](../chapters/03/Numbers).
-* [Strings](../chapters/03/Strings).
+* A reminder about [Strings](../chapters/03/Strings).
+* [String methods](../chapters/03/String_Methods).
+* [Strings, variables exercise](../exercises/strings_vars.zip).
+* [Comparison](../chapters/03/Comparison).
+* [Data types exercise](../exercises/data_types.zip).
 
-Assignment will be homework 1.
+## Assignment
+
+[Strings exercise](../exercises/strings.zip).
