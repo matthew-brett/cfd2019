@@ -6,6 +6,8 @@ permalink: /classes/class_13
 
 # Day 13 (the fourteenth day)
 
+
+* [Data frames, series, arrays](../chapters/04/df_series_arrays)
 * [Brexit analysis exercise](../chapters/exercises/brexit_analysis)
 * [Populations, permutations](../chapters/05/population_permutation)
 * [Permutation test](../chapters/05/brexit_ages)
