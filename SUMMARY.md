@@ -42,6 +42,7 @@
   * [3.15 Filling arrays](notebooks/03/filling_arrays.ipynb)
 * [4. Data frames](notebooks/04/data_frames.md)
   * [4.1 Introduction to data frames](notebooks/04/data_frame_intro.ipynb)
+  * [4.2 Data frames, Series and arrays](notebooks/04/df_series_arrays.ipynb)
 * [5. Permutations](notebooks/05/permutation.md)
   * [5.1 Population and permutation](notebooks/05/population_permutation.ipynb)
   * [5.2 A permutation test](notebooks/05/brexit_ages.ipynb)
