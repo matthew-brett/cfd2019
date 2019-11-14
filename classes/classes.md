@@ -26,4 +26,4 @@ permalink: /classes
 | 6    | 5 Nov      | [class 10](classes/class_10) |
 | 6    | 7 Nov      | [class 11](classes/class_11) |
 | 7    | 12 Nov     | [class 12](classes/class_12) |
-| 8    | 14 Nov     | [class 13](classes/class_13) |
+| 7    | 14 Nov     | [class 13](classes/class_13) |
