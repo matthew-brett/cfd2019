@@ -8,6 +8,7 @@ permalink: /classes/class_13
 
 * [Data frames, series, arrays](../chapters/04/df_series_arrays)
 * [Brexit analysis exercise](../chapters/exercises/brexit_analysis)
+* [OKpy version of Brexit analysis exercise](../exercises/brexiteering.zip)
 
 ## Assignment
 
