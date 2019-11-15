@@ -448,7 +448,6 @@ You're finished with the assignment!  Be sure to...
 
 - **run all the tests** (the next cell has a shortcut for that), 
 - **Save and Checkpoint** from the `File` menu,
-- **run the last cell to submit your work**,
 
 ```{python}
 # For your convenience, you can run this cell to run all the tests at once!
