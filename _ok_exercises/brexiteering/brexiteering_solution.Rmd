@@ -69,8 +69,8 @@ will find at the UK Data Service.
 
 You can download these copies from the following links:
 
-* [tab-delimited data file]({{ site.baseurl }}/data/audit_of_political_engagement_14_2017.tab);
-* [data dictionary PDF file]({{ site.baseurl }}/data/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf).
+* [tab-delimited data file](https://matthew-brett.github.io/cfd2019/data/audit_of_political_engagement_14_2017.tab);
+* [data dictionary PDF file](https://matthew-brett.github.io/cfd2019/data/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf).
 
 If you are running this notebook on your laptop, download the tab-delimited
 data file to the same directory as the notebook.
@@ -176,7 +176,7 @@ len(audit_data)
 Start by doing a histogram of the values in `ages` (which are also the values
 in the `numage` column of `mini_brexit`).  If you can't remember how to do
 histograms, have a look at the [introduction to data
-frames]({{ site.baseurl }}/chapters/04/data_frame_intro)
+frames](https://matthew-brett.github.io/cfd2019/chapters/04/data_frame_intro)
 notebook.   Hint: consider using the `hist`
 method of the `ages` variable.
 
@@ -228,9 +228,7 @@ from data frames.
 ```{python}
 #- Create new variable "age_not_0", with True at positions where "ages" is not
 #- equal to 0, and False otherwise.
-#<- age_not_0 = ...
 age_not_0 = ages != 0
-#<--
 age_not_0
 ```
 
@@ -244,9 +242,7 @@ is `True`, and throw away the rows where the value is `False`.
 
 ```{python}
 #- Select rows in the data frame where the age is not equal to 0.
-#<- good_brexit = ...
 good_brexit = mini_brexit[age_not_0]
-#<--
 good_brexit
 ```
 
@@ -267,9 +263,7 @@ the `good_brexit` data frame.
 
 ```{python}
 # Your code will start with
-#<- votes = ...
 votes = good_brexit['cut15']
-#<--
 votes
 ```
 
@@ -282,7 +276,6 @@ Now make a new Boolean vector, that has True at the positions where `votes` is
 equal to 1, and False otherwise.  Call this variable `is_remain`.
 
 ```{python}
-#<- is_remain = ...
 is_remain = votes == 1
 is_remain
 ```
@@ -296,9 +289,7 @@ Next, use `is_remain` to select the rows in `good_brexit` that correspond to
 confessed "Remain" voters.  Call the new data frame `remainers`:
 
 ```{python}
-#<- remainers = ...
 remainers = good_brexit[is_remain]
-#<--
 remainers
 ```
 
@@ -320,7 +311,6 @@ claimed to vote Yes (leave) (code 2):
 ```{python}
 #- Make a Boolean vector, called "is_leave", that True for Leave row, False
 #- otherwise.
-#<- is_leave = ...
 is_leave = votes == 2
 ```
 
@@ -333,7 +323,6 @@ Next, use `is_leave` to select the rows in `good_brexit` that correspond to
 confessed "Leave" voters.  Call the new data frame `leavers`:
 
 ```{python}
-#<- leavers = ...
 leavers = good_brexit[is_leave]
 ```
 
@@ -410,8 +399,8 @@ Is `leave_proportion` a plausible value on this histogram?
 
 See:
 
-* [Reply to the Supreme Court]({{ site.baseurl }}/chapters/03/reply_supreme)
-* [Final three girls simulation]({{ site.baseurl }}/chapters/03/filling_arrays)
+* [Reply to the Supreme Court](https://matthew-brett.github.io/cfd2019/chapters/03/reply_supreme)
+* [Final three girls simulation](https://matthew-brett.github.io/cfd2019/chapters/03/filling_arrays)
 
 to remind yourself about simulations.
 
@@ -419,17 +408,14 @@ Your simulation should calculate 10000 simulated proportions, and store them in 
 
 ```{python}
 #- Your simulation here
-#<- simulated_proportions = ...
 simulated_proportions = np.zeros(10000)
 for i in np.arange(10000):
     randoms = np.random.uniform(0, 1, n_total)
     leaves = randoms < 0.519
     prop = np.count_nonzero(leaves) / n_total
     simulated_proportions[i] = prop
-#<-
 # Show the first 5 simulated_proportion values
 simulated_proportions[:5]
-#<-
 ```
 
 ```{python}
