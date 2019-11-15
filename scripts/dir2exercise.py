@@ -6,11 +6,15 @@ import sys
 from argparse import ArgumentParser
 import re
 
+import yaml
+from jinja2 import Template
+
 from rmdex.exerciser import (make_exercise, make_solution, write_utf8,
                              read_utf8)
 
 
-HERE = op.abspath(op.dirname(__file__))
+HERE = op.dirname(op.realpath(__file__))
+SITE_ROOT = op.realpath(op.join(HERE, '..'))
 sys.path.append(HERE)
 
 import build_exercise as b_e
@@ -20,6 +24,20 @@ import grade_oknb as gok
 TEMPLATE_RE = re.compile('_template\.Rmd$')
 
 
+def get_site_dict():
+    site = {}
+    config_file = op.join(SITE_ROOT, '_config.yml')
+    with open(config_file, 'r') as ff:
+        sy = yaml.load(ff.read())
+    site['baseurl'] = sy['url'] + sy['baseurl']
+    return site
+
+
+def render_template(text):
+    template = Template(text)
+    return template.render(site=get_site_dict())
+
+
 def process_dir(path, out_path, grade=False):
     templates = [fn for fn in os.listdir(path) if TEMPLATE_RE.search(fn)]
     if len(templates) == 0:
@@ -27,7 +45,7 @@ def process_dir(path, out_path, grade=False):
     if len(templates) > 1:
         raise RuntimeError('More than one _template.Rmd in directory')
     template_fname = op.join(path, templates[0])
-    template = read_utf8(template_fname)
+    template = render_template(read_utf8(template_fname))
     exercise_fname = TEMPLATE_RE.sub('.Rmd', template_fname)
     write_utf8(exercise_fname, make_exercise(template))
     solution_fname = TEMPLATE_RE.sub('_solution.Rmd', template_fname)
