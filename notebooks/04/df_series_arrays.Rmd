@@ -267,7 +267,7 @@ I can make a new data frame by inserting these two columns:
 ```{python}
 # A new data frame
 thinner_courses = pd.DataFrame()
-thinner_courses['Discpline'] = disciplines
+thinner_courses['Discipline'] = disciplines
 thinner_courses['Clarity'] = clarity
 thinner_courses
 ```
