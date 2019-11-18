@@ -51,7 +51,7 @@ def process_dir(path, out_path, grade=False, site_config=None):
     template_fname = op.join(path, templates[0])
     template = read_utf8(template_fname)
     if site_config:
-        template = render_template(site_config)
+        template = render_template(template, site_config)
     exercise_fname = TEMPLATE_RE.sub('.Rmd', template_fname)
     write_utf8(exercise_fname, make_exercise(template))
     solution_fname = TEMPLATE_RE.sub('_solution.Rmd', template_fname)
