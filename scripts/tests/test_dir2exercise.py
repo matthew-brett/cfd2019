@@ -24,4 +24,14 @@ def test_find_site_config():
     assert find_site_config(op.join(DATA_DIR, 'empty_dir')) == exp_fn
     # Single config in directory.
     ed_pth = op.join(DATA_DIR, 'exercise_dir')
-    assert find_site_config(ed_pth, op.join(ed_pth, '_config.yml'))
+    assert find_site_config(ed_pth) == op.join(ed_pth, '_config.yml')
+
+
+def test_get_site_dict():
+    # Check prefer course.yml to _config.yml
+    fn1 = op.realpath(op.join(DATA_DIR, 'course.yml'))
+    assert get_site_dict(fn1) == {'baseurl': 'https://foo.github.com/bar',
+                                  'baz': 'bong'}
+    fn2 = op.realpath(op.join(DATA_DIR, '_config.yml'))
+    assert get_site_dict(fn2) == {
+        'baseurl': 'https://matthew-brett.github.io/cfd2019'}
