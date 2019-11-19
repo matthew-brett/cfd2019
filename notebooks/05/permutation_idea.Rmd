@@ -18,7 +18,7 @@ jupyter:
 ## A mosquito problem
 
 
-![]({{ site.baseurl }}/images/{{ site.baseurl }}/images/mosquito_banner.png)
+![]({{ site.baseurl }}/images/mosquito_banner.png)
 
 With thanks to John Rauser: [Statistics Without the Agonizing Pain](https://www.youtube.com/watch?v=5Dnw46eC-0o)
 
@@ -27,6 +27,10 @@ With thanks to John Rauser: [Statistics Without the Agonizing Pain](https://www.
 
 Download the data from [mosquito_beer.csv]({{ site.baseurl
 }}/data/mosquito_beer.csv).
+
+
+See [this page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for more details on the dataset.
+
 
 ```{python}
 # Import Numpy library, rename as "np"
