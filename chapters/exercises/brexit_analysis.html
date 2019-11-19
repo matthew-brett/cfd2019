@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-19T16:55:29+00:00">
+  <meta property="article:published_time" content="2019-11-19T23:31:21+00:00">
 
 
 
@@ -1121,15 +1121,6 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#all-about-the-brexiteers">All about the Brexiteers</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
@@ -1155,53 +1146,15 @@
 </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
-<h2 id="all-about-the-brexiteers">All about the Brexiteers</h2>
+<p>See the <a href="/cfd2019/data/brexit_survey">Brexit survey</a> for details on the survey data.</p>
 
-<p>Every year, the <a href="https://www.hansardsociety.org.uk/research/audit-of-political-engagement">Hansard
-Society</a>
-sponsors a survey on political engagement in the UK.</p>
-
-<p>They put topical questions in each survey.  For the 2016 / 7 survey, they asked
-about how people voted in the Brexit referendum.</p>
-
-<p>Luckily, they make the data freely available online for us to analyze.</p>
-
-<p>You can get the data for yourself from the UK Data Service:
-<a href="https://discover.ukdataservice.ac.uk/catalogue/?sn=8183">https://discover.ukdataservice.ac.uk/catalogue/?sn=8183</a>.
-There are data files in various formats, including:</p>
-
-<ul>
-  <li>SPSS format (for the SPSS statistical package);</li>
-  <li>Stata format (for the Stata statistical package);</li>
-  <li>tab-delimited (a general data format, that can be used with Pandas, Excel,
-and other packages).</li>
-</ul>
-
-<p>The data is in a standard form, with one row per respondent, and one column
-per question.</p>
-
-<p>To save you a tiny bit of work, I have made an unchanged copy of the
-tab-delimited version of the data file for you to download directly. I have
-also made a copy of the document describing the questions they ask and the way
-that they have recorded the answers in the data file.  This is often called the
-“data dictionary”.  It was originally in Rich Text Format, but I have converted
-to PDF for convenience.  It is otherwise identical to the file you will find at
-the UK Data Service.</p>
-
-<p>You can download these copies from the following links:</p>
-
-<ul>
-  <li><a href="/cfd2019/data/audit_of_political_engagement_14_2017.tab">tab-delimited data file</a>;</li>
-  <li><a href="/cfd2019/data/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf">data dictionary PDF file</a>.</li>
-</ul>
-
-<p>If you are running this notebook on your laptop, download the tab-delimited
-data file to the same directory as the notebook.</p>
+<p>If you are running on your laptop, first <a href="/cfd2019/data/audit_of_political_engagement_14_2017.tab">download the data file</a> to the same
+directory as this notebook.</p>
 
 <p>In the moment, we are going to try and analyze these data.  We will focus on
-two questions labeled <code class="highlighter-rouge">cut15</code> and <code class="highlighter-rouge">numage</code>.  <code class="highlighter-rouge">cut15</code> is the question
-about Brexit. The data dictionary has the <em>variable label</em> “CUT15 - How did you
-vote on the question ‘Should the United Kingdom remain a member of the European
+two questions labeled <code class="highlighter-rouge">cut15</code> and <code class="highlighter-rouge">numage</code>.  <code class="highlighter-rouge">cut15</code> is the question about
+Brexit. The data dictionary has the <em>variable label</em> “CUT15 - How did you vote
+on the question ‘Should the United Kingdom remain a member of the European
 Union or leave the European Union’?”.  The recorded values run from 1 through
 6 and have the following labels:</p>
 

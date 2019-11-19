@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-19T16:55:29+00:00">
+  <meta property="article:published_time" content="2019-11-19T23:31:21+00:00">
 
 
 
@@ -1143,7 +1143,14 @@
 
           <h2 id="a-problem-of-populations">A problem of populations</h2>
 
-<p>We return to the <a href="../exercises/brexit_analysis">Brexit survey</a>.</p>
+<p>As in the <a href="/cfd2019/exercises/brexiteering.zip">Brexit analysis
+exercise</a>,
+we analyze the <a href="/cfd2019/data/brexit_survey">Brexit survey</a>.</p>
+
+<p>As you will see in the link above, the data are from a survey of the UK
+population.  Each row in the survey corresponds to one person answering.  One
+of the questions, named <code class="highlighter-rouge">cut15</code> is how the person voted in the Brexit
+referendum.  Another, <code class="highlighter-rouge">numage</code> is the age of the person in years.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Array library.
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -1159,13 +1166,19 @@
 </span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p>If you are running on your laptop, first <a href="/cfd2019/data/audit_of_political_engagement_14_2017.tab">download the data file</a> to the same directory as this notebook.</p>
+
 <p>We load the data:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data frame, and put it in the variable "audit_data"
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data frame, and put it in the variable "audit_data".
+# The values are separated by tab characters, written as "\t" in Python
+# strings.
 </span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Now get the ages for the Leavers and the Remainers:</p>
+<p>Now get the ages for the Leavers and the Remainers.</p>
+
+<p>A small number of ages are recorded as 0, meaning we do not have the correct age for that person / row.  First we drop rows with ages recorded as 0, then select the remaining rows corresponding to people who voted to remain (<code class="highlighter-rouge">cut15</code> value of 1) and leave (<code class="highlighter-rouge">cut15</code> value of 2):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Drop rows where age is 0
 </span><span class="n">good_data</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[</span><span class="n">audit_data</span><span class="p">[</span><span class="s">'numage'</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
@@ -1287,14 +1300,14 @@ this:</p>
 <span class="n">pets</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['dog', 'cat', 'rabbit'], dtype='&lt;U6')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'rabbit', 'dog'], dtype='&lt;U6')
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
 <span class="n">pets</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'dog', 'rabbit'], dtype='&lt;U6')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'rabbit', 'dog'], dtype='&lt;U6')
 </code></pre></div></div>
 
 <p>Now to mix up ages of the Leavers and Remainers:</p>
@@ -1303,7 +1316,7 @@ this:</p>
 <span class="n">pooled</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([40, 31, 27, ..., 45, 67, 45])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([54, 50, 19, ..., 52, 80, 92])
 </code></pre></div></div>
 
 <p>We split the newly mixed group into 774 simulated Remain voters and 541
@@ -1326,7 +1339,7 @@ and Remain ages.</p>
 <span class="n">fake_difference</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.917873876972017
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.11033973835417754
 </code></pre></div></div>
 
 <p>That looks a lot smaller than the difference we saw.   We want to keep doing
@@ -1338,7 +1351,7 @@ us new random samples of fake Remainers and fake Leavers.</p>
 <span class="n">fake_difference_2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.6334427106468539
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.5329493186605347
 </code></pre></div></div>
 
 <p>We want to keep doing this - and that calls for a <code class="highlighter-rouge">for</code> loop.</p>

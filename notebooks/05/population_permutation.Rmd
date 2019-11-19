@@ -183,7 +183,15 @@
         
         ## A problem of populations
 
-We return to the [Brexit survey](../exercises/brexit_analysis).
+As in the [Brexit analysis
+exercise](/cfd2019/exercises/brexiteering.zip),
+we analyze the [Brexit survey](/cfd2019/data/brexit_survey).
+
+As you will see in the link above, the data are from a survey of the UK
+population.  Each row in the survey corresponds to one person answering.  One
+of the questions, named `cut15` is how the person voted in the Brexit
+referendum.  Another, `numage` is the age of the person in years.
+
 
 ```{python}
 # Array library.
@@ -200,14 +208,20 @@ import matplotlib.pyplot as plt
 plt.style.use('fivethirtyeight')
 ```
 
+If you are running on your laptop, first [download the data file](/cfd2019/data/audit_of_political_engagement_14_2017.tab) to the same directory as this notebook.
+
 We load the data:
 
 ```{python}
-# Load the data frame, and put it in the variable "audit_data"
+# Load the data frame, and put it in the variable "audit_data".
+# The values are separated by tab characters, written as "\t" in Python
+# strings.
 audit_data = pd.read_csv('audit_of_political_engagement_14_2017.tab', sep='\t')
 ```
 
-Now get the ages for the Leavers and the Remainers:
+Now get the ages for the Leavers and the Remainers.
+
+A small number of ages are recorded as 0, meaning we do not have the correct age for that person / row.  First we drop rows with ages recorded as 0, then select the remaining rows corresponding to people who voted to remain (`cut15` value of 1) and leave (`cut15` value of 2):
 
 ```{python}
 # Drop rows where age is 0

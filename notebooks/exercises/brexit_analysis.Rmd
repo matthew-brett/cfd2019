@@ -197,49 +197,15 @@ plt.style.use('fivethirtyeight')
 import pandas as pd
 ```
 
-## All about the Brexiteers
+See the [Brexit survey](/cfd2019/data/brexit_survey) for details on the survey data.
 
-Every year, the [Hansard
-Society](https://www.hansardsociety.org.uk/research/audit-of-political-engagement)
-sponsors a survey on political engagement in the UK.
-
-They put topical questions in each survey.  For the 2016 / 7 survey, they asked
-about how people voted in the Brexit referendum.
-
-Luckily, they make the data freely available online for us to analyze.
-
-You can get the data for yourself from the UK Data Service:
-[https://discover.ukdataservice.ac.uk/catalogue/?sn=8183](https://discover.ukdataservice.ac.uk/catalogue/?sn=8183).
-There are data files in various formats, including:
-
-* SPSS format (for the SPSS statistical package);
-* Stata format (for the Stata statistical package);
-* tab-delimited (a general data format, that can be used with Pandas, Excel,
-  and other packages).
-
-The data is in a standard form, with one row per respondent, and one column
-per question.
-
-To save you a tiny bit of work, I have made an unchanged copy of the
-tab-delimited version of the data file for you to download directly. I have
-also made a copy of the document describing the questions they ask and the way
-that they have recorded the answers in the data file.  This is often called the
-“data dictionary”.  It was originally in Rich Text Format, but I have converted
-to PDF for convenience.  It is otherwise identical to the file you will find at
-the UK Data Service.
-
-You can download these copies from the following links:
-
-* [tab-delimited data file](/cfd2019/data/audit_of_political_engagement_14_2017.tab);
-* [data dictionary PDF file](/cfd2019/data/audit_of_political_engagement_14_2017_ukda_data_dictionary.pdf).
-
-If you are running this notebook on your laptop, download the tab-delimited
-data file to the same directory as the notebook.
+If you are running on your laptop, first [download the data file](/cfd2019/data/audit_of_political_engagement_14_2017.tab) to the same
+directory as this notebook.
 
 In the moment, we are going to try and analyze these data.  We will focus on
-two questions labeled `cut15` and `numage`.  `cut15` is the question
-about Brexit. The data dictionary has the *variable label* “CUT15 - How did you
-vote on the question ‘Should the United Kingdom remain a member of the European
+two questions labeled `cut15` and `numage`.  `cut15` is the question about
+Brexit. The data dictionary has the *variable label* “CUT15 - How did you vote
+on the question ‘Should the United Kingdom remain a member of the European
 Union or leave the European Union’?”.  The recorded values run from 1 through
 6 and have the following labels:
 
