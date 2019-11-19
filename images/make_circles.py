@@ -1,3 +1,4 @@
+import os.path as op
 from itertools import cycle
 from collections import Counter
 from numpy.random import shuffle, seed
@@ -8,6 +9,8 @@ import pandas as pd
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 
+
+HERE = op.dirname(__file__)
 
 
 class BallShower:
@@ -85,7 +88,7 @@ class BallShower:
         return mu
 
 
-mosquitoes = pd.read_csv('mosquito_beer.csv')
+mosquitoes = pd.read_csv(op.join('..', 'data', 'mosquito_beer.csv'))
 afters = mosquitoes[mosquitoes['test'] == 'after']
 beers = afters[afters['group'] == 'beer']
 waters = afters[afters['group'] == 'water']
