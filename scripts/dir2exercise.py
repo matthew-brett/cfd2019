@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+""" Build zip file OKpy exercise from directory
+"""
 
 import os
 import os.path as op
@@ -24,28 +26,32 @@ import grade_oknb as gok
 TEMPLATE_RE = re.compile('_template\.Rmd$')
 
 
-def get_site_dict():
-    site = {}
-    config_file = op.join(SITE_ROOT, '_config.yml')
-    with open(config_file, 'r') as ff:
-        sy = yaml.load(ff.read())
-    site['baseurl'] = sy['url'] + sy['baseurl']
+def get_site_dict(site_config):
+    with open(site_config, 'r') as ff:
+        site = yaml.load(ff.read())
+    # Get full baseurl from _config.yml format.
+    if not site['baseurl'].startswith('http') and 'url' in site:
+        baseurl = site['url'] + site['baseurl']
+        site = dict(baseurl=baseurl)
     return site
 
 
-def render_template(text):
+def render_template(text, site_config):
+    site_dict = get_site_dict(site_config)
     template = Template(text)
-    return template.render(site=get_site_dict())
+    return template.render(site=site_dict)
 
 
-def process_dir(path, out_path, grade=False):
+def process_dir(path, out_path, grade=False, site_config=None):
     templates = [fn for fn in os.listdir(path) if TEMPLATE_RE.search(fn)]
     if len(templates) == 0:
         raise RuntimeError('No _template.Rmd in directory')
     if len(templates) > 1:
         raise RuntimeError('More than one _template.Rmd in directory')
     template_fname = op.join(path, templates[0])
-    template = render_template(read_utf8(template_fname))
+    template = read_utf8(template_fname)
+    if site_config:
+        template = render_template(template, site_config)
     exercise_fname = TEMPLATE_RE.sub('.Rmd', template_fname)
     write_utf8(exercise_fname, make_exercise(template))
     solution_fname = TEMPLATE_RE.sub('_solution.Rmd', template_fname)
@@ -55,17 +61,42 @@ def process_dir(path, out_path, grade=False):
         gok.show_grade(solution_fname, op.join(path, 'tests'))
 
 
+def find_site_config(dir_path, filenames=('course.yml', '_config.yml')):
+    """ Iterate to parents to locate one of filenames specified in `filenames`.
+    """
+    dir_path = op.realpath(dir_path)
+    while True:
+        for fn in filenames:
+            pth = op.join(dir_path, fn)
+            if op.isfile(pth):
+                return pth
+        prev_dir_path = dir_path
+        dir_path = op.realpath(op.join(dir_path, '..'))
+        if (dir_path == prev_dir_path or  # We hit root.
+            not prev_dir_path.startswith(dir_path)): # We hit fs boundary.
+            break
+    return None
+
+
 def main():
     parser = ArgumentParser()
     parser.add_argument('dir', help="Directory of exercise")
     parser.add_argument('--no-grade', action='store_true',
                         help='If specified, do not grade solution notebook')
     parser.add_argument('--out-path',
-                        help='Output path for zipped exercise')
+                        help='Output path for zipped exercise'
+                        '(default is ../../exercises)'
+                       )
+    parser.add_argument('--site-config',
+                        help='Path to configuration file for course '
+                        '(default finds {course,_config}.yml, in dir, parents)'
+                       )
     args = parser.parse_args()
     if args.out_path is None:
         args.out_path = op.join(args.dir, '..', '..', 'exercises')
-    process_dir(args.dir, args.out_path, not args.no_grade)
+    if args.site_config is None:
+        args.site_config = find_site_config(args.dir)
+    process_dir(args.dir, args.out_path, not args.no_grade, args.site_config)
 
 
 if __name__ == '__main__':
