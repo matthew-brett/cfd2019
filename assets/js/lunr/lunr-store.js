@@ -225,7 +225,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation",
         "teaser":null},{
         "title": "5.2 The permutation idea",
-        "excerpt":"The idea of permutation A mosquito problem With thanks to John Rauser: Statistics Without the Agonizing Pain The data # Import Numpy library, rename as \"np\"import numpy as np# Import Pandas library, rename as \"pd\"import pandas as pd# Set up plottingimport matplotlib.pyplot as plt%matplotlib inlineplt.style.use('fivethirtyeight')# An extra tweak to make...","categories": [],
+        "excerpt":"The idea of permutation A mosquito problem With thanks to John Rauser: Statistics Without the Agonizing Pain The data Download the data from mosquito_beer.csv. # Import Numpy library, rename as \"np\"import numpy as np# Import Pandas library, rename as \"pd\"import pandas as pd# Set up plottingimport matplotlib.pyplot as plt%matplotlib inlineplt.style.use('fivethirtyeight')#...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation_idea",
         "teaser":null},{

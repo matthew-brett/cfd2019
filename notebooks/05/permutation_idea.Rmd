@@ -194,6 +194,8 @@ With thanks to John Rauser: [Statistics Without the Agonizing Pain](https://www.
 
 ## The data
 
+Download the data from [mosquito_beer.csv](/cfd2019/data/mosquito_beer.csv).
+
 ```{python}
 # Import Numpy library, rename as "np"
 import numpy as np
