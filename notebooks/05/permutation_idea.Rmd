@@ -1,0 +1,206 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+# The idea of permutation
+
+
+## A mosquito problem
+
+
+![]({{ site.baseurl }}/images/{{ site.baseurl }}/images/mosquito_banner.png)
+
+With thanks to John Rauser: [Statistics Without the Agonizing Pain](https://www.youtube.com/watch?v=5Dnw46eC-0o)
+
+
+## The data
+
+Download the data from [mosquito_beer.csv]({{ site.baseurl
+}}/data/mosquito_beer.csv).
+
+```{python}
+# Import Numpy library, rename as "np"
+import numpy as np
+# Import Pandas library, rename as "pd"
+import pandas as pd
+
+# Set up plotting
+import matplotlib.pyplot as plt
+# %matplotlib inline
+plt.style.use('fivethirtyeight')
+```
+
+```{python}
+# An extra tweak to make sure we always get the same random numbers.
+np.random.seed(42)
+```
+
+Read in the data:
+
+```{python}
+mosquitoes = pd.read_csv('mosquito_beer.csv')
+mosquitoes.head()
+```
+
+Get the number of activated mosquitoes for the "after" treatment rows, separating the "beer" group and the "water" group.
+
+```{python}
+# After treatment rows.
+afters = mosquitoes[mosquitoes['test'] == 'after']
+# After beer treatment rows.
+beers = afters[afters['group'] == 'beer']
+# The Activated numbers for the after beer rows.
+beer_activated = np.array(beers['activated'])
+beer_activated
+```
+
+```{python}
+n_beer = len(beer_activated)
+n_beer
+```
+
+```{python}
+# Same for the water group.
+waters = afters[afters['group'] == 'water']
+water_activated = np.array(waters['activated'])
+water_activated
+```
+
+
+```{python}
+n_water = len(water_activated)
+n_water
+```
+
+## The permutation way
+
+
+* Calculate difference in means
+* Pool
+* Repeat many times:
+    * Shuffle
+    * Split
+    * Recalculate difference in means
+    * Store
+
+
+## On balls
+
+
+![]({{ site.baseurl }}/images/just_balls.png)
+
+
+## The difference in means
+
+
+![]({{ site.baseurl }}/images/beer_mean.png)
+
+```{python}
+print(np.mean(beer_activated))
+print(np.mean(water_activated))
+```
+
+## The difference in means
+
+
+![]({{ site.baseurl }}/images/water_mean.png)
+
+```{python}
+actual_diff = np.mean(beer_activated) - np.mean(water_activated)
+actual_diff
+```
+
+## Pool
+
+```{python}
+pooled = np.append(beer_activated, water_activated)
+pooled
+```
+
+## Shuffle
+
+
+![]({{ site.baseurl }}/images/fake_balls1.png)
+
+```{python}
+np.random.shuffle(pooled)
+pooled
+```
+
+## A difference if the null is true
+
+
+![]({{ site.baseurl }}/images/fake_beer_mean1.png)
+
+
+## One difference on null
+
+
+![]({{ site.baseurl }}/images/fake_water_mean1.png)
+
+```{python}
+fake_beer = pooled[:n_beer]
+fake_water = pooled[n_beer:]
+fake_diff = np.mean(fake_beer) - np.mean(fake_water)
+fake_diff
+```
+
+## And again
+
+
+![]({{ site.baseurl }}/images/fake_beer_mean2.png)
+
+```{python}
+np.random.shuffle(pooled)
+fake_beer = pooled[:n_beer]
+fake_water = pooled[n_beer:]
+fake_diff = np.mean(fake_beer) - np.mean(fake_water)
+fake_diff
+```
+
+## Another difference on null
+
+
+![]({{ site.baseurl }}/images/fake_water_mean2.png)
+
+```{python}
+np.random.shuffle(pooled)
+fake_beer = pooled[:n_beer]
+fake_water = pooled[n_beer:]
+fake_diff = np.mean(fake_beer) - np.mean(fake_water)
+fake_diff
+```
+
+## And so on, 10000 times
+
+
+```{python}
+fake_differences = np.zeros(10000)
+for i in np.arange(10000):
+    np.random.shuffle(pooled)
+    fake_beer = pooled[:n_beer]
+    fake_water = pooled[n_beer:]
+    fake_diff = np.mean(fake_beer) - np.mean(fake_water)
+    fake_differences[i] = fake_diff
+plt.hist(fake_differences);
+```
+
+```{python}
+n_ge_actual = np.count_nonzero(fake_differences >= actual_diff)
+n_ge_actual
+```
+
+```{python}
+p_ge_actual = n_ge_actual / 10000
+p_ge_actual
+```
