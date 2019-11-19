@@ -215,7 +215,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/04/df_series_arrays",
         "teaser":null},{
         "title": "5.2 A permutation test",
-        "excerpt":"Now we have for loops and ranges, we cansolve the problem in population, permutation. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Again, we get...","categories": [],
+        "excerpt":"Now we have for loops andranges, we can solve the problem inpopulation, permutation. # Array library.import numpy as np# Data frame library.import pandas as pd# Plottingimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')We load the Brexit survey data again: # Load the data frame, and put it in the variable \"audit_data\"audit_data...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
         "teaser":null},{
@@ -225,7 +225,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation",
         "teaser":null},{
         "title": "5.1 Population and permutation",
-        "excerpt":"A problem of populations We return to the Brexit survey. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')# Data frame libraryimport pandas as pdWe load the data: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')Now get the ages for the Leavers and...","categories": [],
+        "excerpt":"A problem of populations We return to the Brexit survey. # Array library.import numpy as np# Data frame library.import pandas as pd# Plottingimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')We load the data: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_csv('audit_of_political_engagement_14_2017.tab', sep='\\t')Now get the ages...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/population_permutation",
         "teaser":null},{
