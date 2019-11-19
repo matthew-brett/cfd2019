@@ -399,11 +399,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/interesting",
         "teaser":null},{
-        "title": "Money and death",
-        "excerpt":"We return to the death penalty. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty. To do this, we are...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/money_and_death",
-        "teaser":null},{
         "title": "More simulations",
         "excerpt":"Simulation exercises import numpy as npPenalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of scoring. In the last 15 penalties she has taken, she has been trying a new technique.She scored...","categories": [],
         "tags": [],
