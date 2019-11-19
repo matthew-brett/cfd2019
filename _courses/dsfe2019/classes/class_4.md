@@ -1,10 +1,16 @@
 ---
 layout: single
-title: Class 5
-permalink: /classes/class_5
+title: Class 4
+permalink: /classes/class_4
 ---
 
-# Day 5 (the sixth day)
+# Day 4 (the fifth day)
+
+## Admin
+
+Next week is reading week - no class on Friday.
+
+## Today
 
 * [Call expressions](../chapters/02/Calls)
 * Practice with OKpy: Download and extract [rounding

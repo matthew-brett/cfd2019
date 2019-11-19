@@ -6,13 +6,10 @@ permalink: /classes/class_8
 
 # Day 8 (the ninth day)
 
-* [Append](../chapters/03/numpy_append)
-* [Function arguments](../chapters/03/function_arguments)
-* [Leaping ahead](../chapters/03/leaping_ahead)
-* [Iteration with For loops](../chapters/03/iteration)
+* [3.5 Ranges](../chapters/03/Ranges)
+* [5.2 Lists](../chapters/05/lists)
+* [5.3 Iteration with For loops](../chapters/05/iteration)
 * [For loop exercises](../chapters/exercises/for_loops)
 
-<!---
 Assignment - finish up the [For loop
 exercises](../chapters/exercises/for_loops).
--->
