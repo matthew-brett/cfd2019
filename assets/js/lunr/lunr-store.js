@@ -220,7 +220,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
         "teaser":null},{
         "title": "5. Permutations",
-        "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
+        "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. To start, a presentation on permutation testing. ","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation",
         "teaser":null},{
