@@ -1,0 +1,350 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+We return to the death penalty.
+
+```{python}
+# Array library.
+import numpy as np
+
+# Data frames library.
+import pandas as pd
+
+# Set up plotting
+import matplotlib.pyplot as plt
+# %matplotlib inline
+plt.style.use('fivethirtyeight')
+```
+
+```{python}
+# Load the OKpy test library and tests.
+from client.api.notebook import Notebook
+ok = Notebook('money_death.ok')
+```
+
+In this case, we are going to analyze whether people with higher incomes are
+more likely to favor the death penalty.
+
+To do this, we are going to analyze the results from a sample of the US
+[General Social Survey](http://www.gss.norc.org) from 2002.
+
+Make sure you have the data file [GSS2002.csv]({{
+site.baseurl }}/data/GSS2002.csv) in the same directory as this notebook.  This should be true if you unpacked the exercise zip file.
+
+```{python}
+# Read the data into a data frame
+gss = pd.read_csv('GSS2002.csv')
+# Show the first 5 rows.
+gss.head()
+```
+
+Each row corresponds to a single respondent.
+
+Show the column names:
+
+```{python}
+gss.columns
+```
+
+We want to work with only two columns from this data frame.  These are
+"Income", and "DeathPenalty".
+
+"Income" gives the income bracket of the respondent.  "DeathPenalty" is the
+answer to a question about whether they "Favor" or "Oppose" the death penalty.
+
+Start by making a data frame `money_death` that only has the columns "Income" and "DeathPenalty" from `gss`.
+
+**Hint**: make a new empty data frame called `money_death`.  Get the columns
+"Income" and "DeathPenalty" from the `gss` data frame, and insert them into
+`money_death`.  See the [data frames, series, arrays page]({{ site.baseurl
+}}/chapters/04/df_series_arrays).
+
+```{python}
+#<- money_death = ...
+money_death = pd.DataFrame()
+money_death['Income'] = gss['Income']
+money_death['DeathPenalty'] = gss['DeathPenalty']
+#<--
+money_death.head()
+```
+
+```{python}
+_ = ok.grade('q_1_money_death')
+```
+
+There are many missing question responses, indicated by `NaN`.  To
+make our life easier, we drop the respondents who didn't specify an
+income bracket, and those who did not give an answer to the death penalty
+question.  Pandas `dropna` method of the data frame does this job. It drops
+all rows that have any missing values in the row.  Check the help for the `money_death.dropna` method with `money_death.dropna?` in a new cell.
+
+```{python}
+#<- complete_md = ...
+complete_md = money_death.dropna()
+#<--
+complete_md.head()
+```
+
+```{python}
+_ = ok.grade('q_2_complete_md')
+```
+
+
+Put the income column of `complete_md` into its own variable:
+
+```{python}
+#<- income = ...
+income = complete_md['Income']
+#<--
+income.head()
+```
+
+```{python}
+_ = ok.grade('q_3_income')
+```
+
+
+Use the `value_counts` method of the `income` Series to show the unique values and their counts.
+
+```{python}
+income.value_counts()
+```
+
+The elements in this series are strings.  We want to get income as a number.
+We estimate this by *recoding* the "Income" column.  We replace the string,
+giving the income bracket, with the average of the minimum and maximum in the
+range.
+
+We can do this with a *recoder function*.  We have not covered functions yet, so do not worry about the details of this function.
+
+```{python}
+# Just run this cell
+def recode_income(value):
+    if value == 'under 1000':
+        return 500
+    low_str, high_str = value.split('-')
+    low, high = int(low_str), int(high_str)
+    return np.mean([low, high])
+```
+
+Here is what the recoder function gives with the lowest income bracket.
+
+```{python}
+recode_income('under 1000')
+```
+
+Here is what it gives for a higher bracket:
+
+```{python}
+recode_income('90000-109999')
+```
+
+Use this function to recode the "Income" strings into numbers. Again, we have not covered the `apply` method yet, so don't worry about the details.
+
+```{python}
+income_ish = income.apply(recode_income)
+income_ish.head()
+```
+
+```{python}
+# This makes sure you've run the cells above correctly.
+_ = ok.grade('q_4_income_ish')
+```
+
+Now put the results of the answer to the death penalty question into its own variable `death`:
+
+```{python}
+#<- death = ...
+death = complete_md['DeathPenalty']
+#<-
+# Show the unique values with their counts.
+death.value_counts()
+#<-
+```
+
+```{python}
+_ = ok.grade('q_5_death')
+```
+
+In the next few cells, you make two new Pandas Series.  One, `favor_income`,
+contains the recoded income values `income_ish` corresponding to respondents
+who have a `death` value of `Favor`.
+
+The other, `oppose_income`, has the recoded income values corresponding to those with `Oppose` values in `death`.
+
+**Hint** - as ever, make a Boolean series of True False values corresponding to rows you want.  Use that to select the rows from `income_ish`.
+
+```{python}
+#<- favor_income = ...
+favor_income = income_ish[death == 'Favor']
+#<-
+# Show a histogram of the in-favor income values.
+favor_income.hist();
+#<-
+```
+
+```{python}
+_ = ok.grade('q_6_favor_income')
+```
+
+
+Likewise select incomes for those opposed.   Show the distribution.
+
+```{python}
+#<- oppose_income = ...
+oppose_income = income_ish[death == 'Oppose']
+#<-
+# Show a histogram of the oppose income values.
+oppose_income.hist();
+#<-
+```
+
+```{python}
+_ = ok.grade('q_7_oppose_income')
+```
+
+Calculate the difference in mean income between the groups.  This is the
+difference we observe.
+
+```{python}
+#<- actual_diff = np.mean(favor_income) - np.mean(oppose_income)
+actual_diff = np.mean(favor_income) - np.mean(oppose_income)
+#<--
+actual_diff
+```
+
+```{python}
+_ = ok.grade('q_8_actual_diff')
+```
+
+We want to know whether this difference in income is compatible with random
+sampling. That is, we want to know whether a difference this large is
+plausible, if the incomes are in fact random samples from the same population.
+
+To estimate how variable the mean differences can be, for such random sampling,
+we simulate this sampling by pooling the income values that we have, from the
+two groups, and the permuting them.
+
+First, we get the number of respondents in favor of the death penalty.
+
+```{python}
+#<- n_favor = ...
+n_favor = len(favor_income)
+#<--
+n_favor
+```
+
+```{python}
+_ = ok.grade('q_9_n_favor')
+```
+
+
+Then we pool the income values for the in-favor and oppose groups.
+
+```{python}
+# Concatenate the in-favor and opposed incomes.
+pooled = np.append(favor_income, oppose_income)
+# Show the first 10 values
+pooled[:10]
+```
+
+To do the random sampling we permute the values, so the `pooled` vector is a
+random mixture of the two groups.
+
+```{python}
+np.random.shuffle(pooled)
+# Show the first 10 values:
+pooled[:10]
+```
+
+Treat the first `n_favor` observations from this shuffled vector as our
+simulated in-favor group.  The rest are our simulated oppose
+group.
+
+```{python}
+fake_favor = pooled[:n_favor]
+fake_oppose = pooled[n_favor:]
+```
+
+Calculate the difference in means for this simulation.
+
+```{python}
+fake_diff = np.mean(fake_favor) - np.mean(fake_oppose)
+fake_diff
+```
+
+Now it is your turn.   Do this simulation 10000 times, to build up the
+distribution of differences compatible with random sampling.
+
+```{python}
+#<- fake_differences = ...
+fake_differences = np.zeros(10000)
+#<-
+for i in np.arange(10000):
+    # Permute the pooled incomes
+    np.random.shuffle(pooled)
+    # Make a fake favor sample
+#<-
+    fake_favor = pooled[:n_favor]
+    #- Make a fake opposed sample
+    fake_oppose = pooled[n_favor:]
+    #- Calculate the mean difference for the fake samples
+    fake_diff = np.mean(fake_favor) - np.mean(fake_oppose)
+    #- Put the mean difference into the fake_differences array.
+    fake_differences[i] = fake_diff
+#<-
+# Show the first 10 fake differences
+fake_differences[:10]
+#<-
+```
+
+```{python}
+_ = ok.grade('q_10_fake_differences')
+```
+
+When you have that working, do a histogram of the differences.
+
+```{python}
+plt.hist(fake_differences)
+```
+
+You can get an idea of where the actual difference we saw sits on this
+histogram, and therefore how likely that difference is, assuming the incomes
+come from the same underlying population of incomes.
+
+To be more specific, show the proportion of the differences you calculated that
+were greater than or equal to the actual difference.
+
+```{python}
+#<- p_fake_ge_actual = ...
+p_fake_ge_actual = np.count_nonzero(fake_differences >= actual_diff) / 10000
+#<--
+p_fake_ge_actual
+```
+
+```{python}
+_ = ok.grade('q_11_p_fake_ge_actual')
+```
+
+This proportion gives an estimate of the probability of seeing a difference
+this large, if the incomes all come from the same underlying population.
+
+## Done
+
+```{python}
+# For your convenience, you can run this cell to run all the tests at once!
+import os
+_ = [ok.grade(q[:-3]) for q in os.listdir("tests") if q.startswith('q')]
+```
