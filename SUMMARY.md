@@ -45,6 +45,7 @@
   * [4.2 Data frames, Series and arrays](notebooks/04/df_series_arrays.ipynb)
 * [5. Permutations](notebooks/05/permutation.md)
   * [5.1 Population and permutation](notebooks/05/population_permutation.ipynb)
+  * [5.2 The permutation idea](notebooks/05/permutation_idea.ipynb)
   * [5.2 A permutation test](notebooks/05/brexit_ages.ipynb)
 * [6. More on simulation](notebooks/06/more_simulation.md)
   * [6.1 Sorting arrays](notebooks/06/sorting_arrays.ipynb)
