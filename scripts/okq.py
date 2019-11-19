@@ -27,7 +27,7 @@ test = {{
           'code': r"""
           >>> # You haven't changed the value for '{v_name}'
           >>> # from its initial state (of ...)
-          >>> {v_name} != ...
+          >>> {v_name} is not ...
           True
           """,
           'hidden': False,
@@ -40,7 +40,7 @@ test = {{
           """,
           'hidden': False,
           'locked': False
-        }}
+        }},
       ],
       'scored': True,
       'setup': '',

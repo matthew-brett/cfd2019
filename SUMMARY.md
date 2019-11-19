@@ -80,7 +80,6 @@
   * [Data frames](notebooks/exercises/df_exercises.ipynb)
   * [Brexit analysis](notebooks/exercises/brexit_analysis.ipynb)
   * [For loops](notebooks/exercises/for_loops.ipynb)
-  * [Money and death](notebooks/exercises/money_and_death.ipynb)
   * [Function exercises](notebooks/exercises/function_exercises.ipynb)
   * [Function as values exercises](notebooks/exercises/functions_values_exercises.ipynb)
   * [Conditional statement exercises](notebooks/exercises/conditional_statements_exercises.ipynb)
