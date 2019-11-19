@@ -5,6 +5,19 @@
 
 ## Teaching plan
 
+### Data types, strings and variables
+
 * Introduce strings
 * Play with them, compare to variable names.
 * Conversion between things.
+
+### Selecting data
+
+and, or.
+
+`np.logical_and`, `np.logical_or`.
+
+Can go after conditionals?
+
+Pandas index, `.iloc`, `.loc`.
+
