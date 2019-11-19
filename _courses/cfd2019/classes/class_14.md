@@ -8,4 +8,4 @@ permalink: /classes/class_14
 
 * [Populations, permutations](../chapters/05/population_permutation)
 * [Permutation test](../chapters/05/brexit_ages)
-* [Money and death exercise](../chapters/exercises/money_and_death)
+* [Money and death exercise](../exercises/money_death.zip)
