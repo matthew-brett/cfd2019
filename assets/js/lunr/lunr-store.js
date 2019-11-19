@@ -220,9 +220,14 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
         "teaser":null},{
         "title": "5. Permutations",
-        "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. To start, a presentation on permutation testing. ","categories": [],
+        "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation",
+        "teaser":null},{
+        "title": "5.2 The permutation idea",
+        "excerpt":"The idea of permutation A mosquito problem With thanks to John Rauser: Statistics Without the Agonizing Pain The data # Import Numpy library, rename as \"np\"import numpy as np# Import Pandas library, rename as \"pd\"import pandas as pd# Set up plottingimport matplotlib.pyplot as plt%matplotlib inlineplt.style.use('fivethirtyeight')# An extra tweak to make...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation_idea",
         "teaser":null},{
         "title": "5.1 Population and permutation",
         "excerpt":"A problem of populations We return to the Brexit survey. # Array library.import numpy as np# Data frame library.import pandas as pd# Plottingimport matplotlib.pyplot as plt%matplotlib inline# Fancy plotsplt.style.use('fivethirtyeight')We load the data: # Load the data frame, and put it in the variable \"audit_data\"audit_data = pd.read_csv('audit_of_political_engagement_14_2017.tab', sep='\\t')Now get the ages...","categories": [],
