@@ -5,4 +5,4 @@ We build up the tools to use permutation for a test of differences between two
 groups.
 
 To start, a [presentation on permutation testing]({{ site.baseurl
-}}/downloads/yay_permutation_slides.pdf).
+}}/downloads/yay_resampling_slides.pdf).
