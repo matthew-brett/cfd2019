@@ -27,29 +27,32 @@ jupyter:
 We return to the [Brexit survey](../exercises/brexit_analysis).
 
 ```{python}
+# Array library.
 import numpy as np
+
+# Data frame library.
+import pandas as pd
+
+# Plotting
 import matplotlib.pyplot as plt
-# %matplotlib inline
+%matplotlib inline
 
 # Fancy plots
 plt.style.use('fivethirtyeight')
-
-# Data frame library
-import pandas as pd
 ```
 
 We load the data:
 
 ```{python}
 # Load the data frame, and put it in the variable "audit_data"
-audit_data = pd.read_table('audit_of_political_engagement_14_2017.tab')
+audit_data = pd.read_csv('audit_of_political_engagement_14_2017.tab', sep='\t')
 ```
 
 Now get the ages for the Leavers and the Remainers:
 
 ```{python}
 # Drop rows where age is 0
-good_data = audit_data.loc[audit_data['numage'] != 0]
+good_data = audit_data[audit_data['numage'] != 0]
 # Get data frames for leavers and remainers
 remain_ages = good_data[good_data['cut15'] == 1]['numage']
 leave_ages = good_data[good_data['cut15'] == 2]['numage']
@@ -197,5 +200,4 @@ fake_difference_2 = np.mean(pooled[:774]) - np.mean(pooled[774:])
 fake_difference_2
 ```
 
-We want to keep doing this, but copy / pasting seems like far too much work.
-We need - [iteration](iteration).
+We want to keep doing this - and that calls for a `for` loop.
