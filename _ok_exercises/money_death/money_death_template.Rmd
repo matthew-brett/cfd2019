@@ -219,7 +219,7 @@ Calculate the difference in mean income between the groups.  This is the
 difference we observe.
 
 ```{python}
-#<- actual_diff = np.mean(favor_income) - np.mean(oppose_income)
+#<- actual_diff = ...
 actual_diff = np.mean(favor_income) - np.mean(oppose_income)
 #<--
 actual_diff
@@ -256,7 +256,7 @@ Then we pool the income values for the in-favor and oppose groups.
 ```{python}
 # Concatenate the in-favor and opposed incomes.
 pooled = np.append(favor_income, oppose_income)
-# Show the first 10 values
+# Show the first 10 values before shuffling.
 pooled[:10]
 ```
 
@@ -265,7 +265,7 @@ random mixture of the two groups.
 
 ```{python}
 np.random.shuffle(pooled)
-# Show the first 10 values:
+# Show the first 10 values after shuffling.
 pooled[:10]
 ```
 
@@ -293,9 +293,9 @@ distribution of differences compatible with random sampling.
 fake_differences = np.zeros(10000)
 #<-
 for i in np.arange(10000):
-    # Permute the pooled incomes
+    #- Permute the pooled incomes
     np.random.shuffle(pooled)
-    # Make a fake favor sample
+    #- Make a fake favor sample
 #<-
     fake_favor = pooled[:n_favor]
     #- Make a fake opposed sample
