@@ -276,6 +276,30 @@ class SiteBuilder:
         self._proc_out_nb(out_path)
         return op.sep.join([out_dir, op.basename(link)])
 
+    def _nb2md(self, nb_fname, out_folder):
+        # Run nbconvert moving it to the output folder
+        """ Consider adding field to site config with script name
+        to be run when executing notebook, and then.
+
+        * Read notebook.
+        * Add code cell with script contents at top.
+        * Execute notebook.
+        * Remove first cell and renumber inputs / outputs.
+        * Convert to markdown with given template etc
+        """
+        # This is the output directory for `.md` files
+        build_call = '--FilesWriter.build_directory={}'.format(out_folder)
+        # This is where images go - remove the _ so Jekyll will copy them
+        # over
+        images_call = '--NbConvertApp.output_files_dir={}'.format(
+            op.join(self.images_folder, out_folder.lstrip('_')))
+        call = ['jupyter', 'nbconvert', '--log-level="CRITICAL"',
+                '--to', 'markdown', '--template', self.template_path,
+                images_call, build_call, nb_fname]
+        if self.execute is True:
+            call.insert(-1, '--execute')
+        check_call(call)
+
     def _process_notebook(self, link, new_folder):
         # Create a temporary version of the notebook we can modify
         site_yaml = self.site_yaml
@@ -292,20 +316,8 @@ class SiteBuilder:
         cleaner.clear('stderr')
         cleaner.save(tmp_notebook)
         _clean_notebook_cells(tmp_notebook)
-
-        # Run nbconvert moving it to the output folder
-        # This is the output directory for `.md` files
-        build_call = '--FilesWriter.build_directory={}'.format(new_folder)
-        # This is where images go - remove the _ so Jekyll will copy them
-        # over
-        images_call = '--NbConvertApp.output_files_dir={}'.format(
-            op.join(self.images_folder, new_folder.lstrip('_')))
-        call = ['jupyter', 'nbconvert', '--log-level="CRITICAL"',
-                '--to', 'markdown', '--template', self.template_path,
-                images_call, build_call, tmp_notebook]
-        if self.execute is True:
-            call.insert(-1, '--execute')
-        check_call(call)
+        # Convert notebook to markdown
+        self._nb2md(tmp_notebook, new_folder)
         os.remove(tmp_notebook)
 
     def _write_out_md(self,
