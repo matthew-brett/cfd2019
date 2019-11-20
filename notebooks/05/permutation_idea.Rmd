@@ -201,7 +201,9 @@ With thanks to John Rauser: [Statistics Without the Agonizing Pain](https://www.
 Download the data from [mosquito_beer.csv](/cfd2019/data/mosquito_beer.csv).
 
 
-See [this page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for more details on the dataset.
+See [this
+page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for
+more details on the dataset, and [the data license page](/cfd2019/data/license).
 
 
 ```{python}
