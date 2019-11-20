@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-11-20T10:44:13+00:00">
+  <meta property="article:published_time" content="2019-11-20T11:19:05+00:00">
 
 
 
@@ -1128,12 +1128,11 @@
   <li><a href="#a-mosquito-problem">A mosquito problem</a></li>
   <li><a href="#the-data">The data</a></li>
   <li><a href="#the-permutation-way">The permutation way</a></li>
-  <li><a href="#on-balls">On balls</a></li>
-  <li><a href="#the-difference-in-means">The difference in means</a></li>
+  <li><a href="#calculate-difference-in-means">Calculate difference in means</a></li>
   <li><a href="#pool">Pool</a></li>
   <li><a href="#shuffle">Shuffle</a></li>
   <li><a href="#split">Split</a></li>
-  <li><a href="#and-again">And again</a></li>
+  <li><a href="#repeat">Repeat</a></li>
 </ul>
     </nav>
   </aside>
@@ -1364,19 +1363,17 @@ more details on the dataset, and <a href="/cfd2019/data/license">the data licens
   </li>
 </ul>
 
-<h2 id="on-balls">On balls</h2>
-
-<p>Here are the activated numbers for the “beer” group (in gold), and the activated numbers for the “water” group, in blue:</p>
+<p>The next graphic shows the activated values as a series of gold and blue
+balls.  The activated numbers for the “beer” group are gold), and the activated
+numbers for the “water” group, in blue:</p>
 
 <p><img src="/cfd2019/images/just_balls.png" alt="" /></p>
 
-<h2 id="the-difference-in-means">The difference in means</h2>
+<h2 id="calculate-difference-in-means">Calculate difference in means</h2>
 
-<p>Here we select only the first 25 values, which are the “beer” activated numbers:</p>
+<p>Here we take the mean of “beer” activated numbers (the numbers in gold):</p>
 
 <p><img src="/cfd2019/images/beer_mean.png" alt="" /></p>
-
-<p>The mean of these first 25 values:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beer_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
 <span class="n">beer_mean</span>
@@ -1385,7 +1382,8 @@ more details on the dataset, and <a href="/cfd2019/data/license">the data licens
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>23.6
 </code></pre></div></div>
 
-<p>Next we select the last 18 values that are the activation values for the “water” subjects:</p>
+<p>Next we take the mean of activation values for the “water” subjects (value in
+blue):</p>
 
 <p><img src="/cfd2019/images/water_mean.png" alt="" /></p>
 
@@ -1407,7 +1405,8 @@ more details on the dataset, and <a href="/cfd2019/data/license">the data licens
 
 <h2 id="pool">Pool</h2>
 
-<p>Next we put these values into one long array, 25 + 18 values long.</p>
+<p>We can put the values values for the beer and water conditions into one long
+array, 25 + 18 values long.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 <span class="n">pooled</span>
@@ -1432,37 +1431,47 @@ mixed.</p>
        26, 22, 20, 36, 30, 25, 23, 13, 21])
 </code></pre></div></div>
 
+<p>This is the same idea as jumbling up the gold and blue balls into a random order:</p>
+
 <p><img src="/cfd2019/images/fake_balls0.png" alt="" /></p>
 
 <h2 id="split">Split</h2>
 
-<p>We take the first 25 values as our fake beer group.  In fact of course it is a random mixture of the beer and the water values.</p>
+<p>We take the first 25 values as our fake beer group.  In fact these 25 values
+are a random mixture of the beer and the water values.  This is the same idea as take 25 balls at random from the jumbled mix of gold and blue balls:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Take the first 25 values
+</span><span class="n">fake_beer</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[:</span><span class="n">n_beer</span><span class="p">]</span>
+</code></pre></div></div>
 
 <p><img src="/cfd2019/images/fake_beer_mean0.png" alt="" /></p>
 
 <p>We calculate the mean:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_beer</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[:</span><span class="n">n_beer</span><span class="p">]</span>
-<span class="n">fake_beer_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_beer</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_beer_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_beer</span><span class="p">)</span>
 <span class="n">fake_beer_mean</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.88
 </code></pre></div></div>
 
-<p>Then we take the last 18 values as our fake water group:</p>
+<p>Then we take the remaining 18 values as our fake water group:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_water</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[</span><span class="n">n_beer</span><span class="p">:]</span>
+</code></pre></div></div>
 
 <p><img src="/cfd2019/images/fake_water_mean0.png" alt="" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_water</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[</span><span class="n">n_beer</span><span class="p">:]</span>
-<span class="n">fake_water_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_water</span><span class="p">)</span>
+<p>We take the mean of these too:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_water_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_water</span><span class="p">)</span>
 <span class="n">fake_water_mean</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>24.333333333333332
 </code></pre></div></div>
 
-<p>The difference between these means is our first estimate of how much the mean difference will vary when we take random samples:</p>
+<p>The difference between these means is our first estimate of how much the mean difference will vary when we take random samples from this pooled population:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_diff</span> <span class="o">=</span> <span class="n">fake_beer_mean</span> <span class="o">-</span> <span class="n">fake_water_mean</span>
 <span class="n">fake_diff</span>
@@ -1471,16 +1480,16 @@ mixed.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-4.453333333333333
 </code></pre></div></div>
 
-<h2 id="and-again">And again</h2>
+<h2 id="repeat">Repeat</h2>
 
-<p>Anther shuffle:</p>
+<p>We do another shuffle:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><img src="/cfd2019/images/fake_beer_mean1.png" alt="" /></p>
 
-<p>Another fake beer group, and a fake beer mean:</p>
+<p>We take another fake beer group, and calculate another fake beer mean:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_beer</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[:</span><span class="n">n_beer</span><span class="p">]</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_beer</span><span class="p">)</span>
@@ -1489,7 +1498,7 @@ mixed.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20.6
 </code></pre></div></div>
 
-<p>Another fake water group, and its mean:</p>
+<p>We take another fake water group, find the mean:</p>
 
 <p><img src="/cfd2019/images/fake_water_mean1.png" alt="" /></p>
 
@@ -1500,7 +1509,7 @@ mixed.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>23.333333333333332
 </code></pre></div></div>
 
-<p>Another difference between these means:</p>
+<p>Now we have another example difference between these means:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_beer</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_water</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1524,7 +1533,7 @@ differences:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-5.21777777777778
 </code></pre></div></div>
 
-<p>We can do this as many times as we want, using a <code class="highlighter-rouge">for</code> loop:</p>
+<p>It is not hard to do this as many times as we want, using a <code class="highlighter-rouge">for</code> loop:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_differences</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
@@ -1540,11 +1549,11 @@ differences:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/05/permutation_idea_47_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/05/permutation_idea_50_0.png" alt="png" /></p>
 
 <p>We are interested to know just how unusual it is to get a difference as big as we actually see, in these many samples of differences we expect by chance, from random sampling.</p>
 
-<p>We do this by calculating how many of the fake differences we generated are equal to or greater than the difference we observe:</p>
+<p>To do this we calculate how many of the fake differences we generated are equal to or greater than the difference we observe:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_ge_actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fake_differences</span> <span class="o">&gt;=</span> <span class="n">observed_difference</span><span class="p">)</span>
 <span class="n">n_ge_actual</span>
