@@ -8,19 +8,13 @@ permalink: /classes/class_15
 
 ## Announcements
 
-* Yet another reminder about the [project schedule](../project);
-* About [progress reports](../projects/progress).
+* On the strike, and assessment deadlines.
 
 ## Schedule
 
-* A reminder about [The mean as
-  a predictor](../chapters/08/mean_meaning)
-* [Where and argmin](../chapters/08/where_and_argmin)
-* [Mean and slopes](../chapters/08/mean_and_slopes)
+* [On None](../chapters/07/none)
+* [Functions](../chapters/07/functions.ipynb)
+* [First functions exercise](../exercises/first_functions.zip)
 * [Functions as values](../chapters/07/functions_as values)
-* [Function exercises](../chapters/exercises/functions_values_exercises)
-
-## Assignment
-
-* Project work
-* Prepare progress report
+* [Function as values
+  exercises](../chapters/exercises/functions_values_exercises)
