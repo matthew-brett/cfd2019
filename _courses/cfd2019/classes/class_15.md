@@ -8,13 +8,14 @@ permalink: /classes/class_15
 
 ## Announcements
 
-* On the strike, and assessment deadlines.
+* Final assessment deadline.
 
 ## Schedule
 
+* [Introducing functions](../chapters/07/introducing_functions)
 * [On None](../chapters/07/none)
-* [Functions](../chapters/07/functions.ipynb)
+* [Functions in detail](../chapters/07/functions)
 * [First functions exercise](../exercises/first_functions.zip)
-* [Functions as values](../chapters/07/functions_as values)
+* [Functions as values](../chapters/07/functions_as_values)
 * [Function as values
   exercises](../chapters/exercises/functions_values_exercises)
