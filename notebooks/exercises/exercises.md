@@ -1,1 +1,15 @@
-Some exercises for various points in the course.
+* [Interesting, no?](/chapters/exercises/interesting)
+* [Thinking about names](/exercises/names.md)
+* [For loop exercises](chapters/exercises/for_loops)
+* [Fix my fors](chapters/exercises/fix_my_fors)
+* [Three girl simulations](chapters/exercises/three_girl_simulations)
+* [Array indexing](chapters/exercises/array_indexing)
+* [More simulations](chapters/exercises/simulation)
+* [Data frames](chapters/exercises/df_exercises)
+* [Brexit analysis](chapters/exercises/brexit_analysis)
+* [For loops](chapters/exercises/for_loops)
+* [Function exercises](chapters/exercises/function_exercises)
+* [Function as values
+  exercises](chapters/exercises/functions_values_exercises)
+* [Conditional statement
+  exercises](chapters/exercises/conditional_statements_exercises)
