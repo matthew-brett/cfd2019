@@ -14,6 +14,10 @@ jupyter:
 
 # The idea of permutation
 
+The idea of permutation is fundamental to a wide range of statistical tests.
+This page shows how permutation works by comparing to a physical
+implementation of permutation, that randomizes values by mixing balls in a
+bucket.
 
 ## A mosquito problem
 
@@ -29,7 +33,10 @@ Download the data from [mosquito_beer.csv]({{ site.baseurl
 }}/data/mosquito_beer.csv).
 
 
-See [this page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for more details on the dataset.
+See [this
+page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for
+more details on the dataset, and [the data license page]({{ site.baseurl
+}}/data/license).
 
 
 ```{python}
@@ -112,27 +119,25 @@ n_water
     * Store
 
 
-## On balls
-
-Here are the activated numbers for the "beer" group (in gold), and the activated numbers for the "water" group, in blue:
+The next graphic shows the activated values as a series of gold and blue
+balls.  The activated numbers for the "beer" group are gold), and the activated
+numbers for the "water" group, in blue:
 
 ![]({{ site.baseurl }}/images/just_balls.png)
 
+## Calculate difference in means
 
-## The difference in means
-
-Here we select only the first 25 values, which are the "beer" activated numbers:
+Here we take the mean of "beer" activated numbers (the numbers in gold):
 
 ![]({{ site.baseurl }}/images/beer_mean.png)
-
-The mean of these first 25 values:
 
 ```{python}
 beer_mean = np.mean(beer_activated)
 beer_mean
 ```
 
-Next we select the last 18 values that are the activation values for the "water" subjects:
+Next we take the mean of activation values for the "water" subjects (value in
+blue):
 
 ![]({{ site.baseurl }}/images/water_mean.png)
 
@@ -150,7 +155,8 @@ observed_difference
 
 ## Pool
 
-Next we put these values into one long array, 25 + 18 values long.
+We can put the values values for the beer and water conditions into one long
+array, 25 + 18 values long.
 
 ```{python}
 pooled = np.append(beer_activated, water_activated)
@@ -167,42 +173,54 @@ np.random.shuffle(pooled)
 pooled
 ```
 
+This is the same idea as putting the gold and blue balls into a bucket and shaking them up into a random arrangement.
+
 ![]({{ site.baseurl }}/images/fake_balls0.png)
 
 ## Split
 
-We take the first 25 values as our fake beer group.  In fact of course it is a random mixture of the beer and the water values.
+We take the first 25 values as our fake beer group.  In fact these 25 values
+are a random mixture of the beer and the water values.  This is the same idea as taking 25 balls at random from the jumbled mix of gold and blue balls.
+
+```{python}
+# Take the first 25 values
+fake_beer = pooled[:n_beer]
+```
 
 ![]({{ site.baseurl }}/images/fake_beer_mean0.png)
 
 We calculate the mean:
 
 ```{python}
-fake_beer = pooled[:n_beer]
 fake_beer_mean = np.mean(fake_beer)
 fake_beer_mean
 ```
 
-Then we take the last 18 values as our fake water group:
-
-![]({{ site.baseurl }}/images/fake_water_mean0.png)
+Then we take the remaining 18 values as our fake water group:
 
 ```{python}
 fake_water = pooled[n_beer:]
+```
+
+![]({{ site.baseurl }}/images/fake_water_mean0.png)
+
+We take the mean of these too:
+
+```{python}
 fake_water_mean = np.mean(fake_water)
 fake_water_mean
 ```
 
-The difference between these means is our first estimate of how much the mean difference will vary when we take random samples:
+The difference between these means is our first estimate of how much the mean difference will vary when we take random samples from this pooled population:
 
 ```{python}
 fake_diff = fake_beer_mean - fake_water_mean
 fake_diff
 ```
 
-## And again
+## Repeat
 
-Anther shuffle:
+We do another shuffle:
 
 ```{python}
 np.random.shuffle(pooled)
@@ -210,14 +228,14 @@ np.random.shuffle(pooled)
 
 ![]({{ site.baseurl }}/images/fake_beer_mean1.png)
 
-Another fake beer group, and a fake beer mean:
+We take another fake beer group, and calculate another fake beer mean:
 
 ```{python}
 fake_beer = pooled[:n_beer]
 np.mean(fake_beer)
 ```
 
-Another fake water group, and its mean:
+We take another fake water group, find the mean:
 
 ![]({{ site.baseurl }}/images/fake_water_mean1.png)
 
@@ -226,7 +244,7 @@ fake_water = pooled[n_beer:]
 np.mean(fake_water)
 ```
 
-Another difference between these means:
+Now we have another example difference between these means:
 
 ```{python}
 np.mean(fake_beer) - np.mean(fake_water)
@@ -246,8 +264,7 @@ fake_diff = np.mean(fake_beer) - np.mean(fake_water)
 fake_diff
 ```
 
-We can do this as many times as we want, using a `for` loop:
-
+It is not hard to do this as many times as we want, using a `for` loop:
 
 ```{python}
 fake_differences = np.zeros(10000)
@@ -266,7 +283,7 @@ plt.hist(fake_differences);
 
 We are interested to know just how unusual it is to get a difference as big as we actually see, in these many samples of differences we expect by chance, from random sampling.
 
-We do this by calculating how many of the fake differences we generated are equal to or greater than the difference we observe:
+To do this we calculate how many of the fake differences we generated are equal to or greater than the difference we observe:
 
 ```{python}
 n_ge_actual = np.count_nonzero(fake_differences >= observed_difference)
