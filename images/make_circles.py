@@ -1,3 +1,6 @@
+""" Generates PNGs for permutation_ideas page
+"""
+
 import os.path as op
 from itertools import cycle
 from collections import Counter
