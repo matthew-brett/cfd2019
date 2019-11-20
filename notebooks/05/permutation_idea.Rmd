@@ -183,6 +183,10 @@
         
         # The idea of permutation
 
+The idea of permutation is fundamental to a wide range of statistical tests.
+This page shows how permutation works by comparing to a physical
+implementation of permutation, that randomizes values by mixing balls in a
+bucket.
 
 ## A mosquito problem
 

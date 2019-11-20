@@ -224,8 +224,8 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation",
         "teaser":null},{
-        "title": "5.2 The permutation idea",
-        "excerpt":"The idea of permutation A mosquito problem With thanks to John Rauser: Statistics Without the Agonizing Pain The data Download the data from mosquito_beer.csv. See this page for more details on the dataset. # Import Numpy library, rename as \"np\"import numpy as np# Import Pandas library, rename as \"pd\"import pandas...","categories": [],
+        "title": "5.3 The permutation idea",
+        "excerpt":"The idea of permutation The idea of permutation is fundamental to a wide range of statistical tests.This page shows how permutation works by comparing to a physicalimplementation of permutation, that randomizes values by mixing balls in abucket. A mosquito problem With thanks to John Rauser: Statistics Without the Agonizing Pain...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation_idea",
         "teaser":null},{
