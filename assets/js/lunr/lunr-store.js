@@ -254,8 +254,8 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/conditional_statements",
         "teaser":null},{
-        "title": "7.1 Functions",
-        "excerpt":"Functions We have already used functions. For example, we have used the round function: a = 3.1415# Call the \"round\" functionb = round(a, 2)b3.14We will soon find that we often need to define our own functions.Before we do, we need to go into more detail about what functions are. Functions...","categories": [],
+        "title": "6.1 Functions in more detail",
+        "excerpt":"Functions We have already used functions. For example, we have used the round function: a = 3.1415# Call the \"round\" functionb = round(a, 2)b3.14We often need to define our own functions. Before we do, we need to go intomore detail about what functions are for, and what they are. Functions...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions",
         "teaser":null},{
@@ -263,6 +263,11 @@ var store = [{
         "excerpt":"In the introduction to functions, we introduced themetaphor of a function being a recipe. It is a procedure, thataccepts inputs, (the ingredients of the recipe), and returns an output(the meal from the recipe). A function, like a recipe, usually hasa name. def add(a, b): return a + bAs we saw...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions_as_values",
+        "teaser":null},{
+        "title": "6.1 Introduction to functions",
+        "excerpt":"This page is from the equivalentpage in the excellentintroduction to Python by EricMatthes. The original page has an MITlicense. Introducing Functions One of the core principles of any programming language is, “Don’t Repeat Yourself”. If you have an action that should occur many times, you can define that action once...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/introducing_functions",
         "teaser":null},{
         "title": "7. More building blocks",
         "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],

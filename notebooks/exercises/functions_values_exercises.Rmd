@@ -182,7 +182,7 @@
       <section class="page__content" itemprop="text">
         
         For background, please read the [functions as
-values](../07/functions_as_values) page.
+values](/cfd2019/chapters/07/functions_as_values) page.
 
 Consider these two functions:
 
