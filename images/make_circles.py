@@ -1,3 +1,6 @@
+""" Generates PNGs for permutation_ideas page
+"""
+
 import os.path as op
 from itertools import cycle
 from collections import Counter
@@ -122,7 +125,7 @@ print(f'Actual difference: {beer_m - water_m:0.2f}')
 seed(42)
 shuffled = balls[:]
 
-for i in range(3):
+for i in range(2):
     shuffle(shuffled)
     bshower.ball_figure(shuffled)
     plt.savefig(f'fake_balls{i}.png')

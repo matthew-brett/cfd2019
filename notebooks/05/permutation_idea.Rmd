@@ -213,7 +213,11 @@ plt.style.use('fivethirtyeight')
 ```
 
 ```{python}
+# HIDDEN
 # An extra tweak to make sure we always get the same random numbers.
+# Do not use this in your own code; you nearly always want an unpredictable
+# stream of random numbers.  Making them predictable in this way only makes
+# sense for a very limited range of things, like tutorials and tests.
 np.random.seed(42)
 ```
 
