@@ -4,5 +4,7 @@ main:
     url: /about
   - title: "Syllabus"
     url: /syllabus
+  - title: "Setup"
+    url: /setup
   - title: "Classes"
     url: /classes
