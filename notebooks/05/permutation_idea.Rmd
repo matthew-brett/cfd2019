@@ -340,14 +340,14 @@ np.random.shuffle(pooled)
 pooled
 ```
 
-This is the same idea as jumbling up the gold and blue balls into a random order:
+This is the same idea as putting the gold and blue balls into a bucket and shaking them up into a random arrangement.
 
 ![](/cfd2019/images/fake_balls0.png)
 
 ## Split
 
 We take the first 25 values as our fake beer group.  In fact these 25 values
-are a random mixture of the beer and the water values.  This is the same idea as take 25 balls at random from the jumbled mix of gold and blue balls:
+are a random mixture of the beer and the water values.  This is the same idea as taking 25 balls at random from the jumbled mix of gold and blue balls.
 
 ```{python}
 # Take the first 25 values
