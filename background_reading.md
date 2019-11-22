@@ -39,10 +39,15 @@ suitable for a beginner in Python.
 You will find many good free online resources for learning Python programming
 in general.
 
-Please consider the online textbook [Think Like a Computer
-Scientist](https://jakevdp.github.io/PythonDataScienceHandbook); it is
-well-written, and had gone through several versions, so the material is well
-tested.
+My current recommendation is a book and course by [Allen
+Downey](https://greenteapress.com/wp) that he first called "Think Like
+a Computer Scientist" and later called "Think Python".  It is well-written, and
+has gone through several versions, so the material is well tested.
 
-We have no up-to-date recommendations for print books on Python; if you have
-a suggestion, please pass it on.
+The latest edition of "Think Python" is the second, and you can get it free as
+a PDF, or order a print copy - see the [Think Python 2e web
+page](https://greenteapress.com/wp/think-python-2e).
+
+There is an interactive edition based on the same original text at [Runestone:
+Think Like a Computer
+Scientist](https://runestone.academy/runestone/books/published/thinkcspy/index.html).
