@@ -1,11 +1,9 @@
 ## About this textbook
 
-This is the textbook for the first year undergraduate course in
-data science at the University of Birmingham.
+This is the textbook for a course teaching *data science* - coding for data.
 
-We go into some detail about what we mean by "Data science" in
-the [next section](what-is-data-science), but here is the
-one-line summary:
+We go into some detail about what we mean by "Data science" in the [next
+section](what-is-data-science), but here is the one-line summary:
 
 > Data science is an approach to data analysis with a foundation in code
 > and algorithms.

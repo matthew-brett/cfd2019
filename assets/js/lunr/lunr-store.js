@@ -20,7 +20,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/computational-tools",
         "teaser":null},{
         "title": "1. Coding for data",
-        "excerpt":"About this textbook This is the textbook for the first year undergraduate course indata science at the University of Birmingham. We go into some detail about what we mean by “Data science” inthe next section, but here is theone-line summary: Data science is an approach to data analysis with a...","categories": [],
+        "excerpt":"About this textbook This is the textbook for a course teaching data science - coding for data. We go into some detail about what we mean by “Data science” in the nextsection, but here is the one-line summary: Data science is an approach to data analysis with a foundation in...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/01/intro",
         "teaser":null},{
@@ -234,22 +234,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/population_permutation",
         "teaser":null},{
-        "title": "6.2 Monty hall problem",
-        "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSelvin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/monty_hall",
-        "teaser":null},{
-        "title": "6. More on simulation",
-        "excerpt":"More on simulation Probability can be confusing, even for experienced mathematicians. In this section, we use more simulation to solve probability problems.  In theprocess, we learn more about arrays. When you have read this chapter, try the simulation exercises. ","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/more_simulation",
-        "teaser":null},{
-        "title": "6.1 Sorting arrays",
-        "excerpt":"We often need to sort arrays. # Import the numpy packageimport numpy as npHere is an array of numbers: my_array = np.array([9, 1, 3, 0])my_arrayarray([9, 1, 3, 0])Say we wanted to sort this array, from smallest to largest. To do this, we use np.sort: sorted_array = np.sort(my_array)sorted_arrayarray([0, 1, 3, 9])That’s...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/sorting_arrays",
-        "teaser":null},{
-        "title": "7.2 Conditional statements",
+        "title": "6.2 Conditional statements",
         "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/conditional_statements",
@@ -259,7 +244,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions",
         "teaser":null},{
-        "title": "7.1 Functions as values",
+        "title": "6.1 Functions as values",
         "excerpt":"In the introduction to functions, we introduced themetaphor of a function being a recipe. It is a procedure, thataccepts inputs, (the ingredients of the recipe), and returns an output(the meal from the recipe). A function, like a recipe, usually hasa name. def add(a, b): return a + bAs we saw...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions_as_values",
@@ -269,87 +254,87 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/introducing_functions",
         "teaser":null},{
-        "title": "7. More building blocks",
+        "title": "6. More building blocks",
         "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/more_building_blocks",
         "teaser":null},{
-        "title": "7.2 None",
+        "title": "6.2 On None",
         "excerpt":"Python has a special value, called None, that it often uses to tellyou that it cannot give you a valid value. Unlike any other commonvalue in Python, if an expression evaluates to None, Python showsyou nothing at all for the value, in the notebook, or in aninteractive Python console. my_value...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/none",
         "teaser":null},{
-        "title": "8.5 Finding lines",
+        "title": "7.5 Finding lines",
         "excerpt":"In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values. Specifically, we wanted our slope to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values. By analogy with The Mean as Predictor, we decided...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/finding_lines",
         "teaser":null},{
-        "title": "8.6 Believable slopes",
+        "title": "7.6 Believable slopes",
         "excerpt":"In finding slopes, we found the line the did the best job of predicting one vector of values from another vector of values. Our line was a slope and an intercept. We used it to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values. We chose...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/inference_on_slopes",
         "teaser":null},{
-        "title": "8. The mean and straight line relationships",
+        "title": "7. The mean and straight line relationships",
         "excerpt":"The mean is an important value to summarize and predict a distribution. It has two interesting properties: The sum of all deviations around the mean is zero; It is the value that gives the smallest sum of squared deviations.These properties are useful to think about when we are looking for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean",
         "teaser":null},{
-        "title": "8.3 Mean and slopes",
+        "title": "7.3 Mean and slopes",
         "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean_and_slopes",
         "teaser":null},{
-        "title": "8.1 The mean as a predictor",
+        "title": "7.1 The mean as a predictor",
         "excerpt":"The mean is an interesting value. In this notebook, we fetch an example sequence of numbers, with a distribution that is far from the standard bell-curve distribution. We look at the properties of the mean as a predictor of the whole distribution. First we load our usual libraries. import numpy...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean_meaning",
         "teaser":null},{
-        "title": "8.4 Optimization",
+        "title": "7.4 Optimization",
         "excerpt":"In The Mean and Slopes, we used a simple but slow way tofind the slope that best predicted one vector of values from another vector ofvalues. First we go back to find that slope. import numpy as npimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')#...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/optimization",
         "teaser":null},{
-        "title": "8.2 Where and argmin",
+        "title": "7.2 Where and argmin",
         "excerpt":"We sometimes want to know where a value is in an array. import numpy as npBy “where” we mean, which element contains a particular value. Here is an array. arr = np.array([2, 99, -1, 4, 99])arrarray([ 2, 99, -1, 4, 99])As you know, we can get element using their index...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/where_and_argmin",
         "teaser":null},{
-        "title": "9.6 Accuracy of the classifier",
+        "title": "8.6 Accuracy of the classifier",
         "excerpt":"You can download the file fromwine.csv. The Accuracy of the Classifier To see how well our classifier does, we might put 50% of the data into the training set and the other 50% into the test set. Basically, we are setting aside some data for later use, so we can...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Accuracy_of_the_Classifier",
         "teaser":null},{
-        "title": "9.5 Implementing the classifier",
+        "title": "8.5 Implementing the classifier",
         "excerpt":"Implementing the Classifier We are now ready to implement a $k$-nearest neighbor classifier based on multiple attributes. We have used only two attributes so far, for ease of visualization. But usually predictions will be based on many attributes. Here is an example that shows how multiple attributes can be better...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Implementing_the_Classifier",
         "teaser":null},{
-        "title": "9.2 Nearest neighbors",
+        "title": "8.2 Nearest neighbors",
         "excerpt":"Nearest Neighbors In this section we’ll develop the nearest neighbor method of classification. Just focus on the ideas for now and don’t worry if some of the code is mysterious. Later in the chapter we’ll see how to organize our ideas into code that performs the classification. Chronic kidney disease...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Nearest_Neighbors",
         "teaser":null},{
-        "title": "9.4 Rows of tables",
+        "title": "8.4 Rows of tables",
         "excerpt":"Rows of Tables Now that we have a qualitative understanding of nearest neighbor classification, it’s time to implement our classifier. Until this chapter, we have worked mostly with single columns of tables. But now we have to see whether one individual is “close” to another. Data for individuals are contained...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Rows_of_Tables",
         "teaser":null},{
-        "title": "9.3 Training and testing",
+        "title": "8.3 Training and testing",
         "excerpt":"Again - if you are running on your laptop, you should downloadthe ckd.csv file to the samedirectory as this notebook. Training and Testing How good is our nearest neighbor classifier? To answer this we’ll need to find out how frequently our classifications are correct. If a patient has chronic kidney...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Training_and_Testing",
         "teaser":null},{
-        "title": "9. Classification",
+        "title": "8. Classification",
         "excerpt":"David Wagner is the primary author of this chapter. Machine learning is a class of techniques for automatically finding patterns in data and using it to draw inferences or make predictions. You have already seen linear regression, which is one kind of machine learning. This chapter introduces a new one:...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
-        "title": "9.1 Standard scores",
+        "title": "8.1 Standard scores",
         "excerpt":"Describing distributions We have seen several examples of distributions. We can describe distributions as having a center, and a spread. In the mean as predictor, we saw that the mean is a useful measure of the center of a distribution. What measure should we use for the spread? Chronic kidney...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/standard_scores",
         "teaser":null},{
-        "title": "10. The end of the beginning",
+        "title": "9. The end of the beginning",
         "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/end_of_beginning",
@@ -375,7 +360,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/df_exercises",
         "teaser":null},{
         "title": "Exercises",
-        "excerpt":"Some exercises for various points in the course. ","categories": [],
+        "excerpt":"Zip file exercises are in OKpy format. See installingpackages on how install OKPy, and extractingarchives for extracting zip files to a folder on yourcomputer. Interesting, no? Valid, invalid names Variables, names Using functions, rounding Strings Strings and variables Data types Arrays More arrays Array indexing Fix my fors More for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/exercises",
         "teaser":null},{
