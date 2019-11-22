@@ -8,7 +8,15 @@ permalink: /course
 
 Various notes and policies for the course.
 
-## Prior background
+## Software for the course
+
+See [setup](setup)
+
+## Books and other resources
+
+See [background reading](background_reading)
+
+## Your prior background
 
 Data science uses code to analyze messy data.  We aim to teach you that in the
 course.  To do the course, you do not need any previous experience of using

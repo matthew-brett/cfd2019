@@ -13,6 +13,7 @@ This is the website for these two courses at the University of Birmingham:
 * [Tools](tools)
 * [License](license) for the materials on this site.
 * [Classes](classes)
+* [Links, notes and policies](course).
 
 For those with access, please see the [Canvas course page for Introduction to
 programming](https://canvas.bham.ac.uk/courses/41498).

@@ -48,6 +48,6 @@ The latest edition of "Think Python" is the second, and you can get it free as
 a PDF, or order a print copy - see the [Think Python 2e web
 page](https://greenteapress.com/wp/think-python-2e).
 
-There is an interactive edition based on the same original text at [Runestone:
-Think Like a Computer
-Scientist](https://runestone.academy/runestone/books/published/thinkcspy/index.html).
+There is an interactive edition based on the same original text at [Think Like
+a Computer Scientist interactive
+edition](https://runestone.academy/runestone/books/published/thinkcspy/index.html).

@@ -4,18 +4,24 @@ title: Using the terminal
 permalink: /start_terminal
 ---
 
-We use the (ahem) term *terminal* to mean an application that allows you to run applications by typing commands.
+# Starting a terminal application on your computer
+
+We use the (ahem) term *terminal* to mean an application that allows you to
+run applications by typing commands.
 
 Here's a screen-shot of a Mac terminal window:
 
 ![](images/terminal_app.png)
 
-There is a *prompt* - here it is `[mb312@shanghai ~]$`, but yours will be
-different.  The cursor sits at the end of the prompt.  If you type in this
-window, the characters will appear at the prompt.  When you type some text,
-and press Enter, the terminal will interpret what you typed as commands to be
-sent to the computer.  Usually the commands will names of programs
-(applications) to run, along with any parameters that the program needs.
+There is a similar terminal window for (ahem) Windows.
+
+The terminal has a *prompt* - in the Mac terminal above it is `[mb312@shanghai
+~]$`, but yours will be different.  The cursor sits at the end of the prompt.
+If you type in this window, the characters will appear at the prompt.  When
+you type some text, and press Enter, the terminal will interpret what you
+typed as commands to be sent to the computer.  Usually the commands will be
+names of programs (applications) to run, along with any parameters that the
+program needs.
 
 ## Opening the terminal - Windows
 
