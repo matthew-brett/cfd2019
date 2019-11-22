@@ -2,6 +2,8 @@ from subprocess import check_call
 import os
 import os.path as op
 import shutil as sh
+from collections import namedtuple
+
 import yaml
 from nbclean import NotebookCleaner
 import nbformat as nbf
@@ -14,7 +16,12 @@ import argparse
 
 from jinja2 import Template
 
+
 CONTENT_EXTS = ('.ipynb', '.md', '.Rmd')
+
+
+# Store document information from SUMMARY.md file line.
+SummaryEntry = namedtuple('SummaryEntry', 'title link level in_bar')
 
 
 def _markdown_to_files(path_markdown, indent=2):
@@ -26,12 +33,15 @@ def _markdown_to_files(path_markdown, indent=2):
 
     files = []
     for line in lines:
-        if line.strip().startswith('* '):
-            title = _between_symbols(line, '[', ']')
-            link = _between_symbols(line, '(', ')')
-            spaces = len(line) - len(line.lstrip(' '))
-            level = spaces / indent
-            files.append((title, link, level))
+        sline = line.strip()
+        if not sline.startswith('* '):
+            continue
+        in_bar = not sline.startswith('* -')
+        title = _between_symbols(line, '[', ']')
+        link = _between_symbols(line, '(', ')')
+        spaces = len(line) - len(line.lstrip(' '))
+        level = int(spaces / indent)
+        files.append(SummaryEntry(title, link, level, in_bar))
     return files
 
 
@@ -203,17 +213,21 @@ class SiteBuilder:
         sidebar_text = []
         sidebar_text.append({'title': 'Home', 'class': 'level_0', 'url': '/'})
         chapter_ix = 1
-        for ix_file, (title, link, level) in list(enumerate(files)):
-            if level > 0 and len(link) == 0:
+        for ix_file, se in list(enumerate(files)):
+            if not se.in_bar:
                 continue
-            if level == 0:
+            if se.level > 0 and len(se.link) == 0:
+                continue
+            if se.level == 0:
                 if self.site_yaml.get('number_chapters', False) is True:
-                    title = '{}. {}'.format(chapter_ix, title)
+                    title = '{}. {}'.format(chapter_ix, se.title)
                 chapter_ix += 1
-            new_link = self._prepare_link(link)
-            new_item = {'title': title, "class": "level_{}".format(int(level)), 'url': new_link}
-            if level == 0:
-                if ix_file != (len(files) - 1) and level < files[ix_file + 1][-1]:
+            new_link = self._prepare_link(se.link)
+            new_item = {'title': se.title, "class":
+                        "level_{}".format(se.level),
+                        'url': new_link}
+            if se.level == 0:
+                if ix_file != (len(files) - 1) and files[ix_file + 1].level:
                     new_item['children'] = []
                 sidebar_text.append(new_item)
             else:
@@ -334,14 +348,14 @@ class SiteBuilder:
             prev_page_link = ''
             prev_file_title = ''
         else:
-            prev_file_title, prev_page_link, _ = files[ix_file-1]
+            prev_file_title, prev_page_link, _, _ = files[ix_file-1]
             prev_page_link = self._prepare_link(prev_page_link)
 
         if ix_file == len(files) - 1:
             next_page_link = ''
             next_file_title = ''
         else:
-            next_file_title, next_page_link, _ = files[ix_file+1]
+            next_file_title, next_page_link, _, _ = files[ix_file+1]
             next_page_link = self._prepare_link(next_page_link)
 
         # Extra slash to the inline math before `#` since Jekyll strips it
@@ -392,7 +406,7 @@ class SiteBuilder:
         # --- Loop through all ipynb/md files, convert to md as necessary and copy. ---
         n_skipped_files = 0
         n_built_files = 0
-        for ix_file, (title, link, level) in tqdm(list(enumerate(files))):
+        for ix_file, (title, link, level, _) in tqdm(list(enumerate(files))):
             if len(link) == 0:
                 continue
             if not op.exists(link):
