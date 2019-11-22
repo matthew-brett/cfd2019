@@ -209,21 +209,23 @@ class SiteBuilder:
         return lines
 
     def _generate_sidebar(self, files):
-        """Generate the sidebar text for the textbook, and add it to the textbook yaml."""
+        """Generate sidebar text for the textbook, add it to the textbook yaml
+        """
         sidebar_text = []
         sidebar_text.append({'title': 'Home', 'class': 'level_0', 'url': '/'})
         chapter_ix = 1
         for ix_file, se in list(enumerate(files)):
+            title = se.title
             if not se.in_bar:
                 continue
             if se.level > 0 and len(se.link) == 0:
                 continue
             if se.level == 0:
                 if self.site_yaml.get('number_chapters', False) is True:
-                    title = '{}. {}'.format(chapter_ix, se.title)
+                    title = '{}. {}'.format(chapter_ix, title)
                 chapter_ix += 1
             new_link = self._prepare_link(se.link)
-            new_item = {'title': se.title, "class":
+            new_item = {'title': title, "class":
                         "level_{}".format(se.level),
                         'url': new_link}
             if se.level == 0:
