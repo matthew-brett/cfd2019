@@ -6,4 +6,4 @@ permalink: /classes/class_16
 
 # Day 16 (the seventeenth day)
 
-We devoted the day to the [project progress reports](../projects/progress).
+TBA

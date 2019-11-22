@@ -16,6 +16,9 @@ permalink: /classes/class_15
 * [On None](../chapters/07/none)
 * [Functions in detail](../chapters/07/functions)
 * [First functions exercise](../exercises/first_functions.zip)
-* [Functions as values](../chapters/07/functions_as_values)
-* [Function as values
-  exercises](../chapters/exercises/functions_values_exercises)
+
+## Assignment
+
+* Finish the [first functions exercise](../exercises/first_functions.zip).
+* Read the [functions as values page](../chapters/07/functions_as_values).
+* Do the [functions as values exercise](../exercises/function_vals.zip).
