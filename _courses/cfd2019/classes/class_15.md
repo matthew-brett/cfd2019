@@ -12,10 +12,10 @@ permalink: /classes/class_15
 
 ## Schedule
 
-* [Introducing functions](../chapters/07/introducing_functions)
-* [On None](../chapters/07/none)
-* [Functions in detail](../chapters/07/functions)
-* [First functions exercise](../exercises/first_functions.zip)
+* [Introducing functions](../chapters/07/introducing_functions).
+* [On None](../chapters/07/none).
+* [Functions in detail](../chapters/07/functions).
+* [First functions exercise](../exercises/first_functions.zip).
 
 ## Assignment
 
