@@ -22,7 +22,6 @@ computer.
 * [Money and death, data frames, permutation](../../exercises/money_death.zip)
 * [Data frames again](df_exercises)
 * [Writing functions](../../exercises/first_functions.zip)
-* [Function as values
-  exercises](functions_values_exercises)
+* [Functions as values exercise](../../exercises/function_vals.zip)
 * [Conditional statement
   exercises](conditional_statements_exercises)
