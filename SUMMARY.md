@@ -81,7 +81,7 @@
   * - [For loops](notebooks/exercises/for_loops.ipynb)
   * - [Function exercises](notebooks/exercises/function_exercises.ipynb)
   * - [Function as values exercises](notebooks/exercises/functions_values_exercises.ipynb)
-  * [Conditional statement exercises](notebooks/exercises/conditional_statements_exercises.ipynb)
+  * - [Conditional statement exercises](notebooks/exercises/conditional_statements_exercises.ipynb)
 * [Extra pages](notebooks/extra/extra.md)
   * [More on lists](notebooks/extra/more_on_lists.ipynb)
   * [Monty Hall with lists](notebooks/extra/monty_hall_lists.ipynb)
