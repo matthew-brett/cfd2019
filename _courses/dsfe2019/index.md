@@ -12,6 +12,7 @@ for Everyone" course at the University of Birmingham.
 * [License](license) for the materials on this site.
 * [Classes](classes)
 * [Project](project)
+* [Links, notes and policies](course).
 
 For those with access, please see the [Canvas course
 page](https://canvas.bham.ac.uk/courses/40740).
