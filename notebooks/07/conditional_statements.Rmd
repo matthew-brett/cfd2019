@@ -38,13 +38,13 @@ def classify(x):
 
 Let us work through what Python will do when we evaluate `classify(3)`.
 
-1.  Evaluate `classify` to the internal representation (IR) of the
+1.  Evaluate `classify` to the computer representation (CR) of the
     function;
-1.  Evaluate `3` to give the IR of the integer 3
-1.  Call the IR of the function, with the IR of int 3. So:
+1.  Evaluate `3` to give the CR of the integer 3
+1.  Call the CR of the function, with the CR of int 3. So:
 
     1. Python enters function world
-    1. The new variable `x` gets the value IR of int 3.
+    1. The new variable `x` gets the value CR of int 3.
     1. Python executes the function body
 
 All this is revision from [functions](functions).
@@ -52,10 +52,10 @@ All this is revision from [functions](functions).
 What happens in the function body, with `x = 3`?
 
 1.   Python evaluates the *if expression* `x > 0`.  The result is the
-     IR of `True`.  This is a true value, so Python executes the body
+     CR of `True`.  This is a true value, so Python executes the body
      of the if statement.
 1.   The body of the if statement is the single line `return
-     'Positive'`.  `'Positive'` evaluates to the IR of the string
+     'Positive'`.  `'Positive'` evaluates to the CR of the string
      `'Positive'`.  `return` exits function world, returning this
      value.
 
@@ -67,7 +67,7 @@ The `classify` function returns `'Positive'` if the input is a
 positive number, like `3`. But if the input is not a positive number,
 such as `-3`, then this happens, in the function body:
 
-1. `x` has the value IR of int -3.
+1. `x` has the value CR of int -3.
 1. `x > 0` evaluates to `False`, so Python skips the body of the if
    statement.
 1. The function body ends without executing a `return` statement.
@@ -101,7 +101,7 @@ def classify(x):
         return 'Not positive'
 ```
 
-Imagine we evaluate `classify(-3)` again.  Python enters function world, and sets `x` to have the value IR of int -3.  It checks `x > 0` and finds a false value, so it skips the first clause, and executes the clause following `else:`.  This `return`s `'Not positive'`.
+Imagine we evaluate `classify(-3)` again.  Python enters function world, and sets `x` to have the value CR of int -3.  It checks `x > 0` and finds a false value, so it skips the first clause, and executes the clause following `else:`.  This `return`s `'Not positive'`.
 
 Now imagine we prefer our function to return `'Negative` for negative values and `Zero` if the input value is 0.  It seems like we need three clauses, one each for positive, negative and 0 values.
 
