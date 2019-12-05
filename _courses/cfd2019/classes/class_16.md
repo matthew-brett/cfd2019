@@ -13,6 +13,7 @@ permalink: /classes/class_16
 ## Schedule
 
 * [Conditional statements](../chapters/07/conditional_statements).
+* [Conditionals exercise](../exercises/conditionals.zip).
 * [Functions and conditionals exercise](../exercises/functions_conditionals.zip).
 
 ## Assignment
