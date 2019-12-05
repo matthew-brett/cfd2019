@@ -217,7 +217,9 @@ We want an algorithm to choose a newspaper for someone to read in the
 dentist's waiting room, given what we know about their views on
 Brexit.
 
-Write a cell that prints `Times` if `voter` has the value `Soft Brexit`, otherwise prints `Telegraph` if `voter` has the value `Hard Brexit` otherwise prints `Guardian` if `voter` has value `remain`, otherwise prints `No idea`.
+Write a cell that prints `Times` if `voter` has the value `Soft Brexit`,
+otherwise prints `Telegraph` if `voter` has the value `Hard Brexit` otherwise
+prints `Guardian` if `voter` has value `remain`, otherwise prints `No idea`.
 
 ```{python}
 # Try for different values of voter

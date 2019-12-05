@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 16 - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>Class 14 - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Class 16">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/classes/class_16">
+<meta property="og:title" content="Class 14">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/classes/class_14">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/classes/class_16">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/classes/class_14">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 16">
+    <meta itemprop="headline" content="Class 14">
     
     
     
@@ -174,7 +174,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 16
+          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 14
 </h1> -->
           
         </header>
@@ -182,19 +182,19 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-16-the-seventeenth-day">Day 16 (the seventeenth day)</h1>
+        # Licenses for data not otherwise specified
 
-<h2 id="announcements">Announcements</h2>
+* `gender_data.csv` - see
+  <https://github.com/matthew-brett/datasets/tree/master/gender_stats>.
+   CC-BY, attribution to the World Bank.
 
-<ul>
-  <li>Final assessment deadline, again.</li>
-</ul>
+* `mosquito_beer.csv` - see
+  <https://github.com/matthew-brett/datasets/tree/master/mosquito_beer>.
+   CC-BY, attribution to Dr Thierry Lefèvre - see link above for detail.
 
-<h2 id="schedule">Schedule</h2>
-
-<ul>
-  <li><a href="../chapters/07/conditional_statements">Conditional statements</a>.</li>
-</ul>
+* `rate_my_course.csv` - see
+  <https://github.com/matthew-brett/datasets/tree/master/good_and_easy>.
+   The license is not clear - see link for details.  For now, assume CC-0.
 
         
       </section>
