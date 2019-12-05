@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
 
 
 
@@ -1021,7 +1021,7 @@ That is, for any one juror, there is a 0.26 probability that they are black.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">black_yn</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>27
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>26
 </code></pre></div></div>
 
 <p>That is one estimate, for the number of black people we can expect, if our
@@ -1045,7 +1045,7 @@ of times, to make sure we’ve got an idea of the variation.</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([19.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([26.])
 </code></pre></div></div>
 
 <p>Run the cell above a few times, perhaps with Control-Enter, to see the <code class="highlighter-rouge">counts</code> array extending, for each time we run the cell.</p>
@@ -1067,14 +1067,14 @@ a much higher number.</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([26., 18., 29., 25., 24., 26., 21., 21., 27., 21., 25., 29., 25.,
-       23., 22., 25., 36., 27., 25., 21., 21., 27., 25., 24., 25., 25.,
-       21., 27., 23., 27., 29., 26., 29., 26., 26., 23., 24., 28., 16.,
-       25., 35., 24., 22., 25., 25., 30., 28., 23., 19., 28., 28., 23.,
-       29., 23., 18., 26., 32., 23., 31., 28., 20., 27., 22., 26., 24.,
-       17., 26., 15., 21., 19., 32., 27., 27., 23., 25., 21., 30., 27.,
-       24., 24., 29., 29., 23., 21., 22., 26., 37., 25., 22., 26., 23.,
-       28., 27., 24., 26., 22., 33., 25., 28., 30.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([26., 21., 23., 23., 26., 25., 21., 26., 25., 19., 20., 21., 24.,
+       19., 33., 22., 26., 19., 24., 26., 22., 31., 29., 28., 23., 25.,
+       18., 40., 30., 34., 25., 27., 23., 18., 29., 22., 22., 23., 30.,
+       31., 27., 22., 23., 26., 22., 29., 21., 30., 27., 21., 23., 23.,
+       21., 26., 28., 24., 21., 28., 29., 26., 22., 25., 23., 28., 34.,
+       24., 27., 28., 27., 22., 28., 24., 19., 23., 18., 26., 25., 28.,
+       21., 30., 17., 30., 26., 24., 27., 21., 30., 28., 27., 25., 19.,
+       25., 23., 32., 27., 31., 21., 29., 33., 30.])
 </code></pre></div></div>
 
 <p>Each of these values is one estimate for how many black jurors we should
@@ -1096,7 +1096,7 @@ and therefore, 10000 estimates.</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([29., 24., 30., ..., 26., 21., 32.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([28., 21., 36., ..., 24., 35., 27.])
 </code></pre></div></div>
 
 <p>If you ran this cell yourself, you will notice that it runs very fast, in much
@@ -1131,9 +1131,9 @@ a histogram.  Here is how to do that, in Python.  Don’t worry about the detail
 </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([7.000e+00, 1.030e+02, 9.000e+02, 1.948e+03, 3.447e+03, 2.505e+03,
-        7.830e+02, 2.780e+02, 2.600e+01, 3.000e+00]),
- array([ 9. , 12.7, 16.4, 20.1, 23.8, 27.5, 31.2, 34.9, 38.6, 42.3, 46. ]),
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([  28.,  212.,  785., 2681., 2570., 2153., 1268.,  237.,   56.,
+          10.]),
+ array([11. , 14.3, 17.6, 20.9, 24.2, 27.5, 30.8, 34.1, 37.4, 40.7, 44. ]),
  &lt;a list of 10 Patch objects&gt;)
 </code></pre></div></div>
 
@@ -1155,7 +1155,7 @@ to show us the minimum value that we do see, by using the <code class="highlight
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9.0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11.0
 </code></pre></div></div>
 
 <p>We have run an analysis assuming that the jurors were selected at random.  On

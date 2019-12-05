@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
 
 
 
@@ -1147,7 +1147,7 @@ another_array
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2531
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2552
 </code></pre></div></div>
 
 <p>This works fine for relatively small numbers of iterations, such as 10000 (yes, that is small for the computer!).  Try changing the 10000 above to 1000000 and you will find it becomes very slow.  This is because it is inefficient to make a new array each time we go through the loop, which is what we have to do using <code class="highlighter-rouge">np.append</code>.   Each new array is one element longer than the last, so by the end of the one million iterations we will be making a new array of nearly one million values for each time through the loop.</p>
@@ -1174,7 +1174,7 @@ another_array
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2496
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2506
 </code></pre></div></div>
 
 <p>We will use loops like these many times to solve problems in statistics.</p>

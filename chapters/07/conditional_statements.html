@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
 
 
 
@@ -1012,15 +1012,15 @@ express alternative behavior depending on argument values.</p>
 <p>Let us work through what Python will do when we evaluate <code class="highlighter-rouge">classify(3)</code>.</p>
 
 <ol>
-  <li>Evaluate <code class="highlighter-rouge">classify</code> to the internal representation (IR) of the
+  <li>Evaluate <code class="highlighter-rouge">classify</code> to the computer representation (CR) of the
 function;</li>
-  <li>Evaluate <code class="highlighter-rouge">3</code> to give the IR of the integer 3</li>
+  <li>Evaluate <code class="highlighter-rouge">3</code> to give the CR of the integer 3</li>
   <li>
-    <p>Call the IR of the function, with the IR of int 3. So:</p>
+    <p>Call the CR of the function, with the CR of int 3. So:</p>
 
     <ol>
       <li>Python enters function world</li>
-      <li>The new variable <code class="highlighter-rouge">x</code> gets the value IR of int 3.</li>
+      <li>The new variable <code class="highlighter-rouge">x</code> gets the value CR of int 3.</li>
       <li>Python executes the function body</li>
     </ol>
   </li>
@@ -1032,10 +1032,10 @@ function;</li>
 
 <ol>
   <li>Python evaluates the <em>if expression</em> <code class="highlighter-rouge">x &gt; 0</code>.  The result is the
-IR of <code class="highlighter-rouge">True</code>.  This is a true value, so Python executes the body
+CR of <code class="highlighter-rouge">True</code>.  This is a true value, so Python executes the body
 of the if statement.</li>
   <li>The body of the if statement is the single line <code class="highlighter-rouge">return
-'Positive'</code>.  <code class="highlighter-rouge">'Positive'</code> evaluates to the IR of the string
+'Positive'</code>.  <code class="highlighter-rouge">'Positive'</code> evaluates to the CR of the string
 <code class="highlighter-rouge">'Positive'</code>.  <code class="highlighter-rouge">return</code> exits function world, returning this
 value.</li>
 </ol>
@@ -1051,7 +1051,7 @@ positive number, like <code class="highlighter-rouge">3</code>. But if the input
 such as <code class="highlighter-rouge">-3</code>, then this happens, in the function body:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">x</code> has the value IR of int -3.</li>
+  <li><code class="highlighter-rouge">x</code> has the value CR of int -3.</li>
   <li><code class="highlighter-rouge">x &gt; 0</code> evaluates to <code class="highlighter-rouge">False</code>, so Python skips the body of the if
 statement.</li>
   <li>The function body ends without executing a <code class="highlighter-rouge">return</code> statement.</li>
@@ -1086,7 +1086,7 @@ clause, after the if expression, as before.  If it evaluates to a false value, P
         <span class="k">return</span> <span class="s">'Not positive'</span>
 </code></pre></div></div>
 
-<p>Imagine we evaluate <code class="highlighter-rouge">classify(-3)</code> again.  Python enters function world, and sets <code class="highlighter-rouge">x</code> to have the value IR of int -3.  It checks <code class="highlighter-rouge">x &gt; 0</code> and finds a false value, so it skips the first clause, and executes the clause following <code class="highlighter-rouge">else:</code>.  This <code class="highlighter-rouge">return</code>s <code class="highlighter-rouge">'Not positive'</code>.</p>
+<p>Imagine we evaluate <code class="highlighter-rouge">classify(-3)</code> again.  Python enters function world, and sets <code class="highlighter-rouge">x</code> to have the value CR of int -3.  It checks <code class="highlighter-rouge">x &gt; 0</code> and finds a false value, so it skips the first clause, and executes the clause following <code class="highlighter-rouge">else:</code>.  This <code class="highlighter-rouge">return</code>s <code class="highlighter-rouge">'Not positive'</code>.</p>
 
 <p>Now imagine we prefer our function to return <code class="highlighter-rouge">'Negative</code> for negative values and <code class="highlighter-rouge">Zero</code> if the input value is 0.  It seems like we need three clauses, one each for positive, negative and 0 values.</p>
 

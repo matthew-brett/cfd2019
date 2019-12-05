@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
 
 
 
@@ -1017,7 +1017,7 @@ starting at 1 up to, but not including 11. This gives us a random integer from
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
 </code></pre></div></div>
 
 <p>If we pass three arguments, we also set the <code class="highlighter-rouge">size</code> argument.  This tells the function how many random numbers to return.  The following asks for an array of four random integers from 1 through 20:</p>
@@ -1026,7 +1026,7 @@ starting at 1 up to, but not including 11. This gives us a random integer from
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([14, 10, 15,  7])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10,  6, 11, 12])
 </code></pre></div></div>
 
 <p>Notice that this is an <em>array</em>.</p>
@@ -1040,7 +1040,7 @@ above.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([12,  8,  2,  8])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 18,  7,  3])
 </code></pre></div></div>
 
 <p>When we call the function using the arguments with their names like this, the named arguments are called <em>keyword</em> arguments.</p>
@@ -1052,7 +1052,7 @@ clearer what each argument means.   For example, it’s a common pattern to call
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 4, 12,  4, 11])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([18, 18,  4,  9])
 </code></pre></div></div>
 
 <p>Writing the call like the cell gives exactly the same result as the cell below,
@@ -1064,7 +1064,7 @@ of the output array.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([14,  1,  2, 20])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 5,  7, 16, 19])
 </code></pre></div></div>
 
 <p>To take another example, we have already seen the function <code class="highlighter-rouge">round</code>.  Inspect

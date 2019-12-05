@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
 
 
 
@@ -1053,7 +1053,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 3.])
 </code></pre></div></div>
 
 <p>To add another family, we just repeat the same:</p>
@@ -1067,7 +1067,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 1., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 3., 3.])
 </code></pre></div></div>
 
 <p>Obviously this is getting a bit boring and repetitive. Surely we can do better.</p>
@@ -1088,7 +1088,7 @@ soon</a>.  Here’s a preview:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 3., 3., ..., 2., 1., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 2., 3., ..., 1., 2., 1.])
 </code></pre></div></div>
 
 <p>Now we have a count of the number of girls, from 10000 simulated families:</p>
@@ -1126,7 +1126,7 @@ soon</a>.  Here’s a preview:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True,  True, ..., False, False, False])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False, False,  True, ..., False, False, False])
 </code></pre></div></div>
 
 <p>This is a new 10000 element array of True and False values.  It is called a <em>Boolean array</em>.  We will see many more of these.</p>
@@ -1162,7 +1162,7 @@ soon</a>.  Here’s a preview:</p>
 <span class="n">n_3_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2508
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2518
 </code></pre></div></div>
 
 <p>Finally we estimate the probability by dividing the number of times we saw 3 by the number of trials:</p>
@@ -1171,7 +1171,7 @@ soon</a>.  Here’s a preview:</p>
 </span><span class="n">n_3_girls</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2508
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2518
 </code></pre></div></div>
 
 <h2 id="the-whole-thing">The whole thing</h2>
@@ -1201,7 +1201,7 @@ soon</a>.  Here’s a preview:</p>
 </span><span class="n">n_3_girls</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2463
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2436
 </code></pre></div></div>
 
 <h2 id="for-loops">For loops.</h2>
