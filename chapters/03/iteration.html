@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T09:51:45+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
 
 
 
@@ -983,8 +983,8 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/03/iteration.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F03%2Fiteration.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/03/iteration.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F03%2Fiteration.ipynb">Interact</a>
 
 
           <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the Numpy package, and rename to "np"
@@ -1005,7 +1005,7 @@ between the integers in the range we specify.</p>
 <span class="n">coin</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>We might want to check this really does in fact pick 0 or 1 with
@@ -1016,7 +1016,7 @@ the following cell many times to see if we get roughly equal numbers of
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>We might want to re-run code with slightly different input or other slightly
@@ -1199,10 +1199,10 @@ print the results of five random integers:</p>
 </code></pre></div></div>
 
 <div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
-1
-1
 0
-1
+0
+0
+0
 
 </code></pre></div></div>
 
@@ -1225,7 +1225,7 @@ the result of each toss.</p>
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 1., 0., 0., 1.])
 </code></pre></div></div>
 
 <p>Let us rewrite the cell with the <code class="highlighter-rouge">for</code> statement unrolled:</p>
@@ -1272,65 +1272,65 @@ heads in 1000 tosses.</p>
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1.,
-       1., 1., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0., 1., 1., 1., 1., 0.,
-       1., 0., 1., 1., 1., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0., 1., 0.,
-       1., 0., 0., 0., 0., 0., 1., 0., 0., 1., 0., 0., 0., 0., 1., 1., 0.,
-       0., 1., 0., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 0.,
-       0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 0., 1., 0., 1., 1., 0., 1.,
-       0., 1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 1., 1., 0., 0., 1., 0.,
-       1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 0.,
-       1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1., 1.,
-       1., 1., 1., 0., 0., 0., 0., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1.,
-       1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 1., 0., 1., 1., 1., 1., 0.,
-       1., 1., 0., 1., 0., 1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 1.,
-       1., 1., 0., 1., 1., 1., 0., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0.,
-       0., 1., 1., 1., 0., 1., 1., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1.,
-       1., 1., 1., 0., 0., 0., 1., 1., 1., 0., 1., 1., 1., 1., 0., 0., 1.,
-       0., 0., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1., 0., 0., 1.,
-       0., 1., 0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0., 1.,
-       1., 1., 0., 1., 0., 0., 1., 1., 1., 0., 1., 0., 0., 0., 0., 0., 1.,
-       0., 1., 1., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0.,
-       1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1.,
-       1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1.,
-       0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1., 0.,
-       1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 1., 1., 0., 0., 0.,
-       0., 0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 1., 0., 1., 0., 1., 0.,
-       1., 1., 1., 1., 0., 1., 1., 0., 1., 0., 1., 1., 0., 0., 0., 1., 0.,
-       1., 0., 1., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 0., 1., 0.,
-       0., 0., 1., 0., 1., 1., 1., 1., 0., 1., 1., 1., 1., 1., 1., 0., 1.,
-       1., 0., 0., 0., 0., 1., 0., 0., 1., 0., 1., 0., 1., 1., 1., 0., 0.,
-       0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0., 0., 0., 1., 1., 0.,
-       0., 0., 1., 0., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 1.,
-       1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 1., 1.,
-       1., 0., 1., 0., 1., 1., 1., 1., 1., 1., 0., 0., 1., 0., 0., 1., 0.,
-       0., 1., 1., 1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 0., 1.,
-       0., 1., 1., 1., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1.,
-       1., 0., 1., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1., 0.,
-       0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 0., 1., 0.,
-       1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 0., 0., 0., 0.,
-       1., 1., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 0.,
-       0., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 1.,
-       0., 1., 0., 1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
-       1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1., 0., 1., 1., 1., 1.,
-       0., 1., 1., 1., 0., 0., 1., 1., 1., 0., 0., 0., 0., 0., 1., 0., 1.,
-       0., 0., 1., 1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1., 1.,
-       0., 0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1., 1., 0., 1., 0.,
-       1., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1.,
-       1., 0., 0., 1., 0., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0., 0., 0.,
-       1., 0., 0., 1., 1., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 0., 0.,
-       1., 1., 1., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 0., 0.,
-       0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1.,
-       0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 0., 1., 0., 1., 0.,
-       0., 0., 0., 1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 0., 0.,
-       0., 0., 1., 1., 1., 1., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1., 1.,
-       1., 1., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 0., 1., 0., 0., 1.,
-       0., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 1.,
-       1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 0., 0., 1.,
-       0., 1., 0., 0., 0., 1., 0., 0., 1., 0., 0., 1., 0., 1., 0., 0., 0.,
-       1., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 1., 0., 0., 1.,
-       0., 1., 0., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 0.,
-       0., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 0., 0.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 1., 1., 0., 0., 0., 1.,
+       0., 1., 1., 0., 0., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1.,
+       1., 1., 0., 0., 0., 0., 0., 1., 1., 1., 0., 0., 1., 1., 0., 0., 1.,
+       0., 0., 0., 1., 1., 1., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1.,
+       1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1.,
+       1., 1., 1., 1., 0., 1., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 0.,
+       1., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 0., 0., 0., 0., 1., 0.,
+       1., 0., 1., 0., 0., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 0., 0.,
+       0., 0., 1., 1., 1., 0., 0., 1., 1., 0., 0., 1., 0., 0., 1., 1., 1.,
+       0., 0., 0., 0., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 1.,
+       1., 0., 0., 1., 1., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1., 0., 0.,
+       1., 0., 1., 0., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 1., 1.,
+       1., 1., 0., 1., 1., 0., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 0.,
+       1., 1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 1., 0., 0., 1., 1., 1.,
+       1., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1., 0., 0., 0., 0., 1., 0.,
+       1., 0., 1., 1., 1., 0., 1., 1., 0., 0., 0., 0., 0., 1., 0., 0., 1.,
+       0., 0., 1., 0., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1.,
+       1., 0., 0., 0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1.,
+       1., 1., 0., 1., 1., 1., 1., 1., 1., 0., 0., 1., 0., 1., 0., 0., 1.,
+       0., 0., 0., 0., 1., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0.,
+       0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 0., 0., 1., 1., 0.,
+       1., 0., 1., 1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 0., 1., 0., 0.,
+       1., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 1., 1., 1.,
+       1., 0., 0., 0., 1., 1., 1., 1., 0., 1., 1., 0., 0., 0., 0., 1., 1.,
+       0., 1., 0., 1., 0., 0., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1., 0.,
+       1., 0., 0., 1., 0., 0., 0., 1., 1., 1., 1., 1., 0., 1., 1., 0., 0.,
+       1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 1., 1., 0., 1., 1., 1.,
+       1., 0., 1., 0., 0., 1., 0., 0., 1., 1., 0., 1., 1., 1., 0., 0., 1.,
+       1., 1., 0., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 1., 1.,
+       1., 0., 0., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0.,
+       1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 0., 0., 1., 1., 1., 1., 1.,
+       1., 1., 0., 0., 0., 0., 1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 0.,
+       1., 0., 1., 1., 0., 0., 0., 0., 0., 1., 0., 1., 0., 1., 0., 1., 0.,
+       0., 1., 0., 1., 0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 1.,
+       0., 1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 1., 0., 1.,
+       1., 1., 1., 0., 0., 0., 0., 0., 1., 1., 1., 1., 0., 1., 0., 0., 0.,
+       1., 1., 1., 0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 0.,
+       0., 1., 1., 1., 1., 0., 1., 0., 0., 0., 1., 1., 1., 1., 1., 1., 1.,
+       0., 0., 1., 1., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1.,
+       1., 0., 0., 0., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1., 0., 0., 0.,
+       0., 1., 0., 1., 1., 0., 1., 1., 1., 1., 1., 0., 0., 1., 1., 0., 0.,
+       1., 0., 0., 1., 0., 1., 1., 0., 1., 1., 1., 0., 1., 1., 1., 1., 0.,
+       1., 1., 1., 1., 0., 1., 1., 1., 1., 1., 0., 0., 0., 1., 1., 1., 1.,
+       1., 1., 0., 1., 1., 0., 1., 0., 1., 1., 1., 1., 0., 0., 1., 0., 0.,
+       1., 0., 0., 1., 0., 1., 0., 1., 1., 1., 0., 1., 1., 1., 0., 0., 0.,
+       0., 0., 0., 1., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 0., 0., 1.,
+       0., 1., 0., 1., 0., 1., 0., 1., 1., 1., 1., 1., 0., 1., 0., 1., 1.,
+       1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 1., 0., 1., 0., 1., 0., 1.,
+       1., 1., 0., 1., 0., 1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 1.,
+       1., 1., 1., 0., 1., 1., 0., 1., 1., 1., 1., 1., 1., 0., 1., 0., 1.,
+       0., 0., 0., 1., 0., 0., 0., 1., 1., 0., 0., 1., 1., 0., 0., 1., 0.,
+       0., 0., 0., 0., 0., 0., 1., 1., 1., 1., 0., 0., 0., 0., 0., 1., 1.,
+       1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 1., 0., 1., 1., 1., 0., 0.,
+       0., 1., 0., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 1., 0., 0., 0.,
+       1., 0., 1., 1., 1., 1., 1., 1., 1., 0., 1., 1., 1., 0., 1., 1., 0.,
+       1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 1., 0., 1., 1., 1., 0., 0.,
+       0., 0., 1., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1., 1., 1., 0., 0.,
+       0., 0., 1., 1., 0., 0., 1., 1., 1., 0., 1., 1., 0., 0., 0., 0., 1.,
+       1., 1., 1., 0., 0., 0., 0., 1., 1., 1., 1., 1., 0., 1.])
 </code></pre></div></div>
 
 <h3 id="example-number-of-heads-in-100-tosses">Example: Number of Heads in 100 Tosses</h3>
@@ -1354,12 +1354,14 @@ experiment:</p>
 <p>The histogram of our results will give us some insight into how many
 heads are likely.</p>
 
-<p>As y’all have already seen, <code class="highlighter-rouge">np.randint</code> can take a <code class="highlighter-rouge">size</code> argument, to return an array of random integers:</p>
+<p><code class="highlighter-rouge">np.randint</code> can take a third argument, corresponding to <code class="highlighter-rouge">size</code>.  This call
+returns an array length 10 of random integers from 0 up to, but not including
+2; it therefore returns 10 numbers, each of which can be either 0 or 1.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 1, 1, 0, 1, 1, 0, 1])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 0, 1, 0, 0, 0, 1, 1, 0, 1])
 </code></pre></div></div>
 
 <p>Now let’s study 100 tosses. We will start by creating an empty array
@@ -1378,7 +1380,7 @@ a coin 100 times, count the number of heads, and append it to <code class="highl
 <span class="n">head_counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([43., 41., 57., ..., 53., 44., 52.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([44., 49., 50., ..., 46., 50., 47.])
 </code></pre></div></div>
 
 <p>Here is a histogram of the data, with bins of width 1 centered at each

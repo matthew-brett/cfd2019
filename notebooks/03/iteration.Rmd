@@ -436,7 +436,9 @@ The histogram of our results will give us some insight into how many
 heads are likely.
 
 
-As y'all have already seen, `np.randint` can take a `size` argument, to return an array of random integers:
+`np.randint` can take a third argument, corresponding to `size`.  This call
+returns an array length 10 of random integers from 0 up to, but not including
+2; it therefore returns 10 numbers, each of which can be either 0 or 1.
 
 ```{python}
 np.random.randint(0, 2, size=10)

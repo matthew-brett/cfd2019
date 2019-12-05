@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T09:51:45+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
 
 
 
@@ -972,8 +972,8 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/02/first_pass_three_girls.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F02%2Ffirst_pass_three_girls.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/02/first_pass_three_girls.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F02%2Ffirst_pass_three_girls.ipynb">Interact</a>
 
 
           <p>Remember the <a href="three_girls">three girls in a family problem</a>?</p>
@@ -989,10 +989,10 @@
 <p>This function can give us random numbers from 0 up to, but not including 2, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Generate a random number that is either 0 or 1
-</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>You can run the same cell over and over by pressing Control and Enter together (Control - Enter).  This is like Shift - Enter, except Control - Enter leaves the focus inside the cell, so you can run the same again immediately.</p>
@@ -1002,15 +1002,15 @@
 <p>Now we have variables, we can do better than running this cell four times, and counting the number of time we see 1.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get four random numbers between 0 and 1.
-</span><span class="n">a</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span class="n">a</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1"># Count the number of ones by adding them up.  Show the result.
 </span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
 <p>Using Control - Enter, run this cell 100 times.  Count the number of times you see the result 3.   Divide that number by 100, and you have an estimate of the number of families with four children that have exactly three girls.</p>

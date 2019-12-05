@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T09:51:45+00:00">
+  <meta property="article:published_time" content="2019-12-05T18:21:01+00:00">
 
 
 
@@ -972,8 +972,8 @@
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/notebooks/02/three_girls.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=notebooks%2F02%2Fthree_girls.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/02/three_girls.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F02%2Fthree_girls.ipynb">Interact</a>
 
 
           <h1 id="a-simpler-problem">A simpler problem</h1>
@@ -1000,8 +1000,9 @@ like the real data.</p>
 <p>Call 0 a boy, and 1 a girl.  If we run this four times, then we have one simulated family.  We can count how many 1s (girls) we got in the four runs, and that is the simulated number of girls, for this family.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Return a random number that is either 0 or 1.
-# The 2 is to tell the function to return numbers up to, but not including 2.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+# The second arguments, 2, tells the function to return numbers up to, but
+# not including 2.
+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
