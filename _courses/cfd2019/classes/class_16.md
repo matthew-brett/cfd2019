@@ -6,4 +6,10 @@ permalink: /classes/class_16
 
 # Day 16 (the seventeenth day)
 
-TBA
+## Announcements
+
+* Final assessment deadline, again.
+
+## Schedule
+
+* [Conditional statements](../chapters/07/conditional_statements).

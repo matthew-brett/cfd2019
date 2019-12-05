@@ -25,3 +25,4 @@ computer.
 * [Functions as values exercise](../../exercises/function_vals.zip)
 * [Conditional statement
   exercises](conditional_statements_exercises)
+* [Functions, conditionals exercise](../../exercises/functions_conditionals.zip).
