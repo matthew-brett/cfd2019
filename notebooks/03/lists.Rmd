@@ -203,10 +203,10 @@ from numpy.random import randint
 
 ```{python}
 # Get four random numbers between 0 and 1.
-a = randint(0, 2)
-b = randint(0, 2)
-c = randint(0, 2)
-d = randint(0, 2)
+a = randint(2)
+b = randint(2)
+c = randint(2)
+d = randint(2)
 ```
 
 Here, each random number gets its own variable.   Then we added the numbers like this:
@@ -298,7 +298,7 @@ a family of four children.
 
 ```{python}
 # Get four random numbers between 0 and 1, put them in a list.
-family = [randint(0, 2), randint(0, 2), randint(0, 2), randint(0, 2)]
+family = [randint(2), randint(2), randint(2), randint(2)]
 # Add all the values in the list
 sum(family)
 ```

@@ -195,7 +195,7 @@ np.cos(0)
 Here is another Numpy function, from the `random` sub-package of the Numpy library.  We get to the sub-packages with the dot `.` - so to get to the `random` sub-package, we use `np.random`.  Then, to get to the functions in this sub-package, we use the dot again, like this:
 
 ```{python}
-np.random.randint(0, 2)
+np.random.randint(2)
 ```
 
 Remember, this is a random integer from 0 up to, but *not including* 2, so it is a random integer that can either be 0 or 1.
@@ -208,11 +208,10 @@ Now let us look at the help for the `np.random.randint` function.  As usual, we 
 # np.random.randint?
 ```
 
-We find that the function can accept up to four arguments.  We have passed two.
-The first sets the argument called `low` to be 0, and the second sets the
-argument called `high` to be 2.
+We find that the function can accept up to four arguments.  We have only passed one, and that sets the argument called `high`.
 
-To take another example, in this case we are asking for a random number
+Now let us pass two arguments, to set the argument called `low` and the
+argument called `high`.  In this case we are asking for a random number
 starting at 1 up to, but not including 11. This gives us a random integer from
 1 through 10. `low` is 1 and `high` is 11.
 
@@ -220,6 +219,13 @@ starting at 1 up to, but not including 11. This gives us a random integer from
 ```{python}
 # Random integer from 1 through 10.
 np.random.randint(1, 11)
+```
+
+Notice that, if we just pass one argument, that argument is the `high` argument.   In that case, the function sets the `low` argument for us, and sets to the *default* value, of 0.  So, the cell below is exactly equivalent to our first call to this function: `np.random.randint(2)`:
+
+```{python}
+# Random integer from 0 through 2.
+np.random.randint(0, 2)
 ```
 
 If we pass three arguments, we also set the `size` argument.  This tells the function how many random numbers to return.  The following asks for an array of four random integers from 1 through 20:
@@ -231,61 +237,31 @@ np.random.randint(1, 21, 4)
 
 Notice that this is an *array*.
 
-Now look again at the help.  Notice that the help gives each argument a *name*
---- `low`, `high`, `size`.  We can also use these names when we set these
-arguments.  For example, the cell below does exactly the same thing as the cell
-above.
+Now look again at the help.  Notice that the help gives each argument a *name* - `low`, `high`, `size`.  We can also use these names when we set these arguments.  For example, the cell below does exactly the same thing as the cell above.
+
+When we call the function using the arguments with their names like this, the named arguments are called *keyword* arguments.
 
 ```{python}
 # Four random integers from 1 through 20, using keyword arguments.
 np.random.randint(low=1, high=21, size=4)
 ```
 
-When we call the function using the arguments with their names like this, the named arguments are called *keyword* arguments.
+Keyword arguments can be very useful, to make it clearer what each argument means.  They also allow us to skip some arguments, and just pass in the ones we want.
 
-
-Passing the arguments like this, using keywords, can be very useful, to make it
-clearer what each argument means.   For example, it's a common pattern to call a function with one or a few keyword arguments, like this:
+For example, we already know that if we just pass one argument, this is the `high` value:
 
 ```{python}
-# Four random integers from 1 through 20.
-np.random.randint(1, 21, size=4)
+np.random.randint(2)
 ```
 
-Writing the call like the cell gives exactly the same result as the cell below,
-but the cell above can be easier to follow, because the person reading the code
-does not have to guess what the 4 means --- they can see that it means the size
-of the output array.
+We might want to specify the `high` value and the `size` value, but let the `low` value remain at its default of 0.  We can do that by specifying the `high` value as normal, then using `size=4` to jump ahead, and specify the `size` value:
 
 ```{python}
-# Four random integers from 1 through 20 - but no keyword argument.
-np.random.randint(1, 21, size=4)
+np.random.randint(2, size=4)
 ```
 
-To take another example, we have already seen the function `round`.  Inspect
-the help for `round` with `round?` and Enter in a notebook cell.
-
-`round` takes up to two arguments.  If we pass one argument, it is just the value that `round` will round to the nearest integer:
-
-```{python}
-round(3.1415)
-```
-
-If we pass two arguments, the first argument is the value we will round, and the second is the number of digits to round to, like this:
-
-```{python}
-round(3.1415, 2)
-```
-
-As you saw in the help, the second argument has the name `ndigits`, so we can also write:
-
-```{python}
-round(3.1415, ndigits=2)
-```
-
-As before, this makes the code a little bit easier to read and understand,
-because it is immediately clear from the name `ndigits` that the 2 means the
-number of digits to round to.
+Here, we leave `low` at the default (0), we specify `high`, and then we change
+the default for `size` to 4, to ask for an array of four random integers.
 
         
       </section>

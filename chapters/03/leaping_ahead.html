@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
+  <meta property="article:published_time" content="2019-12-06T10:41:44+00:00">
 
 
 
@@ -948,7 +948,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.9 Leaping ahead">
       <meta itemprop="description" content="We are still building up to a solution for the three girlsproblem.">
-      <meta itemprop="datePublished" content="December 05, 2019">
+      <meta itemprop="datePublished" content="December 06, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1016,11 +1016,11 @@ an array that simulates a family of four children:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get an array of 4 integers from 0 up to, but not including 2.
 # (Therefore, 4 integers that can be either 0 or 1).
-</span><span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">family</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 1, 0])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 0, 1, 0])
 </code></pre></div></div>
 
 <p>We represented girls with a value of one. We can count the number of girls by using the <code class="highlighter-rouge">np.sum</code> function on the <code class="highlighter-rouge">family</code> array:</p>
@@ -1029,7 +1029,7 @@ an array that simulates a family of four children:</p>
 <span class="n">count</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>We want to build up a lot of counts, in the <code class="highlighter-rouge">counts</code> array, so we start by appending the <code class="highlighter-rouge">count</code> value:</p>
@@ -1039,13 +1039,13 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.])
 </code></pre></div></div>
 
 <p>We can do this again in a single cell, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A second family
-</span><span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
 
 <span class="c1"># Store the count in the counts array.
@@ -1053,13 +1053,13 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 3.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1.])
 </code></pre></div></div>
 
 <p>To add another family, we just repeat the same:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A third family
-</span><span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
 
 <span class="c1"># Store the count in the counts array.
@@ -1067,7 +1067,7 @@ an array that simulates a family of four children:</p>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3., 3., 3.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 2.])
 </code></pre></div></div>
 
 <p>Obviously this is getting a bit boring and repetitive. Surely we can do better.</p>
@@ -1081,14 +1081,14 @@ soon</a>.  Here’s a preview:</p>
 <span class="c1"># Repeat the indented stuff 10000 times.
 </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="c1"># The procedure for one family.
-</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
     <span class="c1"># Store the count in the counts array.
 </span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 2., 3., ..., 1., 2., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 3., ..., 1., 2., 1.])
 </code></pre></div></div>
 
 <p>Now we have a count of the number of girls, from 10000 simulated families:</p>
@@ -1162,7 +1162,7 @@ soon</a>.  Here’s a preview:</p>
 <span class="n">n_3_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2518
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2443
 </code></pre></div></div>
 
 <p>Finally we estimate the probability by dividing the number of times we saw 3 by the number of trials:</p>
@@ -1171,7 +1171,7 @@ soon</a>.  Here’s a preview:</p>
 </span><span class="n">n_3_girls</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2518
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2443
 </code></pre></div></div>
 
 <h2 id="the-whole-thing">The whole thing</h2>
@@ -1186,7 +1186,7 @@ soon</a>.  Here’s a preview:</p>
 <span class="c1"># Repeat the indented stuff 10000 times.
 </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="c1"># The procedure for one family.
-</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
     <span class="c1"># Store the count in the counts array.
 </span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
@@ -1201,7 +1201,7 @@ soon</a>.  Here’s a preview:</p>
 </span><span class="n">n_3_girls</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2436
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2484
 </code></pre></div></div>
 
 <h2 id="for-loops">For loops.</h2>

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
+  <meta property="article:published_time" content="2019-12-06T10:41:44+00:00">
 
 
 
@@ -948,7 +948,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="3.10 Iteration with For loops">
       <meta itemprop="description" content="# Load the Numpy package, and rename to &quot;np&quot;import numpy as np">
-      <meta itemprop="datePublished" content="December 05, 2019">
+      <meta itemprop="datePublished" content="December 06, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1016,7 +1016,7 @@ the following cell many times to see if we get roughly equal numbers of
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>We might want to re-run code with slightly different input or other slightly
@@ -1031,8 +1031,8 @@ sequence, followed by the word <code class="highlighter-rouge">in</code>, and en
 evaluates to a sequence. The indented body of the <code class="highlighter-rouge">for</code> statement is executed
 once <em>for each item in that sequence</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
@@ -1109,8 +1109,8 @@ Put clicker back in cuboard
 
 <p>Here is the actual Python for loop.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
@@ -1122,14 +1122,14 @@ Put clicker back in cuboard
 <p>We can read that as:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each value in the sequence "np.arange(3)":
-    Put the value into the variable "i"
-    Execute the statement "print(i)"
+    Put the value into the variable "v"
+    Execute the statement "print(v)"
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">i</code> is the <em>loop variable</em>;</li>
+  <li><code class="highlighter-rouge">v</code> is the <em>loop variable</em>;</li>
   <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
-  <li><code class="highlighter-rouge">print(i)</code> is the <em>body</em> of the loop.</li>
+  <li><code class="highlighter-rouge">print(v)</code> is the <em>body</em> of the loop.</li>
 </ul>
 
 <p>It is instructive to imagine code that exactly replicates the <code class="highlighter-rouge">for</code> statement
@@ -1138,12 +1138,12 @@ statement simply replicates the code inside it, but before each iteration, it
 assigns a new value from the given sequence to the name we chose.  For
 example, here is an unrolled version of the loop above:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
@@ -1152,7 +1152,7 @@ example, here is an unrolled version of the loop above:</p>
 
 </code></pre></div></div>
 
-<p>Notice that the name <code class="highlighter-rouge">i</code> is arbitrary, just like any name we assign with <code class="highlighter-rouge">=</code>.
+<p>Notice that the name <code class="highlighter-rouge">v</code> is arbitrary, just like any name we assign with <code class="highlighter-rouge">=</code>.
 For example, the following <code class="highlighter-rouge">for</code> loop works in just the same way as the <code class="highlighter-rouge">for</code>
 loop above:</p>
 
@@ -1194,21 +1194,21 @@ variable.</li>
 <p>In the next example, we use a <code class="highlighter-rouge">for</code> statement in a more realistic way: we
 print the results of five random integers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
-0
-0
-0
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+1
+1
+1
 0
 
 </code></pre></div></div>
 
 <p>In this case, we simply perform exactly the same (random) action several
 times, so the code inside our <code class="highlighter-rouge">for</code> statement does not actually refer to the
-variable <code class="highlighter-rouge">i</code>.</p>
+variable <code class="highlighter-rouge">v</code>.</p>
 
 <h3 id="example-counting-the-number-of-heads">Example: Counting the Number of Heads</h3>
 
@@ -1219,13 +1219,13 @@ the result of each toss.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty array.
 </span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 0., 1., 0., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 1., 0., 1.])
 </code></pre></div></div>
 
 <p>Let us rewrite the cell with the <code class="highlighter-rouge">for</code> statement unrolled:</p>
@@ -1233,21 +1233,21 @@ the result of each toss.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty array.
 </span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 1., 1., 1., 1.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 1., 0., 0.])
 </code></pre></div></div>
 
 <p>Now we have an array, we can use <code class="highlighter-rouge">np.sum</code> to count the
@@ -1256,7 +1256,7 @@ number of heads in the five tosses.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
 </code></pre></div></div>
 
 <p>Iteration is a powerful technique. For example, by running exactly the
@@ -1272,65 +1272,65 @@ heads in 1000 tosses.</p>
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 0., 1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 0., 1., 0., 1.,
-       1., 1., 0., 1., 0., 1., 1., 1., 1., 1., 1., 1., 0., 0., 1., 1., 1.,
-       1., 0., 0., 1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1., 1.,
-       1., 0., 0., 1., 1., 1., 0., 0., 1., 0., 1., 0., 1., 1., 0., 0., 1.,
-       1., 1., 0., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 0.,
-       1., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 1.,
-       0., 1., 0., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1., 0., 0., 0., 1.,
-       0., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 1., 0., 1., 0., 0.,
-       0., 0., 0., 0., 0., 1., 1., 1., 1., 1., 0., 0., 0., 1., 1., 0., 0.,
-       1., 1., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0., 1., 1., 0., 0.,
-       0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 1., 1., 0., 1., 1., 1., 0.,
-       0., 1., 1., 0., 1., 1., 1., 1., 1., 1., 1., 0., 0., 0., 0., 0., 0.,
-       1., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 0., 0., 0., 0., 0., 0.,
-       0., 1., 0., 1., 0., 1., 1., 1., 1., 0., 1., 0., 0., 0., 0., 1., 1.,
-       1., 1., 1., 1., 0., 0., 1., 0., 0., 1., 0., 1., 0., 1., 1., 1., 1.,
-       0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 0.,
-       1., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1.,
-       1., 0., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1., 0., 1., 0.,
-       0., 1., 0., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 0., 1., 1., 1.,
-       0., 0., 0., 1., 0., 1., 0., 1., 1., 1., 1., 1., 0., 1., 1., 1., 1.,
-       0., 0., 0., 1., 1., 1., 1., 0., 1., 0., 1., 1., 1., 1., 0., 0., 0.,
-       0., 0., 0., 1., 1., 1., 1., 0., 0., 1., 1., 0., 0., 0., 1., 1., 1.,
-       1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 1., 0., 1., 0., 1., 1., 0.,
-       0., 0., 0., 0., 0., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 0.,
-       0., 0., 1., 1., 0., 0., 1., 1., 1., 0., 0., 0., 1., 1., 0., 0., 1.,
-       1., 0., 1., 1., 1., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 0.,
-       1., 1., 0., 1., 0., 1., 0., 0., 0., 1., 0., 0., 1., 0., 0., 0., 0.,
-       1., 1., 1., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1., 0., 0.,
-       1., 0., 0., 0., 0., 0., 1., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0.,
-       1., 0., 0., 1., 0., 1., 1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 0.,
-       0., 1., 0., 0., 1., 1., 0., 1., 1., 1., 0., 0., 1., 1., 1., 1., 0.,
-       1., 0., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 0., 1., 0., 1., 1.,
-       0., 0., 0., 1., 1., 0., 1., 1., 1., 1., 1., 0., 1., 1., 0., 0., 1.,
-       1., 1., 0., 0., 0., 1., 1., 0., 1., 0., 0., 1., 0., 1., 0., 1., 1.,
-       1., 1., 1., 1., 0., 0., 1., 0., 0., 0., 1., 1., 1., 0., 0., 1., 1.,
-       0., 0., 0., 0., 0., 1., 1., 1., 0., 1., 1., 1., 1., 1., 0., 0., 1.,
-       1., 1., 0., 1., 1., 0., 1., 0., 1., 1., 1., 0., 0., 1., 0., 1., 0.,
-       1., 0., 1., 0., 1., 1., 1., 0., 0., 0., 0., 1., 1., 1., 1., 0., 0.,
-       1., 1., 1., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1., 1., 1., 0., 1.,
-       0., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 1., 1.,
-       1., 1., 1., 0., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0., 1.,
-       0., 0., 0., 1., 1., 0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 1., 0.,
-       1., 1., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 0., 0.,
-       1., 1., 0., 0., 0., 0., 0., 1., 1., 1., 0., 1., 1., 0., 1., 1., 1.,
-       0., 1., 1., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 0.,
-       0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 0.,
-       1., 1., 0., 1., 1., 0., 1., 0., 0., 0., 1., 1., 0., 1., 0., 0., 0.,
-       1., 1., 0., 0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 0., 0., 0., 1.,
-       1., 1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0.,
-       1., 0., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 0., 0.,
-       1., 1., 1., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 0., 1., 1., 0.,
-       0., 0., 1., 0., 0., 0., 1., 1., 0., 0., 0., 1., 1., 0., 1., 0., 0.,
-       0., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 0., 0., 0., 1., 1.,
-       0., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 1., 1., 0., 1.,
-       0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 1., 1., 0., 0., 1.,
-       1., 0., 0., 0., 1., 1., 0., 1., 0., 1., 0., 1., 0., 0., 1., 1., 0.,
-       1., 1., 1., 1., 0., 1., 0., 1., 1., 0., 0., 1., 0., 1., 1., 1., 1.,
-       1., 0., 1., 0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 1., 0., 0.,
-       1., 0., 0., 1., 1., 1., 1., 0., 1., 1., 0., 0., 1., 0.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 1., 1., 1., 1., 0.,
+       1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 0.,
+       1., 1., 1., 0., 0., 1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 1.,
+       0., 0., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0., 0., 0., 0., 1.,
+       1., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0.,
+       1., 1., 1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0.,
+       1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 0.,
+       0., 1., 1., 0., 0., 1., 1., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0.,
+       1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 1., 0., 1., 1., 1., 1.,
+       1., 0., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 1., 0., 1., 1.,
+       0., 1., 1., 1., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 1., 0., 1.,
+       1., 0., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0., 1., 1., 0., 0.,
+       0., 1., 1., 0., 0., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1.,
+       1., 0., 0., 0., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1., 1., 1., 0.,
+       1., 0., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 0., 1.,
+       1., 1., 0., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 1., 1., 0., 1.,
+       1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 0., 0., 0., 1., 1., 1., 1.,
+       0., 0., 0., 1., 1., 1., 0., 0., 1., 1., 0., 0., 1., 0., 1., 1., 0.,
+       0., 0., 1., 1., 0., 1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 1.,
+       0., 0., 0., 1., 0., 1., 0., 1., 1., 1., 0., 0., 0., 0., 1., 0., 0.,
+       0., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 0., 1., 0., 0., 0., 1.,
+       1., 0., 1., 1., 0., 1., 0., 1., 0., 1., 0., 1., 0., 0., 1., 0., 0.,
+       0., 1., 0., 0., 1., 1., 1., 1., 0., 0., 0., 0., 1., 0., 1., 1., 0.,
+       1., 0., 1., 1., 1., 1., 0., 0., 1., 1., 1., 0., 1., 1., 1., 0., 1.,
+       0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 0., 1., 0., 0.,
+       1., 1., 0., 1., 1., 1., 0., 1., 1., 0., 1., 0., 1., 0., 1., 1., 1.,
+       1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 1., 1., 1., 1., 0., 0., 1.,
+       1., 0., 0., 1., 0., 1., 0., 1., 1., 0., 1., 1., 0., 1., 0., 0., 0.,
+       1., 0., 1., 1., 0., 0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0.,
+       0., 0., 1., 0., 1., 1., 1., 1., 1., 0., 1., 0., 1., 0., 0., 1., 0.,
+       1., 0., 0., 1., 0., 0., 1., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0.,
+       1., 0., 1., 0., 1., 1., 1., 1., 0., 1., 0., 0., 0., 1., 1., 0., 0.,
+       1., 1., 1., 1., 0., 0., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0., 1.,
+       0., 0., 0., 1., 1., 0., 1., 1., 0., 0., 0., 1., 1., 0., 1., 1., 1.,
+       1., 0., 0., 1., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 1.,
+       1., 0., 1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1.,
+       1., 0., 0., 1., 1., 1., 1., 1., 1., 1., 1., 0., 0., 1., 1., 0., 1.,
+       1., 1., 1., 0., 0., 0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 0., 0.,
+       0., 1., 1., 1., 0., 1., 0., 0., 1., 1., 0., 0., 0., 0., 1., 0., 0.,
+       1., 0., 1., 1., 0., 1., 0., 1., 1., 0., 1., 1., 1., 0., 1., 0., 1.,
+       0., 1., 0., 0., 0., 1., 1., 0., 0., 0., 0., 0., 0., 1., 0., 1., 1.,
+       1., 1., 1., 1., 0., 1., 1., 0., 1., 1., 0., 0., 1., 0., 1., 1., 0.,
+       1., 0., 0., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 1., 0.,
+       1., 0., 0., 1., 0., 1., 1., 0., 1., 0., 0., 1., 1., 1., 0., 0., 0.,
+       0., 1., 1., 1., 0., 1., 1., 0., 1., 1., 1., 0., 1., 0., 0., 1., 0.,
+       1., 1., 1., 0., 0., 0., 0., 1., 1., 0., 1., 0., 1., 0., 1., 0., 0.,
+       0., 0., 1., 0., 1., 0., 1., 1., 1., 1., 0., 0., 1., 1., 0., 1., 1.,
+       1., 1., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 1., 0., 1., 1.,
+       1., 0., 0., 1., 0., 1., 1., 0., 0., 1., 1., 1., 0., 1., 0., 1., 1.,
+       1., 1., 1., 1., 0., 1., 1., 1., 0., 1., 0., 1., 0., 0., 1., 0., 0.,
+       1., 0., 0., 0., 1., 1., 1., 0., 0., 1., 0., 0., 0., 1., 0., 0., 1.,
+       1., 1., 1., 0., 1., 1., 0., 1., 0., 1., 1., 0., 1., 0., 0., 0., 1.,
+       1., 0., 1., 1., 0., 0., 0., 0., 0., 0., 1., 1., 1., 1., 1., 1., 0.,
+       1., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 0., 1., 1., 0., 0., 0.,
+       0., 1., 1., 0., 1., 0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 1., 0.,
+       0., 1., 0., 0., 0., 1., 0., 0., 0., 1., 0., 1., 1., 0., 0., 1., 1.,
+       0., 1., 0., 0., 0., 1., 1., 0., 0., 1., 1., 0., 0., 1., 1., 1., 1.,
+       1., 0., 0., 0., 1., 1., 0., 0., 1., 0., 0., 1., 0., 1., 0., 0., 1.,
+       0., 1., 1., 1., 0., 0., 1., 0., 1., 1., 1., 0., 1., 1.])
 </code></pre></div></div>
 
 <h3 id="example-number-of-heads-in-100-tosses">Example: Number of Heads in 100 Tosses</h3>
@@ -1354,14 +1354,12 @@ experiment:</p>
 <p>The histogram of our results will give us some insight into how many
 heads are likely.</p>
 
-<p><code class="highlighter-rouge">np.randint</code> can take a third argument, corresponding to <code class="highlighter-rouge">size</code>.  This call
-returns an array length 10 of random integers from 0 up to, but not including
-2; it therefore returns 10 numbers, each of which can be either 0 or 1.</p>
+<p>As y’all have already seen, <code class="highlighter-rouge">np.randint</code> can take a <code class="highlighter-rouge">size</code> argument, to return an array of random integers:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 0, 0, 1, 1, 1, 1, 1, 1])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 0, 0, 0, 1, 1, 0, 1])
 </code></pre></div></div>
 
 <p>Now let’s study 100 tosses. We will start by creating an empty array
@@ -1380,11 +1378,11 @@ a coin 100 times, count the number of heads, and append it to <code class="highl
 <span class="n">head_counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([44., 61., 45., ..., 55., 48., 45.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([46., 54., 52., ..., 53., 55., 53.])
 </code></pre></div></div>
 
-<p>Here is a histogram of the data, with bins of width 1 centered at each
-value of the number of heads.</p>
+<p>Here is a histogram of the data, with bins of width 1 centered at each value
+of the number of heads.</p>
 
 <p>This is the first time we have used plotting, so please accept this piece of code to initialize the plotting first:</p>
 
@@ -1423,7 +1421,7 @@ anywhere between 0 and 100, the simulation shows that the range of
 <p>This is an instance of a more general phenomenon about the variability
 in coin tossing, as we will see later in the course.</p>
 
-<p>Now see <a href="../exercises/for_loops">the for loop exercises</a>.</p>
+<p>Now see the <a href="../exercises/for_loops">for loop exercises</a>.</p>
 
 <div class="isa_info">
 <i class="fa fa-info-circle"></i>

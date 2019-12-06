@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-05T18:22:08+00:00">
+  <meta property="article:published_time" content="2019-12-06T10:41:44+00:00">
 
 
 
@@ -948,7 +948,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Three girl simulations">
       <meta itemprop="description" content="Exercises on the three-girl simulation problem">
-      <meta itemprop="datePublished" content="December 05, 2019">
+      <meta itemprop="datePublished" content="December 06, 2019">
       
 
       <div class="page__inner-wrap">
@@ -1016,7 +1016,7 @@ Court</a>.</p>
 <span class="c1"># Repeat the indented stuff 10000 times.
 </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="c1"># The procedure for one family.
-</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
     <span class="c1"># Fill in the corresponding value in the counts array.
 </span>    <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
@@ -1026,7 +1026,7 @@ Court</a>.</p>
 <span class="n">prop_3_girls</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2453
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.246
 </code></pre></div></div>
 
 <h3 id="no-girls-in-a-family-of-four">No girls in a family of four</h3>
@@ -1112,7 +1112,7 @@ is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.11587267, 0.16510294, 0.41035455, 0.21159489])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.93958963, 0.85976804, 0.55959119, 0.42223971])
 </code></pre></div></div>
 
 <p>Hint 2: Let’s say I have a random number <code class="highlighter-rouge">x</code> between 0 and 1:</p>
@@ -1121,7 +1121,7 @@ is 0.513.  Hence the proportion of girls is 1-0.513 = 0.487.</p>
 <span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7525928240586782
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6901066812459152
 </code></pre></div></div>
 
 <p>The probability that that <code class="highlighter-rouge">x</code> will be less than - say - 0.25, is 0.25.</p>
