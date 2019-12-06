@@ -181,7 +181,7 @@
 
       <section class="page__content" itemprop="text">
         
-        ### Conditional Statements ###
+        ## Conditional Statements
 
 In many situations, actions and results depends on a specific set of
 conditions being satisfied. For example, individuals in randomized
@@ -201,8 +201,10 @@ Let us start defining a function that returns the string `'Positive'`  for a pos
 
 ```{python}
 def classify(x):
+    result = 'Not sure yet'
     if x > 0:
-        return 'Positive'
+        result = 'Positive'
+    return result
 ```
 
 Let us work through what Python will do when we evaluate `classify(3)`.
@@ -220,13 +222,16 @@ All this is revision from [functions](functions).
 
 What happens in the function body, with `x = 3`?
 
+1.   Python evaluates the assignment statement `result = 'Not sure yet'`. The
+     `result` variable has the value: CR of "Not sure yet".
 1.   Python evaluates the *if expression* `x > 0`.  The result is the
-     CR of `True`.  This is a true value, so Python executes the body
-     of the if statement.
-1.   The body of the if statement is the single line `return
-     'Positive'`.  `'Positive'` evaluates to the CR of the string
-     `'Positive'`.  `return` exits function world, returning this
-     value.
+     CR of `True`.  This is a true value, so Python will execute the body of
+     the if statement.
+1.   The body of the if statement is the single line `result = 'Positive'`.
+     Python reassigns the `result` variable to have the value: CR of
+     "Positive".
+1.   `return result` first evaluates `result` to get the CR of "Positive",
+     then exits function world, returning this value.
 
 ```{python}
 classify(3)
@@ -237,24 +242,17 @@ positive number, like `3`. But if the input is not a positive number,
 such as `-3`, then this happens, in the function body:
 
 1. `x` has the value CR of int -3.
-1. `x > 0` evaluates to `False`, so Python skips the body of the if
-   statement.
-1. The function body ends without executing a `return` statement.
+1. `result` gets the value: CR of "Not sure yet".  So far this is the same as
+   for the case of `x` equal to 3 above.
+1. `x > 0` evaluates to `False`, so Python *skips the body of the if
+   statement*.
+1. `return result` first evaluates `result` to get the CR of "Not sure yet",
+   (because this hasn't changed) then exits function world, returning this
+   value.
 
-So, the function body finishes without a `return`, and the function
-returns [None](none).  This is invisible to us, so it looks like the
-function returns nothing at all:
 
 ```{python}
 classify(-3)
-```
-
-We can catch the result, and check it is `None` (see the [None
-page](none).
-
-```{python}
-r = classify(-3)
-r is None
 ```
 
 Let us refine our function to return `Not positive` if the input is a
@@ -264,13 +262,27 @@ clause, after the if expression, as before.  If it evaluates to a false value, P
 
 ```{python}
 def classify(x):
+    result = 'Not sure yet'
     if x > 0:
-        return 'Positive'
+        result = 'Positive'
     else:
-        return 'Not positive'
+        result = 'Not positive'
+    return result
 ```
 
 Imagine we evaluate `classify(-3)` again.  Python enters function world, and sets `x` to have the value CR of int -3.  It checks `x > 0` and finds a false value, so it skips the first clause, and executes the clause following `else:`.  This `return`s `'Not positive'`.
+
+Notice that the `if` statement now deals with all possible values of `x`.  Whatever the value of `x` we with either execute `result = 'Positive'` or we will execute `result = 'Not positive'`.  We can now get rid of the first line in the function `result = 'Not sure yet'` because we will always change `result` from that value, in the `if` statement:
+
+```{python}
+# Classify without the unneccessary first assignment.
+def classify(x):
+    if x > 0:
+        result = 'Positive'
+    else:
+        result = 'Not positive'
+    return result
+```
 
 Now imagine we prefer our function to return `'Negative` for negative values and `Zero` if the input value is 0.  It seems like we need three clauses, one each for positive, negative and 0 values.
 
@@ -280,11 +292,12 @@ shorthand for the phrase "else if".
 ```{python}
 def classify(x):
     if x > 0:
-        return 'Positive'
+        result = 'Positive'
     elif x == 0:
-        return 'Zero'
+        result = 'Zero'
     else:
-        return 'Negative'
+        result = 'Negative'
+    return result
 ```
 
 Now `classify` returns the correct answer when the input is -3, 0, or 3:
@@ -301,11 +314,14 @@ classify(0)
 classify(-3)
 ```
 
-If the input is 3, Python enters function world, sets `x` to have the value 3, and evaluates the if expression `x < 0`.  The expression is a true value, so Python executes the first clause and `return`s `'Positive'`.
+If the input is 3, Python enters function world, sets `x` to have the value 3,
+and evaluates the if expression `x < 0`.  The expression is a true value, so
+Python executes the first clause, sets `result` to equal "Positive" and skips
+to the end of the `if` statement.  Finally it executes `return result` to return "Positive" from the function.
 
-If the input is 0, Python enters function world, sets `x` to have the value 0, and evaluates the if expression `x < 0`.  The expression is a false value, so Python moves on to the next clause, which is `elif x == 0:`. This has another *if expression* `x == 0`.  It is a true value, so Python executes this clause, and `return`s `'Zero`.
+If the input is 0, Python enters function world, sets `x` to have the value 0, and evaluates the if expression `x < 0`.  The expression is a false value, so Python moves on to the next clause, which is `elif x == 0:`. This has another *if expression* `x == 0`.  It is a true value, so Python executes this clause, and sets `result` equal to "Zero".  Then it skips to the end of the `if` statement, and `return`s the value in `result`.
 
-If the input is -3, Python enters function world, sets `x` to have the value -3, and evaluates the if expression `x < 0`.  The expression is a false value, so Python moves on to the next clause, which is `elif x == 0`. This expression is also a false, value so Python moves to the next clause, which is the `else:` clause, and executes that, `return`ing `'Negative'`.
+If the input is -3, Python enters function world, sets `x` to have the value -3, and evaluates the if expression `x < 0`.  The expression is a false value, so Python moves on to the next clause, which is `elif x == 0`. This expression is also a false value so Python moves to the next clause, which is the `else:` clause, and executes that, setting `result` to be "Negative".  Now we are at the end of the `if` statement, and we `return result`.
 
 We can have as many `elif` clauses as we want.  For example, imagine we
 want to classify the number into one of the following categories:
@@ -320,15 +336,16 @@ want to classify the number into one of the following categories:
 ```{python}
 def classify(x):
     if x > 10:
-        return 'Large positive'
+        result = 'Large positive'
     elif x > 0:
-        return 'Small positive'
+        result = 'Small positive'
     elif x == 0:
-        return 'Zero'
+        result = 'Zero'
     elif x >= -10:  # Greater than or equal to
-        return 'Small negative'
+        result = 'Small negative'
     else:
-        return 'Large negative'
+        result = 'Large negative'
+    return result
 ```
 
 ```{python}
@@ -339,7 +356,53 @@ classify(-100)
 classify(0)
 ```
 
-### The General Form ###
+## Interlude - returning early
+
+Remember the simpler version of our function:
+
+```{python}
+def classify(x):
+    if x > 0:
+        result = 'Positive'
+    elif x == 0:
+        result = 'Zero'
+    else:
+        result = 'Negative'
+    return result
+```
+
+You can see that, if `x` is greater than 0, then we reach `result
+= 'Positive'`.  In fact, when we get to that line, our work is done, and we might as well leave function world and send back the result.  We can do that by using another `return` statement, like this:
+
+```{python}
+def classify_returning_early(x):
+    if x > 0:
+        return 'Positive'
+    elif x == 0:
+        return 'Zero'
+    else:
+        return 'Negative'
+```
+
+This will work exactly the same way as the original version above.  This way, as soon as we have the answer we need, we are breaking out of function world, and sending back the answer.
+
+Notice that we do not need a final `return` statement any more, because our
+`if` statement has covered all possible values.  Therefore, we will always
+`return` inside the `if` statement, and we will never reach any statements
+that follow the `if` statement.
+
+Here is the new version in action:
+
+```{python}
+print(classify_returning_early(3))
+print(classify_returning_early(-3))
+print(classify_returning_early(0))
+```
+
+This is a common pattern, where we break out of function world as soon as we
+have the answer we need.
+
+## The General Form ##
 
 A conditional statement can also have multiple clauses with multiple bodies, and only one of those bodies can ever be executed. The general format of a multi-clause conditional statement appears below.
 
