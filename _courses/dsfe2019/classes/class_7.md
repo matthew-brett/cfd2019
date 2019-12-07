@@ -12,5 +12,4 @@ permalink: /classes/class_7
 * [Iteration with For loops](../chapters/03/iteration)
 * [For loop exercises](../chapters/exercises/for_loops)
 
-Assignment - finish up the [For loop
-exercises](../chapters/exercises/for_loops).
+Assignment - TBA - please see Canvas announcement.

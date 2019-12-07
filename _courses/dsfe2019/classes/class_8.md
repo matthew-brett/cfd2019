@@ -11,4 +11,5 @@ permalink: /classes/class_8
 * [5.3 Iteration with For loops](../chapters/05/iteration)
 * [For loop exercises](../chapters/exercises/for_loops)
 
-Assignment - TBA.  See Canvas announcement.
+Assignment - finish up the [For loop
+exercises](../chapters/exercises/for_loops).
