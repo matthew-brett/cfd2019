@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Opening Jupyter on your laptop - Data science for everyone - 2019</title>
+<!-- begin _includes/seo.html --><title>Opening Jupyter on your laptop - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
-<meta property="og:site_name" content="Data science for everyone - 2019">
-<meta property="og:title" content="Data science for everyone - 2019">
-<meta property="og:url" content="https://matthew-brett.github.io/dsfe2019/notebooks/05/permutation_idea.Rmd">
+<meta property="og:site_name" content="Coding for Data - 2019 edition">
+<meta property="og:title" content="Coding for Data - 2019 edition">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/05/permutation_idea.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/dsfe2019/notebooks/05/permutation_idea.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/05/permutation_idea.Rmd">
 
 
 
@@ -43,7 +43,7 @@
       "@context": "http://schema.org",
       "@type": "Person",
       "name": "Matthew Brett",
-      "url": "https://matthew-brett.github.io/dsfe2019",
+      "url": "https://matthew-brett.github.io/cfd2019",
       "sameAs": null
     }
   </script>
@@ -57,7 +57,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/dsfe2019/feed.xml" type="application/atom+xml" rel="alternate" title="Data science for everyone - 2019 Feed">
+<link href="/cfd2019/feed.xml" type="application/atom+xml" rel="alternate" title="Coding for Data - 2019 edition Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -69,7 +69,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/dsfe2019/assets/css/main.css">
+<link rel="stylesheet" href="/cfd2019/assets/css/main.css">
 
 <!--[if lte IE 9]>
   <style>
@@ -92,9 +92,9 @@
 
 <!-- end custom head snippets -->
 
-    <link rel="stylesheet" href="/dsfe2019/assets/css/notebook-markdown.css">
-    <link rel="stylesheet" href="/dsfe2019/assets/css/custom.css">
-    <link rel="shortcut icon" type="image/png" href="/dsfe2019/favicon.png">
+    <link rel="stylesheet" href="/cfd2019/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/cfd2019/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/cfd2019/favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
   </head>
@@ -110,30 +110,30 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="/dsfe2019/">
-          <img src="/dsfe2019/images/dsfe_logo.png" class="masthead_logo" />
-          Data science for everyone - 2019
+        <a class="site-title" href="/cfd2019/">
+          <img src="/cfd2019/images/dsfe_logo.png" class="masthead_logo" />
+          Coding for Data - 2019 edition
         </a>
         <ul class="visible-links">
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe2019/about" >About</a>
+              <a href="https://matthew-brett.github.io/cfd2019/about" >About</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe2019/syllabus" >Syllabus</a>
+              <a href="https://matthew-brett.github.io/cfd2019/syllabus" >Syllabus</a>
             </li>
           
             
             <li class="masthead__menu-item">
-              <a href="https://matthew-brett.github.io/dsfe2019/classes" >Classes</a>
+              <a href="https://matthew-brett.github.io/cfd2019/classes" >Classes</a>
             </li>
           
           
             <li class="masthead__menu-item">
-              <a href="/dsfe2019/chapters/01/intro">Textbook</a>
+              <a href="/cfd2019/chapters/01/intro">Textbook</a>
             </li>
           
           
@@ -191,19 +191,19 @@ bucket.
 ## A mosquito problem
 
 
-![](/dsfe2019/images/mosquito_banner.png)
+![](/cfd2019/images/mosquito_banner.png)
 
 With thanks to John Rauser: [Statistics Without the Agonizing Pain](https://www.youtube.com/watch?v=5Dnw46eC-0o)
 
 
 ## The data
 
-Download the data from [mosquito_beer.csv](/dsfe2019/data/mosquito_beer.csv).
+Download the data from [mosquito_beer.csv](/cfd2019/data/mosquito_beer.csv).
 
 
 See [this
 page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for
-more details on the dataset, and [the data license page](/dsfe2019/data/license).
+more details on the dataset, and [the data license page](/cfd2019/data/license).
 
 
 ```{python}
@@ -290,13 +290,13 @@ The next graphic shows the activated values as a series of gold and blue
 balls.  The activated numbers for the "beer" group are gold), and the activated
 numbers for the "water" group, in blue:
 
-![](/dsfe2019/images/just_balls.png)
+![](/cfd2019/images/just_balls.png)
 
 ## Calculate difference in means
 
 Here we take the mean of "beer" activated numbers (the numbers in gold):
 
-![](/dsfe2019/images/beer_mean.png)
+![](/cfd2019/images/beer_mean.png)
 
 ```{python}
 beer_mean = np.mean(beer_activated)
@@ -306,7 +306,7 @@ beer_mean
 Next we take the mean of activation values for the "water" subjects (value in
 blue):
 
-![](/dsfe2019/images/water_mean.png)
+![](/cfd2019/images/water_mean.png)
 
 ```{python}
 water_mean = np.mean(water_activated)
@@ -342,7 +342,7 @@ pooled
 
 This is the same idea as putting the gold and blue balls into a bucket and shaking them up into a random arrangement.
 
-![](/dsfe2019/images/fake_balls0.png)
+![](/cfd2019/images/fake_balls0.png)
 
 ## Split
 
@@ -354,7 +354,7 @@ are a random mixture of the beer and the water values.  This is the same idea as
 fake_beer = pooled[:n_beer]
 ```
 
-![](/dsfe2019/images/fake_beer_mean0.png)
+![](/cfd2019/images/fake_beer_mean0.png)
 
 We calculate the mean:
 
@@ -369,7 +369,7 @@ Then we take the remaining 18 values as our fake water group:
 fake_water = pooled[n_beer:]
 ```
 
-![](/dsfe2019/images/fake_water_mean0.png)
+![](/cfd2019/images/fake_water_mean0.png)
 
 We take the mean of these too:
 
@@ -393,7 +393,7 @@ We do another shuffle:
 np.random.shuffle(pooled)
 ```
 
-![](/dsfe2019/images/fake_beer_mean1.png)
+![](/cfd2019/images/fake_beer_mean1.png)
 
 We take another fake beer group, and calculate another fake beer mean:
 
@@ -404,7 +404,7 @@ np.mean(fake_beer)
 
 We take another fake water group, find the mean:
 
-![](/dsfe2019/images/fake_water_mean1.png)
+![](/cfd2019/images/fake_water_mean1.png)
 
 ```{python}
 fake_water = pooled[n_beer:]
@@ -502,15 +502,15 @@ This is also an estimate of the probability we would see a difference as large a
     
 
     
-  <script src="/dsfe2019/assets/js/main.min.js"></script>
+  <script src="/cfd2019/assets/js/main.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 
 
 
 
-<script src="/dsfe2019/assets/js/lunr/lunr.min.js"></script>
-<script src="/dsfe2019/assets/js/lunr/lunr-store.js"></script>
-<script src="/dsfe2019/assets/js/lunr/lunr-en.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr.min.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-store.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-en.js"></script>
 
 
 
