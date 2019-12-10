@@ -30,3 +30,4 @@ permalink: /classes
 | 8    | 19 Nov     | [class 14](classes/class_14) |
 | 8    | 21 Nov     | [class 15](classes/class_15) |
 | 10   | 5 Dec      | [class 16](classes/class_16) |
+| 11   | 10 Dec     | [class 17](classes/class_17) |
