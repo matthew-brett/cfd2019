@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-11T21:00:26+00:00">
+  <meta property="article:published_time" content="2019-12-11T21:46:56+00:00">
 
 
 
@@ -1172,7 +1172,7 @@ Name: country_name, dtype: object
 are True.</p>
 
 <p>But what does <em>corresponding</em> mean?   Does it mean corresponding in terms of
-position?   Or in terms of index?</p>
+position?   Or in terms of index (row / element labels)?</p>
 
 <p>Here’s the Boolean series again:</p>
 
@@ -1187,14 +1187,17 @@ position?   Or in terms of index?</p>
 Name: health_exp_per_cap, dtype: bool
 </code></pre></div></div>
 
-<p>Or does it mean <em>corresponding</em> in terms of <em>labels</em>.  So, take the row from
-Does <em>corresponding</em> mean corresponding in terms of <em>position</em>?  In that case we take the first row of <code class="highlighter-rouge">richest_5</code> (because the first element in <code class="highlighter-rouge">is_big_spender</code> is True) but not the second row (because the second element in <code class="highlighter-rouge">is_big_spender</code> is False) and so on?</p>
+<p>If <em>corresponding</em> means corresponding in terms of <em>position</em> then we would
+take the first row of <code class="highlighter-rouge">richest_5</code> (because the first element in
+<code class="highlighter-rouge">is_big_spender</code> is True) but not the second row (because the second element in
+<code class="highlighter-rouge">is_big_spender</code> is False) and so on.</p>
 
-<p><code class="highlighter-rouge">richest_5</code> with label 202 (because the element labeled 202 in <code class="highlighter-rouge">is_big_spender</code>
-is True), but do not take the row labeled 35 (because the element labeled 35 in
-<code class="highlighter-rouge">is_big_spender</code> is False), and so on.</p>
+<p>If <em>corresponding</em> means corresponding in terms of <em>labels</em> then we would take
+the row from <code class="highlighter-rouge">richest_5</code> with label 202 (because the element labeled 202 in
+<code class="highlighter-rouge">is_big_spender</code> is True), but we do not take the row labeled 35 (because the
+element labeled 35 in <code class="highlighter-rouge">is_big_spender</code> is False), and so on.</p>
 
-<p>We cannot distinguish between <em>position</em> and <em>labels</em> at the moment, because
+<p>We cannot distinguish between these alternative at the moment, because
 the order of the labels is the same in the data frame <code class="highlighter-rouge">richest_5</code> and the
 series <code class="highlighter-rouge">is_big_spender</code>, so <em>positions</em> and <em>labels</em> will give the same answer.</p>
 
@@ -1213,7 +1216,8 @@ series and the data frame.  For example, we can sort the series, like this:</p>
 Name: health_exp_per_cap, dtype: bool
 </code></pre></div></div>
 
-<p>Now the order of the row labels is different in the series (above) and the data frame (below):</p>
+<p>Now the order of the row labels is different in the series (above) and the data
+frame (below):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_5</span><span class="o">.</span><span class="n">index</span>
 </code></pre></div></div>
@@ -1221,15 +1225,14 @@ Name: health_exp_per_cap, dtype: bool
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67], dtype='int64')
 </code></pre></div></div>
 
-<p>If we index with this sorted series, and the indexing is using the <em>position</em>
-of the True and False values, we would expect to see the last three rows,
-because the values in the last three positions are True (and the others are
-False).</p>
+<p>If we index with this sorted series, and indexing uses the <em>position</em> of the
+True and False values, we would expect to see the last three rows, because the
+values in the last three positions are True (and the others are False).</p>
 
-<p>If the indexing is using <em>labels</em>, then we expect to get the same answer we got
-before, because the relationship between the True / False values and labels
-hasn’t changed - the elements labeled 202, 97 and 49 have True values, so we
-expect to see those rows in the result.  So (drum roll):</p>
+<p>If indexing uses <em>labels</em>, then we expect to get the same answer we got before,
+because the relationship between the True / False values and labels hasn’t
+changed - the elements labeled 202, 97 and 49 have True values, so we expect to
+see those rows in the result.  So (drum roll):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_5</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sorted_is_big_spender</span><span class="p">,</span> <span class="s">'country_name'</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1240,11 +1243,12 @@ expect to see those rows in the result.  So (drum roll):</p>
 Name: country_name, dtype: object
 </code></pre></div></div>
 
-<p>The result the same as for the not-sorted series - and we have found that <code class="highlighter-rouge">loc</code>
-indexing is using the <em>labels</em>, even with a Boolean series.</p>
+<p>The result is the same as for the not-sorted series - and we have found that
+<code class="highlighter-rouge">loc</code> indexing uses the <em>labels</em> rather than the <em>positions</em> when indexing with
+a Boolean series.</p>
 
-<p>On reflection, maybe that is not surprising - after all, <code class="highlighter-rouge">loc</code> <a href="pandas_indexing">we already
-know</a> that <code class="highlighter-rouge">loc</code> indexing is indexing by <em>label</em>.</p>
+<p>On reflection, maybe that is not surprising - after all, <a href="pandas_indexing">we already
+know</a> that <code class="highlighter-rouge">loc</code> indexing does indexing by <em>label</em>.</p>
 
 <p>We usually will not have to worry about the difference between labels and
 positions in Boolean Series, because, usually, the row labels and positions are
@@ -1254,8 +1258,8 @@ previous times you have seen Boolean indexing on data frames or series.</p>
 
 <h2 id="what-about-iloc">What about iloc?</h2>
 
-<p>We know that <code class="highlighter-rouge">iloc</code> does indexing by <em>position</em> - so what approach does <code class="highlighter-rouge">iloc</code>
-take to the labels on a Boolean series?</p>
+<p><code class="highlighter-rouge">iloc</code> does indexing by <em>position</em> - so what approach does <code class="highlighter-rouge">iloc</code> take to the
+labels on a Boolean series?</p>
 
 <p>We guess that <code class="highlighter-rouge">iloc</code> does not use the labels on a Boolean series, but what does
 it do?  Does it throw away the labels and just look at the positions of the
@@ -1320,10 +1324,8 @@ True and False values?  Or something else?</p>
 </code></pre></div></div>
 
 <p>It does something else - it gives an error, telling us that it will not use the
-index.   This is so whatever the index - even if the index and the positions
-give the same answer:</p>
-
-<!-- #endregion -->
+index.   This is so whatever the index order - even if the index and the
+positions give the same answer:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># iloc with the original Boolean series, where positions
 # and labels match.
@@ -1382,10 +1384,10 @@ give the same answer:</p>
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError: iLocation based boolean indexing on an integer type is not available
 </code></pre></div></div>
 
-<p>If you want to use Boolean indexing with <code class="highlighter-rouge">iloc</code>, you have to use a Boolean
-sequence without row / element labels, such as a Numpy array.  In our case, we
-can achieve that by converting the Boolean Series to a Numpy array, and
-therefore, throwing away the index (element labels):</p>
+<p>If you want to use Boolean indexing with <code class="highlighter-rouge">iloc</code>, you can use a Boolean sequence
+without row / element labels, such as a Numpy array.  We can achieve that by
+converting the Boolean Series to a Numpy array, and therefore, throwing away
+the index (element labels):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_big_spender_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">is_big_spender</span><span class="p">)</span>
 <span class="n">is_big_spender_arr</span>
