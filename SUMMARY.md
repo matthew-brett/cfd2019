@@ -54,6 +54,7 @@
   * [6.4 Functions as values](notebooks/07/functions_as_values.ipynb)
   * [6.5 Conditional statements](notebooks/07/conditional_statements.ipynb)
   * [6.6 Indexing in Pandas](notebooks/07/pandas_indexing.ipynb)
+  * - [Booleans and labels](notebooks/07/booleans_and_labels.ipynb)
 * [7. The mean and straight line relationships](notebooks/08/mean.md)
   * [7.1 The mean as a predictor](notebooks/08/mean_meaning.ipynb)
   * [7.2 Where and argmin](notebooks/08/where_and_argmin.ipynb)

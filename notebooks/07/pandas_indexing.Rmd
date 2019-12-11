@@ -378,7 +378,7 @@ or this:
 country_code.iloc[10]
 ```
 
-## You can use Boolean indexing with loc and iloc
+## You can use Boolean indexing with loc
 
 
 It is often convenient to use direct indexing with Booleans, as we have just seen:
@@ -407,38 +407,5 @@ big_spender_names = richest_15.loc[is_big_spender, 'country_name']
 big_spender_names
 ```
 
-In fact you can do something similar with `iloc`, but `iloc` is aggressive
-about not using the *index* (row labels) of anything.   If you try and use
-a Boolean Series with `iloc`, Pandas will complain, because it can see the
-*index* of `is_big_spender`, and it does not want to use it to match the Series
-rows to the data frame rows, and so gives an error:
-
-```{python tags=c("raises-exception")}
-# You cannot use a Boolean Series to index rows, with "iloc"
-# Try to get "fert_rate" column values for big health spenders.
-# "fert_rate" is the third column, at offset 2.
-big_spender_fert = richest_15.iloc[is_big_spender, 2]
-big_spender_fert
-```
-
-If you want to use Boolean indexing with `iloc`, you have to use a Boolean
-sequence without row / element labels, such as a Numpy array.  In our case, we
-can achieve that by converting the Boolean Series to a Numpy array, and
-therefore, throwing away the index (element labels):
-
-```{python}
-is_big_spender_arr = np.array(is_big_spender)
-is_big_spender_arr
-```
-
-This Boolean sequence will work with `iloc`, because it has no index (element
-labels) to trip it up:
-
-```{python}
-# You can use a Boolean array to index rows, with "iloc".
-# Get "fert_rate" column values for big health spenders.
-# "fert_rate" is the third column, at offset 2.
-big_spender_fert = richest_15.iloc[is_big_spender_arr, 2]
-big_spender_fert
-```
-
+In fact you can use some Boolean sequences with `iloc` as well, but that needs
+[a little more explanation](booleans_and_labels).
