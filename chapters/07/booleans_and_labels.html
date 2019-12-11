@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Function as values exercises - Coding for Data - 2019 edition</title>
-<meta name="description" content="For background, please read the functions asvalues page.">
+<!-- begin _includes/seo.html --><title>Booleans and labels - Coding for Data - 2019 edition</title>
+<meta name="description" content="We have already used Boolean series to index data frames and other series.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Function as values exercises">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/exercises/functions_values_exercises">
+<meta property="og:title" content="Booleans and labels">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/booleans_and_labels">
 
 
-  <meta property="og:description" content="For background, please read the functions asvalues page.">
+  <meta property="og:description" content="We have already used Boolean series to index data frames and other series.">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/exercises/functions_values_exercises">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/booleans_and_labels">
 
 
 
@@ -956,15 +956,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="Function as values exercises">
-      <meta itemprop="description" content="For background, please read the functions asvalues page.">
+      <meta itemprop="headline" content="Booleans and labels">
+      <meta itemprop="description" content="We have already used Boolean series to index data frames and other series.">
       <meta itemprop="datePublished" content="December 11, 2019">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">Function as values exercises
+            <h1 id="page-title" class="page__title" itemprop="headline">Booleans and labels
 </h1>
           </header>
         
@@ -976,67 +976,435 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#what-about-iloc">What about iloc?</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/exercises/functions_values_exercises.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2Fexercises%2Ffunctions_values_exercises.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/07/booleans_and_labels.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F07%2Fbooleans_and_labels.ipynb">Interact</a>
 
 
-          <p>For background, please read the <a href="/cfd2019/chapters/07/functions_as_values">functions as
-values</a> page.</p>
+          <p>We have already used Boolean series to index data frames and other series.</p>
 
-<p>Consider these two functions:</p>
+<p>This page gives a little more details about how that works, in order to explain
+some subtleties in results.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def add(a, b):
-    return a + b
+<p>We return to the World Bank statistics on development and gender in
+<a href="/cfd2019/data/gender_stats.csv">gender_stats.csv</a>.</p>
+
+<p>Download that file to the same directory as this notebook, if you are running
+on your own computer.</p>
+
+<p>Here we pull out the rows for the countries with the highest Gross Domestic
+Product. This may be familiar from the <a href="/cfd2019chapters/03/data_frame_intro">data frame intro</a> and the <a href="/cfd2019chapters/07/pandas_indexing">Pandas indexing page</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sub(a, b):
-    return a - b
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file as a data frame.
+</span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
+
+<span class="c1"># Sort by GDP.
+</span><span class="n">df_by_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c1"># Take the top 5 rows.
+</span><span class="n">richest_5</span> <span class="o">=</span> <span class="n">df_by_gdp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">richest_5</span>
 </code></pre></div></div>
 
-<p>Here’s <code class="highlighter-rouge">add</code> in action:</p>
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add(4, 1)
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country_name</th>
+      <th>country_code</th>
+      <th>fert_rate</th>
+      <th>gdp_us_billion</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>202</th>
+      <td>United States</td>
+      <td>USA</td>
+      <td>1.860875</td>
+      <td>17369.124600</td>
+      <td>9060.068657</td>
+      <td>8.121961</td>
+      <td>48.758830</td>
+      <td>14.00</td>
+      <td>318.558175</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>China</td>
+      <td>CHN</td>
+      <td>1.558750</td>
+      <td>10182.790479</td>
+      <td>657.748859</td>
+      <td>3.015530</td>
+      <td>46.297964</td>
+      <td>28.75</td>
+      <td>1364.446000</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Japan</td>
+      <td>JPN</td>
+      <td>1.430000</td>
+      <td>5106.024760</td>
+      <td>3687.126279</td>
+      <td>8.496074</td>
+      <td>48.744199</td>
+      <td>5.75</td>
+      <td>127.297102</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Germany</td>
+      <td>DEU</td>
+      <td>1.450000</td>
+      <td>3601.226158</td>
+      <td>4909.659884</td>
+      <td>8.542615</td>
+      <td>48.568695</td>
+      <td>6.25</td>
+      <td>81.281645</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>United Kingdom</td>
+      <td>GBR</td>
+      <td>1.842500</td>
+      <td>2768.864417</td>
+      <td>3357.983675</td>
+      <td>7.720655</td>
+      <td>48.791809</td>
+      <td>9.25</td>
+      <td>64.641557</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Consider the index (row labels) of this 5-row data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_5</span><span class="o">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<p>Here’s <code class="highlighter-rouge">sub</code> in action:</p>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sub(4, 1)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67], dtype='int64')
 </code></pre></div></div>
 
-<p>There’s some code below, that will error, because the assignment
-statement does not set <code class="highlighter-rouge">func</code> to have the value we need. Set <code class="highlighter-rouge">func</code>
-correctly so the result equals 2:</p>
+<p>Now let us say we want to select some of these rows with Boolean indexing. Here
+is a Boolean series with True for rows where <code class="highlighter-rouge">health_exp_per_cap</code> is greater
+than 3500 dollars, False otherwise.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func = add
-func(10, 8)
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a Boolean series with True for big spender rows, False otherwise.
+</span><span class="n">is_big_spender</span> <span class="o">=</span> <span class="n">richest_5</span><span class="p">[</span><span class="s">'health_exp_per_cap'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3500</span>
+<span class="n">is_big_spender</span>
 </code></pre></div></div>
 
-<p>Set <code class="highlighter-rouge">my_func1</code> and <code class="highlighter-rouge">my_func2</code> in the code fragment below, so that the
-result is 12:</p>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_func1 = # Your code here
-my_func2 = # Your code here
-my_func1(8, 2) + my_func2(3, 3)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     True
+35     False
+97      True
+49      True
+67     False
+Name: health_exp_per_cap, dtype: bool
 </code></pre></div></div>
 
-<p>Here is a function that takes three arguments.  The first, called <code class="highlighter-rouge">f</code>,
-should be set to a function value - that is, a value that is the
-internal representation of a function.  The second and third values, called <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code>, should set to be number values.</p>
+<p>Notice that this Series, like all Series, has an index, which is the same as
+the index from the Series we used to make it
+(<code class="highlighter-rouge">richest_5['health_exp_per_cap']</code>), and therefore, the same as the index for
+the data frame (<code class="highlighter-rouge">richest_5</code>).</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def do_it(f, x, y):
-    return f(x, y)
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_big_spender</span><span class="o">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<p>Set <code class="highlighter-rouge">another_func</code> so the result returned is 4:</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67], dtype='int64')
+</code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>another_func = # Your code here
-do_it(another_func, 1, 3)
+<p>Let’s say we are interested in the <code class="highlighter-rouge">country_name</code> for countries spending more
+than 3500 dollars per capita on health care.  We can do this with, for example,
+<code class="highlighter-rouge">loc</code>:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_5</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="s">'country_name'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    United States
+97             Japan
+49           Germany
+Name: country_name, dtype: object
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">loc</code> gives us the rows for which <em>corresponding</em> elements in  <code class="highlighter-rouge">is_big_spender</code>
+are True.</p>
+
+<p>But what does <em>corresponding</em> mean?   Does it mean corresponding in terms of
+position?   Or in terms of index?</p>
+
+<p>Here’s the Boolean series again:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_big_spender</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     True
+35     False
+97      True
+49      True
+67     False
+Name: health_exp_per_cap, dtype: bool
+</code></pre></div></div>
+
+<p>Or does it mean <em>corresponding</em> in terms of <em>labels</em>.  So, take the row from
+Does <em>corresponding</em> mean corresponding in terms of <em>position</em>?  In that case we take the first row of <code class="highlighter-rouge">richest_5</code> (because the first element in <code class="highlighter-rouge">is_big_spender</code> is True) but not the second row (because the second element in <code class="highlighter-rouge">is_big_spender</code> is False) and so on?</p>
+
+<p><code class="highlighter-rouge">richest_5</code> with label 202 (because the element labeled 202 in <code class="highlighter-rouge">is_big_spender</code>
+is True), but do not take the row labeled 35 (because the element labeled 35 in
+<code class="highlighter-rouge">is_big_spender</code> is False), and so on.</p>
+
+<p>We cannot distinguish between <em>position</em> and <em>labels</em> at the moment, because
+the order of the labels is the same in the data frame <code class="highlighter-rouge">richest_5</code> and the
+series <code class="highlighter-rouge">is_big_spender</code>, so <em>positions</em> and <em>labels</em> will give the same answer.</p>
+
+<p>We can distinguish when the order of the labels is not the same in the Boolean
+series and the data frame.  For example, we can sort the series, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sorted_is_big_spender</span> <span class="o">=</span> <span class="n">is_big_spender</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<span class="n">sorted_is_big_spender</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>35     False
+67     False
+202     True
+97      True
+49      True
+Name: health_exp_per_cap, dtype: bool
+</code></pre></div></div>
+
+<p>Now the order of the row labels is different in the series (above) and the data frame (below):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_5</span><span class="o">.</span><span class="n">index</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67], dtype='int64')
+</code></pre></div></div>
+
+<p>If we index with this sorted series, and the indexing is using the <em>position</em>
+of the True and False values, we would expect to see the last three rows,
+because the values in the last three positions are True (and the others are
+False).</p>
+
+<p>If the indexing is using <em>labels</em>, then we expect to get the same answer we got
+before, because the relationship between the True / False values and labels
+hasn’t changed - the elements labeled 202, 97 and 49 have True values, so we
+expect to see those rows in the result.  So (drum roll):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_5</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sorted_is_big_spender</span><span class="p">,</span> <span class="s">'country_name'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    United States
+97             Japan
+49           Germany
+Name: country_name, dtype: object
+</code></pre></div></div>
+
+<p>The result the same as for the not-sorted series - and we have found that <code class="highlighter-rouge">loc</code>
+indexing is using the <em>labels</em>, even with a Boolean series.</p>
+
+<p>On reflection, maybe that is not surprising - after all, <code class="highlighter-rouge">loc</code> <a href="pandas_indexing">we already
+know</a> that <code class="highlighter-rouge">loc</code> indexing is indexing by <em>label</em>.</p>
+
+<p>We usually will not have to worry about the difference between labels and
+positions in Boolean Series, because, usually, the row labels and positions are
+the same in the thing we index (data frame, or Series) and the Boolean series
+we use for indexing.  This was the case at the top of this page, and in all
+previous times you have seen Boolean indexing on data frames or series.</p>
+
+<h2 id="what-about-iloc">What about iloc?</h2>
+
+<p>We know that <code class="highlighter-rouge">iloc</code> does indexing by <em>position</em> - so what approach does <code class="highlighter-rouge">iloc</code>
+take to the labels on a Boolean series?</p>
+
+<p>We guess that <code class="highlighter-rouge">iloc</code> does not use the labels on a Boolean series, but what does
+it do?  Does it throw away the labels and just look at the positions of the
+True and False values?  Or something else?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># iloc indexing with a Boolean series.
+# The 'country_name' column is the first column,
+# so it is at offset 0 in the columns.
+</span><span class="n">richest_5</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sorted_is_big_spender</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError                       Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-11-8f5ae3f2285e&gt; in &lt;module&gt;
+      2 # The 'country_name' column is the first column,
+      3 # so it is at offset 0 in the columns.
+----&gt; 4 richest_5.iloc[sorted_is_big_spender, 0]
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
+   1492             except (KeyError, IndexError, AttributeError):
+   1493                 pass
+-&gt; 1494             return self._getitem_tuple(key)
+   1495         else:
+   1496             # we by definition only have the 0th axis
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
+   2141     def _getitem_tuple(self, tup):
+   2142 
+-&gt; 2143         self._has_valid_tuple(tup)
+   2144         try:
+   2145             return self._getitem_lowerdim(tup)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
+    221                 raise IndexingError('Too many indexers')
+    222             try:
+--&gt; 223                 self._validate_key(k, i)
+    224             except ValueError:
+    225                 raise ValueError("Location based indexing can only have "
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
+   2058             if hasattr(key, 'index') and isinstance(key.index, Index):
+   2059                 if key.index.inferred_type == 'integer':
+-&gt; 2060                     raise NotImplementedError("iLocation based boolean "
+   2061                                               "indexing on an integer type "
+   2062                                               "is not available")
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError: iLocation based boolean indexing on an integer type is not available
+</code></pre></div></div>
+
+<p>It does something else - it gives an error, telling us that it will not use the
+index.   This is so whatever the index - even if the index and the positions
+give the same answer:</p>
+
+<!-- #endregion -->
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># iloc with the original Boolean series, where positions
+# and labels match.
+</span><span class="n">richest_5</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError                       Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-2f61cb9f0042&gt; in &lt;module&gt;
+      1 # iloc with the original Boolean series, where positions
+      2 # and labels match.
+----&gt; 3 richest_5.iloc[is_big_spender, 0]
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
+   1492             except (KeyError, IndexError, AttributeError):
+   1493                 pass
+-&gt; 1494             return self._getitem_tuple(key)
+   1495         else:
+   1496             # we by definition only have the 0th axis
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
+   2141     def _getitem_tuple(self, tup):
+   2142 
+-&gt; 2143         self._has_valid_tuple(tup)
+   2144         try:
+   2145             return self._getitem_lowerdim(tup)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
+    221                 raise IndexingError('Too many indexers')
+    222             try:
+--&gt; 223                 self._validate_key(k, i)
+    224             except ValueError:
+    225                 raise ValueError("Location based indexing can only have "
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
+   2058             if hasattr(key, 'index') and isinstance(key.index, Index):
+   2059                 if key.index.inferred_type == 'integer':
+-&gt; 2060                     raise NotImplementedError("iLocation based boolean "
+   2061                                               "indexing on an integer type "
+   2062                                               "is not available")
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError: iLocation based boolean indexing on an integer type is not available
+</code></pre></div></div>
+
+<p>If you want to use Boolean indexing with <code class="highlighter-rouge">iloc</code>, you have to use a Boolean
+sequence without row / element labels, such as a Numpy array.  In our case, we
+can achieve that by converting the Boolean Series to a Numpy array, and
+therefore, throwing away the index (element labels):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_big_spender_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">is_big_spender</span><span class="p">)</span>
+<span class="n">is_big_spender_arr</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True,  True, False])
+</code></pre></div></div>
+
+<p>This Boolean sequence will work with <code class="highlighter-rouge">iloc</code>, because it has no index (element
+labels) to trip it up:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You can use a Boolean array to index rows, with "iloc".
+</span><span class="n">richest_5</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">is_big_spender_arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    United States
+97             Japan
+49           Germany
+Name: country_name, dtype: object
 </code></pre></div></div>
 
 
@@ -1055,11 +1423,13 @@ do_it(another_func, 1, 3)
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/exercises/function_exercises" class="pagination--pager" title="Function exercises
+      <a href="/cfd2019/chapters/07/pandas_indexing" class="pagination--pager" title="6.6 Indexing in Pandas
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/exercises/conditional_statements_exercises" class="pagination--pager" title="Conditional statement exercises
+      <a href="/cfd2019/chapters/08/mean" class="pagination--pager" title="
+  The mean and straight line relationships
+
 ">Next</a>
     
   </nav>

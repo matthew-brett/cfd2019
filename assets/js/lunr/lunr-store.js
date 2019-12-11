@@ -269,6 +269,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/06/sorting_arrays",
         "teaser":null},{
+        "title": "Booleans and labels",
+        "excerpt":"We have already used Boolean series to index data frames and other series. This page gives a little more details about how that works, in order to explainsome subtleties in results. We return to the World Bank statistics on development and gender ingender_stats.csv. Download that file to the same directory...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/booleans_and_labels",
+        "teaser":null},{
         "title": "6.5 Conditional statements",
         "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
         "tags": [],
