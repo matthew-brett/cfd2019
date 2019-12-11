@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2019-12-10T16:40:42+00:00">
+  <meta property="article:published_time" content="2019-12-11T11:27:38+00:00">
 
 
 
@@ -958,7 +958,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.6 Indexing in Pandas">
       <meta itemprop="description" content="Way back in the introduction to data frames, we covered indexing into data frames withBoolean vectors, such as Pandas Series or Numpy arrays, and indexing into data frames with column names.">
-      <meta itemprop="datePublished" content="December 10, 2019">
+      <meta itemprop="datePublished" content="December 11, 2019">
       
 
       <div class="page__inner-wrap">
@@ -984,7 +984,8 @@
   <li><a href="#loc-and-iloc-indexing-work-on-columns-too">Loc and iloc indexing work on columns too</a></li>
   <li><a href="#series-have-an-index-too">Series have an index too</a></li>
   <li><a href="#rows-from-data-frames-are-series">Rows from data frames are Series</a></li>
-  <li><a href="#you-can-index-without-loc-and-iloc-but-please-dont-unless">You can index without loc and iloc, but please don’t unless</a></li>
+  <li><a href="#you-can-index-without-loc-and-iloc-but-please-dont-except-">You can index without loc and iloc, but please don’t, except …</a></li>
+  <li><a href="#you-can-use-boolean-indexing-with-loc-and-iloc">You can use Boolean indexing with loc and iloc</a></li>
 </ul>
     </nav>
   </aside>
@@ -1018,11 +1019,16 @@ and Series.</p>
 
 <h2 id="the-index">The index</h2>
 
-<p>We start by going back to our first data frame, containing statistics on development and gender from the world bank.</p>
+<p>We return to our first data frame, containing statistics on development and
+gender from the World Bank.</p>
 
-<p>This is the <a href="/cfd2019/data/gender_stats.csv">gender_stats.csv</a> file.  See <a href="https://github.com/matthew-brett/datasets/tree/master/gender_stats">the gender stats data page</a> for some more detail.</p>
+<p>This is the <a href="/cfd2019/data/gender_stats.csv">gender_stats.csv</a> file.
+See <a href="https://github.com/matthew-brett/datasets/tree/master/gender_stats">the gender stats data
+page</a> for
+some more detail.</p>
 
-<p>Download that file to the same directory as this notebook, if you are running on your own computer.</p>
+<p>Download that file to the same directory as this notebook, if you are running
+on your own computer.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file as a data frame.
 </span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
@@ -1187,7 +1193,9 @@ and Series.</p>
 </div>
 </div>
 
-<p>As you know, the names at the top, in <strong>bold typeface</strong>, are the names of the columns.  We can see these names using the <code class="highlighter-rouge">columns</code> attribute of the data frame:</p>
+<p>As you know, the names at the top, in <strong>bold typeface</strong>, are the names of the
+columns.  We can see these names using the <code class="highlighter-rouge">columns</code> attribute of the data
+frame:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">columns</span>
 </code></pre></div></div>
@@ -1200,11 +1208,14 @@ and Series.</p>
 
 <p>These can also be called the <em>column labels</em>.</p>
 
-<p>We have not paid attention so far to the numbers at the left of the table display, also in bold typeface.</p>
+<p>We have not paid attention so far to the numbers at the left of the table
+display, also in bold typeface.</p>
 
-<p>In this case, they are ascending integers, starting at 0, with value 0 for the first row, 1 for the second row, and so on.</p>
+<p>In this case, they are ascending integers, starting at 0, with value 0 for the
+first row, 1 for the second row, and so on.</p>
 
-<p>These numbers are the <em>index</em> of the data frame.  The index contains the <em>row labels</em>.</p>
+<p>These numbers are the <em>index</em> of the data frame.  The index contains the <em>row
+labels</em>.</p>
 
 <p>We can see the row labels / index with the <code class="highlighter-rouge">index</code> attribute of the data frame.</p>
 
@@ -1214,9 +1225,14 @@ and Series.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=0, stop=216, step=1)
 </code></pre></div></div>
 
-<p>This is saying we have a simple index, that is like a <code class="highlighter-rouge">np.arange</code>, starting at 0, and continuing in steps of 1 up to 1, but not including 216.</p>
+<p>This is saying we have a simple index, that is like a <code class="highlighter-rouge">np.arange</code>, starting at
+0, and continuing in steps of 1 up to, but not including 216.</p>
 
-<p>Now let’s look at the last 15 rows of the data frame.  We can get these with the <code class="highlighter-rouge">tail</code> method of the data frame.</p>
+<p>So far, the index looks like row numbers, with 0 for the first row, 1 for the
+second row.  We will soon see that the index is more than that.</p>
+
+<p>For example, let us look at the last 15 rows.  We can get these with the <code class="highlighter-rouge">tail</code>
+method of the data frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">last_15</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">last_15</span>
@@ -1446,11 +1462,15 @@ and Series.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=201, stop=216, step=1)
 </code></pre></div></div>
 
-<p>Notice that the first row no longer has the label 0 - it has label 201.</p>
+<p>Notice that the first row of this new data frame no longer has the label 0 - it
+has label 201.  These numbers are the labels from the original data frame, from
+which we selected the rows.</p>
 
-<p>Notice too that the second row in this table is the USA, and it has the label 202.</p>
+<p>Notice too that the second row in this table is the USA, and it has the label
+\202.</p>
 
-<p>Now imagine that I sort the data frame by GDP, and select the top 15 rows (and therefore, the top 15 richest countries):</p>
+<p>Now imagine that I sort the original data frame by Gross Domestic Product, and
+select the top 15 rows.  By doing this, I select the top 15 richest countries.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Sort by GDP.
 </span><span class="n">df_by_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -1675,9 +1695,11 @@ and Series.</p>
 </div>
 </div>
 
-<p>Now notice that the index values have followed the rows.  The row for the USA is now first, but it has kept its original index value (row label) 202.  The index value identifies the row.</p>
+<p>Now notice that the index values have followed their respective rows.  The row
+for the USA is now first, but it has kept its original index value (row label)
+- 202.  The index value <em>identifies</em> the row.</p>
 
-<p>Here’s the index for this small table:</p>
+<p>Here is the index for this small table:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">index</span>
 </code></pre></div></div>
@@ -1687,11 +1709,20 @@ and Series.</p>
 
 <p>Now let us say that I wanted to get the eleventh row of this table.</p>
 
-<p>I would be tempted to do something like <code class="highlighter-rouge">richest_15[10]</code> - but then - what will Pandas give me?   Does <code class="highlighter-rouge">10</code> mean the row label for “Australia”?  Or does it mean the eleventh row of the table, as it would for an array?  That is, will the indexing using the <em>labels</em> (index values)?  Or will it use the positions (as for indexing in Numpy arrays)?</p>
+<p>I would be tempted to do something like <code class="highlighter-rouge">richest_15[10]</code> - but then - what
+would Pandas give me?   Does <code class="highlighter-rouge">10</code> mean the row label for “Australia”?  Or does
+it mean the eleventh row of the table, as it would for an array, and therefore
+the row for “Canada”?  That is, will the indexing using the <em>labels</em> (index
+values)?  Or will it use the positions (as for indexing in Numpy arrays)?</p>
 
-<p>The answer is, it is ambiguous, and when things are ambiguous, Pandas has to guess.   That’s a bad idea, because then we have to guess what Pandas has guessed, and it’s starting to get really confusing.</p>
+<p>The answer is, it is ambiguous, and when things are ambiguous, Pandas has to
+guess.   That’s a bad idea, because then we have to guess what Pandas has
+guessed, and it is starting to get really confusing.</p>
 
-<p>For that reason, we careful Pandas users never use indexing like <code class="highlighter-rouge">richest_15[10]</code> - we always use one of the two indexing attributes that Pandas provides.  Each does a different type of indexing.</p>
+<p>For that reason, we careful Pandas users do not index rows with code like
+<code class="highlighter-rouge">richest_15[10]</code>.  When we are not using Booleans to select rows, we always use
+one of the two indexing attributes that Pandas provides.  Each does a different
+type of indexing.</p>
 
 <ul>
   <li>The <code class="highlighter-rouge">loc</code> (label locate) attribute indexes using the <em>labels</em> (row index).</li>
@@ -1732,38 +1763,47 @@ population            35.5171
 Name: 32, dtype: object
 </code></pre></div></div>
 
-<p>Specifically what is happening is that <code class="highlighter-rouge">richest_15.loc</code> gives us a special thing that</p>
+<p>In more details, what is happening in the first cell above is that
+<code class="highlighter-rouge">richest_15.loc</code> gives us a special value (AKA <em>object</em>) that:</p>
 
 <ul>
-  <li>Know about the <code class="highlighter-rouge">richest_15</code> data frame</li>
-  <li>Will give us rows and columns, if we use <code class="highlighter-rouge">[ something ]</code> on it.</li>
+  <li>knows about the <code class="highlighter-rouge">richest_15</code> data frame;</li>
+  <li>will give us rows and columns, if we use <code class="highlighter-rouge">[ something ]</code> on it.</li>
 </ul>
 
-<p>So read <code class="highlighter-rouge">richest_15.loc[10]</code> as:</p>
-
-<ul>
-  <li>Get the <code class="highlighter-rouge">richest_15</code> value (the data frame);</li>
-  <li>Get the <code class="highlighter-rouge">loc</code> attribute of this data frame to return a special value that will give us rows and columns from the data frame,  by looking at labels;</li>
-  <li>Use this value to fetch the row labeled 10.</li>
-</ul>
-
-<p>Likewise <code class="highlighter-rouge">richest_15.iloc[10]</code> as:</p>
+<p>So, read <code class="highlighter-rouge">richest_15.loc[10]</code> as:</p>
 
 <ul>
   <li>Get the <code class="highlighter-rouge">richest_15</code> value (the data frame);</li>
-  <li>Get the <code class="highlighter-rouge">iloc</code> attribute of this data frame to return a special value that will give us rows and columns from the data frame, by looking at positions (offsets);</li>
-  <li>Use this value to fetch the row at offset position 10.</li>
+  <li>Get the <code class="highlighter-rouge">loc</code> attribute of this data frame. This evaluates to a special
+object (value) that can give us rows and columns from the data frame, by
+looking at labels;</li>
+  <li>Use this object to fetch the row labeled 10, by using indexing (<code class="highlighter-rouge">[10]</code>)</li>
 </ul>
 
-<p>When you select rows and columns from a data frame, consider carefully what you want.</p>
+<p>Likewise, read <code class="highlighter-rouge">richest_15.iloc[10]</code> as:</p>
 
-<p>Do you want to select rows and columns by <em>label</em> (by <em>index</em>, in the rows).  Then you want <code class="highlighter-rouge">.loc</code>.</p>
+<ul>
+  <li>Get the <code class="highlighter-rouge">richest_15</code> value (the data frame);</li>
+  <li>Get the <code class="highlighter-rouge">iloc</code> attribute of this data frame. This evaluates to a special
+object (value) that can give us rows and columns from the data frame, by
+looking at positions (offsets);</li>
+  <li>Use this object to fetch the row at offset 10, by using indexing (<code class="highlighter-rouge">[10]</code>).</li>
+</ul>
 
-<p>Do you want to select rows and columns by <em>position</em> (offset).  Then you want <code class="highlighter-rouge">.iloc</code>.</p>
+<p>When you select rows and columns from a data frame, consider carefully what you
+want.</p>
+
+<p>Do you want to select rows and columns by <em>label</em> (by <em>index</em>, in the rows).
+Then you want <code class="highlighter-rouge">.loc</code>.</p>
+
+<p>Do you want to select rows and columns by <em>position</em> (offset).  Then you want
+<code class="highlighter-rouge">.iloc</code>.</p>
 
 <h2 id="loc-and-iloc-indexing-work-on-columns-too">Loc and iloc indexing work on columns too</h2>
 
-<p>Consider this.  We use <code class="highlighter-rouge">.loc</code> and the label for the <em>row</em>, followed by the label for the <em>column</em>.</p>
+<p>Consider this.  We use <code class="highlighter-rouge">.loc</code> and the label for the <em>row</em>, followed by the
+label for the <em>column</em>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1771,29 +1811,33 @@ Name: 32, dtype: object
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1422.994116449394
 </code></pre></div></div>
 
-<p>Conversely, <code class="highlighter-rouge">iloc</code> only understands positions, and so, integers.  It does not understand or use labels:</p>
+<p>This selects the row <em>labeled</em> 10 (the USA row) and returns the value from the
+<code class="highlighter-rouge">gdp_us_billion</code> column.</p>
+
+<p>Conversely, <code class="highlighter-rouge">iloc</code> only understands positions, and so, integers.  It does not
+understand or use labels:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We can't specify columns by label, using iloc.
 </span><span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----------------------------------------------------------------------
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                            Traceback (most recent call last)
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
-    221             try:
---&gt; 222                 self._validate_key(k, i)
-    223             except ValueError:
+    222             try:
+--&gt; 223                 self._validate_key(k, i)
+    224             except ValueError:
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
-   1970             raise ValueError("Can only index by location with "
--&gt; 1971                              "a [{types}]".format(types=self._valid_types))
-   1972 
+   2083             raise ValueError("Can only index by location with "
+-&gt; 2084                              "a [{types}]".format(types=self._valid_types))
+   2085 
 
 </code></pre></div></div>
 
@@ -1805,7 +1849,7 @@ During handling of the above exception, another exception occurred:
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                            Traceback (most recent call last)
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-3b068730429a&gt; in &lt;module&gt;
@@ -1815,36 +1859,40 @@ During handling of the above exception, another exception occurred:
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
-   1470             except (KeyError, IndexError):
-   1471                 pass
--&gt; 1472             return self._getitem_tuple(key)
-   1473         else:
-   1474             # we by definition only have the 0th axis
+   1492             except (KeyError, IndexError, AttributeError):
+   1493                 pass
+-&gt; 1494             return self._getitem_tuple(key)
+   1495         else:
+   1496             # we by definition only have the 0th axis
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
-   2011     def _getitem_tuple(self, tup):
-   2012 
--&gt; 2013         self._has_valid_tuple(tup)
-   2014         try:
-   2015             return self._getitem_lowerdim(tup)
+   2141     def _getitem_tuple(self, tup):
+   2142 
+-&gt; 2143         self._has_valid_tuple(tup)
+   2144         try:
+   2145             return self._getitem_lowerdim(tup)
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
-    224                 raise ValueError("Location based indexing can only have "
-    225                                  "[{types}] types"
---&gt; 226                                  .format(types=self._valid_types))
-    227 
-    228     def _is_nested_tuple_indexer(self, tup):
+    225                 raise ValueError("Location based indexing can only have "
+    226                                  "[{types}] types"
+--&gt; 227                                  .format(types=self._valid_types))
+    228 
+    229     def _is_nested_tuple_indexer(self, tup):
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">iloc</code> can get columns by their position.  For example, <code class="highlighter-rouge">fertility_rate</code> is the third column, and so we can get the fertility rate by asking <code class="highlighter-rouge">iloc</code> for the eleventh row, third column, like so:</p>
+<p>Notice the somewhat informative error right at the bottom of the error message.</p>
+
+<p><code class="highlighter-rouge">iloc</code> can get columns by their position.  For example, <code class="highlighter-rouge">fertility_rate</code> is the
+third column, and so we can get the fertility rate by asking <code class="highlighter-rouge">iloc</code> for the
+eleventh row, third column, like so:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div></div>
@@ -1852,9 +1900,12 @@ During handling of the above exception, another exception occurred:
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6002999999999998
 </code></pre></div></div>
 
+<p>This is the value from the row at offset 10 and the column at offset 2.</p>
+
 <h2 id="series-have-an-index-too">Series have an index too</h2>
 
-<p>Data frames have columns (and column labels), and rows (with row labels — the index).</p>
+<p>Data frames have columns (and column labels), and rows (with row labels — the
+index).</p>
 
 <p>Series also have element labels — they also have an index.</p>
 
@@ -1881,7 +1932,10 @@ Name: fert_rate, dtype: float64
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
-<p>You probably also spotted the numbers to the left of the values.  Yes, the row labels have come across from the data frame into the Series.  We can see that the first element has row label 202, and we remember that this is the row label (index value) for the USA.</p>
+<p>You probably also spotted the numbers to the left of the values.  Yes, the row
+labels have come across from the data frame into the Series.  We can see that
+the first element has row label 202, and we remember that this is the row label
+(index value) for the USA.</p>
 
 <p>As for the data frames, here is the index for the series:</p>
 
@@ -1891,7 +1945,8 @@ Name: fert_rate, dtype: float64
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67, 63, 26, 88, 94, 164, 32, 10, 104, 58, 124], dtype='int64')
 </code></pre></div></div>
 
-<p>Like data frames, we can index by label, with <code class="highlighter-rouge">loc</code>, and by position, with <code class="highlighter-rouge">iloc</code>:</p>
+<p>Like data frames, we can index by label, with <code class="highlighter-rouge">loc</code>, and by position, with
+<code class="highlighter-rouge">iloc</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The value for row labeled 10 - Australia.
 </span><span class="n">rich_ferts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -1937,7 +1992,8 @@ Name: 202, dtype: object
 
 <p>Notice that the Series has 9 elements, one for each column in the data frame.</p>
 
-<p>We can see the number of rows and columns in a data frame with:</p>
+<p>As you remember, we can see the number of rows and columns in a data frame
+with:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">shape</span>
 </code></pre></div></div>
@@ -1945,9 +2001,10 @@ Name: 202, dtype: object
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(15, 9)
 </code></pre></div></div>
 
-<p>Remember, the columns have names, which are also labels for the column.</p>
+<p>Remember, the columns have names, which we can also call <em>labels</em>.</p>
 
-<p>When we select a row out of a data frame, we have one element per column, and the labels for the columns now become the labels for the rows.</p>
+<p>When we select a row out of a data frame, we have one element per column, and
+the labels for the columns now become the labels for the rows.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">index</span>
 </code></pre></div></div>
@@ -1974,19 +2031,26 @@ Name: 202, dtype: object
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'United States'
 </code></pre></div></div>
 
-<h2 id="you-can-index-without-loc-and-iloc-but-please-dont-unless">You can index without loc and iloc, but please don’t unless</h2>
+<h2 id="you-can-index-without-loc-and-iloc-but-please-dont-except-">You can index without loc and iloc, but please don’t, except …</h2>
 
-<p>In the data frame introduction, you saw that we can index into data frame directly, using <code class="highlighter-rouge">[ something ]</code> after the data frame value, without using <code class="highlighter-rouge">loc</code> or <code class="highlighter-rouge">iloc</code>.  This is a very reasonable thing to do if:</p>
+<p>In the <a href="../04/data_frame_intro">data frame introduction</a>, you saw that we can
+index into data frame directly, using <code class="highlighter-rouge">[ something ]</code> after the data frame
+value, without using <code class="highlighter-rouge">loc</code> or <code class="highlighter-rouge">iloc</code>.  Call this <em>direct indexing</em>.  This is
+a very reasonable thing to do if:</p>
 
 <ul>
   <li>the <code class="highlighter-rouge">something</code> is a Boolean sequence.  This is not ambiguous.</li>
-  <li>the <code class="highlighter-rouge">something</code> is a column name.  This isn’t ambigous either.</li>
+  <li>the <code class="highlighter-rouge">something</code> is a column name.  This isn’t ambiguous either.</li>
 </ul>
 
-<p>For example, both of these are entirely reasonable uses of this kind of indexing.</p>
+<p>We used both types of direct indexing in the data frame introduction page.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select rows where 'health_exp_per_cap' is greater than 3000 dollars.
-</span><span class="n">big_health_spenders</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="n">richest_15</span><span class="p">[</span><span class="s">'health_exp_per_cap'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3000</span><span class="p">]</span>
+<p>For example, both of these are entirely reasonable uses of direct indexing:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Direct Boolean indexing:
+# Select rows where 'health_exp_per_cap' is greater than 3000 dollars.
+</span><span class="n">is_big_spender</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="s">'health_exp_per_cap'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3000</span>  <span class="c1"># Boolean Series
+</span><span class="n">big_health_spenders</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">]</span>
 <span class="n">big_health_spenders</span>
 </code></pre></div></div>
 
@@ -2122,7 +2186,8 @@ Name: 202, dtype: object
 </div>
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the 'country_code' column.
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Direct indexing with column label:
+# Select the 'country_code' column.
 </span><span class="n">country_code</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="s">'country_code'</span><span class="p">]</span>
 <span class="n">country_code</span>
 </code></pre></div></div>
@@ -2145,7 +2210,9 @@ Name: 202, dtype: object
 Name: country_code, dtype: object
 </code></pre></div></div>
 
-<p>In fact Pandas will also allow you to this, with the Series we just made:</p>
+<p>Those uses of direct indexing are entirely sensible.  Other uses of direct indexing are not sensible, and we strongly encourage you not to use them.</p>
+
+<p>For example, Pandas will also allow you to this, with the Series we just made:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Nooooooo !
 </span><span class="n">country_code</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -2154,7 +2221,10 @@ Name: country_code, dtype: object
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'AUS'
 </code></pre></div></div>
 
-<p>Please don’t do that.  This is ambiguous.  Did you really mean the country with label 10?  Or did you mean the country at position 10?   Pandas will guess for you.  Don’t let it.  Always do this:</p>
+<p>Please don’t do that.  This is ambiguous.  Did you really mean the country with
+label 10?  Or did you mean the country at position 10?   Pandas will guess for
+you.  Don’t let it.  If you are not selecting rows / elements with Booleans,
+always do this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># By label
 </span><span class="n">country_code</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
@@ -2170,6 +2240,291 @@ Name: country_code, dtype: object
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'CAN'
+</code></pre></div></div>
+
+<h2 id="you-can-use-boolean-indexing-with-loc-and-iloc">You can use Boolean indexing with loc and iloc</h2>
+
+<p>It is often convenient to use direct indexing with Booleans, as we have just seen:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a Boolean series with True for big spender rows, False otherwise.
+</span><span class="n">is_big_spender</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="s">'health_exp_per_cap'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3000</span>
+<span class="n">is_big_spender</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     True
+35     False
+97      True
+49      True
+67      True
+63      True
+26     False
+88     False
+94      True
+164    False
+32      True
+10      True
+104    False
+58     False
+124    False
+Name: health_exp_per_cap, dtype: bool
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Direct Boolean indexing:
+# Select rows where 'health_exp_per_cap' is greater than 3000 dollars.
+</span><span class="n">big_health_spenders</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">]</span>
+<span class="n">big_health_spenders</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country_name</th>
+      <th>country_code</th>
+      <th>fert_rate</th>
+      <th>gdp_us_billion</th>
+      <th>health_exp_per_cap</th>
+      <th>health_exp_pub</th>
+      <th>prim_ed_girls</th>
+      <th>mat_mort_ratio</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>202</th>
+      <td>United States</td>
+      <td>USA</td>
+      <td>1.860875</td>
+      <td>17369.124600</td>
+      <td>9060.068657</td>
+      <td>8.121961</td>
+      <td>48.758830</td>
+      <td>14.00</td>
+      <td>318.558175</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Japan</td>
+      <td>JPN</td>
+      <td>1.430000</td>
+      <td>5106.024760</td>
+      <td>3687.126279</td>
+      <td>8.496074</td>
+      <td>48.744199</td>
+      <td>5.75</td>
+      <td>127.297102</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Germany</td>
+      <td>DEU</td>
+      <td>1.450000</td>
+      <td>3601.226158</td>
+      <td>4909.659884</td>
+      <td>8.542615</td>
+      <td>48.568695</td>
+      <td>6.25</td>
+      <td>81.281645</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>United Kingdom</td>
+      <td>GBR</td>
+      <td>1.842500</td>
+      <td>2768.864417</td>
+      <td>3357.983675</td>
+      <td>7.720655</td>
+      <td>48.791809</td>
+      <td>9.25</td>
+      <td>64.641557</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>France</td>
+      <td>FRA</td>
+      <td>2.005000</td>
+      <td>2647.649725</td>
+      <td>4387.835406</td>
+      <td>8.920420</td>
+      <td>48.772050</td>
+      <td>8.75</td>
+      <td>66.302099</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>Italy</td>
+      <td>ITA</td>
+      <td>1.390000</td>
+      <td>2005.983980</td>
+      <td>3266.984094</td>
+      <td>6.984374</td>
+      <td>48.407573</td>
+      <td>4.00</td>
+      <td>60.378795</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Canada</td>
+      <td>CAN</td>
+      <td>1.600300</td>
+      <td>1708.473627</td>
+      <td>4616.539134</td>
+      <td>7.546247</td>
+      <td>48.808926</td>
+      <td>7.25</td>
+      <td>35.517119</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Australia</td>
+      <td>AUS</td>
+      <td>1.861500</td>
+      <td>1422.994116</td>
+      <td>4256.058988</td>
+      <td>6.292381</td>
+      <td>48.576707</td>
+      <td>6.00</td>
+      <td>23.444560</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We can also use Booleans with <code class="highlighter-rouge">loc</code> indexing.  This allows us to do things like
+select rows with Booleans, and columns with labels, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Boolean indexing for rows, with "loc"
+# Get "country_name" column values for big health spenders:
+</span><span class="n">big_spender_names</span> <span class="o">=</span> <span class="n">richest_15</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="s">'country_name'</span><span class="p">]</span>
+<span class="n">big_spender_names</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     United States
+97              Japan
+49            Germany
+67     United Kingdom
+63             France
+94              Italy
+32             Canada
+10          Australia
+Name: country_name, dtype: object
+</code></pre></div></div>
+
+<p>In fact you can do something similar with <code class="highlighter-rouge">iloc</code>, but <code class="highlighter-rouge">iloc</code> is aggressive
+about not using the <em>index</em> (row labels) of anything.   If you try and use
+a Boolean Series with <code class="highlighter-rouge">iloc</code>, Pandas will complain, because it can see the
+<em>index</em> of <code class="highlighter-rouge">is_big_spender</code>, and it does not want to use it to match the Series
+rows to the data frame rows, so gives an error:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You cannot use a Boolean Series to index rows, with "iloc"
+# Try to get "fert_rate" column values for big health spenders.
+# "fert_rate" is the third column, at offset 2.
+</span><span class="n">big_spender_fert</span> <span class="o">=</span> <span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">big_spender_fert</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError                   Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-33-90b0582ff4ff&gt; in &lt;module&gt;
+      2 # Try to get "fert_rate" column values for big health spenders.
+      3 # "fert_rate" is the third column, at offset 2.
+----&gt; 4 big_spender_fert = richest_15.iloc[is_big_spender, 2]
+      5 big_spender_fert
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
+   1492             except (KeyError, IndexError, AttributeError):
+   1493                 pass
+-&gt; 1494             return self._getitem_tuple(key)
+   1495         else:
+   1496             # we by definition only have the 0th axis
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
+   2141     def _getitem_tuple(self, tup):
+   2142 
+-&gt; 2143         self._has_valid_tuple(tup)
+   2144         try:
+   2145             return self._getitem_lowerdim(tup)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
+    221                 raise IndexingError('Too many indexers')
+    222             try:
+--&gt; 223                 self._validate_key(k, i)
+    224             except ValueError:
+    225                 raise ValueError("Location based indexing can only have "
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
+   2058             if hasattr(key, 'index') and isinstance(key.index, Index):
+   2059                 if key.index.inferred_type == 'integer':
+-&gt; 2060                     raise NotImplementedError("iLocation based boolean "
+   2061                                               "indexing on an integer type "
+   2062                                               "is not available")
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError: iLocation based boolean indexing on an integer type is not available
+</code></pre></div></div>
+
+<p>If you want to use Boolean indexing with <code class="highlighter-rouge">iloc</code>, you have to use a Boolean
+sequence without row / element labels, such as a Numpy array.  In our case, we
+can achieve that by converting the Boolean Series to a Numpy array, and
+therefore, throwing away the index (element labels):</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_big_spender_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">is_big_spender</span><span class="p">)</span>
+<span class="n">is_big_spender_arr</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True,  True,  True,  True, False, False,  True,
+       False,  True,  True, False, False, False])
+</code></pre></div></div>
+
+<p>This Boolean sequence will work with <code class="highlighter-rouge">iloc</code>, because it has no index (element
+labels) to trip it up:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># You can use a Boolean array to index rows, with "iloc".
+# Get "fert_rate" column values for big health spenders.
+# "fert_rate" is the third column, at offset 2.
+</span><span class="n">big_spender_fert</span> <span class="o">=</span> <span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">is_big_spender_arr</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">big_spender_fert</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    1.860875
+97     1.430000
+49     1.450000
+67     1.842500
+63     2.005000
+94     1.390000
+32     1.600300
+10     1.861500
+Name: fert_rate, dtype: float64
 </code></pre></div></div>
 
 
