@@ -269,9 +269,9 @@ the row from `richest_5` with label 202 (because the element labeled 202 in
 element labeled 35 in `is_big_spender` is False), and so on.
 
 
-We cannot distinguish between these alternative at the moment, because
-the order of the labels is the same in the data frame `richest_5` and the
-series `is_big_spender`, so *positions* and *labels* will give the same answer.
+We cannot distinguish between these alternatives at the moment, because the
+order of the labels is the same in the data frame `richest_5` and the series
+`is_big_spender`, so *positions* and *labels* will give the same answer.
 
 
 We can distinguish when the order of the labels is not the same in the Boolean
@@ -350,8 +350,8 @@ converting the Boolean Series to a Numpy array, and therefore, throwing away
 the index (element labels):
 
 ```{python}
-is_big_spender_arr = np.array(is_big_spender)
-is_big_spender_arr
+sorted_is_big_spender_arr = np.array(sorted_is_big_spender)
+sorted_is_big_spender_arr
 ```
 
 This Boolean sequence will work with `iloc`, because it has no index (element
@@ -359,8 +359,10 @@ labels) to trip it up:
 
 ```{python}
 # You can use a Boolean array to index rows, with "iloc".
-richest_5.iloc[is_big_spender_arr, 0]
+richest_5.iloc[sorted_is_big_spender_arr, 0]
 ```
+
+Notice this does gives us the rows where the matching *position* has True.
 
         
       </section>
