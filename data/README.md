@@ -29,3 +29,16 @@ modifications are three single-character edits to replace commas in country
 names with semi-colons. It's not clear what the license is, but I will assume,
 until someone tells me otherwise, that the data are public domain, and can be
 distributed freely.
+
+## Oliner 1988 table 6.8
+
+`oliner_tab6_8a_1.csv` contains data derived from table 6.8 of this book:
+
+Samuel P. Oliner and Pearl M. Oliner (1992) "The Altruistic Personality:
+Rescuers of Jews in Nazi Europe". Free Press, New York. ISBN 0-02923829-3.
+
+See <https://github.com/matthew-brett/datasets/oliner1988> for details.
+
+I believe the underlying *data* are not subject to copyright.  To the extent
+that this table reflects my own (MBs) arrangement of the data, I release it
+under the [PDDL](https://opendatacommons.org/licenses/pddl).
