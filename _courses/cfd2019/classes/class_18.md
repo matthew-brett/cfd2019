@@ -6,4 +6,4 @@ permalink: /classes/class_18
 
 # Day 18 (the nineteenth day)
 
-On this day, we did the project presentations.
+* [Noble politics](../chapters/07/noble_politics)
