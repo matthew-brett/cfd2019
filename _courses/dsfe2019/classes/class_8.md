@@ -6,10 +6,12 @@ permalink: /classes/class_8
 
 # Day 8 (the ninth day)
 
-* [3.5 Ranges](../chapters/03/Ranges)
-* [5.2 Lists](../chapters/05/lists)
-* [5.3 Iteration with For loops](../chapters/05/iteration)
-* [For loop exercises](../chapters/exercises/for_loops)
+* [Indentation](../chapters/03/indentation)
+* [Reply to the Supreme Court](../chapters/03/reply_supreme)
+* [More on arrays](../chapters/03/More_on_Arrays)
+* [Array indexing](../chapters/03/array_indexing)
+* [More on arrays exercise](../exercises/more_arrays.zip)
 
-Assignment - finish up the [For loop
-exercises](../chapters/exercises/for_loops).
+## Assignment
+
+Finish up the more on arrays exercise.
