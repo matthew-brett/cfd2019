@@ -40,19 +40,28 @@ def check_points(rmd_fname, tests_path=None):
     chunks = nb.chunks
     # Identify questions
     questions = question_chunks(nb)
-    for question in questions[:-1]:
+    # Detect mismatch
+    mismatch = {}
+    missing = []
+    total = 0
+    for question in questions:
+        # Get marks allocated
+        marks, out_of, r_total = [float(v) for v in get_marks(question.code)]
+        total += marks
+        assert total == r_total
         # Find following ok.grade chunk, if present.
         q_i = chunks.index(question)
         assert q_i >= 0
         test_name = ok_test_name(chunks[q_i + 1].code)
         if test_name is None:
+            missing.append(chunks[q_i].code)
             continue
-        # Get marks allocated
-        marks, out_of, running_total = get_marks(question.code)
         # Load corresponding test
         test = load_test(op.join(tests_path, test_name + '.py'))
         # Check points same as marks allocated
-        assert test['points'] == float(marks)
+        if test['points'] != marks:
+            mismatch[test_name] = (test['points'], marks)
+    return total, missing, mismatch
 
 
 def test_ok_test_name():
@@ -64,7 +73,8 @@ def test_ok_test_name():
 
 def test_smoke():
     rmd_fname = op.join(NB_DIR, 'three_girls_template.Rmd')
-    check_points(rmd_fname)
+    total, missing, mismatch = check_points(rmd_fname)
+    assert missing, mismatch == ([], {})
 
 
 def get_args():
@@ -81,7 +91,15 @@ def get_args():
 
 def main():
     args = get_args()
-    check_points(args.rmd_fname, args.tests_path)
+    total, missing, mismatch = check_points(args.rmd_fname, args.tests_path)
+    for miss in missing:
+        print(f'Question chunk without ok test\n{miss}')
+    if missing:
+        print()
+    for test_name, (in_test, in_file) in mismatch.items():
+        print(f'Test {test_name} mismatch: {in_test} in test file; '
+              f'{in_file} in notebook')
+    print(f'Total: {total}')
 
 
 if __name__ == '__main__':
