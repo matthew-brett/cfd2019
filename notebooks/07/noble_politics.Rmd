@@ -179,16 +179,16 @@ the row labels and columns labels that we want.
 
 The table gives the counts of people in each of the four categories.
 
-We need to reconstruct the 290 people from these counts, so we can do our shuffling of 'Yes', 'No' labels, in order to make random assignments.
+We need to reconstruct the 280 people from these counts, so we can do our shuffling of 'Yes', 'No' labels, in order to make random assignments.
 
-First we create a list of 290 *respondent* labels, of which the first 209 are
+First we create a list of 280 *respondent* labels, of which the first 209 are
 'rescuer' and the final 71 are 'bystander'.  These identify the type of respondent.
 
 To do this, we use `np.repeat`.  Check the function signature with `np.repeat?` and Enter in a new cell.
 
 
 ```{python}
-# Make the 290 respondent labels.
+# Make the 280 respondent labels.
 respondent = np.repeat(['rescuer', 'bystander'], [209, 71])
 # Show the first 10.
 print('First 10:', respondent[:10])
@@ -196,7 +196,7 @@ print('First 10:', respondent[:10])
 print('Last 10:', respondent[-10:])
 ```
 
-Here we typed ("hard-coded") the numbers 290, 71.  We can also get these numbers using the sum of the values in the columns of our table:
+Here we typed ("hard-coded") the numbers 209, 71.  We can also get these numbers using the sum of the values in the columns of our table:
 
 ```{python}
 bystander_tab.sum()
@@ -205,7 +205,7 @@ bystander_tab.sum()
 Our code above is a little clearer as:
 
 ```{python}
-# Make the 290 respondent labels.
+# Make the 280 respondent labels.
 respondent = np.repeat(['rescuer', 'bystander'], bystander_tab.sum())
 # Show the first 10.
 print('First 10:', respondent[:10])
@@ -216,7 +216,7 @@ print('Last 10:', respondent[-10:])
 Now to create the 'Yes', 'No' labels.   Again, we could do this:
 
 ```{python}
-# Make the 290 Yes No labels.
+# Make the 280 Yes No labels.
 party_yn = np.repeat(['Yes', 'No'], [51, 229])
 # Show the first 10.
 print('First 10:', party_yn[:10])
@@ -248,7 +248,7 @@ bystander_tab.transpose().sum()
 This allows us to do:
 
 ```{python}
-# Make the 290 Yes No labels.
+# Make the 280 Yes No labels.
 party_yn = np.repeat(['Yes', 'No'], bystander_tab.transpose().sum())
 # Show the first 10.
 print('First 10:', party_yn[:10])
@@ -264,7 +264,7 @@ np.random.shuffle(party_yn)
 party_yn[:10]
 ```
 
-We can look at the new random pairing by putting the rows into a table, with 290 rows, one for each person:
+We can look at the new random pairing by putting the rows into a table, with 280 rows, one for each person:
 
 ```{python}
 fake_data = pd.DataFrame()
@@ -280,7 +280,7 @@ We now need the counts of people in each category.  That is we need counts for:
 * 'No' paired with 'rescuer'
 * 'Yes' paired with 'rescuer'
 
-We could do this this the long way round, with lines like:
+We could do this this the long way round, with cells like:
 
 ```{python}
 # Just the Nos.
