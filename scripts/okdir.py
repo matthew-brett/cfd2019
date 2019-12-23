@@ -47,6 +47,7 @@ def write_dir(out_dir):
         fobj.write(TEMPLATE_OK.format(**locals()))
     with open(op.join(out_dir, '.gitignore'), 'wt') as fobj:
         fobj.write(f'{name}.Rmd\n')
+        fobj.write(f'{name}.ipynb\n')
         fobj.write(f'{name}_solution.Rmd\n')
 
 
