@@ -18,8 +18,8 @@ Lymphoma](https://en.wikipedia.org/wiki/Burkitt%27s_lymphoma#Prognosis).
 
 > The overall cure rate for Burkitt's lymphoma in developed countries is
 > about 90%, but worse in low-income countries. Burkitt's lymphoma is
-> uncommon in adults, where it has a worse prognosis {%cite
-> molyneux2012burkitt %}
+> uncommon in adults, where it has a worse prognosis
+> {%cite molyneux2012burkitt %}
 >
 > In 2006, treatment with dose-adjusted EPOCH with Rituximab showed
 > promising initial results in a small series of patients (n=17), with
@@ -35,12 +35,12 @@ notebook to start.
 
 You can use the tools like this:
 
-* Your model is that the EPOCH study was, in fact, no more effective
-  than any other standard therapy, and that they were just lucky, in finding that 100% of their patients were cured.
-* You are going to do a simulation, using this model.  In this
-  simulation, you will make 17 simulated patients, each with a 90%
-  chance of being cured.  Then count how many of the 17 patients were
-  cured.
+* Your model is that the EPOCH study was, in fact, no more effective than any
+  other standard therapy, and that they were just lucky, in finding that 100%
+  of their patients were cured.
+* You are going to do a simulation, using this model.  In this simulation, you
+  will make 17 simulated patients, each with a 90% chance of being cured.  Then
+  count how many of the 17 patients were cured.
 * Do this many times, to see how likely you are to get the value 17 / 17
   (100%).
 
