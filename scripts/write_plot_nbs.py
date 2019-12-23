@@ -6,6 +6,7 @@ import os
 import os.path as op
 from argparse import ArgumentParser
 import base64
+from urllib.parse import quote as urlq
 
 import nbformat
 import nbformat.v4 as nbf
@@ -79,7 +80,8 @@ def write_plot_nb(nb_fname, out_path=None, exe_path=None):
     # First cell displays plot
     # Second has 'plot_marks.append(None)`
     for plot_fname in plot_fnames:
-        cells.append(nbf.new_markdown_cell(f'![]({op.basename(plot_fname)})'))
+        img_url = urlq(op.basename(plot_fname))
+        cells.append(nbf.new_markdown_cell(f'![]({img_url})'))
         cells.append(ncc('plot_marks.append(None)'))
     cells.append(ncc('assert None not in plot_marks'))
     cells.append(ncc('for mark in plot_marks:\n    print(mark)'))
