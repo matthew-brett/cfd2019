@@ -81,11 +81,13 @@ def get_tests_points(tests):
     return {name_from_fn(fn): get_test_points(fn) for fn in tests}
 
 
-def grade_nb(nb, tests, path):
+def grade_nb(nb, wd):
     # Add test cells to notebook
+    test_glob = op.join(wd, 'tests', 'q*.py')
+    tests = sorted(glob(test_glob))
     nb.cells += create_test_cells(tests)
     # Execute notebook
-    nb = execute_nb(nb, path)
+    nb = execute_nb(nb, wd)
     # Collect output from executed notebook.
     fails = get_test_fails(nb)
     full_points = get_tests_points(tests)
@@ -100,11 +102,10 @@ def grade_nb(nb, tests, path):
     return grades
 
 
-def grade_nb_fname(nb_fname, test_dir):
+def grade_nb_fname(nb_fname, wd=None):
+    wd = op.dirname(nb_fname) if wd is None else wd
     nb = as_nb(nb_fname)
-    nb_dir = op.dirname(nb_fname)
-    tests = sorted(glob(op.join(test_dir, 'q*.py')))
-    return grade_nb(nb, tests, nb_dir)
+    return grade_nb(nb, wd)
 
 
 def print_grades(grades):
@@ -124,10 +125,10 @@ def test_get_tests_points():
 
 def test_solution():
     solution_fname = op.join(NB_DIR, 'three_girls_template.Rmd')
-    grades = grade_nb_fname(solution_fname, op.join(NB_DIR, 'tests'))
+    grades = grade_nb_fname(solution_fname, NB_DIR)
     assert sum(grades.values()) == 50
     solution_fname = op.join(NB_DIR, 'three_girls_solution_minus_15.Rmd')
-    grades = grade_nb_fname(solution_fname, op.join(NB_DIR, 'tests'))
+    grades = grade_nb_fname(solution_fname, NB_DIR)
     assert sum(grades.values()) == 35
 
 
@@ -135,24 +136,18 @@ def get_args():
     parser = ArgumentParser(__doc__)
     parser.add_argument('nb_fname', nargs='+',
                         help='Path to notebook')
-    parser.add_argument('--tests-path',
-                        help='Path to notebook test directory'
-                       'default is "tests" directory in path of notebook(s)')
-    args = parser.parse_args()
-    if args.tests_path is None:
-        if len(args.nb_fname) > 1:
-            raise RuntimeError('Must specify --tests-path for more than one '
-                               'notebook')
-        args.tests_path = op.join(op.dirname(args.nb_fname[0]), 'tests')
-    return args
+    parser.add_argument('--cwd',
+                        help='Path in which to run notebook; '
+                       'default is directory containing notebook(s)')
+    return parser.parse_args()
 
 
-def show_grade(nb_fname, tests_path):
+def show_grade(nb_fname, wd):
     """ Print notebook filename and grades for each question
     """
     print(nb_fname)
     try:
-        grades = grade_nb_fname(nb_fname, tests_path)
+        grades = grade_nb_fname(nb_fname, wd)
     except Exception as exc:
         print(exc)
         return
@@ -163,7 +158,7 @@ def show_grade(nb_fname, tests_path):
 def main():
     args = get_args()
     for nb_fname in args.nb_fname:
-        show_grade(nb_fname, args.tests_path)
+        show_grade(nb_fname, args.cwd)
 
 
 if __name__ == '__main__':
