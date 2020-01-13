@@ -181,7 +181,8 @@
 
       <section class="page__content" itemprop="text">
         
-        In [The Mean as Predictor](mean_meaning), we found that the mean had some good properties as a single best predictor for a whole distribution.
+        In [The Mean as Predictor](mean_meaning), we found that the mean had some good
+properties as a single best predictor for a whole distribution.
 
 * The mean gives a total prediction error of zero.  Put otherwise, on
   average, your prediction error is zero.
@@ -203,7 +204,7 @@ np.set_printoptions(precision=2, suppress=True)
 import pandas as pd
 ```
 
-Again, we use the gender data that we first saw in the [data frame introduction](../04/data_frame_intro).
+Again, we use the [gender statistics](../../data/gender_data); you can download this file from this link: [gender_data.csv](../../data/gender_data.csv).
 
 ```{python}
 # Load the data file
@@ -211,7 +212,11 @@ gender_data = pd.read_csv('gender_stats.csv')
 ```
 
 We have already seen the data for the Maternal Mortality Ratio
-`mat_mort_ratio`.   Now we will look to see whether we can predict the Maternal Mortality Ratio (MMR) with the Fertility Rate.  The Fertility Rate (FR) is the total number of births per woman.  We predict that countries with many births per woman will also tend to have high Maternal Mortality Ratios. Fertility Rate is `fert_rate` in the `gender_data` data frame.
+`mat_mort_ratio`.   Now we will look to see whether we can predict the Maternal
+Mortality Ratio (MMR) with the Fertility Rate.  The Fertility Rate (FR) is the
+total number of births per woman.  We predict that countries with many births
+per woman will also tend to have high Maternal Mortality Ratios. Fertility Rate
+is `fert_rate` in the `gender_data` data frame.
 
 ```{python}
 # Show the column names

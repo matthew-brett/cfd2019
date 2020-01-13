@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>3.5 Arrays - Coding for Data - 2019 edition</title>
-<meta name="description" content="Arrays">
+<!-- begin _includes/seo.html --><title>Squared deviations around the mean - Coding for Data - 2019 edition</title>
+<meta name="description" content="The mean and squared differences">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="3.5 Arrays">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/03/Arrays">
+<meta property="og:title" content="Squared deviations around the mean">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/extra/mean_sq_deviations">
 
 
-  <meta property="og:description" content="Arrays">
+  <meta property="og:description" content="The mean and squared differences">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/03/Arrays">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/extra/mean_sq_deviations">
 
 
 
@@ -976,15 +976,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="3.5 Arrays">
-      <meta itemprop="description" content="Arrays">
+      <meta itemprop="headline" content="Squared deviations around the mean">
+      <meta itemprop="description" content="The mean and squared differences">
       <meta itemprop="datePublished" content="January 13, 2020">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">3.5 Arrays
+            <h1 id="page-title" class="page__title" itemprop="headline">Squared deviations around the mean
 </h1>
           </header>
         
@@ -1000,9 +1000,7 @@
     <nav class="toc">
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
-  <li><a href="#creating-arrays">Creating arrays</a></li>
-  <li><a href="#calculations-with-arrays">Calculations with arrays</a></li>
-  <li><a href="#functions-on-arrays">Functions on Arrays</a></li>
+  <li><a href="#the-mean-and-squared-differences">The mean and squared differences</a></li>
 </ul>
     </nav>
   </aside>
@@ -1011,339 +1009,108 @@
           
           <!-- INTERACT LINKS -->
 
-    
-    
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/03/Arrays.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F03%2FArrays.ipynb">Interact</a>
 
+          <h2 id="the-mean-and-squared-differences">The mean and squared differences</h2>
 
-          <h1 id="arrays">Arrays</h1>
+<p>This page is assumes a lot more maths than the standard bit of the course.  In
+particular, it assumes that that you know the basics of finding the
+<a href="https://en.wikipedia.org/wiki/Derivative">derivative</a> of a function.</p>
 
-<p>There are several kinds of sequences in Python.  A <a href="lists">list</a> is one.  However, the sequence type that we will use most in the class, is the array.</p>
+<p>In practice, if you’re in the US, you will need late high-school mathematics,
+and if you’re in the UK, that means you will need A-level maths.</p>
 
-<p>The <code class="highlighter-rouge">numpy</code> package, abbreviated <code class="highlighter-rouge">np</code> in programs, provides Python programmers
-with convenient and powerful functions for creating and manipulating arrays.</p>
+<p>Nothing in the rest of the course assumes you can follow the mathematics in this page.  The page is just for those of you who are interested, and do know that part of mathematics.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the numpy package, and call it "np".
-</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-</code></pre></div></div>
+<p>In <a href="../08/mean_meaning">the meaning of the mean</a> we were studying prediction
+errors.</p>
 
-<h2 id="creating-arrays">Creating arrays</h2>
+<p>We imagined using the mean of a set of value as a predictor for those values.  Then we looked at how far off we would be, on average, if we use the mean to predict each value.</p>
 
-<p>The <code class="highlighter-rouge">array</code> function from the Numpy package creates an array from single values, or sequences of values.</p>
+<p>Let’s say we have a sequence of $n$ values.  For example, $n$ could be 8.  Call
+the first value $x_1$, the second $x_2$ and so on, up to $x_n$.  For example,
+if $n = 8$, then the sequence of eight values would be ${x_1, x_2, x_3, x_4,
+x_5, x_6, x_7, x_8}$.  In general I can write the sequence of $n$ values as
+${x_1, x_2, …, x_n}$.</p>
 
-<p>For example, remember <code class="highlighter-rouge">my_list</code>?</p>
+<p>We often want to add up all the values, for example, when we calculate the
+mean.  I could write $x_1 + x_2 + … + x_n$, but that is rather long and
+clumsy.  The mathematical shorthand for this is $\sum x_i$, meaning add up all
+the values in the sequence ${x_1, x_2, …, x_n}$.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-</code></pre></div></div>
+<p>We can write the mean using this notation.  Use the symbol $\bar{x}$ to refer
+to the mean of the sequence ${x_1, x_2, … x_n}$. Then the definition of the mean is:</p>
 
-<p>This is a <code class="highlighter-rouge">list</code>:</p>
+<script type="math/tex; mode=display">\bar{x} = \frac{1}{n}\sum x_n)</script>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-</code></pre></div></div>
+<p>Now we have the notation, we can return to our problem.</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
-</code></pre></div></div>
+<p>We are to going to take some value $c$, and subtract it from all the values in
+${x_1, x_2, … x_n}$.  This will give us a new sequence of <em>deviations</em> or
+<em>errors</em> ${x_1 - c, x_1 - c, …, x_n - c}$.  Then we will square the
+errors, to get ${(x_1 - c)^2, (x_2 - c)^2, … (x_n - c)^2}$, and finally
+we will add all up all these squared errors: $\sum (x_i - c)^2)$.  Call this,
+the Sum of Squared Errors or $SSE$ for a particular value $c$.  So:</p>
 
-<p>The <code class="highlighter-rouge">array</code> function from Numpy can make an array from this list:</p>
+<script type="math/tex; mode=display">\begin{equation}
+SSE_c = \sum (x_i - c)^2 \tag{SSE_c}\label{eq:sse_c}
+\end{equation}</script>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-<span class="n">my_array</span>
-</code></pre></div></div>
+<p>This is the general formula for the plot we saw at the end of <a href="../08/mean_meaning">the meaning of
+the mean page</a>, where the value for $c$ is on the horizontal axis, and the value for $SSE_c$ is on the vertical axis.</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
-</code></pre></div></div>
+<p>Specifically, we want to find the value of $c$ that gives the smallest value for $SSE_c$.</p>
 
-<p>As you can see from the display above, this is an array.  We confirm it with <code class="highlighter-rouge">type</code>:</p>
+<p>The plot turned out to be U-shaped, where we want to find the horixontal axis location corresponding to the bottom of the U.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
-</code></pre></div></div>
+<p>We can find this location by transforming the formula equation \eqref{eq:sse_c} above
+into a formula for the <em>gradient</em> of the line that the formula represents.
+This is <em>taking the derivative</em>.  When the <em>derivative</em> of equation \eqref{eq:sse_c} is
+equal to zero, it means the <em>gradient</em> of equation \eqref{eq:sse_c} is 0, and this is
+true when we are at a peak or a trough of the original equation \eqref{eq:sse_c}
+formula.  We want the trough.</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
-</code></pre></div></div>
+<p>Let’s start by expanding out equation \eqref{eq:sse_c}, and using the <a href="http://matthew-brett.github.io/teaching/some_sums.html">laws of sums</a> to simplify the result:</p>
 
-<p>We can also create the list and then the array in one call, like this:</p>
+<script type="math/tex; mode=display">SSE_c = \sum (x_i - c)^2 \implies \\
+= \sum (x_i^2 - 2 x_i c + c^2) \implies \\
+= \sum x_i^2 - 2 c \sum x_i + n c^2</script>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">my_array</span>
-</code></pre></div></div>
+<p>Now differentiate with respect to $c$:</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
-</code></pre></div></div>
+<script type="math/tex; mode=display">\begin{equation}
+\frac{dSSE_c}{dc} = -2 \sum x_i + 2 n c \tag{dSSE_c}\label{eq:dsse_c}
+\end{equation}</script>
 
-<p>Here <code class="highlighter-rouge">[1, 2, 3]</code> is an <em>expression</em> that returns a list. <code class="highlighter-rouge">np.array</code> then operates on the returned list, to create an array.</p>
+<p>When equation \eqref{eq:dsse_c} has value zero, we can be at a peak (the
+gradient is zero, but it’s about to become negative) or a trough (the gradient
+is zero, but it’s about to become positive).</p>
 
-<p>Arrays often contain numbers, but, like lists, they can also contain strings
-or other types of values.  However, a single array can only contain a single
-kind of data. (It usually doesn’t make sense to group together unlike data
-anyway.)</p>
+<p>Find the zero(s) for equation \eqref{eq:dsse_c}:</p>
 
-<p>For example,</p>
+<script type="math/tex; mode=display">2 \sum x_i = 2 n c \implies \\
+\frac{1}{n} \sum x_i = c</script>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">"noun"</span><span class="p">,</span> <span class="s">"pronoun"</span><span class="p">,</span> <span class="s">"verb"</span><span class="p">,</span> <span class="s">"adverb"</span><span class="p">,</span> <span class="s">"adjective"</span><span class="p">,</span> <span class="s">"conjunction"</span><span class="p">,</span> <span class="s">"preposition"</span><span class="p">,</span> <span class="s">"interjection"</span><span class="p">])</span>
-<span class="n">english_parts_of_speech</span>
-</code></pre></div></div>
+<p>Equation \eqref{eq:dsse_c} only has one zero, and it is when $c$ is equal to
+the mean.</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
-       'preposition', 'interjection'], dtype='&lt;U12')
-</code></pre></div></div>
+<p>We so far don’t know if this is a peak or a trough, but we can differentiate
+equation \eqref{eq:dsse_c} again, to see the slope of the slope.  If this is
+positive at $c = \frac{1}{n} \sum x_i$, than the slope is changing to be
+positive, and we would be at a trough, if it is negative, the slope is changing
+to be negative, and we would be at a peak.  Here’s the derivative of equation
+\eqref{eq:dsse_c}, also called the <a href="https://en.wikipedia.org/wiki/Second_derivative">second
+derivative</a>:</p>
 
-<p>We have not seen this yet, but Python allows us to spread expressions between
-round and square brackets across many lines.  It knows that the expression has
-not finished yet because it is waiting for the closing bracket.  For example, this cell works in the exactly the same way as the cell above, and may be easier to read:</p>
+<script type="math/tex; mode=display">\frac{d^2SSE_c}{dc^2} = 2 n</script>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An expression between brackets spread across many lines.
-</span><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-    <span class="p">[</span><span class="s">"noun"</span><span class="p">,</span>
-    <span class="s">"pronoun"</span><span class="p">,</span>
-    <span class="s">"verb"</span><span class="p">,</span>
-    <span class="s">"adverb"</span><span class="p">,</span>
-    <span class="s">"adjective"</span><span class="p">,</span>
-    <span class="s">"conjunction"</span><span class="p">,</span>
-    <span class="s">"preposition"</span><span class="p">,</span>
-    <span class="s">"interjection"</span><span class="p">]</span>
-    <span class="p">)</span>
-<span class="n">english_parts_of_speech</span>
-</code></pre></div></div>
+<p>$n$ is always positive; this means that the second derivative is always
+positive, and therefore, it is also positive at our zero point $c = \frac{1}{n}
+\sum x_i$.  So, equation \eqref{eq:sse_c} only has a one trough, at $c =
+\frac{1}{n} \sum x_i$, and no peaks.</p>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
-       'preposition', 'interjection'], dtype='&lt;U12')
-</code></pre></div></div>
-
-<p>Below, we collect four different temperatures into a list called <code class="highlighter-rouge">temps</code>.
-These are the <a href="http://berkeleyearth.lbl.gov/regions/global-land">estimated average daily high
-temperatures</a> over all land
-on Earth (in degrees Celsius) for the decades surrounding 1850, 1900, 1950,
-and 2000, respectively, expressed as deviations from the average absolute high
-temperature between 1951 and 1980, which was 14.48 degrees.</p>
-
-<p>If you are interested, you can get more data from <a href="http://berkeleyearth.lbl.gov/auto/Regional/TMAX/Text/global-land-TMAX-Trend.txt">this file of daily high
-temperatures</a>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_high</span> <span class="o">=</span> <span class="mf">14.48</span>
-<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
-                  <span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.093</span><span class="p">,</span>
-                  <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.105</span><span class="p">,</span>
-                  <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.684</span><span class="p">])</span>
-<span class="n">highs</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
-</code></pre></div></div>
-
-<h2 id="calculations-with-arrays">Calculations with arrays</h2>
-
-<p>Arrays can be used in arithmetic expressions to compute over their contents.
-When an array is combined with a single number, that number is combined with
-each element of the array. Therefore, we can convert all of these temperatures
-to Fahrenheit by writing the familiar conversion formula.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">highs</span> <span class="o">+</span> <span class="mi">32</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([56.48  , 57.8966, 58.253 , 59.2952])
-</code></pre></div></div>
-
-<p><img src="/cfd2019/images/array_arithmetic.png" /></p>
-
-<p>As we saw for strings, arrays have <em>methods</em>, which are functions that
-operate on the array values. The <code class="highlighter-rouge">mean</code> of a collection of numbers is its
-average value: the sum divided by the length. Each pair of parentheses in the
-examples below is part of a call expression; it’s calling a function with no
-arguments to perform a computation on the array called <code class="highlighter-rouge">highs</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The number of elements in the array
-</span><span class="n">highs</span><span class="o">.</span><span class="n">size</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>57.736000000000004
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14.434000000000001
-</code></pre></div></div>
-
-<h2 id="functions-on-arrays">Functions on Arrays</h2>
-
-<p>Numpy provides various useful functions for operating on arrays.</p>
-
-<p>For example, the <code class="highlighter-rouge">diff</code> function computes the difference between each adjacent
-pair of elements in an array. The first element of the <code class="highlighter-rouge">diff</code> is the second
-element minus the first.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.787, 0.198, 0.579])
-</code></pre></div></div>
-
-<p>The <a href="http://docs.scipy.org/doc/numpy/reference/">full Numpy reference</a> lists
-these functions exhaustively, but only a small subset are used commonly for
-data processing applications. These are grouped into different packages within
-<code class="highlighter-rouge">np</code>. Learning this vocabulary is an important part of learning the Python
-language, so refer back to this list often as you work through examples and
-problems.</p>
-
-<p>However, you <strong>don’t need to memorize these</strong>.  Use this as a reference.</p>
-
-<p>Each of these functions takes an array as an argument and returns a single
-value.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Function</strong></th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">np.prod</code></td>
-      <td>Multiply all elements together</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.sum</code></td>
-      <td>Add all elements together</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.all</code></td>
-      <td>Test whether all elements are true values (non-zero numbers are true)</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.any</code></td>
-      <td>Test whether any elements are true values (non-zero numbers are true)</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.count_nonzero</code></td>
-      <td>Count the number of non-zero elements</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Each of these functions takes an array as an argument and returns an array of values.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Function</strong></th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">np.diff</code></td>
-      <td>Difference between adjacent elements</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.round</code></td>
-      <td>Round each number to the nearest integer (whole number)</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.cumprod</code></td>
-      <td>A cumulative product: for each element, multiply all elements so far</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.cumsum</code></td>
-      <td>A cumulative sum: for each element, add all elements so far</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.exp</code></td>
-      <td>Exponentiate each element</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.log</code></td>
-      <td>Take the natural logarithm of each element</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.sqrt</code></td>
-      <td>Take the square root of each element</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.sort</code></td>
-      <td>Sort the elements</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Each of these functions takes an array of strings and returns an array.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Function</strong></th>
-      <th><strong>Description</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.lower</code></td>
-      <td>Lowercase each element</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.upper</code></td>
-      <td>Uppercase each element</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.strip</code></td>
-      <td>Remove spaces at the beginning or end of each element</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.isalpha</code></td>
-      <td>Whether each element is only letters (no numbers or symbols)</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.isnumeric</code></td>
-      <td>Whether each element is only numeric (no letters)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Each of these functions takes both an array of strings and a <em>search string</em>; each returns an array.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Function</strong></th>
-      <th><strong>Description</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.count</code></td>
-      <td>Count the number of times a search string appears among the elements of an array</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.find</code></td>
-      <td>The position within each element that a search string is found first</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.rfind</code></td>
-      <td>The position within each element that a search string is found last</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">np.char.startswith</code></td>
-      <td>Whether each element starts with the search string</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="isa_info">
-<i class="fa fa-info-circle"></i>
-This page has content from the
-<a href="https://github.com/data-8/textbook/blob/64b20f0/notebooks/Arrays.ipynb">
-Arrays</a>
-notebook from the UC Berkeley course.  See the Berkeley course section of the
-<a href="/cfd2019/license">license</a>
-</div>
-
+<p>Therefore the mean $\fract{1}{n}\sum x_i$ is the value $c$ that minimizes the
+sum of squared errors, also called the sum of squared deviations, also called
+the sum of squared prediction errors.</p>
 
           
         </section>
@@ -1360,11 +1127,11 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/03/lists" class="pagination--pager" title="3.4 Lists
+      <a href="/cfd2019/chapters/extra/mean_deviations" class="pagination--pager" title="Deviations around the mean
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/03/Ranges" class="pagination--pager" title="3.6 Ranges
+      <a href="" class="pagination--pager" title="
 ">Next</a>
     
   </nav>

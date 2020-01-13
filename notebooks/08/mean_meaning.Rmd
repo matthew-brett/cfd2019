@@ -424,9 +424,9 @@ In fact, the value for the mean is even lower:
 sum_of_squares(mm_arr, mm_mean)
 ```
 
-We would have to use some [fairly simple
-calculus](https://github.com/matthew-brett/biosciences-intro/blob/master/mean_minimizes_ss_deviations.ipynb)
-to show this, but the mean has to give the lowest sum of squares error.
+We would have to use some [fairly simple calculus and
+algebra](../extra/mean_sq_deviation) to show this, but the *mean* has to give
+the lowest sum of squares error.
 
 Put another way, the mean minimizes:
 

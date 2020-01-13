@@ -295,7 +295,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean",
         "teaser":null},{
         "title": "7.3 Mean and slopes",
-        "excerpt":"In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the...","categories": [],
+        "excerpt":"In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the meangives...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean_and_slopes",
         "teaser":null},{
@@ -428,6 +428,11 @@ var store = [{
         "excerpt":"Why the differences from the mean must add to zero. Have a look at this little bit of algebra to see why. Imagine I have four values $a, b, c, d$. Call the mean $\\mu$. As we know: Now subtract $\\mu$ from every one of $a, b, c, d$, and...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/extra/mean_deviations",
+        "teaser":null},{
+        "title": "Squared deviations around the mean",
+        "excerpt":"The mean and squared differences This page is assumes a lot more maths than the standard bit of the course. Inparticular, it assumes that that you know the basics of finding thederivative of a function. In practice, if you’re in the US, you will need late high-school mathematics,and if you’re...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/extra/mean_sq_deviations",
         "teaser":null},{
         "title": "Monty Hall with lists",
         "excerpt":"The Monty Hall problem, with lists You have already seen a simulation of the Monty HallProblem using arrays. We use arrays often in data science, but sometimes, it is more efficient to usePython lists. To follow along in this section, you will also need more onlists. Simulating one trial To...","categories": [],

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-13T15:16:54+00:00">
+  <meta property="article:published_time" content="2020-01-13T21:49:37+00:00">
 
 
 
@@ -952,6 +952,16 @@
 
             <li><a href="/cfd2019/chapters/extra/mean_deviations" class="level_1">Deviations around the mean</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_sq_deviations" class="level_1">Squared deviations around the mean</a></li>
+          
         </ul>
         
       </li>
@@ -1104,7 +1114,7 @@ you.  That is your <em>prediction error</em> for that value.</p>
 <span class="n">prediction_error_0</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-127.72404371584699
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-168.724043715847
 </code></pre></div></div>
 
 <p>We do the same for the second value:</p>
@@ -1113,7 +1123,7 @@ you.  That is your <em>prediction error</em> for that value.</p>
 <span class="n">prediction_error_1</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>502.52595628415304
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-170.474043715847
 </code></pre></div></div>
 
 <p>To cut to the end, let’s do all the values at once:</p>
@@ -1124,8 +1134,8 @@ you.  That is your <em>prediction error</em> for that value.</p>
 </span><span class="n">prediction_errors</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-127.72,  502.53, -171.72,  -18.97,  438.28,  -80.72, -172.72,
-        205.03, -120.97, -168.47])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-168.72, -170.47, -121.97,  -13.97, -120.72,   65.78,  700.03,
+       -172.72, -165.47, -112.47])
 </code></pre></div></div>
 
 <p>What do the prediction errors look like?</p>
@@ -1142,7 +1152,7 @@ you.  That is your <em>prediction error</em> for that value.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">prediction_errors</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9.094947017729282e-13
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.2737367544323206e-12
 </code></pre></div></div>
 
 <p>The prediction errors add up to (very nearly) 0.  This is a property of the
@@ -1169,8 +1179,8 @@ zero</a>.</p>
 </span><span class="n">squared_pes</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 16313.43, 252532.34,  29489.15,    360.01, 192085.81,   6516.37,
-        29833.6 ,  42035.64,  14634.72,  28383.5 ])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 28467.8 ,  29061.4 ,  14877.67,    195.27,  14574.29,   4326.48,
+       490036.34,  29833.6 ,  27381.66,  12650.41])
 </code></pre></div></div>
 
 <p>With a good prediction, we might want these squared prediction errors to be small.  We can see how small these are by adding them all up.  This gives us the “sum of squares”.</p>
@@ -1267,9 +1277,9 @@ zero</a>.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10611707.56420765
 </code></pre></div></div>
 
-<p>We would have to use some <a href="https://github.com/matthew-brett/biosciences-intro/blob/master/mean_minimizes_ss_deviations.ipynb">fairly simple
-calculus</a>
-to show this, but the mean has to give the lowest sum of squares error.</p>
+<p>We would have to use some <a href="../extra/mean_sq_deviation">fairly simple calculus and
+algebra</a> to show this, but the <em>mean</em> has to give
+the lowest sum of squares error.</p>
 
 <p>Put another way, the mean minimizes:</p>
 

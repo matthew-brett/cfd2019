@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>7.3 Mean and slopes - Coding for Data - 2019 edition</title>
-<meta name="description" content="In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution.">
+<meta name="description" content="In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/08/mean_and_slopes">
 
 
-  <meta property="og:description" content="In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution.">
+  <meta property="og:description" content="In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-13T15:16:54+00:00">
+  <meta property="article:published_time" content="2020-01-13T21:49:37+00:00">
 
 
 
@@ -952,6 +952,16 @@
 
             <li><a href="/cfd2019/chapters/extra/mean_deviations" class="level_1">Deviations around the mean</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_sq_deviations" class="level_1">Squared deviations around the mean</a></li>
+          
         </ul>
         
       </li>
@@ -967,7 +977,7 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.3 Mean and slopes">
-      <meta itemprop="description" content="In The Mean as Predictor, we found that the mean had some good properties as a single best predictor for a whole distribution.">
+      <meta itemprop="description" content="In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution.">
       <meta itemprop="datePublished" content="January 13, 2020">
       
 
@@ -1010,7 +1020,8 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F08%2Fmean_and_slopes.ipynb">Interact</a>
 
 
-          <p>In <a href="mean_meaning">The Mean as Predictor</a>, we found that the mean had some good properties as a single best predictor for a whole distribution.</p>
+          <p>In <a href="mean_meaning">The Mean as Predictor</a>, we found that the mean had some good
+properties as a single best predictor for a whole distribution.</p>
 
 <ul>
   <li>The mean gives a total prediction error of zero.  Put otherwise, on
@@ -1033,21 +1044,26 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
-<p>Again, we use the gender data that we first saw in the <a href="../04/data_frame_intro">data frame introduction</a>.</p>
+<p>Again, we use the <a href="../../data/gender_data">gender statistics</a>; you can download this file from this link: <a href="../../data/gender_data.csv">gender_data.csv</a>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file
 </span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We have already seen the data for the Maternal Mortality Ratio
-<code class="highlighter-rouge">mat_mort_ratio</code>.   Now we will look to see whether we can predict the Maternal Mortality Ratio (MMR) with the Fertility Rate.  The Fertility Rate (FR) is the total number of births per woman.  We predict that countries with many births per woman will also tend to have high Maternal Mortality Ratios. Fertility Rate is <code class="highlighter-rouge">fert_rate</code> in the <code class="highlighter-rouge">gender_data</code> data frame.</p>
+<code class="highlighter-rouge">mat_mort_ratio</code>.   Now we will look to see whether we can predict the Maternal
+Mortality Ratio (MMR) with the Fertility Rate.  The Fertility Rate (FR) is the
+total number of births per woman.  We predict that countries with many births
+per woman will also tend to have high Maternal Mortality Ratios. Fertility Rate
+is <code class="highlighter-rouge">fert_rate</code> in the <code class="highlighter-rouge">gender_data</code> data frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the column names
 </span><span class="n">gender_data</span><span class="o">.</span><span class="n">columns</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country', 'fert_rate', 'gdp', 'health_exp_per_cap', 'health_exp_pub',
-       'prim_ed_girls', 'mat_mort_ratio', 'population'],
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
+       'health_exp_per_cap', 'health_exp_pub', 'prim_ed_girls',
+       'mat_mort_ratio', 'population'],
       dtype='object')
 </code></pre></div></div>
 
@@ -1089,23 +1105,23 @@ gives the lowest average squared difference from the observed value.</li>
   <tbody>
     <tr>
       <th>0</th>
+      <td>NaN</td>
+      <td>1.66325</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>444.00</td>
       <td>4.95450</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>29.25</td>
-      <td>1.76925</td>
-    </tr>
-    <tr>
       <th>2</th>
-      <td>142.50</td>
-      <td>2.86600</td>
+      <td>501.25</td>
+      <td>6.12300</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>29.25</td>
+      <td>1.76925</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1149,29 +1165,29 @@ gives the lowest average squared difference from the observed value.</li>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>444.00</td>
-      <td>4.954500</td>
-    </tr>
-    <tr>
       <th>1</th>
-      <td>29.25</td>
-      <td>1.769250</td>
+      <td>444.00</td>
+      <td>4.95450</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>142.50</td>
-      <td>2.866000</td>
+      <td>501.25</td>
+      <td>6.12300</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>29.25</td>
+      <td>1.76925</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>501.25</td>
-      <td>6.123000</td>
+      <td>6.00</td>
+      <td>1.79300</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>161.00</td>
-      <td>3.397587</td>
+      <th>6</th>
+      <td>53.75</td>
+      <td>2.32800</td>
     </tr>
   </tbody>
 </table>
@@ -1226,7 +1242,7 @@ gives the lowest average squared difference from the observed value.</li>
 </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x10ff53d68&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b011c88&gt;]
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/mean_and_slopes_19_1.png" alt="png" /></p>
@@ -1238,7 +1254,7 @@ gives the lowest average squared difference from the observed value.</li>
 </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">],</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x1120fd438&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b1be828&gt;]
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/mean_and_slopes_21_1.png" alt="png" /></p>
@@ -1275,7 +1291,7 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">),</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11215de80&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b2db2e8&gt;]
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/mean_and_slopes_26_1.png" alt="png" /></p>
@@ -1292,7 +1308,7 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="n">mmr_means</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 21.84, 106.97, 194.23, 461.48, 548.55, 698.35, 585.5 ])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 20.57,  88.79, 194.94, 455.02, 544.61, 698.35, 585.5 ])
 </code></pre></div></div>
 
 <p>These means should be good predictors for MMR values, given an FR value.  We check the bin of the FR value and take the corresponding MMR mean as the prediction.</p>
@@ -1303,7 +1319,7 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">mmr_means</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x112230908&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b3f6dd8&gt;]
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/mean_and_slopes_30_1.png" alt="png" /></p>
@@ -1342,7 +1358,7 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x112303cf8&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b3f6978&gt;]
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/mean_and_slopes_36_1.png" alt="png" /></p>
@@ -1353,8 +1369,8 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="n">error</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ -51.45, -147.68, -144.1 , -111.05, -178.76, -179.05, -127.3 ,
-       -180.15, -141.5 , -172.75])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ -51.45, -111.05, -147.68, -173.3 , -179.05, -127.3 , -180.15,
+       -141.5 , -172.75,  148.03])
 </code></pre></div></div>
 
 <p>In this plot, for each point, we draw a thin dotted line between the prediction of MMR for each point, and its actual value.</p>
@@ -1396,7 +1412,7 @@ gives the lowest average squared difference from the observed value.</li>
 </span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7038632.756108372
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6373896.0662125
 </code></pre></div></div>
 
 <p>We are about to do this calculation many times, for many different slopes.  We need a <em>function</em>.</p>
@@ -1417,7 +1433,7 @@ function world.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7038632.75610837
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6373896.0662125
 </code></pre></div></div>
 
 <p>Does 200 give a higher or lower sum of squared error?</p>
@@ -1425,7 +1441,7 @@ function world.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>40456091.81253432
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34151573.172350004
 </code></pre></div></div>
 
 <p>Now we can use the same strategy as we used in the <a href="mean_meaning">mean meaning</a> page, to try lots of slopes, and find the one that gives the smallest sum of squared error.</p>
@@ -1442,8 +1458,8 @@ function world.</p>
 </span><span class="n">sos_errors</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([7695798.57, 7682930.13, 7670107.99, 7657332.17, 7644602.66,
-       7631919.45, 7619282.56, 7606691.97, 7594147.7 , 7581649.73])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6609932.97, 6600063.14, 6590230.98, 6580436.49, 6570679.67,
+       6560960.51, 6551279.02, 6541635.19, 6532029.03, 6522460.54])
 </code></pre></div></div>
 
 <p>We plot the slopes we have tried, on the x axis, against the sum of squared error, on the y-axis.</p>
@@ -1463,7 +1479,7 @@ function world.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">sos_errors</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5311887.407425549
 </code></pre></div></div>
 
 <p>We want to find the slope that corresponds to this minimum.  We can use <a href="where_and_argmin">argmin</a>.</p>
@@ -1473,7 +1489,7 @@ function world.</p>
 <span class="n">i_of_min</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>278
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>263
 </code></pre></div></div>
 
 <p>This is the index position of the minimum.  We will therefore get the minimum (again) if we index into the original array with the index we just found:</p>
@@ -1482,7 +1498,7 @@ function world.</p>
 </span><span class="n">sos_errors</span><span class="p">[</span><span class="n">i_of_min</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5901409.5805078605
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5311887.407425549
 </code></pre></div></div>
 
 <p>Now we can get and show the slope value that corresponds the minimum sum of squared error:</p>
@@ -1491,7 +1507,7 @@ function world.</p>
 <span class="n">best_slope</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>77.8000000000004
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>76.30000000000038
 </code></pre></div></div>
 
 <p>Plot the data, predictions and errors for the line that minimizes the sum of squared error:</p>
@@ -1527,16 +1543,16 @@ mathematical field, called
 </span><span class="n">minimize</span><span class="p">(</span><span class="n">sos_error</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 5901406.206272444
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 5311883.300879181
  hess_inv: array([[0.]])
       jac: array([0.])
   message: 'Optimization terminated successfully.'
-     nfev: 15
-      nit: 3
-     njev: 5
+     nfev: 42
+      nit: 5
+     njev: 14
    status: 0
   success: True
-        x: array([77.84])
+        x: array([76.25])
 </code></pre></div></div>
 
 
