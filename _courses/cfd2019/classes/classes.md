@@ -8,7 +8,7 @@ permalink: /classes
 
 * Notes from lectures will generally go here, on the course website.
   You will see me filling in this website as the course develops.
-* See the [Canvas course page](https://canvas.bham.ac.uk/courses/41498) for
+* See the [Canvas course page](https://canvas.bham.ac.uk/courses/40505) for
   announcements, discussions and grades.
 
 For the previous term, see the [Autumn term classes page](classes/autumn_term).

@@ -1,3 +1,9 @@
+---
+layout: single
+title: Gender statistics data dictionary
+permalink: /data/gender_stats_data_dict
+---
+
 # Gender statistics data dictionary
 
 * `fert_rate`: Fertility rate, total (births per woman).
