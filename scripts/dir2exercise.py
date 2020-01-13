@@ -58,7 +58,7 @@ def process_dir(path, out_path, grade=False, site_config=None):
     write_utf8(solution_fname, make_solution(template))
     b_e.process_nb(exercise_fname, execute=False, out_path=out_path)
     if grade:
-        gok.show_grade(solution_fname, op.join(path, 'tests'))
+        gok.show_grade(solution_fname, path)
 
 
 def find_site_config(dir_path, filenames=('course.yml', '_config.yml')):
