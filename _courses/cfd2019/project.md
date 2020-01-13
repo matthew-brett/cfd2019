@@ -160,7 +160,7 @@ In a previous version of this class, the data topics included:
   deport residents from the West Indies who had settled in the UK legally
   before 1973.
 * Looking for a link between UK school performance and local pollution data.
-* Trying to relate Birmingham voting patterns to local levels of homelessness?
+* Trying to relate Birmingham voting patterns to local levels of homelessness.
   Do people in areas with more homelessness tend to vote Conservative, Labour
   or Lib Dem?
 * Global environmental and demographic factors associated with inflammatory

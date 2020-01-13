@@ -90,3 +90,4 @@
   * [Monty Hall with lists](notebooks/extra/monty_hall_lists.ipynb)
   * [Berkeley introduction to functions](notebooks/extra/data8_functions.ipynb)
   * [Deviations around the mean](notebooks/extra/mean_deviations.md)
+  * [Squared deviations around the mean](notebooks/extra/mean_sq_deviations.md)
