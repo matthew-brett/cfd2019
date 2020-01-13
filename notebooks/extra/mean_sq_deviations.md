@@ -29,7 +29,7 @@ We can write the mean using this notation.  Use the symbol $\bar{x}$ to refer
 to the mean of the sequence ${x_1, x_2, ... x_n}$. Then the definition of the mean is:
 
 $$
-\bar{x} = \frac{1}{n}\sum x_n)
+\bar{x} = \frac{1}{n}\sum x_i
 $$
 
 Now we have the notation, we can return to our problem.
@@ -38,7 +38,7 @@ We are to going to take some value $c$, and subtract it from all the values in
 ${x_1, x_2, ... x_n}$.  This will give us a new sequence of *deviations* or
 *errors* ${x_1 - c, x_1 - c, ..., x_n - c}$.  Then we will square the
 errors, to get ${(x_1 - c)^2, (x_2 - c)^2, ... (x_n - c)^2}$, and finally
-we will add all up all these squared errors: $\sum (x_i - c)^2)$.  Call this,
+we will add all up all these squared errors: $\sum (x_i - c)^2$.  Call this,
 the Sum of Squared Errors or $SSE$ for a particular value $c$.  So:
 
 $$
@@ -73,7 +73,7 @@ Now differentiate with respect to $c$:
 
 $$
 \begin{equation}
-\frac{dSSE_c}{dc} = -2 \sum x_i + 2 n c \tag{dSSE_c}\label{eq:dsse_c}
+\frac{\partial SSE_c}{\partial c} = -2 \sum x_i + 2 n c \tag{dSSE_c}\label{eq:dsse_c}
 \end{equation}
 $$
 
@@ -100,7 +100,7 @@ to be negative, and we would be at a peak.  Here's the derivative of equation
 derivative](https://en.wikipedia.org/wiki/Second_derivative):
 
 $$
-\frac{d^2SSE_c}{dc^2} = 2 n
+\frac{\partial ^2SSE_c}{\partial c^2} = 2 n
 $$
 
 $n$ is always positive; this means that the second derivative is always
@@ -108,6 +108,6 @@ positive, and therefore, it is also positive at our zero point $c = \frac{1}{n}
 \sum x_i$.  So, equation \eqref{eq:sse_c} only has a one trough, at $c =
 \frac{1}{n} \sum x_i$, and no peaks.
 
-Therefore the mean $\fract{1}{n}\sum x_i$ is the value $c$ that minimizes the
+Therefore the mean $\frac{1}{n}\sum x_i$ is the value $c$ that minimizes the
 sum of squared errors, also called the sum of squared deviations, also called
 the sum of squared prediction errors.

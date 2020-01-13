@@ -223,11 +223,13 @@ is `fert_rate` in the `gender_data` data frame.
 gender_data.columns
 ```
 
-To start, we make a new data frame that contains only the columns corresponding to MMR and FR.  To get two columns out of a data frame, we pass a list of column names inside square brackets:
+To start, we make a new data frame that contains only the columns corresponding
+to MMR and FR.  To get two columns out of a data frame, we pass `.loc` a list
+of column names:
 
 ```{python}
 # Make new data frame with only MMR and FR
-just_mmr_fr = gender_data[['mat_mort_ratio', 'fert_rate']]
+just_mmr_fr = gender_data.loc[:, ['mat_mort_ratio', 'fert_rate']]
 ```
 
 To save space, we only show the first five rows of the data frame, using the `head` method of the data frame.
