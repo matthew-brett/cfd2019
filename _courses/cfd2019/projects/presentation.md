@@ -28,6 +28,11 @@ This is a general rule for good science: aim to engage, not to impress.
 
 If all your analyses have so far proved negative or inclusive, that's fine too.  Say what you tried, what evidence you were able to find and whether you need new evidence or a new analysis strategy.  You might also conclude that your initial hypothesis was wrong, and that the data gives evidence against it. Say what that evidence is.
 
+We like presentations where many or all of the team contribute, but choose the best format to give the most concise information for us to give feedback.
+
+We will ask questions to the whole team, so each member should know the project
+in reasonable detail.
+
 Please negotiate with your team about who prepares and does the
 presentation.  Like all work on the project, this counts towards your project
 contribution \- see the [rubric](rubric).

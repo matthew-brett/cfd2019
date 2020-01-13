@@ -149,3 +149,27 @@ See: [progress report](projects/progress)
 ## Presentations
 
 See: [project presentations](projects/presentation)
+
+## Previous topics
+
+In a previous version of this class, the data topics included:
+
+* An analysis of UK and European public data on immigration to assess if the UK
+  government was, [despite
+  assurances](https://en.wikipedia.org/wiki/Windrush_scandal), continuing to
+  deport residents from the West Indies who had settled in the UK legally
+  before 1973.
+* Looking for a link between UK school performance and local pollution data.
+* Trying to relate Birmingham voting patterns to local levels of homelessness?
+  Do people in areas with more homelessness tend to vote Conservative, Labour
+  or Lib Dem?
+* Global environmental and demographic factors associated with inflammatory
+  bowel disease.
+* An attempt to work out, with data, the algorithm that YouTube uses when
+  recommending videos;
+* Using historical data to predict the future National (American) Football
+  League performance of a very successful college American football player.
+* Predicting future stock prices using historical stock price data.
+* Analyzing public NASA data to identify nearby habitable planets.
+* Analysis of train timetable and departure / arrivals data for evidence of
+  poor performance of particular train companies or lines.
