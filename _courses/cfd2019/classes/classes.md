@@ -11,7 +11,7 @@ permalink: /classes
 * See the [Canvas course page](https://canvas.bham.ac.uk/courses/41498) for
   announcements, discussions and grades.
 
-See [Autumn term classes page](autumn_term)
+For the previous term, see the [Autumn term classes page](classes/autumn_term).
 
 ## Spring term
 
