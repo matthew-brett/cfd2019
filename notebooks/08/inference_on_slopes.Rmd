@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Extracting exercises - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>Gender statistics data dictionary - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
