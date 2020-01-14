@@ -4,8 +4,11 @@ This page is assumes a lot more maths than the standard bit of the course.  In
 particular, it assumes that that you know the basics of finding the
 [derivative](https://en.wikipedia.org/wiki/Derivative) of a function.
 
-In practice, if you're in the US, you will need late high-school mathematics,
-and if you're in the UK, that means you will need A-level maths.
+In practice this means that, if you are in the US, you will need to have taken
+pre-calculus and calculus at school or university, and if you're in the UK,
+that means you will need A-level maths.  That said, the algebra and calculus
+you need here are basic enough that, if you are motivated, you could teach
+yourself what you need from web resources or an introductory textbook.
 
 Nothing in the rest of the course assumes you can follow the mathematics in this page.  The page is just for those of you who are interested, and do know that part of mathematics.
 
@@ -29,8 +32,10 @@ We can write the mean using this notation.  Use the symbol $\bar{x}$ to refer
 to the mean of the sequence ${x_1, x_2, ... x_n}$. Then the definition of the mean is:
 
 $$
-\bar{x} = \frac{1}{n}\sum x_i
+\bar{x} \triangleq \frac{1}{n}\sum x_i
 $$
+
+The $\triangleq$ symbol means *is defined as*.
 
 Now we have the notation, we can return to our problem.
 
@@ -38,33 +43,36 @@ We are to going to take some value $c$, and subtract it from all the values in
 ${x_1, x_2, ... x_n}$.  This will give us a new sequence of *deviations* or
 *errors* ${x_1 - c, x_1 - c, ..., x_n - c}$.  Then we will square the
 errors, to get ${(x_1 - c)^2, (x_2 - c)^2, ... (x_n - c)^2}$, and finally
-we will add all up all these squared errors: $\sum (x_i - c)^2$.  Call this,
+we will add up all these squared errors: $\sum (x_i - c)^2$.  Call this,
 the Sum of Squared Errors or $SSE$ for a particular value $c$.  So:
 
 $$
 \begin{equation}
-SSE_c = \sum (x_i - c)^2 \tag{SSE_c}\label{eq:sse_c}
+SSE_c \triangleq \sum (x_i - c)^2 \tag{SSE_c}\label{eq:sse_c}
 \end{equation}
 $$
 
-This is the general formula for the plot we saw at the end of [the meaning of
-the mean page](../08/mean_meaning), where the value for $c$ is on the horizontal axis, and the value for $SSE_c$ is on the vertical axis.
+This is the general formula for the specific plot we saw at the end of [the
+meaning of the mean page](../08/mean_meaning), where the value for $c$ is on
+the horizontal axis, and the value for $SSE_c$ is on the vertical axis.
 
-Specifically, we want to find the value of $c$ that gives the smallest value for $SSE_c$.
+We want to find the value of $c$ that gives the smallest value for $SSE_c$.
 
-The plot turned out to be U-shaped, where we want to find the horixontal axis location corresponding to the bottom of the U.
+The plot turned out to be U-shaped; we want to find the horixontal axis
+location ($c$ value) corresponding to the bottom of the U (minimum of the
+corresponding $SSE_c$ values).
 
-We can find this location by transforming the formula equation \eqref{eq:sse_c} above
-into a formula for the *gradient* of the line that the formula represents.
-This is *taking the derivative*.  When the *derivative* of equation \eqref{eq:sse_c} is
-equal to zero, it means the *gradient* of equation \eqref{eq:sse_c} is 0, and this is
-true when we are at a peak or a trough of the original equation \eqref{eq:sse_c}
-formula.  We want the trough.
+We can find this location by transforming the formula in \eqref{eq:sse_c} above
+into a formula for the *gradient* of the line that \eqref{eq:sse_c} represents.
+This is *taking the derivative*.  When the *derivative* of equation
+\eqref{eq:sse_c} is equal to zero, it means the *gradient* of 
+\eqref{eq:sse_c} is 0, and this is true when we are at a peak or a trough of
+\eqref{eq:sse_c}.  We want the trough.
 
 Let's start by expanding out equation \eqref{eq:sse_c}, and using the [laws of sums](http://matthew-brett.github.io/teaching/some_sums.html) to simplify the result:
 
 $$
-SSE_c = \sum (x_i - c)^2 \implies \\
+SSE_c \triangleq \sum (x_i - c)^2 \implies \\
 = \sum (x_i^2 - 2 x_i c + c^2) \implies \\
 = \sum x_i^2 - 2 c \sum x_i + n c^2
 $$
@@ -91,12 +99,12 @@ $$
 Equation \eqref{eq:dsse_c} only has one zero, and it is when $c$ is equal to
 the mean.
 
-We so far don't know if this is a peak or a trough, but we can differentiate
-equation \eqref{eq:dsse_c} again, to see the slope of the slope.  If this is
-positive at $c = \frac{1}{n} \sum x_i$, than the slope is changing to be
-positive, and we would be at a trough, if it is negative, the slope is changing
-to be negative, and we would be at a peak.  Here's the derivative of equation
-\eqref{eq:dsse_c}, also called the [second
+We so far don't know if this single zero is at a peak or a trough, but we can
+differentiate equation \eqref{eq:dsse_c} again, to see the slope of the slope.
+If this is positive at $c = \frac{1}{n} \sum x_i$, than the slope is changing
+to be positive, and we would be at a trough, if it is negative, the slope is
+changing to be negative, and we would be at a peak.  Here's the derivative of
+equation \eqref{eq:dsse_c}, also called the [second
 derivative](https://en.wikipedia.org/wiki/Second_derivative):
 
 $$

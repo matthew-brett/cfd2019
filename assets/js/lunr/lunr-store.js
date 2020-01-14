@@ -430,7 +430,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/extra/mean_deviations",
         "teaser":null},{
         "title": "Squared deviations around the mean",
-        "excerpt":"The mean and squared differences This page is assumes a lot more maths than the standard bit of the course. Inparticular, it assumes that that you know the basics of finding thederivative of a function. In practice, if you’re in the US, you will need late high-school mathematics,and if you’re...","categories": [],
+        "excerpt":"The mean and squared differences This page is assumes a lot more maths than the standard bit of the course. Inparticular, it assumes that that you know the basics of finding thederivative of a function. In practice this means that, if you are in the US, you will need to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/extra/mean_sq_deviations",
         "teaser":null},{
