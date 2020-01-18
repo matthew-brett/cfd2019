@@ -20,5 +20,6 @@ and, or.
 
 Can go after conditionals?
 
-Pandas index, `.iloc`, `.loc`.
+### Copy right
 
+See `loc_left_copy_right`.
