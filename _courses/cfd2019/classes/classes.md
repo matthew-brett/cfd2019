@@ -19,3 +19,4 @@ For the previous term, see the [Autumn term classes page](classes/autumn_term).
 | ---- | ---------- | ---------------------------- |
 | 1    |  13 Jan    | [class 19](classes/class_19) |
 | 1    |  14 Jan    | [class 20](classes/class_20) |
+| 2    |  20 Jan    | [class 21](classes/class_19) |
