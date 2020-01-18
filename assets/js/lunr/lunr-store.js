@@ -295,7 +295,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean",
         "teaser":null},{
         "title": "7.3 Mean and slopes",
-        "excerpt":"In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, onaverage, your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the meangives...","categories": [],
+        "excerpt":"In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution. The mean gives a total prediction error of zero. Put otherwise, on average,your prediction error is zero. The mean gives the lowest squared error. Put otherwise, the mean...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean_and_slopes",
         "teaser":null},{

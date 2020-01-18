@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-14T13:38:43+00:00">
+  <meta property="article:published_time" content="2020-01-18T18:03:35+00:00">
 
 
 
@@ -978,7 +978,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.3 Mean and slopes">
       <meta itemprop="description" content="In The Mean as Predictor, we found that the mean had some goodproperties as a single best predictor for a whole distribution.">
-      <meta itemprop="datePublished" content="January 14, 2020">
+      <meta itemprop="datePublished" content="January 18, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1001,6 +1001,7 @@
       <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
       <ul class="toc__menu">
   <li><a href="#looking-for-straight-lines">Looking for straight lines</a></li>
+  <li><a href="#adjusting-axes">Adjusting axes</a></li>
   <li><a href="#putting-points-on-plots">Putting points on plots</a></li>
   <li><a href="#the-mean-as-applied-to-plots">The mean as applied to plots</a></li>
   <li><a href="#finding-a-predicting-line">Finding a predicting line</a></li>
@@ -1024,10 +1025,10 @@
 properties as a single best predictor for a whole distribution.</p>
 
 <ul>
-  <li>The mean gives a total prediction error of zero.  Put otherwise, on
-average, your prediction error is zero.</li>
-  <li>The mean gives the lowest squared error.  Put otherwise, the mean
-gives the lowest average squared difference from the observed value.</li>
+  <li>The mean gives a total prediction error of zero.  Put otherwise, on average,
+your prediction error is zero.</li>
+  <li>The mean gives the lowest squared error.  Put otherwise, the mean gives the
+lowest average squared difference from the observed value.</li>
 </ul>
 
 <p>Now we can consider what predictor we should use when predicting one set of values, from a different set of values.</p>
@@ -1044,41 +1045,18 @@ gives the lowest average squared difference from the observed value.</li>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
-<p>Again, we use the <a href="../../data/gender_data">gender statistics</a>; you can download this file from this link: <a href="../../data/gender_data.csv">gender_data.csv</a>.</p>
+<p>We start with some <a href="/cfd2019/data/chronic_kidney_disease">data on chronic kidney
+disease</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file
-</span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
-</code></pre></div></div>
+<p>This is a data table with one row per patient and one column per test on that
+patient.  Many of columns are values from blood tests.  Most of the patients
+have chronic kidney disease.</p>
 
-<p>We have already seen the data for the Maternal Mortality Ratio
-<code class="highlighter-rouge">mat_mort_ratio</code>.   Now we will look to see whether we can predict the Maternal
-Mortality Ratio (MMR) with the Fertility Rate.  The Fertility Rate (FR) is the
-total number of births per woman.  We predict that countries with many births
-per woman will also tend to have high Maternal Mortality Ratios. Fertility Rate
-is <code class="highlighter-rouge">fert_rate</code> in the <code class="highlighter-rouge">gender_data</code> data frame.</p>
+<p>To make things a bit easier this dataset is a version from which we have already dropped all missing values.  See the dataset page linked above for more detail.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the column names
-</span><span class="n">gender_data</span><span class="o">.</span><span class="n">columns</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
-       'health_exp_per_cap', 'health_exp_pub', 'prim_ed_girls',
-       'mat_mort_ratio', 'population'],
-      dtype='object')
-</code></pre></div></div>
-
-<p>To start, we make a new data frame that contains only the columns corresponding
-to MMR and FR.  To get two columns out of a data frame, we pass <code class="highlighter-rouge">.loc</code> a list
-of column names:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make new data frame with only MMR and FR
-</span><span class="n">just_mmr_fr</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">,</span> <span class="s">'fert_rate'</span><span class="p">]]</span>
-</code></pre></div></div>
-
-<p>To save space, we only show the first five rows of the data frame, using the <code class="highlighter-rouge">head</code> method of the data frame.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the first five rows
-</span><span class="n">just_mmr_fr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Run this cell
+</span><span class="n">ckd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ckd_clean.csv'</span><span class="p">)</span>
+<span class="n">ckd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1100,356 +1078,514 @@ of column names:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mat_mort_ratio</th>
-      <th>fert_rate</th>
+      <th>Age</th>
+      <th>Blood Pressure</th>
+      <th>Specific Gravity</th>
+      <th>Albumin</th>
+      <th>Sugar</th>
+      <th>Red Blood Cells</th>
+      <th>Pus Cell</th>
+      <th>Pus Cell clumps</th>
+      <th>Bacteria</th>
+      <th>Blood Glucose Random</th>
+      <th>...</th>
+      <th>Packed Cell Volume</th>
+      <th>White Blood Cell Count</th>
+      <th>Red Blood Cell Count</th>
+      <th>Hypertension</th>
+      <th>Diabetes Mellitus</th>
+      <th>Coronary Artery Disease</th>
+      <th>Appetite</th>
+      <th>Pedal Edema</th>
+      <th>Anemia</th>
+      <th>Class</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>NaN</td>
-      <td>1.66325</td>
+      <td>48.0</td>
+      <td>70.0</td>
+      <td>1.005</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>normal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>117.0</td>
+      <td>...</td>
+      <td>32.0</td>
+      <td>6700.0</td>
+      <td>3.9</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>444.00</td>
-      <td>4.95450</td>
+      <td>53.0</td>
+      <td>90.0</td>
+      <td>1.020</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>70.0</td>
+      <td>...</td>
+      <td>29.0</td>
+      <td>12100.0</td>
+      <td>3.7</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>no</td>
+      <td>yes</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>501.25</td>
-      <td>6.12300</td>
+      <td>63.0</td>
+      <td>70.0</td>
+      <td>1.010</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>notpresent</td>
+      <td>380.0</td>
+      <td>...</td>
+      <td>32.0</td>
+      <td>4500.0</td>
+      <td>3.8</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>29.25</td>
-      <td>1.76925</td>
+      <td>68.0</td>
+      <td>80.0</td>
+      <td>1.010</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>normal</td>
+      <td>abnormal</td>
+      <td>present</td>
+      <td>present</td>
+      <td>157.0</td>
+      <td>...</td>
+      <td>16.0</td>
+      <td>11000.0</td>
+      <td>2.6</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>61.0</td>
+      <td>80.0</td>
+      <td>1.015</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>abnormal</td>
+      <td>abnormal</td>
+      <td>notpresent</td>
+      <td>notpresent</td>
+      <td>173.0</td>
+      <td>...</td>
+      <td>24.0</td>
+      <td>9200.0</td>
+      <td>3.2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>poor</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 25 columns</p>
 </div>
 </div>
 
-<p>Looking at these values, we see that there are missing values: <code class="highlighter-rouge">NaN</code>.  These will make our life harder.  For now, we drop all rows that have any missing values, using the <code class="highlighter-rouge">dropna</code> method of the data frame.</p>
+<p>We are interested in two columns from this data frame, “Packed Cell Volume” and “Hemoglobin”.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Drop all rows with any NaN values
-</span><span class="n">clean_mmr_fr</span> <span class="o">=</span> <span class="n">just_mmr_fr</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">clean_mmr_fr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<p><a href="https://en.wikipedia.org/wiki/Hematocrit">Packed Cell Volume</a> (PCV) is a
+measurement of the percentage of blood volume taken up by red blood cells.  It
+is a measurement of anemia, and anemia is a common consequence of chronic
+kidney disease.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the packed cell volume values as a Series.
+</span><span class="n">pcv_series</span> <span class="o">=</span> <span class="n">ckd</span><span class="p">[</span><span class="s">'Packed Cell Volume'</span><span class="p">]</span>
+<span class="c1"># Show the distribution.
+</span><span class="n">pcv_series</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mat_mort_ratio</th>
-      <th>fert_rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>444.00</td>
-      <td>4.95450</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>501.25</td>
-      <td>6.12300</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>29.25</td>
-      <td>1.76925</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6.00</td>
-      <td>1.79300</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>53.75</td>
-      <td>2.32800</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-<p>We fetch out the columns of MMR and FR data.  These are each Pandas Series:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr_series</span> <span class="o">=</span> <span class="n">clean_mmr_fr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">]</span>
-<span class="n">fert_series</span> <span class="o">=</span> <span class="n">clean_mmr_fr</span><span class="p">[</span><span class="s">'fert_rate'</span><span class="p">]</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">fert_series</span><span class="p">)</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x116996f98&gt;
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<p><img src="../../images/chapters/08/mean_and_slopes_5_1.png" alt="png" /></p>
+
+<p>“Hemoglobin” (HGB) is the concentration of the
+<a href="https://en.wikipedia.org/wiki/Hemoglobin">hemoglobin</a> molecule in blood, in
+grams per deciliter.  Hemoglobin is the iron-containing protein in red blood
+cells that carries oxygen to the tissues.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the hemoglobin concentration values as a Series.
+</span><span class="n">hgb_series</span> <span class="o">=</span> <span class="n">ckd</span><span class="p">[</span><span class="s">'Hemoglobin'</span><span class="p">]</span>
+<span class="c1"># Show the distribution.
+</span><span class="n">hgb_series</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>The last step in our data munging is to convert the columns of MMR and FR data into arrays, to make them simpler to work with.  We do this with the Numpy <code class="highlighter-rouge">array</code> function, that makes arrays from many other types of object.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11af44c18&gt;
+</code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mmr_series</span><span class="p">)</span>
-<span class="n">fert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fert_series</span><span class="p">)</span>
+<p><img src="../../images/chapters/08/mean_and_slopes_7_1.png" alt="png" /></p>
+
+<p>We convert these Series into arrays, to make them simpler to work with.  We do
+this with the Numpy <code class="highlighter-rouge">array</code> function, that makes arrays from many other types
+of object.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pcv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pcv_series</span><span class="p">)</span>
+<span class="n">hgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hgb_series</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="looking-for-straight-lines">Looking for straight lines</h2>
 
-<p>Now we are ready to look for a relationship between MMR and FR.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Hematocrit">Wikipedia page for PCV</a> says (at
+the time of writing):</p>
 
-<p>As usual, we start with a plot.  This time, for fun, we add a label to the X and Y axes with <code class="highlighter-rouge">xlabel</code> and <code class="highlighter-rouge">ylabel</code>.</p>
+<blockquote>
+  <p>An estimated hematocrit as a percentage may be derived by tripling the
+hemoglobin concentration in g/dL and dropping the units.
+<a href="https://www.doctorslounge.com/hematology/labs/hematocrit.htm">source</a>.</p>
+</blockquote>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plot FR on the x axis, MMR on the y axis
-</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Fertility rate'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Maternal mortality ratio'</span><span class="p">)</span>
+<p>This rule-of-thumb suggests that the values for PCV will be roughly three times
+the values for HGB.</p>
+
+<p>Therefore, if we plot the HGB values on the x-axis of a plot, and the PCV
+values on the y-axis, we should see something that is roughly compatible with a
+straight line going through 0, 0, and with a slope of about 3.</p>
+
+<p>Here is the plot.  This time, for fun, we add a label to the X and Y axes with
+<code class="highlighter-rouge">xlabel</code> and <code class="highlighter-rouge">ylabel</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plot HGB on the x axis, PCV on the y axis
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Hemoglobin concentration'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Packed cell volume'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Maternal mortality ratio')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Packed cell volume')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_17_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_11_1.png" alt="png" /></p>
 
-<p>The <code class="highlighter-rouge">'o'</code> argument to the plot function above is a “plot marker”.  It tells Matplotlib to plot the points as points, rather than joining them with lines.  The markers for the points will be filled circles, with <code class="highlighter-rouge">'o'</code>, but we can also ask for other symbols such as plus marks (with <code class="highlighter-rouge">'+'</code>) and crosses (with <code class="highlighter-rouge">'x'</code>).</p>
+<p>The <code class="highlighter-rouge">'o'</code> argument to the plot function above is a “plot marker”.  It tells
+Matplotlib to plot the points as points, rather than joining them with lines.
+The markers for the points will be filled circles, with <code class="highlighter-rouge">'o'</code>, but we can also
+ask for other symbols such as plus marks (with <code class="highlighter-rouge">'+'</code>) and crosses (with <code class="highlighter-rouge">'x'</code>).</p>
+
+<p>The line does look a bit like it has a slope of about 3.  But - is that true?
+Is the <em>best</em> slope 3?  What slope would we find, if we looked for the <em>best</em>
+slope?  What could <em>best</em> mean, for <em>best slope</em>?</p>
+
+<h2 id="adjusting-axes">Adjusting axes</h2>
+
+<p>We would like to see what this graph looks like in relation to the origin -
+x=0, y=0.  In order to this, we can add a <code class="highlighter-rouge">plt.axis</code> function call, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plot HGB on the x axis, PCV on the y axis
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Hemoglobin concentration'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Packed cell volume'</span><span class="p">)</span>
+<span class="c1"># Set the x axis to go from 0 to 18, y axis from 0 to 55.
+</span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">55</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 18, 0, 55]
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/08/mean_and_slopes_14_1.png" alt="png" /></p>
+
+<p>It does look plausible that this line goes through the origin, and that makes
+sense.  All hemoglobin is in red blood cells; we might expect the volume of red
+blood cells to be zero when the hemoglobin concentration is zero.</p>
 
 <h2 id="putting-points-on-plots">Putting points on plots</h2>
 
 <p>Before we go on, we will need some machinery to plot arbitrary points on plots.</p>
 
-<p>In fact this works in exactly the same way as the points you have already seen on plots.  We use the <code class="highlighter-rouge">plot</code> function, with a suitable plot marker.  The x coordinates of the points go in the first argument, and the y coordinates go in the second.</p>
+<p>In fact this works in exactly the same way as the points you have already seen
+on plots.  We use the <code class="highlighter-rouge">plot</code> function, with a suitable plot marker.  The x
+coordinates of the points go in the first argument, and the y coordinates go in
+the second.</p>
 
 <p>To plot a single point, pass a single x and y coordinate value:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="c1"># A green point at x=2, y=1000
-</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="c1"># A red point at x=5, y=40
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11af2d438&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b401c50&gt;]
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_19_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_17_1.png" alt="png" /></p>
 
 <p>To plot more than one point, pass multiple x and y coordinate values:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="c1"># Two green points, one at [2, 1000], the other at [3, 1200]
-</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">],</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="c1"># Two red points, one at [5, 40], the other at [10, 50]
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b077e48&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b384588&gt;]
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_21_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_19_1.png" alt="png" /></p>
 
 <h2 id="the-mean-as-applied-to-plots">The mean as applied to plots</h2>
 
 <p>We want a straight line that fits these points.</p>
 
-<p>The straight line should do the best job it can in <em>predicting</em> the MMR values from the FP values.</p>
+<p>The straight line should do the best job it can in <em>predicting</em> the PCV values from the HGB values.</p>
 
-<p>We found that the mean was a good predictor.  We could try and find a line or something similar that went through the mean of the MMR values, at any given FR value.</p>
+<p>We found that the mean was a good predictor for a distribution of values.  We
+could try and find a line or something similar that went through the mean of
+the PCV values, at any given HGB value.</p>
 
-<p>Let’s split the FR values up into bins centered on 1.5, 2.5 and so on.  Then we take the mean of all the MMR values corresponding to FR values between 1 and 2, 2 and 3 and so on.</p>
+<p>Let’s split the HGB values up into bins centered on 7.5, 8.5, and so on.  Then
+we take the mean of all the PCV values corresponding to HGB values between 7
+and 8, 8 and 9, and so on.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The centers for our FR bins
-</span><span class="n">fert_bin_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.5</span>
-<span class="n">fert_bin_centers</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The centers for our HGB bins
+</span><span class="n">hgb_bin_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">)</span>
+<span class="n">hgb_bin_centers</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 7.5,  8.5,  9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The number of bins
-</span><span class="n">n_bins</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">)</span>
+</span><span class="n">n_bins</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hgb_bin_centers</span><span class="p">)</span>
 <span class="n">n_bins</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
 </code></pre></div></div>
 
 <p>Show the center of the bins on the x axis of the plot.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">),</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb_bin_centers</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">),</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b1d7d68&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b5f1978&gt;]
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_26_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_24_1.png" alt="png" /></p>
 
-<p>Take the mean of the MMR values for each bin.</p>
+<p>Take the mean of the PCV values for each bin.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pcv_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_bins</span><span class="p">):</span>
-    <span class="n">mid</span> <span class="o">=</span> <span class="n">fert_bin_centers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="c1"># Boolean identifing indices withing the FR bin
-</span>    <span class="n">fr_within_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">fert</span> <span class="o">&gt;=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">fert</span> <span class="o">&lt;</span> <span class="n">mid</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
-    <span class="c1"># Take the mean of the corresponding MMR values
-</span>    <span class="n">mmr_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mmr</span><span class="p">[</span><span class="n">fr_within_bin</span><span class="p">])</span>
-<span class="n">mmr_means</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="n">hgb_bin_centers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1"># Boolean identifing indices withing the HGB bin
+</span>    <span class="n">fr_within_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">hgb</span> <span class="o">&gt;=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">hgb</span> <span class="o">&lt;</span> <span class="n">mid</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># Take the mean of the corresponding PCV values
+</span>    <span class="n">pcv_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pcv</span><span class="p">[</span><span class="n">fr_within_bin</span><span class="p">])</span>
+<span class="n">pcv_means</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 20.57,  88.79, 194.94, 455.02, 544.61, 698.35, 585.5 ])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([23.4 , 23.71, 29.56, 32.56, 33.  , 37.5 , 46.21, 45.21, 46.76,
+       47.43])
 </code></pre></div></div>
 
-<p>These means should be good predictors for MMR values, given an FR value.  We check the bin of the FR value and take the corresponding MMR mean as the prediction.</p>
+<p>These means should be good predictors for PCV values, given an HGB value.  We
+check the bin of the HGB value and take the corresponding PCV mean as the
+prediction.</p>
 
-<p>Here is a plot of the means of MMR for every bin:</p>
+<p>Here is a plot of the means of PCV for every bin:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert_bin_centers</span><span class="p">,</span> <span class="n">mmr_means</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb_bin_centers</span><span class="p">,</span> <span class="n">pcv_means</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b2f2550&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b5f1668&gt;]
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_30_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_28_1.png" alt="png" /></p>
 
 <h2 id="finding-a-predicting-line">Finding a predicting line</h2>
 
-<p>The means per bin give some prediction of the MMR values from the FR.  Can we do better?  Can we find a line that predicts the MMR data from the FR data?</p>
+<p>The means per bin give some prediction of the PCV values from the HGB.  Can we
+do better?  Can we find a line that predicts the PCV data from the HGB data?</p>
 
-<p>Remember, any line can be fully described by an <em>intercept</em> and a <em>slope</em>.  A line predicts the $y$ values from the $x$ values, using the slope $s$ and the intercept $I$:</p>
+<p>Remember, any line can be fully described by an <em>intercept</em> $c$ and a <em>slope</em>
+$s$.  A line predicts the $y$ values from the $x$ values, using the slope $s$
+and the intercept $c$:</p>
 
-<script type="math/tex; mode=display">y = I + x * s</script>
+<script type="math/tex; mode=display">y = c + x * s</script>
 
-<p>The <em>intercept</em> is the value of the line when x is equal to 0.  It is therefore where the line crosses the y axis.</p>
+<p>The <em>intercept</em> is the value of the line when x is equal to 0.  It is therefore
+where the line crosses the y axis.</p>
 
-<p>In our case, let us assume the intercept is 0.  We will assume MMR of 0 if there are no births.  We will see that things are more complicated than that, but we will start there.</p>
+<p>In our case, let us assume the intercept is 0.  We will assume PCV of 0 if
+there is no hemoglobin.</p>
 
-<p>Now we want to find a good <em>slope</em>.  The <em>slope</em> is the amount that the y values increase for a one unit increase in the x values.  In our case, it is the increase in the MMR for a 1 child increase in the FR.</p>
+<p>Now we want to find a good <em>slope</em>.  The <em>slope</em> is the amount that the y
+values increase for a one unit increase in the x values.  In our case, it is
+the increase in the PCV for a 1 gram / deciliter increase in the HGB.</p>
 
-<p>Let’s guess the slope is 100.</p>
+<p>Let’s guess the slope is 3, as Wikipedia told us it should be:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">slope</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">slope</span> <span class="o">=</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<p>Remember our line prediction for y (MMR) is:</p>
+<p>Remember our line prediction for y (PCV) is:</p>
 
-<script type="math/tex; mode=display">y = I + x * s</script>
+<script type="math/tex; mode=display">y = c + x * s</script>
 
-<p>where x is the FR.  In our case we assume the intercept is 0, so:</p>
+<p>where x is the HGB.  In our case we assume the intercept is 0, so:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr_predicted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">slope</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pcv_predicted</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">*</span> <span class="n">slope</span>
 </code></pre></div></div>
 
 <p>Plot the predictions in red on the original data in blue.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b3cfe80&gt;]
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x11b4df978&gt;]
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_36_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_34_1.png" alt="png" /></p>
 
-<p>The red are the predictions, the blue are the original data.  At each MMR value we have a prediction, and therefore, an error in our prediction; the difference between the predicted value and the actual values.</p>
+<p>The red are the predictions, the blue are the original data.  At each PCV value
+we have a prediction, and therefore, an error in our prediction; the difference
+between the predicted value and the actual values.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">error</span> <span class="o">=</span> <span class="n">mmr</span> <span class="o">-</span> <span class="n">mmr_predicted</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">error</span> <span class="o">=</span> <span class="n">pcv</span> <span class="o">-</span> <span class="n">pcv_predicted</span>
 <span class="n">error</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ -51.45, -111.05, -147.68, -173.3 , -179.05, -127.3 , -180.15,
-       -141.5 , -172.75,  148.03])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-1.6,  0.5, -0.4, -0.8,  0.9,  2.6, -0.5, -1. ,  1.5, -1.4])
 </code></pre></div></div>
 
-<p>In this plot, for each point, we draw a thin dotted line between the prediction of MMR for each point, and its actual value.</p>
+<p>In this plot, for each point, we draw a thin dotted line between the prediction
+of PCV for each point, and its actual value.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 <span class="c1"># Draw a line between predicted and actual
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fert</span><span class="p">)):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">fert</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_0</span> <span class="o">=</span> <span class="n">mmr_predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_1</span> <span class="o">=</span> <span class="n">mmr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hgb</span><span class="p">)):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">hgb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">y_0</span> <span class="o">=</span> <span class="n">pcv_predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">y_1</span> <span class="o">=</span> <span class="n">pcv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y_0</span><span class="p">,</span> <span class="n">y_1</span><span class="p">],</span> <span class="s">':'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_40_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_38_0.png" alt="png" /></p>
 
 <h2 id="what-is-a-good-line">What is a good line?</h2>
 
-<p>We have guessed a slope, and so defined a line. We calculated the errors from our guessed line.</p>
+<p>We have guessed a slope, and so defined a line. We calculated the errors from
+our guessed line.</p>
 
-<p>How would we decide whether our slope was a good one?  Put otherwise, how would we decide when we have a good line?</p>
+<p>How would we decide whether our slope was a good one?  Put otherwise, how would
+we decide when we have a good line?</p>
 
-<p>A good line should have small prediction errors. That is, the line should give a good prediction of the points.  That is, the line should result in small <em>errors</em>.</p>
+<p>A good line should have small prediction errors. That is, the line should give
+a good prediction of the points.  That is, the line should result in small
+<em>errors</em>.</p>
 
 <p>We would like a slope that gives us the smallest error.</p>
 
 <h2 id="one-metric-for-the-line">One metric for the line</h2>
 
-<p><a href="mean_meaning">The Mean as Predictor</a> section showed that the mean is the value with the smallest squared distance from the other values in the distribution.  The mean is the predictor value that minimizes the sum of squared distances from the other values.</p>
+<p><a href="mean_meaning">The Mean as Predictor</a> section showed that the mean is the value
+with the smallest squared distance from the other values in the distribution.
+The mean is the predictor value that minimizes the sum of squared distances
+from the other values.</p>
 
-<p>We can use the same metric for our line.  Instead of using a single vector as a predictor, now we are using the values on the line as predictors.  We want the FR slope, in our case, that gives the best predictors of the MMR values.  Specifically, we want the slope that gives the smallest sum of squares difference between the line prediction and the actual values.</p>
+<p>We can use the same metric for our line.  Instead of using a single vector as a
+predictor, now we are using the values on the line as predictors.  We want the
+HGB slope, in our case, that gives the best predictors of the PCV values.
+Specifically, we want the slope that gives the smallest sum of squares
+difference between the line prediction and the actual values.</p>
 
-<p>We have already calculated the prediction and error for our slope of 100, but let’s do it again, and then calculate the <em>sum of squares</em> of the error:</p>
+<p>We have already calculated the prediction and error for our slope of 3, but
+let’s do it again, and then calculate the <em>sum of squares</em> of the error:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">slope</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">mmr_predicted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">slope</span>
-<span class="n">error</span> <span class="o">=</span> <span class="n">mmr</span> <span class="o">-</span> <span class="n">mmr_predicted</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">slope</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">pcv_predicted</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">*</span> <span class="n">slope</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">pcv</span> <span class="o">-</span> <span class="n">pcv_predicted</span>
 <span class="c1"># The sum of squared error
-</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6373896.0662125
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3689.340000000001
 </code></pre></div></div>
 
-<p>We are about to do this calculation many times, for many different slopes.  We need a <em>function</em>.</p>
+<p>We are about to do this calculation many times, for many different slopes.  We
+need a <em>function</em>.</p>
 
 <p>In the function below, we are using <a href="../07/functions">function world</a>
-to get the values of <code class="highlighter-rouge">fert</code> and <code class="highlighter-rouge">mmr</code> defined here at the top level,
+to get the values of <code class="highlighter-rouge">hgb</code> and <code class="highlighter-rouge">pcv</code> defined here at the top level,
 outside <em>function world</em>. The function can see these values, from
 function world.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error</span><span class="p">(</span><span class="n">slope</span><span class="p">):</span>
-    <span class="n">fitted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">slope</span>  <span class="c1"># 'fert' comes from the top level
-</span>    <span class="n">error</span> <span class="o">=</span> <span class="n">mmr</span> <span class="o">-</span> <span class="n">fitted</span>     <span class="c1"># 'mmr' comes from the top level
+    <span class="n">fitted</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">*</span> <span class="n">slope</span>  <span class="c1"># 'hgb' comes from the top level
+</span>    <span class="n">error</span> <span class="o">=</span> <span class="n">pcv</span> <span class="o">-</span> <span class="n">fitted</span>     <span class="c1"># 'pcv' comes from the top level
 </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>First check we get the same answer as the calculation above:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6373896.0662125
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3689.340000000001
 </code></pre></div></div>
 
-<p>Does 200 give a higher or lower sum of squared error?</p>
+<p>Does 3.5 give a higher or lower sum of squared error?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34151573.172350004
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9947.535
 </code></pre></div></div>
 
-<p>Now we can use the same strategy as we used in the <a href="mean_meaning">mean meaning</a> page, to try lots of slopes, and find the one that gives the smallest sum of squared error.</p>
+<p>Now we can use the same strategy as we used in the <a href="mean_meaning">mean meaning</a>
+page, to try lots of slopes, and find the one that gives the smallest sum of
+squared error.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Slopes to try
-</span><span class="n">some_slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</span><span class="n">some_slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 <span class="n">n_slopes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">some_slopes</span><span class="p">)</span>
 <span class="c1"># Try all these slopes, calculate and record sum of squared error
 </span><span class="n">sos_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">)</span>
@@ -1460,11 +1596,12 @@ function world.</p>
 </span><span class="n">sos_errors</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([6609932.97, 6600063.14, 6590230.98, 6580436.49, 6570679.67,
-       6560960.51, 6551279.02, 6541635.19, 6532029.03, 6522460.54])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([37529.64, 36885.28, 36247.11, 35615.11, 34989.3 , 34369.66,
+       33756.21, 33148.94, 32547.85, 31952.94])
 </code></pre></div></div>
 
-<p>We plot the slopes we have tried, on the x axis, against the sum of squared error, on the y-axis.</p>
+<p>We plot the slopes we have tried, on the x axis, against the sum of squared
+error, on the y-axis.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">some_slopes</span><span class="p">,</span> <span class="n">sos_errors</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Candidate slopes'</span><span class="p">)</span>
@@ -1474,53 +1611,57 @@ function world.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Sum of squared error')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_52_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_51_1.png" alt="png" /></p>
 
 <p>The minimum of the sum of squared error is:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">sos_errors</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5311887.407425549
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3619.8091499999964
 </code></pre></div></div>
 
-<p>We want to find the slope that corresponds to this minimum.  We can use <a href="where_and_argmin">argmin</a>.</p>
+<p>We want to find the slope that corresponds to this minimum.  We can use
+<a href="where_and_argmin">argmin</a>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Index of minumum value
 </span><span class="n">i_of_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">sos_errors</span><span class="p">)</span>
 <span class="n">i_of_min</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>263
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>105
 </code></pre></div></div>
 
-<p>This is the index position of the minimum.  We will therefore get the minimum (again) if we index into the original array with the index we just found:</p>
+<p>This is the index position of the minimum.  We will therefore get the minimum
+(again) if we index into the original array with the index we just found:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check we do in fact get the minimum at this index
 </span><span class="n">sos_errors</span><span class="p">[</span><span class="n">i_of_min</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5311887.407425549
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3619.8091499999964
 </code></pre></div></div>
 
-<p>Now we can get and show the slope value that corresponds the minimum sum of squared error:</p>
+<p>Now we can get and show the slope value that corresponds the minimum sum of
+squared error:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_slope</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">i_of_min</span><span class="p">]</span>
 <span class="n">best_slope</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>76.30000000000038
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0499999999999776
 </code></pre></div></div>
 
-<p>Plot the data, predictions and errors for the line that minimizes the sum of squared error:</p>
+<p>Plot the data, predictions and errors for the line that minimizes the sum of
+squared error:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_predicted</span> <span class="o">=</span> <span class="n">fert</span> <span class="o">*</span> <span class="n">best_slope</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">mmr</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fert</span><span class="p">,</span> <span class="n">best_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fert</span><span class="p">)):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">fert</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_predicted</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">*</span> <span class="n">best_slope</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">pcv</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hgb</span><span class="p">,</span> <span class="n">best_predicted</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hgb</span><span class="p">)):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">hgb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">y_0</span> <span class="o">=</span> <span class="n">best_predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_1</span> <span class="o">=</span> <span class="n">mmr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">y_1</span> <span class="o">=</span> <span class="n">pcv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y_0</span><span class="p">,</span> <span class="n">y_1</span><span class="p">],</span> <span class="s">':'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'The best-fit line using least-squared error'</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1528,33 +1669,36 @@ function world.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'The best-fit line using least-squared error')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/mean_and_slopes_62_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/mean_and_slopes_61_1.png" alt="png" /></p>
 
-<p>The algorithm we have used so far, is rather slow and clunky, because we had to make an array with lots of slopes to try, and then go through each one to find the slope that minimizes the squared error.</p>
+<p>The algorithm we have used so far, is rather slow and clunky, because we had to
+make an array with lots of slopes to try, and then go through each one to find
+the slope that minimizes the squared error.</p>
 
-<p>In fact, we will soon see, we can use some tricks to get Python to do all this work for us, much more quickly.</p>
+<p>In fact, we will soon see, we can use some tricks to get Python to do all this
+work for us, much more quickly.</p>
 
-<p>Finding techniques for doing this automatically is a whole
-mathematical field, called
-<a href="https://en.wikipedia.org/wiki/Mathematical_optimization">optimization</a>.</p>
+<p>Finding techniques for doing this automatically is a whole mathematical field,
+called <a href="https://en.wikipedia.org/wiki/Mathematical_optimization">optimization</a>.</p>
 
-<p>For now, let’s leap to using these techniques on our problem, of finding the best slope:</p>
+<p>For now, let’s leap to using these techniques on our problem, of finding the
+best slope:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-<span class="c1"># 100 below is the slope value to start the search.
-</span><span class="n">minimize</span><span class="p">(</span><span class="n">sos_error</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># 3 below is the slope value to start the search.
+</span><span class="n">minimize</span><span class="p">(</span><span class="n">sos_error</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 5311883.300879181
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 3619.6157878183294
  hess_inv: array([[0.]])
       jac: array([0.])
-  message: 'Optimization terminated successfully.'
-     nfev: 42
-      nit: 5
-     njev: 14
-   status: 0
-  success: True
-        x: array([76.25])
+  message: 'Desired error not necessarily achieved due to precision loss.'
+     nfev: 16
+      nit: 2
+     njev: 5
+   status: 2
+  success: False
+        x: array([3.05])
 </code></pre></div></div>
 
 
