@@ -262,7 +262,7 @@ In Python, as for your calculator, `*` means multiplication.
 What about this?
 
 ```{python}
-# The bill plus tip - with a mistake.
+# The tip - with a mistake.
 10.50 + 9.25 * 0.15
 ```
 

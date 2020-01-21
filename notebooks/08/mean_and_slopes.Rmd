@@ -199,8 +199,8 @@ import matplotlib.pyplot as plt
 # %matplotlib inline
 # Make plots look a little bit more fancy
 plt.style.use('fivethirtyeight')
-# Print to 2 decimal places, show tiny values as 0
-np.set_printoptions(precision=2, suppress=True)
+# Print to 4 decimal places, show tiny values as 0
+np.set_printoptions(precision=4, suppress=True)
 import pandas as pd
 ```
 
@@ -614,8 +614,34 @@ best slope:
 ```{python}
 from scipy.optimize import minimize
 # 3 below is the slope value to start the search.
-minimize(sos_error, 3)
+res = minimize(sos_error, 3)
+res
 ```
+
+The slope is in the `x` attribute of the return value:
+
+```{python}
+res.x
+```
+
+## The magic of maths
+
+We found the best (sum of squares) slope by trying lots of slopes, above, and then, rather more efficiently, by using `minimize` to do that job for us.
+
+You don't need to understand the argument below, to follow this class, but in
+this case we can work out the best slope with some [fairly simple calculus and
+algebra](../extra/slope_deviations).  It turns out like this:
+
+```{python}
+maths_slope = np.sum(hgb * pcv) / np.sum(hgb ** 2)
+maths_slope
+```
+
+See the page linked above for why this formula works for any set of x and y
+values, where the intercept is zero.
+
+But - we won't be using these mathematical short cuts in this course, we will
+be using `minimize` and friends to find the best slope by trial and error.
 
         
       </section>
