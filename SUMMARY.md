@@ -90,3 +90,4 @@
   * [Berkeley introduction to functions](notebooks/extra/data8_functions.ipynb)
   * [Deviations around the mean](notebooks/extra/mean_deviations.md)
   * [Squared deviations around the mean](notebooks/extra/mean_sq_deviations.md)
+  * [Finding the best slope](notebooks/extra/slope_deviations.md)
