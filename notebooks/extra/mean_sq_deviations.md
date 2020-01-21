@@ -1,7 +1,7 @@
 ## The mean and squared differences
 
 This page is assumes a lot more maths than the standard bit of the course.  In
-particular, it assumes that that you know the basics of finding the
+particular, it assumes that you know the basics of finding the
 [derivative](https://en.wikipedia.org/wiki/Derivative) of a function.
 
 In practice this means that, if you are in the US, you will need to have taken
@@ -58,7 +58,7 @@ the horizontal axis, and the value for $SSE_c$ is on the vertical axis.
 
 We want to find the value of $c$ that gives the smallest value for $SSE_c$.
 
-The plot turned out to be U-shaped; we want to find the horixontal axis
+The plot turned out to be U-shaped; we want to find the horizontal axis
 location ($c$ value) corresponding to the bottom of the U (minimum of the
 corresponding $SSE_c$ values).
 
