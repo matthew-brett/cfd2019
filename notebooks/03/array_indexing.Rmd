@@ -37,22 +37,20 @@ The *index* of the first value is 0, the index of the second value is 2, and so 
 We start by loading data from a Comma Separated Value file (CSV
 file).
 
-This is summary data that [Andrew Rosen](https://asrosen.com) downloaded
-from <https://www.ratemyprofessors.com> for an analysis he reported in
-[a 2018
-paper](https://asrosen.com/wp-content/uploads/2018/07/postprint_rmp-1.pdf).
-The data file here is from the [supplementary
+This is summary data that [Andrew Rosen](https://asrosen.com) downloaded from
+<https://www.ratemyprofessors.com> for an analysis he reported in [a 2018
+paper](https://asrosen.com/wp-content/uploads/2018/07/postprint_rmp-1.pdf). The
+data file here is from the [supplementary
 material](https://www.tandfonline.com/doi/suppl/10.1080/02602938.2016.1276155);
-it has the average rating across academic discipline for all professors
-in a particular discipline who have more than 20 ratings.
+it has the average rating across academic discipline for all professors in
+a particular discipline who have more than 20 ratings.
 
-See [this
-summary](https://github.com/matthew-brett/datasets/tree/master/good_and_easy)
-for more detail.
+See [the dataset page]({{ site.baseurl }}/data/rate_my_professors) for more
+detail.
 
-If you are running on your laptop, you should download
-the [rate_my_course.csv]({{ site.baseurl }}/data/rate_my_course.csv)
-file to the same directory as this notebook.
+If you are running on your laptop, you should download the
+[rate_my_course.csv]({{ site.baseurl }}/data/rate_my_course.csv) file to the
+same directory as this notebook.
 
 Don't worry about the next cell.  It just loads the data we need from a data file.  We will come on the machinery to do this very soon.
 
