@@ -207,6 +207,8 @@ file).  If you are running on your laptop, you should download
 the [gender_stats.csv](/cfd2019/data/gender_stats.csv)
 file to the same directory as this notebook.
 
+See the [gender statistics description page](/cfd2019/data/gender_stats) for more detail on the dataset.
+
 ```{python}
 # Load the data file
 gender_data = pd.read_csv('gender_stats.csv')

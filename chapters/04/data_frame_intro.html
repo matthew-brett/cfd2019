@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-21T17:28:26+00:00">
+  <meta property="article:published_time" content="2020-01-27T09:37:58+00:00">
 
 
 
@@ -988,7 +988,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="4.1 Introduction to data frames">
       <meta itemprop="description" content="Introduction to data frames">
-      <meta itemprop="datePublished" content="January 21, 2020">
+      <meta itemprop="datePublished" content="January 27, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1053,6 +1053,8 @@ frames.</p>
 file).  If you are running on your laptop, you should download
 the <a href="/cfd2019/data/gender_stats.csv">gender_stats.csv</a>
 file to the same directory as this notebook.</p>
+
+<p>See the <a href="/cfd2019/data/gender_stats">gender statistics description page</a> for more detail on the dataset.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file
 </span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
@@ -3308,7 +3310,7 @@ there is little relationship between GDP and maternal mortality.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11b1c4710&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x128468bd0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_60_1.png" alt="png" /></p>
@@ -3755,7 +3757,7 @@ any of this selection of rich countries.   Here’s a plot of
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp_per_million</span><span class="p">,</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x118fa93c8&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x111600610&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_80_1.png" alt="png" /></p>
