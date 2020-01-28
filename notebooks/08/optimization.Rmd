@@ -198,36 +198,34 @@ np.set_printoptions(precision=2, suppress=True)
 import pandas as pd
 ```
 
-Download the [gender_stats.csv](/cfd2019/data/gender_stats.csv) file
-to the same directory as this notebook, if you are running on your own computer.
+Download the [ckd_clean.csv](/cfd2019/data/ckd_clean.csv) file to the
+same directory as this notebook, if you are running on your own computer.
 
-Fetch and process the data:
+We fetch and process the data. See [mean and slopes](mean_and_slopes) for a slower description of this processing.
 
 ```{python}
 # Load the data file
-gender_data = pd.read_csv('gender_stats.csv')
-# Make new data frame with only MMR and FR
-just_mmr_fr = gender_data[['mat_mort_ratio', 'fert_rate']]
-# Drop the NaN values, and make into arrays.
-clean_mmr_fr = just_mmr_fr.dropna()
-mmr = np.array(clean_mmr_fr['mat_mort_ratio'])
-fert = np.array(clean_mmr_fr['fert_rate'])
+ckd = pd.read_csv('ckd_clean.csv')
+pcv = np.array(ckd['Packed Cell Volume'])
+hgb = np.array(ckd['Hemoglobin'])
 ```
 
 Our criterion is the sum of squared error:
 
 ```{python}
 def sos_error(slope):
-    fitted = fert * slope  # 'fert' comes from the top level
-    error = mmr - fitted     # 'mmr' comes from the top level
+    fitted = hgb * slope  # 'hgb' comes from the top level
+    error = pcv - fitted     # 'pcv' comes from the top level
     return np.sum(error ** 2)
 ```
 
-We found the best slope by trying a very large number of slopes, and recording, for each slope, the sum of squared error.  We chose the slope from the slopes that we tried, that gave us the lowest sum of squared error.
+We found the best slope by trying a very large number of slopes, and recording,
+for each slope, the sum of squared error.  We chose the slope from the slopes
+that we tried, that gave us the lowest sum of squared error.
 
 ```{python}
 # Slopes to try
-some_slopes = np.arange(50, 110, 0.1)
+some_slopes = np.arange(2, 4, 0.01)
 n_slopes = len(some_slopes)
 # Try all these slopes, calculate and record sum of squared error
 sos_errors = np.zeros(n_slopes)
@@ -245,25 +243,34 @@ quickly.
 
 ```{python}
 from scipy.optimize import minimize
-minimize(sos_error, 100)
+minimize(sos_error, 3)
 ```
 
 What we are doing, with our slow dumb technique, and with the `minimize`
 function, is something called [mathematical
-optimization](https://en.wikipedia.org/wiki/Mathematical_optimization).  We
-use *optimization* when we have some *function* that takes one or more
+optimization](https://en.wikipedia.org/wiki/Mathematical_optimization).  We use
+*optimization* when we have some *function* that takes one or more
 *parameters*.  We want to chose, or *optimize* the parameters to give us some
-desired output from the function. 
+desired output from the function.
 
-In our case our *function* is the sum of squared error, `sos_error`.  The *parameter* is the slope.  We are trying to find the value for the parameter that *minimizes* the result of calling the function `sos_error`.
+In our case our *function* is the sum of squared error, `sos_error`.  The
+*parameter* is the slope.  We are trying to find the value for the parameter
+that *minimizes* the result of calling the function `sos_error`.
 
-One way of doing this minimization, is the slow dumb way.  We just try a huge number of values for the parameter (the slope), and chose the value that gives us the lowest output value (the sum of squared error).
+One way of doing this minimization, is the slow dumb way.  We just try a huge
+number of values for the parameter (the slope), and chose the value that gives
+us the lowest output value (the sum of squared error).
 
-This is such a common problem, that there has been an enormous amount of theoretical and practical work on building algorithms to make process of searching for the minimum value more efficient.
+This is such a common problem, that there has been an enormous amount of
+theoretical and practical work on building algorithms to make process of
+searching for the minimum value more efficient.
 
-This notebook is to give you an idea of how you might do this, and therefore, the kind of things that `minimize` can do, to search quickly for the best parameter.
+This notebook is to give you an idea of how you might do this, and therefore,
+the kind of things that `minimize` can do, to search quickly for the best
+parameter.
 
-Let's look again at the shape of the curve relating the slope to the sum of squared error:
+Let's look again at the shape of the curve relating the slope to the sum of
+squared error:
 
 ```{python}
 plt.plot(some_slopes, sos_errors)
@@ -278,11 +285,16 @@ parameter.
 
 We want to avoid trying every possible value for the slope.
 
-So, we are going to start with one value for the slope, say 100, then see if there is a good way to chose the next value to try.
+To do this, we are going to start with one value for the slope, say 100, then
+see if there is a good way to chose the next value to try.
 
 Looking at the graph, we see that, when the slope is far away from the minimum, the sum of squared error (on the y axis) changes very quickly as the slope changes.  That is, the function has a steep *gradient*.
 
-Maybe we could check what the gradient is, at our starting value of 100, by calculating the sum of squares (y) value, and then calculating the sum of squares (y) value when we increase the slope by a tiny amount.  This is the change in y for a very small change in x.  We divide the change in y by the change in x, to get the gradient:
+Maybe we could check what the gradient is, at our starting value of 100, by
+calculating the sum of squares (y) value, and then calculating the sum of
+squares (y) value when we increase the slope by a tiny amount.  This is the
+change in y for a very small change in x.  We divide the change in y by the
+change in x, to get the gradient:
 
 ```{python}
 def sos_error_gradient(x, dx=0.0001):
@@ -297,31 +309,52 @@ def sos_error_gradient(x, dx=0.0001):
 
 ```{python}
 # The y value of the function.
-sos_error(100)
+sos_error(4)
 ```
 
 ```{python}
 # The gradient of the function at this point.
-sos_error_gradient(100)
+sos_error_gradient(4)
 ```
 
-A large positive gradient means the x value (slope) that we tried is still far to the *right* of the minimum. This might encourage us to try an x value that is well to the left.  We could call this a large step in x, and therefore a large *step size*.
+A large positive gradient means the x value (slope) that we tried is still far
+to the *right* of the minimum. This might encourage us to try an x value that
+is well to the left.  We could call this a large step in x, and therefore
+a large *step size*.
 
-A large negative gradient means the x value (slope) that we tried is still far to the *left* of the minimum.   This might encourage us to try an x value that is well to the right.
+Let's try another value:
 
-As the gradients get small, we want to take smaller steps, so we don't miss the minimum.
+```{python}
+# The y value of the function.
+sos_error(2)
+```
 
-The general idea then, is to chose our step sizes in proportion to the gradient of the function.
+```{python}
+# The gradient of the function at this point.
+sos_error_gradient(2)
+```
 
-This is the optimization technique known as [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent).
+A large negative gradient means the x value (slope) that we tried is still far
+to the *left* of the minimum.   This might encourage us to try an x value that
+is well to the right.
+
+As the gradients get small, we want to take smaller steps, so we don't miss the
+minimum.
+
+The general idea then, is to chose our step sizes in proportion to the gradient
+of the function.
+
+This is the optimization technique known as [gradient
+descent](https://en.wikipedia.org/wiki/Gradient_descent).
 
 Here it is in action, using code modified from the Wikipedia page above.
 
-We try new x (slope) values by making big jumps when the gradient is steep, and small jumps when the gradient is shallow.
+We try new x (slope) values by making big jumps when the gradient is steep, and
+small jumps when the gradient is shallow.
 
 ```{python}
-next_x = 100 # We start the search at x=100
-gamma = 0.0001 # Step size multiplier
+next_x = 4 # We start the search at x=4
+gamma = 0.00001 # Step size multiplier
 precision = 0.00001 # Desired precision of result
 max_iters = 1000 # Maximum number of iterations
 
@@ -346,10 +379,12 @@ for i in np.arange(max_iters):
 print("Minimum at", next_x)
 ```
 
-As you can see, by doing this, we save ourselves from trying a very large number of other potential x values (slopes), and we focus in on the minimum very quickly.
+As you can see, by doing this, we save ourselves from trying a very large
+number of other potential x values (slopes), and we focus in on the minimum
+very quickly.
 
-This is just one method among many for optimizing our search for the minimum
-of a function.  Now you know what kind of thing it is doing, we will just let
+This is just one method among many for optimizing our search for the minimum of
+a function.  Now you know what kind of thing it is doing, we will just let
 `miminize` do its job for us:
 
 ```{python}

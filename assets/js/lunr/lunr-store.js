@@ -280,12 +280,12 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/pandas_indexing",
         "teaser":null},{
         "title": "7.5 Finding lines",
-        "excerpt":"In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values. Specifically, we wanted our slope to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values. By analogy with The Mean as Predictor, we decided...","categories": [],
+        "excerpt":"In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values. Specifically, we wanted our slope to predict the Packed Cell Volume (PCV) values from the Hemoglobin (HGB) values. By analogy with The Mean as Predictor, we decided to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/finding_lines",
         "teaser":null},{
         "title": "7.6 Believable slopes",
-        "excerpt":"In finding slopes, we found the line the did the best job of predicting one vector of values from another vector of values. Our line was a slope and an intercept. We used it to predict the Maternal Mortality Ratio (MMR) values from the Fertility Rate (FR) values. We chose...","categories": [],
+        "excerpt":"In finding slopes, we found the line the did the best job of predicting one vector of values from another vector of values. Our line was a slope and an intercept. We used it to predict the OverallQuality scores (quality) for courses, from the Easiness scores (easiness). We chose the...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/inference_on_slopes",
         "teaser":null},{
