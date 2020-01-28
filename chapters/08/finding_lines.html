@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-28T10:30:42+00:00">
+  <meta property="article:published_time" content="2020-01-28T13:23:32+00:00">
 
 
 
@@ -1019,17 +1019,21 @@
           <p>In <a href="mean_and_slopes">The Mean and Slopes</a>, we were looking for the best slope
 to predict one vector of values from another vector of values.</p>
 
-<p>Specifically, we wanted our slope to predict the Packed Cell Volume (PCV) values from the Hemoglobin (HGB) values.</p>
+<p>Specifically, we wanted our slope to predict the Packed Cell Volume (PCV)
+values from the Hemoglobin (HGB) values.</p>
 
-<p>By analogy with <a href="mean_meaning">The Mean as Predictor</a>, we decided to choose our line to minimize the average prediction errors, and the sum of squared prediction errors.</p>
+<p>By analogy with <a href="mean_meaning">The Mean as Predictor</a>, we decided to choose our
+line to minimize the average prediction errors, and the sum of squared
+prediction errors.</p>
 
-<p>We found a solution, by trying many slopes, and choosing the slope giving use the smallest error.</p>
+<p>We found a solution, by trying many slopes, and choosing the slope giving use
+the smallest error.</p>
 
-<p>For our question, we were happy to assume that the line passed through 0, 0 -
-meaning, that when the Hemoglobin is 0, the Packed Cell Volume value is 0.
+<p>For our question, we were happy to assume that the line passed through 0,
+0 - meaning, that when the Hemoglobin is 0, the Packed Cell Volume value is 0.
 Put another way, we assumed that our line had an <em>intercept</em> value of 0.  The
-intercept y value at which the line crosses the y axis, or, put another way,
-the y value when the x value is 0.</p>
+intercept is the y value at which the line crosses the y axis, or, put another
+way, the y value when the x value is 0.</p>
 
 <p>What if we are in a situation where we want to find a line that had a (not
 zero) intercept, as well as a slope?</p>
@@ -1203,7 +1207,8 @@ and the intercept $c$:</p>
 
 <p>where <code class="highlighter-rouge">easiness</code> contains our actual $x$ values.</p>
 
-<p>The prediction error at each point come from the actual $y$ values minus the predicted $y$ values.</p>
+<p>The prediction error at each point come from the actual $y$ values minus the
+predicted $y$ values.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
 </code></pre></div></div>
@@ -1225,10 +1230,7 @@ smallest possible value for <code class="highlighter-rouge">sse_c_s</code> above
 
 <p>First we define a function, that gives the sum of squared error from our line, defined by the intercept, slope pair.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error_c_s</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
-    <span class="c1"># inter_slope has two elements, the intercept c and the slope s.
-</span>    <span class="n">c</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error_c_s</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
@@ -1236,7 +1238,7 @@ smallest possible value for <code class="highlighter-rouge">sse_c_s</code> above
 
 <p>Here we pass the new function our guessed intercept and slope function to confirm we get the same answer as we did before:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">([</span><span class="n">c_guess</span><span class="p">,</span> <span class="n">s_guess</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">(</span><span class="n">c_guess</span><span class="p">,</span> <span class="n">s_guess</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0849912187001691
@@ -1245,7 +1247,7 @@ smallest possible value for <code class="highlighter-rouge">sse_c_s</code> above
 <p>We can try other values for the intercept and slope to see if we can make the
 sum of squared error go down:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">([</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0751749908632549
@@ -1273,8 +1275,6 @@ Number of slopes to try: 601
 
 </code></pre></div></div>
 
-<p>c 220 s 601</p>
-
 <p>When we searched many slopes, we collected the errors in a one-dimensional
 array, with each element carrying the error for a single slope.  For example,
 if we are trying 601 slopes, we make a one-dimensional array of length 601, to
@@ -1299,13 +1299,7 @@ error values, for the 220 * 601 possible pairs of intercept and slope.</p>
 </span>    <span class="k">for</span> <span class="n">slope_i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_slopes</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">some_slopes</span><span class="p">[</span><span class="n">slope_i</span><span class="p">]</span>
         <span class="c1"># Fill the corresponding position in the error array
-</span>        <span class="n">ss_errors</span><span class="p">[</span><span class="n">inter_i</span><span class="p">,</span> <span class="n">slope_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sos_error_c_s</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">([</span><span class="mf">2.12</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">])</span> <span class="o">-</span> <span class="n">sos_error_c_s</span><span class="p">([</span><span class="mf">2.11</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.005730033832269887
+</span>        <span class="n">ss_errors</span><span class="p">[</span><span class="n">inter_i</span><span class="p">,</span> <span class="n">slope_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sos_error_c_s</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We now have the error for all pair of intercepts and slopes.  We can display
@@ -1324,7 +1318,7 @@ be blue, the largest will be red:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Sum of squared error')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_36_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/finding_lines_35_1.png" alt="png" /></p>
 
 <p>At the moment, it’s a bit difficult to see what’s going on, because the lowest
 point in the center is in a lake of undifferentiated blue.  We can make it
@@ -1345,7 +1339,7 @@ the smaller values.  The details of this plotting code are not important.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Sum of squared error')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_38_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/finding_lines_37_1.png" alt="png" /></p>
 
 <p>We can display this as a 3D surface, to get a better idea of where the minimum
 is.  Don’t worry about the specific code below, we don’t often need these kinds
@@ -1373,7 +1367,7 @@ of plots in data analysis.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 0.92, 'Sum of squared error')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_40_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/finding_lines_39_1.png" alt="png" /></p>
 
 <p>The minimum over all pairs of intercepts and slopes is at the bottom of the
 blue trough in the plot.  Looking at the plot and the axes, it seems that the best intercept, slope pair is around 2.2 and 0.5.</p>
@@ -1390,7 +1384,7 @@ blue trough in the plot.  Looking at the plot and the axes, it seems that the be
 <p>Notice that this error is lower than the error we found for our guessed <code class="highlighter-rouge">c</code> and
 <code class="highlighter-rouge">s</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">([</span><span class="n">c_guess</span><span class="p">,</span> <span class="n">s_guess</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_c_s</span><span class="p">(</span><span class="n">c_guess</span><span class="p">,</span> <span class="n">s_guess</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0849912187001691
@@ -1445,16 +1439,49 @@ squared error:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'The best-fit line using least-squared error')
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/08/finding_lines_54_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/08/finding_lines_53_1.png" alt="png" /></p>
 
 <p>Now you know about <a href="optimization">optimization</a>, you will not be surprised to
 discover that Scipy <code class="highlighter-rouge">minimize</code> can also do the search for the intercept and
 slope pair for us.  We send <code class="highlighter-rouge">minimize</code> the function we are trying to minimize,
-and a starting guess for the intercept and slope.  In this case, we start with
-our guess of <code class="highlighter-rouge">[2.25, 0.47]</code>, but any reasonable guess will do.</p>
+and a starting guess for the intercept and slope.</p>
+
+<p><code class="highlighter-rouge">minimize</code> is a little fussy about the functions it will use.  It insists that all the parameters need to be passed in as a single argument.   In our case, we need to pass both parameters (the intercept and slope) as one value, containing two elements, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error_for_minimize</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
+    <span class="c1"># inter_slope has two elements, the intercept c and the slope s.
+</span>    <span class="n">c</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This is the form of the function that minimize can use.</p>
+
+<p>We first confirm this gives us the same answer we got before from our function with two arguments:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The original function
+</span><span class="n">sos_error_c_s</span><span class="p">(</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0849912187001691
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The function in the form that minimize wants
+# The two parameters go into a list, that we can pass as a single argument.
+</span><span class="n">sos_error_for_minimize</span><span class="p">([</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0849912187001691
+</code></pre></div></div>
+
+<p>As usual with <code class="highlighter-rouge">minimize</code> we need to give a starting guess for the intercept and
+slope.  We will start with our initial guess of <code class="highlighter-rouge">[2.25, 0.47]</code>, but any
+reasonable guess will do.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-<span class="n">minimize</span><span class="p">(</span><span class="n">sos_error_c_s</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
+<span class="n">minimize</span><span class="p">(</span><span class="n">sos_error_for_minimize</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
@@ -1478,7 +1505,7 @@ example, in the Scipy <code class="highlighter-rouge">linregress</code> function
 <span class="n">linregress</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">quality</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinregressResult(slope=0.5088641203940006, intercept=2.114798571643314, rvalue=0.7459725836595872, pvalue=1.5998303978986516e-14, stderr=0.053171209477256925)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinregressResult(slope=0.508864120394001, intercept=2.1147985716433126, rvalue=0.7459725836595876, pvalue=1.5998303978985715e-14, stderr=0.05317120947725689)
 </code></pre></div></div>
 
 <p>Notice the values for <code class="highlighter-rouge">slope</code> and <code class="highlighter-rouge">intercept</code> in the output above.</p>
