@@ -173,3 +173,7 @@ In a previous version of this class, the data topics included:
 * Analyzing public NASA data to identify nearby habitable planets.
 * Analysis of train timetable and departure / arrivals data for evidence of
   poor performance of particular train companies or lines.
+
+## References
+
+{% bibliography --cited %}
