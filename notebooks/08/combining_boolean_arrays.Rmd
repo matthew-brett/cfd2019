@@ -40,73 +40,178 @@ We can select the rows from this table where the Easiness rating was above the m
 
 ```{python}
 easiness = ratings['Easiness']
-gt_median_easy = easiness > np.median(easiness)
-gt_median_easy.head()
+is_gt_median = easiness > np.median(easiness)
+is_gt_median.head()
 ```
 
 ```{python}
-above_median = ratings[gt_median_easy]
-above_media.head()
+above_median = ratings[is_gt_median]
+above_median.head()
 ```
 
-What if we wanted to select the rows that were between the 25th and 75th centile?  Here's how to get the centile values:
+What if we wanted to select the rows that were between the 25% and 75%
+quantile?  Here's how to get the quantile value.
 
 ```{python}
-q25 = np.quartile(easiness, 0.25)
-q75 = np.quartile(easiness, 0.75)
+q25 = np.quantile(easiness, 0.25)
+q75 = np.quantile(easiness, 0.75)
 print(q25, q75)
 ```
 
 We can do this more neatly with [unpacking](using_minimize):
 
 ```{python}
-q25, q75 = np.quartile(easiness, [0.25, 0.75])
+q25, q75 = np.quantile(easiness, [0.25, 0.75])
 print(q25, q75)
 ```
 
-Now we want to select the rows where the Easiness score is between these values.   We can do this the long way round, by selecting twice:
+Now we want to select the rows where the Easiness score is between these
+values.   We can do this the long way round, by selecting twice:
 
 ```{python}
-# Select values above the 25% quartile.
+# Select values above the 25% quantile.
 above_q25 = ratings[easiness > q25]
 # There are now fewer Easiness values, so we have to get the values remaining.
 q25_easiness = above_q25['Easiness']
-# Select values below the 75% quartile.
+# Select values below the 75% quantile.
 between_25_75 = above_q25[q25_easiness < q75]
 between_25_75.head()
 ```
 
-For example, we might want to find all the
-movies with ratings from 7 through 8.  Now we need a Boolean Series that has
-True only both of these things are true for the given Rating value:
+Another, neater way of doing this is to make a single Boolean Series that has
+True only if the Easiness value is *both* above the 25% quantile *and* below
+the 75% quantile.
 
-* the Rating value is greater than or equal to 7, AND
-* the Rating value is less than or equal to 8.
+This is called a *logical and*.
 
-We can make a Boolean array for each of these two criteria:
+To do this we can make a Boolean Series for each of these two criteria:
 
 ```{python}
-ratings = imdb["Rating"]
-is_ge_7 = ratings >= 7
+# True if Easiness is above 25% quantile.
+is_gt_q25 = easiness > q25
 # Show the first 10 values
-is_ge_7.head(10)
+is_gt_q25.head(10)
 ```
 
 ```{python}
-is_le_8 = ratings <= 8
+# True if Easiness is below 75% quantile.
+is_lt_q75 = easiness < q75
 # Show the first 10 values
-is_le_8.head(10)
+is_lt_q75.head(10)
 ```
 
 We can combine these two with Numpy functions.  The function we need in this
-case is `np.logical_and`.  It combines the Series into a new sequence that only
-has True in positions where both of these Series have a True in the corresponding position:
+case is `np.logical_and`.
+
+`np.logical_and` can work on Pandas Series, or on Numpy arrays.   We will use
+the term *sequence* for something that can be a Pandas Series or a Numpy
+array.
+
+`np.logical_and` combines the two input sequences into a new sequence that
+only has True in positions where *both* of the input sequences have a True in
+the corresponding position:
 
 ```{python}
-between_7_8 = np.logical_and(is_ge_7, is_le_8)
-between_7_8.head(10)
+is_between_25_75 = np.logical_and(is_gt_q25, is_lt_q75)
+is_between_25_75.head(10)
+```
+
+It might be easier to see what is going on if we make some small test arrays:
+
+```{python}
+a = np.array([True, True, False, False])
+b = np.array([True, False, True, False])
+```
+
+We can show these conveniently as a DataFrame:
+
+```{python}
+ab = pd.DataFrame()
+ab['a'] = a
+ab['b'] = b
+ab
+```
+
+Before you look, try to work out what you would get from `np.logical_and(a,
+b)`.
+
+Remember, the rule is, the result will have True where the corresponding
+element from *both* `a` and `b` are True, and False otherwise.
+
+
+Here's something to keep you entertained while you are thinking:
+
+```{python}
+from IPython.display import YouTubeVideo
+YouTubeVideo("gdJWZxPW45c")
+```
+
+The result:
+
+```{python}
+np.logical_and(a, b)
+```
+
+Here are the two input columns and the result, displayed as a data frame, to
+show them nicely:
+
+```{python}
+ab['and result'] = np.logical_and(a, b)
+ab
+```
+
+Check that you agree with Python's results for combining `is_gt_q25` and
+`is_lt_q75` in the same way.  Here's a display showing `is_gt_q25`,
+`is_lt_q75` and the result of `logical_and`:
+
+```{python}
+qbools = pd.DataFrame()
+qbools['is_gt_q25'] = is_gt_q25
+qbools['is_lt_q75'] = is_lt_q75
+qbools['and_result'] = np.logical_and(is_gt_q25, is_lt_q75)
+qbools.head(10)
+```
+
+We can use the combined Boolean series from `logical_and` to select the rows
+that we want:
+
+```{python}
+betweeners = ratings[np.logical_and(is_gt_q25, is_lt_q75)]
+betweeners.head()
+```
+
+Notice that we only have rows where there is a corresponding True value in the
+result of the `logical_and`, and therefore, that we only have rows that are
+above the 25% quantile, and below the 75% quantile.
+
+
+You may not be surprised to know there is an equivalent function to
+`logical_and` called `logical_or`.  Like `logical_and` this returns a Boolean
+sequence of the same length as the input sequences.  There is a True in the
+output sequence where *one or both* of the input sequences have True in the
+corresponding positions.
+
+```{python}
+a
 ```
 
 ```{python}
+b
+```
 
+```{python}
+np.logical_or(a, b)
+```
+
+```{python}
+ab['or result'] = np.logical_or(a, b)
+ab
+```
+
+We can use this function to find all the rows that have Easiness ratings above
+the 75% quantile or below the 25% quantile:
+
+```{python}
+easy_or_hard = ratings[np.logical_or(easiness < q25, easiness > q75)]
+easy_or_hard.head()
 ```
