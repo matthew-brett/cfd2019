@@ -1,42 +1,9 @@
 # Remainder of lab03 exercise
 
-I was working through the lab03 exercise, and
+I was working through the lab03 exercise, and didn't get to the latter part of
+the exercise (further below).
 
-1. Wrote some extra tutorial I didn't need (below);
-1. Didn't get to the latter part of the exercise (further below).
-
-## A bit of extra tutorial from me
-
-Sometimes we want to be able to combine several different criteria to select
-rows.  For example, we might want to find all the movies with ratings from 7
-through 8.  Now we need a Boolean Series that has True only both of these things are true for the given Rating value:
-
-* the Rating value is greater than or equal to 7, AND
-* the Rating value is less than or equal to 8.
-
-We can make a Boolean array for each of these two criteria:
-
-```{python}
-ratings = imdb["Rating"]
-is_ge_7 = ratings >= 7
-# Show the first 10 values
-is_ge_7.head(10)
-```
-
-```{python}
-is_le_8 = ratings <= 8
-# Show the first 10 values
-is_le_8.head(10)
-```
-
-We can combine these two with Numpy functions.  The function we need in this
-case is `np.logical_and`.  It combines the Series into a new sequence that only
-has True in positions where both of these Series have a True in the corresponding position:
-
-```{python}
-between_7_8 = np.logical_and(is_ge_7, is_le_8)
-between_7_8.head(10)
-```
+I needed a tutorial on `logical_and` etc, now in `notebooks/08/combining_booleans`.
 
 ## Remainder of exercise
 
