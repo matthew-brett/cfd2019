@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-03T13:21:30+00:00">
+  <meta property="article:published_time" content="2020-02-03T16:18:14+00:00">
 
 
 
@@ -1232,8 +1232,8 @@ Name: Easiness, dtype: bool
 </div>
 </div>
 
-<p>What if we wanted to select the rows that were between the 25% and 75%
-quantile?  Here’s how to get the quantile value.</p>
+<p>What if we wanted to select the rows that were between the 25th and 75th
+percentile?  Here’s how to get the percentile values.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q25</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
 <span class="n">q75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
@@ -1257,11 +1257,11 @@ quantile?  Here’s how to get the quantile value.</p>
 <p>Now we want to select the rows where the Easiness score is between these
 values.   We can do this the long way round, by selecting twice:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select values above the 25% quantile.
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select values above the 25th percentile.
 </span><span class="n">above_q25</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">q25</span><span class="p">]</span>
 <span class="c1"># There are now fewer Easiness values, so we have to get the values remaining.
 </span><span class="n">q25_easiness</span> <span class="o">=</span> <span class="n">above_q25</span><span class="p">[</span><span class="s">'Easiness'</span><span class="p">]</span>
-<span class="c1"># Select values below the 75% quantile.
+<span class="c1"># Select values below the 75th percentile.
 </span><span class="n">between_25_75</span> <span class="o">=</span> <span class="n">above_q25</span><span class="p">[</span><span class="n">q25_easiness</span> <span class="o">&lt;</span> <span class="n">q75</span><span class="p">]</span>
 <span class="n">between_25_75</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1345,14 +1345,14 @@ values.   We can do this the long way round, by selecting twice:</p>
 </div>
 
 <p>Another, neater way of doing this is to make a single Boolean Series that has
-True only if the Easiness value is <em>both</em> above the 25% quantile <em>and</em> below
-the 75% quantile.</p>
+True only if the Easiness value is <em>both</em> above the 25th percentile <em>and</em>
+below the 75th percentile.</p>
 
 <p>This is called a <em>logical and</em>.</p>
 
 <p>To do this we can make a Boolean Series for each of these two criteria:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># True if Easiness is above 25% quantile.
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># True if Easiness is above 25th percentile.
 </span><span class="n">is_gt_q25</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">q25</span>
 <span class="c1"># Show the first 10 values
 </span><span class="n">is_gt_q25</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1371,7 +1371,7 @@ the 75% quantile.</p>
 Name: Easiness, dtype: bool
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># True if Easiness is below 75% quantile.
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># True if Easiness is below 75th percentile.
 </span><span class="n">is_lt_q75</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&lt;</span> <span class="n">q75</span>
 <span class="c1"># Show the first 10 values
 </span><span class="n">is_lt_q75</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1427,8 +1427,8 @@ Name: Easiness, dtype: bool
 <p>We can show these conveniently as a DataFrame:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">ab</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
-<span class="n">ab</span><span class="p">[</span><span class="s">'b'</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
+<span class="n">ab</span><span class="p">[</span><span class="s">'first input'</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">ab</span><span class="p">[</span><span class="s">'second input'</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
 <span class="n">ab</span>
 </code></pre></div></div>
 
@@ -1451,8 +1451,8 @@ Name: Easiness, dtype: bool
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>a</th>
-      <th>b</th>
+      <th>first input</th>
+      <th>second input</th>
     </tr>
   </thead>
   <tbody>
@@ -1533,8 +1533,8 @@ show them nicely:</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>a</th>
-      <th>b</th>
+      <th>first input</th>
+      <th>second input</th>
       <th>and result</th>
     </tr>
   </thead>
@@ -1756,7 +1756,7 @@ that we want:</p>
 
 <p>Notice that we only have rows where there is a corresponding True value in the
 result of the <code class="highlighter-rouge">logical_and</code>, and therefore, that we only have rows that are
-above the 25% quantile, and below the 75% quantile.</p>
+above the 25th percentile, and below the 75th percentile.</p>
 
 <p>You may not be surprised to know there is an equivalent function to
 <code class="highlighter-rouge">logical_and</code> called <code class="highlighter-rouge">logical_or</code>.  Like <code class="highlighter-rouge">logical_and</code> this returns a Boolean
@@ -1805,8 +1805,8 @@ corresponding positions.</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>a</th>
-      <th>b</th>
+      <th>first input</th>
+      <th>second input</th>
       <th>and result</th>
       <th>or result</th>
     </tr>
@@ -1846,7 +1846,7 @@ corresponding positions.</p>
 </div>
 
 <p>We can use this function to find all the rows that have Easiness ratings above
-the 75% quantile or below the 25% quantile:</p>
+the 75th percentile or below the 25th percentile:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_or_hard</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">easiness</span> <span class="o">&lt;</span> <span class="n">q25</span><span class="p">,</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">q75</span><span class="p">)]</span>
 <span class="n">easy_or_hard</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>

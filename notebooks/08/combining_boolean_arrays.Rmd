@@ -217,8 +217,8 @@ above_median = ratings[is_gt_median]
 above_median.head()
 ```
 
-What if we wanted to select the rows that were between the 25% and 75%
-quantile?  Here's how to get the quantile value.
+What if we wanted to select the rows that were between the 25th and 75th
+percentile?  Here's how to get the percentile values.
 
 ```{python}
 q25 = np.quantile(easiness, 0.25)
@@ -237,32 +237,32 @@ Now we want to select the rows where the Easiness score is between these
 values.   We can do this the long way round, by selecting twice:
 
 ```{python}
-# Select values above the 25% quantile.
+# Select values above the 25th percentile.
 above_q25 = ratings[easiness > q25]
 # There are now fewer Easiness values, so we have to get the values remaining.
 q25_easiness = above_q25['Easiness']
-# Select values below the 75% quantile.
+# Select values below the 75th percentile.
 between_25_75 = above_q25[q25_easiness < q75]
 between_25_75.head()
 ```
 
 Another, neater way of doing this is to make a single Boolean Series that has
-True only if the Easiness value is *both* above the 25% quantile *and* below
-the 75% quantile.
+True only if the Easiness value is *both* above the 25th percentile *and*
+below the 75th percentile.
 
 This is called a *logical and*.
 
 To do this we can make a Boolean Series for each of these two criteria:
 
 ```{python}
-# True if Easiness is above 25% quantile.
+# True if Easiness is above 25th percentile.
 is_gt_q25 = easiness > q25
 # Show the first 10 values
 is_gt_q25.head(10)
 ```
 
 ```{python}
-# True if Easiness is below 75% quantile.
+# True if Easiness is below 75th percentile.
 is_lt_q75 = easiness < q75
 # Show the first 10 values
 is_lt_q75.head(10)
@@ -295,8 +295,8 @@ We can show these conveniently as a DataFrame:
 
 ```{python}
 ab = pd.DataFrame()
-ab['a'] = a
-ab['b'] = b
+ab['first input'] = a
+ab['second input'] = b
 ab
 ```
 
@@ -350,7 +350,7 @@ betweeners.head()
 
 Notice that we only have rows where there is a corresponding True value in the
 result of the `logical_and`, and therefore, that we only have rows that are
-above the 25% quantile, and below the 75% quantile.
+above the 25th percentile, and below the 75th percentile.
 
 
 You may not be surprised to know there is an equivalent function to
@@ -377,7 +377,7 @@ ab
 ```
 
 We can use this function to find all the rows that have Easiness ratings above
-the 75% quantile or below the 25% quantile:
+the 75th percentile or below the 25th percentile:
 
 ```{python}
 easy_or_hard = ratings[np.logical_or(easiness < q25, easiness > q75)]
