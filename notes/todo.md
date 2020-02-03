@@ -14,11 +14,9 @@
 
 ### Selecting data
 
-and, or.
+`np.logical_and`, `np.logical_or` in `combining_booleans` notebook.
 
-`np.logical_and`, `np.logical_or`.
-
-Can go after conditionals?
+Can go after conditionals, rather than in slopes etc section?
 
 ### Copy right
 

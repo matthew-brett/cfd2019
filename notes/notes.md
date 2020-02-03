@@ -9,3 +9,5 @@ Allow errors in notebook cell:
 Pandas intro too long - move plotting into its own page.
 
 Where, argmin page - 2D is confusing, move into own page.
+
+Add gradient lines to optimization notebook.

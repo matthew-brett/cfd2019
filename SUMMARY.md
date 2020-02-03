@@ -64,6 +64,7 @@
   * [7.5 Finding lines](notebooks/08/finding_lines.ipynb)
   * [7.6 Using minimize](notebooks/08/using_minimize.ipynb)
   * [7.7 Believable slopes](notebooks/08/inference_on_slopes.ipynb)
+  * [7.8 Combining Booleans](notebooks/08/combining_boolean_arrays.ipynb)
 * [8. Classification](notebooks/09/classification.md)
   * [8.1 Standard scores](notebooks/09/standard_scores.ipynb)
   * [8.2 Nearest neighbors](notebooks/09/Nearest_Neighbors.ipynb)
