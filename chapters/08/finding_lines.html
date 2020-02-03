@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-28T13:23:32+00:00">
+  <meta property="article:published_time" content="2020-02-03T09:42:21+00:00">
 
 
 
@@ -794,7 +794,17 @@
 
             
 
-            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">7.6 Believable slopes</a></li>
+            <li><a href="/cfd2019/chapters/08/using_minimize" class="level_1">7.6 Using minimize</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">7.7 Believable slopes</a></li>
           
         </ul>
         
@@ -988,7 +998,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.5 Finding lines">
       <meta itemprop="description" content="In The Mean and Slopes, we were looking for the best slopeto predict one vector of values from another vector of values.">
-      <meta itemprop="datePublished" content="January 28, 2020">
+      <meta itemprop="datePublished" content="February 03, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1039,13 +1049,13 @@ way, the y value when the x value is 0.</p>
 zero) intercept, as well as a slope?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="c1"># Make plots look a little bit more fancy
 </span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 <span class="c1"># Print to 4 decimal places, show tiny values as 0
 </span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
 <p>We return to the <a href="/cfd2019/data/rate_my_professors">students ratings dataset</a> dataset.</p>
@@ -1449,7 +1459,7 @@ and a starting guess for the intercept and slope.</p>
 <p><code class="highlighter-rouge">minimize</code> is a little fussy about the functions it will use.  It insists that all the parameters need to be passed in as a single argument.   In our case, we need to pass both parameters (the intercept and slope) as one value, containing two elements, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error_for_minimize</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
-    <span class="c1"># inter_slope has two elements, the intercept c and the slope s.
+    <span class="c1"># c_s has two elements, the intercept c and the slope s.
 </span>    <span class="n">c</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
@@ -1505,7 +1515,7 @@ example, in the Scipy <code class="highlighter-rouge">linregress</code> function
 <span class="n">linregress</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">quality</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinregressResult(slope=0.508864120394001, intercept=2.1147985716433126, rvalue=0.7459725836595876, pvalue=1.5998303978985715e-14, stderr=0.05317120947725689)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LinregressResult(slope=0.5088641203940006, intercept=2.114798571643314, rvalue=0.7459725836595872, pvalue=1.5998303978986516e-14, stderr=0.053171209477256925)
 </code></pre></div></div>
 
 <p>Notice the values for <code class="highlighter-rouge">slope</code> and <code class="highlighter-rouge">intercept</code> in the output above.</p>
@@ -1529,7 +1539,7 @@ example, in the Scipy <code class="highlighter-rouge">linregress</code> function
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/08/inference_on_slopes" class="pagination--pager" title="7.6 Believable slopes
+      <a href="/cfd2019/chapters/08/using_minimize" class="pagination--pager" title="7.6 Using minimize
 ">Next</a>
     
   </nav>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>7.6 Believable slopes - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>7.7 Believable slopes - Coding for Data - 2019 edition</title>
 <meta name="description" content="In finding slopes, we found the line the did the best job of predicting one vector of values from another vector of values.">
 
 
@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="7.6 Believable slopes">
+<meta property="og:title" content="7.7 Believable slopes">
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/08/inference_on_slopes">
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-01-28T13:23:32+00:00">
+  <meta property="article:published_time" content="2020-02-03T09:42:21+00:00">
 
 
 
@@ -794,7 +794,17 @@
 
             
 
-            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">7.6 Believable slopes</a></li>
+            <li><a href="/cfd2019/chapters/08/using_minimize" class="level_1">7.6 Using minimize</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">7.7 Believable slopes</a></li>
           
         </ul>
         
@@ -986,15 +996,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="7.6 Believable slopes">
+      <meta itemprop="headline" content="7.7 Believable slopes">
       <meta itemprop="description" content="In finding slopes, we found the line the did the best job of predicting one vector of values from another vector of values.">
-      <meta itemprop="datePublished" content="January 28, 2020">
+      <meta itemprop="datePublished" content="February 03, 2020">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">7.6 Believable slopes
+            <h1 id="page-title" class="page__title" itemprop="headline">7.7 Believable slopes
 </h1>
           </header>
         
@@ -1055,21 +1065,19 @@ same directory as this notebook.</p>
 <span class="n">quality</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Overall Quality'</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p>The function we want to minimize:</p>
+<p>The <a href="using_minimize">using minimize</a> page has the function we want to minimize:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error_c_s</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
-    <span class="c1"># inter_slope has two elements, the intercept c and the slope s.
-</span>    <span class="n">c</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ss_any_line</span><span class="p">(</span><span class="n">c_s</span><span class="p">,</span> <span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">x_values</span> <span class="o">*</span> <span class="n">s</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">y_values</span> <span class="o">-</span> <span class="n">predicted</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Find the best intercept and slope:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-<span class="n">observed_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">sos_error_c_s</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
+<span class="n">observed_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">quality</span><span class="p">))</span>
 <span class="n">observed_slope</span> <span class="o">=</span> <span class="n">observed_result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">observed_slope</span>
 </code></pre></div></div>
@@ -1094,24 +1102,25 @@ random sampling.</p>
 
 <p>Then we compare our actual slope to the sampling distribution.  If the actual slope is not a rare value from the sampling distribution, the slope may have come about because of random sampling.  If it is a rare value, random sampling is an unlikely explanation.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Store the original Quality values
-</span><span class="n">actual_quality</span> <span class="o">=</span> <span class="n">quality</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a copy of the quality values
+</span><span class="n">shuffled_quality</span> <span class="o">=</span> <span class="n">quality</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Now shuffle the Quality values, to make a fake and random pairing between the Easiness and Quality values.</p>
+<p>Now shuffle the copy of the Quality values, to make a fake and random pairing between the Easiness and Quality values.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a fake pairing of Easiness and Quality, by shuffling Quality
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">quality</span><span class="p">)</span>
+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffled_quality</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Use <code class="highlighter-rouge">minimize</code> to estimate the best-fit slope for this new fake pairing:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Estimate the slope for the fake pairing
-</span><span class="n">fake_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">sos_error_c_s</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
+</span><span class="n">fake_result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">],</span>
+                       <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">shuffled_quality</span><span class="p">))</span>
 <span class="n">fake_result</span><span class="o">.</span><span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 4.2022, -0.1464])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.2478, 0.1532])
 </code></pre></div></div>
 
 <p>Get the slope, as our first estimate from the sampling distribution:</p>
@@ -1120,7 +1129,7 @@ random sampling.</p>
 <span class="n">fake_slope</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.1463750363989178
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.15322158103009292
 </code></pre></div></div>
 
 <p>We need to do this many times to build up a good estimate of the sampling distribution:</p>
@@ -1128,8 +1137,9 @@ random sampling.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">fake_slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">quality</span><span class="p">)</span>
-    <span class="n">fake_slope</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">sos_error_c_s</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffled_quality</span><span class="p">)</span>
+    <span class="n">fake_inter</span><span class="p">,</span> <span class="n">fake_slope</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">],</span>
+                                      <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">shuffled_quality</span><span class="p">))</span><span class="o">.</span><span class="n">x</span>
     <span class="n">fake_slopes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_slope</span>
 </code></pre></div></div>
 
@@ -1172,7 +1182,7 @@ equal to the value we saw:</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/08/finding_lines" class="pagination--pager" title="7.5 Finding lines
+      <a href="/cfd2019/chapters/08/using_minimize" class="pagination--pager" title="7.6 Using minimize
 ">Previous</a>
     
     
