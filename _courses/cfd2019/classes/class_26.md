@@ -1,10 +1,10 @@
 ---
 layout: single
 title: Class 26
-permalink: /classes/class_25
+permalink: /classes/class_26
 ---
 
-# Day 25 (the twenty-sixth day)
+# Day 26 (the twenty-seventh day)
 
 ## Business
 
