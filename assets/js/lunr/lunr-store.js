@@ -124,7 +124,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/Comparison",
         "teaser":null},{
-        "title": "3.6 More on arrays",
+        "title": "3.13 More on arrays",
         "excerpt":"More on Arrays It’s often necessary to compute something that involves data from more thanone array. If two arrays are of the same size, Python makes it easy to docalculations involving both arrays. For our first example, we return once more to the temperature data. Thistime, we create arrays of...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/More_on_Arrays",
@@ -153,11 +153,6 @@ var store = [{
         "excerpt":"Selecting values from an array import numpy as npWe use arrays all the time, in data science. One of the most common tasks we have to do on arrays, is to select values. We do this with array slicing. We do array slicing when we follow the array variable name...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/array_indexing",
-        "teaser":null},{
-        "title": "3.7 Arrays and axes",
-        "excerpt":"We return to Numpy arrays. Arrays can be two-dimensional. An array with two dimensions has rows and columns. The rows andcolumns are the two axes of the array. We can ask Numpy to do operations over rows or columns, using theaxis keyword argument.Starting with one dimension # We need Numpyimport...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/arrays_and_axes",
         "teaser":null},{
         "title": "3. Data types",
         "excerpt":"Types of things Every value in Python, has a type. We can show what type of thing something is, by calling type, like this: type(1)inta = 1type(a)intIf you get stuck in some code, it is often useful to check what the type of your values are. We will use multiple...","categories": [],
@@ -204,11 +199,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/03/reply_supreme",
         "teaser":null},{
-        "title": "3.9 Revision - three girls",
-        "excerpt":"Three girls In which we solve the three-girls-in-family problem. The problem If there is a family of four children, what is the chance thatfamily will consist of exactly three girls and one boy? We decided we could simulate this situation, by taking fourrandom numbers, between 0 and 1. For each...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/03/three_girls",
-        "teaser":null},{
         "title": "4.1 Introduction to data frames",
         "excerpt":"Introduction to data frames Pandas is a Python package thatimplements data frames, and functions that operate on dataframes. # Load the Pands data science library, call it 'pd'import pandas as pdWe will also use the usual Numpy array library: # Load the Numpy array library, call it 'np'import numpy as...","categories": [],
         "tags": [],
@@ -229,16 +219,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/brexit_ages",
         "teaser":null},{
-        "title": "5.2 lists",
-        "excerpt":"Lists The data structures that we use most often in data science are: arrays, from numpy; data frames, from pandas.There is another data structure for containing sequences of values the list.You have already seen these in passing, when we created arrays. Now we cover them in more detail. Creating a...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/lists",
-        "teaser":null},{
-        "title": "5.5 Ones and zeros",
-        "excerpt":"import numpy as npWe often want to create arrays with all zeros, or all ones. We do this with: np.zeros(5)array([0., 0., 0., 0., 0.])np.ones(3)array([1., 1., 1.])As ever, review the help with (for example): np.ones?In a new cell. You can ask for a 2D array by passing a list with the...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/ones_zeros",
-        "teaser":null},{
         "title": "5. Permutations",
         "excerpt":"In this chapter, we discover that permutation allows us to simulate data inmany more situations than we have seen thus far. We build up the tools to use permutation for a test of differences between twogroups. ","categories": [],
         "tags": [],
@@ -254,21 +234,6 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/population_permutation",
         "teaser":null},{
-        "title": "6.2 Monty hall problem",
-        "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSelvin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/monty_hall",
-        "teaser":null},{
-        "title": "6. More on simulation",
-        "excerpt":"More on simulation Probability can be confusing, even for experienced mathematicians. In this section, we use more simulation to solve probability problems.  In theprocess, we learn more about arrays. When you have read this chapter, try the simulation exercises. ","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/more_simulation",
-        "teaser":null},{
-        "title": "6.1 Sorting arrays",
-        "excerpt":"We often need to sort arrays. # Import the numpy packageimport numpy as npHere is an array of numbers: my_array = np.array([9, 1, 3, 0])my_arrayarray([9, 1, 3, 0])Say we wanted to sort this array, from smallest to largest. To do this, we use np.sort: sorted_array = np.sort(my_array)sorted_arrayarray([0, 1, 3, 9])That’s...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/sorting_arrays",
-        "teaser":null},{
         "title": "Booleans and labels",
         "excerpt":"We have already used Boolean series to index data frames and other series. This page gives a little more details about how that works, in order to explainsome subtleties in results. We return to the World Bank statistics on development and gender ingender_stats.csv. Download that file to the same directory...","categories": [],
         "tags": [],
@@ -279,12 +244,12 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/conditional_statements",
         "teaser":null},{
-        "title": "6.1 Functions in more detail",
+        "title": "6.3 Functions in more detail",
         "excerpt":"Functions We have already used functions. For example, we have used the round function: a = 3.1415# Call the \"round\" functionb = round(a, 2)b3.14We often need to define our own functions. Before we do, we need to go intomore detail about what functions are for, and what they are. Functions...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions",
         "teaser":null},{
-        "title": "7.1 Functions as values",
+        "title": "6.1 Functions as values",
         "excerpt":"In the introduction to functions, we introduced themetaphor of a function being a recipe. It is a procedure, thataccepts inputs, (the ingredients of the recipe), and returns an output(the meal from the recipe). A function, like a recipe, usually hasa name. def add(a, b): return a + bAs we saw...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions_as_values",
@@ -294,7 +259,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/introducing_functions",
         "teaser":null},{
-        "title": "7. More building blocks",
+        "title": "6. More building blocks",
         "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/more_building_blocks",
@@ -304,7 +269,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/noble_politics",
         "teaser":null},{
-        "title": "7.2 None",
+        "title": "6.2 On None",
         "excerpt":"Python has a special value, called None, that it often uses to tellyou that it cannot give you a valid value. Unlike any other commonvalue in Python, if an expression evaluates to None, Python showsyou nothing at all for the value, in the notebook, or in aninteractive Python console. my_value...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/none",
@@ -313,6 +278,11 @@ var store = [{
         "excerpt":"Way back in the introduction to data frames, we covered indexing into data frames withBoolean vectors, such as Pandas Series or Numpy arrays, and indexing into data frames with column names. This page covers more sophisticated indexing in Pandas. To understand this indexing, we first need to cover the index...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/pandas_indexing",
+        "teaser":null},{
+        "title": "7.10 Correlation",
+        "excerpt":"This page has content from theCorrelationnotebook from the UC Berkeley course. See the Berkeley course section of thelicenseCorrelation In this section we will develop a measure of how tightly clustereda scatter diagram is about a straight line. Formally, this is calledmeasuring linear association. The table hybrid contains data on hybrid...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/08/Correlation",
         "teaser":null},{
         "title": "7.8 Combining Booleans",
         "excerpt":"Sometimes we want to be able to combine several different criteria to selectelements from arrays or tables. So far we have used boolean Series and arrays to select rows. This works fine when we have some simple criterion, such as whether the value in the column or array is greater...","categories": [],
@@ -329,7 +299,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/inference_on_slopes",
         "teaser":null},{
-        "title": "8. The mean and straight line relationships",
+        "title": "7. The mean and straight line relationships",
         "excerpt":"The mean is an important value to summarize and predict a distribution. It has two interesting properties: The sum of all deviations around the mean is zero; It is the value that gives the smallest sum of squared deviations.These properties are useful to think about when we are looking for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean",
@@ -349,6 +319,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/optimization",
         "teaser":null},{
+        "title": "7.9 Standard scores",
+        "excerpt":"import numpy as np%matplotlib inlineimport matplotlib.pyplot as pltplt.style.use('fivethirtyeight')import pandas as pdDescribing distributions We have seen several examples of distributions. We can describe distributions as having a center, and a spread. In the mean as predictor, we saw that the mean isa useful measure of the center of a distribution. What...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/08/standard_scores",
+        "teaser":null},{
         "title": "7.6 Using minimize",
         "excerpt":"We have already used the minimize function a few times: from scipy.optimize import minimizeNow we pause to look at how it works, and how best to use it. Let’s go back to the problem from finding lines: # Our usual imports and configuration.import numpy as npimport pandas as pdimport matplotlib.pyplot...","categories": [],
         "tags": [],
@@ -359,42 +334,37 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/where_and_argmin",
         "teaser":null},{
-        "title": "9.6 Accuracy of the classifier",
+        "title": "8.6 Accuracy of the classifier",
         "excerpt":"You can download the file fromwine.csv. The Accuracy of the Classifier To see how well our classifier does, we might put 50% of the data into the training set and the other 50% into the test set. Basically, we are setting aside some data for later use, so we can...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Accuracy_of_the_Classifier",
         "teaser":null},{
-        "title": "9.5 Implementing the classifier",
+        "title": "8.5 Implementing the classifier",
         "excerpt":"Implementing the Classifier We are now ready to implement a $k$-nearest neighbor classifier based on multiple attributes. We have used only two attributes so far, for ease of visualization. But usually predictions will be based on many attributes. Here is an example that shows how multiple attributes can be better...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Implementing_the_Classifier",
         "teaser":null},{
-        "title": "9.2 Nearest neighbors",
+        "title": "8.2 Nearest neighbors",
         "excerpt":"Nearest Neighbors In this section we’ll develop the nearest neighbor method of classification. Just focus on the ideas for now and don’t worry if some of the code is mysterious. Later in the chapter we’ll see how to organize our ideas into code that performs the classification. Chronic kidney disease...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Nearest_Neighbors",
         "teaser":null},{
-        "title": "9.4 Rows of tables",
+        "title": "8.4 Rows of tables",
         "excerpt":"Rows of Tables Now that we have a qualitative understanding of nearest neighbor classification, it’s time to implement our classifier. Until this chapter, we have worked mostly with single columns of tables. But now we have to see whether one individual is “close” to another. Data for individuals are contained...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Rows_of_Tables",
         "teaser":null},{
-        "title": "9.3 Training and testing",
+        "title": "8.3 Training and testing",
         "excerpt":"Again - if you are running on your laptop, you should downloadthe ckd.csv file to the samedirectory as this notebook. Training and Testing How good is our nearest neighbor classifier? To answer this we’ll need to find out how frequently our classifications are correct. If a patient has chronic kidney...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Training_and_Testing",
         "teaser":null},{
-        "title": "9. Classification",
+        "title": "8. Classification",
         "excerpt":"David Wagner is the primary author of this chapter. Machine learning is a class of techniques for automatically finding patterns in data and using it to draw inferences or make predictions. You have already seen linear regression, which is one kind of machine learning. This chapter introduces a new one:...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
-        "title": "9.1 Standard scores",
-        "excerpt":"Describing distributions We have seen several examples of distributions. We can describe distributions as having a center, and a spread. In the mean as predictor, we saw that the mean is a useful measure of the center of a distribution. What measure should we use for the spread? Chronic kidney...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/09/standard_scores",
-        "teaser":null},{
-        "title": "10. The end of the beginning",
+        "title": "9. The end of the beginning",
         "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/end_of_beginning",
@@ -448,11 +418,6 @@ var store = [{
         "excerpt":"For this assignment, you will probably eventually need the power operator. As in introduction, the multiplication operator is the * sign, as in: 10.50 * 331.5It tells Python to multiply the values on the left by the value on the right. The power operator is **. It works like this:...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/interesting",
-        "teaser":null},{
-        "title": "Money and death",
-        "excerpt":"We return to the death penalty. import numpy as npimport pandas as pdimport matplotlib.pyplot as plt%matplotlib inline# Make plots look a little bit more fancyplt.style.use('fivethirtyeight')In this case, we are going to analyze whether people with higher incomes are more likely to favor the death penalty. To do this, we are...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/exercises/money_and_death",
         "teaser":null},{
         "title": "More simulations",
         "excerpt":"Simulation exercises import numpy as npPenalty shootout technique Jen is the penalty taker for her football team. She’s been doing this for a long time. She thinks she normally has a 80%chance of scoring. In the last 15 penalties she has taken, she has been trying a new technique.She scored...","categories": [],
