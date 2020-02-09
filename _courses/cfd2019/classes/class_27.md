@@ -9,7 +9,7 @@ permalink: /classes/class_27
 ## The mean and slopes
 
 * [Standard units](../chapters/08/standard_scores)
-* [Combining Booleans](../chapters/08/Correlation)
+* [Correlation](../chapters/08/Correlation)
 
 ## Assignment
 
