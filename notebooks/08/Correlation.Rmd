@@ -253,11 +253,12 @@ upwards, indicating that cars with greater acceleration tended to cost
 more, on average; conversely, the cars that cost more tended to have
 greater acceleration on average. 
 
-The scatter diagram of MSRP versus mileage shows a negative association.
-Hybrid cars with higher mileage tended to cost less, on average. This
-seems surprising till you consider that cars that accelerate fast tend
-to be less fuel efficient and have lower mileage. As the previous
-scatter plot showed, those were also the cars that tended to cost more. 
+The scatter diagram of MSRP versus `mpg` shows a negative association.
+Hybrid cars with higher miles per gallon tended to cost less, on
+average. This seems surprising till you consider that cars that
+accelerate fast tend to be less fuel efficient and have lower miles per
+gallon. As the previous scatter plot showed, those were also the cars
+that tended to cost more.
 
 ```{python}
 hybrid.plot.scatter('mpg', 'msrp')
@@ -286,7 +287,7 @@ You will have noticed that we can derive useful information from the
 general orientation and shape of a scatter diagram even without paying
 attention to the units in which the variables were measured.
 
-Indeed, we could plot all the variables in standard units and the plt
+Indeed, we could plot all the variables in standard units and the plot
 would look the same. This gives us a way to compare the degree of
 linearity in two scatter diagrams.
 
@@ -521,8 +522,8 @@ correlation(t, 'y', 'x')
 ```
 
 Calling ``correlation`` on columns of the table ``suv`` gives us the
-correlation between price and mileage as well as the correlation between
-price and acceleration.
+correlation between price and miles per gallon as well as the
+correlation between price and acceleration.
 
 ```{python}
 correlation(suv, 'mpg', 'msrp')
@@ -537,8 +538,8 @@ These values confirm what we had observed:
 - There is a negative association between price and efficiency, whereas
   the association between price and acceleration is positive.
 - The linear relation between price and acceleration is a little weaker
-  (correlation about 0.5) than between price and mileage (correlation
-  about -0.67).
+  (correlation about 0.5) than between price and miles per gallon
+  (correlation about -0.67).
 
 
 Correlation is a simple and powerful concept, but it is sometimes
