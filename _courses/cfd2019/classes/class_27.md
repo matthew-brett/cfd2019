@@ -9,6 +9,7 @@ permalink: /classes/class_27
 ## The mean and slopes
 
 * [Standard units](../chapters/08/standard_scores)
+* [Roll your own std](../exercises/ryostd.zip)
 * [Correlation](../chapters/08/Correlation)
 
 ## Assignment
