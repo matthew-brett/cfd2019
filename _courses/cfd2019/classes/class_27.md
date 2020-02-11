@@ -1,16 +1,15 @@
 ---
 layout: single
-title: Class 27
-permalink: /classes/class_27
+title: Class 28
+permalink: /classes/class_28
 ---
 
-# Day 27 (the twenty-eighth day)
+# Day 28 (the twenty-ninth day)
 
-## The mean and slopes
+## Correlation
 
-* [Standard units](../chapters/08/standard_scores)
-* [Roll your own std](../exercises/ryostd.zip)
 * [Correlation](../chapters/08/Correlation)
+* [Old faithful exercise](../exercises/old_faithful.zip)
 
 ## Assignment
 

@@ -26,3 +26,4 @@ For the previous term, see the [Autumn term classes page](classes/autumn_term).
 | 4    |  3 Feb     | [class 25](classes/class_25) |
 | 4    |  4 Feb     | [class 26](classes/class_26) |
 | 5    |  10 Feb    | [class 27](classes/class_27) |
+| 5    |  11 Feb    | [class 28](classes/class_28) |
