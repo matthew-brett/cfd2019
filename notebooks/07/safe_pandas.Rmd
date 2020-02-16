@@ -1,0 +1,133 @@
+---
+jupyter:
+  jupytext:
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+```
+
+```{python}
+ratings = pd.read_excel('disciplines_SI.xlsx')
+ratings.head()
+```
+
+```{python}
+top_ratings = ratings.iloc[:6]
+top_ratings
+```
+
+```{python}
+is_clear = top_ratings['Clarity'] > 3.6
+is_clear
+```
+
+```{python}
+top_ratings[is_clear]
+```
+
+```{python}
+top_ratings['Clarity']
+```
+
+```{python}
+top_ratings.iloc[:3, :3]
+```
+
+```{python}
+clarity_with_iloc = top_ratings.iloc[:, -1]
+clarity_with_iloc
+```
+
+```{python}
+ratings_by_label = top_ratings.loc[[0, 2, 4]]
+ratings_by_label
+```
+
+```{python}
+ratings_by_row_col_label = top_ratings.loc[[0, 2, 4], ['Discipline', 'Clarity']]
+ratings_by_row_col_label
+```
+
+```{python}
+clear_clarity = top_ratings.loc[is_clear, 'Clarity']
+clear_clarity
+```
+
+```{python}
+is_clear = top_left['Clarity'] > 3.6
+is_clear
+```
+
+```{python}
+clear_top_left = top_left[is_clear]
+clear_top_left
+```
+
+```{python}
+clear_top_left.loc[0, 'Clarity'] = 99
+```
+
+```{python}
+clear_top_left
+```
+
+```{python}
+top_left
+```
+
+```{python}
+top_left[is_clear].loc[0, 'Clarity'] = 99
+```
+
+```{python}
+top_left
+```
+
+```{python}
+top_left_2 = top_left.iloc[:2]
+top_left_2
+```
+
+```{python}
+top_left_2.loc[0, 'Clarity'] = 99
+```
+
+```{python}
+top_left_2
+```
+
+```{python}
+top_left
+```
+
+```{python}
+top_left.loc[:2].loc[0, 'Clarity'] = 100
+```
+
+```{python}
+top_left
+```
+
+```{python}
+br_copy.loc[very_clear, 'Clarity'] = 100
+```
+
+```{python}
+br_copy
+```
+
+```{python}
+
+```
