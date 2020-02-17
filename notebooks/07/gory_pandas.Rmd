@@ -34,9 +34,9 @@ import numpy as np
 import pandas as pd
 ```
 
-Here is an example dataset.  It is a table where the rows are course subjects
-and the columns include average ratings for all University professors
-/ lecturers teaching that subject. See [the dataset page]({{ site.baseurl
+This is the course ratings dataset, where the rows are course subjects and the
+columns include average ratings for all University professors / lecturers
+teaching that subject. See [the dataset page]({{ site.baseurl
 }}/data/rate_my_professors) for more detail.
 
 ```{python}
