@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
 <meta property="og:title" content="Coding for Data - 2019 edition">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/07/loc_left_copy_right.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/08/multiple_regression_hybrid.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/07/loc_left_copy_right.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/08/multiple_regression_hybrid.Rmd">
 
 
 
@@ -184,44 +184,47 @@
         ```{python}
 import numpy as np
 import pandas as pd
+from scipy.optimize import minimize
 ```
 
 ```{python}
-gender_stats = pd.read_csv('gender_stats.csv')
-first_countries = gender_stats.head()
-first_countries
+df = pd.read_csv('hybrid.csv')
+df.head()
 ```
 
 ```{python}
-fert_rate = first_countries['fert_rate']
-fert_rate
+suvs = df[df['class'] == 'SUV']
+suvs.head()
 ```
 
 ```{python}
-# fert_rate.iloc[0] = 99
-fert_rate
+def ls_for_x(b, y, X):
+    errors = y - X @ b
+    return sum(errors ** 2)
 ```
 
 ```{python}
-first_countries
+X = np.ones((len(suvs), 3))
+X[:, 1] = suvs['acceleration']
+X[:, 2] = suvs['mpg']
+X[:5, :]
 ```
 
 ```{python}
-# pd.set_option('mode.chained_assignment','warn')
+best_p = minimize(ls_for_x, [np.mean(suvs['msrp']), 2500, -2300], args=(suvs['msrp'], X))
 ```
 
 ```{python}
-fert_fert_rate = first_countries.loc[fert_rate > 2, 'fert_rate']
-fert_fert_rate
+best_p
 ```
 
 ```{python}
-fert_fert_rate.iloc[0] = 199
-fert_fert_rate
+b = np.linalg.pinv(X) @ suvs['msrp'][:, None]
+b
 ```
 
 ```{python}
-first_countries
+
 ```
 
         

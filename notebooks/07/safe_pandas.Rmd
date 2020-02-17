@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Project grading rubric - Coding for Data - 2019 edition</title>
+<meta name="description" content="">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Coding for Data - 2019 edition">
+<meta property="og:title" content="Coding for Data - 2019 edition">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/07/safe_pandas.Rmd">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/07/safe_pandas.Rmd">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/cfd2019",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/cfd2019/feed.xml" type="application/atom+xml" rel="alternate" title="Coding for Data - 2019 edition Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cfd2019/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/cfd2019/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/cfd2019/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/cfd2019/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/cfd2019/">
+          <img src="/cfd2019/images/dsfe_logo.png" class="masthead_logo" />
+          Coding for Data - 2019 edition
+        </a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/cfd2019/about" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/cfd2019/syllabus" >Syllabus</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://matthew-brett.github.io/cfd2019/classes" >Classes</a>
+            </li>
+          
+          
+            <li class="masthead__menu-item">
+              <a href="/cfd2019/chapters/01/intro">Textbook</a>
+            </li>
+          
+          
+        </ul>
+        
+        <button class="search__toggle" type="button">
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <!--  -->
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        A lot of Pandas' design is for speed and efficiency.
+
+Unfortunately, this sometimes means that is it easy to use Pandas incorrectly, and so get results that you do not expect.
+
+This page has some rules we suggest you follow to stay out of trouble when using Pandas.
+
+As your understanding increases, you may find that you can relax some of these
+rules, but the problems in this page can trip up experts, so please, be very
+careful, and only relax these rules when you are very confident you understand
+the underlying problems.  See [Gory Pandas](/cfd2019/chapters/07/gory_pandas) for a short walk through some of the complexities.
+
+## Copies and views
+
+Consider this data frame, which should be familiar. It is a table where the
+rows are course subjects and the columns include average ratings for all
+University professors / lecturers teaching that subject. See [the dataset
+page](/cfd2019/data/rate_my_professors) for more detail.
+
+```{python}
+import pandas as pd
+```
+
+```{python}
+ratings = pd.read_csv('rate_my_course.csv')
+ratings.head()
+```
+
+Now imagine that we have discovered that the rating for 'Clarity' in the first row is incorrect; it should be 4.0.
+
+We get ready to make a new, fixed copy of the data frame, to store the modified
+values.  We put the 'Disciplines' column into the data frame to start with.
+
+```{python}
+fixed_ratings = pd.DataFrame()
+fixed_ratings['Discipline'] = ratings['Discipline']
+```
+
+Our next obvious step is to get the 'Clarity' column as a Pandas Series, for us
+to work on.
+
+```{python}
+clarity = ratings['Clarity']
+clarity.head()
+```
+
+We set the corrected first value:
+
+```{python}
+clarity.iloc[0] = 4
+clarity.head()
+```
+
+We have changed the value in the `clarity` Series.
+
+Consider --- **what happens to the matching value in the original data frame**?
+
+To answer that question, we need to know what kind of thing our `clarity` Series was.
+
+`clarity` could be a *view* onto the 'Clarity' column in the original data
+frame `ratings`.  A view is something that points to the *same memory*.  When
+we have a view, the view is another way of looking at the *same data*.  If we
+modify the data in the view, that means we also modify the original data frame,
+because the *data is the same*.
+
+`clarity` could also be *copy* of the 'Clarity' column. A copy duplicates the
+values from the original data.  Therefore a copy has its own values, and its
+own memory.  Changing the data in the copy will have no effect on the original
+data frame, because the *data is different*.
+
+```{python}
+ratings.head()
+```
+
+We have found that the `clarity` Series was a *view*, because the change we made to `clarity` also changed the value in the original data frame.
+
+This may not be what you expected, and it is probably not what you meant to do.
+
+This leads to the first rule for safe handling of Pandas.
+
+## Rule 1: copy right.
+
+We strongly suggest that when you get stuff out of a Pandas data frame or
+Series by indexing, you always make what you have into a copy.
+
+We call this rule *copy right*.
+
+As a reminder *indexing* is where we fetch data from something using square
+brackets.  Indexing can be: *direct*, with the square brackets directly
+following the data frame or Series; or *indirect*, where the square brackets
+follow the `.loc` or `.iloc` attributes of the data frame or Series.
+
+For example, we have just used direct indexing (square brackets) to fetch the
+'Clarity' data out of the `ratings` data frame.
+
+```{python}
+# Indexing to fetch a Series from a data frame.
+clarity = ratings['Clarity']
+```
+
+We found that `clarity` is a *view* onto the 'Clarity' data in `ratings`.   This is rarely what we want.
+
+Here we apply the *copy right* rule:
+
+```{python}
+# Applying the "copy right" rule.
+clearer_clarity = ratings['Clarity'].copy()
+```
+
+Notice we apply the `.copy()` method to the 'Clarity' Series, so forcing Pandas to make us a copy of the data.
+
+Now we have done that, we can modify the result without affecting the original data frame.
+
+```{python}
+# Modify the copy with some crazy value.
+clearer_clarity.iloc[0] = 99
+clearer_clarity.head()
+```
+
+This does not affect the original data frame:
+
+```{python}
+ratings.head()
+```
+
+## Copies, views, confusing, warnings
+
+It can be very difficult to predict when Pandas indexing will give a copy or a view.
+
+For example, here we use indirect indexing (square brackets following `.iloc`) to select the row of `ratings` with index label 0.  Remember `.loc` indexing uses the index labels, not positions, although in this case the index has label 0 for position 0.
+
+```{python}
+row_0 = ratings.loc[0]
+row_0
+```
+
+We saw earlier that direct indexing to select a column 'Clarity' gave us
+a view, meaning that we could change the values in the data frame by changing
+the Series `clarity` we got from indexing.  In fact this is also true if we use indirect indexing with `.loc` or `.iloc`.  Check this by trying `clarity = ratings.loc[:, 'Clarity']` in the code above.
+
+We have just fetched the row labeled 0 using `.loc`.  Given what we know about
+fetching a column, it would be reasonable to predict this would give us a view.
+
+Does it give a view?  Or a copy?
+
+```{python}
+# Changing the 'Clarity' value of the first row.
+row_0.loc['Clarity'] = 5
+row_0
+```
+
+Notice the warning.  We will come back to that soon.
+
+Did we change the original data frame?
+
+```{python}
+ratings.head()
+```
+
+No, we didn't change the original data frame --- and we conclude that
+`row_0` is a *copy*.
+
+Our first, correct, response is to follow the *copy right* rule, and make this copy explicit, so we know exactly what we have:
+
+```{python}
+# The "copy right" rule again.
+copied_row_0 = ratings.iloc[0].copy()
+```
+
+Notice that we no longer have a nasty warning when we modify `copied_row_0`, because Pandas knows this is a copy, so it does not need to warn us that we may be making a mistake:
+
+```{python}
+# We don't get a warning when we change the copied result.
+copied_row_0.loc['Clarity'] = 5
+copied_row_0
+```
+
+Please worry about these warnings.  In fact, in the interests of safety, we come to rule 2.
+
+## Rule 2: make errors for copy/view warnings
+
+Pandas has a setting that allows you to change the nasty warning about setting with copies into an error.
+
+We strongly suggest that you do that, for all your notebooks, like this:
+
+```{python}
+pd.set_option('mode.chained_assignment','raise')
+```
+
+After you have done this, Pandas will stop if you try to do something like this:
+
+```{python tags=c("raises-exception")}
+row_0 = ratings.loc[0]   # Copy?  Or wiew?  Difficult to guess.
+# Now this generates an error.
+row_0.loc['Clarity'] = 99
+```
+
+At first you will find this advice annoying.  Your code will generate confusing
+errors, and you will be tempted to remove this error option to make the errors
+go away.  Please be patient.  You will find that, if you follow the *copy right* rule carefully, most of these errors go away.
+
+## Copy, views, on the left
+
+Now consider this code:
+
+```{python tags=c("raises-exception")}
+ratings.loc[0].loc['Clarity'] = 99
+```
+
+Because we have set the `mode.chained_assignment` option to `error` above, this generates an error --- but why?
+
+The reason is the same as the reason for the previous error.  The code in the
+cell directly above is just a short-cut for this exact equivalent.
+
+```{python tags=c("raises-exception")}
+row_0 = ratings.loc[0]
+row_0.loc['Clarity'] = 99
+```
+
+Specifically, when Python sees `ratings.loc[0].loc['Clarity'] = 99`, it first
+evaluates `ratings.loc[0]` to generate a temporary copy.  Let's call this
+temporary copy `tmp`. It then tries to set the value into the copy with
+`tmp.loc['Clarity'] = 99`.  This generates the same error as you saw before.
+
+As you have probably guessed from the option name above, Pandas calls this
+*chained assignment*, because you are: first, fetching the stuff you want do
+the assignment on (`ratings.loc[0]`) and then doing the assignment
+`.loc['Clarity'] = 99`. There are two steps on the left hand side, in a chain,
+first fetching the data, then assigning.
+
+The problem that Pandas has is that it cannot tell that this has happened, so
+it can't tell what you mean.  Python will ask Pandas to generate
+`ratings.loc[0]` first, which it does, to generate the temporary copy that we
+can call `tmp`. Python then ask Pandas to set the value with
+`tmp.loc['Clarity'] = 99`.  When Pandas gets this second instruction, it has no
+way of knowing that `tmp` came from the combined instruction
+`ratings.loc[0].loc['Clarity'] = 99`, and so all it can do is set the value
+into the copy, as instructed.
+
+This leads us to the last rule.
+
+## Rule 3: loc left
+
+When you do want to use indexing on the left hand side, to set some values into
+a data frame or Series, try do to this all in one shot, using indirect indexing
+with `.loc` or `iloc`.
+
+For example, you have just see that this generates an error, and why:
+
+```{python tags=c("raises-exception")}
+ratings.loc[0].loc['Clarity'] = 99
+```
+
+You can avoid that error by doing all your left-hand-side indexing in one shot, like this:
+
+```{python}
+ratings.loc[0, 'Clarity'] = 99
+```
+
+Notice there is no error.  This is because, in this second case, Pandas gets
+all the instructions in one go.  It can see from this combined instruction that
+we *meant* to set the 'Clarity' value for the row labeled 0 in the `ratings`
+data frame, and does just this.
+
+## Keep calm, follow the three rules
+
+Do not worry if some of this is not immediately clear; it is not easy.
+
+The trick is to remember the three rules:
+
+* Copy right.
+* Make copy warnings into errors.
+* Use `.loc` and `.iloc` for your left-hand-side indexing.
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/cfd2019/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/cfd2019/assets/js/lunr/lunr.min.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-store.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

@@ -3,38 +3,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  More on simulation - Coding for Data - 2019 edition</title>
-<meta name="description" content="More on simulation">
+<!-- begin _includes/seo.html --><title>Pandas indexing reprise - Coding for Data - 2019 edition</title>
+<meta name="description" content="Pandas indexing reprise">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="  More on simulation">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/06/more_simulation">
+<meta property="og:title" content="Pandas indexing reprise">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/pandas_indexing_reprise">
 
 
-  <meta property="og:description" content="More on simulation">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2020-02-11T15:50:27+00:00">
+  <meta property="og:description" content="Pandas indexing reprise">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2020-02-17T09:13:03+00:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/06/more_simulation">
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/pandas_indexing_reprise">
 
 
 
@@ -721,6 +721,16 @@
 
             <li><a href="/cfd2019/chapters/07/noble_politics" class="level_1">6.7 Example: noble politics</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/safe_pandas" class="level_1">6.8 Safe Pandas</a></li>
+          
         </ul>
         
       </li>
@@ -1016,17 +1026,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  More on simulation">
-      <meta itemprop="description" content="More on simulation">
-      <meta itemprop="datePublished" content="February 11, 2020">
+      <meta itemprop="headline" content="Pandas indexing reprise">
+      <meta itemprop="description" content="Pandas indexing reprise">
+      <meta itemprop="datePublished" content="February 17, 2020">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>More on simulation</li>
-</ol>
+            <h1 id="page-title" class="page__title" itemprop="headline">Pandas indexing reprise
 </h1>
           </header>
         
@@ -1038,19 +1046,619 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#direct-indexing">Direct indexing</a></li>
+  <li><a href="#indirect-indexing-by-position-with-iloc">Indirect indexing by position with iloc</a></li>
+  <li><a href="#indirect-indexing-by-label-with-loc">Indirect indexing by label with .loc</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/07/pandas_indexing_reprise.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F07%2Fpandas_indexing_reprise.ipynb">Interact</a>
 
-          <h1 id="more-on-simulation">More on simulation</h1>
 
-<p>Probability can be confusing, even for experienced mathematicians.</p>
+          <h1 id="pandas-indexing-reprise">Pandas indexing reprise</h1>
 
-<p>In this section, we use more simulation to solve probability problems.  In the
-process, we learn more about arrays.</p>
+<p>This page is a reminder on indexing for Pandas data frames and Series.</p>
 
-<p>When you have read this chapter, try the <a href="../exercises/simulation">simulation exercises</a>.</p>
+<p>You have already seen the <a href="/cfd2019/chapters/07/pandas_indexing">basics of Pandas indexing</a>; this page is just a reminder of the later
+parts of the basic indexing page.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<p>We use the familiar dataset on student ratings of professors.  It is a table
+where the rows are course subjects and the columns include average ratings for
+all University professors / lecturers teaching that subject. See <a href="/cfd2019/data/rate_my_professors">the dataset
+page</a> for more detail.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the dataset as a data frame
+</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
+<span class="c1"># Reorder by Easiness
+</span><span class="n">ratings_by_easy</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Easiness'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c1"># Make a smaller data frame with the first six rows
+</span><span class="n">top_by_easy</span> <span class="o">=</span> <span class="n">ratings_by_easy</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># Show the smaller data frame.
+</span><span class="n">top_by_easy</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>148</td>
+      <td>4.159392</td>
+      <td>4.188919</td>
+      <td>4.177500</td>
+      <td>3.882635</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Physical Education</td>
+      <td>991</td>
+      <td>4.078698</td>
+      <td>4.030797</td>
+      <td>4.057719</td>
+      <td>3.832250</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>351</td>
+      <td>4.133191</td>
+      <td>4.101197</td>
+      <td>4.119345</td>
+      <td>3.674701</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Child Development</td>
+      <td>171</td>
+      <td>3.950585</td>
+      <td>4.008070</td>
+      <td>3.979766</td>
+      <td>3.606082</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Theater</td>
+      <td>1078</td>
+      <td>3.876633</td>
+      <td>3.821503</td>
+      <td>3.851837</td>
+      <td>3.584508</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Music</td>
+      <td>2455</td>
+      <td>3.844509</td>
+      <td>3.787804</td>
+      <td>3.818114</td>
+      <td>3.542273</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Here is an example <em>Boolean Series</em> that has True for rows where the “Clarity”
+rating was greater than 4.1, and False otherwise.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_clear</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">4.1</span>
+<span class="n">is_clear</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64     True
+36    False
+49     True
+61    False
+31    False
+19    False
+Name: Clarity, dtype: bool
+</code></pre></div></div>
+
+<p>We will use that in the examples below.</p>
+
+<h2 id="direct-indexing">Direct indexing</h2>
+
+<p>Direct indexing is where the indexing bracket <code class="highlighter-rouge">[</code> goes right after the data
+frame.  Examples are:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Direct indexing with a column name.
+</span><span class="n">top_by_easy</span><span class="p">[</span><span class="s">'Discipline'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64               Reading
+36    Physical Education
+49                Speech
+61     Child Development
+31               Theater
+19                 Music
+Name: Discipline, dtype: object
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Direct indexing with a Boolean sequence.
+</span><span class="n">top_by_easy</span><span class="p">[</span><span class="n">is_clear</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>148</td>
+      <td>4.159392</td>
+      <td>4.188919</td>
+      <td>4.177500</td>
+      <td>3.882635</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>351</td>
+      <td>4.133191</td>
+      <td>4.101197</td>
+      <td>4.119345</td>
+      <td>3.674701</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>As you have seen in the <a href="/cfd2019/chapters/07/pandas_indexing">Pandas indexing page</a>, the examples above are the two types of safe
+direct indexing into Pandas data frames:</p>
+
+<ol>
+  <li>Direct indexing with a column name.</li>
+  <li>Direct indexing with a Boolean sequence.</li>
+</ol>
+
+<h2 id="indirect-indexing-by-position-with-iloc">Indirect indexing by position with <code class="highlighter-rouge">iloc</code></h2>
+
+<p>Indirect indexing is where we use the special <code class="highlighter-rouge">.iloc</code> and <code class="highlighter-rouge">.loc</code> attributes of data frames and Series.  The data frame or series goes first, followed by <code class="highlighter-rouge">.iloc</code> or <code class="highlighter-rouge">.loc</code>, followed by the opening square bracket <code class="highlighter-rouge">[</code>, the specifiers for the values we want, and the closing square bracket <code class="highlighter-rouge">]</code>.</p>
+
+<p><code class="highlighter-rouge">.iloc</code> selects rows and columns by <em>position</em>.  For example, here we ask for
+the first three rows:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>148</td>
+      <td>4.159392</td>
+      <td>4.188919</td>
+      <td>4.177500</td>
+      <td>3.882635</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Physical Education</td>
+      <td>991</td>
+      <td>4.078698</td>
+      <td>4.030797</td>
+      <td>4.057719</td>
+      <td>3.832250</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>351</td>
+      <td>4.133191</td>
+      <td>4.101197</td>
+      <td>4.119345</td>
+      <td>3.674701</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>If we send <code class="highlighter-rouge">.iloc</code> two arguments, separated by commas, then the first argument
+refers to the rows, and the second to the columns.  Here we ask for the first three rows and the first three columns:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>148</td>
+      <td>4.159392</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Physical Education</td>
+      <td>991</td>
+      <td>4.078698</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>351</td>
+      <td>4.133191</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We can use <code class="highlighter-rouge">:</code> to select everything.  For example, this selects all rows, and
+the last column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clarity_with_iloc</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">clarity_with_iloc</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    3.882635
+36    3.832250
+49    3.674701
+61    3.606082
+31    3.584508
+19    3.542273
+Name: Easiness, dtype: float64
+</code></pre></div></div>
+
+<h2 id="indirect-indexing-by-label-with-loc">Indirect indexing by label with <code class="highlighter-rouge">.loc</code></h2>
+
+<p>We can also select items by their row and column <em>labels</em>.  In this case, the row labels are also counting numbers (integers), so they are easily mistaken for positions if you are not careful.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_labeled_64</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span>
+<span class="n">row_labeled_64</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Reading
+Number of Professors        148
+Clarity                 4.15939
+Helpfulness             4.18892
+Overall Quality          4.1775
+Easiness                3.88264
+Name: 64, dtype: object
+</code></pre></div></div>
+
+<p>This is a different result than the one we get from <code class="highlighter-rouge">iloc</code>, which does look at position rather than label:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_position_0</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">row_position_0</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Reading
+Number of Professors        148
+Clarity                 4.15939
+Helpfulness             4.18892
+Overall Quality          4.1775
+Easiness                3.88264
+Name: 64, dtype: object
+</code></pre></div></div>
+
+<p>We can ask for multiple rows by label:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">]]</span>
+<span class="n">ratings_by_label</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>148</td>
+      <td>4.159392</td>
+      <td>4.188919</td>
+      <td>4.177500</td>
+      <td>3.882635</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>351</td>
+      <td>4.133191</td>
+      <td>4.101197</td>
+      <td>4.119345</td>
+      <td>3.674701</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Theater</td>
+      <td>1078</td>
+      <td>3.876633</td>
+      <td>3.821503</td>
+      <td>3.851837</td>
+      <td>3.584508</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>If we send <code class="highlighter-rouge">.loc</code> two arguments, separated by commas, then the first argument
+refers to the rows, and the second to the columns.  The column labels are the
+column names.  Here we ask for the rows labeled 64, 49, 31, and the column labeled “Discipline”:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_row_col_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="s">'Discipline'</span><span class="p">]</span>
+<span class="n">ratings_by_row_col_label</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    Reading
+49     Speech
+31    Theater
+Name: Discipline, dtype: object
+</code></pre></div></div>
+
+<p>If we want multiple columns we can pass a list of column names:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_row_col_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="p">[</span><span class="s">'Discipline'</span><span class="p">,</span> <span class="s">'Clarity'</span><span class="p">]]</span>
+<span class="n">ratings_by_row_col_label</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>4.159392</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>4.133191</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Theater</td>
+      <td>3.876633</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>This is a good way of selecting a subset of the columns from the data frame,
+using <code class="highlighter-rouge">:</code> to select all the rows:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_columns</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">'Discipline'</span><span class="p">,</span> <span class="s">'Easiness'</span><span class="p">]]</span>
+<span class="n">some_columns</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>64</th>
+      <td>Reading</td>
+      <td>3.882635</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Physical Education</td>
+      <td>3.832250</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Speech</td>
+      <td>3.674701</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Child Development</td>
+      <td>3.606082</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Theater</td>
+      <td>3.584508</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Music</td>
+      <td>3.542273</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>You can use Boolean sequences to select rows with <code class="highlighter-rouge">.loc</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clear_clarity</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_clear</span><span class="p">,</span> <span class="s">'Clarity'</span><span class="p">]</span>
+<span class="n">clear_clarity</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    4.159392
+49    4.133191
+Name: Clarity, dtype: float64
+</code></pre></div></div>
+
+<p>You can also use some Boolean sequences for <code class="highlighter-rouge">.iloc</code>, but it’s a bit more
+complicated.  See <a href="/cfd2019/chapters/07/booleans_and_labels">Booleans and labels</a> for more detail.</p>
 
           
         </section>
@@ -1067,11 +1675,11 @@ process, we learn more about arrays.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/05/brexit_ages" class="pagination--pager" title="5.2 A permutation test
+      <a href="/cfd2019/chapters/07/gory_pandas" class="pagination--pager" title="Gory Pandas
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/06/sorting_arrays" class="pagination--pager" title="6.1 Sorting arrays
+      <a href="/cfd2019/chapters/07/safe_pandas" class="pagination--pager" title="6.8 Safe Pandas
 ">Next</a>
     
   </nav>

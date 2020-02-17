@@ -234,47 +234,37 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/population_permutation",
         "teaser":null},{
-        "title": "6.2 Monty hall problem",
-        "excerpt":"The Monty Hall problem The Monty Hall problem isa problem in probability, originally posed by SteveSelvin, a professor ofBiostatistics at Berkeley. The setup is the following: You are a contestant on a game show. The host, Monty Hall, shows youthree closed and identical doors. Behind one of the doors, is...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/monty_hall",
-        "teaser":null},{
-        "title": "6. More on simulation",
-        "excerpt":"More on simulation Probability can be confusing, even for experienced mathematicians. In this section, we use more simulation to solve probability problems.  In theprocess, we learn more about arrays. When you have read this chapter, try the simulation exercises. ","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/more_simulation",
-        "teaser":null},{
-        "title": "6.1 Sorting arrays",
-        "excerpt":"We often need to sort arrays. # Import the numpy packageimport numpy as npHere is an array of numbers: my_array = np.array([9, 1, 3, 0])my_arrayarray([9, 1, 3, 0])Say we wanted to sort this array, from smallest to largest. To do this, we use np.sort: sorted_array = np.sort(my_array)sorted_arrayarray([0, 1, 3, 9])That’s...","categories": [],
-        "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/06/sorting_arrays",
-        "teaser":null},{
         "title": "Booleans and labels",
         "excerpt":"We have already used Boolean series to index data frames and other series. This page gives a little more details about how that works, in order to explainsome subtleties in results. We return to the World Bank statistics on development and gender ingender_stats.csv. Download that file to the same directory...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/booleans_and_labels",
         "teaser":null},{
-        "title": "6.2 Conditional statements",
+        "title": "6.5 Conditional statements",
         "excerpt":"Conditional Statements In many situations, actions and results depends on a specific set ofconditions being satisfied. For example, individuals in randomizedcontrolled trials receive the treatment if they have been assigned tothe treatment group. A gambler makes money if she wins her bet. In this section we will learn how to...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/conditional_statements",
         "teaser":null},{
-        "title": "6.1 Functions in more detail",
+        "title": "6.3 Functions in more detail",
         "excerpt":"Functions We have already used functions. For example, we have used the round function: a = 3.1415# Call the \"round\" functionb = round(a, 2)b3.14We often need to define our own functions. Before we do, we need to go intomore detail about what functions are for, and what they are. Functions...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions",
         "teaser":null},{
-        "title": "7.1 Functions as values",
+        "title": "6.1 Functions as values",
         "excerpt":"In the introduction to functions, we introduced themetaphor of a function being a recipe. It is a procedure, thataccepts inputs, (the ingredients of the recipe), and returns an output(the meal from the recipe). A function, like a recipe, usually hasa name. def add(a, b): return a + bAs we saw...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions_as_values",
+        "teaser":null},{
+        "title": "Gory Pandas",
+        "excerpt":"Gory Pandas This notebook is about the difficult, painful, maybe even bloody subject ofviews and copies when using Pandas. You don’t need to fully understand the results on this page to use Pandaseffectively. This page is only to point out that you have to use the resultsof Pandas indexing with...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/gory_pandas",
         "teaser":null},{
         "title": "6.1 Introduction to functions",
         "excerpt":"This page is from the equivalentpage in the excellentintroduction to Python by EricMatthes. The original page has an MITlicense. Introducing Functions One of the core principles of any programming language is, “Don’t Repeat Yourself”. If you have an action that should occur many times, you can define that action once...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/introducing_functions",
         "teaser":null},{
-        "title": "7. More building blocks",
+        "title": "6. More building blocks",
         "excerpt":"We have already covered some important parts of programming for data science,such as expressions, variables, datatypes, arrays and dataframes. In this section, you cover the last two building blocks you will need asa foundation for your future analyses. These are:   Writing functions  Conditional statements","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/more_building_blocks",
@@ -284,7 +274,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/noble_politics",
         "teaser":null},{
-        "title": "7.2 None",
+        "title": "6.2 On None",
         "excerpt":"Python has a special value, called None, that it often uses to tellyou that it cannot give you a valid value. Unlike any other commonvalue in Python, if an expression evaluates to None, Python showsyou nothing at all for the value, in the notebook, or in aninteractive Python console. my_value...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/none",
@@ -293,6 +283,16 @@ var store = [{
         "excerpt":"Way back in the introduction to data frames, we covered indexing into data frames withBoolean vectors, such as Pandas Series or Numpy arrays, and indexing into data frames with column names. This page covers more sophisticated indexing in Pandas. To understand this indexing, we first need to cover the index...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/pandas_indexing",
+        "teaser":null},{
+        "title": "Pandas indexing reprise",
+        "excerpt":"Pandas indexing reprise This page is a reminder on indexing for Pandas data frames and Series. You have already seen the basics of Pandas indexing; this page is just a reminder of the laterparts of the basic indexing page. import pandas as pdWe use the familiar dataset on student ratings...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/pandas_indexing_reprise",
+        "teaser":null},{
+        "title": "6.8 Safe Pandas",
+        "excerpt":"A lot of Pandas’ design is for speed and efficiency. Unfortunately, this sometimes means that is it easy to use Pandas incorrectly, and so get results that you do not expect. This page has some rules we suggest you follow to stay out of trouble when using Pandas. As your...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/safe_pandas",
         "teaser":null},{
         "title": "7.10 Correlation",
         "excerpt":"This page has content from theCorrelationnotebook from the UC Berkeley course. See the Berkeley course section of thelicenseCorrelation In this section we will develop a measure of how tightly clustereda scatter diagram is about a straight line. Formally, this is calledmeasuring linear association. The table hybrid contains data on hybrid...","categories": [],
@@ -314,7 +314,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/inference_on_slopes",
         "teaser":null},{
-        "title": "8. The mean and straight line relationships",
+        "title": "7. The mean and straight line relationships",
         "excerpt":"The mean is an important value to summarize and predict a distribution. It has two interesting properties: The sum of all deviations around the mean is zero; It is the value that gives the smallest sum of squared deviations.These properties are useful to think about when we are looking for...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/mean",
@@ -349,37 +349,37 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/08/where_and_argmin",
         "teaser":null},{
-        "title": "9.6 Accuracy of the classifier",
+        "title": "8.6 Accuracy of the classifier",
         "excerpt":"You can download the file fromwine.csv. The Accuracy of the Classifier To see how well our classifier does, we might put 50% of the data into the training set and the other 50% into the test set. Basically, we are setting aside some data for later use, so we can...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Accuracy_of_the_Classifier",
         "teaser":null},{
-        "title": "9.5 Implementing the classifier",
+        "title": "8.5 Implementing the classifier",
         "excerpt":"Implementing the Classifier We are now ready to implement a $k$-nearest neighbor classifier based on multiple attributes. We have used only two attributes so far, for ease of visualization. But usually predictions will be based on many attributes. Here is an example that shows how multiple attributes can be better...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Implementing_the_Classifier",
         "teaser":null},{
-        "title": "9.2 Nearest neighbors",
+        "title": "8.2 Nearest neighbors",
         "excerpt":"Nearest Neighbors In this section we’ll develop the nearest neighbor method of classification. Just focus on the ideas for now and don’t worry if some of the code is mysterious. Later in the chapter we’ll see how to organize our ideas into code that performs the classification. Chronic kidney disease...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Nearest_Neighbors",
         "teaser":null},{
-        "title": "9.4 Rows of tables",
+        "title": "8.4 Rows of tables",
         "excerpt":"Rows of Tables Now that we have a qualitative understanding of nearest neighbor classification, it’s time to implement our classifier. Until this chapter, we have worked mostly with single columns of tables. But now we have to see whether one individual is “close” to another. Data for individuals are contained...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Rows_of_Tables",
         "teaser":null},{
-        "title": "9.3 Training and testing",
+        "title": "8.3 Training and testing",
         "excerpt":"Again - if you are running on your laptop, you should downloadthe ckd.csv file to the samedirectory as this notebook. Training and Testing How good is our nearest neighbor classifier? To answer this we’ll need to find out how frequently our classifications are correct. If a patient has chronic kidney...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/Training_and_Testing",
         "teaser":null},{
-        "title": "9. Classification",
+        "title": "8. Classification",
         "excerpt":"David Wagner is the primary author of this chapter. Machine learning is a class of techniques for automatically finding patterns in data and using it to draw inferences or make predictions. You have already seen linear regression, which is one kind of machine learning. This chapter introduces a new one:...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
-        "title": "10. The end of the beginning",
+        "title": "9. The end of the beginning",
         "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/end_of_beginning",

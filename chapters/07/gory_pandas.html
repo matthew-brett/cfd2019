@@ -3,38 +3,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>6.2 Monty hall problem - Coding for Data - 2019 edition</title>
-<meta name="description" content="The Monty Hall problem">
+<!-- begin _includes/seo.html --><title>Gory Pandas - Coding for Data - 2019 edition</title>
+<meta name="description" content="Gory Pandas">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="6.2 Monty hall problem">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/06/monty_hall">
+<meta property="og:title" content="Gory Pandas">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/gory_pandas">
 
 
-  <meta property="og:description" content="The Monty Hall problem">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2020-02-11T15:50:27+00:00">
+  <meta property="og:description" content="Gory Pandas">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2020-02-17T09:13:03+00:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/06/monty_hall">
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/gory_pandas">
 
 
 
@@ -721,6 +721,16 @@
 
             <li><a href="/cfd2019/chapters/07/noble_politics" class="level_1">6.7 Example: noble politics</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/safe_pandas" class="level_1">6.8 Safe Pandas</a></li>
+          
         </ul>
         
       </li>
@@ -1016,15 +1026,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="6.2 Monty hall problem">
-      <meta itemprop="description" content="The Monty Hall problem">
-      <meta itemprop="datePublished" content="February 11, 2020">
+      <meta itemprop="headline" content="Gory Pandas">
+      <meta itemprop="description" content="Gory Pandas">
+      <meta itemprop="datePublished" content="February 17, 2020">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">6.2 Monty hall problem
+            <h1 id="page-title" class="page__title" itemprop="headline">Gory Pandas
 </h1>
           </header>
         
@@ -1036,218 +1046,652 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#the-simulation">The simulation</a></li>
-  <li><a href="#your-turn---try-many-trials">Your turn - try many trials</a></li>
-  <li><a href="#another-way-of-doing-the-simulation">Another way of doing the simulation</a></li>
-  <li><a href="#exercises">Exercises</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/06/monty_hall.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F06%2Fmonty_hall.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/07/gory_pandas.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F07%2Fgory_pandas.ipynb">Interact</a>
 
 
-          <h1 id="the-monty-hall-problem">The Monty Hall problem</h1>
+          <h1 id="gory-pandas">Gory Pandas</h1>
 
-<p>The <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem">Monty Hall problem</a> is
-a problem in probability, originally posed by <a href="https://en.wikipedia.org/wiki/Steve_Selvin">Steve
-Selvin</a>, a professor of
-Biostatistics at Berkeley.</p>
+<p>This notebook is about the difficult, painful, maybe even bloody subject of
+views and copies when using Pandas.</p>
 
-<p>The setup is the following:</p>
+<p>You don’t need to fully understand the results on this page to use Pandas
+effectively.  This page is only to point out that you have to use the results
+of Pandas indexing with care.  In particular, we suggest you follow the <a href="/cfd2019/chapters/07/safe_pandas">Pandas
+safe handling guide</a>.</p>
 
-<ul>
-  <li>You are a contestant on a game show.</li>
-  <li>The host, <a href="https://en.wikipedia.org/wiki/Monty_Hall">Monty Hall</a>, shows you
-three closed and identical doors.</li>
-  <li>Behind one of the doors, is a car.  Behind the other two doors, there is
-a goat.</li>
-</ul>
-
-<p><img src="/cfd2019/images/monty_hall_goat.png" alt="Monty Hall illustration" /></p>
-
-<ul>
-  <li>Assume for a moment you’d rather have a car than a goat.</li>
-  <li>Monty offers you the choice of any of the three doors.  You chose a door, but
-Monty leaves the door closed for now.</li>
-  <li>Monty tells you he is going to open one of the other doors that has a goat
-behind it.  He does, there is a goat behind it.  Call this “the goat reveal”.</li>
-  <li>Now he asks you the following question:  Do you want to stick with your
-original choice of door, do you want to change your choice to the remaining
-door, or does it make no difference which you chose?</li>
-</ul>
-
-<p>It turns out this is a trickier problem than it might first appear.  Among many
-others, a very famous mathematician <a href="https://en.wikipedia.org/wiki/Paul_Erd%C5%91s">Paul
-Erdős</a>, got the answer wrong. He
-had to be convinced with a computer simulation.  That’s what we will do now.</p>
-
-<p>For the simulation, we will need:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">np.random.choice</code> - see <a href="../05/iteration">the iteration page</a> for an
-introduction.</li>
-  <li><code class="highlighter-rouge">np.sort</code> - see <a href="sorting_arrays">sorting arrays</a>.</li>
-</ul>
-
-<h2 id="the-simulation">The simulation</h2>
-
-<p>As ever, we start with the simplest thing we can think of, which is to simulate
-one trial.</p>
+<p>The official discussion for these topics are in the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">Pandas indexing
+documentation</a>.
+If you really want to go deep into the Pandas bowels, you could even try <a href="https://stackoverflow.com/a/23296545">this
+StackOverflow answer</a>, but be warned,
+it’s dark down there.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
-<p>First we make an array of the things that can be behind the doors.  There are two goats and one car.</p>
+<p>This is the course ratings dataset, where the rows are course subjects and the
+columns include average ratings for all University professors / lecturers
+teaching that subject. See <a href="/cfd2019/data/rate_my_professors">the dataset page</a> for more detail.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">'car'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">])</span>
-<span class="n">doors</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
+<span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['car', 'goat', 'goat'], dtype='&lt;U4')
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>23343</td>
+      <td>3.756147</td>
+      <td>3.821866</td>
+      <td>3.791364</td>
+      <td>3.162754</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+      <td>3.641526</td>
+      <td>3.566867</td>
+      <td>3.063322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+      <td>3.701530</td>
+      <td>3.657641</td>
+      <td>2.710459</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Psychology</td>
+      <td>11179</td>
+      <td>3.909520</td>
+      <td>3.887536</td>
+      <td>3.900949</td>
+      <td>3.316210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>History</td>
+      <td>11145</td>
+      <td>3.788818</td>
+      <td>3.753642</td>
+      <td>3.773746</td>
+      <td>3.053803</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>We make a smaller data frame to play with, using <code class="highlighter-rouge">.iloc</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First three rows, first three columns
+</span><span class="n">first_33</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">first_33</span>
 </code></pre></div></div>
 
-<p>Next we shuffle, to simulate the fact that the object behind each door is random, on each trial.</p>
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
-<span class="n">doors</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>23343</td>
+      <td>3.756147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>First consider the following.  <code class="highlighter-rouge">discipline</code> is a Series that is a <em>view</em> of the
+values in <code class="highlighter-rouge">first_33</code>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span> <span class="o">=</span> <span class="n">first_33</span><span class="p">[</span><span class="s">'Discipline'</span><span class="p">]</span>
+<span class="n">discipline</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['goat', 'goat', 'car'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0        English
+1    Mathematics
+2        Biology
+Name: Discipline, dtype: object
 </code></pre></div></div>
 
-<p>Next we use <code class="highlighter-rouge">np.random.choice</code> to choose randomly between the three doors.  We
-choose one of 0, 1, or 2 for the first, second and third door, respectively.</p>
+<p>We can’t tell it’s a view yet, but this becomes clear when we change the values
+in <code class="highlighter-rouge">discipline</code>.  First we change the first value in the Series, and we get
+a big warning.  See the <a href="/cfd2019/chapters/07/safe_pandas">Pandas safe handling guide</a> for more on this warning.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_door_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">my_door_index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Spanglish'</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<p>As expected, the value in <code class="highlighter-rouge">discipline</code> has changed:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span>
 </code></pre></div></div>
 
-<p>We peek behind our selected door to see what we would have got, if we stayed with our selected door.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stay_result</span> <span class="o">=</span> <span class="n">doors</span><span class="p">[</span><span class="n">my_door_index</span><span class="p">]</span>
-<span class="n">stay_result</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0      Spanglish
+1    Mathematics
+2        Biology
+Name: Discipline, dtype: object
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'goat'
+<p>Our question now is — what happened to the values in <code class="highlighter-rouge">first_33</code> — the data
+frame from which we fetched <code class="highlighter-rouge">discipline</code>.  It turns out that  <code class="highlighter-rouge">discipline</code> was
+a <em>view</em>. That means that the <code class="highlighter-rouge">discipline</code> values are the same memory as the
+<code class="highlighter-rouge">first_33</code> values, and so we see the changes in <code class="highlighter-rouge">first_33</code> as well:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
 </code></pre></div></div>
 
-<p>Next we replace whatever was behind our chosen door, with the string “mine”, to indicate this was the one we chose.</p>
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span><span class="p">[</span><span class="n">my_door_index</span><span class="p">]</span> <span class="o">=</span> <span class="s">'mine'</span>
-<span class="n">doors</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Spanglish</td>
+      <td>23343</td>
+      <td>3.756147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Unfortunately, it can be very difficult to work out whether you have a view or
+a <em>copy</em>.  A copy has <em>duplicates</em> of the values, that are in different memory
+from the original data frame.  In that case, modifying the copy modifies the
+duplicates, <em>but not</em> the original data frame.</p>
+
+<p>For example, consider this.  Is this a view or a copy?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['goat', 'mine', 'car'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Spanglish
+Number of Professors        23343
+Clarity                   3.75615
+Name: 0, dtype: object
 </code></pre></div></div>
 
-<p>We now have two possibilities.  The two remaining doors could have:</p>
+<p>To test whether it is a view or a copy, we set the first value:</p>
 
-<ol>
-  <li>“car” and “goat” (in either order) or</li>
-  <li>“goat” and “goat”.</li>
-</ol>
-
-<p>We can use <code class="highlighter-rouge">np.sort</code> to make it more obvious which situation we are in.  It
-will put “car” in the first position, if it’s present, then “goat”. Last will
-be the string “mine” that we put in when we chose our door.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">doors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
-<span class="n">doors</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+<span class="n">first_row</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['car', 'goat', 'mine'], dtype='&lt;U4')
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Franglais
+Number of Professors        23343
+Clarity                   3.75615
+Name: 0, dtype: object
 </code></pre></div></div>
 
-<p>When Monty does his goat reveal, our two options above drop to one.</p>
+<p>Now we look at the data frame from which <code class="highlighter-rouge">first_row</code> came.   If it was a view, then the original data frame will have changed in the same way as <code class="highlighter-rouge">first_row</code>.  If it was a copy, the original data frame will not change.</p>
 
-<ul>
-  <li>“car” and “goat” become “car”</li>
-  <li>“goat” and “goat” become “goat”</li>
-</ul>
-
-<p>All we need to do then, is to take the first element in the sorted array.  It
-will be “car” if the car was present, otherwise it will be “goat”.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">switch_result</span> <span class="o">=</span> <span class="n">doors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">switch_result</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'car'
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Spanglish</td>
+      <td>23343</td>
+      <td>3.756147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p><code class="highlighter-rouge">first_row</code> was a copy — because changing <code class="highlighter-rouge">first_row</code> did <em>not</em> change the
+original data frame.</p>
+
+<p>Maybe you are thinking that you are getting the hang of this, but tarry awhile – there are many ways in which this can be confusing.</p>
+
+<p>Look at this bit of code.   Do you think that <code class="highlighter-rouge">first_33</code> will change?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Will first_33 change?
+</span><span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
-<h2 id="your-turn---try-many-trials">Your turn - try many trials</h2>
+<p>First guess whether <code class="highlighter-rouge">first_33</code> will change.  Now have a look whether the top
+left value has changed to ‘Franglais’.</p>
 
-<p>That’s one trial.   Now let’s do that 10000 times.  Fill in the code you need from the statements above.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make 10000 trials.
-</span><span class="n">n_tries</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="c1"># Array of 10000 length 4 (or less) strings, to store results of stay strategy
-</span><span class="n">stay_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_tries</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'U4'</span><span class="p">)</span>
-<span class="c1"># 10000 length 4 (or less) strings, to store results of switch strategy
-</span><span class="n">switch_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_tries</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'U4'</span><span class="p">)</span>
-<span class="c1"># Use a "for" loop to repeat the indented block 10000 times.
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_tries</span><span class="p">):</span>
-    <span class="c1"># Same code as above, for one trial
-</span>    <span class="c1"># Make the doors array
-</span>    <span class="n">doors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">'car'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">,</span> <span class="s">'goat'</span><span class="p">])</span>
-    <span class="c1"># Shuffle
-</span>
-    <span class="c1"># Choose your door at random
-</span>
-    <span class="c1"># Get the result from your chosen door
-</span>
-    <span class="c1"># Fill your chosen door with 'mine'
-</span>
-    <span class="c1"># Sort the doors.  The car will be first if present.
-</span>
-    <span class="c1"># Get the result for switch
-</span>
-    <span class="c1"># Store the results for stay and switch in their arrays
-</span></code></pre></div></div>
-
-<p>Check the proportion of the Stay choices that resulted in a “car”.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">stay_results</span> <span class="o">==</span> <span class="s">'car'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Spanglish</td>
+      <td>23343</td>
+      <td>3.756147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>In fact the code above: <code class="highlighter-rouge">first_33.iloc[0].iloc[0] = 'Franglais'</code> is exactly
+equivalent to the code we have already seen above:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
-<p>Check the proportion of the Switch choices that resulted in a “car”.</p>
+<p>Because it is exactly equivalent - it has the same result - it does not change the underlying data frame, even though it looks as if it should.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">switch_results</span> <span class="o">==</span> <span class="s">'goat'</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tries</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discipline</th>
+      <th>Number of Professors</th>
+      <th>Clarity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Spanglish</td>
+      <td>23343</td>
+      <td>3.756147</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mathematics</td>
+      <td>22394</td>
+      <td>3.487379</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Biology</td>
+      <td>11774</td>
+      <td>3.608331</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>The two versions are equivalent, because, when we run:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
-<p>Would you chose Stay or Switch?</p>
+<p>— this first causes <code class="highlighter-rouge">first_33.iloc[0]</code> to make a copy, and after that, the
+<code class="highlighter-rouge">.iloc[0] = 'Franglais'</code> works on that copy, but we don’t see the result,
+because we aren’t saving the copy anywhere, and it disappears into obscurity
+when we have run the code.</p>
 
-<p>Can you explain why your choice worked better, now you’ve done the simulation?</p>
+<p>The <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">Pandas indexing
+documentation</a>
+refers to this as <em>chained assignment</em>, in the sense that we first do
+<code class="highlighter-rouge">first_33.iloc[0]</code> and then, in a subsequent (chained) assignment, we do
+<code class="highlighter-rouge">.iloc[0] = 'Franglais'</code> on the result.</p>
 
-<h2 id="another-way-of-doing-the-simulation">Another way of doing the simulation</h2>
+<p>The chaining is fairly obvious in the both-at-the-same-time version above, but it can be a harder to spot when the assignments are separated, even by a line, as in:</p>
 
-<p>See <a href="../extra/monty_hall_lists">Monty Hall with lists</a> for another way of doing
-this simulation, using <a href="../05/lists">lists</a> instead of arrays.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+</code></pre></div></div>
 
-<h2 id="exercises">Exercises</h2>
+<p>This version over two lines is exactly equivalent, so is also chained
+assignment.  It can be even more difficult to spot when the lines are a bit separated:</p>
 
-<p>Now try the <a href="../exercises/simulation">simulation exercises</a>.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Do something
+# Do something else
+# And something else again.
+# And then - the chained assignment!
+</span><span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+</code></pre></div></div>
+
+<p>If you are already feeling confused, the confusion can get worse.  Consider
+this slight variation on our original <code class="highlighter-rouge">first_33</code> data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First 3 rows, last three columns.
+</span><span class="n">first_3_end_3</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
+<span class="n">first_3_end_3</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.821866</td>
+      <td>3.791364</td>
+      <td>3.162754</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.641526</td>
+      <td>3.566867</td>
+      <td>3.063322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.701530</td>
+      <td>3.657641</td>
+      <td>2.710459</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Knowing what you know now - does the following give a view on the row, or a copy of the row?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row_f3e3</span> <span class="o">=</span> <span class="n">first_3_end_3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row_f3e3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Helpfulness        3.821866
+Overall Quality    3.791364
+Easiness           3.162754
+Name: 0, dtype: float64
+</code></pre></div></div>
+
+<p>We can check by setting a value on the row.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row_f3e3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="n">first_row_f3e3</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Helpfulness        99.000000
+Overall Quality     3.791364
+Easiness            3.162754
+Name: 0, dtype: float64
+</code></pre></div></div>
+
+<p>Now you have guessed, have a look at the output of the cell below.  If
+<code class="highlighter-rouge">first_row_f3e3</code> was a view, then the first value in the first column of the
+underlying data frame — <code class="highlighter-rouge">first_3_end_3</code> — will have changed to 99.  If it
+was a copy, it will have the value it had before - 3.821866.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_3_end_3</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Helpfulness</th>
+      <th>Overall Quality</th>
+      <th>Easiness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>99.000000</td>
+      <td>3.791364</td>
+      <td>3.162754</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.641526</td>
+      <td>3.566867</td>
+      <td>3.063322</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.701530</td>
+      <td>3.657641</td>
+      <td>2.710459</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Was <code class="highlighter-rouge">first_row_f3e3</code> a view or a copy?  Did you guess right?</p>
+
+<p>The point of all this is to say that - when you take stuff out of a Pandas data
+frame with indexing, it can be very difficult to predict whether you have
+a view or a copy, and it can depend what data you have in your date frame.</p>
+
+<p>For example, above, we found that if all the data in the data frame are floats,
+then I get a view, but in our previous data frame – <code class="highlighter-rouge">first_33</code> — that has
+a mixture of column types, including strings and numbers, I got a copy.</p>
+
+<p>The way out of this steaming set of tubes into hell, is to use <a href="/cfd2019/chapters/07/safe_pandas">safe handling
+of Pandas</a>.</p>
 
           
         </section>
@@ -1264,13 +1708,11 @@ this simulation, using <a href="../05/lists">lists</a> instead of arrays.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/06/sorting_arrays" class="pagination--pager" title="6.1 Sorting arrays
+      <a href="/cfd2019/chapters/07/noble_politics" class="pagination--pager" title="6.7 Example: noble politics
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/07/more_building_blocks" class="pagination--pager" title="
-  More building blocks
-
+      <a href="/cfd2019/chapters/07/pandas_indexing_reprise" class="pagination--pager" title="Pandas indexing reprise
 ">Next</a>
     
   </nav>
