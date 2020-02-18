@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T13:55:54+00:00">
+  <meta property="article:published_time" content="2020-02-18T13:58:29+00:00">
 
 
 
@@ -1095,7 +1095,9 @@
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'mode.chained_assignment'</span><span class="p">,</span><span class="s">'raise'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>We return to the example data file that you may have seen in the <a href="/cfd2019/chapters/07/text_encoding">text encoding</a> page:</p>
+<p>We return to the example data file that you may have seen in the <a href="/cfd2019/chapters/07/text_encoding">text encoding</a> page.</p>
+
+<p>You can download the data file from <a href="/cfd2019/data/imdblet_latin.csv">imdblet_latin.csv</a>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin1'</span><span class="p">)</span>
 <span class="n">films</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1186,9 +1188,9 @@
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
-    821         try:
---&gt; 822             x = float(x)
-    823         except Exception:
+   1163         try:
+-&gt; 1164             x = float(x)
+   1165         except Exception:
 
 </code></pre></div></div>
 
@@ -1204,9 +1206,9 @@ During handling of the above exception, another exception occurred:
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
-    824             try:
---&gt; 825                 x = complex(x)
-    826             except Exception:
+   1166             try:
+-&gt; 1167                 x = complex(x)
+   1168             except Exception:
 
 </code></pre></div></div>
 
@@ -1222,23 +1224,23 @@ During handling of the above exception, another exception occurred:
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in f(values, axis, skipna, **kwds)
-    127                 else:
---&gt; 128                     result = alt(values, axis=axis, skipna=skipna, **kwds)
-    129             except Exception:
+    126                 else:
+--&gt; 127                     result = alt(values, axis=axis, skipna=skipna, **kwds)
+    128             except Exception:
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in nanmean(values, axis, skipna)
-    354     count = _get_counts(mask, axis, dtype=dtype_count)
---&gt; 355     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
-    356 
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in nanmean(values, axis, skipna, mask)
+    478     count = _get_counts(mask, axis, dtype=dtype_count)
+--&gt; 479     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
+    480 
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
-    827                 raise TypeError('Could not convert {value!s} to numeric'
---&gt; 828                                 .format(value=x))
-    829     return x
+   1169                 raise TypeError('Could not convert {value!s} to numeric'
+-&gt; 1170                                 .format(value=x))
+   1171     return x
 
 </code></pre></div></div>
 
@@ -1254,9 +1256,9 @@ During handling of the above exception, another exception occurred:
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
-    821         try:
---&gt; 822             x = float(x)
-    823         except Exception:
+   1163         try:
+-&gt; 1164             x = float(x)
+   1165         except Exception:
 
 </code></pre></div></div>
 
@@ -1272,9 +1274,9 @@ During handling of the above exception, another exception occurred:
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
-    824             try:
---&gt; 825                 x = complex(x)
-    826             except Exception:
+   1166             try:
+-&gt; 1167                 x = complex(x)
+   1168             except Exception:
 
 </code></pre></div></div>
 
@@ -1296,56 +1298,56 @@ During handling of the above exception, another exception occurred:
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in stat_func(self, axis, skipna, level, numeric_only, **kwargs)
-   9611                                       skipna=skipna)
-   9612         return self._reduce(f, name, axis=axis, skipna=skipna,
--&gt; 9613                             numeric_only=numeric_only)
-   9614 
-   9615     return set_function_name(stat_func, name, cls)
+  10944                                       skipna=skipna)
+  10945         return self._reduce(f, name, axis=axis, skipna=skipna,
+&gt; 10946                             numeric_only=numeric_only)
+  10947 
+  10948     return set_function_name(stat_func, name, cls)
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/series.py in _reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
-   3219                                           'numeric_only.'.format(name))
-   3220             with np.errstate(all='ignore'):
--&gt; 3221                 return op(delegate, skipna=skipna, **kwds)
-   3222 
-   3223         return delegate._reduce(op=op, name=name, axis=axis, skipna=skipna,
+   3624                                           'numeric_only.'.format(name))
+   3625             with np.errstate(all='ignore'):
+-&gt; 3626                 return op(delegate, skipna=skipna, **kwds)
+   3627 
+   3628         # TODO(EA) dispatch to Index
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _f(*args, **kwargs)
-     75             try:
-     76                 with np.errstate(invalid='ignore'):
----&gt; 77                     return f(*args, **kwargs)
-     78             except ValueError as e:
-     79                 # we want to transform an object array
+     74             try:
+     75                 with np.errstate(invalid='ignore'):
+---&gt; 76                     return f(*args, **kwargs)
+     77             except ValueError as e:
+     78                 # we want to transform an object array
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in f(values, axis, skipna, **kwds)
-    129             except Exception:
-    130                 try:
---&gt; 131                     result = alt(values, axis=axis, skipna=skipna, **kwds)
-    132                 except ValueError as e:
-    133                     # we want to transform an object array
+    128             except Exception:
+    129                 try:
+--&gt; 130                     result = alt(values, axis=axis, skipna=skipna, **kwds)
+    131                 except ValueError as e:
+    132                     # we want to transform an object array
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in nanmean(values, axis, skipna)
-    353         dtype_count = dtype
-    354     count = _get_counts(mask, axis, dtype=dtype_count)
---&gt; 355     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
-    356 
-    357     if axis is not None and getattr(the_sum, 'ndim', False):
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in nanmean(values, axis, skipna, mask)
+    477         dtype_count = dtype
+    478     count = _get_counts(mask, axis, dtype=dtype_count)
+--&gt; 479     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
+    480 
+    481     if axis is not None and getattr(the_sum, 'ndim', False):
 
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
-    826             except Exception:
-    827                 raise TypeError('Could not convert {value!s} to numeric'
---&gt; 828                                 .format(value=x))
-    829     return x
-    830 
+   1168             except Exception:
+   1169                 raise TypeError('Could not convert {value!s} to numeric'
+-&gt; 1170                                 .format(value=x))
+   1171     return x
+   1172 
 
 </code></pre></div></div>
 
@@ -1432,15 +1434,15 @@ Name: Rating, dtype: object
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/series.py in apply(self, func, convert_dtype, args, **kwds)
-   3192             else:
-   3193                 values = self.astype(object).values
--&gt; 3194                 mapped = lib.map_infer(values, f, convert=convert_dtype)
-   3195 
-   3196         if len(mapped) and isinstance(mapped[0], Series):
+   3589             else:
+   3590                 values = self.astype(object).values
+-&gt; 3591                 mapped = lib.map_infer(values, f, convert=convert_dtype)
+   3592 
+   3593         if len(mapped) and isinstance(mapped[0], Series):
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/src/inference.pyx in pandas._libs.lib.map_infer()
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/lib.pyx in pandas._libs.lib.map_infer()
 
 </code></pre></div></div>
 

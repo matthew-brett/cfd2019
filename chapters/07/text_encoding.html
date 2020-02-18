@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T13:55:54+00:00">
+  <meta property="article:published_time" content="2020-02-18T13:58:29+00:00">
 
 
 
@@ -1098,19 +1098,46 @@
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'mode.chained_assignment'</span><span class="p">,</span><span class="s">'raise'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Consider the following annoying situation.  You can download the data file from <a href="/cfd2019/data/imdblet_latin1.csv">imdblet_latin1.csv</a>.</p>
+<p>Consider the following annoying situation.  You can download the data file from <a href="/cfd2019/data/imdblet_latin.csv">imdblet_latin.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin1.csv'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin.csv'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FileNotFoundError                         Traceback (most recent call last)
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError                        Traceback (most recent call last)
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-2-78e8300863e6&gt; in &lt;module&gt;
-----&gt; 1 films = pd.read_csv('imdblet_latin1.csv')
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._convert_tokens()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._convert_with_dtype()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._string_convert()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers._string_box_utf8()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 1: invalid continuation byte
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError                        Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-2-9c516185ecc3&gt; in &lt;module&gt;
+----&gt; 1 films = pd.read_csv('imdblet_latin.csv')
 
 </code></pre></div></div>
 
@@ -1124,50 +1151,65 @@
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in _read(filepath_or_buffer, kwds)
-    438 
-    439     # Create the parser.
---&gt; 440     parser = TextFileReader(filepath_or_buffer, **kwds)
-    441 
-    442     if chunksize or iterator:
+    444 
+    445     try:
+--&gt; 446         data = parser.read(nrows)
+    447     finally:
+    448         parser.close()
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in __init__(self, f, engine, **kwds)
-    785             self.options['has_index_names'] = kwds['has_index_names']
-    786 
---&gt; 787         self._make_engine(self.engine)
-    788 
-    789     def close(self):
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in read(self, nrows)
+   1034                 raise ValueError('skipfooter not supported for iteration')
+   1035 
+-&gt; 1036         ret = self._engine.read(nrows)
+   1037 
+   1038         # May alter columns / col_dict
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in _make_engine(self, engine)
-   1012     def _make_engine(self, engine='c'):
-   1013         if engine == 'c':
--&gt; 1014             self._engine = CParserWrapper(self.f, **self.options)
-   1015         else:
-   1016             if engine == 'python':
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in read(self, nrows)
+   1846     def read(self, nrows=None):
+   1847         try:
+-&gt; 1848             data = self._reader.read(nrows)
+   1849         except StopIteration:
+   1850             if self._first_chunk:
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in __init__(self, src, **kwds)
-   1706         kwds['usecols'] = self.usecols
-   1707 
--&gt; 1708         self._reader = parsers.TextReader(src, **kwds)
-   1709 
-   1710         passed_names = self.names is None
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader.read()
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader.__cinit__()
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._read_low_memory()
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._setup_parser_source()
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._read_rows()
 
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FileNotFoundError: File b'imdblet_latin1.csv' does not exist
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._convert_column_data()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._convert_tokens()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._convert_with_dtype()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._string_convert()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers._string_box_utf8()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 1: invalid continuation byte
 </code></pre></div></div>
 
 <p>The next sections are about why this happens, and therefore, how to fix it.</p>
