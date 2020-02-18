@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T13:58:29+00:00">
+  <meta property="article:published_time" content="2020-02-18T18:06:26+00:00">
 
 
 
@@ -1220,13 +1220,13 @@ During handling of the above exception, another exception occurred:
 characters in the text with numbers, because numbers are all the computer has.</p>
 
 <p>The traditional unit of memory size, or disk size, is the
-<a href="https://en.wikipedia.org/wiki/Byte">byte</a>.  Nowadays, the term byte means
-a single number that can take any value between 0 through 256.  Specifically,
-a byte is a binary number with 8 binary digits, so it can store $2^8$
-different values - 256.</p>
+<a href="https://en.wikipedia.org/wiki/Byte">byte</a>.  Nowadays, the term byte means a
+single number that can take any value between 0 through 255.  Specifically, a
+byte is a binary number with 8 binary digits, so it can store $2^8$ different
+values.</p>
 
 <p>We can think of everything that the computer stores, in memory or on disk, as
-bytes — units of information memory, represented as numbers.</p>
+bytes — units of information in memory, represented as numbers.</p>
 
 <p>This is also true for text.  For example, here is a bit of text:</p>
 
@@ -1234,26 +1234,25 @@ bytes — units of information memory, represented as numbers.</p>
 </span><span class="n">name</span> <span class="o">=</span> <span class="s">'Pandas'</span>
 </code></pre></div></div>
 
-<p>Somewhere in the computer’s memory, Python has recorded “Pandas” as a series
-of bytes, in a format that it understands.</p>
+<p>Somewhere in the computer’s memory, Python has recorded “Pandas” as a series of
+bytes, in a format that it understands.</p>
 
 <p>When the computer writes this information into a file, it has to decide how to
-convert its own version of “Pandas” into bytes that other programs will
-understand.  That is, it needs to convert its own format into a standard
-sequence of numbers (bytes) that other programs will recognize as coding for
+convert its own version of the text “Pandas” into bytes that other programs
+will understand.  That is, it needs to convert its own format into a standard
+sequence of numbers (bytes) that other programs will recognize as the text
 “Pandas”.</p>
 
-<p>This process of converting between Python’s own format to a standard sequence
-of bytes, is called <em>encoding</em>.  Whenever Python - or any other program</p>
-<ul>
-  <li>writes text to a file, it has to decide how to <em>encode</em> that text as a sequence of bytes.</li>
-</ul>
+<p>This process of converting from Python’s own format to a standard sequence of
+bytes, is called <em>encoding</em>.  Whenever Python — or any other program —
+writes text to a file, it has to decide how to <em>encode</em> that text as a sequence
+of bytes.</p>
 
 <p>There are various standard ways of encoding text as numbers.  One very common
 encoding is called <a href="https://en.wikipedia.org/wiki/UTF-8">8-bit Unicode Transformation
 Format</a> or “UTF-8” for short.  Almost all
 web page files use this format.  Your web browser knows how to translate the
-numbers in this format into characters to show on screen.</p>
+numbers in this format into text to show on screen.</p>
 
 <p>We can see that process in memory, in Python, like this.</p>
 
@@ -1266,11 +1265,13 @@ numbers in this format into characters to show on screen.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 97, 110, 100, 97, 115]
 </code></pre></div></div>
 
-<p>In UTF-8 the number 80 stands for the character ‘P’, 97 stands for ‘a’, and so
-on.  Notice that for these standard English alphabet characters, UTF-8 stores
-each character with a single byte (80 for ‘P’ , 97 for ‘a’ etc).</p>
+<p>In the UTF-8 coding scheme, the number 80 stands for the character ‘P’, 97
+stands for ‘a’, and so on.  Notice that for these standard English alphabet
+characters, UTF-8 stores each character with a single byte (80 for ‘P’ , 97 for
+‘a’ etc).</p>
 
-<p>We can go the opposite direction, and <em>decode</em> the sequence of numbers (bytes) into a bit of text, like this:</p>
+<p>We can go the opposite direction, and <em>decode</em> the sequence of numbers (bytes)
+into a bit of text, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Convert the sequence of numbers (bytes) into text again.
 </span><span class="n">name_again</span> <span class="o">=</span> <span class="n">name_as_utf8_bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
@@ -1284,7 +1285,7 @@ each character with a single byte (80 for ‘P’ , 97 for ‘a’ etc).</p>
 of bytes that represent an enormous range of characters, including, for
 example, Mandarin and Cantonese Chinese characters.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Hello in Mandarin (apparently).
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Hello in Mandarin.
 </span><span class="n">mandarin_hello</span> <span class="o">=</span> <span class="s">"你好"</span>
 <span class="n">hello_as_bytes</span> <span class="o">=</span> <span class="n">mandarin_hello</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
 <span class="nb">list</span><span class="p">(</span><span class="n">hello_as_bytes</span><span class="p">)</span>
@@ -1293,18 +1294,18 @@ example, Mandarin and Cantonese Chinese characters.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[228, 189, 160, 229, 165, 189]
 </code></pre></div></div>
 
-<p>Notice that, this time, UTF-8 used three bytes to represent each Mandarin
-character.</p>
+<p>Notice that, this time, UTF-8 used three bytes to represent each of the two
+Mandarin characters.</p>
 
 <p>Another common, but less useful encoding is called <a href="https://en.wikipedia.org/wiki/ISO/IEC_8859-1">Latin
 1</a> or ISO-8859-1.  This encoding
 only defines ways to represent text characters in the standard <a href="https://en.wikipedia.org/wiki/Latin_script">Latin
 alphabet</a>.  This is the standard
-English alphabet plus a range of accented characters from other European
-languages.</p>
+English alphabet plus a range of other characters from other European
+languages, including characters with accents.</p>
 
-<p>For English words without accents, Latin 1 uses the same series of bytes as
-UTF-8 does – 80 for ‘P’ and so on:</p>
+<p>For English words using the standard English alphabet, Latin 1 uses the same
+set of character-to-byte mappings as UTF-8 does – 80 for ‘P’ and so on:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">name_as_latin1_bytes</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'latin1'</span><span class="p">)</span>
 <span class="nb">list</span><span class="p">(</span><span class="n">name_as_latin1_bytes</span><span class="p">)</span>
@@ -1313,8 +1314,8 @@ UTF-8 does – 80 for ‘P’ and so on:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 97, 110, 100, 97, 115]
 </code></pre></div></div>
 
-<p>The differences show up when the encodings make bytes for characters outside
-the standard English alphabet.  Here’s the surname of [Ferenado
+<p>The differences show up when the encodings generate bytes for characters
+outside the standard English alphabet.  Here’s the surname of [Ferenado
 Pérez](https://en.wikipedia.org/wiki/Fernando_P%C3%A9rez_(software_developer),
 one of the founders of the Jupyter project you are using here:</p>
 
@@ -1330,8 +1331,8 @@ one of the founders of the Jupyter project you are using here:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 195, 169, 114, 101, 122]
 </code></pre></div></div>
 
-<p>Notice that UTF-8 still uses 80 for ‘P’, but it uses two bytes — 195 and 169
-— to represent the é in Fernando’s name.</p>
+<p>Notice that UTF-8 still uses 80 for ‘P’.  The next two bytes — 195 and 169
+— represent the é in Fernando’s name.</p>
 
 <p>In contrast, Latin 1 uses a single byte — 233 – to store the é:</p>
 
@@ -1382,10 +1383,11 @@ format:</p>
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 1: invalid continuation byte
 </code></pre></div></div>
 
-<p>It’s a mess - because UTF-8 doesn’t know what to do with the bytes that Latin
-1 wrote.</p>
+<p>It’s a mess - because UTF-8 doesn’t know what to interpret bytes that Latin 1
+wrote — this sequence of bytes doesn’t make sense in the UTF-8 encoding.</p>
 
-<p>Something similar happens when you write bytes (encode) text with UTF-8 and then read (decode) assuming the bytes are for Latin 1:</p>
+<p>Something similar happens when you write bytes (encode) text with UTF-8 and
+then read (decode) assuming the bytes are for Latin 1:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_as_utf8</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'latin1'</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1393,12 +1395,15 @@ format:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'PÃ©rez'
 </code></pre></div></div>
 
-<p>This time there is no error, because the bytes from UTF-8 mean something to Latin 1 — but the text is wrong, because those bytes mean something <em>different</em> in Latin 1.</p>
+<p>This time there is no error, because the bytes from UTF-8 do mean something to
+Latin 1 — but the text is wrong, because those bytes mean something
+<em>different</em> in Latin 1 than they do for UTF-8.</p>
 
 <h2 id="fixing-encoding-errors-in-pandas">Fixing encoding errors in Pandas</h2>
 
 <p>With this background, you may have guessed that the problem that we had at the
-top of this page was because someone has written a file where the text is in a different <em>encoding</em> than the one that Pandas assumed.</p>
+top of this page was because someone has written a file where the text is in a
+different <em>encoding</em> than the one that Pandas assumed.</p>
 
 <p>In fact, Pandas assumes that text is in UTF-8 format, because it is so common.</p>
 
