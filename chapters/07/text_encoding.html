@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>6.9 Text encoding - Coding for Data - 2019 edition</title>
+<meta name="description" content="Various things can go wrong when you import your data into Pandas.  Some of these are immediately obvious; others only appear later, in confusing forms.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Coding for Data - 2019 edition">
+<meta property="og:title" content="6.9 Text encoding">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/text_encoding">
+
+
+  <meta property="og:description" content="Various things can go wrong when you import your data into Pandas.  Some of these are immediately obvious; others only appear later, in confusing forms.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-18T10:48:12+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/text_encoding">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/cfd2019",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/cfd2019/feed.xml" type="application/atom+xml" rel="alternate" title="Coding for Data - 2019 edition Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cfd2019/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/cfd2019/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/cfd2019/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/cfd2019/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/cfd2019/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/01/intro"><span class="nav__sub-title">1. Coding for data</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/what-is-data-science" class="level_1">1.1 What is data science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/why-data-science" class="level_1">1.2 Why data science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/tools_techniques" class="level_1">1.3 Tools and techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/computational-tools" class="level_2">1.3.1 Computational tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/statistical-techniques" class="level_2">1.3.2 Statistical techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Plotting_the_Classics" class="level_1">1.4 Plotting the classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Literary_Characters" class="level_2">1.4.1 Literary characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Another_Kind_Of_Character" class="level_2">1.4.2 Another kind of character</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/surviving_computers" class="level_1">1.5 Surviving the computer</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/the_software" class="level_1">1.6 About the software</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/using_jupyter" class="level_1">1.7 Using the Jupyter notebook</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/more_on_jupyter" class="level_1">1.8 More on the Jupyter notebook</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/variables_intro" class="level_1">2.3 Introduction to variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/functions" class="level_1">2.4 Introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/first_pass_three_girls" class="level_1">2.5 A first pass</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Expressions" class="level_1">2.6 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.7 Call expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/sub_expressions" class="level_1">2.8 Sub-expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.9 Names and variables</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/String_Methods" class="level_2">3.2.1 String methods</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/lists" class="level_1">3.4 Lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Arrays" class="level_1">3.5 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Ranges" class="level_1">3.6 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/numpy_append" class="level_1">3.7 Append</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/function_arguments" class="level_1">3.8 Function arguments</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/leaping_ahead" class="level_1">3.9 Leaping ahead</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/iteration" class="level_1">3.10 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/indentation" class="level_1">3.11 Indentation, indentation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/reply_supreme" class="level_1">3.12 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/More_on_Arrays" class="level_1">3.13 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting in arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/filling_arrays" class="level_1">3.15 Filling arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/df_series_arrays" class="level_1">4.2 Data frames, Series and arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/05/permutation"><span class="nav__sub-title">5. Permutations</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/population_permutation" class="level_1">5.1 Population and permutation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.2 A permutation test</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/permutation_idea" class="level_1">5.3 The permutation idea</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/07/more_building_blocks"><span class="nav__sub-title">6. More building blocks</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/introducing_functions" class="level_1">6.1 Introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/none" class="level_1">6.2 On None</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/functions" class="level_1">6.3 Functions in more detail</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/functions_as_values" class="level_1">6.4 Functions as values</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/conditional_statements" class="level_1">6.5 Conditional statements</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/pandas_indexing" class="level_1">6.6 Indexing in Pandas</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/noble_politics" class="level_1">6.7 Example: noble politics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/safe_pandas" class="level_1">6.8 Safe Pandas</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/text_encoding" class="level_1">6.9 Text encoding</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/numbers_and_strings" class="level_1">6.10 Numbers and strings</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/08/mean"><span class="nav__sub-title">7. The mean and straight line relationships</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/mean_meaning" class="level_1">7.1 The mean as a predictor</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/where_and_argmin" class="level_1">7.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/mean_and_slopes" class="level_1">7.3 Mean and slopes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/optimization" class="level_1">7.4 Optimization</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/finding_lines" class="level_1">7.5 Finding lines</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/using_minimize" class="level_1">7.6 Using minimize</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">7.7 Believable slopes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/combining_boolean_arrays" class="level_1">7.8 Combining Booleans</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/standard_scores" class="level_1">7.9 Standard scores</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/Correlation" class="level_1">7.10 Correlation</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/09/classification"><span class="nav__sub-title">8. Classification</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Nearest_Neighbors" class="level_1">8.2 Nearest neighbors</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Training_and_Testing" class="level_1">8.3 Training and testing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Rows_of_Tables" class="level_1">8.4 Rows of tables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Implementing_the_Classifier" class="level_1">8.5 Implementing the classifier</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Accuracy_of_the_Classifier" class="level_1">8.6 Accuracy of the classifier</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/10/end_of_beginning"><span class="nav__sub-title">9. The end of the beginning</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/extra/extra"><span class="nav__sub-title">Extra pages</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/more_on_lists" class="level_1">More on lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/monty_hall_lists" class="level_1">Monty Hall with lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/data8_functions" class="level_1">Berkeley introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_deviations" class="level_1">Deviations around the mean</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_sq_deviations" class="level_1">Squared deviations around the mean</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/slope_deviations" class="level_1">Finding the best slope</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="6.9 Text encoding">
+      <meta itemprop="description" content="Various things can go wrong when you import your data into Pandas.  Some of these are immediately obvious; others only appear later, in confusing forms.">
+      <meta itemprop="datePublished" content="February 18, 2020">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">6.9 Text encoding
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#pandas-and-encoding">Pandas and encoding</a></li>
+  <li><a href="#text-encoding">Text encoding</a></li>
+  <li><a href="#fixing-encoding-errors-in-pandas">Fixing encoding errors in Pandas</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/07/text_encoding.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F07%2Ftext_encoding.ipynb">Interact</a>
+
+
+          <p>Various things can go wrong when you import your data into Pandas.  Some of these are immediately obvious; others only appear later, in confusing forms.</p>
+
+<p>This page covers one common problem when loading data into Pandas — text encoding.</p>
+
+<h2 id="pandas-and-encoding">Pandas and encoding</h2>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'mode.chained_assignment'</span><span class="p">,</span><span class="s">'raise'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Consider the following annoying situation.  You can download the data file from <a href="/cfd2019/data/imdblet_latin1.csv">imdblet_latin1.csv</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin1.csv'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FileNotFoundError                         Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-2-78e8300863e6&gt; in &lt;module&gt;
+----&gt; 1 films = pd.read_csv('imdblet_latin1.csv')
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in parser_f(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, skipfooter, doublequote, delim_whitespace, low_memory, memory_map, float_precision)
+    676                     skip_blank_lines=skip_blank_lines)
+    677 
+--&gt; 678         return _read(filepath_or_buffer, kwds)
+    679 
+    680     parser_f.__name__ = name
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in _read(filepath_or_buffer, kwds)
+    438 
+    439     # Create the parser.
+--&gt; 440     parser = TextFileReader(filepath_or_buffer, **kwds)
+    441 
+    442     if chunksize or iterator:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in __init__(self, f, engine, **kwds)
+    785             self.options['has_index_names'] = kwds['has_index_names']
+    786 
+--&gt; 787         self._make_engine(self.engine)
+    788 
+    789     def close(self):
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in _make_engine(self, engine)
+   1012     def _make_engine(self, engine='c'):
+   1013         if engine == 'c':
+-&gt; 1014             self._engine = CParserWrapper(self.f, **self.options)
+   1015         else:
+   1016             if engine == 'python':
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/io/parsers.py in __init__(self, src, **kwds)
+   1706         kwds['usecols'] = self.usecols
+   1707 
+-&gt; 1708         self._reader = parsers.TextReader(src, **kwds)
+   1709 
+   1710         passed_names = self.names is None
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader.__cinit__()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._setup_parser_source()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FileNotFoundError: File b'imdblet_latin1.csv' does not exist
+</code></pre></div></div>
+
+<p>The next sections are about why this happens, and therefore, how to fix it.</p>
+
+<h2 id="text-encoding">Text encoding</h2>
+
+<p>When the computer stores text in memory, or on disk, it must represent the
+characters in the text with numbers, because numbers are all the computer has.</p>
+
+<p>The traditional unit of memory size, or disk size, is the
+<a href="https://en.wikipedia.org/wiki/Byte">byte</a>.  Nowadays, the term byte means
+a single number that can take any value between 0 through 256.  Specifically,
+a byte is a binary number with 8 binary digits, so it can store $2^8$
+different values - 256.</p>
+
+<p>We can think of everything that the computer stores, in memory or on disk, as
+bytes — units of information memory, represented as numbers.</p>
+
+<p>This is also true for text.  For example, here is a bit of text:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A bit of text
+</span><span class="n">name</span> <span class="o">=</span> <span class="s">'Pandas'</span>
+</code></pre></div></div>
+
+<p>Somewhere in the computer’s memory, Python has recorded “Pandas” as a series
+of bytes, in a format that it understands.</p>
+
+<p>When the computer writes this information into a file, it has to decide how to
+convert its own version of “Pandas” into bytes that other programs will
+understand.  That is, it needs to convert its own format into a standard
+sequence of numbers (bytes) that other programs will recognize as coding for
+“Pandas”.</p>
+
+<p>This process of converting between Python’s own format to a standard sequence
+of bytes, is called <em>encoding</em>.  Whenever Python - or any other program</p>
+<ul>
+  <li>writes text to a file, it has to decide how to <em>encode</em> that text as a sequence of bytes.</li>
+</ul>
+
+<p>There are various standard ways of encoding text as numbers.  One very common
+encoding is called <a href="https://en.wikipedia.org/wiki/UTF-8">8-bit Unicode Transformation
+Format</a> or “UTF-8” for short.  Almost all
+web page files use this format.  Your web browser knows how to translate the
+numbers in this format into characters to show on screen.</p>
+
+<p>We can see that process in memory, in Python, like this.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Convert the text in "name" into bytes.
+</span><span class="n">name_as_utf8_bytes</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="c1"># Show the bytes as numbers
+</span><span class="nb">list</span><span class="p">(</span><span class="n">name_as_utf8_bytes</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 97, 110, 100, 97, 115]
+</code></pre></div></div>
+
+<p>In UTF-8 the number 80 stands for the character ‘P’, 97 stands for ‘a’, and so
+on.  Notice that for these standard English alphabet characters, UTF-8 stores
+each character with a single byte (80 for ‘P’ , 97 for ‘a’ etc).</p>
+
+<p>We can go the opposite direction, and <em>decode</em> the sequence of numbers (bytes) into a bit of text, like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Convert the sequence of numbers (bytes) into text again.
+</span><span class="n">name_again</span> <span class="o">=</span> <span class="n">name_as_utf8_bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">name_again</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Pandas'
+</code></pre></div></div>
+
+<p>UTF-8 is a particularly useful encoding, because it defines standard sequences
+of bytes that represent an enormous range of characters, including, for
+example, Mandarin and Cantonese Chinese characters.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Hello in Mandarin (apparently).
+</span><span class="n">mandarin_hello</span> <span class="o">=</span> <span class="s">"你好"</span>
+<span class="n">hello_as_bytes</span> <span class="o">=</span> <span class="n">mandarin_hello</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">hello_as_bytes</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[228, 189, 160, 229, 165, 189]
+</code></pre></div></div>
+
+<p>Notice that, this time, UTF-8 used three bytes to represent each Mandarin
+character.</p>
+
+<p>Another common, but less useful encoding is called <a href="https://en.wikipedia.org/wiki/ISO/IEC_8859-1">Latin
+1</a> or ISO-8859-1.  This encoding
+only defines ways to represent text characters in the standard <a href="https://en.wikipedia.org/wiki/Latin_script">Latin
+alphabet</a>.  This is the standard
+English alphabet plus a range of accented characters from other European
+languages.</p>
+
+<p>For English words without accents, Latin 1 uses the same series of bytes as
+UTF-8 does – 80 for ‘P’ and so on:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">name_as_latin1_bytes</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'latin1'</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">name_as_latin1_bytes</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 97, 110, 100, 97, 115]
+</code></pre></div></div>
+
+<p>The differences show up when the encodings make bytes for characters outside
+the standard English alphabet.  Here’s the surname of [Ferenado
+Pérez](https://en.wikipedia.org/wiki/Fernando_P%C3%A9rez_(software_developer),
+one of the founders of the Jupyter project you are using here:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jupyter_person</span> <span class="o">=</span> <span class="s">'Pérez'</span>
+</code></pre></div></div>
+
+<p>Here are the bytes that UTF-8 needs to store that name:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_as_utf8</span> <span class="o">=</span> <span class="n">jupyter_person</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">fp_as_utf8</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 195, 169, 114, 101, 122]
+</code></pre></div></div>
+
+<p>Notice that UTF-8 still uses 80 for ‘P’, but it uses two bytes — 195 and 169
+— to represent the é in Fernando’s name.</p>
+
+<p>In contrast, Latin 1 uses a single byte — 233 – to store the é:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_as_latin1</span> <span class="o">=</span> <span class="n">jupyter_person</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'latin1'</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">fp_as_latin1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[80, 233, 114, 101, 122]
+</code></pre></div></div>
+
+<p>Latin 1 has no idea what to do about Mandarin:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mandarin_hello</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'latin1'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeEncodeError                        Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-11-a87bef3431c6&gt; in &lt;module&gt;
+----&gt; 1 mandarin_hello.encode('latin1')
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeEncodeError: 'latin-1' codec can't encode characters in position 0-1: ordinal not in range(256)
+</code></pre></div></div>
+
+<p>Now consider what will happen if the computer writes (encodes) some text in
+Latin 1 format, and then tries to read it (decode) assuming it is in UTF-8
+format:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_as_latin1</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError                        Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-b4b512c6bceb&gt; in &lt;module&gt;
+----&gt; 1 fp_as_latin1.decode('utf-8')
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 1: invalid continuation byte
+</code></pre></div></div>
+
+<p>It’s a mess - because UTF-8 doesn’t know what to do with the bytes that Latin
+1 wrote.</p>
+
+<p>Something similar happens when you write bytes (encode) text with UTF-8 and then read (decode) assuming the bytes are for Latin 1:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_as_utf8</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'latin1'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'PÃ©rez'
+</code></pre></div></div>
+
+<p>This time there is no error, because the bytes from UTF-8 mean something to Latin 1 — but the text is wrong, because those bytes mean something <em>different</em> in Latin 1.</p>
+
+<h2 id="fixing-encoding-errors-in-pandas">Fixing encoding errors in Pandas</h2>
+
+<p>With this background, you may have guessed that the problem that we had at the
+top of this page was because someone has written a file where the text is in a different <em>encoding</em> than the one that Pandas assumed.</p>
+
+<p>In fact, Pandas assumes that text is in UTF-8 format, because it is so common.</p>
+
+<p>In this case, as the filename suggests, the bytes for the text are in Latin
+1 encoding.  We can tell Pandas about this with the <code class="highlighter-rouge">encoding=</code> option:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin1'</span><span class="p">)</span>
+<span class="n">films</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Votes</th>
+      <th>Rating</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Decade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>635139</td>
+      <td>8.6</td>
+      <td>Léon</td>
+      <td>1994</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>264285</td>
+      <td>8.1</td>
+      <td>The Princess Bride</td>
+      <td>1987</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>43090</td>
+      <td>N/K</td>
+      <td>Paris, Texas (1984)</td>
+      <td>1984</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>90434</td>
+      <td>8.3</td>
+      <td>Rashômon</td>
+      <td>1950</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>427099</td>
+      <td>8.0</td>
+      <td>X-Men: Days of Future Past</td>
+      <td>2014</td>
+      <td>2010</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/cfd2019/chapters/07/safe_pandas" class="pagination--pager" title="6.8 Safe Pandas
+">Previous</a>
+    
+    
+      <a href="/cfd2019/chapters/07/numbers_and_strings" class="pagination--pager" title="6.10 Numbers and strings
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/cfd2019/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/cfd2019/assets/js/lunr/lunr.min.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-store.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

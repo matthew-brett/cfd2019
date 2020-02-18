@@ -279,6 +279,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/none",
         "teaser":null},{
+        "title": "6.10 Numbers and strings",
+        "excerpt":"This page covers a common problem when loading data into Pandas — when Pandas gets confused about whether values in a column are text or numbers. An example import numpy as npimport pandas as pdpd.set_option('mode.chained_assignment','raise')We return to the example data file that you may have seen in the text encoding...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/numbers_and_strings",
+        "teaser":null},{
         "title": "6.6 Indexing in Pandas",
         "excerpt":"Way back in the introduction to data frames, we covered indexing into data frames withBoolean vectors, such as Pandas Series or Numpy arrays, and indexing into data frames with column names. This page covers more sophisticated indexing in Pandas. To understand this indexing, we first need to cover the index...","categories": [],
         "tags": [],
@@ -293,6 +298,11 @@ var store = [{
         "excerpt":"A lot of Pandas’ design is for speed and efficiency. Unfortunately, this sometimes means that is it easy to use Pandas incorrectly, and so get results that you do not expect. This page has some rules we suggest you follow to stay out of trouble when using Pandas. As your...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/safe_pandas",
+        "teaser":null},{
+        "title": "6.9 Text encoding",
+        "excerpt":"Various things can go wrong when you import your data into Pandas. Some of these are immediately obvious; others only appear later, in confusing forms. This page covers one common problem when loading data into Pandas — text encoding. Pandas and encoding import numpy as npimport pandas as pdpd.set_option('mode.chained_assignment','raise')Consider the...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/07/text_encoding",
         "teaser":null},{
         "title": "7.10 Correlation",
         "excerpt":"This page has content from theCorrelationnotebook from the UC Berkeley course. See the Berkeley course section of thelicenseCorrelation In this section we will develop a measure of how tightly clustereda scatter diagram is about a straight line. Formally, this is calledmeasuring linear association. The table hybrid contains data on hybrid...","categories": [],

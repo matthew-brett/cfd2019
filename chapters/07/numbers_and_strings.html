@@ -1,0 +1,1805 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>6.10 Numbers and strings - Coding for Data - 2019 edition</title>
+<meta name="description" content="This page covers a common problem when loading data into Pandas — when Pandas gets confused about whether values in a column are text or numbers.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_UK">
+<meta property="og:site_name" content="Coding for Data - 2019 edition">
+<meta property="og:title" content="6.10 Numbers and strings">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/07/numbers_and_strings">
+
+
+  <meta property="og:description" content="This page covers a common problem when loading data into Pandas — when Pandas gets confused about whether values in a column are text or numbers.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-18T10:48:12+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/07/numbers_and_strings">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Matthew Brett",
+      "url": "https://matthew-brett.github.io/cfd2019",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/cfd2019/feed.xml" type="application/atom+xml" rel="alternate" title="Coding for Data - 2019 edition Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/cfd2019/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+
+<!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/cfd2019/assets/css/notebook-markdown.css">
+    <link rel="stylesheet" href="/cfd2019/assets/css/custom.css">
+    <link rel="shortcut icon" type="image/png" href="/cfd2019/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
+  </head>
+
+  <body class="layout--textbook">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" class="textbook" role="main">
+  <div id="textbook_wrapper">
+    
+  <div class="sidebar sticky textbook">
+  
+  
+    <img src="/cfd2019/images/dsfe_logo.png" class="textbook_logo" />
+    
+
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/"><span class="nav__sub-title">Home</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/01/intro"><span class="nav__sub-title">1. Coding for data</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/what-is-data-science" class="level_1">1.1 What is data science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/why-data-science" class="level_1">1.2 Why data science?</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/tools_techniques" class="level_1">1.3 Tools and techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/computational-tools" class="level_2">1.3.1 Computational tools</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/statistical-techniques" class="level_2">1.3.2 Statistical techniques</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Plotting_the_Classics" class="level_1">1.4 Plotting the classics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Literary_Characters" class="level_2">1.4.1 Literary characters</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/Another_Kind_Of_Character" class="level_2">1.4.2 Another kind of character</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/surviving_computers" class="level_1">1.5 Surviving the computer</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/the_software" class="level_1">1.6 About the software</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/using_jupyter" class="level_1">1.7 Using the Jupyter notebook</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/01/more_on_jupyter" class="level_1">1.8 More on the Jupyter notebook</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/02/to_code"><span class="nav__sub-title">2. Programming</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/sampling_problem" class="level_1">2.1 A sampling problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/three_girls" class="level_1">2.2 A simpler problem</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/variables_intro" class="level_1">2.3 Introduction to variables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/functions" class="level_1">2.4 Introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/first_pass_three_girls" class="level_1">2.5 A first pass</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Expressions" class="level_1">2.6 Expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Calls" class="level_1">2.7 Call expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/sub_expressions" class="level_1">2.8 Sub-expressions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/02/Names" class="level_1">2.9 Names and variables</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/03/data_types"><span class="nav__sub-title">3. Data types</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Numbers" class="level_1">3.1 Numbers</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Strings" class="level_1">3.2 Strings</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/String_Methods" class="level_2">3.2.1 String methods</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Comparison" class="level_1">3.3 Comparison</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/lists" class="level_1">3.4 Lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Arrays" class="level_1">3.5 Arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/Ranges" class="level_1">3.6 Ranges</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/numpy_append" class="level_1">3.7 Append</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/function_arguments" class="level_1">3.8 Function arguments</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/leaping_ahead" class="level_1">3.9 Leaping ahead</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/iteration" class="level_1">3.10 Iteration with For loops</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/indentation" class="level_1">3.11 Indentation, indentation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/reply_supreme" class="level_1">3.12 Reply to the Supreme Court</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/More_on_Arrays" class="level_1">3.13 More on arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/array_indexing" class="level_1">3.14 Selecting in arrays</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/03/filling_arrays" class="level_1">3.15 Filling arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/04/data_frames"><span class="nav__sub-title">4. Data frames</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/data_frame_intro" class="level_1">4.1 Introduction to data frames</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/04/df_series_arrays" class="level_1">4.2 Data frames, Series and arrays</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/05/permutation"><span class="nav__sub-title">5. Permutations</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/population_permutation" class="level_1">5.1 Population and permutation</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/brexit_ages" class="level_1">5.2 A permutation test</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/permutation_idea" class="level_1">5.3 The permutation idea</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/07/more_building_blocks"><span class="nav__sub-title">6. More building blocks</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/introducing_functions" class="level_1">6.1 Introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/none" class="level_1">6.2 On None</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/functions" class="level_1">6.3 Functions in more detail</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/functions_as_values" class="level_1">6.4 Functions as values</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/conditional_statements" class="level_1">6.5 Conditional statements</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/pandas_indexing" class="level_1">6.6 Indexing in Pandas</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/noble_politics" class="level_1">6.7 Example: noble politics</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/safe_pandas" class="level_1">6.8 Safe Pandas</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/text_encoding" class="level_1">6.9 Text encoding</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/07/numbers_and_strings" class="level_1">6.10 Numbers and strings</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/08/mean"><span class="nav__sub-title">7. The mean and straight line relationships</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/mean_meaning" class="level_1">7.1 The mean as a predictor</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/where_and_argmin" class="level_1">7.2 Where and argmin</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/mean_and_slopes" class="level_1">7.3 Mean and slopes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/optimization" class="level_1">7.4 Optimization</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/finding_lines" class="level_1">7.5 Finding lines</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/using_minimize" class="level_1">7.6 Using minimize</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/inference_on_slopes" class="level_1">7.7 Believable slopes</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/combining_boolean_arrays" class="level_1">7.8 Combining Booleans</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/standard_scores" class="level_1">7.9 Standard scores</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/08/Correlation" class="level_1">7.10 Correlation</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/09/classification"><span class="nav__sub-title">8. Classification</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Nearest_Neighbors" class="level_1">8.2 Nearest neighbors</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Training_and_Testing" class="level_1">8.3 Training and testing</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Rows_of_Tables" class="level_1">8.4 Rows of tables</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Implementing_the_Classifier" class="level_1">8.5 Implementing the classifier</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/09/Accuracy_of_the_Classifier" class="level_1">8.6 Accuracy of the classifier</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/10/end_of_beginning"><span class="nav__sub-title">9. The end of the beginning</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/exercises/exercises"><span class="nav__sub-title">Exercises</span></a>
+        
+
+        
+        <ul>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/extra/extra"><span class="nav__sub-title">Extra pages</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/more_on_lists" class="level_1">More on lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/monty_hall_lists" class="level_1">Monty Hall with lists</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/data8_functions" class="level_1">Berkeley introduction to functions</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_deviations" class="level_1">Deviations around the mean</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/mean_sq_deviations" class="level_1">Squared deviations around the mean</a></li>
+          
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/extra/slope_deviations" class="level_1">Finding the best slope</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+
+  
+  </div>
+
+
+    <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="headline" content="6.10 Numbers and strings">
+      <meta itemprop="description" content="This page covers a common problem when loading data into Pandas — when Pandas gets confused about whether values in a column are text or numbers.">
+      <meta itemprop="datePublished" content="February 18, 2020">
+      
+
+      <div class="page__inner-wrap">
+        
+          <header>
+            <h1 id="page-title" class="page__title" itemprop="headline">6.10 Numbers and strings
+</h1>
+          </header>
+        
+
+        <section class="page__content" itemprop="text">
+          
+            
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#an-example">An example</a></li>
+  <li><a href="#the-problem">The problem</a></li>
+</ul>
+    </nav>
+  </aside>
+
+
+          
+          <!-- INTERACT LINKS -->
+
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/07/numbers_and_strings.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F07%2Fnumbers_and_strings.ipynb">Interact</a>
+
+
+          <p>This page covers a common problem when loading data into Pandas — when Pandas gets confused about whether values in a column are text or numbers.</p>
+
+<h2 id="an-example">An example</h2>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'mode.chained_assignment'</span><span class="p">,</span><span class="s">'raise'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We return to the example data file that you may have seen in the <a href="/cfd2019/chapters/07/text_encoding">text encoding</a> page:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin1'</span><span class="p">)</span>
+<span class="n">films</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Votes</th>
+      <th>Rating</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Decade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>635139</td>
+      <td>8.6</td>
+      <td>Léon</td>
+      <td>1994</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>264285</td>
+      <td>8.1</td>
+      <td>The Princess Bride</td>
+      <td>1987</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>43090</td>
+      <td>N/K</td>
+      <td>Paris, Texas (1984)</td>
+      <td>1984</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>90434</td>
+      <td>8.3</td>
+      <td>Rashômon</td>
+      <td>1950</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>427099</td>
+      <td>8.0</td>
+      <td>X-Men: Days of Future Past</td>
+      <td>2014</td>
+      <td>2010</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Now imagine we are interested in the average rating across these films:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="s">'Rating'</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ratings</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
+    821         try:
+--&gt; 822             x = float(x)
+    823         except Exception:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: could not convert string to float: '8.68.1N/K8.38.08.18.08.48.28.08.08.08.68.68.08.28.48.48.18.38.48.28.58.08.28.18.48.18.68.48.18.78.1'
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
+    824             try:
+--&gt; 825                 x = complex(x)
+    826             except Exception:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: complex() arg is a malformed string
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in f(values, axis, skipna, **kwds)
+    127                 else:
+--&gt; 128                     result = alt(values, axis=axis, skipna=skipna, **kwds)
+    129             except Exception:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in nanmean(values, axis, skipna)
+    354     count = _get_counts(mask, axis, dtype=dtype_count)
+--&gt; 355     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
+    356 
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
+    827                 raise TypeError('Could not convert {value!s} to numeric'
+--&gt; 828                                 .format(value=x))
+    829     return x
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: Could not convert 8.68.1N/K8.38.08.18.08.48.28.08.08.08.68.68.08.28.48.48.18.38.48.28.58.08.28.18.48.18.68.48.18.78.1 to numeric
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
+    821         try:
+--&gt; 822             x = float(x)
+    823         except Exception:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: could not convert string to float: '8.68.1N/K8.38.08.18.08.48.28.08.08.08.68.68.08.28.48.48.18.38.48.28.58.08.28.18.48.18.68.48.18.78.1'
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
+    824             try:
+--&gt; 825                 x = complex(x)
+    826             except Exception:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: complex() arg is a malformed string
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+During handling of the above exception, another exception occurred:
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-3-4e70c7e235c4&gt; in &lt;module&gt;
+      1 ratings = films['Rating'].copy()
+----&gt; 2 ratings.mean()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in stat_func(self, axis, skipna, level, numeric_only, **kwargs)
+   9611                                       skipna=skipna)
+   9612         return self._reduce(f, name, axis=axis, skipna=skipna,
+-&gt; 9613                             numeric_only=numeric_only)
+   9614 
+   9615     return set_function_name(stat_func, name, cls)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/series.py in _reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
+   3219                                           'numeric_only.'.format(name))
+   3220             with np.errstate(all='ignore'):
+-&gt; 3221                 return op(delegate, skipna=skipna, **kwds)
+   3222 
+   3223         return delegate._reduce(op=op, name=name, axis=axis, skipna=skipna,
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _f(*args, **kwargs)
+     75             try:
+     76                 with np.errstate(invalid='ignore'):
+---&gt; 77                     return f(*args, **kwargs)
+     78             except ValueError as e:
+     79                 # we want to transform an object array
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in f(values, axis, skipna, **kwds)
+    129             except Exception:
+    130                 try:
+--&gt; 131                     result = alt(values, axis=axis, skipna=skipna, **kwds)
+    132                 except ValueError as e:
+    133                     # we want to transform an object array
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in nanmean(values, axis, skipna)
+    353         dtype_count = dtype
+    354     count = _get_counts(mask, axis, dtype=dtype_count)
+--&gt; 355     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
+    356 
+    357     if axis is not None and getattr(the_sum, 'ndim', False):
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/nanops.py in _ensure_numeric(x)
+    826             except Exception:
+    827                 raise TypeError('Could not convert {value!s} to numeric'
+--&gt; 828                                 .format(value=x))
+    829     return x
+    830 
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: Could not convert 8.68.1N/K8.38.08.18.08.48.28.08.08.08.68.68.08.28.48.48.18.38.48.28.58.08.28.18.48.18.68.48.18.78.1 to numeric
+</code></pre></div></div>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>The problem is that we were expecting our ratings to be numbers, but in fact, they are strings.</p>
+
+<p>We can see what type of thing Pandas has stored by looking at the <code class="highlighter-rouge">dtype</code>
+attribute of a Series, or the <code class="highlighter-rouge">dtypes</code> attribute of a data frame.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span><span class="o">.</span><span class="n">dtypes</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Votes     object
+Rating    object
+Title     object
+Year       int64
+Decade     int64
+dtype: object
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">dtype</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('O')
+</code></pre></div></div>
+
+<p>In fact both these bits of information say the same thing – that the ‘Rating’
+column stores things in the “object” or “O” type.  This is a general type that
+can store any Python value.   It is the standard type that Pandas uses when
+storing text.</p>
+
+<p>Why does Pandas use text for the ‘Rating’ column?</p>
+
+<p>A quick look at the first rows gives the answer:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    8.6
+1    8.1
+2    N/K
+3    8.3
+4    8.0
+Name: Rating, dtype: object
+</code></pre></div></div>
+
+<p>The film “Paris, Texas (1984)” has a value “N/K” for the rating. This can’t be a number, so Pandas stored this column in a format that allows it to store “N/K” as text.</p>
+
+<p>If that wasn’t obvious, another way of checking where the problem value is, to <code class="highlighter-rouge">apply</code> the function <code class="highlighter-rouge">float</code> to the column values.</p>
+
+<p>When we <code class="highlighter-rouge">apply</code> a function to a Series, it takes each value from the Series, calls the function, and returns the value.  Recall that the <code class="highlighter-rouge">float</code> function converts the thing you pass into a floating point value:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'3.14'</span><span class="p">)</span>
+<span class="n">v</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
+</code></pre></div></div>
+
+<p>Now we try applying <code class="highlighter-rouge">float</code> to the problematic column:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-9-e17d28bc7f94&gt; in &lt;module&gt;
+----&gt; 1 ratings.apply(float)
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/series.py in apply(self, func, convert_dtype, args, **kwds)
+   3192             else:
+   3193                 values = self.astype(object).values
+-&gt; 3194                 mapped = lib.map_infer(values, f, convert=convert_dtype)
+   3195 
+   3196         if len(mapped) and isinstance(mapped[0], Series):
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/src/inference.pyx in pandas._libs.lib.map_infer()
+
+</code></pre></div></div>
+
+<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: could not convert string to float: 'N/K'
+</code></pre></div></div>
+
+<p>One way of dealing with this problem is to make a <em>recoding</em> function.</p>
+
+<p>A recoding function is a function that we will apply to a Series.  That means that we call the function for every value in the Series.  The function argument is the value from the series.  The function returns the new value, for a new Series.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recode_ratings</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s">'N/K'</span><span class="p">:</span>  <span class="c1"># Return missing value for 'N/K'
+</span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="c1"># Otherwise make text value into a float
+</span>    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We test our function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recode_ratings</span><span class="p">(</span><span class="s">'8.3'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.3
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recode_ratings</span><span class="p">(</span><span class="s">'N/K'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nan
+</code></pre></div></div>
+
+<p>We make a new Series by calling the recode function:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_ratings</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">recode_ratings</span><span class="p">)</span>
+<span class="n">new_ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    8.6
+1    8.1
+2    NaN
+3    8.3
+4    8.0
+Name: Rating, dtype: float64
+</code></pre></div></div>
+
+<p>We can insert this back into a copy of the original data frame:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films_fixed</span> <span class="o">=</span> <span class="n">films</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">films_fixed</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'Rating'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_ratings</span>
+<span class="n">films_fixed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Votes</th>
+      <th>Rating</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Decade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>635139</td>
+      <td>8.6</td>
+      <td>Léon</td>
+      <td>1994</td>
+      <td>1990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>264285</td>
+      <td>8.1</td>
+      <td>The Princess Bride</td>
+      <td>1987</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>43090</td>
+      <td>NaN</td>
+      <td>Paris, Texas (1984)</td>
+      <td>1984</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>90434</td>
+      <td>8.3</td>
+      <td>Rashômon</td>
+      <td>1950</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>427099</td>
+      <td>8.0</td>
+      <td>X-Men: Days of Future Past</td>
+      <td>2014</td>
+      <td>2010</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+          
+        </section>
+
+        <footer class="page__meta">
+          
+          
+
+
+        </footer>
+
+        
+
+        
+  <nav class="pagination">
+    
+      <a href="/cfd2019/chapters/07/text_encoding" class="pagination--pager" title="6.9 Text encoding
+">Previous</a>
+    
+    
+      <a href="/cfd2019/chapters/08/mean" class="pagination--pager" title="
+  The mean and straight line relationships
+
+">Next</a>
+    
+  </nav>
+
+
+      </div>
+
+      
+    </article>
+  </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="text" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+      </div>
+    
+
+    
+
+    
+  <script src="/cfd2019/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+<script src="/cfd2019/assets/js/lunr/lunr.min.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-store.js"></script>
+<script src="/cfd2019/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!-- Custom scripts to load after site JS is loaded -->
+
+    <!-- Custom HTML used for the textbooks -->
+<!-- Configure, then load MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      processEnvironments: true
+    }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full,Safe" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+// --- To auto-embed hub URLs in interact links if given in a RESTful fashion ---
+function getJsonFromUrl(url) {
+  var query = url.split('?');
+  if (query.length < 2) {
+    // No queries so just return false
+    return false;
+  }
+  query = query[1];
+  // Collect REST params into a dictionary
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+// Parse a Binder URL, converting it to the string needed for JupyterHub
+function binder2Jupyterhub(url) {
+  newUrl = {};
+  parts = url.split('v2/gh/')[1];
+  // Grab the base repo information
+  repoinfo = parts.split('?')[0];
+  var [org, repo, ref] = repoinfo.split('/');
+  newUrl['repo'] = ['https://github.com', org, repo].join('/');
+  newUrl['branch'] = ref
+  // Grab extra parameters passed
+  params = getJsonFromUrl(url);
+  if (params['filepath'] !== undefined) {
+    newUrl['subPath'] = params['filepath']
+  }
+  return jQuery.param(newUrl);
+}
+
+// Filter out potentially unsafe characters to prevent xss
+function safeUrl(url)
+{
+   return String(encodeURIComponent(url))
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+}
+
+function addParamToInternalLinks(hub) {
+  var links = $("a").each(function() {
+    var href = this.href;
+    // If the link is an internal link...
+    if (href.search("https://matthew-brett.github.io") !== -1 || href.startsWith('/') || href.search("127.0.0.1:") !== -1) {
+      // Assume we're an internal link, add the hub param to it
+      var params = getJsonFromUrl(href);
+      if (params !== false) {
+        // We have REST params, so append a new one
+        params['hub'] = hub;
+      } else {
+        // Create the REST params
+        params = {'hub': hub};
+      }
+      // Update the link
+      var newHref = href.split('?')[0] + '?' + jQuery.param(params);
+      this.setAttribute('href', decodeURIComponent(newHref));
+    }
+  });
+  return false;
+}
+
+  // Update interact links
+function updateInteractLink() {
+    // hack to make this work since it expects a ? in the URL
+    rest = getJsonFromUrl("?" + location.search.substr(1));
+    hubUrl = rest['hub'];
+    if (hubUrl !== undefined) {
+      // Sanitize the hubUrl
+      hubUrl = safeUrl(hubUrl);
+      // Add HTTP text if omitted
+      if (hubUrl.indexOf('http') < 0) {hubUrl = 'http://' + hubUrl;}
+      link = $("a.interact-button")[0];
+      if (link !== undefined) {
+          // Update the interact link URL
+          var href = link.getAttribute('href');
+          if ('binder' == 'binder') {
+            // If binder links exist, we need to re-work them for jupyterhub
+            first = [hubUrl, 'hub', 'user-redirect', 'git-sync'].join('/')
+            href = first + '?' + binder2Jupyterhub(href);
+          } else {
+            // If JupyterHub links, we only need to replace the hub url
+            href = href.replace("https://mybinder.org", hubUrl);
+          }
+          link.setAttribute('href', decodeURIComponent(href));
+
+          // Add text after interact link saying where we're launching
+          hubUrlNoHttp = decodeURIComponent(hubUrl).replace('http://', '').replace('https://', '');
+          $("a.interact-button").after($('<div class="interact-context">on ' + hubUrlNoHttp + '</div>'));
+
+      }
+      // Update internal links so we retain the hub url
+      addParamToInternalLinks(hubUrl);
+    }
+}
+
+// --- Highlight the part of sidebar for current page ---
+
+// helper to replace trailing slash
+function replaceSlash(string)
+{
+    return string.replace(/\/$/, "");
+}
+
+// Add a class to the current page in the sidebar
+function highlightSidebarCurrentPage()
+{
+  var currentpage = location.href;
+  var links = $('.sidebar .nav__items a');
+  var ii = 0;
+  for(ii; ii < links.length; ii++) {
+    var link = links[ii];
+    if(replaceSlash(link.href) == replaceSlash(currentpage)) {
+      // Add CSS for styling
+      link.classList.add("current");
+      // Scroll to this element
+      $('div.sidebar').scrollTop(link.offsetTop - 300);
+    }
+  }
+}
+
+// --- Set up copy/paste for code blocks ---
+function addCopyButtonToCode(){
+  // get all <code> elements
+  var allCodeBlocksElements = $( "div.input_area code, div.highlighter-rouge code" );
+
+  allCodeBlocksElements.each(function(ii) {
+   	// add different id for each code block
+
+  	// target
+    var currentId = "codeblock" + (ii + 1);
+    $(this).attr('id', currentId);
+
+    //trigger
+    var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
+       $(this).after(clipButton);
+    });
+
+    new Clipboard('.btn');
+}
+
+// Run scripts when page is loaded
+$(document).ready(function () {
+  // Add anchors to H1 etc links
+  anchors.add();
+  // Highlight current page in sidebar
+  highlightSidebarCurrentPage();
+  // Add copy button to code blocks
+  addCopyButtonToCode();
+  // Update the Interact link if a REST param given
+  updateInteractLink();
+});
+</script>
+
+  </body>
+</html>

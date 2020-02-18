@@ -59,6 +59,8 @@
   * - [Gory Pandas](notebooks/07/gory_pandas.ipynb)
   * - [Pandas indexing reprise](notebooks/07/pandas_indexing_reprise.ipynb)
   * [6.8 Safe Pandas](notebooks/07/safe_pandas.ipynb)
+  * [6.9 Text encoding](notebooks/07/text_encoding.ipynb)
+  * [6.10 Numbers and strings](notebooks/07/numbers_and_strings.ipynb)
 * [7. The mean and straight line relationships](notebooks/08/mean.md)
   * [7.1 The mean as a predictor](notebooks/08/mean_meaning.ipynb)
   * [7.2 Where and argmin](notebooks/08/where_and_argmin.ipynb)
