@@ -191,7 +191,9 @@ import pandas as pd
 pd.set_option('mode.chained_assignment','raise')
 ```
 
-We return to the example data file that you may have seen in the [text encoding](/cfd2019/chapters/07/text_encoding) page:
+We return to the example data file that you may have seen in the [text encoding](/cfd2019/chapters/07/text_encoding) page.
+
+You can download the data file from [imdblet_latin.csv](/cfd2019/data/imdblet_latin.csv).
 
 ```{python}
 films = pd.read_csv('imdblet_latin.csv', encoding='latin1')
