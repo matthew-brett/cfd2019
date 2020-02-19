@@ -16,6 +16,7 @@ import argparse
 
 from jinja2 import Template
 
+from nbconvert.preprocessors.execute import executenb
 
 CONTENT_EXTS = ('.ipynb', '.md', '.Rmd')
 
@@ -53,18 +54,16 @@ def _strip_suffixes(string, suffixes=None):
     return string
 
 
-def _clean_notebook_cells(path_ntbk):
+def _clean_notebook_cells(nb):
     """Clean up cell text of an nbformat NotebookNode."""
-    ntbk = nbf.read(path_ntbk, nbf.NO_CONVERT)
     # Remove '#' from the end of markdown headers
-    for cell in ntbk.cells:
+    for cell in nb.cells:
         if cell.cell_type == "markdown":
             cell_lines = cell.source.split('\n')
             for ii, line in enumerate(cell_lines):
                 if line.startswith('#'):
                     cell_lines[ii] = line.rstrip('#').rstrip()
             cell.source = '\n'.join(cell_lines)
-    nbf.write(ntbk, path_ntbk)
 
 
 def _between_symbols(string, c1, c2):
@@ -312,8 +311,6 @@ class SiteBuilder:
         call = ['jupyter', 'nbconvert', '--log-level="CRITICAL"',
                 '--to', 'markdown', '--template', self.template_path,
                 images_call, build_call, nb_fname]
-        if self.execute is True:
-            call.insert(-1, '--execute')
         check_call(call)
 
     def _process_notebook(self, link, new_folder):
@@ -331,10 +328,30 @@ class SiteBuilder:
             cleaner.clear(kind="content", search_text=site_yaml.get('hide_code_text'))
         cleaner.clear('stderr')
         cleaner.save(tmp_notebook)
-        _clean_notebook_cells(tmp_notebook)
+        nb = nbf.read(tmp_notebook, nbf.NO_CONVERT)
+        _clean_notebook_cells(nb)
+        if self.execute:
+            nb = executenb(nb, cwd=op.dirname(tmp_notebook))
+        self._proc_md_nb(nb)
         # Convert notebook to markdown
+        nbf.write(nb, tmp_notebook)
         self._nb2md(tmp_notebook, new_folder)
         os.remove(tmp_notebook)
+
+    def _proc_md_nb(self, nb):
+        """ Process markdown from (ppossibly executed) notebook `nb`
+        """
+        # Strip error traceback to first, last line
+        for cell in nb.cells:
+            if cell['cell_type'] != 'code' or 'outputs' not in cell:
+                continue
+            for output in cell['outputs']:
+                if (output['output_type'] != 'error' or
+                    'traceback' not in output):
+                    continue
+                tb = output['traceback']
+                if len(tb) > 1:
+                    tb[:] = ['\n'.join([tb[1], '   ...', tb[-1]])]
 
     def _write_out_md(self,
                       link,

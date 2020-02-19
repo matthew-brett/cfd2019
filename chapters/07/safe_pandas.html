@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T18:06:26+00:00">
+  <meta property="article:published_time" content="2020-02-19T23:37:46+00:00">
 
 
 
@@ -1048,7 +1048,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.8 Safe Pandas">
       <meta itemprop="description" content="A lot of Pandas’ design is for speed and efficiency.">
-      <meta itemprop="datePublished" content="February 18, 2020">
+      <meta itemprop="datePublished" content="February 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1633,56 +1633,9 @@ Name: 0, dtype: object
 </span><span class="n">row_0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError                      Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-17-c4d86dc6e5e8&gt; in &lt;module&gt;
-      1 row_0 = ratings.loc[0]   # Copy?  Or wiew?  Difficult to guess.
-      2 # Now this generates an error.
-----&gt; 3 row_0.loc['Clarity'] = 99
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __setitem__(self, key, value)
-    187             key = com._apply_if_callable(key, self.obj)
-    188         indexer = self._get_setitem_indexer(key)
---&gt; 189         self._setitem_with_indexer(indexer, value)
-    190 
-    191     def _validate_key(self, key, axis):
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _setitem_with_indexer(self, indexer, value)
-    644 
-    645             # check for chained assignment
---&gt; 646             self.obj._check_is_chained_assignment_possible()
-    647 
-    648             # actually do the set
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_is_chained_assignment_possible(self)
-   2628             return True
-   2629         elif self._is_copy:
--&gt; 2630             self._check_setitem_copy(stacklevel=4, t='referant')
-   2631         return False
-   2632 
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_setitem_copy(self, stacklevel, t, force)
-   2710 
-   2711             if value == 'raise':
--&gt; 2712                 raise com.SettingWithCopyError(t)
-   2713             elif value == 'warn':
-   2714                 warnings.warn(t, com.SettingWithCopyWarning,
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError: 
+   ...
+SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
@@ -1699,54 +1652,9 @@ go away.  Please be patient.  You will find that, if you follow the <em>copy rig
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError                      Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-18-ca8596f27095&gt; in &lt;module&gt;
-----&gt; 1 ratings.loc[0].loc['Clarity'] = 99
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __setitem__(self, key, value)
-    187             key = com._apply_if_callable(key, self.obj)
-    188         indexer = self._get_setitem_indexer(key)
---&gt; 189         self._setitem_with_indexer(indexer, value)
-    190 
-    191     def _validate_key(self, key, axis):
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _setitem_with_indexer(self, indexer, value)
-    644 
-    645             # check for chained assignment
---&gt; 646             self.obj._check_is_chained_assignment_possible()
-    647 
-    648             # actually do the set
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_is_chained_assignment_possible(self)
-   2628             return True
-   2629         elif self._is_copy:
--&gt; 2630             self._check_setitem_copy(stacklevel=4, t='referant')
-   2631         return False
-   2632 
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_setitem_copy(self, stacklevel, t, force)
-   2710 
-   2711             if value == 'raise':
--&gt; 2712                 raise com.SettingWithCopyError(t)
-   2713             elif value == 'warn':
-   2714                 warnings.warn(t, com.SettingWithCopyWarning,
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError: 
+   ...
+SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
@@ -1761,55 +1669,9 @@ cell directly above is just a short-cut for this exact equivalent.</p>
 <span class="n">row_0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError                      Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-19-431d01aab0ac&gt; in &lt;module&gt;
-      1 row_0 = ratings.loc[0]
-----&gt; 2 row_0.loc['Clarity'] = 99
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __setitem__(self, key, value)
-    187             key = com._apply_if_callable(key, self.obj)
-    188         indexer = self._get_setitem_indexer(key)
---&gt; 189         self._setitem_with_indexer(indexer, value)
-    190 
-    191     def _validate_key(self, key, axis):
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _setitem_with_indexer(self, indexer, value)
-    644 
-    645             # check for chained assignment
---&gt; 646             self.obj._check_is_chained_assignment_possible()
-    647 
-    648             # actually do the set
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_is_chained_assignment_possible(self)
-   2628             return True
-   2629         elif self._is_copy:
--&gt; 2630             self._check_setitem_copy(stacklevel=4, t='referant')
-   2631         return False
-   2632 
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_setitem_copy(self, stacklevel, t, force)
-   2710 
-   2711             if value == 'raise':
--&gt; 2712                 raise com.SettingWithCopyError(t)
-   2713             elif value == 'warn':
-   2714                 warnings.warn(t, com.SettingWithCopyWarning,
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError: 
+   ...
+SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
@@ -1848,54 +1710,9 @@ with <code class="highlighter-rouge">.loc</code> or <code class="highlighter-rou
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError                      Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-20-ca8596f27095&gt; in &lt;module&gt;
-----&gt; 1 ratings.loc[0].loc['Clarity'] = 99
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __setitem__(self, key, value)
-    187             key = com._apply_if_callable(key, self.obj)
-    188         indexer = self._get_setitem_indexer(key)
---&gt; 189         self._setitem_with_indexer(indexer, value)
-    190 
-    191     def _validate_key(self, key, axis):
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _setitem_with_indexer(self, indexer, value)
-    644 
-    645             # check for chained assignment
---&gt; 646             self.obj._check_is_chained_assignment_possible()
-    647 
-    648             # actually do the set
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_is_chained_assignment_possible(self)
-   2628             return True
-   2629         elif self._is_copy:
--&gt; 2630             self._check_setitem_copy(stacklevel=4, t='referant')
-   2631         return False
-   2632 
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _check_setitem_copy(self, stacklevel, t, force)
-   2710 
-   2711             if value == 'raise':
--&gt; 2712                 raise com.SettingWithCopyError(t)
-   2713             elif value == 'warn':
-   2714                 warnings.warn(t, com.SettingWithCopyWarning,
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError: 
+   ...
+SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
@@ -1942,9 +1759,7 @@ data frame, and does just this.</p>
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/08/mean" class="pagination--pager" title="
-  The mean and straight line relationships
-
+      <a href="/cfd2019/chapters/07/text_encoding" class="pagination--pager" title="6.9 Text encoding
 ">Next</a>
     
   </nav>

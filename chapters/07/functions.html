@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T18:06:26+00:00">
+  <meta property="article:published_time" content="2020-02-19T23:37:46+00:00">
 
 
 
@@ -1048,7 +1048,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.3 Functions in more detail">
       <meta itemprop="description" content="Functions">
-      <meta itemprop="datePublished" content="February 18, 2020">
+      <meta itemprop="datePublished" content="February 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1309,18 +1309,9 @@ code runs in our usual top-level world, and so, not inside a function.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-10-e983f374794d&gt; in &lt;module&gt;
-----&gt; 1 d
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError: name 'd' is not defined
+   ...
+NameError: name 'd' is not defined
 </code></pre></div></div>
 
 <p>Notice that, in the function, we set <code class="highlighter-rouge">d</code> to point to the result of <code class="highlighter-rouge">x * 2</code>.  We called the function a couple of times, so we executed this statement a couple of times.  But the <code class="highlighter-rouge">d</code> in the function, gets thrown away, when we come back from function world.</p>
@@ -1334,18 +1325,9 @@ a variable, is the pieces of code in which the variable is visible.
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-11-6fcf9dfbd479&gt; in &lt;module&gt;
-----&gt; 1 x
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError: name 'x' is not defined
+   ...
+NameError: name 'x' is not defined
 </code></pre></div></div>
 
 <h3 id="the-function-has-limited-access-to-variables-outside-the-function">The function has limited access to variables outside the function</h3>
@@ -1363,18 +1345,9 @@ and only one argument.  If we try to call it with no arguments
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-021efdc17f44&gt; in &lt;module&gt;
-----&gt; 1 double()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() missing 1 required positional argument: 'x'
+   ...
+TypeError: double() missing 1 required positional argument: 'x'
 </code></pre></div></div>
 
 <p>If we try and call it with more than one argument, we get an error.  We separate arguments with commas.</p>
@@ -1382,35 +1355,17 @@ and only one argument.  If we try to call it with no arguments
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-13-00307dcfcdd5&gt; in &lt;module&gt;
-----&gt; 1 double(2, 3)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() takes 1 positional argument but 2 were given
+   ...
+TypeError: double() takes 1 positional argument but 2 were given
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-14-deb0fdbc1222&gt; in &lt;module&gt;
-----&gt; 1 double(2, 3, 4)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: double() takes 1 positional argument but 3 were given
+   ...
+TypeError: double() takes 1 positional argument but 3 were given
 </code></pre></div></div>
 
 <h2 id="function-arguments-are-expressions">Function arguments are expressions</h2>
@@ -1451,35 +1406,17 @@ sets <code class="highlighter-rouge">x</code> to have the value CR of int 5, and
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-18-64960a6c4018&gt; in &lt;module&gt;
-----&gt; 1 multiply(2)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() missing 1 required positional argument: 'b'
+   ...
+TypeError: multiply() missing 1 required positional argument: 'b'
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-19-9581b07c2e6f&gt; in &lt;module&gt;
-----&gt; 1 multiply(2, 3, 4)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: multiply() takes 2 positional arguments but 3 were given
+   ...
+TypeError: multiply() takes 2 positional arguments but 3 were given
 </code></pre></div></div>
 
 <h2 id="functions-can-have-no-arguments">Functions can have no arguments</h2>
@@ -1512,18 +1449,9 @@ sets <code class="highlighter-rouge">x</code> to have the value CR of int 5, and
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">(</span><span class="mf">0.45</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-23-256c7c6a08cf&gt; in &lt;module&gt;
-----&gt; 1 biased_coin(0.45)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: biased_coin() takes 0 positional arguments but 1 was given
+   ...
+TypeError: biased_coin() takes 0 positional arguments but 1 was given
 </code></pre></div></div>
 
 <h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>

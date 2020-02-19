@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T18:06:26+00:00">
+  <meta property="article:published_time" content="2020-02-19T23:37:46+00:00">
 
 
 
@@ -1048,7 +1048,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="4.2 Data frames, Series and arrays">
       <meta itemprop="description" content="We have now come across three important structures that Python uses to store and access data:">
-      <meta itemprop="datePublished" content="February 18, 2020">
+      <meta itemprop="datePublished" content="February 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1343,114 +1343,9 @@ Name: Easiness, Length: 75, dtype: float64
 </span><span class="n">courses</span><span class="p">[</span><span class="s">'easiness'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError                                  Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
-   3077             try:
--&gt; 3078                 return self._engine.get_loc(key)
-   3079             except KeyError:
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError: 'easiness'
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-During handling of the above exception, another exception occurred:
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError                                  Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-10-cd3826a0b407&gt; in &lt;module&gt;
-      1 # The exact column name starts with capital E
-----&gt; 2 courses['easiness']
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/frame.py in __getitem__(self, key)
-   2686             return self._getitem_multilevel(key)
-   2687         else:
--&gt; 2688             return self._getitem_column(key)
-   2689 
-   2690     def _getitem_column(self, key):
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/frame.py in _getitem_column(self, key)
-   2693         # get column
-   2694         if self.columns.is_unique:
--&gt; 2695             return self._get_item_cache(key)
-   2696 
-   2697         # duplicate columns &amp; possible reduce dimensionality
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/generic.py in _get_item_cache(self, item)
-   2487         res = cache.get(item)
-   2488         if res is None:
--&gt; 2489             values = self._data.get(item)
-   2490             res = self._box_item_values(item, values)
-   2491             cache[item] = res
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/internals.py in get(self, item, fastpath)
-   4113 
-   4114             if not isna(item):
--&gt; 4115                 loc = self.items.get_loc(item)
-   4116             else:
-   4117                 indexer = np.arange(len(self.items))[isna(self.items)]
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
-   3078                 return self._engine.get_loc(key)
-   3079             except KeyError:
--&gt; 3080                 return self._engine.get_loc(self._maybe_cast_indexer(key))
-   3081 
-   3082         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError: 'easiness'
+   ...
+KeyError: 'easiness'
 </code></pre></div></div>
 
 <p>You have just seen indexing into the data frame with a string to get the data for one column.</p>

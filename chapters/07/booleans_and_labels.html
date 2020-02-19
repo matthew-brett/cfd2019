@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T18:06:26+00:00">
+  <meta property="article:published_time" content="2020-02-19T23:37:46+00:00">
 
 
 
@@ -1048,7 +1048,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Booleans and labels">
       <meta itemprop="description" content="We have already used Boolean series to index data frames and other series.">
-      <meta itemprop="datePublished" content="February 18, 2020">
+      <meta itemprop="datePublished" content="February 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1361,56 +1361,9 @@ True and False values?  Or something else?</p>
 </span><span class="n">richest_5</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sorted_is_big_spender</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError                       Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-11-8f5ae3f2285e&gt; in &lt;module&gt;
-      2 # The 'country_name' column is the first column,
-      3 # so it is at offset 0 in the columns.
-----&gt; 4 richest_5.iloc[sorted_is_big_spender, 0]
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
-   1492             except (KeyError, IndexError, AttributeError):
-   1493                 pass
--&gt; 1494             return self._getitem_tuple(key)
-   1495         else:
-   1496             # we by definition only have the 0th axis
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
-   2141     def _getitem_tuple(self, tup):
-   2142 
--&gt; 2143         self._has_valid_tuple(tup)
-   2144         try:
-   2145             return self._getitem_lowerdim(tup)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
-    221                 raise IndexingError('Too many indexers')
-    222             try:
---&gt; 223                 self._validate_key(k, i)
-    224             except ValueError:
-    225                 raise ValueError("Location based indexing can only have "
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
-   2058             if hasattr(key, 'index') and isinstance(key.index, Index):
-   2059                 if key.index.inferred_type == 'integer':
--&gt; 2060                     raise NotImplementedError("iLocation based boolean "
-   2061                                               "indexing on an integer type "
-   2062                                               "is not available")
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError: iLocation based boolean indexing on an integer type is not available
+   ...
+NotImplementedError: iLocation based boolean indexing on an integer type is not available
 </code></pre></div></div>
 
 <p>It does something else - it gives an error, telling us that it will not use the
@@ -1422,56 +1375,9 @@ positions give the same answer:</p>
 </span><span class="n">richest_5</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError                       Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-2f61cb9f0042&gt; in &lt;module&gt;
-      1 # iloc with the original Boolean series, where positions
-      2 # and labels match.
-----&gt; 3 richest_5.iloc[is_big_spender, 0]
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
-   1492             except (KeyError, IndexError, AttributeError):
-   1493                 pass
--&gt; 1494             return self._getitem_tuple(key)
-   1495         else:
-   1496             # we by definition only have the 0th axis
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
-   2141     def _getitem_tuple(self, tup):
-   2142 
--&gt; 2143         self._has_valid_tuple(tup)
-   2144         try:
-   2145             return self._getitem_lowerdim(tup)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
-    221                 raise IndexingError('Too many indexers')
-    222             try:
---&gt; 223                 self._validate_key(k, i)
-    224             except ValueError:
-    225                 raise ValueError("Location based indexing can only have "
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
-   2058             if hasattr(key, 'index') and isinstance(key.index, Index):
-   2059                 if key.index.inferred_type == 'integer':
--&gt; 2060                     raise NotImplementedError("iLocation based boolean "
-   2061                                               "indexing on an integer type "
-   2062                                               "is not available")
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NotImplementedError: iLocation based boolean indexing on an integer type is not available
+   ...
+NotImplementedError: iLocation based boolean indexing on an integer type is not available
 </code></pre></div></div>
 
 <p>If you want to use Boolean indexing with <code class="highlighter-rouge">iloc</code>, you can use a Boolean sequence

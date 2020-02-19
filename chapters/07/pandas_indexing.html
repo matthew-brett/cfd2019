@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-18T18:06:26+00:00">
+  <meta property="article:published_time" content="2020-02-19T23:37:46+00:00">
 
 
 
@@ -1048,7 +1048,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.6 Indexing in Pandas">
       <meta itemprop="description" content="Way back in the introduction to data frames, we covered indexing into data frames withBoolean vectors, such as Pandas Series or Numpy arrays, and indexing into data frames with column names.">
-      <meta itemprop="datePublished" content="February 18, 2020">
+      <meta itemprop="datePublished" content="February 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1911,71 +1911,9 @@ understand or use labels:</p>
 </span><span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
-</code></pre></div></div>
-
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
-    222             try:
---&gt; 223                 self._validate_key(k, i)
-    224             except ValueError:
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _validate_key(self, key, axis)
-   2083             raise ValueError("Can only index by location with "
--&gt; 2084                              "a [{types}]".format(types=self._valid_types))
-   2085 
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: Can only index by location with a [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array]
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-During handling of the above exception, another exception occurred:
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ipython-input-12-3b068730429a&gt; in &lt;module&gt;
-      1 # We can't specify columns by label, using iloc.
-----&gt; 2 richest_15.iloc[10, 'gdp_us_billion']
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in __getitem__(self, key)
-   1492             except (KeyError, IndexError, AttributeError):
-   1493                 pass
--&gt; 1494             return self._getitem_tuple(key)
-   1495         else:
-   1496             # we by definition only have the 0th axis
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _getitem_tuple(self, tup)
-   2141     def _getitem_tuple(self, tup):
-   2142 
--&gt; 2143         self._has_valid_tuple(tup)
-   2144         try:
-   2145             return self._getitem_lowerdim(tup)
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py in _has_valid_tuple(self, key)
-    225                 raise ValueError("Location based indexing can only have "
-    226                                  "[{types}] types"
---&gt; 227                                  .format(types=self._valid_types))
-    228 
-    229     def _is_nested_tuple_indexer(self, tup):
-
-</code></pre></div></div>
-
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+   ...
+ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
 </code></pre></div></div>
 
 <p>Notice the somewhat informative error right at the bottom of the error message.</p>

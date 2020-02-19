@@ -249,7 +249,7 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions",
         "teaser":null},{
-        "title": "6.1 Functions as values",
+        "title": "6.4 Functions as values",
         "excerpt":"In the introduction to functions, we introduced themetaphor of a function being a recipe. It is a procedure, thataccepts inputs, (the ingredients of the recipe), and returns an output(the meal from the recipe). A function, like a recipe, usually hasa name. def add(a, b): return a + bAs we saw...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/07/functions_as_values",
