@@ -127,8 +127,8 @@ list(name_as_latin1_bytes)
 ```
 
 The differences show up when the encodings generate bytes for characters
-outside the standard English alphabet.  Here's the surname of [Ferenado
-Pérez](https://en.wikipedia.org/wiki/Fernando_P%C3%A9rez_(software_developer),
+outside the standard English alphabet.  Here's the surname of [Fernado
+Pérez](https://en.wikipedia.org/wiki/Fernando_P%C3%A9rez_(software_developer))
 one of the founders of the Jupyter project you are using here:
 
 ```{python}
@@ -166,8 +166,8 @@ format:
 fp_as_latin1.decode('utf-8')
 ```
 
-It's a mess - because UTF-8 doesn't know what to interpret bytes that Latin 1
-wrote --- this sequence of bytes doesn't make sense in the UTF-8 encoding.
+It's a mess - because UTF-8 doesn't know how to interpret the bytes that Latin
+1 wrote --- this sequence of bytes doesn't make sense in the UTF-8 encoding.
 
 Something similar happens when you write bytes (encode) text with UTF-8 and
 then read (decode) assuming the bytes are for Latin 1:
