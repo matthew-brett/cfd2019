@@ -350,7 +350,8 @@ class SiteBuilder:
                     'traceback' not in output):
                     continue
                 tb = output['traceback']
-                tb[:] = ['\n'.join([tb[1], '   ...', tb[-1]])]
+                if len(tb) > 1:
+                    tb[:] = ['\n'.join([tb[1], '   ...', tb[-1]])]
 
     def _write_out_md(self,
                       link,
