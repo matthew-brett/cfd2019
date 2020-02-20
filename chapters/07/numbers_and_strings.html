@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-19T23:49:23+00:00">
+  <meta property="article:published_time" content="2020-02-20T00:45:34+00:00">
 
 
 
@@ -1048,7 +1048,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.10 Numbers and strings">
       <meta itemprop="description" content="This page covers a common problem when loading data into Pandas — when Pandas gets confused about whether values in a column are text or numbers.">
-      <meta itemprop="datePublished" content="February 19, 2020">
+      <meta itemprop="datePublished" content="February 20, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1234,7 +1234,25 @@ Name: Rating, dtype: object
 
 <p>If that wasn’t obvious, another way of checking where the problem value is, to <code class="highlighter-rouge">apply</code> the function <code class="highlighter-rouge">float</code> to the column values.</p>
 
-<p>When we <code class="highlighter-rouge">apply</code> a function to a Series, it takes each value from the Series, calls the function, and returns the value.  Recall that the <code class="highlighter-rouge">float</code> function converts the thing you pass into a floating point value:</p>
+<p>When we <code class="highlighter-rouge">apply</code> a function to a Series, it does this:</p>
+
+<ul>
+  <li>For each value in the Series it:
+    <ul>
+      <li>Calls the function, with the value as the single argument.</li>
+      <li>Collects the new value returned from the function, and appends it to a new
+Series.</li>
+    </ul>
+  </li>
+  <li>Returns the new Series.</li>
+</ul>
+
+<p>The result is a Series that is the same length as the original series, but
+where each value in the new series is the result of calling the function on the
+original value.</p>
+
+<p>Recall that the <code class="highlighter-rouge">float</code> function converts the thing you pass into a floating
+point value:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'3.14'</span><span class="p">)</span>
 <span class="n">v</span>

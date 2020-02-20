@@ -239,7 +239,20 @@ The film "Paris, Texas (1984)" has a value "N/K" for the rating. This can't be a
 
 If that wasn't obvious, another way of checking where the problem value is, to `apply` the function `float` to the column values.
 
-When we `apply` a function to a Series, it takes each value from the Series, calls the function, and returns the value.  Recall that the `float` function converts the thing you pass into a floating point value:
+When we `apply` a function to a Series, it does this:
+
+* For each value in the Series it:
+  * Calls the function, with the value as the single argument.
+  * Collects the new value returned from the function, and appends it to a new
+    Series.
+* Returns the new Series.
+
+The result is a Series that is the same length as the original series, but
+where each value in the new series is the result of calling the function on the
+original value.
+
+Recall that the `float` function converts the thing you pass into a floating
+point value:
 
 ```{python}
 v = float('3.14')
