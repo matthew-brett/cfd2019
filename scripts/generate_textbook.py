@@ -54,18 +54,6 @@ def _strip_suffixes(string, suffixes=None):
     return string
 
 
-def _clean_notebook_cells(nb):
-    """Clean up cell text of an nbformat NotebookNode."""
-    # Remove '#' from the end of markdown headers
-    for cell in nb.cells:
-        if cell.cell_type == "markdown":
-            cell_lines = cell.source.split('\n')
-            for ii, line in enumerate(cell_lines):
-                if line.startswith('#'):
-                    cell_lines[ii] = line.rstrip('#').rstrip()
-            cell.source = '\n'.join(cell_lines)
-
-
 def _between_symbols(string, c1, c2):
     """Grab characters between symbols in a string.
     Will return empty string if nothing is between c1 and c2."""
@@ -319,30 +307,45 @@ class SiteBuilder:
         tmp_notebook = link + '_TMP'
         sh.copy2(link, tmp_notebook)
 
+        nb = nbf.read(tmp_notebook, nbf.NO_CONVERT)
+        if self.execute:
+            nb = executenb(nb, cwd=op.dirname(tmp_notebook))
         # Clean up the file before converting
-        cleaner = NotebookCleaner(tmp_notebook)
+        cleaner = NotebookCleaner(nb)
         cleaner.remove_cells(empty=True)
         if site_yaml.get('hide_cell_text', False):
             cleaner.remove_cells(search_text=site_yaml.get('hide_cell_text'))
         if site_yaml.get('hide_code_text', False):
-            cleaner.clear(kind="content", search_text=site_yaml.get('hide_code_text'))
-        # Beware! This cleans warnings from the output.  You have to put them
-        # back in the text if you want them.
-        cleaner.clear('stderr')
-        cleaner.save(tmp_notebook)
-        nb = nbf.read(tmp_notebook, nbf.NO_CONVERT)
-        _clean_notebook_cells(nb)
-        if self.execute:
-            nb = executenb(nb, cwd=op.dirname(tmp_notebook))
-        self._proc_md_nb(nb)
+            cleaner.clear(kind="content",
+                          search_text=site_yaml.get('hide_code_text'))
+        # Beware! By default, this cleans warnings etc from the output.
+        # Set metadata in notebook YaML to allow stderr.
+        if not nb['metadata'].get('jupyterbook', {}).get('show_stderr', False):
+            cleaner.clear('stderr')
+        self._process_nb_for_md(nb)
         # Convert notebook to markdown
         nbf.write(nb, tmp_notebook)
         self._nb2md(tmp_notebook, new_folder)
         os.remove(tmp_notebook)
 
-    def _proc_md_nb(self, nb):
-        """ Process markdown from (ppossibly executed) notebook `nb`
+    def _process_nb_for_md(self, nb):
+        """ Process markdown from (possibly executed) notebook `nb`
         """
+        self._clean_md_headers(nb)
+        self._strip_tracebacks(nb)
+
+    def _clean_md_headers(self, nb):
+        """Clean up cell text of an nbformat NotebookNode."""
+        # Remove '#' from the end of markdown headers
+        for cell in nb.cells:
+            if cell.cell_type == "markdown":
+                cell_lines = cell.source.split('\n')
+                for ii, line in enumerate(cell_lines):
+                    if line.startswith('#'):
+                        cell_lines[ii] = line.rstrip('#').rstrip()
+                cell.source = '\n'.join(cell_lines)
+
+    def _strip_tracebacks(self, nb):
         # Strip error traceback to first, last line
         for cell in nb.cells:
             if cell['cell_type'] != 'code' or 'outputs' not in cell:
@@ -352,8 +355,12 @@ class SiteBuilder:
                     'traceback' not in output):
                     continue
                 tb = output['traceback']
-                if len(tb) > 1:
-                    tb[:] = ['\n'.join([tb[1], '   ...', tb[-1]])]
+                if len(tb) == 1:
+                    # Syntax errors don't have multiline tracebacks.
+                    assert ('SyntaxError' in tb[0] or
+                            'IndentationError' in tb[0])
+                    continue
+                tb[:] = ['\n'.join([tb[1], '   ...', tb[-1]])]
 
     def _write_out_md(self,
                       link,
