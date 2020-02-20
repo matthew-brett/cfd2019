@@ -36,13 +36,14 @@ The next sections are about why this happens, and therefore, how to fix it.
 ## Text encoding
 
 When the computer stores text in memory, or on disk, it must represent the
-characters in the text with numbers, because numbers are all the computer has.
+characters in the text with numbers, because numbers are the computer's basic
+units of storage.
 
 The traditional unit of memory size, or disk size, is the
 [byte](https://en.wikipedia.org/wiki/Byte).  Nowadays, the term byte means a
 single number that can take any value between 0 through 255.  Specifically, a
-byte is a binary number with 8 binary digits, so it can store $2^8$ different
-values.
+byte is a binary number with 8 binary digits, so it can store $2^8 = 256$
+different values --- 0 through 255.
 
 We can think of everything that the computer stores, in memory or on disk, as
 bytes --- units of information in memory, represented as numbers.
