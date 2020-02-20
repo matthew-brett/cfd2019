@@ -299,26 +299,20 @@ class SiteBuilder:
         c.Application.log_level = 'CRITICAL'
         md_exporter = nbc.MarkdownExporter(config=c)
         md_exporter.template_file = self.template_path
+        # Image output path - remove _ so Jekyll will copy them over
+        out_files_dir = op.join(self.images_folder, out_folder.lstrip('_'))
         # Set base name via unique_key as seed for resources dict.
         body, resources = md_exporter.from_notebook_node(
-            nb, resources= {'unique_key': out_base})
-        # Image output path - remove _ so Jekyll will copy them over
-        build_dir = op.join(self.images_folder, out_folder.lstrip('_'))
-        c.FilesWriter.build_directory = build_dir
+            nb, resources= {'unique_key': out_base,
+                            'output_files_dir': out_files_dir})
+        c.FilesWriter.build_directory = out_folder
         FilesWriter(config=c).write(body, resources, notebook_name=out_base)
-        # Move Markdown file into place.
-        out_root = out_base + '.md'
-        sh.move(op.join(build_dir, out_root), op.join(out_folder, out_root))
 
     def _process_notebook(self, link, new_folder):
-        # Create a temporary version of the notebook we can modify
         site_yaml = self.site_yaml
-        tmp_notebook = link + '_TMP'
-        sh.copy2(link, tmp_notebook)
-
-        nb = nbf.read(tmp_notebook, nbf.NO_CONVERT)
+        nb = nbf.read(link, nbf.NO_CONVERT)
         if self.execute:
-            nb = executenb(nb, cwd=op.dirname(tmp_notebook))
+            nb = executenb(nb, cwd=op.dirname(link))
         # Clean up the file before converting
         cleaner = NotebookCleaner(nb)
         cleaner.remove_cells(empty=True)
@@ -327,6 +321,7 @@ class SiteBuilder:
         if site_yaml.get('hide_code_text', False):
             cleaner.clear(kind="content",
                           search_text=site_yaml.get('hide_code_text'))
+        nb = cleaner.ntbk
         # Beware! By default, this cleans warnings etc from the output.
         # Set metadata in notebook YaML to allow stderr.
         if not nb['metadata'].get('jupyterbook', {}).get('show_stderr', False):
@@ -335,7 +330,6 @@ class SiteBuilder:
         # Convert notebook to markdown
         out_base, _ = op.splitext(op.basename(link))
         self._nb2md(nb, new_folder, out_base)
-        os.remove(tmp_notebook)
 
     def _process_nb_for_md(self, nb):
         """ Process markdown from (possibly executed) notebook `nb`
