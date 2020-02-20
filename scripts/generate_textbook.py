@@ -326,6 +326,8 @@ class SiteBuilder:
             cleaner.remove_cells(search_text=site_yaml.get('hide_cell_text'))
         if site_yaml.get('hide_code_text', False):
             cleaner.clear(kind="content", search_text=site_yaml.get('hide_code_text'))
+        # Beware! This cleans warnings from the output.  You have to put them
+        # back in the text if you want them.
         cleaner.clear('stderr')
         cleaner.save(tmp_notebook)
         nb = nbf.read(tmp_notebook, nbf.NO_CONVERT)
