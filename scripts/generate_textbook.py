@@ -7,6 +7,7 @@ from collections import namedtuple
 import yaml
 from nbclean import NotebookCleaner
 import nbformat as nbf
+import nbconvert as nbc
 from tqdm import tqdm
 import numpy as np
 from glob import glob
@@ -16,6 +17,8 @@ import argparse
 
 from jinja2 import Template
 
+from traitlets.config import Config
+from nbconvert.writers import FilesWriter
 from nbconvert.preprocessors.execute import executenb
 
 CONTENT_EXTS = ('.ipynb', '.md', '.Rmd')
@@ -279,8 +282,10 @@ class SiteBuilder:
         self._proc_out_nb(out_path)
         return op.sep.join([out_dir, op.basename(link)])
 
-    def _nb2md(self, nb_fname, out_folder):
-        # Run nbconvert moving it to the output folder
+    def _nb2md(self, nb, out_folder, out_base):
+        """Run nbconvert on notebook, output to the output folder
+        """
+
         """ Consider adding field to site config with script name
         to be run when executing notebook, and then.
 
@@ -290,16 +295,20 @@ class SiteBuilder:
         * Remove first cell and renumber inputs / outputs.
         * Convert to markdown with given template etc
         """
-        # This is the output directory for `.md` files
-        build_call = '--FilesWriter.build_directory={}'.format(out_folder)
-        # This is where images go - remove the _ so Jekyll will copy them
-        # over
-        images_call = '--NbConvertApp.output_files_dir={}'.format(
-            op.join(self.images_folder, out_folder.lstrip('_')))
-        call = ['jupyter', 'nbconvert', '--log-level="CRITICAL"',
-                '--to', 'markdown', '--template', self.template_path,
-                images_call, build_call, nb_fname]
-        check_call(call)
+        c = Config()
+        c.Application.log_level = 'CRITICAL'
+        md_exporter = nbc.MarkdownExporter(config=c)
+        md_exporter.template_file = self.template_path
+        # Set base name via unique_key as seed for resources dict.
+        body, resources = md_exporter.from_notebook_node(
+            nb, resources= {'unique_key': out_base})
+        # Image output path - remove _ so Jekyll will copy them over
+        build_dir = op.join(self.images_folder, out_folder.lstrip('_'))
+        c.FilesWriter.build_directory = build_dir
+        FilesWriter(config=c).write(body, resources, notebook_name=out_base)
+        # Move Markdown file into place.
+        out_root = out_base + '.md'
+        sh.move(op.join(build_dir, out_root), op.join(out_folder, out_root))
 
     def _process_notebook(self, link, new_folder):
         # Create a temporary version of the notebook we can modify
@@ -324,8 +333,8 @@ class SiteBuilder:
             cleaner.clear('stderr')
         self._process_nb_for_md(nb)
         # Convert notebook to markdown
-        nbf.write(nb, tmp_notebook)
-        self._nb2md(tmp_notebook, new_folder)
+        out_base, _ = op.splitext(op.basename(link))
+        self._nb2md(nb, new_folder, out_base)
         os.remove(tmp_notebook)
 
     def _process_nb_for_md(self, nb):
