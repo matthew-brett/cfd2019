@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-20T10:46:16+00:00">
+  <meta property="article:published_time" content="2020-02-20T20:26:51+00:00">
 
 
 
@@ -2044,6 +2044,11 @@ calculate the median of the <code class="highlighter-rouge">gdp</code> values.</
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">gdp</span><span class="p">)</span>
 </code></pre></div></div>
 
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/function_base.py:3250: RuntimeWarning: Invalid value encountered in median
+  r = func(a, **kwargs)
+
+</code></pre></div></div>
+
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nan
 </code></pre></div></div>
 
@@ -2088,7 +2093,14 @@ values, as we have done histograms on arrays.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gdp</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/04/data_frame_intro_32_0.png" alt="png" /></p>
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/histograms.py:754: RuntimeWarning: invalid value encountered in greater_equal
+  keep = (tmp_a &gt;= first_edge)
+/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/histograms.py:755: RuntimeWarning: invalid value encountered in less_equal
+  keep &amp;= (tmp_a &lt;= last_edge)
+
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/04/data_frame_intro_32_1.png" alt="png" /></p>
 
 <p>Notice the multiple warnings as Matplotlib tried to calculate the bin widths for the histogram.  These warnings result from Matplotlib struggline with <code class="highlighter-rouge">NaN</code> values.</p>
 
@@ -3370,7 +3382,7 @@ there is little relationship between GDP and maternal mortality.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x128468bd0&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1150beb90&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_60_1.png" alt="png" /></p>
@@ -3817,7 +3829,7 @@ any of this selection of rich countries.   Here’s a plot of
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp_per_million</span><span class="p">,</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x111600610&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x114251dd0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_80_1.png" alt="png" /></p>

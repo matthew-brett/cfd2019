@@ -233,7 +233,9 @@ clarity.iloc[0] = 4
 clarity.head()
 ```
 
-We have changed the value in the `clarity` Series.
+Notice the warning.  We will come back to that soon.
+
+Notice too that we have changed the value in the `clarity` Series.
 
 Consider --- **what happens to the matching value in the original data frame**?
 
@@ -331,7 +333,7 @@ row_0.loc['Clarity'] = 5
 row_0
 ```
 
-Notice the warning.  We will come back to that soon.
+We will get to the warning soon.
 
 Did we change the original data frame?
 
@@ -349,7 +351,9 @@ Our first, correct, response is to follow the *copy right* rule, and make this c
 copied_row_0 = ratings.iloc[0].copy()
 ```
 
-Notice that we no longer have a nasty warning when we modify `copied_row_0`, because Pandas knows this is a copy, so it does not need to warn us that we may be making a mistake:
+We no longer have a nasty warning when we modify `copied_row_0`, because
+Pandas knows we made a copy, so it does not need to warn us that we may be
+making a mistake:
 
 ```{python}
 # We don't get a warning when we change the copied result.

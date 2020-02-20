@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-20T10:46:16+00:00">
+  <meta property="article:published_time" content="2020-02-20T20:26:51+00:00">
 
 
 
@@ -1224,6 +1224,14 @@ Name: Clarity, dtype: float64
 <span class="n">clarity</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py:189: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  self._setitem_with_indexer(indexer, value)
+
+</code></pre></div></div>
+
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    4.000000
 1    3.487379
 2    3.608331
@@ -1232,7 +1240,9 @@ Name: Clarity, dtype: float64
 Name: Clarity, dtype: float64
 </code></pre></div></div>
 
-<p>We have changed the value in the <code class="highlighter-rouge">clarity</code> Series.</p>
+<p>Notice the warning.  We will come back to that soon.</p>
+
+<p>Notice too that we have changed the value in the <code class="highlighter-rouge">clarity</code> Series.</p>
 
 <p>Consider — <strong>what happens to the matching value in the original data frame</strong>?</p>
 
@@ -1496,6 +1506,14 @@ fetching a column, it would be reasonable to predict this would give us a view.<
 <span class="n">row_0</span>
 </code></pre></div></div>
 
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  
+
+</code></pre></div></div>
+
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              English
 Number of Professors      23343
 Clarity                       5
@@ -1505,7 +1523,7 @@ Easiness                3.16275
 Name: 0, dtype: object
 </code></pre></div></div>
 
-<p>Notice the warning.  We will come back to that soon.</p>
+<p>We will get to the warning soon.</p>
 
 <p>Did we change the original data frame?</p>
 
@@ -1599,7 +1617,9 @@ Name: 0, dtype: object
 </span><span class="n">copied_row_0</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Notice that we no longer have a nasty warning when we modify <code class="highlighter-rouge">copied_row_0</code>, because Pandas knows this is a copy, so it does not need to warn us that we may be making a mistake:</p>
+<p>We no longer have a nasty warning when we modify <code class="highlighter-rouge">copied_row_0</code>, because
+Pandas knows we made a copy, so it does not need to warn us that we may be
+making a mistake:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We don't get a warning when we change the copied result.
 </span><span class="n">copied_row_0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
