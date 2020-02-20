@@ -186,8 +186,9 @@ def main():
     rebuild = build.process_pages()
     if rebuild:
         print("Regenerating textbook")
-        check_call(['python', pjoin(here, 'generate_textbook.py'),
-                    '--site_root', site_root])
+        from generate_textbook import SiteBuilder
+        builder = SiteBuilder(site_root)
+        builder.build()
     else:
         print("Nothing to rebuild")
 
