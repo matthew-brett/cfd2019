@@ -20,15 +20,18 @@ assume you have done any programming before. As yet there are no good printed
 books that we know if, that follow this scheme.  For online material, the
 [Berkeley course in data science](https://www.inferentialthinking.com) is
 a very good introduction, that proceeds at a faster pace that we do.  You'll
-see that we have used a lot of their material for this course.  The [Software
-Carpentry](https://software-carpentry.org) organization has good online lessons
-that introduce various tools for using code in science, including an
-[introduction to
+see that we have used a lot of their material for this course.  Berkeley has
+a various matching [Data Science EdX
+courses](https://www.edx.org/professional-certificate/berkeleyx-foundations-of-data-science)
+that you can take for free.  You can also pay to take a formal certification on
+the same courses. The [Software Carpentry](https://software-carpentry.org)
+organization has good online lessons that introduce various tools for using
+code in science, including an [introduction to
 Python](http://swcarpentry.github.io/python-novice-inflammation), although this
-lesson goes a lot faster than we do. If you want a set of online materials for
-using the scientific libraries, that does assume some background in using
-Python, try the [Scipy Lectures](https://scipy-lectures.org).   If you know
-Python reasonably well, and you need an introduction to data science for
+lesson goes at a much faster pace than our course. If you want a set of online
+materials for using the scientific libraries, that does assume some background
+in using Python, try the [Scipy Lectures](https://scipy-lectures.org).   If you
+know Python reasonably well, and you need an introduction to data science for
 Python, then [Jake VanderPlas'](http://vanderplas.com) [Python data science
 handbook](https://jakevdp.github.io/PythonDataScienceHandbook) is a good
 resource.  It is very clear, well-written, and up to date, but it is not
