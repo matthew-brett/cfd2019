@@ -48,10 +48,10 @@ different values --- 0 through 255.
 We can think of everything that the computer stores, in memory or on disk, as
 bytes --- units of information in memory, represented as numbers.
 
-This is also true for text.  For example, here is a bit of text:
+This is also true for text.  For example, here is a short piece of text:
 
 ```{python}
-# A bit of text
+# A short piece of text
 name = 'Pandas'
 ```
 
@@ -90,7 +90,7 @@ characters, UTF-8 stores each character with a single byte (80 for 'P' , 97 for
 'a' etc).
 
 We can go the opposite direction, and *decode* the sequence of numbers (bytes)
-into a bit of text, like this:
+into a piece of text, like this:
 
 ```{python}
 # Convert the sequence of numbers (bytes) into text again.
