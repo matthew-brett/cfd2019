@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-03-14T23:06:08+00:00">
+  <meta property="article:published_time" content="2020-03-14T23:25:40+00:00">
 
 
 
@@ -1195,11 +1195,12 @@ distribution</em> of the mean difference:</p>
 than or equal to the observed value, to get an estimate of the probability of
 the observed value, if we are in fact in the null (ideal) world:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fake_differences</span> <span class="o">&gt;=</span> <span class="n">observed_difference</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
-<span class="n">p</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span>
+    <span class="n">fake_differences</span> <span class="o">&gt;=</span> <span class="n">observed_difference</span><span class="p">)</span><span class="o">/</span> <span class="n">n_iters</span>
+<span class="n">permutation_p</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0571
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0583
 </code></pre></div></div>
 
 <p>Remember that the <em>standard deviation</em> is a measure of the spread of
@@ -1209,7 +1210,7 @@ a distribution.</p>
 <span class="n">sampling_sd</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7676442883710752
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7783422684021715
 </code></pre></div></div>
 
 <p>We can use the standard deviation as unit of distance in the distribution.</p>
@@ -1222,7 +1223,7 @@ distribution, which is zero.</p>
 <span class="n">like_t</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6018436155112319
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.5956757321634638
 </code></pre></div></div>
 
 <p>Notice the variable name <code class="highlighter-rouge">like_t</code>.  This number is rather like the famous <a href="https://en.wikipedia.org/wiki/T-statistic">t
@@ -1265,7 +1266,7 @@ permutation distribution:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sampling_sd</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7676442883710752
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7783422684021715
 </code></pre></div></div>
 
 <p>The t statistic is the observed mean difference divided by the estimate of the
@@ -1282,12 +1283,38 @@ standard deviation of the sampling distribution.</p>
 test</em> routine from Scipy:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
-<span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span><span class="o">.</span><span class="n">statistic</span>
+<span class="n">t_result</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
+<span class="n">t_result</span><span class="o">.</span><span class="n">statistic</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6402506050018828
 </code></pre></div></div>
 
+<p>The equivalent probability from a t test is also outside the scope of the
+course, but, if the data we put into the t test is more or less compatible with
+a normal distribution, then the matching p value is similar to that of the
+permutation test.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The "one-tailed" probability from the t-test.
+</span><span class="n">t_result</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">/</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.054302080886695414
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The permutation p value is very similar.
+</span><span class="n">permutation_p</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0583
+</code></pre></div></div>
+
+<p>The permutation test has several advantages over the t test, because the t test
+relies on various assumptions about the data.  The permutation test does not
+rely on the assumption that the numbers come from a normal distribution.   The
+permutation test is valid even for very small group sizes, even down to group
+sizes of three elements, whereas the t test needs reasonably large group sizes
+for its assumptions to be valid, and therefore, for its p values to be valid.</p>
 
           
         </section>
