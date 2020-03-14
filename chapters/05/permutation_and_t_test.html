@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>1.8 More on the Jupyter notebook - Coding for Data - 2019 edition</title>
-<meta name="description" content="As you heard in about the software, Jupyter is an interface that allows you to run Python code and see the results.">
+<!-- begin _includes/seo.html --><title>5.4 Permutation and the t-test - Coding for Data - 2019 edition</title>
+<meta name="description" content="Permutation and the t-test">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="1.8 More on the Jupyter notebook">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/01/more_on_jupyter">
+<meta property="og:title" content="5.4 Permutation and the t-test">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/05/permutation_and_t_test">
 
 
-  <meta property="og:description" content="As you heard in about the software, Jupyter is an interface that allows you to run Python code and see the results.">
+  <meta property="og:description" content="Permutation and the t-test">
 
 
 
@@ -34,7 +34,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/01/more_on_jupyter">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/05/permutation_and_t_test">
 
 
 
@@ -1056,15 +1056,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="1.8 More on the Jupyter notebook">
-      <meta itemprop="description" content="As you heard in about the software, Jupyter is an interface that allows you to run Python code and see the results.">
+      <meta itemprop="headline" content="5.4 Permutation and the t-test">
+      <meta itemprop="description" content="Permutation and the t-test">
       <meta itemprop="datePublished" content="March 14, 2020">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline">1.8 More on the Jupyter notebook
+            <h1 id="page-title" class="page__title" itemprop="headline">5.4 Permutation and the t-test
 </h1>
           </header>
         
@@ -1076,104 +1076,218 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#the-prompts">The prompts</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
 
     
     
-    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/01/more_on_jupyter.ipynb">Download notebook</a>
-    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F01%2Fmore_on_jupyter.ipynb">Interact</a>
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/05/permutation_and_t_test.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F05%2Fpermutation_and_t_test.ipynb">Interact</a>
 
 
-          <p>As you heard in <a href="the_software">about the software</a>, Jupyter is an <em>interface</em> that allows you to run Python code and see the results.</p>
+          <h1 id="permutation-and-the-t-test">Permutation and the t-test</h1>
 
-<p>It consists of two parts:</p>
+<p>In <a href="/cfd2019/chapters/05/permutation_idea">the idea of permutation</a>,
+we use permutation to compare a difference between two groups of numbers.</p>
 
-<ul>
-  <li>The web client (the thing you are looking at now, if you are running this
-notebook in Jupyter);</li>
-  <li>The kernel (that does the work of running code, and generating results).</li>
-</ul>
+<p>In our case, each number corresponded to one person in the study.  The number
+for each subject was the number of mosquitoes flying towards them. The subjects
+were from two groups: people who had just drunk beer, and people who had just
+drunk water.   There were 25 subjects who had drunk beer, and therefore, 25
+numbers of mosquitoes corresponding to the “beer” group.  There were 18
+subjects who had drunk water, and 18 numbers corresponding to the “water” group.</p>
 
-<p>For example, consider this cell, where I make a new variable <code class="highlighter-rouge">a</code>, and display the value of <code class="highlighter-rouge">a</code>:</p>
+<p>Here we repeat the permutation test, as a reminder.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">10.50</span>
-<span class="n">a</span>
+<p>As before, you can download the data from <a href="/cfd2019/data/mosquito_beer.csv">mosquito_beer.csv</a>.</p>
+
+<p>See <a href="https://github.com/matthew-brett/datasets/tree/master/mosquito_beer">this
+page</a> for
+more details on the dataset, and <a href="/cfd2019/data/license">the data license page</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import Numpy library, rename as "np"
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c1"># Import Pandas library, rename as "pd"
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># Set up plotting
+</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.5
+<p>Read in the data, get the numbers of mosquitoes flying towards the beer
+drinkers, and towards the water drinkers, after they had drunk their beer or
+water.  See the <a href="/cfd2019/chapters/05/permutation_idea">the idea of permutation</a>,</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read in the data.
+</span><span class="n">mosquitoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mosquito_beer.csv'</span><span class="p">)</span>
+<span class="c1"># Select measurements after subjects had drunk beer or water.
+</span><span class="n">afters</span> <span class="o">=</span> <span class="n">mosquitoes</span><span class="p">[</span><span class="n">mosquitoes</span><span class="p">[</span><span class="s">'test'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'after'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>I type this code in the web client.</p>
+<p>We get the numbers of mosquitoes from the “beer” group.</p>
 
-<p>When I press Shift-Enter, or Run the cell via the web interface, this sends a <em>message</em> to the <em>kernel</em>.</p>
-
-<p>The message says something like:</p>
-
-<blockquote>
-  <p>Here is some Python code: “a = 1” and “a”.  Run this code, and show me any
-results.</p>
-</blockquote>
-
-<p>The kernel accepts the message, runs the code in Python, and then sends back any results, in this case, as text to display (the text representation of the value 10.50).</p>
-
-<p>The web client shows the results.</p>
-
-<h2 id="the-prompts">The prompts</h2>
-
-<p>Notice the prompts for the code cells.  Before I have run the cell, there is an empty prompt, like this <code class="highlighter-rouge">In [ ]:</code>.  <code class="highlighter-rouge">In</code> means “Input”, meaning, this is a cell where you input code.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mf">9.25</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># After beer rows.
+</span><span class="n">beer_rows</span> <span class="o">=</span> <span class="n">afters</span><span class="p">[</span><span class="n">afters</span><span class="p">[</span><span class="s">'group'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'beer'</span><span class="p">]</span>
+<span class="c1"># The 'activated' numbers for the after beer rows.
+</span><span class="n">beer_activated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">beer_rows</span><span class="p">[</span><span class="s">'activated'</span><span class="p">])</span>
+<span class="n">beer_activated</span>
 </code></pre></div></div>
 
-<p>Then, when you run the cell, the prompt changes to something like <code class="highlighter-rouge">In [1]:</code> where 1 means this is the first piece of code that the kernel ran.</p>
-
-<p>If there is any output, you will now see the <em>output</em> from that cell, with a prefix <code class="highlighter-rouge">Out [1]:</code> where 1 is the same number as the number for the input cell.  This is output from the first piece of code that the kernel ran.</p>
-
-<h1 id="interrupting-restarting">Interrupting, restarting</h1>
-
-<p>Sometimes you will find that the kernel gets stuck.  That may be because the kernel is running code that takes a long time, but sometimes, it is because the kernel has crashed.</p>
-
-<p>In the next cell I load a function that makes the computer wait for a number of seconds.</p>
-
-<p>Don’t worry about the <code class="highlighter-rouge">from ... import</code> here, we will come onto that later.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the sleep function
-</span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([14, 33, 27, 11, 12, 27, 26, 25, 27, 27, 22, 36, 37,  3, 23,  7, 25,
+       17, 36, 31, 30, 22, 20, 29, 23])
 </code></pre></div></div>
 
-<p>The sleep function has the effect of putting the Python process to sleep for the give number of seconds.  Here I ask the Python process to sleep for 2 seconds:</p>
+<p>There are 25 values in the beer group:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>I can ask the computer to sleep for much longer.  Try making a new code cell and executing the code <code class="highlighter-rouge">sleep(1000)</code>.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>25
+</code></pre></div></div>
 
-<p>When you do this, notice that the prompt gets an asterisk symbol <code class="highlighter-rouge">*</code> instead of a number, meaning that the kernel is busy doing something (busy sleeping).</p>
+<p>We get the numbers of mosquitoes from the “water” group.</p>
 
-<p>You can interrupt this long-running process by clicking on the stop icon in the toolbar, or selecting “Interrupt” from the “Kernel” menu.  Try it.</p>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Same for the water.
+</span><span class="n">water_rows</span> <span class="o">=</span> <span class="n">afters</span><span class="p">[</span><span class="n">afters</span><span class="p">[</span><span class="s">'group'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'water'</span><span class="p">]</span>
+<span class="n">water_activated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">water_rows</span><span class="p">[</span><span class="s">'activated'</span><span class="p">])</span>
+<span class="n">water_activated</span>
+</code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Try running the code "sleep(10000)" below.
-</span></code></pre></div></div>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([33, 23, 23, 13, 24,  8,  4, 21, 24, 21, 26, 27, 22, 21, 25, 20,  7,
+        3])
+</code></pre></div></div>
 
-<p>Very rarely, the kernel crashes, so you can’t interrupt it.  In that case you may want to “Restart” from the “Kernel” menu.  This will:</p>
+<p>We are interested in the difference between the means of these numbers:</p>
 
-<ul>
-  <li>Shut down the old kernel with extreme prejudice, therefore throwing away any variables you have stored in the workspace;</li>
-  <li>Start a new kernel for the web client to talk to.</li>
-</ul>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">observed_difference</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+<span class="n">observed_difference</span>
+</code></pre></div></div>
 
-<p>If you do this, you will notice that all the variables you defined in the old kernel have disappeared.   Rerun the cells to create the variables, to re-create them.</p>
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
+</code></pre></div></div>
+
+<p>In the permutation test we simulate a ideal (null) world in which there is no
+average difference between the numbers in the two groups.  We do this by
+pooling the beer and water numbers, shuffling them, and then making fake beer
+and water groups when we know, from the shuffling, that the average difference
+will, in the long run, be zero.  By doing this shuffle, sample step many times
+we build up the distribution of the average difference.  This is the <em>sampling
+distribution</em> of the mean difference:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">fake_differences</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+    <span class="n">fake_differences</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="mi">25</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="mi">25</span><span class="p">:])</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Sampling difference of means'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/05/permutation_and_t_test_14_0.png" alt="png" /></p>
+
+<p>We can work out the proportion of the sampling distribution that is greater
+than or equal to the observed value, to get an estimate of the probability of
+the observed value, if we are in fact in the null (ideal) world:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fake_differences</span> <span class="o">&gt;=</span> <span class="n">observed_difference</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
+<span class="n">p</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0571
+</code></pre></div></div>
+
+<p>Remember that the <em>standard deviation</em> is a measure of the spread of
+a distribution.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sampling_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">)</span>
+<span class="n">sampling_sd</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7676442883710752
+</code></pre></div></div>
+
+<p>We can use the standard deviation as unit of distance in the distribution.</p>
+
+<p>A way of getting an idea of how extreme the observed value is, is to ask how
+many standard deviations the observed value is from the center of the
+distribution, which is zero.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">like_t</span> <span class="o">=</span> <span class="n">observed_difference</span> <span class="o">/</span> <span class="n">sampling_sd</span>
+<span class="n">like_t</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6018436155112319
+</code></pre></div></div>
+
+<p>Notice the variable name <code class="highlighter-rouge">like_t</code>.  This number is rather like the famous <a href="https://en.wikipedia.org/wiki/T-statistic">t
+statistic</a>.</p>
+
+<p>The difference between this <code class="highlighter-rouge">like_t</code> value and the <em>t statistic</em> is that the t
+statistic is the observed difference divided by another <em>estimate</em> of the
+standard deviation of the sampling distribution.  Specifically it is an
+estimate that relies on the assumption that the <code class="highlighter-rouge">beer_activated</code> and
+<code class="highlighter-rouge">water_activated</code> numbers come from a simple bell-shaped <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal
+distribution</a>.</p>
+
+<p>The specific calculation relies on calculating the <em>prediction errors</em> when we
+use the mean from each group as the prediction for the values in the group.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beer_errors</span> <span class="o">=</span> <span class="n">beer_activated</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
+<span class="n">water_errors</span> <span class="o">=</span> <span class="n">water_activated</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+<span class="n">all_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_errors</span><span class="p">,</span> <span class="n">water_errors</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The estimate for the standard deviation of the sampling distribution follows
+this formula.  The derivation of the formula is well outside the scope of the
+class.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The t-statistic estimate.
+</span><span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+<span class="n">n_all</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
+<span class="n">est_error_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">all_errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_all</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">sampling_sd_estimate</span> <span class="o">=</span> <span class="n">est_error_sd</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">n1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n2</span><span class="p">)</span>
+<span class="n">sampling_sd_estimate</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7028390172904366
+</code></pre></div></div>
+
+<p>Notice that this is rather similar to the estimate we got directly from the
+permutation distribution:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sampling_sd</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7676442883710752
+</code></pre></div></div>
+
+<p>The t statistic is the observed mean difference divided by the estimate of the
+standard deviation of the sampling distribution.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_statistic</span> <span class="o">=</span> <span class="n">observed_difference</span> <span class="o">/</span> <span class="n">sampling_sd_estimate</span>
+<span class="n">t_statistic</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.640250605001883
+</code></pre></div></div>
+
+<p>This is the same t statistic value calculated by the <em>independent sample t
+test</em> routine from Scipy:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
+<span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span><span class="o">.</span><span class="n">statistic</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6402506050018828
+</code></pre></div></div>
+
 
           
         </section>
@@ -1190,12 +1304,12 @@ results.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/01/using_jupyter" class="pagination--pager" title="1.7 Using the Jupyter notebook
+      <a href="/cfd2019/chapters/05/permutation_idea" class="pagination--pager" title="5.3 The permutation idea
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/02/to_code" class="pagination--pager" title="
-  Programming
+      <a href="/cfd2019/chapters/07/more_building_blocks" class="pagination--pager" title="
+  More building blocks
 
 ">Next</a>
     

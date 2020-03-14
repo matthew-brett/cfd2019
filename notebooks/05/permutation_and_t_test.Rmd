@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>License - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>Opening Jupyter on your laptop - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
 <meta property="og:title" content="Coding for Data - 2019 edition">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/08/multiple_regression_hybrid.Rmd">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/05/permutation_and_t_test.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/08/multiple_regression_hybrid.Rmd">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/05/permutation_and_t_test.Rmd">
 
 
 
@@ -181,50 +181,186 @@
 
       <section class="page__content" itemprop="text">
         
-        ```{python}
+        # Permutation and the t-test
+
+In [the idea of permutation](/cfd2019/chapters/05/permutation_idea),
+we use permutation to compare a difference between two groups of numbers.
+
+In our case, each number corresponded to one person in the study.  The number
+for each subject was the number of mosquitoes flying towards them. The subjects
+were from two groups: people who had just drunk beer, and people who had just
+drunk water.   There were 25 subjects who had drunk beer, and therefore, 25
+numbers of mosquitoes corresponding to the "beer" group.  There were 18
+subjects who had drunk water, and 18 numbers corresponding to the "water" group.
+
+Here we repeat the permutation test, as a reminder.
+
+As before, you can download the data from [mosquito_beer.csv](/cfd2019/data/mosquito_beer.csv).
+
+See [this
+page](https://github.com/matthew-brett/datasets/tree/master/mosquito_beer) for
+more details on the dataset, and [the data license page](/cfd2019/data/license).
+
+
+```{python}
+# Import Numpy library, rename as "np"
 import numpy as np
+# Import Pandas library, rename as "pd"
 import pandas as pd
-from scipy.optimize import minimize
+
+# Set up plotting
+import matplotlib.pyplot as plt
+# %matplotlib inline
+plt.style.use('fivethirtyeight')
+```
+
+Read in the data, get the numbers of mosquitoes flying towards the beer
+drinkers, and towards the water drinkers, after they had drunk their beer or
+water.  See the [the idea of permutation](/cfd2019/chapters/05/permutation_idea),
+
+```{python}
+# Read in the data.
+mosquitoes = pd.read_csv('mosquito_beer.csv')
+# Select measurements after subjects had drunk beer or water.
+afters = mosquitoes[mosquitoes['test'] == 'after']
+```
+
+We get the numbers of mosquitoes from the "beer" group.
+
+```{python}
+# After beer rows.
+beer_rows = afters[afters['group'] == 'beer']
+# The 'activated' numbers for the after beer rows.
+beer_activated = np.array(beer_rows['activated'])
+beer_activated
+```
+
+There are 25 values in the beer group:
+
+```{python}
+len(beer_activated)
+```
+
+We get the numbers of mosquitoes from the "water" group.
+
+```{python}
+# Same for the water.
+water_rows = afters[afters['group'] == 'water']
+water_activated = np.array(water_rows['activated'])
+water_activated
+```
+
+We are interested in the difference between the means of these numbers:
+
+```{python}
+observed_difference = np.mean(beer_activated) - np.mean(water_activated)
+observed_difference
+```
+
+In the permutation test we simulate a ideal (null) world in which there is no
+average difference between the numbers in the two groups.  We do this by
+pooling the beer and water numbers, shuffling them, and then making fake beer
+and water groups when we know, from the shuffling, that the average difference
+will, in the long run, be zero.  By doing this shuffle, sample step many times
+we build up the distribution of the average difference.  This is the *sampling
+distribution* of the mean difference:
+
+```{python}
+pooled = np.append(beer_activated, water_activated)
+n_iters = 10000
+fake_differences = np.zeros(n_iters)
+for i in np.arange(n_iters):
+    np.random.shuffle(pooled)
+    fake_differences[i] = np.mean(pooled[:25]) - np.mean(pooled[25:])
 ```
 
 ```{python}
-df = pd.read_csv('hybrid.csv')
-df.head()
+plt.hist(fake_differences)
+plt.title('Sampling difference of means');
 ```
 
+We can work out the proportion of the sampling distribution that is greater
+than or equal to the observed value, to get an estimate of the probability of
+the observed value, if we are in fact in the null (ideal) world:
+
 ```{python}
-suvs = df[df['class'] == 'SUV']
-suvs.head()
+p = np.count_nonzero(fake_differences >= observed_difference) / n_iters
+p
 ```
 
+Remember that the *standard deviation* is a measure of the spread of
+a distribution.
+
 ```{python}
-def ls_for_x(b, y, X):
-    errors = y - X @ b
-    return sum(errors ** 2)
+sampling_sd = np.std(fake_differences)
+sampling_sd
 ```
 
+We can use the standard deviation as unit of distance in the distribution.
+
+A way of getting an idea of how extreme the observed value is, is to ask how
+many standard deviations the observed value is from the center of the
+distribution, which is zero.
+
 ```{python}
-X = np.ones((len(suvs), 3))
-X[:, 1] = suvs['acceleration']
-X[:, 2] = suvs['mpg']
-X[:5, :]
+like_t = observed_difference / sampling_sd
+like_t
 ```
 
+Notice the variable name `like_t`.  This number is rather like the famous [t
+statistic](https://en.wikipedia.org/wiki/T-statistic).
+
+The difference between this `like_t` value and the *t statistic* is that the t
+statistic is the observed difference divided by another *estimate* of the
+standard deviation of the sampling distribution.  Specifically it is an
+estimate that relies on the assumption that the `beer_activated` and
+`water_activated` numbers come from a simple bell-shaped [normal
+distribution](https://en.wikipedia.org/wiki/Normal_distribution).
+
+The specific calculation relies on calculating the *prediction errors* when we
+use the mean from each group as the prediction for the values in the group.
+
 ```{python}
-best_p = minimize(ls_for_x, [np.mean(suvs['msrp']), 2500, -2300], args=(suvs['msrp'], X))
+beer_errors = beer_activated - np.mean(beer_activated)
+water_errors = water_activated - np.mean(water_activated)
+all_errors = np.append(beer_errors, water_errors)
 ```
 
+The estimate for the standard deviation of the sampling distribution follows
+this formula.  The derivation of the formula is well outside the scope of the
+class.
+
 ```{python}
-best_p
+# The t-statistic estimate.
+n1 = len(beer_activated)
+n2 = len(water_activated)
+n_all = n1 + n2
+est_error_sd = np.sqrt(np.sum(all_errors ** 2) / (n_all - 2))
+sampling_sd_estimate = est_error_sd * np.sqrt(1 / n1 + 1 / n2)
+sampling_sd_estimate
 ```
 
+Notice that this is rather similar to the estimate we got directly from the
+permutation distribution:
+
 ```{python}
-b = np.linalg.pinv(X) @ suvs['msrp'][:, None]
-b
+sampling_sd
 ```
 
-```{python}
+The t statistic is the observed mean difference divided by the estimate of the
+standard deviation of the sampling distribution.
 
+```{python}
+t_statistic = observed_difference / sampling_sd_estimate
+t_statistic
+```
+
+This is the same t statistic value calculated by the *independent sample t
+test* routine from Scipy:
+
+```{python}
+from scipy.stats import ttest_ind
+ttest_ind(beer_activated, water_activated).statistic
 ```
 
         

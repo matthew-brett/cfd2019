@@ -308,7 +308,7 @@ suv_mpg_su = standard_units(suv['mpg'])
 suv_msrp_su = standard_units(suv['msrp'])
 plt.plot(suv_mpg_su, suv_msrp_su, 'o')
 plt.xlabel('mpg (standard units)')
-plt.xlabel('msrp (standard units)')
+plt.ylabel('msrp (standard units)')
 plt.xlim(-3, 3)
 plt.ylim(-3, 3);
 ```

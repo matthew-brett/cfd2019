@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-02-27T23:42:09+00:00">
+  <meta property="article:published_time" content="2020-03-14T23:06:08+00:00">
 
 
 
@@ -636,6 +636,16 @@
 
             <li><a href="/cfd2019/chapters/05/permutation_idea" class="level_1">5.3 The permutation idea</a></li>
           
+            
+            
+
+            
+            
+
+            
+
+            <li><a href="/cfd2019/chapters/05/permutation_and_t_test" class="level_1">5.4 Permutation and the t-test</a></li>
+          
         </ul>
         
       </li>
@@ -1048,7 +1058,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="7.10 Correlation">
       <meta itemprop="description" content="This page has content from theCorrelationnotebook from the UC Berkeley course.  See the Berkeley course section of thelicense">
-      <meta itemprop="datePublished" content="February 27, 2020">
+      <meta itemprop="datePublished" content="March 14, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1218,7 +1228,7 @@ the horizontal.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11ac15a58&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fbbd850&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_5_1.png" alt="png" /></p>
@@ -1238,7 +1248,7 @@ that tended to cost more.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11cd28be0&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124d191d0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_7_1.png" alt="png" /></p>
@@ -1257,7 +1267,7 @@ SUVs also shows a linear trend, but with a positive slope.</p>
 <span class="n">suv</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11cd69ba8&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124e10150&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_9_1.png" alt="png" /></p>
@@ -1265,7 +1275,7 @@ SUVs also shows a linear trend, but with a positive slope.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">suv</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11cf0c400&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124f19190&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_10_1.png" alt="png" /></p>
@@ -1293,7 +1303,7 @@ with all the variables measured in standard units.</p>
 <span class="n">suv_msrp_su</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">suv</span><span class="p">[</span><span class="s">'msrp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">suv_mpg_su</span><span class="p">,</span> <span class="n">suv_msrp_su</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mpg (standard units)'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'msrp (standard units)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'msrp (standard units)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </code></pre></div></div>
@@ -1497,7 +1507,7 @@ not equal to 1.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11d8f6860&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12556d790&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_31_1.png" alt="png" /></p>
@@ -1673,7 +1683,7 @@ the amount of clustering nor the sign of the association.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'y'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11d8970f0&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12566f650&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_40_1.png" alt="png" /></p>
@@ -1809,7 +1819,7 @@ which $r$ is equal to 0, by the addition of just one outlying point.</p>
 <span class="n">line</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11db2b748&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1252d7490&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_61_1.png" alt="png" /></p>
@@ -1935,7 +1945,7 @@ to 0.985.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sat2014</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Critical Reading'</span><span class="p">,</span> <span class="s">'Math'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11db42780&gt;
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1252bbd10&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_68_1.png" alt="png" /></p>

@@ -224,6 +224,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation",
         "teaser":null},{
+        "title": "5.4 Permutation and the t-test",
+        "excerpt":"Permutation and the t-test In the idea of permutation,we use permutation to compare a difference between two groups of numbers. In our case, each number corresponded to one person in the study. The numberfor each subject was the number of mosquitoes flying towards them. The subjectswere from two groups: people...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/permutation_and_t_test",
+        "teaser":null},{
         "title": "5.3 The permutation idea",
         "excerpt":"The idea of permutation The idea of permutation is fundamental to a wide range of statistical tests.This page shows how permutation works by comparing to a physicalimplementation of permutation, that randomizes values by mixing balls in abucket. A mosquito problem With thanks to John Rauser: Statistics Without the Agonizing Pain...","categories": [],
         "tags": [],
