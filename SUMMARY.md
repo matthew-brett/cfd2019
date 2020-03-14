@@ -47,6 +47,7 @@
   * [5.1 Population and permutation](notebooks/05/population_permutation.ipynb)
   * [5.2 A permutation test](notebooks/05/brexit_ages.ipynb)
   * [5.3 The permutation idea](notebooks/05/permutation_idea.ipynb)
+  * [5.4 Permutation and the t-test](notebooks/05/permutation_and_t_test.ipynb)
 * [6. More building blocks](notebooks/07/more_building_blocks.md)
   * [6.1 Introduction to functions](notebooks/07/introducing_functions.ipynb)
   * [6.2 On None](notebooks/07/none.ipynb)
