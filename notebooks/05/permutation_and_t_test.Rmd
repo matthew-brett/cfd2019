@@ -120,8 +120,9 @@ than or equal to the observed value, to get an estimate of the probability of
 the observed value, if we are in fact in the null (ideal) world:
 
 ```{python}
-p = np.count_nonzero(fake_differences >= observed_difference) / n_iters
-p
+permutation_p = np.count_nonzero(
+    fake_differences >= observed_difference)/ n_iters
+permutation_p
 ```
 
 Remember that the *standard deviation* is a measure of the spread of
@@ -196,5 +197,28 @@ test* routine from Scipy:
 
 ```{python}
 from scipy.stats import ttest_ind
-ttest_ind(beer_activated, water_activated).statistic
+t_result = ttest_ind(beer_activated, water_activated)
+t_result.statistic
 ```
+
+The equivalent probability from a t test is also outside the scope of the
+course, but, if the data we put into the t test is more or less compatible with
+a normal distribution, then the matching p value is similar to that of the
+permutation test.
+
+```{python}
+# The "one-tailed" probability from the t-test.
+t_result.pvalue / 2
+```
+
+```{python}
+# The permutation p value is very similar.
+permutation_p
+```
+
+The permutation test has several advantages over the t test, because the t test
+relies on various assumptions about the data.  The permutation test does not
+rely on the assumption that the numbers come from a normal distribution.   The
+permutation test is valid even for very small group sizes, even down to group
+sizes of three elements, whereas the t test needs reasonably large group sizes
+for its assumptions to be valid, and therefore, for its p values to be valid.
