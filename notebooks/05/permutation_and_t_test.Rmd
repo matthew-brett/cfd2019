@@ -55,35 +55,20 @@ water.  See the [the idea of permutation]({{ site.baseurl
 }}/chapters/05/permutation_idea),
 
 ```{python}
-# Read in the data.
+# Read in the data, select beer and water values.
 mosquitoes = pd.read_csv('mosquito_beer.csv')
-# Select measurements after subjects had drunk beer or water.
-afters = mosquitoes[mosquitoes['test'] == 'after']
-```
-
-We get the numbers of mosquitoes from the "beer" group.
-
-```{python}
-# After beer rows.
-beer_rows = afters[afters['group'] == 'beer']
-# The 'activated' numbers for the after beer rows.
+after_rows = mosquitoes[mosquitoes['test'] == 'after']
+beer_rows = after_rows[after_rows['group'] == 'beer']
 beer_activated = np.array(beer_rows['activated'])
-beer_activated
-```
-
-There are 25 values in the beer group:
-
-```{python}
-len(beer_activated)
-```
-
-We get the numbers of mosquitoes from the "water" group.
-
-```{python}
-# Same for the water.
-water_rows = afters[afters['group'] == 'water']
+water_rows = after_rows[after_rows['group'] == 'water']
 water_activated = np.array(water_rows['activated'])
-water_activated
+```
+
+There are 25 values in the beer group, and 18 in the water group:
+
+```{python}
+print('Number in beer group:', len(beer_activated))
+print('Number in water group:', len(water_activated))
 ```
 
 We are interested in the difference between the means of these numbers:
@@ -171,8 +156,7 @@ class.
 # The t-statistic estimate.
 n1 = len(beer_activated)
 n2 = len(water_activated)
-n_all = n1 + n2
-est_error_sd = np.sqrt(np.sum(all_errors ** 2) / (n_all - 2))
+est_error_sd = np.sqrt(np.sum(all_errors ** 2) / (n1 + n2 - 2))
 sampling_sd_estimate = est_error_sd * np.sqrt(1 / n1 + 1 / n2)
 sampling_sd_estimate
 ```
@@ -216,9 +200,6 @@ t_result.pvalue / 2
 permutation_p
 ```
 
-The permutation test has several advantages over the t test, because the t test
-relies on various assumptions about the data.  The permutation test does not
-rely on the assumption that the numbers come from a normal distribution.   The
-permutation test is valid even for very small group sizes, even down to group
-sizes of three elements, whereas the t test needs reasonably large group sizes
-for its assumptions to be valid, and therefore, for its p values to be valid.
+The permutation test is more general than the t test, because the t test relies
+on the assumption that the numbers come from a normal distribution, but the
+permutation test does not.
