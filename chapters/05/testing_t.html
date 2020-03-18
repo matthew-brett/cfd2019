@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-03-18T01:03:55+00:00">
+  <meta property="article:published_time" content="2020-03-18T01:06:28+00:00">
 
 
 
@@ -1203,22 +1203,9 @@ Upper-tail p value: 0.054302080886695414
 
 </code></pre></div></div>
 
-<p>Here is the observed difference in means:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Observed mean difference
-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
-</code></pre></div></div>
-
-<p>The p value above asserts that this observed difference in means would only
-occur about 5% of the time in a null (ideal) world, where the beer and water
-values come from the same distribution.  The observed result is surprising at
-around the 5% level.</p>
-
-<p>We check the t and p values are the same as the ones we get from using the
-standard Scipy function for independent t-tests:</p>
+<p>To check our function is doing the correct calculation, we show that the t and
+p values are the same as the ones we get from using the standard Scipy function
+for independent t-tests:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Scipy t statistic:'</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
@@ -1229,6 +1216,20 @@ standard Scipy function for independent t-tests:</p>
 Scipy upper-tail p value: 0.054302080886695414
 
 </code></pre></div></div>
+
+<p>Here is the observed difference in means:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Observed mean difference
+</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
+</code></pre></div></div>
+
+<p>The t-test p value above asserts that this observed difference in means would
+only occur about 5% of the time in a null (ideal) world, where the beer and
+water values come from the same distribution.  The observed result is
+surprising at around the 5% level.</p>
 
 <p>How would we check the assertion that the t-test is valid for normal
 distributions?</p>
@@ -1256,7 +1257,7 @@ surprising at the 5% level — about 5% of the time.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.72396756, 0.28496583, 0.52091679, 0.39670786, 0.5440582 ])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.03253687, 0.75201138, 0.66435644, 0.80791844, 0.61502702])
 </code></pre></div></div>
 
 <p>If the t-test calculation is correct, then we should only see a p value of 0.05
@@ -1266,7 +1267,7 @@ or smaller about 5% of the time.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.042
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.049
 </code></pre></div></div>
 
 <p>Here the t-test is doing a good job — it labels the result as surprising, at
@@ -1289,7 +1290,7 @@ group of 3 and another of 37:</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.54304146, 0.33205739, 0.93064729, 0.25431675, 0.35917213])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.73465858, 0.02707464, 0.98435087, 0.63073959, 0.64330292])
 </code></pre></div></div>
 
 <p>How good a job is it doing now, with unequal group sizes?</p>
@@ -1299,7 +1300,7 @@ group of 3 and another of 37:</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.042
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.065
 </code></pre></div></div>
 
 <p>The proportion is still around 5%, close to what it should be.</p>
@@ -1335,7 +1336,7 @@ distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.04198404, 0.60333341, 0.75661722, 0.85538588, 0.60475696])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66692054, 0.32860901, 0.08842702, 0.13659304, 0.87630584])
 </code></pre></div></div>
 
 <p>In this situation the t-test starts to be less accurate - labeling too many
@@ -1346,7 +1347,7 @@ random differences as being surprising at the 5% level:</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.066
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.067
 </code></pre></div></div>
 
 <p>Does a permutation test do a better job in this situation?</p>
@@ -1371,7 +1372,7 @@ random differences as being surprising at the 5% level:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0605
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0589
 </code></pre></div></div>
 
 <p>This is very similar to the t-statistic p value — <em>for these data</em> that have
@@ -1404,7 +1405,7 @@ loop.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.208, 0.119, 0.596, 0.821, 0.008])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.907, 0.138, 0.966, 0.828, 0.689])
 </code></pre></div></div>
 
 <p>How does the permutation test do?</p>
@@ -1414,7 +1415,7 @@ loop.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.056
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.047
 </code></pre></div></div>
 
 <p>It is more accurate.   In general the permutation method is more accurate for
