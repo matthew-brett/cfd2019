@@ -15,9 +15,12 @@ import os
 import sys
 from os.path import (abspath, join as pjoin, splitext, sep as fsep,
                      getmtime, isfile, dirname, isdir)
-from subprocess import check_call
 
-import nbformat
+import yaml
+import nbformat as nbf
+import jupytext
+
+from generate_textbook import SiteBuilder, execute_nb
 
 
 def searchfor(path, extensions):
@@ -76,6 +79,9 @@ class Build:
         self._set_paths(site_root)
         self.tb_files, self.nb_files = self._find_page_versions()
         self.bases = self._get_bases()
+        with open(self.config_file, 'r') as ff:
+            self.site_yaml = yaml.load(ff.read())
+        self.default_pre = self.site_yaml.get('pre_code')
 
     def _set_paths(self, site_root):
         site_root = abspath(site_root)
@@ -150,16 +156,6 @@ class Build:
     def process_ipynb(self, base):
         return self._process_in_ext(base, '.ipynb', ('.md',))
 
-    def should_run(self, nb_fname):
-        """ Return False if notebook tells us we should not run it
-        """
-        with open(nb_fname, 'rt') as fobj:
-            nb = nbformat.read(fobj, as_version=4)
-        meta = nb['metadata']
-        if 'textbook' in meta and 'run' in meta['textbook']:
-            return meta['textbook']['run']
-        return True
-
     def process_nb_txt(self, base):
         nbb = pjoin(self.notebooks_folder, base)
         nb_src = nbb + self.nb_txt_ext
@@ -168,13 +164,16 @@ class Build:
         if build_ok:  # Defer to notebook check
             return self.process_ipynb(base)
         # Rebuild .ipynb
-        check_call(['jupytext', '--to', 'notebook', nb_src])
+        nb = jupytext.read(nb_src)
         # Run .ipynb, unless we've been told not to.
-        if self.should_run(nb_built):
-            check_call(['jupyter', 'nbconvert', '--inplace',
-                        '--ExecutePreprocessor.timeout=120',
-                        '--ExecutePreprocessor.kernel_name=python3',
-                        '--to', 'notebook', '--execute', nb_built])
+        if nb['metadata'].get('jupyterbook', {}).get('run', True):
+            print('Executing', nb_src)
+            nb = execute_nb(nb,
+                            cwd=self.notebooks_folder,
+                            default_pre=self.default_pre,
+                            timeout=120)
+        with open(nb_built, 'wt') as fobj:
+            nbf.write(nb, fobj)
         self._delete_built(base, self.built_exts)
         return True
 
@@ -186,7 +185,6 @@ def main():
     rebuild = build.process_pages()
     if rebuild:
         print("Regenerating textbook")
-        from generate_textbook import SiteBuilder
         builder = SiteBuilder(site_root)
         builder.build()
     else:
