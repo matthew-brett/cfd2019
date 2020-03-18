@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-03-18T01:06:28+00:00">
+  <meta property="article:published_time" content="2020-03-18T01:14:09+00:00">
 
 
 
@@ -1226,10 +1226,10 @@ Scipy upper-tail p value: 0.054302080886695414
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
 </code></pre></div></div>
 
-<p>The t-test p value above asserts that this observed difference in means would
-only occur about 5% of the time in a null (ideal) world, where the beer and
-water values come from the same distribution.  The observed result is
-surprising at around the 5% level.</p>
+<p>The t-test p value above asserts that a difference in means as large as the
+observed difference in means, or larger, would only occur about 5% of the time
+in a null (ideal) world, where the beer and water values come from the same
+distribution.  The observed result is surprising at around the 5% level.</p>
 
 <p>How would we check the assertion that the t-test is valid for normal
 distributions?</p>
@@ -1257,7 +1257,7 @@ surprising at the 5% level — about 5% of the time.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.03253687, 0.75201138, 0.66435644, 0.80791844, 0.61502702])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.57977645, 0.4344744 , 0.26044009, 0.98299542, 0.71595079])
 </code></pre></div></div>
 
 <p>If the t-test calculation is correct, then we should only see a p value of 0.05
@@ -1267,7 +1267,7 @@ or smaller about 5% of the time.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.049
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.06
 </code></pre></div></div>
 
 <p>Here the t-test is doing a good job — it labels the result as surprising, at
@@ -1290,7 +1290,7 @@ group of 3 and another of 37:</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.73465858, 0.02707464, 0.98435087, 0.63073959, 0.64330292])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.9705922 , 0.31908997, 0.21295678, 0.89481544, 0.70143981])
 </code></pre></div></div>
 
 <p>How good a job is it doing now, with unequal group sizes?</p>
@@ -1300,7 +1300,7 @@ group of 3 and another of 37:</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.065
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.055
 </code></pre></div></div>
 
 <p>The proportion is still around 5%, close to what it should be.</p>
@@ -1336,7 +1336,7 @@ distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66692054, 0.32860901, 0.08842702, 0.13659304, 0.87630584])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.47171173, 0.30537342, 0.52829206, 0.37852272, 0.34604259])
 </code></pre></div></div>
 
 <p>In this situation the t-test starts to be less accurate - labeling too many
@@ -1347,7 +1347,7 @@ random differences as being surprising at the 5% level:</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.067
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.064
 </code></pre></div></div>
 
 <p>Does a permutation test do a better job in this situation?</p>
@@ -1372,7 +1372,7 @@ random differences as being surprising at the 5% level:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0589
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.057
 </code></pre></div></div>
 
 <p>This is very similar to the t-statistic p value — <em>for these data</em> that have
@@ -1405,7 +1405,7 @@ loop.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.907, 0.138, 0.966, 0.828, 0.689])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.173, 0.461, 0.537, 0.853, 0.712])
 </code></pre></div></div>
 
 <p>How does the permutation test do?</p>
@@ -1415,7 +1415,7 @@ loop.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.047
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.057
 </code></pre></div></div>
 
 <p>It is more accurate.   In general the permutation method is more accurate for
