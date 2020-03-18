@@ -293,10 +293,10 @@ Here is the observed difference in means:
 np.mean(beer_activated) - np.mean(water_activated)
 ```
 
-The p value above asserts that the observed difference in means above would
-only occur about 5% of the time in a null (ideal) world, where the beer and
-water values come from the same distribution.  The observed result is
-surprising at around the 5% level.
+The p value above asserts that this observed difference in means would only
+occur about 5% of the time in a null (ideal) world, where the beer and water
+values come from the same distribution.  The observed result is surprising at
+around the 5% level.
 
 We check the t and p values are the same as the ones we get from using the
 standard Scipy function for independent t-tests:
