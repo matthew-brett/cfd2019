@@ -155,10 +155,8 @@ class Build:
         """
         with open(nb_fname, 'rt') as fobj:
             nb = nbformat.read(fobj, as_version=4)
-        meta = nb['metadata']
-        if 'textbook' in meta and 'run' in meta['textbook']:
-            return meta['textbook']['run']
-        return True
+        jbk = nb['metadata'].get('jupyterbook', {})
+        return jbk.get('run', True)
 
     def process_nb_txt(self, base):
         nbb = pjoin(self.notebooks_folder, base)
