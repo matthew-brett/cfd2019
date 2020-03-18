@@ -3,23 +3,24 @@ import os
 import os.path as op
 import shutil as sh
 from collections import namedtuple
-
+from contextlib import contextmanager
 import yaml
-from nbclean import NotebookCleaner
-import nbformat as nbf
-import nbconvert as nbc
-from tqdm import tqdm
-import numpy as np
 from glob import glob
 from uuid import uuid4
 import re
 import argparse
 
+from nbclean import NotebookCleaner
+import nbformat as nbf
+import nbconvert as nbc
+from tqdm import tqdm
+import numpy as np
+
 from jinja2 import Template
 
 from traitlets.config import Config
 from nbconvert.writers import FilesWriter
-from nbconvert.preprocessors.execute import executenb
+from nbconvert.preprocessors import ExecutePreprocessor
 
 CONTENT_EXTS = ('.ipynb', '.md', '.Rmd')
 
@@ -120,6 +121,59 @@ def mkdir_if_missing(path):
         os.makedirs(path)
 
 
+class CodeExecutePreprocessor(ExecutePreprocessor):
+    """ ExecutePreprocessor that runs initial code in notebook.
+    """
+
+    pre_code = None
+
+    @contextmanager
+    def setup_preprocessor(self, nb, resources, km=None, **kwargs):
+        cm = super().setup_preprocessor(nb, resources, km=None, **kwargs)
+        with cm as args:
+            if self.pre_code:
+                self.kc.execute(self.pre_code, silent=True)
+            yield args
+
+
+def execute_nb(nb, cwd=None, km=None, default_pre=None, **kwargs):
+    """ Execute code in notebook `nb`, running pre code as necessary
+
+    Will execute code in `default_pre` string before executing notebook, unless
+    the notebook has a `jupyterbook` field in the `metadata`, containing the
+    `pre_code` field, in which case we use the contents of this field instead.
+
+    Parameters
+    ----------
+    nb : NotebookNode
+        The notebook object to be executed.
+    cwd : None or str, optional
+        If supplied, the kernel will run in this directory.
+    km : None or KernelManager, optional
+        If supplied, the specified kernel manager will be used for code
+        execution.
+    default_pre : None or str, optional
+        String containing default code to execute before notebook code.  This
+        code overridden by presence of notebook metadata field `jupyterbook:
+        pre_code`.
+    kwargs :
+      Any other options for ExecutePreprocessor, e.g. timeout, kernel_name
+
+    Returns
+    -------
+    ex_nb : NotebookNode
+      The notebook object after execution.
+    """
+    ep = CodeExecutePreprocessor(**kwargs)
+    ep.pre_code = nb['metadata'].get(
+        'jupyterbook', {}).get(
+            'pre_code', default_pre)
+    resources = {}
+    if cwd is not None:
+        resources['metadata'] = {'path': cwd}
+    return ep.preprocess(nb, resources, km=km)[0]
+
+
 class SiteBuilder:
 
     def __init__(self, site_root, execute=False, overwrite=False):
@@ -160,6 +214,7 @@ class SiteBuilder:
             self.nb_folder = op.join(site_root, self.nb_folder_name)
             mkdir_if_missing(self.nb_folder)
         self.site_dict = self._get_site_dict()
+        self.default_pre = self.site_yaml.get('pre_code')
 
     def _get_site_dict(self):
         site = {}
@@ -309,10 +364,12 @@ class SiteBuilder:
         FilesWriter(config=c).write(body, resources, notebook_name=out_base)
 
     def _process_notebook(self, link, new_folder):
-        site_yaml = self.site_yaml
         nb = nbf.read(link, nbf.NO_CONVERT)
+        site_yaml = self.site_yaml
         if self.execute:
-            nb = executenb(nb, cwd=op.dirname(link))
+            nb = execute_nb(nb,
+                            cwd=op.dirname(link),
+                            default_pre=self.default_pre)
         # Clean up the file before converting
         cleaner = NotebookCleaner(nb)
         cleaner.remove_cells(empty=True)

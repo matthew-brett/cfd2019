@@ -8,6 +8,8 @@ jupyter:
       format_name: rmarkdown
       format_version: '1.1'
       jupytext_version: 1.2.4
+  jupyterbook:
+    pre_code: import numpy as _np; _np.random.seed(42)
   kernelspec:
     display_name: Python 3
     language: python
@@ -141,9 +143,9 @@ np.mean(beer_activated) - np.mean(water_activated)
 ```
 
 The t-test p value above asserts that a difference in means as large as the
-observed difference in means, or larger, would only occur about 5% of the time
-in a null (ideal) world, where the beer and water values come from the same
-distribution.  The observed result is surprising at around the 5% level.
+observed difference, or larger, would only occur about 5% of the time in a null
+(ideal) world, where the beer and water values come from the same distribution.
+The observed result is surprising at around the 5% level.
 
 How would we check the assertion that the t-test is valid for normal
 distributions?
@@ -158,7 +160,7 @@ null world, and check that the t-test only tells us that the result is
 surprising at the 5% level --- about 5% of the time.
 
 ```{python}
-n_iters = 1000
+n_iters = 10000
 p_values = np.zeros(n_iters)  # Store the p values
 for i in np.arange(n_iters):
     # Make 40 numbers from a normal distribution with mean 10, sd 2.
@@ -288,12 +290,14 @@ loop.
 
 ```{python}
 # Permutation working on unequal group sizes and not-normal distribution.
+# This is slow - do fewer iterations.
+n_iters = 1000
 p_values = np.zeros(n_iters)  # Store the p values
 for i in np.arange(n_iters):
     # Make 40 numbers from a chi-squared distribution with k=2
     randoms = np.random.chisquare(2, size=40)
     # Split into two groups of size 3 and 37, and do a t-test.
-    # Use relatively few iterations to save computation time.
+    # Use fewer iterations than usual to save computation time.
     p = permutation(randoms[:3], randoms[3:], niters=1000)
     # Store the p value from the permutation test.
     p_values[i] = p
