@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-03-18T00:47:46+00:00">
+  <meta property="article:published_time" content="2020-03-18T00:58:22+00:00">
 
 
 
@@ -1147,8 +1147,8 @@ squared standard deviation.</p>
 </span>    <span class="n">df</span> <span class="o">=</span> <span class="n">g1_n</span> <span class="o">+</span> <span class="n">g2_n</span> <span class="o">-</span> <span class="mi">2</span>  <span class="c1"># The "degrees of freedom".
 </span>    <span class="n">estimated_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">)</span>
     <span class="n">t_stat</span> <span class="o">=</span> <span class="n">omd</span> <span class="o">/</span> <span class="p">(</span><span class="n">estimated_sd</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">g1_n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">g2_n</span><span class="p">))</span>
-    <span class="n">upper_tail_p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sps</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">upper_tail_p_value</span><span class="p">]</span>
+    <span class="n">upper_tail_p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sps</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">upper_tail_p</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>The only new thing in the implementation above is the second-to-last line,
@@ -1175,7 +1175,8 @@ larger, in the null (ideal) world.  If the p value is small, then the observed
 mean difference is surprising.  For example, if the p value is 0.05, it means
 that such difference only occurs 5% of the time by chance in the null world, or
 1 in 20 times.  You could say it was surprising at a 5% level.  Similarly a p
-value of 0.01 means the result would only occur 1% of the time in the null world, and it is surprising at a 1% level.</p>
+value of 0.01 means the result would only occur 1% of the time in the null
+world, and it is surprising at a 1% level.</p>
 
 <p>Here we recreate the mosquito, beer, water data from the <a href="/cfd2019/chapters/05/permutation_and_t_test">permutation and
 t-test page</a>:</p>
@@ -1202,7 +1203,7 @@ Upper-tail p value: 0.054302080886695414
 
 </code></pre></div></div>
 
-<p>This means that the observed difference in means:</p>
+<p>Here is the observed difference in means:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Observed mean difference
 </span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
@@ -1211,11 +1212,13 @@ Upper-tail p value: 0.054302080886695414
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
 </code></pre></div></div>
 
-<p>would only occur about 5% of the time in a null (ideal) world, where the beer
-and water values come from the same distribution.  The observed result is
+<p>The p value above asserts that the observed difference in means above would
+only occur about 5% of the time in a null (ideal) world, where the beer and
+water values come from the same distribution.  The observed result is
 surprising at around the 5% level.</p>
 
-<p>We check this is the same result we get from using the standard Scipy function:</p>
+<p>We check the t and p values are the same as the ones we get from using the
+standard Scipy function for independent t-tests:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Scipy t statistic:'</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
@@ -1232,9 +1235,12 @@ distributions?</p>
 
 <p>If it is valid, then consider the situation where we do in fact draw two
 samples from <em>the same</em> normal distribution, and then ask the t test for a p
-value.  If the p value is 5%, it means that such a result should only occur by chance, in the null world, 5% of the time.</p>
+value.  If the p value is 5%, it means that such a result should only occur by
+chance, in the null world, 5% of the time.</p>
 
-<p>So, we can repeat this procedure, drawing numbers that do in fact come from the null world, and check that the t-test only tells us that the result is surprising at the 5% level — about 5% of the time.</p>
+<p>So, we can repeat this procedure, drawing numbers that do in fact come from the
+null world, and check that the t-test only tells us that the result is
+surprising at the 5% level — about 5% of the time.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
@@ -1250,7 +1256,7 @@ value.  If the p value is 5%, it means that such a result should only occur by c
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.26133841, 0.14503826, 0.5475188 , 0.54285313, 0.90394008])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.14981965, 0.07338731, 0.24117294, 0.76745304, 0.38471812])
 </code></pre></div></div>
 
 <p>If the t-test calculation is correct, then we should only see a p value of 0.05
@@ -1260,13 +1266,15 @@ or smaller about 5% of the time.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.046
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.059
 </code></pre></div></div>
 
 <p>Here the t-test is doing a good job — it labels the result as surprising, at
 the 5% level, about 5% of the time.</p>
 
-<p>Now we ask - does it matter if the group sizes are unequal.  Here we do the same calculation, but split the numbers from the null world into one group of 3 and another of 37:</p>
+<p>Now we ask - does it matter if the group sizes are unequal?  To test this, we
+do the same calculation, but split the numbers from the null world into one
+group of 3 and another of 37:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># t-test working on unequal group sizes.
 </span><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
@@ -1281,7 +1289,7 @@ the 5% level, about 5% of the time.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.21835158, 0.86700815, 0.05440896, 0.55910349, 0.92557139])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.57828926, 0.98910363, 0.87084434, 0.72774914, 0.22633795])
 </code></pre></div></div>
 
 <p>How good a job is it doing now, with unequal group sizes?</p>
@@ -1291,15 +1299,16 @@ the 5% level, about 5% of the time.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.046
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.054
 </code></pre></div></div>
 
 <p>The proportion is still around 5%, close to what it should be.</p>
 
-<p>What happens if we use a distribution other than the normal distribution.</p>
+<p>What happens if we use a distribution other than the normal distribution?</p>
 
 <p>Here we use some random numbers from a <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution">Chi-squared
-distribution</a>.  The distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p>
+distribution</a>.  The
+distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_chi2_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">some_chi2_numbers</span><span class="p">)</span>
@@ -1311,7 +1320,7 @@ distribution</a>.  The distribution looks like this, with a $k$ value of 2 (see 
 
 <p><img src="../../images/chapters/05/testing_t_22_1.png" alt="png" /></p>
 
-<p>Now we use this highly not-normal distribution to provide numbers to our t-test:</p>
+<p>We use this highly not-normal distribution to provide numbers to our t-test:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># t-test working on unequal group sizes and not-normal distribution.
 </span><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
@@ -1326,17 +1335,18 @@ distribution</a>.  The distribution looks like this, with a $k$ value of 2 (see 
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66228688, 0.49605539, 0.23186874, 0.49844466, 0.88475855])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.40691936, 0.69554272, 0.51212468, 0.58926702, 0.52163308])
 </code></pre></div></div>
 
-<p>Now the t-test starts to be less accurate - labeling too many random differences as being surprising at the 5% level:</p>
+<p>In this situation the t-test starts to be less accurate - labeling too many
+random differences as being surprising at the 5% level:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times the t-test said: surprising at 5% level.
 # This time wih unequal group sizes.
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.074
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.071
 </code></pre></div></div>
 
 <p>Does a permutation test do a better job in this situation?</p>
@@ -1361,10 +1371,11 @@ distribution</a>.  The distribution looks like this, with a $k$ value of 2 (see 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0577
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0559
 </code></pre></div></div>
 
-<p>This is very similar to the t-statistic p value — <em>for these data</em> that have fairly equal group size, and a distribution not far from normal:</p>
+<p>This is very similar to the t-statistic p value — <em>for these data</em> that have
+fairly equal group size, and a distribution not far from normal:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_test</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1375,8 +1386,8 @@ distribution</a>.  The distribution looks like this, with a $k$ value of 2 (see 
 <p>Now let’s check if the permutation test also trips up on the unequal group
 sizes and not-normal distribution.</p>
 
-<p>The code below will take a few tens of seconds to run, because you are running many
-loops in the <code class="highlighter-rouge">permutation</code> function, each time you go through the main
+<p>The code below will take a few tens of seconds to run, because you are running
+many loops in the <code class="highlighter-rouge">permutation</code> function, each time you go through the main
 loop.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Permutation working on unequal group sizes and not-normal distribution.
@@ -1393,7 +1404,7 @@ loop.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.894, 0.174, 0.783, 0.261, 0.841])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.13 , 0.216, 0.313, 0.727, 0.646])
 </code></pre></div></div>
 
 <p>How does the permutation test do?</p>
@@ -1403,11 +1414,11 @@ loop.</p>
 </span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.063
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.049
 </code></pre></div></div>
 
-<p>It is more accurate.   In general the permutation method is more accurate
-for data from not-normal distributions, as well being accurate for normal
+<p>It is more accurate.   In general the permutation method is more accurate for
+data from not-normal distributions, as well being accurate for normal
 distributions.</p>
 
           

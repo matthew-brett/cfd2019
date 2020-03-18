@@ -235,8 +235,8 @@ def t_test(group1, group2):
     df = g1_n + g2_n - 2  # The "degrees of freedom".
     estimated_sd = np.sqrt(np.sum(errors ** 2) / df)
     t_stat = omd / (estimated_sd * np.sqrt(1 / g1_n + 1 / g2_n))
-    upper_tail_p_value = 1 - sps.t.cdf(t_stat, df)
-    return [t_stat, upper_tail_p_value]
+    upper_tail_p = 1 - sps.t.cdf(t_stat, df)
+    return [t_stat, upper_tail_p]
 ```
 
 The only new thing in the implementation above is the second-to-last line,
@@ -261,7 +261,8 @@ larger, in the null (ideal) world.  If the p value is small, then the observed
 mean difference is surprising.  For example, if the p value is 0.05, it means
 that such difference only occurs 5% of the time by chance in the null world, or
 1 in 20 times.  You could say it was surprising at a 5% level.  Similarly a p
-value of 0.01 means the result would only occur 1% of the time in the null world, and it is surprising at a 1% level.
+value of 0.01 means the result would only occur 1% of the time in the null
+world, and it is surprising at a 1% level.
 
 Here we recreate the mosquito, beer, water data from the [permutation and
 t-test page](/cfd2019/chapters/05/permutation_and_t_test):
@@ -285,18 +286,20 @@ print('t statistic:', t)
 print('Upper-tail p value:', p)
 ```
 
-This means that the observed difference in means:
+Here is the observed difference in means:
 
 ```{python}
 # Observed mean difference
 np.mean(beer_activated) - np.mean(water_activated)
 ```
 
-would only occur about 5% of the time in a null (ideal) world, where the beer
-and water values come from the same distribution.  The observed result is
+The p value above asserts that the observed difference in means above would
+only occur about 5% of the time in a null (ideal) world, where the beer and
+water values come from the same distribution.  The observed result is
 surprising at around the 5% level.
 
-We check this is the same result we get from using the standard Scipy function:
+We check the t and p values are the same as the ones we get from using the
+standard Scipy function for independent t-tests:
 
 ```{python}
 result = sps.ttest_ind(beer_activated, water_activated)
@@ -309,9 +312,12 @@ distributions?
 
 If it is valid, then consider the situation where we do in fact draw two
 samples from *the same* normal distribution, and then ask the t test for a p
-value.  If the p value is 5%, it means that such a result should only occur by chance, in the null world, 5% of the time.
+value.  If the p value is 5%, it means that such a result should only occur by
+chance, in the null world, 5% of the time.
 
-So, we can repeat this procedure, drawing numbers that do in fact come from the null world, and check that the t-test only tells us that the result is surprising at the 5% level --- about 5% of the time.
+So, we can repeat this procedure, drawing numbers that do in fact come from the
+null world, and check that the t-test only tells us that the result is
+surprising at the 5% level --- about 5% of the time.
 
 ```{python}
 n_iters = 1000
@@ -339,7 +345,9 @@ np.count_nonzero(p_values <= 0.05) / n_iters
 Here the t-test is doing a good job --- it labels the result as surprising, at
 the 5% level, about 5% of the time.
 
-Now we ask - does it matter if the group sizes are unequal.  Here we do the same calculation, but split the numbers from the null world into one group of 3 and another of 37:
+Now we ask - does it matter if the group sizes are unequal?  To test this, we
+do the same calculation, but split the numbers from the null world into one
+group of 3 and another of 37:
 
 ```{python}
 # t-test working on unequal group sizes.
@@ -365,10 +373,11 @@ np.count_nonzero(p_values <= 0.05) / n_iters
 
 The proportion is still around 5%, close to what it should be.
 
-What happens if we use a distribution other than the normal distribution.
+What happens if we use a distribution other than the normal distribution?
 
 Here we use some random numbers from a [Chi-squared
-distribution](https://en.wikipedia.org/wiki/Chi-squared_distribution).  The distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):
+distribution](https://en.wikipedia.org/wiki/Chi-squared_distribution).  The
+distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):
 
 ```{python}
 some_chi2_numbers = np.random.chisquare(2, size=1000)
@@ -376,7 +385,7 @@ plt.hist(some_chi2_numbers)
 plt.title('1000 random samples from chi-squared distribution, k=2')
 ```
 
-Now we use this highly not-normal distribution to provide numbers to our t-test:
+We use this highly not-normal distribution to provide numbers to our t-test:
 
 ```{python}
 # t-test working on unequal group sizes and not-normal distribution.
@@ -392,7 +401,8 @@ for i in np.arange(n_iters):
 p_values[:5]
 ```
 
-Now the t-test starts to be less accurate - labeling too many random differences as being surprising at the 5% level:
+In this situation the t-test starts to be less accurate - labeling too many
+random differences as being surprising at the 5% level:
 
 ```{python}
 # Proportion of times the t-test said: surprising at 5% level.
@@ -424,7 +434,8 @@ Test this on the mosquito data:
 permutation(beer_activated, water_activated)
 ```
 
-This is very similar to the t-statistic p value --- *for these data* that have fairly equal group size, and a distribution not far from normal:
+This is very similar to the t-statistic p value --- *for these data* that have
+fairly equal group size, and a distribution not far from normal:
 
 ```{python}
 t_test(beer_activated, water_activated)
@@ -433,8 +444,8 @@ t_test(beer_activated, water_activated)
 Now let's check if the permutation test also trips up on the unequal group
 sizes and not-normal distribution.
 
-The code below will take a few tens of seconds to run, because you are running many
-loops in the `permutation` function, each time you go through the main
+The code below will take a few tens of seconds to run, because you are running
+many loops in the `permutation` function, each time you go through the main
 loop.
 
 ```{python}
@@ -460,8 +471,8 @@ How does the permutation test do?
 np.count_nonzero(p_values <= 0.05) / n_iters
 ```
 
-It is more accurate.   In general the permutation method is more accurate
-for data from not-normal distributions, as well being accurate for normal
+It is more accurate.   In general the permutation method is more accurate for
+data from not-normal distributions, as well being accurate for normal
 distributions.
 
         
