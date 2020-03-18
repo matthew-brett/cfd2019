@@ -123,6 +123,16 @@ print('t statistic:', t)
 print('Upper-tail p value:', p)
 ```
 
+To check our function is doing the correct calculation, we show that the t and
+p values are the same as the ones we get from using the standard Scipy function
+for independent t-tests:
+
+```{python}
+result = sps.ttest_ind(beer_activated, water_activated)
+print('Scipy t statistic:', result.statistic)
+print('Scipy upper-tail p value:', result.pvalue / 2)
+```
+
 Here is the observed difference in means:
 
 ```{python}
@@ -130,19 +140,10 @@ Here is the observed difference in means:
 np.mean(beer_activated) - np.mean(water_activated)
 ```
 
-The p value above asserts that this observed difference in means would only
-occur about 5% of the time in a null (ideal) world, where the beer and water
-values come from the same distribution.  The observed result is surprising at
-around the 5% level.
-
-We check the t and p values are the same as the ones we get from using the
-standard Scipy function for independent t-tests:
-
-```{python}
-result = sps.ttest_ind(beer_activated, water_activated)
-print('Scipy t statistic:', result.statistic)
-print('Scipy upper-tail p value:', result.pvalue / 2)
-```
+The t-test p value above asserts that this observed difference in means would
+only occur about 5% of the time in a null (ideal) world, where the beer and
+water values come from the same distribution.  The observed result is
+surprising at around the 5% level.
 
 How would we check the assertion that the t-test is valid for normal
 distributions?
