@@ -239,6 +239,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/05/population_permutation",
         "teaser":null},{
+        "title": "5.5 Testing validity of tests",
+        "excerpt":"One of the great advantages of using simulation is that you can test theassertions your teachers make. For example, in the permutation and t-test page, we asserted that the t-test is notvalid when the underlying distribution of the numbers is not close to thenormal distribution. We can investigate this claim...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/05/testing_t",
+        "teaser":null},{
         "title": "Booleans and labels",
         "excerpt":"We have already used Boolean series to index data frames and other series. This page gives a little more details about how that works, in order to explainsome subtleties in results. We return to the World Bank statistics on development and gender ingender_stats.csv. Download that file to the same directory...","categories": [],
         "tags": [],

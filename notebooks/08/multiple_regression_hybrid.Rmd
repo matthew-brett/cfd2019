@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Class 31 - Coding for Data - 2019 edition</title>
+<!-- begin _includes/seo.html --><title>License - Coding for Data - 2019 edition</title>
 <meta name="description" content="">
 
 
@@ -11,8 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="Class 31">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/classes/class_31">
+<meta property="og:title" content="Coding for Data - 2019 edition">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/notebooks/08/multiple_regression_hybrid.Rmd">
 
 
 
@@ -30,7 +30,7 @@
   
 
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/classes/class_31">
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/notebooks/08/multiple_regression_hybrid.Rmd">
 
 
 
@@ -166,7 +166,7 @@
   
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Class 31">
+    
     
     
     
@@ -174,22 +174,58 @@
     <div class="page__inner-wrap">
       
         <header>
-          <!-- <h1 id="page-title" class="page__title" itemprop="headline">Class 31
-</h1> -->
+          <!--  -->
           
         </header>
       
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="day-31-the-thirty-second-day">Day 31 (the thirty-second day)</h1>
+        ```{python}
+import numpy as np
+import pandas as pd
+from scipy.optimize import minimize
+```
 
-<h2 id="permutations-t-tests">Permutations, t-tests</h2>
+```{python}
+df = pd.read_csv('hybrid.csv')
+df.head()
+```
 
-<ul>
-  <li><a href="../chapters/05/permutation_and_t_test">Permutation and t-tests</a></li>
-  <li><a href="../chapters/05/testing_t">Testing t-tests and permutation tests</a></li>
-</ul>
+```{python}
+suvs = df[df['class'] == 'SUV']
+suvs.head()
+```
+
+```{python}
+def ls_for_x(b, y, X):
+    errors = y - X @ b
+    return sum(errors ** 2)
+```
+
+```{python}
+X = np.ones((len(suvs), 3))
+X[:, 1] = suvs['acceleration']
+X[:, 2] = suvs['mpg']
+X[:5, :]
+```
+
+```{python}
+best_p = minimize(ls_for_x, [np.mean(suvs['msrp']), 2500, -2300], args=(suvs['msrp'], X))
+```
+
+```{python}
+best_p
+```
+
+```{python}
+b = np.linalg.pinv(X) @ suvs['msrp'][:, None]
+b
+```
+
+```{python}
+
+```
 
         
       </section>
