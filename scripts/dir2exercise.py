@@ -56,9 +56,13 @@ def process_dir(path, out_path, grade=False, site_config=None):
     write_utf8(exercise_fname, make_exercise(template))
     solution_fname = TEMPLATE_RE.sub('_solution.Rmd', template_fname)
     write_utf8(solution_fname, make_solution(template))
-    b_e.process_nb(exercise_fname, execute=False, out_path=out_path)
+    b_e.process_nb(exercise_fname, execute=False)
     if grade:
-        gok.show_grade(solution_fname, path)
+        grades = gok.grade_nb_fname(solution_fname, path)
+        gok.print_grades(grades)
+        if not all(grades.values()):
+            raise RuntimeError('One or more grades 0')
+    b_e.pack_exercise(exercise_fname, out_path)
 
 
 def find_site_config(dir_path, filenames=('course.yml', '_config.yml')):

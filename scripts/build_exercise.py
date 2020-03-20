@@ -80,16 +80,26 @@ def good_fname(fname):
 
 
 def pack_exercise(fname, out_path=None):
-    path = op.relpath(path_of(fname), '.')
+    path = path_of(fname)
+    below_path, sdir_name = op.split(path)
     if out_path is None:
         out_path = os.getcwd()
-    froot = op.splitext(op.basename(fname))[0]
-    zip_fname = op.join(out_path, froot + '.zip')
+    zip_fname = op.join(out_path, sdir_name + '.zip')
     listing = glob(op.join(path, '**'), recursive=True)
     files = [f for f in listing if good_fname(f)]
     with ZipFile(zip_fname, 'w') as zip_obj:
         for fn in files:
-            zip_obj.write(fn)
+            arcname = op.relpath(fn, below_path)
+            zip_obj.write(fn, arcname)
+
+
+def process_nb(fname, execute=False):
+    clear_directory(fname)
+    nb = read_nb(fname)
+    if execute:
+        nb = execute_nb(nb, path_of(fname))
+    nb = clear_outputs(nb)
+    write_nb(nb, ipynb_fname(fname))
 
 
 def get_parser():
@@ -103,20 +113,11 @@ def get_parser():
     return parser
 
 
-def process_nb(fname, execute=False, out_path=None):
-    clear_directory(fname)
-    nb = read_nb(fname)
-    if execute:
-        nb = execute_nb(nb, path_of(fname))
-    nb = clear_outputs(nb)
-    write_nb(nb, ipynb_fname(fname))
-    pack_exercise(fname, out_path)
-
-
 def main():
     args = get_parser().parse_args()
     for fname in args.notebook:
-        process_nb(fname, execute=args.execute, out_path=args.out_path)
+        process_nb(fname, execute=args.execute)
+        pack_exercise(fname, args.out_path)
 
 
 if __name__ == '__main__':
