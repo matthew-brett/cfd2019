@@ -67,7 +67,7 @@ def test_smoke_and_fails():
             'three_girls/tests/q_4_r_three_of_four.py',
             'three_girls/three_girls.ipynb',
             'three_girls/three_girls.ok']
-        # Test failing exercise causes error
+        # Test failing exercise causes error.
         bad_ex_fname = op.join(tmp_3g, 'tests', 'q_5.py')
         with open(bad_ex_fname, 'wt') as fobj:
             fobj.write('''
