@@ -442,8 +442,8 @@ fairly equal group size, and a distribution not far from normal:
 t_test(beer_activated, water_activated)
 ```
 
-Now let's check if the permutation test also trips up on the unequal group
-sizes and not-normal distribution.
+Now let's check how the permutation test does when there are unequal group
+sizes and a not-normal distribution.
 
 The code below will take a few tens of seconds to run, because you are running
 many loops in the `permutation` function, each time you go through the main
@@ -474,9 +474,9 @@ How does the permutation test do?
 np.count_nonzero(p_values <= 0.05) / n_iters
 ```
 
-It is more accurate.   In general the permutation method is more accurate for
-data from not-normal distributions, as well being accurate for normal
-distributions.
+It is more accurate than the t-test.   In general the permutation method is
+more accurate for data from not-normal distributions, as well being accurate
+for normal distributions.
 
         
       </section>

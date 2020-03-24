@@ -340,16 +340,6 @@ class SiteBuilder:
     def _nb2md(self, nb, out_folder, out_base):
         """Run nbconvert on notebook, output to the output folder
         """
-
-        """ Consider adding field to site config with script name
-        to be run when executing notebook, and then.
-
-        * Read notebook.
-        * Add code cell with script contents at top.
-        * Execute notebook.
-        * Remove first cell and renumber inputs / outputs.
-        * Convert to markdown with given template etc
-        """
         c = Config()
         c.Application.log_level = 'CRITICAL'
         md_exporter = nbc.MarkdownExporter(config=c)

@@ -23,8 +23,6 @@ HERE = op.dirname(__file__)
 NB_DIR = op.join(HERE, 'tests', 'data', 'three_girls')
 TESTS = sorted(glob(op.join(NB_DIR, 'tests', 'q*.py')))
 
-EXE_PRE = ExecutePreprocessor()
-
 
 def as_nb(fname, as_version=DEFAULT_NB_VERSION):
     if jupytext:
@@ -52,17 +50,23 @@ def execute_nb(nb, path):
     storage_path = op.join(path, '.ok_storage')
     if op.exists(storage_path):
         os.unlink(storage_path)
-    EXE_PRE.preprocess(nb, {'metadata': {'path': path}})
+    ep = ExecutePreprocessor()
+    ep.preprocess(nb, {'metadata': {'path': path}})
     return nb
+
+
+def merge_stdouts(outputs):
+    merged = []
+    for output in outputs:
+        assert output['name'] == 'stdout'
+        merged.append(output['text'])
+    return ''.join(merged)
 
 
 def get_test_fails(nb):
     out_cell = nb.cells[-1]
     assert out_cell['cell_type'] == 'code'
-    outputs = out_cell['outputs']
-    assert len(outputs) == 1
-    assert outputs[0]['name'] == 'stdout'
-    test_outs = outputs[0]['text']
+    test_outs = merge_stdouts(out_cell['outputs'])
     fails = {}
     for line in test_outs.splitlines():
         name, fail_count = line.split(',')
@@ -145,12 +149,12 @@ def get_args():
 def show_grade(nb_fname, wd):
     """ Print notebook filename and grades for each question
     """
-    print(nb_fname)
     try:
         grades = grade_nb_fname(nb_fname, wd)
     except Exception as exc:
-        print(exc)
+        print(nb_fname)
         return
+    print(nb_fname)
     print_grades(grades)
     print()
 

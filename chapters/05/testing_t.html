@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-03-18T16:54:05+00:00">
+  <meta property="article:published_time" content="2020-03-24T10:20:31+00:00">
 
 
 
@@ -1068,7 +1068,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="5.5 Testing validity of tests">
       <meta itemprop="description" content="One of the great advantages of using simulation is that you can test theassertions your teachers make.">
-      <meta itemprop="datePublished" content="March 18, 2020">
+      <meta itemprop="datePublished" content="March 24, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1384,8 +1384,8 @@ fairly equal group size, and a distribution not far from normal:</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1.640250605001883, 0.054302080886695414]
 </code></pre></div></div>
 
-<p>Now let’s check if the permutation test also trips up on the unequal group
-sizes and not-normal distribution.</p>
+<p>Now let’s check how the permutation test does when there are unequal group
+sizes and a not-normal distribution.</p>
 
 <p>The code below will take a few tens of seconds to run, because you are running
 many loops in the <code class="highlighter-rouge">permutation</code> function, each time you go through the main
@@ -1420,9 +1420,9 @@ loop.</p>
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.045
 </code></pre></div></div>
 
-<p>It is more accurate.   In general the permutation method is more accurate for
-data from not-normal distributions, as well being accurate for normal
-distributions.</p>
+<p>It is more accurate than the t-test.   In general the permutation method is
+more accurate for data from not-normal distributions, as well being accurate
+for normal distributions.</p>
 
           
         </section>
