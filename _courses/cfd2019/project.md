@@ -139,8 +139,11 @@ These are provisional, except for the "Projects due" deadline.
 | 3    | 27 Jan     | Data pitches 2            |
 | 4    |  3 Feb     | Teams finalized           |
 | 8    |  2 Mar     | Progress reports          |
-| 10   | 16 Mar     | Presentations             |
-| 11   | 29 Mar     | Projects due              |
+| 0:3  | 20 Apr     | Presentations             |
+| 1:3  | 27 Apr     | Projects due              |
+
+Notice that the presentation and project deadlines are at the beginning of the
+summer term.
 
 ## Progress report
 
