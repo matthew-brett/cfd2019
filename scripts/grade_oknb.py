@@ -46,11 +46,11 @@ def create_test_cells(tests):
     return cells
 
 
-def execute_nb(nb, path):
+def execute_nb(nb, path, timeout=240):
     storage_path = op.join(path, '.ok_storage')
     if op.exists(storage_path):
         os.unlink(storage_path)
-    ep = ExecutePreprocessor()
+    ep = ExecutePreprocessor(timeout=timeout)
     ep.preprocess(nb, {'metadata': {'path': path}})
     return nb
 
