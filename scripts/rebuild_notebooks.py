@@ -169,7 +169,7 @@ class Build:
         if nb['metadata'].get('jupyterbook', {}).get('run', True):
             print('Executing', nb_src)
             nb = execute_nb(nb,
-                            cwd=self.notebooks_folder,
+                            cwd=dirname(nbb),
                             default_pre=self.default_pre,
                             timeout=120)
         with open(nb_built, 'wt') as fobj:
