@@ -37,7 +37,7 @@ We are now ready to implement a $k$-nearest neighbor classifier based on multipl
 This time we'll look at predicting whether a banknote (e.g., a \$20 bill) is counterfeit or legitimate.  Researchers have put together a data set for us, based on photographs of many individual banknotes: some counterfeit, some legitimate.  They computed a few numbers from each image, using techniques that we won't worry about for this course.  So, for each banknote, we know a few numbers that were computed from a photograph of it as well as its class (whether it is counterfeit or not).  Let's load it into a table and take a look.
 
 If you are running on your laptop, you should download the
-[banknotes]({{ site.baseurl }}/data/banknotes.csv) file to the
+[banknote]({{ site.baseurl }}/data/banknote.csv) file to the
 same directory as this notebook.
 
 ```{python}
