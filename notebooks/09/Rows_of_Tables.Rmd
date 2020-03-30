@@ -284,7 +284,7 @@ To find the distance between Alice's point and any of the other points, we only 
 
 ```{python}
 # Select Hemoglobin and Glucose columns from the data frame
-ckd_attributes = ckd[['Hemoglobin', 'Glucose']]
+ckd_attributes = ckd.loc[:, ['Hemoglobin', 'Glucose']]
 ckd_attributes.head()
 ```
 
