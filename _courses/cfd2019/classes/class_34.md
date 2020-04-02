@@ -9,3 +9,4 @@ permalink: /classes/class_34
 ## Classification and prediction
 
 * [Accuracy of the classifier](../chapters/09/Accuracy_of_the_Classifier)
+* [The education minister](../chapters/10/havana_math)
