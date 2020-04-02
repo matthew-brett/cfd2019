@@ -399,10 +399,20 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
-        "title": "9. The end of the beginning",
+        "title": "9. Confidence",
+        "excerpt":"Thus far we have worried about two fundamental questions. In each case we have a sample of data from some universe or population, and we want to draw conclusions about the universe (population) from the sample. Our questions are: Is our observed sample likely to be compatible with a null...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/confidence",
+        "teaser":null},{
+        "title": "9.1 The education minister",
+        "excerpt":"Imagine for a moment that you are the minister of education in Cuba. It is 2019. The final school exams have just finished, but the results are not out yet. Of course you do have the results from 2018. You are particularly interested in this year’s results in Havana, because...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/havana_math",
+        "teaser":null},{
+        "title": "10. The end of the beginning",
         "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
         "tags": [],
-        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/end_of_beginning",
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/end/end_of_beginning",
         "teaser":null},{
         "title": "Array indexing",
         "excerpt":"These exercises follow on from the array indexing page. Run this cell to start: import numpy as npSo far we have seen arrays that contain numbers. Here is anarray that contains strings: some_words = np.array(['to', 'be', 'or', 'not', 'to', 'be'])some_wordsarray(['to', 'be', 'or', 'not', 'to', 'be'], dtype='&lt;U3')Indexing with integers Use indexing...","categories": [],

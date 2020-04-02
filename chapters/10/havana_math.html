@@ -3,38 +3,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>  The end of the beginning - Coding for Data - 2019 edition</title>
-<meta name="description" content="This is the end of the course.">
+<!-- begin _includes/seo.html --><title>9.1 The education minister - Coding for Data - 2019 edition</title>
+<meta name="description" content="Imagine for a moment that you are the minister of education in Cuba.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_UK">
 <meta property="og:site_name" content="Coding for Data - 2019 edition">
-<meta property="og:title" content="  The end of the beginning">
-<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/end_of_beginning">
+<meta property="og:title" content="9.1 The education minister">
+<meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/havana_math">
 
 
-  <meta property="og:description" content="This is the end of the course.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2020-04-02T10:06:20+01:00">
+  <meta property="og:description" content="Imagine for a moment that you are the minister of education in Cuba.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2020-04-02T10:56:42+01:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/10/end_of_beginning">
+
+<link rel="canonical" href="https://matthew-brett.github.io/cfd2019/chapters/10/havana_math">
 
 
 
@@ -960,7 +960,29 @@
           
           
 
-          <a href="/cfd2019/chapters/10/end_of_beginning"><span class="nav__sub-title">9. The end of the beginning</span></a>
+          <a href="/cfd2019/chapters/10/confidence"><span class="nav__sub-title">9. Confidence</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/10/havana_math"><span class="nav__sub-title">9.1 The education minister</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/cfd2019/chapters/end/end_of_beginning"><span class="nav__sub-title">10. The end of the beginning</span></a>
         
 
         
@@ -1066,17 +1088,15 @@
 
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="headline" content="  The end of the beginning">
-      <meta itemprop="description" content="This is the end of the course.">
+      <meta itemprop="headline" content="9.1 The education minister">
+      <meta itemprop="description" content="Imagine for a moment that you are the minister of education in Cuba.">
       <meta itemprop="datePublished" content="April 02, 2020">
       
 
       <div class="page__inner-wrap">
         
           <header>
-            <h1 id="page-title" class="page__title" itemprop="headline"><ol>
-  <li>The end of the beginning</li>
-</ol>
+            <h1 id="page-title" class="page__title" itemprop="headline">9.1 The education minister
 </h1>
           </header>
         
@@ -1092,24 +1112,267 @@
           
           <!-- INTERACT LINKS -->
 
+    
+    
+    <a class="notebook-link" href="https://matthew-brett.github.io/cfd2019/ipynb/10/havana_math.ipynb">Download notebook</a>
+    <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F10%2Fhavana_math.ipynb">Interact</a>
 
-          <p>This is the end of the course.</p>
 
-<p>The course is an introduction to data science.  Along the way, we hope you learned:</p>
+          <p>Imagine for a moment that you are the minister of education in Cuba.</p>
 
-<ul>
-  <li>Some of the <a href="../01/computational-tools">computational tools</a> including the
-Python language, Jupyter notebooks, Numpy arrays, and Pandas data frames.</li>
-  <li>Some of the <a href="../01/statistical-techniques">statistical techniques</a>, including
-simulation, testing for differences between groups with permutation, testing
-for straight-line relationships, and predicting categories of data from measurements.</li>
-</ul>
+<p>It is 2019.   The final school exams have just finished, but the results are not out yet.  Of course you do have the results from 2018.</p>
 
-<p>You now know the fundamental building blocks for the algorithms you have used; variables, arrays, for-loops, and functions.</p>
+<p>You are particularly interested in this year’s results in Havana, because of recent problems that you have had with loss of teachers due to emigration.</p>
 
-<p>Of course, this is just the beginning.  If you are interested, we highly recommend the <a href="https://www.inferentialthinking.com">Berkeley data science textbook</a>.  You have already read some of the chapters, because there are versions of those chapters in this course, but the Berkeley course goes much further.  With the background you have now, you should be able to follow that course to the end.  It’s an excellent introduction.</p>
+<p>In order to plan for the year ahead, you need to know if the mathematics results are holding steady.   But, as things stand, you won’t get the full results for 2019 for another month.</p>
 
-<p>Now, go forth, and multiply (and divide, and add and subtract).  As you do, you will discover interesting things about the world.  You have the tools to test and challenge our new world of <a href="https://en.wikipedia.org/wiki/Weapons_of_Math_Destruction">big data and ubiquitous algorithms</a>.</p>
+<p>To help your decision-making, you very much want to get an idea of how good the results are this year.   Being wise, you decided to take a random sample of 50 from all the exam papers from Havana this year (2019).  You get them marked quickly.   But - how much information will this sample give you about the eventual results for 2019?</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Here are the <a href="https://github.com/matthew-brett/datasets/tree/abb224b/havana_exams">actual</a> school-leaver mathematics examination results from 2018.</p>
+
+<p>You can download the file from
+<a href="/cfd2019/data/havana_math_2018.csv">havana_math_2018.csv</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2018.csv'</span><span class="p">)</span>
+<span class="n">havana_2018</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>school_type</th>
+      <th>id</th>
+      <th>name</th>
+      <th>mark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2300-VLADIMIR I. LENIN</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>92066898</td>
+      <td>ABREU ALBA DANIELA</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2300-VLADIMIR I. LENIN</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>51166516</td>
+      <td>ACEN RAVELO THALIA</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2300-VLADIMIR I. LENIN</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>121568242</td>
+      <td>ACOSTA MERIÑO YORDAN CESAR</td>
+      <td>85.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2300-VLADIMIR I. LENIN</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>51975208</td>
+      <td>AGUADO VALDEZ IRAN DE JESUS</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2300-VLADIMIR I. LENIN</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>122867542</td>
+      <td>AGUILAR CESPEDES DANILO</td>
+      <td>100.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>There are about 8000 marks in this table:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">havana_2018</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7995
+</code></pre></div></div>
+
+<p>Here is the histogram, split into 100 bins to show more detail of the distribution — the default is 10 bins (question — how would you check this?).</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s">'mark'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/10/havana_math_8_0.png" alt="png" /></p>
+
+<p>Notice this is much unlike a normal distribution,  In particular, you can see that the marks near 50% - appear to have been pushed upwards to 60%.  Are the markers being generous to students close to the pass mark?</p>
+
+<p>Here are the various statistics for the 2018 marks:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    7306.000000
+mean       65.256091
+std        26.697986
+min         0.000000
+25%        45.000000
+50%        69.000000
+75%        90.000000
+max       100.000000
+Name: mark, dtype: float64
+</code></pre></div></div>
+
+<p>We are particularly interested in the median.  As you remember, this is the 50% percentile, that you see in the table above.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Median mark in 2018.
+</span><span class="n">math_med_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">math_med_2018</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>69.0
+</code></pre></div></div>
+
+<p>Now we look at the sample of 50 exams from 2019 that you marked quickly.</p>
+
+<p>You can download the sample file from
+<a href="/cfd2019/data/havana_math_2019_sample.csv">havana_math_2019_sample.csv</a>.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2019_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2019_sample.csv'</span><span class="p">)</span>
+<span class="n">havana_2019_sample</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>school_type</th>
+      <th>id</th>
+      <th>name</th>
+      <th>mark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2327-PRESENCIA DE CELIA</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>1101168160</td>
+      <td>RAMIREZ SANCHEZ NEYDER</td>
+      <td>89.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2305-JOSE MIGUEL PEREZ</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>1101066782</td>
+      <td>LEIVA RAMOS SAMUEL ALEJANDRO</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2313-VILMA ESPIN</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>1101167635</td>
+      <td>NODARSE CASTRO JENNIFER</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2324-MANOLITO AGUIAR</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>1033165197</td>
+      <td>SCULL ORTIZ JESSICA</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2306-TOMAS DAVID ROYO</td>
+      <td>Institutos Preuniversitarios</td>
+      <td>1102668498</td>
+      <td>HERRERA GARCIA REGINA TERESA</td>
+      <td>97.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">havana_2019_sample</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>50
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2019_sample</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    45.000000
+mean     54.511111
+std      24.015736
+min       4.000000
+25%      30.000000
+50%      60.000000
+75%      72.000000
+max      97.000000
+Name: mark, dtype: float64
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Median mark in 2019 sample.
+</span><span class="n">math_med_2019_samp</span> <span class="o">=</span> <span class="n">havana_2019_sample</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">math_med_2019_samp</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60.0
+</code></pre></div></div>
+
+<p>The median here is 60.  That seems a bit lower than the 2018 median — but have I been decieved by the sample?  Was I just unlucky?   How confident can I be that the median from the full results will in fact be near 60, rather than the 69 of the previous year?</p>
+
+<p>We now enter the territory of <em>confidence intervals</em>.</p>
+
+<p>The sample median is 60, but how close is that median likely to be to the eventual median, once I have all 8000 or so results for 2019?  How <em>confident</em> can I be in this median of around 60?</p>
 
           
         </section>
@@ -1126,11 +1389,15 @@ for straight-line relationships, and predicting categories of data from measurem
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/09/Accuracy_of_the_Classifier" class="pagination--pager" title="8.6 Accuracy of the classifier
+      <a href="/cfd2019/chapters/10/confidence" class="pagination--pager" title="
+  Confidence
+
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/exercises/exercises" class="pagination--pager" title="Exercises
+      <a href="/cfd2019/chapters/end/end_of_beginning" class="pagination--pager" title="
+  The end of the beginning
+
 ">Next</a>
     
   </nav>
