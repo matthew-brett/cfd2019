@@ -81,7 +81,7 @@
   * [8.5 Implementing the classifier](notebooks/09/Implementing_the_Classifier.ipynb)
   * [8.6 Accuracy of the classifier](notebooks/09/Accuracy_of_the_Classifier.ipynb)
 * [9. Confidence](notebooks/10/confidence.md)
-* [9.1 The education minister](notebooks/10/havana_math.ipynb)
+  * [9.1 The education minister](notebooks/10/havana_math.ipynb)
 * [10. The end of the beginning](notebooks/end/end_of_beginning.md)
 * [Exercises](notebooks/exercises/exercises.md)
   * - [Interesting, no?](notebooks/exercises/interesting.ipynb)

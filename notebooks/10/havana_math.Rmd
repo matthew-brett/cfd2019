@@ -51,7 +51,7 @@ len(havana_2018)
 Here is the histogram, split into 100 bins to show more detail of the distribution --- the default is 10 bins (question --- how would you check this?).
 
 ```{python}
-havana_2018.hist('mark', bins=50);
+havana_2018.hist('mark', bins=100);
 ```
 
 Notice this is much unlike a normal distribution,  In particular, you can see that the marks near 50% - appear to have been pushed upwards to 60%.  Are the markers being generous to students close to the pass mark?
