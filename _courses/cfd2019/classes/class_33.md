@@ -10,4 +10,3 @@ permalink: /classes/class_33
 
 * [Rows of tables](../chapters/09/Rows_of_Tables)
 * [Implementing the classifier](../chapters/09/Implementing_the_Classifier)
-* [Accuracy of the classifier](../chapters/09/Accuracy_of_the_Classifier)
