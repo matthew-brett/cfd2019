@@ -33,3 +33,4 @@ For the previous term, see the [Autumn term classes page](classes/autumn_term).
 | 11   |  24 Mar    | [class 32](classes/class_32) |
 | 12   |  30 Mar    | [class 33](classes/class_33) |
 | 13   |  2 Apr     | [class 34](classes/class_34) |
+| 14   |  7 Apr     | [class 35](classes/class_35) |

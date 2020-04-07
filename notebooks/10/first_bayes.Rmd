@@ -1,0 +1,195 @@
+---
+jupyter:
+  jupytext:
+    notebook_metadata_filter: all,-language_info
+    split_at_heading: true
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.2.4
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+In the [problem for the education minister]({{ site.baseurl
+}}/chapters/10/havana_math) we had a sample of fast-track-marked exams from
+2019, and we found that the median mark was 60.  We wondered what we could say
+about the eventual median when we have the marks for all 8000 or so students.
+
+For example, we might wonder how likely it is that the eventual median will be
+69, as it was in 2018.  Or we might wonder whether we could be say that the
+eventual median for all the papers will be the sample median 60, plus or minus
+a bit.   If so, what value should we give to "a bit".
+
+This kind of problem can be called a problem of *reverse probability*.  We
+have observed some outcome from our sample -- 60 -- and we want to be able to
+say something about the *population* from which the sample came -- in our
+case, the population of all 8000 or so exam marks.
+
+## A reverse probability game
+
+Imagine I offer you one of two boxes.
+
+One box has four red balls and one green ball.  Call this 'box4'.
+
+The other box has two red balls and three green balls.  Call this 'box2'.
+
+I haven't told you which box I gave you, but I do tell you that I chose the
+box at random, so you have a 50% chance that I gave you 'box4' and a 50%
+chance I gave you 'box2'.
+
+Now let's say that you shake the box to shuffle the balls, then close your
+eyes, and take out one ball.  You open your eyes to find you have a red ball.
+
+What is the chance that I gave you 'box4'?
+
+Notice that this is *reverse probability* problem.  You are working back from what you see (the red ball) to what I gave you.
+
+In our exam mark problem, we are working back from what we saw (the median of
+60) to the eventual median for all the exams.
+
+How are we going to solve the box4, box2 reverse probability problem?  Simulation!
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+# %matplotlib inline
+```
+
+```{python}
+# Make a box with 4 red balls and 1 green ball
+box4 = np.repeat(['red', 'green'], [4, 1])
+box4
+```
+
+```{python}
+# Make a box with 2 red balls and 3 green balls
+box2 = np.repeat(['red', 'green'], [2, 3])
+box2
+```
+
+Now we make 10000 trials, where we:
+
+* Choose box2 or box4 at random;
+* Choose a ball at random from the resulting box.
+
+```{python}
+n_iters = 10000
+box_nos = np.repeat([1], n_iters)
+ball_colors = np.repeat(['green'], n_iters)
+for i in np.arange(10000):
+    # Choose a box number randomly from box4, box2.
+    box_no = np.random.choice([4, 2])
+    # Choose a ball at random from the box.
+    if box_no == 4:
+        # Choose a ball at random from box4.
+        ball_color = np.random.choice(box4)
+    else:  # box 4
+        # Choose a ball at random from box2.
+        ball_color = np.random.choice(box2)
+    # Store the results.
+    box_nos[i] = box_no
+    ball_colors[i] = ball_color
+```
+
+Last we put the results into a data frame for convenience:
+
+```{python}
+# Make these into a data frame.
+trial_results = pd.DataFrame()
+trial_results['box no'] = box_nos
+trial_results['ball color'] = ball_colors
+trial_results.head()
+```
+
+Now we can see the proportion of trials on which we got a red ball, where the box we had got was box4.
+
+```{python}
+# Of the trials giving a red ball, what proportion came from box 4?
+red_ball_trials = trial_results[trial_results['ball color'] == 'red']
+p_box4 = np.count_nonzero(red_ball_trials['box no'] == 4) / len(red_ball_trials)
+p_box4
+```
+
+Of the trials giving a red ball about 66% came from box4.   If we see a red ball, there is a 66% chance we have sampled from box4.
+
+You have just solved your first problem in reverse probability.  The problem
+will soon reveal a simple calculation in probability called [Bayes
+theorem](https://en.wikipedia.org/wiki/Bayes'_theorem).
+
+This is a fundamental building block, so let's go back over the simulation, to think about why we got this number.
+
+We can think of all these trials as coming about from a branching tree.
+
+At the first branching point, we split into two branches, each of width 0.5,
+one for box4 and one for box2.  Thus, about 50% of the trials are "box4"
+trials, and around 50% are "box2" trials:
+
+```{python}
+box4_trials = trial_results[trial_results['box no'] == 4]
+box2_trials = trial_results[trial_results['box no'] == 2]
+n_trials = len(trial_results)
+print('Box4 proportion', len(box4_trials) / n_trials)
+print('Box2 proportion', len(box2_trials) / n_trials)
+```
+
+At the second branching point, each branch splits into two.
+
+* The box4 branch splits into a "red" branch, which carries 4/5 (0.8, 80%) of
+  the box4 trials, and a "green" branch, that carries 1/5 (0.2, 20%) of the
+  box4 trials, because the probability of getting a red ball from box4 is 4 in
+  5.
+* The box2 branch splits into a "red" branch, which carries 2/5 (0.4, 40%) of
+  the box2 trials, and a "green" branch, which carries 3/5 (0.6, 60%) of the
+  box2 trials, because the probability of getting a red ball from box2 is 2 in
+  5.
+
+Thus the proportion of trials that are *both* from box4 *and* give a red ball
+is 0.5 (the width of the box4 branch) * 0.8 (the proportion of box4 trials
+that give red) = 0.4.
+
+```{python}
+box4_and_red = box4_trials[box4_trials['ball color'] == 'red']
+prop_box4_and_red = len(box4_and_red) / n_trials
+print('Box4 and red proportion', prop_box4_and_red)
+```
+
+The proportion of trials that are *both* from box2 *and* give a red ball
+is 0.5 (the width of the box2 branch) * 0.4 (the proportion of box2 trials
+that give red) = 0.2.
+
+```{python}
+box2_and_red = box2_trials[box2_trials['ball color'] == 'red']
+prop_box2_and_red = len(box2_and_red) / n_trials
+print('Box2 and red proportion', prop_box2_and_red)
+```
+
+We get the overall proportion of red by adding the proportion that is box4 *and* red to the proportion that is box2 *and* red, because these are all the red trials.  This is 0.4 + 0.2 = 0.6.
+
+```{python}
+n_red = len(box4_and_red) + len(box2_and_red)
+prop_red = n_red / n_trials
+print('Overall proportion of red', prop_red)
+```
+
+We've already discovered about that 0.4 (40%) of all trials are box4 *and* red.  So the proportion of *all* red trials, that are box4 *and* red, is 0.4 / 0.6 = 0.666.
+
+```{python}
+print('Proportion of all red trials that are box4', (prop_box4_and_red / prop_red))
+```
+
+To go over the logic again:
+
+* We want the proportion of "red" trials that came from box4.
+* To do this, we calculate the proportion of trials that are *both* box4 and
+  red, and divide by the overall proportion of red trials.
+* The proportion of red trials that are *both* box4 *and* red is the
+  proportion of box4 trials multiplied by (the proportion of box4 trials that
+  are red).
+
+We have just [discovered Bayes theorem]({{ site.baseurl
+}}/chapters/10/bayes_theorem).

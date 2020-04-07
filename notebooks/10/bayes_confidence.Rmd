@@ -1,0 +1,33 @@
+---
+jupyter:
+  jupytext:
+    metadata_filter:
+      notebook:
+        additional: all
+        excluded:
+        - language_info
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.0'
+      jupytext_version: 0.8.6
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+In the [problem for the education minister]({{ site.baseurl
+}}/chapters/10/havana_math) we had a sample of fast-track-marked exams from
+2019, and we found that the median mark was 60.  We wondered what we could say
+about the eventual median when we have the marks for all 8000 or so students.
+
+For example, we might wonder how likely it is that the eventual median will be
+69, as it was in 2018.  Or we might wonder whether we could be say that the
+eventual median for all the papers will be the sample median 60, plus or minus
+a bit.   If so, what value should we give to "a bit".
+
+This kind of problem can be called a problem of *reverse probability*.  We
+have observed some outcome from our sample -- 60 -- and we want to be able to
+say something about the *population* from which the sample came -- in our
+case, the population of all 8000 or so exam marks.
