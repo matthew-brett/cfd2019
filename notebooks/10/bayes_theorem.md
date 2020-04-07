@@ -89,7 +89,7 @@ $P(box4 \cap red)$ is 0.5 * 0.8 = 0.4.
 The second statement says:
 
 $$
-$P(box4 \mid red)$ = \frac{P(box4 \cap red)}{P(red)}
+P(box4 \mid red) = \frac{P(box4 \cap red)}{P(red)}
 $$
 
 Remember from the [reverse probability page](first_bayes) that we found $P(red)$ by adding the probabilities of the two different ways we can get a red ball: $P(red) = P(red | box4) + P(red | box2)$.
