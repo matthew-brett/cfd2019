@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-07T10:13:15+01:00">
+  <meta property="article:published_time" content="2020-04-07T10:18:29+01:00">
 
 
 
@@ -1160,11 +1160,10 @@ two red balls and three green balls.</li>
 
 <p>We found by simulation, and later by reflection, that the probability is 0.67.</p>
 
-<p>We want the proportion of “red” trials that came from box4.</p>
-
 <p>The logic we discovered was:</p>
 
 <ul>
+  <li>We want the proportion of “red” trials that came from box4.</li>
   <li>Calculate the proportion of trials that are <em>both</em> box4 and red, and divide
 by the overall proportion of red trials.</li>
   <li>The proportion of red trials that are <em>both</em> box4 <em>and</em> red is the
@@ -1202,7 +1201,7 @@ theorem.</p>
 
 <script type="math/tex; mode=display">P(red \mid box2) = 0.4</script>
 
-<p>Sometimes we want to express the probability of two things happening together.  For example, we might want to express the probability that I gave you box4 <em>and then</em> I drew a red.  We write that like this:</p>
+<p>Sometimes we want to express the probability of two things happening together.  For example, we might want to express the probability that I gave you box4 <em>and</em> I drew a red.  We write that like this:</p>
 
 <script type="math/tex; mode=display">P(box4 \cap red)</script>
 
@@ -1222,29 +1221,23 @@ are red).</li>
 <p>We can express the first statement by saying that we are trying to find
 $P(box4 \mid red)$.</p>
 
-<p>We can express the third statement in the following way.  Read the $\cap$ as “and”.</p>
+<p>We can express the third statement in the following way.  We use the $\cap$
+symbol to express “and”.</p>
 
 <script type="math/tex; mode=display">P(box4 \cap red) = P(box4) P(red \mid box4)</script>
 
 <p>Read this statement as “the probability that we got box4 <em>and</em> drew a red ball
 is equal to the probability that we got box4, multiplied by the probability
-that we draw a red ball given we got box4”.  As we know, in our case:</p>
-
-<p>$P(box4 \cap red)$ is 0.5 * 0.8 = 0.4.</p>
+that we draw a red ball given we got box4”.  As we know, in our case, $P(box4
+\cap red)$ is 0.5 * 0.8 = 0.4.</p>
 
 <p>The second statement says:</p>
 
-<script type="math/tex; mode=display">P(box4 \mid red) = \frac{P(box4 \cap red)}{P(red)}</script>
+<script type="math/tex; mode=display">foo</script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Remember from the <a href="first_bayes">reverse probability page</a> that we found $P(red)$ by adding the probabilities of the two different ways we can get a red ball: $P(red) = P(red</td>
-      <td>box4) + P(red</td>
-      <td>box2)$.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Remember from the <a href="first_bayes">reverse probability page</a> that we found
+$P(red)$ by adding the probabilities of the two different ways we can get
+a red ball: $P(red) = P(red | box4) + P(red | box2)$.</p>
 
 <p>Putting the first, third and second statements together into one, we get:</p>
 

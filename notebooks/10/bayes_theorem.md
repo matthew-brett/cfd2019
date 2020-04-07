@@ -10,10 +10,9 @@ The game is:
 
 We found by simulation, and later by reflection, that the probability is 0.67.
 
-We want the proportion of "red" trials that came from box4.
-
 The logic we discovered was:
 
+* We want the proportion of "red" trials that came from box4.
 * Calculate the proportion of trials that are *both* box4 and red, and divide
   by the overall proportion of red trials.
 * The proportion of red trials that are *both* box4 *and* red is the
@@ -58,7 +57,7 @@ $$
 P(red \mid box2) = 0.4
 $$
 
-Sometimes we want to express the probability of two things happening together.  For example, we might want to express the probability that I gave you box4 *and then* I drew a red.  We write that like this:
+Sometimes we want to express the probability of two things happening together.  For example, we might want to express the probability that I gave you box4 *and* I drew a red.  We write that like this:
 
 $$
 P(box4 \cap red)
@@ -78,7 +77,8 @@ We follow the logic above, with this notation.  Here is the logic again:
 We can express the first statement by saying that we are trying to find
 $P(box4 \mid red)$.
 
-We can express the third statement in the following way.  Read the $\cap$ as "and".
+We can express the third statement in the following way.  We use the $\cap$
+symbol to express "and".
 
 $$
 P(box4 \cap red) = P(box4) P(red \mid box4)
@@ -86,17 +86,18 @@ $$
 
 Read this statement as "the probability that we got box4 *and* drew a red ball
 is equal to the probability that we got box4, multiplied by the probability
-that we draw a red ball given we got box4".  As we know, in our case:
-
-$P(box4 \cap red)$ is 0.5 * 0.8 = 0.4.
+that we draw a red ball given we got box4".  As we know, in our case, $P(box4
+\cap red)$ is 0.5 * 0.8 = 0.4.
 
 The second statement says:
 
 $$
-P(box4 \mid red) = \frac{P(box4 \cap red)}{P(red)}
+foo
 $$
 
-Remember from the [reverse probability page](first_bayes) that we found $P(red)$ by adding the probabilities of the two different ways we can get a red ball: $P(red) = P(red | box4) + P(red | box2)$.
+Remember from the [reverse probability page](first_bayes) that we found
+$P(red)$ by adding the probabilities of the two different ways we can get
+a red ball: $P(red) = P(red | box4) + P(red | box2)$.
 
 Putting the first, third and second statements together into one, we get:
 
