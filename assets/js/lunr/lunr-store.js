@@ -399,15 +399,35 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
+        "title": "9.3 Back to Havana",
+        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60. We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students. For example, we might wonder how...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_confidence",
+        "teaser":null},{
+        "title": "Bayes theorom",
+        "excerpt":"The reverse probability page has a game, that we analyzed by simulation, and then by reflection. The game is: I have two boxes; box4 with 4 red balls and 1 green ball, and box2 withtwo red balls and three green balls. I offer you one of these two boxes at...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_theorem",
+        "teaser":null},{
         "title": "9. Confidence",
         "excerpt":"Thus far we have worried about two fundamental questions. In each case we have a sample of data from some universe or population, and we want to draw conclusions about the universe (population) from the sample. Our questions are: Is our observed sample likely to be compatible with a null...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/confidence",
         "teaser":null},{
+        "title": "9.2 Reverse probability",
+        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60. We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students. For example, we might wonder how...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/first_bayes",
+        "teaser":null},{
         "title": "9.1 The education minister",
         "excerpt":"Imagine for a moment that you are the minister of education in Cuba. It is 2019. The final school exams have just finished, but the results are not out yet. Of course you do have the results from 2018. You are particularly interested in this year’s results in Havana, because...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/havana_math",
+        "teaser":null},{
+        "title": "9.2 Random choice",
+        "excerpt":"Sometimes it is useful to take a random choice between two or more options. Numpy has a function for that, called random.choice: import numpy as npSay we want to choose randomly between 0 and 1. We want an equal probability of getting 0 and getting 1. We could do it...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/random_choice",
         "teaser":null},{
         "title": "10. The end of the beginning",
         "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
