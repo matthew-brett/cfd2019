@@ -357,14 +357,7 @@ To go over the logic again:
   proportion of box4 trials multiplied by (the proportion of box4 trials that
   are red).
 
-We have just [discovered Bayes theorem](/cfd2019/bayes_theorem).
-
-, in words, applied to our example:
-
-> The proportion of red trials coming from box4 is:
-> * the overall proportion of box4 trials (here 0.5) multiplied by
-> * the proportion of red trials from box 4 trials (here, 0.8), divided by
-> * the overall proportion of red trials (here 0.6).
+We have just [discovered Bayes theorem](/cfd2019/chapters/10/bayes_theorem).
 
         
       </section>
