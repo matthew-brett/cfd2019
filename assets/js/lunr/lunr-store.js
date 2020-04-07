@@ -399,6 +399,11 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
+        "title": "9.3 Bayes bars",
+        "excerpt":"The reverse probability page has a game, that we analyzed by simulation, and then by reflection. The game is: I have two boxes; box4 with 4 red balls and 1 green ball, and box2 withtwo red balls and three green balls. I offer you one of these two boxes at...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_bars",
+        "teaser":null},{
         "title": "9.3 Back to Havana",
         "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60. We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students. For example, we might wonder how...","categories": [],
         "tags": [],
@@ -428,6 +433,11 @@ var store = [{
         "excerpt":"Sometimes it is useful to take a random choice between two or more options. Numpy has a function for that, called random.choice: import numpy as npSay we want to choose randomly between 0 and 1. We want an equal probability of getting 0 and getting 1. We could do it...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/random_choice",
+        "teaser":null},{
+        "title": "9.4 Confidence in bars",
+        "excerpt":"In the reverse probability pagewe played a game with two boxes, with different proportions of red and greenballs. The Bayes bars page has a way of thinking of our calculations for this game, using the height of bars to express our probabilities. Now we extend the game to more options....","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/second_bayes",
         "teaser":null},{
         "title": "10. The end of the beginning",
         "excerpt":"This is the end of the course. The course is an introduction to data science. Along the way, we hope you learned: Some of the computational tools including thePython language, Jupyter notebooks, Numpy arrays, and Pandas data frames. Some of the statistical techniques, includingsimulation, testing for differences between groups with...","categories": [],
