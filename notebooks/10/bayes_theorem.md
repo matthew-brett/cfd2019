@@ -78,11 +78,15 @@ We follow the logic above, with this notation.  Here is the logic again:
 We can express the first statement by saying that we are trying to find
 $P(box4 \mid red)$.
 
-We can express the third statement like this:
+We can express the third statement in the following way.  Read the $\cap$ as "and".
 
 $$
 P(box4 \cap red) = P(box4) P(red \mid box4)
 $$
+
+Read this statement as "the probability that we got box4 *and* drew a red ball
+is equal to the probability that we got box4, multiplied by the probability
+that we draw a red ball given we got box4".  As we know, in our case:
 
 $P(box4 \cap red)$ is 0.5 * 0.8 = 0.4.
 
@@ -97,11 +101,11 @@ Remember from the [reverse probability page](first_bayes) that we found $P(red)$
 Putting the first, third and second statements together into one, we get:
 
 $$
-$P(box4 \mid red)$ = \frac{P(box4) P(red \mid box4)}{P(red)}
+P(box4 \mid red) = \frac{P(box4) P(red \mid box4)}{P(red)}
 $$
 
 This is Bayes theorem, although it is usually written with the multiplication in the other order:
 
 $$
-$P(box4 \mid red)$ = \frac{P(red \mid box4) P(box4)}{P(red)}
+P(box4 \mid red) = \frac{P(red \mid box4) P(box4)}{P(red)}
 $$
