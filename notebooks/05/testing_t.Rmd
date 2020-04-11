@@ -52,7 +52,7 @@ roughly equal to the spread of the water values, as measured by the *standard
 deviation*, or, equivalently, the *variance*.  Remember the variance is the
 squared standard deviation.
 
-We can pull together the code in [permtuation and t-test page]({{ site.baseurl
+We can pull together the code in [permutation and t-test page]({{ site.baseurl
 }}/chapters/05/permutation_and_t_test) to implement our own t-test.
 
 ```{python}
@@ -222,7 +222,7 @@ distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):
 ```{python}
 some_chi2_numbers = np.random.chisquare(2, size=1000)
 plt.hist(some_chi2_numbers)
-plt.title('1000 random samples from chi-squared distribution, k=2')
+plt.title('1000 random samples from chi-squared distribution, k=2');
 ```
 
 We use this highly not-normal distribution to provide numbers to our t-test:
