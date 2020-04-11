@@ -8,7 +8,7 @@ permalink: /classes/class_35
 
 ## Being confident
 
-* Remember [The education minister](../chapters/10/havana_math)
+* Remember [a question of confidence](../chapters/10/confidence_problem)
 * Making a [random choice](../chapters/10/random_choice)
 * On [reverse probability](../chapters/10/first_bayes)
 * [Reverse probability with bars](../chapters/10/bayes_bars)

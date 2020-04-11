@@ -81,7 +81,7 @@
   * [8.5 Implementing the classifier](notebooks/09/Implementing_the_Classifier.ipynb)
   * [8.6 Accuracy of the classifier](notebooks/09/Accuracy_of_the_Classifier.ipynb)
 * [9. Confidence](notebooks/10/confidence.md)
-  * [9.1 The education minister](notebooks/10/havana_math.ipynb)
+  * [9.1 The education minister](notebooks/10/confidence_problem.ipynb)
   * [9.2 Random choice](notebooks/10/random_choice.ipynb)
   * [9.2 Reverse probability](notebooks/10/first_bayes.ipynb)
   * - [Bayes theorom](notebooks/10/bayes_theorem.md)
