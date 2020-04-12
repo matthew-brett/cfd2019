@@ -3,11 +3,13 @@
 
 import pandas as pd
 
+n = 50
+desired = 91.2
 df = pd.read_csv('nyc_police_exam_feb_2019.csv')
-df['Adj. FA'] = df['Adj. FA'].round()
-med = 0
-while med < 92:
-    sample = df.sample(50, replace=True)
-    med = sample['Adj. FA'].median()
-print('Median', sample['Adj. FA'].median())
+for i in range(1000):
+    sample = df.sample(n, replace=True)
+    stat = sample['Adj. FA'].mean()
+    if stat > desired:
+        break
+print('Statistic', stat, 'at iteration', i)
 sample.to_csv('nyc_police_exam_2019_sample.csv', index=None)

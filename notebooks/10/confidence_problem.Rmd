@@ -25,7 +25,6 @@ There was a written exam in early 2017; over 10000 people took this exam.
 Now it is 2019.   This new iteration of the written exam has just finished, and
 you know that about 13000 people took the exam, but the results are not out
 yet.  Of course you do have the results from 2017.
-
 You are particularly interested in this year's results, because you are worried
 that candidates are starting to find the exam too easy, especially with all the
 exam preparation materials that candidates can find and buy.
@@ -35,7 +34,7 @@ holding steady.   But, as things stand, you won't get the full results for 2019
 for another month.
 
 To help your decision-making, you very much want to get an idea of how good the
-results are this year.   Being wise, you decided to take a random sample of 50
+results are this year.  You decide to take a random sample of 50
 from all the exam papers from this year (2019).  You get them marked quickly.
 But - how much information will this sample give you about the eventual results
 for 2019?
@@ -64,38 +63,39 @@ police_2017.head()
 The exam mark is in the column named `Adj. FA`, short for "Adjusted Final
 Average".
 
-For convenience, we round the exam scores to the nearest integer:
-
 ```{python}
-police_2017['Adj. FA'] = police_2017['Adj. FA'].round()
+marks_2017 = police_2017['Adj. FA']
 ```
 
-There are about 13000 marks in this table:
+There are about 10000 marks in this table:
 
 ```{python}
-len(police_2017)
+len(marks_2017)
 ```
 
 
-Here is the histogram:
+Here is the histogram, where the histogram has 100 bins to show more detail of
+the distribution.
 
 ```{python}
-police_2017.hist('Adj. FA');
+marks_2017.hist(bins=100);
 ```
+
+Notice that this isn't a normal distribution; the marks are discrete rather than continuous, they fall into a number of bins across the range of values.
 
 
 Here are the various statistics for the 2017 marks:
 
 ```{python}
-police_2017['Adj. FA'].describe()
+marks_2017.describe()
 ```
 
-We are particularly interested in the median.  As you remember, this is the 50% percentile, that you see in the table above.
+We are particularly interested in the mean.
 
 ```{python}
-# Median mark in 2017.
-mark_med_2017 = police_2017['Adj. FA'].median()
-mark_med_2017
+# Mean mark in 2017.
+mean_2017 = marks_2017.mean()
+mean_2017
 ```
 
 Now we look at the sample of 50 exams from 2019 that you marked quickly.
@@ -105,37 +105,35 @@ site.baseurl }}/data/nyc_police_exam_2019_sample.csv)
 
 ```{python}
 police_2019_sample = pd.read_csv('nyc_police_exam_2019_sample.csv')
-# Round marks to nearest integer again.
-police_2019_sample['Adj. FA'] = police_2019_sample['Adj. FA'].round()
-police_2019_sample.head()
+marks_2019_sample.head()
 ```
 
 ```{python}
-len(police_2019_sample)
+len(marks_2019_sample)
 ```
 
 ```{python}
-police_2019_sample.hist('Adj. FA');
+marks_2019_sample.hist();
 ```
 
 ```{python}
-police_2019_sample['Adj. FA'].describe()
+marks_2019_sample.describe()
 ```
 
 ```{python}
-# Median mark in 2019 sample.
-mark_med_2019_samp = police_2019_sample['Adj. FA'].median()
-mark_med_2019_samp
+# Mean mark in 2019 sample.
+mean_2019_samp = marks_2019_sample.mean()
+mean_2019_samp
 ```
 
-The median here is 92.  That seems a bit higher than the 2017 median --- but
-have I been deceived by the sample?  Was I just unlucky?   How confident can I
-be that the median from the full results will be 91, or 92, or 93, rather than
-the 90 of the previous year?
+The mean here is around 91.23.  That seems a bit higher than the 2017 mean ---
+but have I been deceived by the sample?  Was I just unlucky?   How confident
+can I be that the mean from the full results will be around 91, or 90, or 91.5,
+rather than around 89.16, as it was in the previous year?
 
 
 We now enter the territory of *confidence intervals*.
 
-The sample median is 92, but how close is that median likely to be to the
-eventual median, once I have all 13000 or so results for 2019?  How *confident*
-can I be in this median of around 92?
+The sample mean is 91.23, but how close is that mean likely to be to the
+eventual mean, once I have all 13000 or so results for 2019?  How *confident*
+can I be in this mean of around 91.2?
