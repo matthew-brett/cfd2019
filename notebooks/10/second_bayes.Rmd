@@ -187,4 +187,6 @@ If I draw a red ball, I have 93% confidence that I have drawn from one of box 2 
 This is the logic for *Bayesian confidence intervals*.  These are sometimes called [credible intervals](https://en.wikipedia.org/wiki/Credible_interval).  We can reason about plausible states of the world that led to our results.  In our case we can reason about which box we have drawn from (state of the world), given we have seen a red ball (the result).
 
 
-We will soon see that we can apply this logic when we want to reason about --- for example --- the relationship of a median of a sample (the result) to the median for a whole population (the state of the world).
+We will soon see that we can apply this logic when we want to reason about ---
+for example --- the relationship of the mean of a sample (the result) to the
+mean for a whole population (the state of the world).

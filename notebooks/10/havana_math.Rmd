@@ -5,8 +5,8 @@ jupyter:
     text_representation:
       extension: .Rmd
       format_name: rmarkdown
-      format_version: '1.1'
-      jupytext_version: 1.2.4
+      format_version: '1.2'
+      jupytext_version: 1.4.2
   kernelspec:
     display_name: Python 3
     language: python
@@ -19,9 +19,15 @@ It is 2019.   The final school exams have just finished, but the results are not
 
 You are particularly interested in this year's results in Havana, because of recent problems that you have had with loss of teachers due to emigration.
 
-In order to plan for the year ahead, you need to know if the mathematics results are holding steady.   But, as things stand, you won't get the full results for 2019 for another month.
+In order to plan for the year ahead, you need to know if the mathematics
+results are holding steady.   But the marking will take time, you won't get
+the full results for 2019 for another month.
 
-To help your decision-making, you very much want to get an idea of how good the results are this year.   Being wise, you decided to take a random sample of 50 from all the exam papers from Havana this year (2019).  You get them marked quickly.   But - how much information will this sample give you about the eventual results for 2019?
+To help your decision-making, you very much want to get an idea of how good
+the results are this year.   Being wise, you decided to take a random sample
+of 50 from all the exam papers from Havana this year (2019).  You get them
+marked quickly.   But - how much information will this sample give you about
+the eventual results for 2019?
 
 ```{python}
 import numpy as np
@@ -54,7 +60,7 @@ Here is the histogram, split into 100 bins to show more detail of the distributi
 havana_2018.hist('mark', bins=100);
 ```
 
-Notice this is much unlike a normal distribution,  In particular, you can see that the marks near 50% - appear to have been pushed upwards to 60%.  Are the markers being generous to students close to the pass mark?
+Notice this is much unlike a normal distribution,  In particular, you can see that the marks near 50% - appear to have been pushed upwards to 60%.  Maybe the markers are being generous to students close to the pass mark.
 
 
 Here are the various statistics for the 2018 marks:
@@ -63,11 +69,11 @@ Here are the various statistics for the 2018 marks:
 havana_2018['mark'].describe()
 ```
 
-We are particularly interested in the median.  As you remember, this is the 50% percentile, that you see in the table above.
+We are particularly interested in the mean.
 
 ```{python}
-# Median mark in 2018.
-math_med_2018 = havana_2018['mark'].median()
+# Mean mark in 2018.
+math_med_2018 = havana_2018['mark'].mean()
 math_med_2018
 ```
 
@@ -90,14 +96,19 @@ havana_2019_sample['mark'].describe()
 ```
 
 ```{python}
-# Median mark in 2019 sample.
-math_med_2019_samp = havana_2019_sample['mark'].median()
+# Mean mark in 2019 sample.
+math_med_2019_samp = havana_2019_sample['mark'].mean()
 math_med_2019_samp
 ```
 
-The median here is 60.  That seems a bit lower than the 2018 median --- but have I been deceived by the sample?  Was I just unlucky?   How confident can I be that the median from the full results will in fact be near 60, rather than the 69 of the previous year?
+The mean here is about 54.5.  That seems a bit lower than the 2018 mean ---
+but have I been deceived by the sample?  Was I just unlucky?   How confident
+can I be that the mean from the full results will in fact be near 54.5, rather
+than the 65.3 or so of the previous year?
 
 
 We now enter the territory of *confidence intervals*.
 
-The sample median is 60, but how close is that median likely to be to the eventual median, once I have all 8000 or so results for 2019?  How *confident* can I be in this median of around 60?
+My question is: how close is my *sample mean* of 54.5 likely to be to the
+eventual mean, once I have all 8000 or so results for 2019?  How *confident*
+can I be in this sample mean of around 54.5?

@@ -16,20 +16,26 @@ jupyter:
 
 In the [problem for the education minister]({{ site.baseurl
 }}/chapters/10/havana_math) we had a sample of fast-track-marked exams from
-2019, and we found that the median mark was 60.  We wondered what we could say
-about the eventual median when we have the marks for all 8000 or so students.
+2019, and we found that the mean mark was about 65.3.  We wondered what we
+could say about the eventual  when we have the marks for all 8000 or so
+students.
 
-For example, we might wonder how likely it is that the eventual median will be
-69, as it was in 2018.  Or we might wonder whether we could be say that the
-eventual median for all the papers will be the sample median 60, plus or minus
-a bit.   If so, what value should we give to "a bit".
+For example, we might wonder how likely it is that the eventual mean will be
+near 65.3, as it was in 2018.  Or we might wonder whether we could be say that
+the eventual mean for all the papers will be the sample mean --- 54.5 --- plus
+or minus a bit.   If so, what value should we give to "a bit"?
 
-This kind of problem can be called a problem of *reverse probability*.  We
-have observed some outcome from our sample -- 60 -- and we want to be able to
-say something about the *population* from which the sample came -- in our
-case, the population of all 8000 or so exam marks.
+This kind of problem can be called a problem of *reverse probability*.
+
+We first start with *forward* probability, where we ask questions like this:
+what is the probability of seeing a mean around 54.5 if the population mean is
+actually 65.3?  Then we go in *reverse* to ask questions like: what is the
+probability that the population mean is around 65.3 given the sample mean of
+54.5.
+
 
 ## A reverse probability game
+
 
 Imagine I offer you one of two boxes.
 
@@ -48,10 +54,11 @@ What is the chance that I gave you 'box4'?
 
 Notice that this is *reverse probability* problem.  You are working back from what you see (the red ball) to what I gave you.
 
-In our exam mark problem, we are working back from what we saw (the median of
-60) to the eventual median for all the exams.
+In our exam mark problem, we are working back from what we saw (the sample
+mean of 54.5) to the eventual mean for all the exams.
 
-How are we going to solve the box4, box2 reverse probability problem?  Simulation!
+How are we going to solve the box4, box2 reverse probability problem?
+Simulation!
 
 ```{python}
 import numpy as np
