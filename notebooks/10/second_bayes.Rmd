@@ -18,21 +18,23 @@ In the [reverse probability page]({{ site.baseurl }}/chapters/10/first_bayes)
 we played a game with two boxes, with different proportions of red and green
 balls.
 
-The [Bayes bars page]({{ site.baseurl }}/chapters/10/bayes_bars) has a way of thinking of our calculations for this game, using the height of bars to express our probabilities.
+The [Bayes bars page]({{ site.baseurl }}/chapters/10/bayes_bars) has a way of
+thinking of our calculations for this game, using the height of bars to
+express our probabilities.
 
 Now we extend the game to more options.
 
 Now I have five boxes:
 
-* box1 has one red ball and four green balls.
-* box2 has two red balls and three green balls.
-* box3 has three red balls and two green balls.
-* box4 has four red balls and one green ball.
-* box5 has five red balls.
+* BOX1 has one red ball and four green balls.
+* BOX2 has two red balls and three green balls.
+* BOX3 has three red balls and two green balls.
+* BOX4 has four red balls and one green ball.
+* BOX5 has five red balls.
 
 * I offer you one of these five boxes at random, without telling you which.
 * You draw a ball at random from the box, and you get a red ball.
-* Now, what is the probability that I gave you box4?
+* Now, what is the probability that I gave you BOX4?
 
 First we will solve this by simulation. Then we will solve it by expressing
 the calculation using the bars from the Bayes bars page.
@@ -182,9 +184,14 @@ If I draw a red ball, there is a 93% chance that the box I drew from was one of 
 
 Put yet another way:
 
-If I draw a red ball, I have 93% confidence that I have drawn from one of box 2 through box5.
+If I draw a red ball, I have 93% confidence that I have drawn from one of box
+2 through box5.
 
-This is the logic for *Bayesian confidence intervals*.  These are sometimes called [credible intervals](https://en.wikipedia.org/wiki/Credible_interval).  We can reason about plausible states of the world that led to our results.  In our case we can reason about which box we have drawn from (state of the world), given we have seen a red ball (the result).
+This is the logic for *Bayesian confidence intervals*.  These are sometimes
+called [credible intervals](https://en.wikipedia.org/wiki/Credible_interval).
+We can reason about plausible states of the world that led to our results.  In
+our case we can reason about which box we have drawn from (state of the
+world), given we have seen a red ball (the result).
 
 
 We will soon see that we can apply this logic when we want to reason about ---

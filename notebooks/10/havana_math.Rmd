@@ -15,9 +15,11 @@ jupyter:
 
 Imagine for a moment that you are the minister of education in Cuba.
 
-It is 2019.   The final school exams have just finished, but the results are not out yet.  Of course you do have the results from 2018.
+It is 2019.   The final school exams have just finished, but the results are not
+out yet.  Of course you do have the results from 2018.
 
-You are particularly interested in this year's results in Havana, because of recent problems that you have had with loss of teachers due to emigration.
+You are particularly interested in this year's results in Havana, because of
+recent problems that you have had with loss of teachers due to emigration.
 
 In order to plan for the year ahead, you need to know if the mathematics
 results are holding steady.   But the marking will take time, you won't get
@@ -33,11 +35,13 @@ the eventual results for 2019?
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-# %matplotlib inline
+%matplotlib inline
 plt.style.use('fivethirtyeight')
 ```
 
-Here are the [actual](https://github.com/matthew-brett/datasets/tree/abb224b/havana_exams) school-leaver mathematics examination results from 2018.
+Here are the
+[actual](https://github.com/matthew-brett/datasets/tree/abb224b/havana_exams)
+school-leaver mathematics examination results from 2018.
 
 
 You can download the file from
@@ -101,14 +105,14 @@ math_med_2019_samp = havana_2019_sample['mark'].mean()
 math_med_2019_samp
 ```
 
-The mean here is about 54.5.  That seems a bit lower than the 2018 mean ---
+The mean here is about 54.51.  That seems a bit lower than the 2018 mean ---
 but have I been deceived by the sample?  Was I just unlucky?   How confident
-can I be that the mean from the full results will in fact be near 54.5, rather
-than the 65.3 or so of the previous year?
+can I be that the mean from the full results will in fact be near 54.51,
+rather than the 65.25 or so of the previous year?
 
 
 We now enter the territory of *confidence intervals*.
 
-My question is: how close is my *sample mean* of 54.5 likely to be to the
+My question is: how close is my *sample mean* of 54.51 likely to be to the
 eventual mean, once I have all 8000 or so results for 2019?  How *confident*
-can I be in this sample mean of around 54.5?
+can I be in this sample mean of around 54.51?
