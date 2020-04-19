@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:19:19+01:00">
 
 
 
@@ -1187,16 +1187,19 @@ express our probabilities.</p>
   <li>BOX2 has two red balls and three green balls.</li>
   <li>BOX3 has three red balls and two green balls.</li>
   <li>BOX4 has four red balls and one green ball.</li>
-  <li>
-    <p>BOX5 has five red balls.</p>
-  </li>
+  <li>BOX5 has five red balls.</li>
+</ul>
+
+<p>The game proceeds as before:</p>
+
+<ul>
   <li>I offer you one of these five boxes at random, without telling you which.</li>
   <li>You draw a ball at random from the box, and you get a red ball.</li>
   <li>Now, what is the probability that I gave you BOX4?</li>
 </ul>
 
 <p>First we will solve this by simulation. Then we will solve it by expressing
-the calculation using the bars from the Bayes bars page.</p>
+the calculation we illustrated with the bars from the Bayes bars page.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -1252,27 +1255,27 @@ the calculation using the bars from the Bayes bars page.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
+      <td>3</td>
       <td>red</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>3</td>
-      <td>red</td>
+      <td>2</td>
+      <td>green</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>red</td>
+      <td>1</td>
+      <td>green</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
+      <td>1</td>
       <td>red</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3</td>
+      <td>5</td>
       <td>red</td>
     </tr>
   </tbody>
@@ -1288,7 +1291,7 @@ the calculation using the bars from the Bayes bars page.</p>
 <span class="n">p_box4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.273831309266345
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.25938281901584653
 </code></pre></div></div>
 
 <p>Here are the initial probabilities of the boxes.</p>
@@ -1341,11 +1344,8 @@ BOX4, given we have a red ball.</p>
 <p>Next we divide by the overall probability of getting a red ball, which is the
 sum of the heights of the five bars above.</p>
 
-<p>We can do this calculation by dividing the heights of the bars above by the sum
-of the heights, so the heights of the bars now sum to 1.</p>
-
-<p>The sum of the heights is also the overall probabability of getting a red ball
-on any one trial.</p>
+<p>We can do this calculation by dividing the heights of the bars above by the
+sum of the heights, so the heights of the bars now sum to 1.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Overall probability of getting a red ball.
 </span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
@@ -1390,7 +1390,7 @@ of the fifth bar:</p>
 <span class="n">p_box4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.3280652137747463
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.33711426188490407
 </code></pre></div></div>
 
 <p>As we saw the <a href="/cfd2019/chapters/10/bayes_bars">Bayes bars</a> page,

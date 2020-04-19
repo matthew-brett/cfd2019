@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:19:19+01:00">
 
 
 
@@ -1180,20 +1180,23 @@ box probabilities.</p>
 
 <p>Let’s see why in a little algebra mixed with code.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
 <p>As you remember, the calculation works out like this:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Step 1 - P of reds.
-red_probabilities = np.array([0.8, 0.4])
-# Step 2 - scale by P of the boxes
-box_probabilities = np.array([0.3, 0.7])
-box_and_red_probs = box_probabilities * red_probabilities
-# Step 3 - divide each bar by sum of bar heights.
-box_given_red_probs = box_and_red_probs / np.sum(box_and_red_probs)
-# Show result
-box_given_red_probs
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 1 - P of reds.
+</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+<span class="c1"># Step 2 - scale by P of the boxes
+</span><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
+<span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
+<span class="c1"># Step 3 - divide each bar by sum of bar heights.
+</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="c1"># Show result
+</span><span class="n">box_given_red_probs</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
 </code></pre></div></div>
 
 <p>Now let’s put those numbers into some variables, and do the calculation again.
@@ -1201,68 +1204,92 @@ We use the variables to refer back to the values in following the calculation.
 Of course, just putting the numbers into variables gives the same calculation
 and the same output:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b = 0.3  # Probability of BOX4
-c = 0.7  # Probability of BOX2
-r = 0.8  # Probability of red if you have BOX4
-s = 0.4  # Probability of red if you have BOX2
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># Probability of BOX4
+</span><span class="n">c</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># Probability of BOX2
+</span><span class="n">r</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># Probability of red if you have BOX4
+</span><span class="n">s</span> <span class="o">=</span> <span class="mf">0.4</span>  <span class="c1"># Probability of red if you have BOX2
+</span></code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 1 - P of reds.
+</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span>
+<span class="c1"># Step 2 - scale by P of the boxes
+</span><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+<span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
+<span class="c1"># Step 3 - divide each bar by sum of bar heights.
+</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="c1"># Show result
+</span><span class="n">box_given_red_probs</span>
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Step 1 - P of reds.
-red_probabilities = np.array([r, s])
-# Step 2 - scale by P of the boxes
-box_probabilities = np.array([b, c])
-box_and_red_probs = box_probabilities * red_probabilities
-# Step 3 - divide each bar by sum of bar heights.
-box_given_red_probs = box_and_red_probs / np.sum(box_and_red_probs)
-# Show result
-box_given_red_probs
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
 </code></pre></div></div>
 
 <p>Working through the calculation above, and knowing how multiplication of arrays
 works, we see that:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box_and_red_probs == np.array([r * b, s * c])
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_and_red_probs</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">c</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True])
 </code></pre></div></div>
 
 <p>We also see that:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.sum(box_and_red_probs) == (r * b) + (s * c)
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <p>Therefore, the full calculation boils down to:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box_given_red_probs == np.array([r * b, s * c]) / ((r * b) + (s * c))
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">c</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">c</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True])
 </code></pre></div></div>
 
 <p>Now — what happens if the box probabilities are the same, and so <code class="highlighter-rouge">b == c</code>?</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b = 0.5  # Probability of BOX4
-c = 0.5  # Probability of BOX2
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Probability of BOX4
+</span><span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Probability of BOX2
+</span></code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 2 - scale by P of the boxes
+</span><span class="n">eq_box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+<span class="n">eq_box_and_red_probs</span> <span class="o">=</span> <span class="n">eq_box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
+<span class="c1"># Step 3 - divide each bar by sum of bar heights.
+</span><span class="n">eq_box_given_red_probs</span> <span class="o">=</span> <span class="n">eq_box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">eq_box_and_red_probs</span><span class="p">)</span>
+ <span class="c1"># Show result
+</span><span class="n">eq_box_given_red_probs</span>
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Step 2 - scale by P of the boxes
-eq_box_probabilities = np.array([b, c])
-eq_box_and_red_probs = eq_box_probabilities * red_probabilities
-# Step 3 - divide each bar by sum of bar heights.
-eq_box_given_red_probs = eq_box_and_red_probs / np.sum(eq_box_and_red_probs)
- # Show result
-eq_box_given_red_probs
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
 <p>In that case we can replace all the <code class="highlighter-rouge">c</code> instances by <code class="highlighter-rouge">b</code> in the calculation
 above, and so we get:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eq_box_given_red_probs == np.array([r * b, s * b]) / ((r * b) + (s * b))
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">eq_box_given_red_probs</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True])
 </code></pre></div></div>
 
 <p>Then we can take the <code class="highlighter-rouge">b</code> values outside the brackets to get:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eq_box_given_red_probs == np.array([r, s]) * b / ((r + s) * b)
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">eq_box_given_red_probs</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True])
 </code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">b</code>s on top and bottom cancel, and so:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eq_box_given_red_probs == np.array([r, s]) / (r + s)
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">eq_box_given_red_probs</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True])
 </code></pre></div></div>
 
 <p>We can omit the box probabilities from the calculation, when the box

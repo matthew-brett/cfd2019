@@ -199,12 +199,14 @@ Now I have five boxes:
 * BOX4 has four red balls and one green ball.
 * BOX5 has five red balls.
 
+The game proceeds as before:
+
 * I offer you one of these five boxes at random, without telling you which.
 * You draw a ball at random from the box, and you get a red ball.
 * Now, what is the probability that I gave you BOX4?
 
 First we will solve this by simulation. Then we will solve it by expressing
-the calculation using the bars from the Bayes bars page.
+the calculation we illustrated with the bars from the Bayes bars page.
 
 ```{python}
 import numpy as np
@@ -293,11 +295,8 @@ To get this probability, we first take the probability of getting a red ball
 Next we divide by the overall probability of getting a red ball, which is the
 sum of the heights of the five bars above.
 
-We can do this calculation by dividing the heights of the bars above by the sum
-of the heights, so the heights of the bars now sum to 1.
-
-The sum of the heights is also the overall probabability of getting a red ball
-on any one trial.
+We can do this calculation by dividing the heights of the bars above by the
+sum of the heights, so the heights of the bars now sum to 1.
 
 ```{python}
 # Overall probability of getting a red ball.
