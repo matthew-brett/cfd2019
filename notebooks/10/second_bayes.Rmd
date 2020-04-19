@@ -43,7 +43,7 @@ the calculation using the bars from the Bayes bars page.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-# %matplotlib inline
+%matplotlib inline
 ```
 
 Here is the simulation.  It is a small modification from the simulation in the reverse probability page.
@@ -69,7 +69,7 @@ trial_results['ball color'] = ball_colors
 trial_results.head()
 ```
 
-Calculate the proportion of "red" trials that came from box4:
+Calculate the proportion of "red" trials that came from BOX4:
 
 ```{python}
 # Of the trials giving a red ball, what proportion came from box 4?
@@ -78,17 +78,19 @@ p_box4 = np.count_nonzero(red_ball_trials['box no'] == 4) / len(red_ball_trials)
 p_box4
 ```
 
+Here are the initial probabilities of the boxes.
+
 ```{python}
 box_probabilities = np.repeat(1 / 5, 5)
 x_locations = np.arange(5)
-box_labels = ['box1', 'box2', 'box3', 'box4', 'box5']
+box_labels = ['BOX1', 'BOX2', 'BOX3', 'BOX4', 'BOX5']
 plt.bar(x_locations, box_probabilities)
 plt.xticks(x_locations, box_labels)
 plt.ylabel("Probability of getting box")
 plt.title('Initial probability of boxes');
 ```
 
-Next we express the initial probabilities of getting a red ball from boxes 1 through 5:
+We display the probabilities of getting a red ball from boxes 1 through 5:
 
 ```{python}
 red_probabilities = np.array([1, 2, 3, 4, 5]) / 5
@@ -115,15 +117,20 @@ In this case, as before, where all the initial probabilities of the boxes are
 the same, this last bar graph is just the second bar graph scaled down by 1/5.
 
 
-Lastly, remember we are interested in the probability that we started with box4, given we have a red ball.
+Lastly, remember we are interested in the probability that we started with
+BOX4, given we have a red ball.
 
-To get this probability, we first take the probability of getting a red ball *and* box4.  This is the fourth bar on the graph above - 0.2 * 0.8 = 0.4.
+To get this probability, we first take the probability of getting a red ball
+*and* BOX4.  This is the fourth bar on the graph above - 0.2 * 0.8 = 0.4.
 
-Next we divide by the overall probability of getting a red ball, which is the sum of the heights of the five bars above.
+Next we divide by the overall probability of getting a red ball, which is the
+sum of the heights of the five bars above.
 
-We can do this calculation by dividing the heights of the bars above by the sum of the heights, so the heights of the bars now sum to 1.
+We can do this calculation by dividing the heights of the bars above by the sum
+of the heights, so the heights of the bars now sum to 1.
 
-The sum of the heights is:
+The sum of the heights is also the overall probabability of getting a red ball
+on any one trial.
 
 ```{python}
 # Overall probability of getting a red ball.
@@ -146,7 +153,8 @@ The probability we want is the height of the fourth bar:
 box_given_red_probs[3]
 ```
 
-The probability that we drew from box5 (given we have a red ball) is the height of the fifth bar:
+The probability that we drew from BOX5 (given we have a red ball) is the height
+of the fifth bar:
 
 ```{python}
 box_given_red_probs[4]
@@ -161,12 +169,29 @@ p_box4 = np.count_nonzero(red_ball_trials['box no'] == 5) / len(red_ball_trials)
 p_box4
 ```
 
+As we saw the [Bayes bars]({{ site.baseurl }}/chapters/10/bayes_bars) page,
+because all the boxes have equal probability, we can skip the calculation step
+that scales by the box probability, and take the following shortcut:
+
+```{python}
+# Skipping scaling by box probabilities, when probabilities are equal.
+box_given_red_probs = red_probabilities / np.sum(red_probabilities)
+# We get the same result as before.
+box_given_red_probs
+```
+
+
+## Towards confidence
+
+
 Now let me ask a different question.
 
-What is the probability that the red ball came from *any* of boxes 2 through 5?
+What is the probability that the red ball came from *any* of boxes 2 through
+5?
 
 
-This is just the sum of the adjusted probabilities above, for boxes 2 through 5.  Remember the sum of all the adjusted probabilities is 1.
+This is just the sum of the adjusted probabilities above, for boxes 2 through
+5.  Remember the sum of all the adjusted probabilities is 1.
 
 ```{python}
 np.sum(box_given_red_probs)
@@ -180,12 +205,14 @@ red_from_box_2_5
 
 Put another way:
 
-If I draw a red ball, there is a 93% chance that the box I drew from was one of box 2 through box5.
+If I draw a red ball, there is a 93% chance that the box I drew from was one of
+BOX2 through BOX5.
 
 Put yet another way:
 
-If I draw a red ball, I have 93% confidence that I have drawn from one of box
-2 through box5.
+If I draw a red ball, I have 93% confidence that I have drawn from one of BOX2
+through BOX5.
+
 
 This is the logic for *Bayesian confidence intervals*.  These are sometimes
 called [credible intervals](https://en.wikipedia.org/wiki/Credible_interval).
