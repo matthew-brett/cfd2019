@@ -207,7 +207,7 @@ np.count_nonzero(lots_of_0_1) / 10000
 Run the cell above a few times to confirm you get numbers very close to 0.5.
 
 
-Another way of doing this is to use `np.random.choice`.  
+Another way of doing this is to use `np.random.choice`.
 
 As usual, check the arguments that the function expects with `np.random.choice?` in a notebook cell.
 
@@ -229,7 +229,7 @@ np.random.choice([0, 1], size=10)
 By default, Numpy will chose each item in the sequence with equal probability,  In this case, Numpy will chose 0 with 50% probability, and 1 with 50% probability:
 
 ```{python}
-# Use choice to make another 10000 random numbers that can be 0 or 1, 
+# Use choice to make another 10000 random numbers that can be 0 or 1,
 # with equal probability.
 more_0_1 = np.random.choice([0, 1], size=10000)
 # Count the proportion that are 1.
@@ -239,7 +239,7 @@ np.count_nonzero(more_0_1) / 10000
 If you want, you can change these proportions with the `p` argument:
 
 ```{python}
-# Use choice to make another 10000 random numbers that can be 0 or 1, 
+# Use choice to make another 10000 random numbers that can be 0 or 1,
 # where 0 has probability 0.25, and 1 has probability 0.75.
 weighted_0_1 = np.random.choice([0, 1], size=10000, p=[0.25, 0.75])
 # Count the proportion that are 1.
@@ -249,8 +249,8 @@ np.count_nonzero(weighted_0_1) / 10000
 There can be more than two choices:
 
 ```{python}
-# Use choice to make another 10000 random numbers that can be 0 or 10 or 20, or 30
-# where each has probability 0.25.
+# Use choice to make another 10000 random numbers that can be 0 or 10 or 20, or
+# 30, where each has probability 0.25.
 multi_nos = np.random.choice([0, 10, 20, 30], size=10000)
 multi_nos[:10]
 ```

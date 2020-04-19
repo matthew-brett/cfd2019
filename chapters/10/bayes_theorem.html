@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Bayes theorom - Coding for Data - 2019 edition</title>
-<meta name="description" content="The reverse probability page has a game, that we analyzed by simulation, and then by reflection.">
+<meta name="description" content="The reverse probability page has a game, that we analyzed bysimulation, and then by reflection.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/bayes_theorem">
 
 
-  <meta property="og:description" content="The reverse probability page has a game, that we analyzed by simulation, and then by reflection.">
+  <meta property="og:description" content="The reverse probability page has a game, that we analyzed bysimulation, and then by reflection.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-07T10:57:54+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
 
 
 
@@ -1132,8 +1132,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="Bayes theorom">
-      <meta itemprop="description" content="The reverse probability page has a game, that we analyzed by simulation, and then by reflection.">
-      <meta itemprop="datePublished" content="April 07, 2020">
+      <meta itemprop="description" content="The reverse probability page has a game, that we analyzed bysimulation, and then by reflection.">
+      <meta itemprop="datePublished" content="April 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1156,32 +1156,36 @@
           <!-- INTERACT LINKS -->
 
 
-          <p>The <a href="first_bayes">reverse probability page</a> has a game, that we analyzed by simulation, and then by reflection.</p>
+          <p>The <a href="first_bayes">reverse probability page</a> has a game, that we analyzed by
+simulation, and then by reflection.</p>
 
 <p>The game is:</p>
 
 <ul>
-  <li>I have two boxes; <em>box4</em> with 4 red balls and 1 green ball, and <em>box2</em> with
+  <li>I have two boxes; <em>BOX4</em> with 4 red balls and 1 green ball, and <em>BOX2</em> with
 two red balls and three green balls.</li>
-  <li>I offer you one of these two boxes at random, without telling you which.</li>
+  <li>I offer you one of these two boxes, with a 30% chance that I give you BOX4,
+and 70% chance I give you BOX2.</li>
   <li>You draw a ball at random from the box, and you get a red ball.</li>
-  <li>What is the probability that I gave you box4?</li>
+  <li>What is the probability that I gave you BOX4?</li>
 </ul>
 
-<p>We found by simulation, and later by reflection, that the probability is 0.67.</p>
+<p>We found by simulation, and later by reflection, that the probability is about
+0.462.</p>
 
 <p>The logic we discovered was:</p>
 
 <ul>
-  <li>We want the proportion of “red” trials that came from box4.</li>
-  <li>Calculate the proportion of trials that are <em>both</em> box4 and red, and divide
+  <li>We want the proportion of “red” trials that came from BOX4.</li>
+  <li>Calculate the proportion of trials that are <em>both</em> BOX4 and red, and divide
 by the overall proportion of red trials.</li>
-  <li>The proportion of red trials that are <em>both</em> box4 <em>and</em> red is the
-proportion of box4 trials multiplied by (the proportion of box4 trials that
-are red).</li>
 </ul>
 
-<p>This logic is a fundamental rule in probability called <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayes
+<p>We found the proportion of red trials that are <em>both</em> BOX4 <em>and</em> red is (the
+proportion of BOX4 trials) multiplied by (the proportion of BOX4 trials that
+are red.</p>
+
+<p>The logic above is a fundamental rule in probability called <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayes
 theorem</a>.</p>
 
 <p>In this page, we relate the logic above to the usual way of describing Bayes
@@ -1189,73 +1193,60 @@ theorem.</p>
 
 <p>First we need some notation.</p>
 
-<p>The probability that I give you <em>box4</em> on any one trial is 0.5.</p>
+<p>The probability that I give you BOX4 on any one trial is 0.3.</p>
 
 <p>I write this as:</p>
 
-<script type="math/tex; mode=display">P(box4) = 0.5</script>
+<script type="math/tex; mode=display">P(BOX4) = 0.3</script>
 
-<p>Read this as “the probability of <em>box4</em> is 0.5”.</p>
-
-<p>Similarly:</p>
-
-<script type="math/tex; mode=display">P(box2) = 0.5</script>
-
-<p>The probability of getting a red ball, given that I am drawing from <em>box4</em>, is 4/5 = 0.8.  We write “given” here with the bar: $\mid$.</p>
-
-<script type="math/tex; mode=display">P(red \mid box4) = 0.8</script>
-
-<p>Read this as “the probability of drawing a red ball given I have box4 is 0.8”.</p>
+<p>Read this as “the probability of BOX4 is 0.3”.</p>
 
 <p>Similarly:</p>
 
-<script type="math/tex; mode=display">P(red \mid box2) = 0.4</script>
+<script type="math/tex; mode=display">P(BOX2) = 0.7</script>
 
-<p>Sometimes we want to express the probability of two things happening together.  For example, we might want to express the probability that I gave you box4 <em>and</em> I drew a red.  We write that like this:</p>
+<p>The probability of getting a red ball, <em>given that</em> I am drawing from BOX4,
+is 4/5 = 0.8.  We write “given” here with the bar: $\mid$.</p>
 
-<script type="math/tex; mode=display">P(box4 \cap red)</script>
+<script type="math/tex; mode=display">P(red \mid BOX4) = 0.8</script>
 
-<p>Read this as “the probability of getting box4 <em>and</em> drawing a red ball”.</p>
+<p>Read this as “the probability of drawing a red ball given I have BOX4 is 0.8”.</p>
+
+<p>Similarly:</p>
+
+<script type="math/tex; mode=display">P(red \mid BOX2) = 0.4</script>
 
 <p>We follow the logic above, with this notation.  Here is the logic again:</p>
 
 <ol>
-  <li>We want the proportion of “red” trials that came from box4.</li>
-  <li>Calculate the proportion of trials that are <em>both</em> box4 and red, and divide
+  <li>We want the proportion of “red” trials that came from BOX4.</li>
+  <li>Calculate the proportion of trials that are <em>both</em> BOX4 and red, and divide
 by the overall proportion of red trials.</li>
-  <li>The proportion of red trials that are <em>both</em> box4 <em>and</em> red is the
-proportion of box4 trials multiplied by (the proportion of box4 trials that
-are red).</li>
 </ol>
 
 <p>We can express the first statement by saying that we are trying to find
-$P(box4 \mid red)$.</p>
+$P(BOX4 \mid red)$.</p>
 
-<p>We can express the third statement in the following way.  We use the $\cap$
-symbol to express “and”.</p>
+<p>We have already found that that we get the probability of BOX4 <em>and</em> red by
+multiplying the probability of BOX4 (0.3) by the probability of getting a red
+ball, given BOX4 (0.8).  In our notation, this multiplication is $P(BOX4)
+P(red \mid BOX4)$.</p>
 
-<script type="math/tex; mode=display">P(box4 \cap red) = P(box4) P(red \mid box4)</script>
-
-<p>Read this statement as “the probability that we got box4 <em>and</em> drew a red ball
-is equal to the probability that we got box4, multiplied by the probability
-that we draw a red ball given we got box4”.  As we know, in our case, $P(box4
-\cap red)$ is 0.5 * 0.8 = 0.4.</p>
-
-<p>The second statement says:</p>
-
-<script type="math/tex; mode=display">foo</script>
-
-<p>Remember from the <a href="first_bayes">reverse probability page</a> that we found
+<p>Remember too, from the <a href="first_bayes">reverse probability page</a> that we found
 $P(red)$ by adding the probabilities of the two different ways we can get
-a red ball: $P(red) = P(red | box4) + P(red | box2)$.</p>
+a red ball: $P(red) = P(red | BOX4) + P(red | BOX2)$.</p>
 
-<p>Putting the first, third and second statements together into one, we get:</p>
+<p>Putting the first and second statements together into one, we get:</p>
 
-<script type="math/tex; mode=display">P(box4 \mid red) = \frac{P(box4) P(red \mid box4)}{P(red)}</script>
+<script type="math/tex; mode=display">P(BOX4 \mid red) = \frac{P(BOX4) P(red \mid BOX4)}{P(red)}</script>
 
-<p>This is Bayes theorem, although it is usually written with the multiplication in the other order:</p>
+<p>This is Bayes theorem, although it is usually written with the multiplication
+in the other order:</p>
 
-<script type="math/tex; mode=display">P(box4 \mid red) = \frac{P(red \mid box4) P(box4)}{P(red)}</script>
+<script type="math/tex; mode=display">P(BOX4 \mid red) = \frac{P(red \mid BOX4) P(BOX4)}{P(red)}</script>
+
+<p>See <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayes theorem on Wikipedia</a>
+for more detail.</p>
 
           
         </section>
@@ -1276,7 +1267,7 @@ a red ball: $P(red) = P(red | box4) + P(red | box2)$.</p>
 ">Previous</a>
     
     
-      <a href="/cfd2019/chapters/10/bayes_confidence" class="pagination--pager" title="9.3 Back to Havana
+      <a href="/cfd2019/chapters/10/bayes_bars" class="pagination--pager" title="9.3 Bayes bars
 ">Next</a>
     
   </nav>

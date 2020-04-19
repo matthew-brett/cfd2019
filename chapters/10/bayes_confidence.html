@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>9.3 Back to Havana - Coding for Data - 2019 edition</title>
-<meta name="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60.  We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students.">
+<meta name="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.5  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/bayes_confidence">
 
 
-  <meta property="og:description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60.  We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students.">
+  <meta property="og:description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.5  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-07T10:57:54+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
 
 
 
@@ -1132,8 +1132,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="9.3 Back to Havana">
-      <meta itemprop="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60.  We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students.">
-      <meta itemprop="datePublished" content="April 07, 2020">
+      <meta itemprop="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.5  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
+      <meta itemprop="datePublished" content="April 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1162,18 +1162,87 @@
 
 
           <p>In the <a href="/cfd2019/chapters/10/havana_math">problem for the education minister</a> we had a sample of fast-track-marked exams from
-2019, and we found that the median mark was 60.  We wondered what we could say
-about the eventual median when we have the marks for all 8000 or so students.</p>
+2019, and we found that the mean mark was 54.5  We wondered what we could say
+about the eventual mean of the marks for all 8000 or so students.</p>
 
-<p>For example, we might wonder how likely it is that the eventual median will be
-69, as it was in 2018.  Or we might wonder whether we could be say that the
-eventual median for all the papers will be the sample median 60, plus or minus
-a bit.   If so, what value should we give to “a bit”.</p>
+<p>After a bit of development, we found, in the <a href="/cfd2019/chapters/10/bayes_bars">reverse probability with
+bars</a> page, that we could use some
+probability calculations to draw conclusions about the state of the world, from some result.  In that page, we calculated the probability of the state of the world (a box we have been given) from a result (drawing a red ball).</p>
 
-<p>This kind of problem can be called a problem of <em>reverse probability</em>.  We
-have observed some outcome from our sample – 60 – and we want to be able to
-say something about the <em>population</em> from which the sample came – in our
-case, the population of all 8000 or so exam marks.</p>
+<p>Now we want to draw a conclusion about the state of the world (the eventual
+mean of all the 2019 exams) from a result (the mean of the fast-marked sample
+of 50 2019 exams).</p>
+
+<p>We will call the 50 fast-track-marked exams the <em>sample</em>.  When the 2019
+marking is finished, we will have around 8000 marks.  We will call this the
+<em>population</em>.  We want to draw conclusions about the <em>population</em> from the
+<em>sample</em>.   In particular we want to draw conclusions about the population
+mean from the sample mean.</p>
+
+<p>Let us start with the following problem:  what is the probability that we will
+observe a <em>sample</em> mean of around 54.5, given that the <em>population</em> mean is
+62.3.</p>
+
+<p>Referring back to our box and ball problem, this probability is the equivalent
+of the probability of getting a red ball from a given box.  Given a state of
+the world (the population mean) what the is the probability of the result
+(the sample mean).  Once we have probabilities like these, we will be able
+to use the logic you have already seen to get the <em>reverse</em> probability - how
+likely was any particular state of the world (population mean), given the
+result (the sample mean).</p>
+
+<p>Returning to our mathematics exam problem: how will we calculate the
+probability of a sample mean of around 54.5, given a population mean of 62.3?</p>
+
+<p>As usual, this is a problem of <em>sampling</em>.  If the mean of the population is
+62.3, and we draw a sample of 50 marks, then the mean of the sample will be
+vary somewhat depending on the sample. That is, the <em>sample mean</em> will be 62.3
+plus or minus a bit.  As usual, we need to quantify what we mean by “a bit”.</p>
+
+<p>For example, remember the population of 2018 marks, that do have a mean of
+62.3.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2018.csv'</span><span class="p">)</span>
+<span class="n">marks_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">marks_2018</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65.25609088420477
+</code></pre></div></div>
+
+<p>To get the <em>sampling distribution</em> of the mean of a sample of 50, we would
+have to calculate the mean for every possible sample of 50 values from the
+8000 or so marks.  As usual, we make do with an <em>estimate</em> of the sampling
+distribution by taking many thousands of samples.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Take 10000 samples, calculate their means.
+</span><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">marks_2018</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">sample_means</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([70.5 , 67.44, 64.2 , 65.16, 64.8 ])
+</code></pre></div></div>
+
+<p>The sampling distribution looks like this:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mean mark for sample of 50'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Estimated sampling distribution for mean of 50 marks'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/10/bayes_confidence_7_0.png" alt="png" /></p>
+
 
           
         </section>
@@ -1190,7 +1259,7 @@ case, the population of all 8000 or so exam marks.</p>
         
   <nav class="pagination">
     
-      <a href="/cfd2019/chapters/10/bayes_theorem" class="pagination--pager" title="Bayes theorom
+      <a href="/cfd2019/chapters/10/equal_initial_p" class="pagination--pager" title="Equal initial P algebra
 ">Previous</a>
     
     

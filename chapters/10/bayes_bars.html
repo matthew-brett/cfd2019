@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>9.3 Bayes bars - Coding for Data - 2019 edition</title>
-<meta name="description" content="The reverse probability page has a game, that we analyzed by simulation, and then by reflection.">
+<meta name="description" content="The reverse probability page has a game, that we analyzed bysimulation, and then by reflection.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/bayes_bars">
 
 
-  <meta property="og:description" content="The reverse probability page has a game, that we analyzed by simulation, and then by reflection.">
+  <meta property="og:description" content="The reverse probability page has a game, that we analyzed bysimulation, and then by reflection.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-07T10:57:54+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
 
 
 
@@ -1132,8 +1132,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="9.3 Bayes bars">
-      <meta itemprop="description" content="The reverse probability page has a game, that we analyzed by simulation, and then by reflection.">
-      <meta itemprop="datePublished" content="April 07, 2020">
+      <meta itemprop="description" content="The reverse probability page has a game, that we analyzed bysimulation, and then by reflection.">
+      <meta itemprop="datePublished" content="April 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1151,6 +1151,16 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
+  <aside class="sidebar__right">
+    <nav class="toc">
+      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#bayes-calculation-in-bars">Bayes calculation in bars</a></li>
+  <li><a href="#equal-chances-in-bars">Equal chances in bars</a></li>
+</ul>
+    </nav>
+  </aside>
+
 
           
           <!-- INTERACT LINKS -->
@@ -1161,53 +1171,60 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F10%2Fbayes_bars.ipynb">Interact</a>
 
 
-          <p>The <a href="first_bayes">reverse probability page</a> has a game, that we analyzed by simulation, and then by reflection.</p>
+          <p>The <a href="first_bayes">reverse probability page</a> has a game, that we analyzed by
+simulation, and then by reflection.</p>
 
 <p>The game is:</p>
 
 <ul>
-  <li>I have two boxes; <em>box4</em> with 4 red balls and 1 green ball, and <em>box2</em> with
+  <li>I have two boxes; <em>BOX4</em> with 4 red balls and 1 green ball, and <em>BOX2</em> with
 two red balls and three green balls.</li>
-  <li>I offer you one of these two boxes at random, without telling you which.</li>
+  <li>I offer you one of these two boxes at random, but with a 30% chance of
+getting BOX4 and a 70% chance of getting BOX2.</li>
   <li>You draw a ball at random from the box, and you get a red ball.</li>
-  <li>What is the probability that I gave you box4?</li>
+  <li>What is the probability that I gave you BOX4?</li>
 </ul>
 
-<p>We found by simulation, and later by reflection, that the probability is 0.67.</p>
+<p>We found by simulation, and later by reflection, that the probability is around
+0.462.</p>
 
 <p>The logic we discovered was:</p>
 
 <ul>
-  <li>We want the proportion of “red” trials that came from box4.</li>
-  <li>Calculate the proportion of trials that are <em>both</em> box4 and red, and divide
+  <li>We want the proportion of “red” trials that came from BOX4.</li>
+  <li>Calculate the proportion of trials that are <em>both</em> BOX4 and red, and divide
 by the overall proportion of red trials.</li>
-  <li>The proportion of red trials that are <em>both</em> box4 <em>and</em> red is the
-proportion of box4 trials multiplied by (the proportion of box4 trials that
+  <li>The proportion of red trials that are <em>both</em> BOX4 <em>and</em> red is the
+proportion of BOX4 trials multiplied by (the proportion of BOX4 trials that
 are red).</li>
 </ul>
+
+<h2 id="bayes-calculation-in-bars">Bayes calculation in bars</h2>
 
 <p>This is another way to express that logic, using the height of bars to express
 the probabilities.</p>
 
-<p>First we express the initial probabilities of getting box4 and box2:</p>
+<p>First we express the initial probabilities of getting BOX4 and BOX2:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 <span class="n">x_locations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">box_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'box4'</span><span class="p">,</span> <span class="s">'box2'</span><span class="p">]</span>
+<span class="n">box_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'BOX4'</span><span class="p">,</span> <span class="s">'BOX2'</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_probabilities</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting box"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial probability of boxes'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial probability of boxes; P(BOX4)=0.3)'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/10/bayes_bars_2_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/10/bayes_bars_3_0.png" alt="png" /></p>
 
-<p>Next we express the initial probabilities of getting a red ball from box4 and from box2:</p>
+<p>Next we express the initial probabilities of getting a red ball from BOX4 and
+from BOX2:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">red_probabilities</span><span class="p">)</span>
@@ -1216,45 +1233,160 @@ the probabilities.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red for each box'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/10/bayes_bars_4_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/10/bayes_bars_5_0.png" alt="png" /></p>
 
 <p>Next we combine the two steps, of getting a box, and then drawing a ball.</p>
 
-<p>There is a 0.5 probability of box4 and a 0.8 probability of a red ball, given we have box4, so the probability of box4 <em>and</em> a red ball is 0.5 (for box4) * 0.8 (for red given box4) = 0.4.</p>
+<p>There is a 0.3 probability of BOX4 and a 0.7 probability of a red ball, given
+we have BOX4, so the probability of BOX4 <em>and</em> a red ball is 0.3 (for BOX4) *
+0.8 (for red given BOX4) = 0.24.</p>
 
-<p>Similarly, the probability of box2 <em>and</em> a red ball is 0.5 (for box2) * 0.4 (for red given box2) = 0.2.</p>
+<p>Similarly, the probability of BOX2 <em>and</em> a red ball is 0.7 (for BOX2) * 0.4
+(for red given BOX2) = 0.28.</p>
 
-<p>We can think of this as multiplying the values expressed by heights in the first bar graph (0.5, and 0.5 in this case), by the values expressed by heights in the second bar graph (0.8 and 0.4 in this case).</p>
+<p>We can think of this as multiplying the values expressed by heights in the
+first bar graph (0.3, and 0.7 in this case), by the values expressed by heights
+in the second bar graph (0.8 and 0.4 in this case).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_and_red_probs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting red ball and the given box"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red and each box'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"P of box and red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P for each box and red; P(BOX4)=0.3'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/10/bayes_bars_6_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/10/bayes_bars_7_0.png" alt="png" /></p>
 
-<p>In this case where the initial probabilities of the boxes are 0.5, this last bar graph is just the second bar graph scaled down by 0.5.</p>
+<p>Lastly, remember we are interested in the probability that we started with
+BOX4, given we have a red ball.</p>
 
-<p>Lastly, remember we are interested in the probability that we started with box4, given we have a red ball.</p>
+<p>To get this probability, we first take the probability of getting a red ball
+<em>and</em> BOX4.  This is the first bar on the graph above - 0.3 * 0.8 = 0.24.</p>
 
-<p>To get this probability, we first take the probability of getting a red ball <em>and</em> box4.  This is the first bar on the graph above - 0.5 * 0.8 = 0.4.</p>
+<p>Next we divide by the overall probability of getting a red ball, which is the
+<em>sum of the heights of the two bars</em> above - 0.24 + 0.28 = 0.52.</p>
 
-<p>Next we divide by the overall probability of getting a red ball, which is the sum of the heights of the two bars above - 0.4 + 0.2 = 0.6.</p>
-
-<p>We can do this calculation by dividing the heights of the bars above by the sum of the heights, so the heights of the bars now sum to 1:</p>
+<p>We can do this calculation by dividing the heights of the bars above by the sum
+of the heights, so the heights of the bars now sum to 1.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of box given a red ball"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of initial box given red ball drawn'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of box given red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of box given red; P(BOX4)=0.3'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_9_0.png" alt="png" /></p>
 
-<p>The left bar is our familiar (0.5 * 0.8) / 0.6 value, from the <a href="first_bayes">reverse probability page</a>.  It is probability that we were given box4, given that we have drawn a red ball.  The second bar is the probability that we were given box2, given we have drawn a red ball.  Note that the height of the bars sums to 1.</p>
+<p>The left bar is our familiar (0.24 * 0.8) / 0.52 = 0.462 value, from the
+<a href="first_bayes">reverse probability page</a>.  It is the probability that we were
+given BOX4, given that we have drawn a red ball.  The second bar is the
+probability that we were given BOX2, given we have drawn a red ball.  Note that
+the height of the bars sums to 1.</p>
+
+<h2 id="equal-chances-in-bars">Equal chances in bars</h2>
+
+<p>Now imagine a slight change to the game; say there is an equal (50%) chance of
+getting BOX4 or BOX2:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Show the new probabilities:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_probabilities</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of getting box'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial P of boxes; P(BOX4)=0.5'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/10/bayes_bars_14_0.png" alt="png" /></p>
+
+<p>The probabilities of getting red from each box have not changed:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">red_probabilities</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red for each box'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/10/bayes_bars_16_0.png" alt="png" /></p>
+
+<p>We scale the red-ball bars by the probabilities of the boxes:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"P of box and red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P for each box and red (box p equal)'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/10/bayes_bars_18_0.png" alt="png" /></p>
+
+<p>Last we divide by the sum of the heights of the bars:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of box given red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of box given red; P(BOX4)=0.5'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="../../images/chapters/10/bayes_bars_20_0.png" alt="png" /></p>
+
+<p>Because the probability that we got BOX4 increased, the probability that we got
+BOX4, given we drew a red ball, has also increased.  That probability is now:</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'P(BOX4 | red)'</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>P(BOX4 | red) 0.6666666666666666
+
+</code></pre></div></div>
+
+<p>Remember our steps:</p>
+
+<ol>
+  <li>Get the probability of red given each box — here: (0.8, 0.4);</li>
+  <li>Scale these by the probability of each box — here: (0.5, 0.5);</li>
+  <li>Divide the results by the sum of the heights to get the reverse
+probabilities — here (0.67, 0.34).</li>
+</ol>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 1 - P of reds.
+</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+<span class="c1"># Step 2 - scale by P of the boxes
+</span><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
+<span class="c1"># Step 3 - divide each bar by sum of bar heights.
+</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="c1"># Show result
+</span><span class="n">box_given_red_probs</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+</code></pre></div></div>
+
+<p>Notice also, in this case, where the probability of each box is the same, we
+can miss out step 2.  This is because, when the probability of each box is the
+same, scaling the probability does not change the heights of the bars relative
+to each other, so, when we divide each bar by the sum of the bar heights, the
+result is the same.</p>
+
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># When box probabilities are equal, we can miss out step 2.
+# Step 1 - P of reds.
+</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+<span class="c1"># Step 3 - divide each bar by sum of bar heights.
+</span><span class="n">shortcut_box_given_red_probs</span> <span class="o">=</span> <span class="n">red_probabilities</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">red_probabilities</span><span class="p">)</span>
+<span class="c1"># Show result is the same as with step 2.
+</span><span class="n">shortcut_box_given_red_probs</span>
+</code></pre></div></div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+</code></pre></div></div>
+
+<p>If you do not mind a little basic algebra, see why this must be true in the
+<a href="/cfd2019/chapters/10/equal_initial_p">equal initial p</a> page.</p>
 
           
         </section>

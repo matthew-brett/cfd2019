@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-07T10:57:54+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
 
 
 
@@ -1133,7 +1133,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="5.5 Testing validity of tests">
       <meta itemprop="description" content="One of the great advantages of using simulation is that you can test theassertions your teachers make.">
-      <meta itemprop="datePublished" content="April 07, 2020">
+      <meta itemprop="datePublished" content="April 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1194,7 +1194,7 @@ roughly equal to the spread of the water values, as measured by the <em>standard
 deviation</em>, or, equivalently, the <em>variance</em>.  Remember the variance is the
 squared standard deviation.</p>
 
-<p>We can pull together the code in <a href="/cfd2019/chapters/05/permutation_and_t_test">permtuation and t-test page</a> to implement our own t-test.</p>
+<p>We can pull together the code in <a href="/cfd2019/chapters/05/permutation_and_t_test">permutation and t-test page</a> to implement our own t-test.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import the Scipy statistics routines.
 </span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="n">sps</span>
@@ -1378,13 +1378,10 @@ distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_chi2_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">some_chi2_numbers</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'1000 random samples from chi-squared distribution, k=2'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'1000 random samples from chi-squared distribution, k=2'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, '1000 random samples from chi-squared distribution, k=2')
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/05/testing_t_22_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/05/testing_t_22_0.png" alt="png" /></p>
 
 <p>We use this highly not-normal distribution to provide numbers to our t-test:</p>
 

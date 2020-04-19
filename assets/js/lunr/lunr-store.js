@@ -400,17 +400,17 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/09/classification",
         "teaser":null},{
         "title": "9.3 Bayes bars",
-        "excerpt":"The reverse probability page has a game, that we analyzed by simulation, and then by reflection. The game is: I have two boxes; box4 with 4 red balls and 1 green ball, and box2 withtwo red balls and three green balls. I offer you one of these two boxes at...","categories": [],
+        "excerpt":"The reverse probability page has a game, that we analyzed bysimulation, and then by reflection. The game is: I have two boxes; BOX4 with 4 red balls and 1 green ball, and BOX2 withtwo red balls and three green balls. I offer you one of these two boxes at random,...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_bars",
         "teaser":null},{
         "title": "9.3 Back to Havana",
-        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60. We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students. For example, we might wonder how...","categories": [],
+        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.5 We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students. After a bit of development, we found, in...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_confidence",
         "teaser":null},{
         "title": "Bayes theorom",
-        "excerpt":"The reverse probability page has a game, that we analyzed by simulation, and then by reflection. The game is: I have two boxes; box4 with 4 red balls and 1 green ball, and box2 withtwo red balls and three green balls. I offer you one of these two boxes at...","categories": [],
+        "excerpt":"The reverse probability page has a game, that we analyzed bysimulation, and then by reflection. The game is: I have two boxes; BOX4 with 4 red balls and 1 green ball, and BOX2 withtwo red balls and three green balls. I offer you one of these two boxes, with a...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_theorem",
         "teaser":null},{
@@ -419,13 +419,18 @@ var store = [{
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/confidence",
         "teaser":null},{
+        "title": "Equal initial P algebra",
+        "excerpt":"This page follows on from the Bayes bars page. In the first part of that page, we found that, in general, we can get thereverse probabilities of the boxes (BOX4, BOX2), given we have seen a redball, by following three steps: Get the probability of red given each box —...","categories": [],
+        "tags": [],
+        "url": "https://matthew-brett.github.io/cfd2019/chapters/10/equal_initial_p",
+        "teaser":null},{
         "title": "9.2 Reverse probability",
-        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60. We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students. For example, we might wonder how...","categories": [],
+        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was about 65.25. We wondered what wecould say about the eventual when we have the marks for all 8000 or sostudents. For example, we might wonder how likely...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/first_bayes",
         "teaser":null},{
         "title": "9.1 The education minister",
-        "excerpt":"Imagine for a moment that you are the minister of education in Cuba. It is 2019. The final school exams have just finished, but the results are not out yet. Of course you do have the results from 2018. You are particularly interested in this year’s results in Havana, because...","categories": [],
+        "excerpt":"Imagine for a moment that you are the minister of education in Cuba. It is 2019. The final school exams have just finished, but the results are notout yet. Of course you do have the results from 2018. You are particularly interested in this year’s results in Havana, because ofrecent...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/havana_math",
         "teaser":null},{
@@ -435,7 +440,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/random_choice",
         "teaser":null},{
         "title": "9.4 Confidence in bars",
-        "excerpt":"In the reverse probability pagewe played a game with two boxes, with different proportions of red and greenballs. The Bayes bars page has a way of thinking of our calculations for this game, using the height of bars to express our probabilities. Now we extend the game to more options....","categories": [],
+        "excerpt":"In the reverse probability pagewe played a game with two boxes, with different proportions of red and greenballs. The Bayes bars page has a way ofthinking of our calculations for this game, using the height of bars toexpress our probabilities. Now we extend the game to more options. Now I...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/second_bayes",
         "teaser":null},{

@@ -87,6 +87,7 @@
   * - [Bayes theorom](notebooks/10/bayes_theorem.md)
   * [9.3 Bayes bars](notebooks/10/bayes_bars.ipynb)
   * [9.4 Confidence in bars](notebooks/10/second_bayes.ipynb)
+  * - [Equal initial P algebra](notebooks/10/equal_initial_p.ipynb)
   * - [9.3 Back to Havana](notebooks/10/bayes_confidence.ipynb)
 * [10. The end of the beginning](notebooks/end/end_of_beginning.md)
 * [Exercises](notebooks/exercises/exercises.md)

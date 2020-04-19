@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>9.2 Reverse probability - Coding for Data - 2019 edition</title>
-<meta name="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60.  We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students.">
+<meta name="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was about 65.25.  We wondered what wecould say about the eventual  when we have the marks for all 8000 or sostudents.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/first_bayes">
 
 
-  <meta property="og:description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60.  We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students.">
+  <meta property="og:description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was about 65.25.  We wondered what wecould say about the eventual  when we have the marks for all 8000 or sostudents.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-07T10:57:54+01:00">
+  <meta property="article:published_time" content="2020-04-19T01:07:29+01:00">
 
 
 
@@ -1132,8 +1132,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="9.2 Reverse probability">
-      <meta itemprop="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the median mark was 60.  We wondered what we could sayabout the eventual median when we have the marks for all 8000 or so students.">
-      <meta itemprop="datePublished" content="April 07, 2020">
+      <meta itemprop="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was about 65.25.  We wondered what wecould say about the eventual  when we have the marks for all 8000 or sostudents.">
+      <meta itemprop="datePublished" content="April 19, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1171,165 +1171,112 @@
 
 
           <p>In the <a href="/cfd2019/chapters/10/havana_math">problem for the education minister</a> we had a sample of fast-track-marked exams from
-2019, and we found that the median mark was 60.  We wondered what we could say
-about the eventual median when we have the marks for all 8000 or so students.</p>
+2019, and we found that the mean mark was about 65.25.  We wondered what we
+could say about the eventual  when we have the marks for all 8000 or so
+students.</p>
 
-<p>For example, we might wonder how likely it is that the eventual median will be
-69, as it was in 2018.  Or we might wonder whether we could be say that the
-eventual median for all the papers will be the sample median 60, plus or minus
-a bit.   If so, what value should we give to “a bit”.</p>
+<p>For example, we might wonder how likely it is that the eventual mean will be
+near 65.25, as it was in 2018.  Or we might wonder whether we could be say that
+the eventual mean for all the papers will around the sample mean — 54.51 —
+plus or minus a bit.   If so, what value should we give to “a bit”?</p>
 
-<p>This kind of problem can be called a problem of <em>reverse probability</em>.  We
-have observed some outcome from our sample – 60 – and we want to be able to
-say something about the <em>population</em> from which the sample came – in our
-case, the population of all 8000 or so exam marks.</p>
+<p>This kind of problem can be called a problem of <em>reverse probability</em>.</p>
+
+<p>We start with simple probabilities, where we ask questions like this: what is
+the probability of seeing a mean around 54.51 if the population mean is
+actually 65.25?  Then we go in <em>reverse</em> to ask questions like: what is the
+probability that the population mean is around 65.25 given the sample mean of
+54.51?</p>
 
 <h2 id="a-reverse-probability-game">A reverse probability game</h2>
 
 <p>Imagine I offer you one of two boxes.</p>
 
-<p>One box has four red balls and one green ball.  Call this ‘box4’.</p>
+<p>One box has four red balls and one green ball.  Call this <em>BOX4</em>.</p>
 
-<p>The other box has two red balls and three green balls.  Call this ‘box2’.</p>
+<p>The other box has two red balls and three green balls.  Call this <em>BOX2</em>.</p>
 
-<p>I haven’t told you which box I gave you, but I do tell you that I chose the
-box at random, so you have a 50% chance that I gave you ‘box4’ and a 50%
-chance I gave you ‘box2’.</p>
+<p>I haven’t told you which box I gave you, but I do tell you that there is a 30%
+chance that I gave you BOX4, and a 70% chance I gave you BOX2.</p>
 
-<p>Now let’s say that you shake the box to shuffle the balls, then close your
-eyes, and take out one ball.  You open your eyes to find you have a red ball.</p>
+<p>Now let’s say that you shake the box I gave you, to shuffle the balls, then
+close your eyes, and take out one ball.  You open your eyes to find you have a
+red ball.</p>
 
-<p>What is the chance that I gave you ‘box4’?</p>
+<p>What is the chance that I gave you BOX4?</p>
 
-<p>Notice that this is <em>reverse probability</em> problem.  You are working back from what you see (the red ball) to what I gave you.</p>
+<p>This is an example of a <em>reverse probability</em> problem.  You are working <em>back</em>
+from what you see (the red ball) to what I gave you (the box).</p>
 
-<p>In our exam mark problem, we are working back from what we saw (the median of
-60) to the eventual median for all the exams.</p>
+<p>In our exam mark problem, we are working back from what we saw (the sample mean
+of 54.51) to the eventual mean for all the exams.</p>
 
-<p>How are we going to solve the box4, box2 reverse probability problem?  Simulation!</p>
+<p>How are we going to start on our solution to the BOX4, BOX2 reverse probability
+problem? Simulation!</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.style.use('fivethirtyeight')
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a box with 4 red balls and 1 green ball
-</span><span class="n">box4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">box4</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make a box with 4 red balls and 1 green ball
+box4 = np.repeat(['red', 'green'], [4, 1])
+box4
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['red', 'red', 'red', 'red', 'green'], dtype='&lt;U5')
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a box with 2 red balls and 3 green balls
-</span><span class="n">box2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">box2</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['red', 'red', 'green', 'green', 'green'], dtype='&lt;U5')
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make a box with 2 red balls and 3 green balls
+box2 = np.repeat(['red', 'green'], [2, 3])
+box2
 </code></pre></div></div>
 
 <p>Now we make 10000 trials, where we:</p>
 
 <ul>
-  <li>Choose box2 or box4 at random;</li>
+  <li>Choose BOX4 or BOX2, with a 30% chance of BOX4.</li>
   <li>Choose a ball at random from the resulting box.</li>
 </ul>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">box_nos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_iters</span><span class="p">)</span>
-<span class="n">ball_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'green'</span><span class="p">],</span> <span class="n">n_iters</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="c1"># Choose a box number randomly from box4, box2.
-</span>    <span class="n">box_no</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-    <span class="c1"># Choose a ball at random from the box.
-</span>    <span class="k">if</span> <span class="n">box_no</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="c1"># Choose a ball at random from box4.
-</span>        <span class="n">ball_color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">box4</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c1"># box 4
-</span>        <span class="c1"># Choose a ball at random from box2.
-</span>        <span class="n">ball_color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">box2</span><span class="p">)</span>
-    <span class="c1"># Store the results.
-</span>    <span class="n">box_nos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">box_no</span>
-    <span class="n">ball_colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ball_color</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_iters = 10000
+# The box for this trial.
+box_nos = np.repeat([1], n_iters)
+# The color of the ball we chose.
+ball_colors = np.repeat(['green'], n_iters)
+for i in np.arange(n_iters):
+    # Choose a box number with a 30% chance of BOX4
+    box_no = np.random.choice([4, 2], p=[0.3, 0.7])
+    # Choose a ball at random from the box.
+    if box_no == 4:
+        # Choose a ball at random from BOX4.
+        ball_color = np.random.choice(box4)
+    else:  # box 4
+        # Choose a ball at random from BOX2.
+        ball_color = np.random.choice(box2)
+    # Store the results.
+    box_nos[i] = box_no
+    ball_colors[i] = ball_color
 </code></pre></div></div>
 
 <p>Last we put the results into a data frame for convenience:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make these into a data frame.
-</span><span class="n">trial_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">trial_results</span><span class="p">[</span><span class="s">'box no'</span><span class="p">]</span> <span class="o">=</span> <span class="n">box_nos</span>
-<span class="n">trial_results</span><span class="p">[</span><span class="s">'ball color'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ball_colors</span>
-<span class="n">trial_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make these into a data frame.
+trial_results = pd.DataFrame()
+trial_results['box no'] = box_nos
+trial_results['ball color'] = ball_colors
+trial_results.head()
 </code></pre></div></div>
 
-<div>
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<p>Now we can see the proportion of trials on which we drew a red ball, where the
+box we got was BOX4.</p>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>box no</th>
-      <th>ball color</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>4</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>green</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>red</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>red</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-<p>Now we can see the proportion of trials on which we got a red ball, where the box we had got was box4.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Of the trials giving a red ball, what proportion came from box 4?
-</span><span class="n">red_ball_trials</span> <span class="o">=</span> <span class="n">trial_results</span><span class="p">[</span><span class="n">trial_results</span><span class="p">[</span><span class="s">'ball color'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'red'</span><span class="p">]</span>
-<span class="n">p_box4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">red_ball_trials</span><span class="p">[</span><span class="s">'box no'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">red_ball_trials</span><span class="p">)</span>
-<span class="n">p_box4</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Of the trials giving a red ball, what proportion came from box 4?
+red_ball_trials = trial_results[trial_results['ball color'] == 'red']
+p_box4 = np.count_nonzero(red_ball_trials['box no'] == 4) / len(red_ball_trials)
+p_box4
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.674819902831295
-</code></pre></div></div>
-
-<p>Of the trials giving a red ball about 66% came from box4.   If we see a red ball, there is a 66% chance we have sampled from box4.</p>
+<p>Of the trials giving a red ball about 66% came from BOX4.   If we see a red ball, there is a 66% chance we have sampled from BOX4.</p>
 
 <p>You have just solved your first problem in reverse probability.  The problem
 will soon reveal a simple calculation in probability called <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayes
@@ -1339,89 +1286,76 @@ theorem</a>.</p>
 
 <p>We can think of all these trials as coming about from a branching tree.</p>
 
-<p>At the first branching point, we split into two branches, each of width 0.5,
-one for box4 and one for box2.  Thus, about 50% of the trials are “box4”
-trials, and around 50% are “box2” trials:</p>
+<p>At the first branching point, we split into two branches, one for BOX4 and one
+for BOX2.  The BOX4 branch is width 0.3 and the BOX2 branch is width 0.7,
+because the probability of BOX4 is 0.3 (30%).</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box4_trials</span> <span class="o">=</span> <span class="n">trial_results</span><span class="p">[</span><span class="n">trial_results</span><span class="p">[</span><span class="s">'box no'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">box2_trials</span> <span class="o">=</span> <span class="n">trial_results</span><span class="p">[</span><span class="n">trial_results</span><span class="p">[</span><span class="s">'box no'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">trial_results</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Box4 proportion'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">box4_trials</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_trials</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Box2 proportion'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">box2_trials</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_trials</span><span class="p">)</span>
-</code></pre></div></div>
+<p>The simulation is very unlikely to give these numbers exactly, because it took
+a random sample.  So, the simulation proportions will be close to the
+probabilities we calculated above, but not exactly the same.</p>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Box4 proportion 0.5045
-Box2 proportion 0.4955
-
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box4_trials = trial_results[trial_results['box no'] == 4]
+box2_trials = trial_results[trial_results['box no'] == 2]
+n_trials = len(trial_results)
+print('Box4 proportion', len(box4_trials) / n_trials)
+print('Box2 proportion', len(box2_trials) / n_trials)
 </code></pre></div></div>
 
 <p>At the second branching point, each branch splits into two.</p>
 
 <ul>
-  <li>The box4 branch splits into a “red” branch, which carries 4/5 (0.8, 80%) of
-the box4 trials, and a “green” branch, that carries 1/5 (0.2, 20%) of the
-box4 trials, because the probability of getting a red ball from box4 is 4 in
+  <li>The BOX4 branch splits into a “red” branch, which carries 4/5 (0.8, 80%) of
+the BOX4 trials, and a “green” branch, that carries 1/5 (0.2, 20%) of the
+BOX4 trials, because the probability of getting a red ball from BOX4 is 4 in
 5.</li>
-  <li>The box2 branch splits into a “red” branch, which carries 2/5 (0.4, 40%) of
-the box2 trials, and a “green” branch, which carries 3/5 (0.6, 60%) of the
-box2 trials, because the probability of getting a red ball from box2 is 2 in
+  <li>The BOX2 branch splits into a “red” branch, which carries 2/5 (0.4, 40%) of
+the BOX2 trials, and a “green” branch, which carries 3/5 (0.6, 60%) of the
+BOX2 trials, because the probability of getting a red ball from BOX2 is 2 in
 5.</li>
 </ul>
 
-<p>Thus the proportion of trials that are <em>both</em> from box4 <em>and</em> give a red ball
-is 0.5 (the width of the box4 branch) * 0.8 (the proportion of box4 trials
-that give red) = 0.4.</p>
+<p>Thus the proportion of trials that are <em>both</em> from BOX4 <em>and</em> give a red ball
+is 0.3 (the width of the BOX4 branch) * 0.8 (the proportion of BOX4 trials
+that give red) = 0.24.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box4_and_red</span> <span class="o">=</span> <span class="n">box4_trials</span><span class="p">[</span><span class="n">box4_trials</span><span class="p">[</span><span class="s">'ball color'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'red'</span><span class="p">]</span>
-<span class="n">prop_box4_and_red</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">box4_and_red</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_trials</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Box4 and red proportion'</span><span class="p">,</span> <span class="n">prop_box4_and_red</span><span class="p">)</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box4_and_red = box4_trials[box4_trials['ball color'] == 'red']
+prop_box4_and_red = len(box4_and_red) / n_trials
+print('Box4 and red proportion', prop_box4_and_red)
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Box4 and red proportion 0.4028
+<p>The proportion of trials that are <em>both</em> from BOX2 <em>and</em> give a red ball
+is 0.7 (the width of the BOX2 branch) * 0.4 (the proportion of BOX2 trials
+that give red) = 0.28.</p>
 
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box2_and_red = box2_trials[box2_trials['ball color'] == 'red']
+prop_box2_and_red = len(box2_and_red) / n_trials
+print('Box2 and red proportion', prop_box2_and_red)
 </code></pre></div></div>
 
-<p>The proportion of trials that are <em>both</em> from box2 <em>and</em> give a red ball
-is 0.5 (the width of the box2 branch) * 0.4 (the proportion of box2 trials
-that give red) = 0.2.</p>
+<p>We get the overall proportion of red by adding the proportion that is BOX4
+<em>and</em> red to the proportion that is BOX2 <em>and</em> red, because these are all the
+red trials.  This is 0.24 + 0.28 = 0.52.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box2_and_red</span> <span class="o">=</span> <span class="n">box2_trials</span><span class="p">[</span><span class="n">box2_trials</span><span class="p">[</span><span class="s">'ball color'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'red'</span><span class="p">]</span>
-<span class="n">prop_box2_and_red</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">box2_and_red</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_trials</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Box2 and red proportion'</span><span class="p">,</span> <span class="n">prop_box2_and_red</span><span class="p">)</span>
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_red = len(box4_and_red) + len(box2_and_red)
+prop_red = n_red / n_trials
+print('Overall proportion of red', prop_red)
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Box2 and red proportion 0.1941
+<p>We’ve already discovered about that 0.24 (24%) of all trials are BOX4 <em>and</em>
+red.  So the proportion of <em>all</em> red trials, that are BOX4 <em>and</em> red, is 0.24 /
+0.52 = 0.4615385.</p>
 
-</code></pre></div></div>
-
-<p>We get the overall proportion of red by adding the proportion that is box4 <em>and</em> red to the proportion that is box2 <em>and</em> red, because these are all the red trials.  This is 0.4 + 0.2 = 0.6.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_red</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">box4_and_red</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">box2_and_red</span><span class="p">)</span>
-<span class="n">prop_red</span> <span class="o">=</span> <span class="n">n_red</span> <span class="o">/</span> <span class="n">n_trials</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Overall proportion of red'</span><span class="p">,</span> <span class="n">prop_red</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Overall proportion of red 0.5969
-
-</code></pre></div></div>
-
-<p>We’ve already discovered about that 0.4 (40%) of all trials are box4 <em>and</em> red.  So the proportion of <em>all</em> red trials, that are box4 <em>and</em> red, is 0.4 / 0.6 = 0.666.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Proportion of all red trials that are box4'</span><span class="p">,</span> <span class="p">(</span><span class="n">prop_box4_and_red</span> <span class="o">/</span> <span class="n">prop_red</span><span class="p">))</span>
-</code></pre></div></div>
-
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Proportion of all red trials that are box4 0.674819902831295
-
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('Proportion of all red trials that are box4', (prop_box4_and_red / prop_red))
 </code></pre></div></div>
 
 <p>To go over the logic again:</p>
 
 <ul>
-  <li>We want the proportion of “red” trials that came from box4.</li>
-  <li>To do this, we calculate the proportion of trials that are <em>both</em> box4 and
+  <li>We want the proportion of “red” trials that came from BOX4.</li>
+  <li>To do this, we calculate the proportion of trials that are <em>both</em> BOX4 and
 red, and divide by the overall proportion of red trials.</li>
-  <li>The proportion of red trials that are <em>both</em> box4 <em>and</em> red is the
-proportion of box4 trials multiplied by (the proportion of box4 trials that
+  <li>The proportion of red trials that are <em>both</em> BOX4 <em>and</em> red is (the
+proportion of BOX4 trials) multiplied by (the proportion of BOX4 trials that
 are red).</li>
 </ul>
 
