@@ -29,7 +29,7 @@ We found, in that page, that if the initial probabilities of the boxes were
 the same --- (0.5, 0.5), we could miss out the second step --- scaling by the
 box probabilities.
 
-Let's see why in a little algebra mixed with code.
+Let's see why with a little algebra mixed with code.
 
 ```{python}
 import numpy as np
@@ -39,57 +39,50 @@ As you remember, the calculation works out like this:
 
 ```{python}
 # Step 1 - P of reds.
-red_probabilities = np.array([0.8, 0.4])
+red_ps = np.array([0.8, 0.4])
 # Step 2 - scale by P of the boxes
-box_probabilities = np.array([0.3, 0.7])
-box_and_red_probs = box_probabilities * red_probabilities
+box_ps = np.array([0.3, 0.7])
+box_and_red_probs = box_ps * red_ps
 # Step 3 - divide each bar by sum of bar heights.
 box_given_red_probs = box_and_red_probs / np.sum(box_and_red_probs)
 # Show result
 box_given_red_probs
 ```
 
-Now let's put those numbers into some variables, and do the calculation again.
-We use the variables to refer back to the values in following the calculation.
-Of course, just putting the numbers into variables gives the same calculation
-and the same output:
+Doing the same calculation, but removing the intermediate variables:
 
 ```{python}
+# All in one go.
+box_ps * red_ps / np.sum(box_ps * red_ps)
+```
+
+We can replace those numbers (0.3, 0.7 etc) with variables, and do the
+calculation again. The variables are to keep track of the numbers in the
+discussion below.
+
+```{python}
+# Putting the numbers into variables.
 b = 0.3  # Probability of BOX4
 c = 0.7  # Probability of BOX2
 r = 0.8  # Probability of red if you have BOX4
 s = 0.4  # Probability of red if you have BOX2
+box_ps = np.array([b, c])
+red_ps = np.array([r, s])
 ```
 
+Of course we get the same answer, because we are doing the same calculation:
+
 ```{python}
-# Step 1 - P of reds.
-red_probabilities = np.array([r, s])
-# Step 2 - scale by P of the boxes
-box_probabilities = np.array([b, c])
-box_and_red_probs = box_probabilities * red_probabilities
-# Step 3 - divide each bar by sum of bar heights.
-box_given_red_probs = box_and_red_probs / np.sum(box_and_red_probs)
-# Show result
-box_given_red_probs
+# All in one go.
+box_ps * red_ps / np.sum(box_ps * red_ps)
 ```
 
-Working through the calculation above, and knowing how multiplication of arrays
-works, we see that:
+By working through what calculations are happending above, we find this is the
+same as:
 
 ```{python}
-box_and_red_probs == np.array([r * b, s * c])
-```
-
-We also see that:
-
-```{python}
-np.sum(box_and_red_probs) == (r * b) + (s * c)
-```
-
-Therefore, the full calculation boils down to:
-
-```{python}
-box_given_red_probs == np.array([r * b, s * c]) / ((r * b) + (s * c))
+# All in one go, using individual variables.
+np.array([b * r, c * s]) / ((b * r) + (c * s))
 ```
 
 Now --- what happens if the box probabilities are the same, and so `b == c`?
@@ -100,36 +93,31 @@ c = 0.5  # Probability of BOX2
 ```
 
 ```{python}
-# Step 2 - scale by P of the boxes
-eq_box_probabilities = np.array([b, c])
-eq_box_and_red_probs = eq_box_probabilities * red_probabilities
-# Step 3 - divide each bar by sum of bar heights.
-eq_box_given_red_probs = eq_box_and_red_probs / np.sum(eq_box_and_red_probs)
- # Show result
-eq_box_given_red_probs
+# Individual variables, equal box probabilities.
+np.array([b * r, c * s]) / ((b * r) + (c * s))
 ```
 
-In that case we can replace all the `c` instances by `b` in the calculation
-above, and so we get:
+Because `b == c`, we can replace all the `c`s in the calculation above with
+`b`s, to get:
 
 ```{python}
-eq_box_given_red_probs == np.array([r * b, s * b]) / ((r * b) + (s * b))
+np.array([r * b, s * b]) / ((r * b) + (s * b))
 ```
 
 Then we can take the `b` values outside the brackets to get:
 
 ```{python}
-eq_box_given_red_probs == np.array([r, s]) * b / ((r + s) * b)
+np.array([r, s]) * b / ((r + s) * b)
 ```
 
 The `b`s on top and bottom cancel, and so:
 
 ```{python}
-eq_box_given_red_probs == np.array([r, s]) / (r + s)
+np.array([r, s]) / (r + s)
 ```
 
-We can omit the box probabilities from the calculation, when the box
-probabilities are equal.
+We have shown that we can omit the box probabilities from the calculation, when
+the box probabilities are equal.
 
 You might be able to see that that this will also apply if we have three or
 more boxes, all with equal probabilities.  That is the situation we find in the
