@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-19T01:19:19+01:00">
+  <meta property="article:published_time" content="2020-05-23T16:16:24+01:00">
 
 
 
@@ -1133,7 +1133,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="9.1 The education minister">
       <meta itemprop="description" content="Imagine for a moment that you are the minister of education in Cuba.">
-      <meta itemprop="datePublished" content="April 19, 2020">
+      <meta itemprop="datePublished" content="May 23, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1180,6 +1180,8 @@ marked quickly.   But - how much information will this sample give you about
 the eventual results for 2019?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c1"># Make printing of numbers a bit neater.
+</span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -1194,6 +1196,8 @@ school-leaver mathematics examination results from 2018.</p>
 <a href="/cfd2019/data/havana_math_2018.csv">havana_math_2018.csv</a>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2018.csv'</span><span class="p">)</span>
+<span class="c1"># Drop missing marks.
+</span><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">havana_2018</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
@@ -1269,22 +1273,26 @@ school-leaver mathematics examination results from 2018.</p>
 </div>
 </div>
 
-<p>There are about 8000 marks in this table:</p>
+<p>There are about 7300 marks in this table:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">havana_2018</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7995
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7306
 </code></pre></div></div>
 
-<p>Here is the histogram, split into 100 bins to show more detail of the distribution — the default is 10 bins (question — how would you check this?).</p>
+<p>Here is the histogram, split into 100 bins to show more detail of the
+distribution — the default is 10 bins (question — how would you check
+this?).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s">'mark'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/havana_math_8_0.png" alt="png" /></p>
 
-<p>Notice this is much unlike a normal distribution,  In particular, you can see that the marks near 50% - appear to have been pushed upwards to 60%.  Maybe the markers are being generous to students close to the pass mark.</p>
+<p>Notice this is much unlike a normal distribution,  In particular, you can see
+that the marks near 50% - appear to have been pushed upwards to 60%.  Maybe the
+markers are being generous to students close to the pass mark.</p>
 
 <p>Here are the various statistics for the 2018 marks:</p>
 
@@ -1350,43 +1358,43 @@ Name: mark, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>2327-PRESENCIA DE CELIA</td>
+      <td>2308-JOSE MARTI (H.VIEJA)</td>
       <td>Institutos Preuniversitarios</td>
-      <td>1101168160</td>
-      <td>RAMIREZ SANCHEZ NEYDER</td>
-      <td>89.0</td>
+      <td>1092468439</td>
+      <td>GONZALEZ CHAO SUANY DE LAS MERCEDES</td>
+      <td>52.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2305-JOSE MIGUEL PEREZ</td>
+      <td>2304-SAUL DELGADO</td>
       <td>Institutos Preuniversitarios</td>
-      <td>1101066782</td>
-      <td>LEIVA RAMOS SAMUEL ALEJANDRO</td>
-      <td>84.0</td>
+      <td>1120268571</td>
+      <td>LODEIRO CHANG AIMEE</td>
+      <td>79.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2313-VILMA ESPIN</td>
+      <td>2315-12 DE SEPTIEMBRE</td>
       <td>Institutos Preuniversitarios</td>
-      <td>1101167635</td>
-      <td>NODARSE CASTRO JENNIFER</td>
-      <td>25.0</td>
+      <td>1112967200</td>
+      <td>BORREGO CABRERA MIGUEL ANGEL</td>
+      <td>99.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2324-MANOLITO AGUIAR</td>
+      <td>2323-ROSALIA ABREU</td>
       <td>Institutos Preuniversitarios</td>
-      <td>1033165197</td>
-      <td>SCULL ORTIZ JESSICA</td>
-      <td>30.0</td>
+      <td>1110168046</td>
+      <td>PEREZ MATOS CRISTIAN</td>
+      <td>88.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2306-TOMAS DAVID ROYO</td>
+      <td>2335-RAMON PADRON</td>
       <td>Institutos Preuniversitarios</td>
-      <td>1102668498</td>
-      <td>HERRERA GARCIA REGINA TERESA</td>
-      <td>97.0</td>
+      <td>1100267571</td>
+      <td>MUSA MEDINA IRENE</td>
+      <td>67.0</td>
     </tr>
   </tbody>
 </table>
@@ -1402,14 +1410,14 @@ Name: mark, dtype: float64
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2019_sample</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    45.000000
-mean     54.511111
-std      24.015736
-min       4.000000
-25%      30.000000
-50%      60.000000
-75%      72.000000
-max      97.000000
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    50.000000
+mean     58.740000
+std      22.898899
+min       0.000000
+25%      40.250000
+50%      61.000000
+75%      71.750000
+max      99.000000
 Name: mark, dtype: float64
 </code></pre></div></div>
 
@@ -1418,19 +1426,19 @@ Name: mark, dtype: float64
 <span class="n">math_med_2019_samp</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>54.51111111111111
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>58.74
 </code></pre></div></div>
 
-<p>The mean here is about 54.51.  That seems a bit lower than the 2018 mean —
-but have I been deceived by the sample?  Was I just unlucky?   How confident
-can I be that the mean from the full results will in fact be near 54.51,
-rather than the 65.25 or so of the previous year?</p>
+<p>The mean here is 58.74.  That seems a bit lower than the 2018 mean — but have
+I been deceived by the sample?  Was I just unlucky?   How confident can I be
+that the mean from the full results will in fact be near 58.74, rather than the
+65.25 or so of the previous year?</p>
 
 <p>We now enter the territory of <em>confidence intervals</em>.</p>
 
-<p>My question is: how close is my <em>sample mean</em> of 54.51 likely to be to the
-eventual mean, once I have all 8000 or so results for 2019?  How <em>confident</em>
-can I be in this sample mean of around 54.51?</p>
+<p>My question is: how close is my <em>sample mean</em> of 58.74 likely to be to the
+eventual mean, once I have all 7000 or so results for 2019?  How <em>confident</em>
+can I be in this sample mean of around 58.74?</p>
 
           
         </section>

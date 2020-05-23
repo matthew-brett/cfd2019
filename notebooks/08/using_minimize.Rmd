@@ -315,7 +315,7 @@ This shows that:
 
 Looking carefully, we see signs that `minimize` is trying small changes in the
 slope or intercept, presumably to calculate the gradient --- as we saw in the
-[optimizatino](optimmization) page --- but that is not our concern here.
+[optimization](optimization) page --- but that is not our concern here.
 
 The values in the array that `minimize` passes are the *parameters* that
 minimize is trying to optimize --- in our case, the intercept and slope.  Call
