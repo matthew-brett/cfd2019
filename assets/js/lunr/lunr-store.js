@@ -405,7 +405,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_bars",
         "teaser":null},{
         "title": "9.3 Back to Havana",
-        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 58.74. We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students. After a bit of development, we found, in...","categories": [],
+        "excerpt":"In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.51. We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students. After a bit of development, we found, in...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/10/bayes_confidence",
         "teaser":null},{

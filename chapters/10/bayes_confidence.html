@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>9.3 Back to Havana - Coding for Data - 2019 edition</title>
-<meta name="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 58.74.  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
+<meta name="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.51.  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
 
 
 
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://matthew-brett.github.io/cfd2019/chapters/10/bayes_confidence">
 
 
-  <meta property="og:description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 58.74.  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
+  <meta property="og:description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.51.  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
 
 
 
@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-05-23T16:16:24+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
 
 
 
@@ -1132,8 +1132,8 @@
 
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="9.3 Back to Havana">
-      <meta itemprop="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 58.74.  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
-      <meta itemprop="datePublished" content="May 23, 2020">
+      <meta itemprop="description" content="In the problem for the education minister we had a sample of fast-track-marked exams from2019, and we found that the mean mark was 54.51.  We wondered what we could sayabout the eventual mean of the marks for all 8000 or so students.">
+      <meta itemprop="datePublished" content="August 14, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1151,17 +1151,6 @@
 <!-- TOC will only show up if it has at least one item -->
 
 
-  <aside class="sidebar__right">
-    <nav class="toc">
-      <header><h4 class="nav__title"><i class="fas fa-list-ul"></i>   On this page</h4></header>
-      <ul class="toc__menu">
-  <li><a href="#reversing-the-probabilities">Reversing the probabilities</a></li>
-  <li><a href="#a-short-cut-for-the-calculations">A short cut for the calculations</a></li>
-  <li><a href="#estimating-the-sampling-distribution">Estimating the sampling distribution</a></li>
-</ul>
-    </nav>
-  </aside>
-
 
           
           <!-- INTERACT LINKS -->
@@ -1173,7 +1162,7 @@
 
 
           <p>In the <a href="/cfd2019/chapters/10/havana_math">problem for the education minister</a> we had a sample of fast-track-marked exams from
-2019, and we found that the mean mark was 58.74.  We wondered what we could say
+2019, and we found that the mean mark was 54.51.  We wondered what we could say
 about the eventual mean of the marks for all 8000 or so students.</p>
 
 <p>After a bit of development, we found, in the <a href="/cfd2019/chapters/10/bayes_bars">reverse probability with bars</a> page, that we could use some
@@ -1194,7 +1183,7 @@ from the sample mean.</p>
 <p>Let us start with the following problem:</p>
 
 <p><strong>Problem 1</strong>: What is the probability that we will observe a <em>sample</em> mean of
-<em>around</em> 58.74, given that the <em>population</em> mean is 62.25?</p>
+<em>around</em> 54.51, given that the <em>population</em> mean is 62.25.</p>
 
 <p>Referring back to our box and ball problem, this probability is the equivalent
 of the probability of getting a red ball from a given box.  Given a state of
@@ -1205,7 +1194,7 @@ was any particular state of the world (population mean), given the result (the
 sample mean).</p>
 
 <p>Returning to our mathematics exam problem: how will we calculate the
-probability of a sample mean of around 58.74, given a population mean of 62.25?</p>
+probability of a sample mean of around 54.51, given a population mean of 62.25?</p>
 
 <p>As usual, this is a problem of <em>sampling</em>.  If the mean of the population is
 62.25, and we draw a sample of 50 marks, then the mean of the sample will be
@@ -1216,67 +1205,36 @@ plus or minus a bit.  As usual, we need to quantify what we mean by “a bit”.
 around 62.25.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="c1"># Clean up display of small numbers.
-</span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>You can download the 2018 marks from <a href="/cfd2019/data/havana_math_2018.csv">havana_math_2018.csv</a>.</p>
-
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2018.csv'</span><span class="p">)</span>
-<span class="c1"># Drop missing marks.
-</span><span class="n">marks_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">mean_2018</span> <span class="o">=</span> <span class="n">marks_2018</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">mean_2018</span>
+<span class="n">marks_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">marks_2018</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65.25609088420477
 </code></pre></div></div>
 
-<p>This was our sample of 50 marks from the 2019 examinations.  It has a mean of
-58.74.</p>
-
-<p>You can download the sample file from <a href="/cfd2019/data/havana_math_2019_sample.csv">havana_math_2019_sample.csv</a>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2019_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2019_sample.csv'</span><span class="p">)</span>
-<span class="n">observed_sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">havana_2019_sample</span><span class="p">[</span><span class="s">'mark'</span><span class="p">])</span>
-<span class="n">observed_sample_mean</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>58.74
-</code></pre></div></div>
-
 <p>To get the <em>sampling distribution</em> of the mean of a sample of 50, we would have
-to calculate the mean for every possible sample of 50 values from the 7300 or
+to calculate the mean for every possible sample of 50 values from the 8000 or
 so marks.  As usual, we make do with an <em>estimate</em> of the sampling distribution
 by taking many thousands of samples.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Take 100000 samples, calculate their means.
-</span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Take 10000 samples, calculate their means.
+</span><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">marks_2018</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 <span class="n">sample_means</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([71.36, 62.3 , 71.7 , 64.46, 67.36])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([68.28, 60.9 , 68.08, 68.82, 70.  ])
 </code></pre></div></div>
-
-<p>As expected, the mean of the <em>sampling distribution</em> is very close to the mean
-of the population:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_means</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65.25597699999999
-</code></pre></div></div>
-
-<p>In what follows, we will ignore the small difference between the mean of the
-sampling distribution, and the mean of the population.</p>
 
 <p>The next cell has a histogram of the sampling distribution.  Notice that we
 have asked <code class="highlighter-rouge">plt.hist</code> to break the histogram into bins with <em>edges</em>
@@ -1287,16 +1245,13 @@ were between 50 and 50.5 (excluding 50.5), the second bin covers 50.5 up to
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Mean mark for sample of 50'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mean mark for sample of 50'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Estimated sampling distribution for mean of 50 marks'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/10/bayes_confidence_12_0.png" alt="png" /></p>
+<p><img src="../../images/chapters/10/bayes_confidence_7_0.png" alt="png" /></p>
 
-<p>Notice that the distribution has a very slightly longer left tail.</p>
-
-<p>We can use <code class="highlighter-rouge">plt.hist</code> to give us the counts for each of these bins, by storing
-the values that <code class="highlighter-rouge">plt.hist</code> returns, like this:</p>
+<p>We can use <code class="highlighter-rouge">plt.hist</code> to give us the counts for each of these bins, by storing the values that <code class="highlighter-rouge">plt.hist</code> returns, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Store the values that plt.hist returns.
 </span><span class="n">hist_vals</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
@@ -1305,16 +1260,15 @@ the values that <code class="highlighter-rouge">plt.hist</code> returns, like th
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([   2.,    3.,   12.,   10.,   16.,   21.,   54.,   56.,   80.,
-        132.,  152.,  222.,  327.,  406.,  585.,  731.,  956., 1167.,
-       1428., 1889., 2155., 2634., 3027., 3236., 3806., 4107., 4481.,
-       4939., 4935., 5287., 5253., 5188., 5174., 4946., 4639., 4291.,
-       3875., 3523., 3188., 2672., 2283., 1817., 1587., 1201.,  961.,
-        722.,  541.,  421.,  273.,  189.,  131.,  107.,   61.,   41.,
-         23.,   10.,   11.,    6.,    3.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  0.,   0.,   0.,   1.,   4.,   1.,   2.,   7.,  13.,  18.,  15.,
+        18.,  41.,  49.,  46.,  67., 102., 125., 128., 164., 209., 272.,
+       285., 299., 349., 423., 465., 496., 534., 499., 507., 515., 523.,
+       502., 471., 424., 397., 376., 323., 255., 238., 196., 138., 137.,
+        97.,  73.,  64.,  42.,  33.,  24.,  10.,   5.,   7.,   5.,   1.,
+         3.,   1.,   1.,   0.])
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/10/bayes_confidence_14_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/10/bayes_confidence_9_1.png" alt="png" /></p>
 
 <p>As we saw in the page on <a href="/cfd2019/chapters/08/using_minimize#unpacking">using minimize</a>, we can get this value a little more
 neatly by <em>unpacking</em> the return values from <code class="highlighter-rouge">plt.hist</code>, like this:</p>
@@ -1326,97 +1280,61 @@ neatly by <em>unpacking</em> the return values from <code class="highlighter-rou
 </span><span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([   2.,    3.,   12.,   10.,   16.,   21.,   54.,   56.,   80.,
-        132.,  152.,  222.,  327.,  406.,  585.,  731.,  956., 1167.,
-       1428., 1889., 2155., 2634., 3027., 3236., 3806., 4107., 4481.,
-       4939., 4935., 5287., 5253., 5188., 5174., 4946., 4639., 4291.,
-       3875., 3523., 3188., 2672., 2283., 1817., 1587., 1201.,  961.,
-        722.,  541.,  421.,  273.,  189.,  131.,  107.,   61.,   41.,
-         23.,   10.,   11.,    6.,    3.])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  0.,   0.,   0.,   1.,   4.,   1.,   2.,   7.,  13.,  18.,  15.,
+        18.,  41.,  49.,  46.,  67., 102., 125., 128., 164., 209., 272.,
+       285., 299., 349., 423., 465., 496., 534., 499., 507., 515., 523.,
+       502., 471., 424., 397., 376., 323., 255., 238., 196., 138., 137.,
+        97.,  73.,  64.,  42.,  33.,  24.,  10.,   5.,   7.,   5.,   1.,
+         3.,   1.,   1.,   0.])
 </code></pre></div></div>
 
-<p><img src="../../images/chapters/10/bayes_confidence_16_1.png" alt="png" /></p>
+<p><img src="../../images/chapters/10/bayes_confidence_11_1.png" alt="png" /></p>
 
-<p>If we show the counts as a bar graph, it is the same as the histogram, because
-it is using the same values.  We use the bin centers instead of the bin edges
-for the x axis, as the histogram routine does, internally.</p>
+<p>These are the counts for how many of the 10000 samples we took had a mean
+between the bin edges.  For example, the left (lower) edge of the bin at index
+20 is:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get bin centers by dropping the right hand edge, add half bin width.
-</span><span class="n">bin_centers</span> <span class="o">=</span> <span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.25</span>
-<span class="n">bin_centers</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_edges</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([50.25, 50.75, 51.25, 51.75, 52.25, 52.75, 53.25, 53.75, 54.25,
-       54.75, 55.25, 55.75, 56.25, 56.75, 57.25, 57.75, 58.25, 58.75,
-       59.25, 59.75, 60.25, 60.75, 61.25, 61.75, 62.25, 62.75, 63.25,
-       63.75, 64.25, 64.75, 65.25, 65.75, 66.25, 66.75, 67.25, 67.75,
-       68.25, 68.75, 69.25, 69.75, 70.25, 70.75, 71.25, 71.75, 72.25,
-       72.75, 73.25, 73.75, 74.25, 74.75, 75.25, 75.75, 76.25, 76.75,
-       77.25, 77.75, 78.25, 78.75, 79.25])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60.0
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Replicate sampling distribution using counts'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_19_0.png" alt="png" /></p>
-
-<p>For each bin, <code class="highlighter-rouge">counts</code> gives the count of the 10000 samples we took had a mean
-between the bin edges.  For example, the center of the bin at index 20 is:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_centers</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60.25
-</code></pre></div></div>
-
-<p>This the bin counting all the sample mean values between 60 and 60.5.  It has a
-lower edge of 60, and an upper edge of 60.5.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Lower edge:'</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">20</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Upper edge (not included):'</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">21</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Lower edge: 60.0
-Upper edge (not included): 60.5
-
-</code></pre></div></div>
-
-<p>The count in that bin is:</p>
+<p>This the bin counting all the sample mean values between 60 and 60.5.  The
+counts in that that bin are:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2155.0
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>209.0
 </code></pre></div></div>
 
-<p>This is the count of the 100000 sample means from our estimated sampling
+<p>This is the count of the 10000 sample means from our estimated sampling
 distribution, that were from 60 up to, but not including, 60.5.</p>
 
-<p>Dividing the counts by the number of samples, we get the proportion of samples
-that fall in this range:</p>
+<p>By dividing the counts by the number of samples, we get the proportion of
+samples that fall in this range:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proportions</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">n_samples</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proportions</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="mi">10000</span>
 <span class="n">proportions</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.    , 0.    , 0.0001, 0.0001, 0.0002, 0.0002, 0.0005, 0.0006,
-       0.0008, 0.0013, 0.0015, 0.0022, 0.0033, 0.0041, 0.0059, 0.0073,
-       0.0096, 0.0117, 0.0143, 0.0189, 0.0215, 0.0263, 0.0303, 0.0324,
-       0.0381, 0.0411, 0.0448, 0.0494, 0.0493, 0.0529, 0.0525, 0.0519,
-       0.0517, 0.0495, 0.0464, 0.0429, 0.0387, 0.0352, 0.0319, 0.0267,
-       0.0228, 0.0182, 0.0159, 0.012 , 0.0096, 0.0072, 0.0054, 0.0042,
-       0.0027, 0.0019, 0.0013, 0.0011, 0.0006, 0.0004, 0.0002, 0.0001,
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.    , 0.    , 0.    , 0.0001, 0.0004, 0.0001, 0.0002, 0.0007,
+       0.0013, 0.0018, 0.0015, 0.0018, 0.0041, 0.0049, 0.0046, 0.0067,
+       0.0102, 0.0125, 0.0128, 0.0164, 0.0209, 0.0272, 0.0285, 0.0299,
+       0.0349, 0.0423, 0.0465, 0.0496, 0.0534, 0.0499, 0.0507, 0.0515,
+       0.0523, 0.0502, 0.0471, 0.0424, 0.0397, 0.0376, 0.0323, 0.0255,
+       0.0238, 0.0196, 0.0138, 0.0137, 0.0097, 0.0073, 0.0064, 0.0042,
+       0.0033, 0.0024, 0.001 , 0.0005, 0.0007, 0.0005, 0.0001, 0.0003,
        0.0001, 0.0001, 0.    ])
 </code></pre></div></div>
 
-<p>For example, here is the proportion of sample means that fell between 60 and
-60.5:</p>
+<p>For example, here is the proportion of sample means that fell between 60 and 60.5:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proportions</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.02155
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0209
 </code></pre></div></div>
 
 <p>In other words, given this estimated sampling distribution, for this world with
@@ -1426,554 +1344,43 @@ a mean of 62.25, the probability of any one sample mean being between 60 and
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proportions</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.02155
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0209
 </code></pre></div></div>
 
-<p>The bar graph of the proportions is the same as the histogram, but with the y
-values divided by the number of samples (100000):</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">proportions</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Sampling distribution using proportions'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_33_0.png" alt="png" /></p>
-
-<p>Now we are in a position to answer something approaching our intermediate
-question:</p>
+<p>Now we are in a position to answer our intermediate question:</p>
 
 <p><strong>Problem 1</strong>: What is the probability that we will observe a <em>sample</em> mean of
-<em>around</em> 58.74, given that the <em>population</em> mean is 62.25.</p>
+<em>around</em> 54.51, given that the <em>population</em> mean is 62.25.</p>
 
 <p>One difficulty with this question is that we do not know what the sampling
 distribution would be for this hypothetical 2019 full set of marks, where the
 population mean is 62.25.  For the moment, we will assume that the sampling
-distribution is <em>exactly the same as it was in 2018</em>; this is the sampling
+distribution is exactly the same as it was in 2018; this is the sampling
 distribution we have already been using.</p>
 
-<p>We find the bin corresponding to the sample mean of 58.74; this is the bin with
-center 58.75, with edges 58.5 and 59.0.   It turns out this is the bin at index
-17.</p>
+<p>We find the bin corresponding to the sample mean of 54.51; this is the bin with
+the left (lower) edge of 54.5.   It turns out this is the bin at index 9.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_58p75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bin_centers</span> <span class="o">==</span> <span class="mf">58.75</span><span class="p">)</span>
-<span class="n">bin_58p75</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_54p5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bin_edges</span> <span class="o">==</span> <span class="mf">54.5</span><span class="p">)</span>
+<span class="n">bin_54p5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([17]),)
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([9]),)
 </code></pre></div></div>
 
-<p>Look back at <a href="/cfd2019/chapters/08/where_and_argmin">where and argmin</a> for the trick here of using <code class="highlighter-rouge">np.where</code> to find
-the index.</p>
+<p>Look back at <a href="/cfd2019/chapters/08/where_and_argmin">where and argmin</a> for this trick of using <code class="highlighter-rouge">np.where</code> to find the
+index.</p>
 
 <p>We get the proportion at that index, to give the probability that we will see a
-sample mean between 58.5 and 59:</p>
+sample mean between 54.5 and 55:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p_around_58p75</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">[</span><span class="n">bin_58p75</span><span class="p">]</span>
-<span class="n">p_around_58p75</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p_around_54p5</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">[</span><span class="n">bin_54p5</span><span class="p">]</span>
+<span class="n">p_around_54p5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0117])
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0018])
 </code></pre></div></div>
 
-<p>We highlight this proportion in red:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">proportions</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">58.75</span><span class="p">,</span> <span class="n">p_around_58p75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="c1"># Store the x and y axis limits for later
-</span><span class="n">xy_lims</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Proportion for the 58.75 bin'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_39_0.png" alt="png" /></p>
-
-<p>This is the probability of something close to our observed sample mean (58.74)
-given an eventual population mean of 62.25, and our assumed sampling
-distribution.  The probability we have just found corresponds to the population
-mean.  We start a new graph were we record the probability at its corresponding
-population mean:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">62.25</span><span class="p">,</span> <span class="n">p_around_58p75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xy_lims</span><span class="p">)</span>  <span class="c1"># Use the axis limits from the previous plot.
-</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Proportion against corresponding population mean'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_41_0.png" alt="png" /></p>
-
-<p>Let us try a slightly more difficult intermediate problem:</p>
-
-<p><strong>Problem 2</strong>: What is the probability that we will observe a <em>sample</em> mean of
-<em>around</em> 58.74, given that the <em>population</em> mean is 61.75?</p>
-
-<p>Notice the new hypothetical population mean that is the population mean from
-2018, minus 0.5.</p>
-
-<p>For problem 1, we assumed the sampling distribution was the same as it was in
-2018, when the mean was, in fact, around 62.25.  Now we need the sampling
-distribution for the case where the mean is 0.5 less, at 61.75.</p>
-
-<p>We will assume that the <em>shape</em> of this hypothetical sampling distribution does
-not change from the one we have used from 2018, but the <em>center</em> does change,
-from 62.25 to 62.75. In other words, our assumed sampling distribution shifts
-0.5 to the left on the x axis:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">,</span>
-   <span class="n">label</span><span class="o">=</span><span class="s">'Original'</span><span class="p">)</span>
-<span class="c1"># Shift x values 0.5 (one bin) to the left.
-</span><span class="n">bin_centers_1</span> <span class="o">=</span> <span class="n">bin_centers</span> <span class="o">-</span> <span class="mf">0.5</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers_1</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">,</span>
-  <span class="n">label</span><span class="o">=</span><span class="s">'Shifted'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Original, shifted 2018 sampling distribution'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_43_0.png" alt="png" /></p>
-
-<p>With the shifted sampling distribution, we just follow the same recipe as we
-did for the population mean of 62.25.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_58p75_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bin_centers_1</span> <span class="o">==</span> <span class="mf">58.75</span><span class="p">)</span>
-<span class="n">bin_58p75_1</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([18]),)
-</code></pre></div></div>
-
-<p>This is the bin at index 18 instead of the bin at index 17, that we found last
-time.  We have shifted the distribution one bin width to the left, so our
-corresponding bin in the sampling distribution is one bin to the right.</p>
-
-<p>The proportion we want is:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p_around_58p75_1</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">[</span><span class="n">bin_58p75_1</span><span class="p">]</span>
-<span class="n">p_around_58p75_1</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0143])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers_1</span><span class="p">,</span> <span class="n">proportions</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">58.75</span><span class="p">,</span> <span class="n">p_around_58p75_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="c1"># Store the x and y axis limits for later
-</span><span class="n">xy_lims</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Proportion for 58.75 bin, pop mean 61.75'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_48_0.png" alt="png" /></p>
-
-<p>This is the probability of something close to our observed sample mean (58.74)
-given an eventual population mean of 61.75, and our assumed sampling
-distribution. The probability corresponds to the eventual population mean, so
-we add the probability value to the plot at this population mean:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The previous p we found for 62.25
-</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">62.25</span><span class="p">,</span> <span class="n">p_around_58p75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="c1"># The new p we found for 61.75
-</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">61.75</span><span class="p">,</span> <span class="n">p_around_58p75_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xy_lims</span><span class="p">)</span>  <span class="c1"># Use the axis limits from the previous plot.
-</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Proportion against corresponding population mean'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_50_0.png" alt="png" /></p>
-
-<p>You can probably see how this is going to pan out now, but let us do the 61.25
-bin for practice.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Original distribution.
-</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">,</span>
-   <span class="n">label</span><span class="o">=</span><span class="s">'Original'</span><span class="p">)</span>
-<span class="c1"># Shift x values by 1 (two bins) to the left.
-</span><span class="n">bin_centers_2</span> <span class="o">=</span> <span class="n">bin_centers</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers_2</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">,</span>
-  <span class="n">label</span><span class="o">=</span><span class="s">'Shifted by 2 bins'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Original, shifted-by-2 sampling distribution'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_52_0.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We are now looking at the next bin to the right in the distribution.
-</span><span class="n">bin_58p75_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bin_centers_2</span> <span class="o">==</span> <span class="mf">58.75</span><span class="p">)</span>
-<span class="n">bin_58p75_2</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([19]),)
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p_around_58p75_2</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">[</span><span class="n">bin_58p75_2</span><span class="p">]</span>
-<span class="n">p_around_58p75_2</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0189])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers_2</span><span class="p">,</span> <span class="n">proportions</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">58.75</span><span class="p">,</span> <span class="n">p_around_58p75_2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="c1"># Store the x and y axis limits for later
-</span><span class="n">xy_lims</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Proportion for 58.75 bin, pop mean 61.75'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_55_0.png" alt="png" /></p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The p we found for 62.25
-</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">62.25</span><span class="p">,</span> <span class="n">p_around_58p75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="c1"># The p we found for 61.75
-</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">61.75</span><span class="p">,</span> <span class="n">p_around_58p75_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="c1"># The p we found for 61.25
-</span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="mf">61.25</span><span class="p">,</span> <span class="n">p_around_58p75_2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xy_lims</span><span class="p">)</span>  <span class="c1"># Use the axis limits from the previous plot.
-</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Proportion against corresponding population mean'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_56_0.png" alt="png" /></p>
-
-<p>We can repeat this procedure for every population mean.  For every population
-mean, we shift the sampling distribution, and get the corresponding probability
-of getting something in the bin of the observed sample mean of 58.74. This is
-the bin between 58.5 and 59, centered on 58.75.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Bin centers at which to estimate probability.
-</span><span class="n">population_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">42.75</span><span class="p">,</span> <span class="mf">67.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">population_means</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([42.75, 43.25, 43.75, 44.25, 44.75, 45.25, 45.75, 46.25, 46.75,
-       47.25, 47.75, 48.25, 48.75, 49.25, 49.75, 50.25, 50.75, 51.25,
-       51.75, 52.25, 52.75, 53.25, 53.75, 54.25, 54.75, 55.25, 55.75,
-       56.25, 56.75, 57.25, 57.75, 58.25, 58.75, 59.25, 59.75, 60.25,
-       60.75, 61.25, 61.75, 62.25, 62.75, 63.25, 63.75, 64.25, 64.75,
-       65.25, 65.75, 66.25, 66.75, 67.25])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_means</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population_means</span><span class="p">)</span>
-<span class="n">ps_for_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_means</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_means</span><span class="p">):</span>
-    <span class="c1"># Shift the x positions of the sampling distribution.
-</span>    <span class="n">pop_mean</span> <span class="o">=</span> <span class="n">population_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">mean_diff</span> <span class="o">=</span> <span class="mf">62.25</span> <span class="o">-</span> <span class="n">pop_mean</span>
-    <span class="n">new_bin_centers</span> <span class="o">=</span> <span class="n">bin_centers</span> <span class="o">-</span> <span class="n">mean_diff</span>
-    <span class="c1"># Find the bin corresponding to the sample mean.
-</span>    <span class="n">is_our_bin</span> <span class="o">=</span> <span class="n">new_bin_centers</span> <span class="o">==</span> <span class="mf">58.75</span>
-    <span class="c1"># We might have gone too far, so there is no corresponding bin.
-</span>    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">is_our_bin</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">continue</span>
-    <span class="c1"># Store the probability for this population mean.
-</span>    <span class="n">ps_for_mean</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">[</span><span class="n">is_our_bin</span><span class="p">]</span>
-<span class="n">ps_for_mean</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0001, 0.0001, 0.0002, 0.0004, 0.0006, 0.0011, 0.0013, 0.0019,
-       0.0027, 0.0042, 0.0054, 0.0072, 0.0096, 0.012 , 0.0159, 0.0182,
-       0.0228, 0.0267, 0.0319, 0.0352, 0.0387, 0.0429, 0.0464, 0.0495,
-       0.0517, 0.0519, 0.0525, 0.0529, 0.0493, 0.0494, 0.0448, 0.0411,
-       0.0381, 0.0324, 0.0303, 0.0263, 0.0215, 0.0189, 0.0143, 0.0117,
-       0.0096, 0.0073, 0.0059, 0.0041, 0.0033, 0.0022, 0.0015, 0.0013,
-       0.0008, 0.0006])
-</code></pre></div></div>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">population_means</span><span class="p">,</span> <span class="n">ps_for_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P values for sample mean around 58.75 given population means'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_60_0.png" alt="png" /></p>
-
-<p>For reasons that might be clear from the calculations above, this probability
-distribution is our original assumed sampling distribution, but:</p>
-
-<ul>
-  <li>Reversed so the right tail has become the left tail, and vice versa, and</li>
-  <li>Shifted so that the mean of the distribution sits over the observed sample
-mean.</li>
-</ul>
-
-<p>We can put both distributions on the plot to show this more clearly:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">population_means</span><span class="p">,</span> <span class="n">ps_for_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">,</span>
-   <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-   <span class="n">label</span><span class="o">=</span><span class="s">'Probability of sample mean'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">proportions</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'blue'</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s">'Original proportions'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'lower left'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P values for sample mean and sampling distribution'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_62_0.png" alt="png" /></p>
-
-<h2 id="reversing-the-probabilities">Reversing the probabilities</h2>
-
-<p>Remember that each of the p values in shown on the y axis in our red
-distribution above are: The probability of seeing a sample mean of around 52.75
-given a population mean of the corresponding x value.</p>
-
-<p>We want to reverse this probability.  We want the probability that the
-population mean is a certain value (on the x axis), given that we have sample
-mean of around 58.75.</p>
-
-<p>To do this, we follow the rules in <a href="/cfd2019/chapters/10/first_bayes">reverse probability</a> and <a href="/cfd2019/chapters/10/bayes_bars">Bayes bars</a>.</p>
-
-<p>These are:</p>
-
-<ol>
-  <li>Get the probabilities of the sample mean given each population mean; these
-are the red values in the plot above.  Call these the <em>forward</em>
-probabilities.</li>
-  <li>Scale the forward probabilities by the initial or <em>prior</em> probability of
-each population mean (we will have to decide what those are).</li>
-  <li>Divide the results by the sum of the results from step 2 to get the reverse
-or <em>posterior</em> probabilities.</li>
-</ol>
-
-<p>For step 2, we will assume that there is an equal prior (initial) probability
-for each of our possible population means.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># All the population means we have tried have the same initial probability.
-</span><span class="n">prior_pop_mean_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_means</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_means</span>
-<span class="n">prior_pop_mean_ps</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
-       0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
-       0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
-       0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
-       0.02, 0.02, 0.02, 0.02, 0.02, 0.02])
-</code></pre></div></div>
-
-<p>Continuing with step 2, we scale the forward probabilities by the prior
-probabilities, and divide by the resulting sum, to get the posterior (reverse)
-probabilities:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">prior_times_forwards</span> <span class="o">=</span> <span class="n">prior_pop_mean_ps</span> <span class="o">*</span> <span class="n">ps_for_mean</span>
-<span class="n">posterior_ps</span> <span class="o">=</span> <span class="n">prior_times_forwards</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">prior_times_forwards</span><span class="p">)</span>
-<span class="n">posterior_ps</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0001, 0.0001, 0.0002, 0.0004, 0.0006, 0.0011, 0.0013, 0.0019,
-       0.0027, 0.0042, 0.0054, 0.0072, 0.0096, 0.012 , 0.0159, 0.0182,
-       0.0229, 0.0268, 0.0319, 0.0353, 0.0388, 0.043 , 0.0465, 0.0495,
-       0.0518, 0.0519, 0.0526, 0.0529, 0.0494, 0.0495, 0.0449, 0.0411,
-       0.0381, 0.0324, 0.0303, 0.0264, 0.0216, 0.0189, 0.0143, 0.0117,
-       0.0096, 0.0073, 0.0059, 0.0041, 0.0033, 0.0022, 0.0015, 0.0013,
-       0.0008, 0.0006])
-</code></pre></div></div>
-
-<p>These are now the probabilities of each population mean, given the sample mean
-of around 58.75.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">population_means</span><span class="p">,</span> <span class="n">posterior_ps</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'darkred'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of given population mean, given sample mean'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_69_0.png" alt="png" /></p>
-
-<p>You might notice that this looks very much like the original plot (in red,
-above) of the probabilities of the sample mean, given the population means.</p>
-
-<p>In fact is it is the same, and this is because:</p>
-
-<ul>
-  <li>As you saw in <a href="/cfd2019/chapters/10/first_bayes">reverse probability</a> and <a href="/cfd2019/chapters/10/bayes_bars">Bayes bars</a>, when all the prior (initial) probabilities are
-the same, we can skip the step of multiplying the forward (red) values by the
-prior (initial) probabilities.</li>
-  <li>The forward (red) values were proportions, and so all the red values add up
-to 1, corresponding to all the sample means.  Therefore, step 3, dividing by
-the sum, is dividing by 1, and doesn’t change the values.</li>
-</ul>
-
-<p>The dark red distribution is very useful, because it can answer questions we are interested in.</p>
-
-<p>Remember that each value in this plot is the probability of the corresponding
-population means (on the x axis), given the observed sample mean of around
-58.75 (in fact the sample mean was 58.74, but we will ignore that small
-difference for now).</p>
-
-<p>Remember too that the “population” we are interested in here is the eventual
-7300 or so marks from 2019.</p>
-
-<p>We see quickly that our sample mean makes it perfectly plausible that the
-eventual population mean will be at or above the previous mean of 62 or so,
-because a substantial proportion the area of the distribution corresponds to
-values of 62 or greater.</p>
-
-<p>In fact, we could do better than this, and work out the population mean
-threshold, such that about 5% of the distribution is above threshold. Call this
-threshold <code class="highlighter-rouge">t</code>. Once we have found this value, <code class="highlighter-rouge">t</code>, we can say that there is
-about a 95% chance that the eventual population mean will be less than or equal
-to <code class="highlighter-rouge">t</code>.  We could call <code class="highlighter-rouge">t</code> the 5% upper <em>confidence limit</em>, because we are 95%
-confident that the eventual population mean will be less than or equal to this
-value.</p>
-
-<p>To get this value, we can use the <code class="highlighter-rouge">np.cumsum</code> function, first mentioned in the
-<a href="/cfd2019/chapters/03/Arrays">arrays</a> page. It takes an input array
-say <code class="highlighter-rouge">a</code>, and returns another array, say <code class="highlighter-rouge">b</code> that is the same size as <code class="highlighter-rouge">a</code>, but
-which has, at each element, the result of summing up all the elements in <code class="highlighter-rouge">a</code> up
-to the corresponding position.  This might be clearer by example:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># np.cumsum - for each element, add all elements so far.
-</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1,  3,  8, 10, 10])
-</code></pre></div></div>
-
-<p>We can do the same with the posterior probabilities:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cumulative_post_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">posterior_ps</span><span class="p">)</span>
-<span class="n">cumulative_post_ps</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0001, 0.0002, 0.0004, 0.0009, 0.0015, 0.0025, 0.0038, 0.0057,
-       0.0085, 0.0127, 0.0181, 0.0253, 0.035 , 0.047 , 0.0629, 0.0811,
-       0.1039, 0.1307, 0.1626, 0.1979, 0.2367, 0.2797, 0.3261, 0.3756,
-       0.4274, 0.4794, 0.532 , 0.5849, 0.6344, 0.6838, 0.7287, 0.7698,
-       0.8079, 0.8403, 0.8706, 0.897 , 0.9186, 0.9375, 0.9518, 0.9635,
-       0.9731, 0.9804, 0.9862, 0.9903, 0.9936, 0.9958, 0.9973, 0.9986,
-       0.9994, 1.    ])
-</code></pre></div></div>
-
-<p>Notice that, towards the end of this array, we reach 0.95; this means that the
-probability values up to this point add up to 0.95 or more; equivalently, that
-we already have 95% of the probability or more at this point.</p>
-
-<p>In the following code, we get True if we have not yet reached 0.95, and False
-after that.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cum_ps_lte_0p95</span> <span class="o">=</span> <span class="n">cumulative_post_ps</span> <span class="o">&lt;=</span> <span class="mf">0.95</span>
-<span class="n">cum_ps_lte_0p95</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True, False, False, False, False, False, False, False,
-       False, False, False, False, False])
-</code></pre></div></div>
-
-<p>We want the largest of the corresponding population mean values, to get our
-<code class="highlighter-rouge">t</code>.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">population_means</span><span class="p">[</span><span class="n">cum_ps_lte_0p95</span><span class="p">])</span>
-<span class="n">t</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>61.25
-</code></pre></div></div>
-
-<p>This calculation tells us that, <em>given our assumptions</em>, there is a 95% chance
-that the eventual population mean will be less than or equal to our found <code class="highlighter-rouge">t</code>.
-<code class="highlighter-rouge">t</code> is our 95% upper confidence limit.</p>
-
-<p>It looks like we are moderately confident that the mean of the marks will be
-less in 2019 than it was in 2018.</p>
-
-<h2 id="a-short-cut-for-the-calculations">A short cut for the calculations</h2>
-
-<p>In this exposition, we started by breaking up the sampling distribution into a
-counts values from a histogram; converting the counts into a proportions, and
-then transforming the proportions by shifting on the x axis, and reversing
-them.  We found this was our posterior probability distribution, and then we
-used the cumulative sum of this distribution to find our upper tail threshold.</p>
-
-<p>In fact we can do equivalent operations without having to break up the
-distribution into counts, by applying the same transformations to the values
-in the sampling distribution.</p>
-
-<p>Here is the sampling distribution (again):</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Mean mark for sample of 50'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Estimated sampling distribution for mean of 50 marks'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_80_0.png" alt="png" /></p>
-
-<p>As we did for the proportions, we will shift this distribution to have a mean
-at the observed sample mean, and take the mirror image around this point, like
-this:</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Shift distribution to observed sample mean; take mirror image.
-# Move distribution mean point to zero.
-</span><span class="n">zero_centered</span> <span class="o">=</span> <span class="n">sample_means</span> <span class="o">-</span> <span class="mf">62.25</span>
-<span class="c1"># Mirror image around zero point.
-</span><span class="nb">reversed</span> <span class="o">=</span> <span class="o">-</span><span class="n">zero_centered</span>
-<span class="c1"># Add back the observed sample mean.
-</span><span class="n">reversed_shifted</span> <span class="o">=</span> <span class="nb">reversed</span> <span class="o">+</span> <span class="n">observed_sample_mean</span>
-<span class="c1"># Show a histogram (and store the counts).
-</span><span class="n">rs_counts</span><span class="p">,</span> <span class="n">rs_edges</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">reversed_shifted</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">42.5</span><span class="p">,</span> <span class="mf">67.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
-    <span class="n">color</span><span class="o">=</span><span class="s">'darkgreen'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Reversed, shifted sampling distribution'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_82_0.png" alt="png" /></p>
-
-<p>Here’s the same histogram, but built using the counts we got back from the
-call, just to show it is the same.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rs_centers</span> <span class="o">=</span> <span class="n">rs_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.25</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rs_centers</span><span class="p">,</span> <span class="n">rs_counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'darkgreen'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Reversed, shifted sampling distribution using counts'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_84_0.png" alt="png" /></p>
-
-<p>Notice that, if we divide the counts in this histogram by the number of
-samples, to get proportions, this looks very, very similar to the posterior
-probabilities we have just calculated.  The plot below shows the populations
-superimposed; they overlap so completely that you cannot distinguish the two.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rs_centers</span><span class="p">,</span> <span class="n">rs_counts</span> <span class="o">/</span> <span class="n">n_samples</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s">'darkblue'</span><span class="p">,</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s">'Reversed, shifted p'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">population_means</span><span class="p">,</span> <span class="n">posterior_ps</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s">'darkred'</span><span class="p">,</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s">'Posterior p'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Reversed shifted and posterior p'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'lower left'</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><img src="../../images/chapters/10/bayes_confidence_86_0.png" alt="png" /></p>
-
-<p>Using this reversed shifted version, we can get our threshold rather easily, by
-asking for the percentiles of the distribution.</p>
-
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rs_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">reversed_shifted</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>
-<span class="n">rs_t</span>
-</code></pre></div></div>
-
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>61.97
-</code></pre></div></div>
-
-<p>This is the 95% percentile, so it is the value such that 95% of the values are
-less than this value, and 5% are greater than this value.</p>
-
-<p>The reversed-shifted calculation is very similar to something called the
-<em>Reverse Percentile Interval</em> for the <em>bootstrap</em> (see below, and <a href="https://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29#Deriving_confidence_intervals_from_the_bootstrap_distribution">this
-Wikipedia
-section</a></p>
-
-<p>As you see, the result is near identical to the approximation we used above
-when we broke the distribution into counts and used this for the posterior p
-calculation.</p>
-
-<h2 id="estimating-the-sampling-distribution">Estimating the sampling distribution</h2>
-
-<p>We emphasized <em>given our assumptions</em>.  One big assumption that we made was
-that the sampling distribution of the mean was the same as that for 2018.  That
-seems like a strong assumption; the sampling distribution of the mean will
-depend on the distribution of the values, and that may have changed in 2019.</p>
-
-<p>To be more general, we might also want to deal with a situation where we do not
-have a roughly equivalent population to help us.  Here we had the distribution
-of marks from 2018, but we will often be in the situation where we have a
-sample mean, and no population to compare against.  What can we do to estimate
-the sampling distribution, if all we have is the sample — in our case, the
-sample of 50 marks from 2019?</p>
-
-<p>Enter the <a href="/cfd2019/chapters/10/bootstrap">bootstrap</a>.</p>
 
           
         </section>

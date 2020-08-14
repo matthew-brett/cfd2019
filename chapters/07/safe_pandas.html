@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-05-23T16:16:24+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
 
 
 
@@ -1133,7 +1133,7 @@
     <article class="page textbook" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="headline" content="6.8 Safe Pandas">
       <meta itemprop="description" content="A lot of Pandas’ design is for speed and efficiency.">
-      <meta itemprop="datePublished" content="May 23, 2020">
+      <meta itemprop="datePublished" content="August 14, 2020">
       
 
       <div class="page__inner-wrap">
@@ -1309,10 +1309,10 @@ Name: Clarity, dtype: float64
 <span class="n">clarity</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/brettmz-admin/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py:671: SettingWithCopyWarning: 
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py:189: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
   self._setitem_with_indexer(indexer, value)
 
 </code></pre></div></div>
@@ -1562,10 +1562,7 @@ Name: Clarity, dtype: float64
 
 <p>It can be very difficult to predict when Pandas indexing will give a copy or a view.</p>
 
-<p>For example, here we use indirect indexing (square brackets following <code class="highlighter-rouge">.loc</code>)
-to select the row of <code class="highlighter-rouge">ratings</code> with index label 0.  Remember <code class="highlighter-rouge">.loc</code> indexing
-uses the <em>index labels</em>, not <em>positions</em>, although in this case the index has
-label 0 for position 0.</p>
+<p>For example, here we use indirect indexing (square brackets following <code class="highlighter-rouge">.iloc</code>) to select the row of <code class="highlighter-rouge">ratings</code> with index label 0.  Remember <code class="highlighter-rouge">.loc</code> indexing uses the index labels, not positions, although in this case the index has label 0 for position 0.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_0</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">row_0</span>
@@ -1594,15 +1591,10 @@ fetching a column, it would be reasonable to predict this would give us a view.<
 <span class="n">row_0</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/brettmz-admin/Library/Python/3.7/lib/python/site-packages/pandas/core/indexing.py:671: SettingWithCopyWarning: 
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  self._setitem_with_indexer(indexer, value)
-/Users/brettmz-admin/Library/Python/3.7/lib/python/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
   
 
 </code></pre></div></div>
@@ -1616,9 +1608,9 @@ Easiness                3.16275
 Name: 0, dtype: object
 </code></pre></div></div>
 
-<p>Notice the warning, again.</p>
+<p>We will get to the warning soon.</p>
 
-<p>But - this time - did we change the original data frame?</p>
+<p>Did we change the original data frame?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1728,8 +1720,7 @@ Easiness                3.16275
 Name: 0, dtype: object
 </code></pre></div></div>
 
-<p><strong>Please do worry about these warnings</strong>.  In fact, in the interests of safety,
-we come to rule 2.</p>
+<p>Please worry about these warnings.  In fact, in the interests of safety, we come to rule 2.</p>
 
 <h2 id="rule-2-make-errors-for-copyview-warnings">Rule 2: make errors for copy/view warnings</h2>
 
@@ -1742,7 +1733,7 @@ we come to rule 2.</p>
 
 <p>After you have done this, Pandas will stop if you try to do something like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_0</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># Copy?  Or view?  Difficult to guess.
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_0</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># Copy?  Or wiew?  Difficult to guess.
 # Now this generates an error.
 </span><span class="n">row_0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
@@ -1752,7 +1743,7 @@ we come to rule 2.</p>
 SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
 </code></pre></div></div>
 
 <p>At first you will find this advice annoying.  Your code will generate confusing
@@ -1771,7 +1762,7 @@ go away.  Please be patient.  You will find that, if you follow the <em>copy rig
 SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
 </code></pre></div></div>
 
 <p>Because we have set the <code class="highlighter-rouge">mode.chained_assignment</code> option to <code class="highlighter-rouge">error</code> above, this generates an error — but why?</p>
@@ -1779,8 +1770,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>The reason is the same as the reason for the previous error.  The code in the
 cell directly above is just a short-cut for this exact equivalent.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tmp</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">tmp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_0</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">row_0</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 </code></pre></div></div>
 
 <div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SettingWithCopyError                      Traceback (most recent call last)
@@ -1788,14 +1779,13 @@ cell directly above is just a short-cut for this exact equivalent.</p>
 SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
 </code></pre></div></div>
 
 <p>Specifically, when Python sees <code class="highlighter-rouge">ratings.loc[0].loc['Clarity'] = 99</code>, it first
-evaluates <code class="highlighter-rouge">ratings.loc[0]</code> to generate a temporary copy.  In the code above, we
-called this temporary copy <code class="highlighter-rouge">tmp</code>. It then tries to set the value into the copy
-with <code class="highlighter-rouge">tmp.loc['Clarity'] = 99</code>.  This generates the same error as you saw
-before.</p>
+evaluates <code class="highlighter-rouge">ratings.loc[0]</code> to generate a temporary copy.  Let’s call this
+temporary copy <code class="highlighter-rouge">tmp</code>. It then tries to set the value into the copy with
+<code class="highlighter-rouge">tmp.loc['Clarity'] = 99</code>.  This generates the same error as you saw before.</p>
 
 <p>As you have probably guessed from the option name above, Pandas calls this
 <em>chained assignment</em>, because you are: first, fetching the stuff you want do
@@ -1803,10 +1793,10 @@ the assignment on (<code class="highlighter-rouge">ratings.loc[0]</code>) and th
 <code class="highlighter-rouge">.loc['Clarity'] = 99</code>. There are two steps on the left hand side, in a chain,
 first fetching the data, then assigning.</p>
 
-<p>The problem that Pandas has is that it cannot tell that this chained assignment
-has happened, so it can’t tell what you mean.  Python will ask Pandas to
-generate <code class="highlighter-rouge">ratings.loc[0]</code> first, which it does, to generate the temporary copy
-that we can call <code class="highlighter-rouge">tmp</code>. Python then ask Pandas to set the value with
+<p>The problem that Pandas has is that it cannot tell that this has happened, so
+it can’t tell what you mean.  Python will ask Pandas to generate
+<code class="highlighter-rouge">ratings.loc[0]</code> first, which it does, to generate the temporary copy that we
+can call <code class="highlighter-rouge">tmp</code>. Python then ask Pandas to set the value with
 <code class="highlighter-rouge">tmp.loc['Clarity'] = 99</code>.  When Pandas gets this second instruction, it has no
 way of knowing that <code class="highlighter-rouge">tmp</code> came from the combined instruction
 <code class="highlighter-rouge">ratings.loc[0].loc['Clarity'] = 99</code>, and so all it can do is set the value
@@ -1830,7 +1820,7 @@ with <code class="highlighter-rouge">.loc</code> or <code class="highlighter-rou
 SettingWithCopyError: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
 </code></pre></div></div>
 
 <p>You can avoid that error by doing all your left-hand-side indexing in one shot, like this:</p>
