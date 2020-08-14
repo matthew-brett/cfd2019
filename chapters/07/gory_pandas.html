@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1185,8 +1185,8 @@ it’s dark down there.</p>
 columns include average ratings for all University professors / lecturers
 teaching that subject. See <a href="/cfd2019/data/rate_my_professors">the dataset page</a> for more detail.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
-<span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
+<span class="n">ratings</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1267,10 +1267,10 @@ teaching that subject. See <a href="/cfd2019/data/rate_my_professors">the datase
 </div>
 </div>
 
-<p>We make a smaller data frame to play with, using <code class="highlighter-rouge">.iloc</code>.</p>
+<p>We make a smaller data frame to play with, using <code class="language-plaintext highlighter-rouge">.iloc</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First three rows, first three columns
-</span><span class="n">first_33</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span><span class="n">first_33</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">first_33</span>
 </code></pre></div></div>
 
@@ -1322,41 +1322,41 @@ teaching that subject. See <a href="/cfd2019/data/rate_my_professors">the datase
 </div>
 </div>
 
-<p>First consider the following.  <code class="highlighter-rouge">discipline</code> is a Series that is a <em>view</em> of the
-values in <code class="highlighter-rouge">first_33</code>.</p>
+<p>First consider the following.  <code class="language-plaintext highlighter-rouge">discipline</code> is a Series that is a <em>view</em> of the
+values in <code class="language-plaintext highlighter-rouge">first_33</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span> <span class="o">=</span> <span class="n">first_33</span><span class="p">[</span><span class="s">'Discipline'</span><span class="p">]</span>
 <span class="n">discipline</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0        English
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0        English
 1    Mathematics
 2        Biology
 Name: Discipline, dtype: object
 </code></pre></div></div>
 
 <p>We can’t tell it’s a view yet, but this becomes clear when we change the values
-in <code class="highlighter-rouge">discipline</code>.  First we change the first value in the Series, and we get
+in <code class="language-plaintext highlighter-rouge">discipline</code>.  First we change the first value in the Series, and we get
 a big warning.  See the <a href="/cfd2019/chapters/07/safe_pandas">Pandas safe handling guide</a> for more on this warning.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Spanglish'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Spanglish'</span>
 </code></pre></div></div>
 
-<p>As expected, the value in <code class="highlighter-rouge">discipline</code> has changed:</p>
+<p>As expected, the value in <code class="language-plaintext highlighter-rouge">discipline</code> has changed:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">discipline</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0      Spanglish
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0      Spanglish
 1    Mathematics
 2        Biology
 Name: Discipline, dtype: object
 </code></pre></div></div>
 
-<p>Our question now is — what happened to the values in <code class="highlighter-rouge">first_33</code> — the data
-frame from which we fetched <code class="highlighter-rouge">discipline</code>.  It turns out that  <code class="highlighter-rouge">discipline</code> was
-a <em>view</em>. That means that the <code class="highlighter-rouge">discipline</code> values are the same memory as the
-<code class="highlighter-rouge">first_33</code> values, and so we see the changes in <code class="highlighter-rouge">first_33</code> as well:</p>
+<p>Our question now is — what happened to the values in <code class="language-plaintext highlighter-rouge">first_33</code> — the data
+frame from which we fetched <code class="language-plaintext highlighter-rouge">discipline</code>.  It turns out that  <code class="language-plaintext highlighter-rouge">discipline</code> was
+a <em>view</em>. That means that the <code class="language-plaintext highlighter-rouge">discipline</code> values are the same memory as the
+<code class="language-plaintext highlighter-rouge">first_33</code> values, and so we see the changes in <code class="language-plaintext highlighter-rouge">first_33</code> as well:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
 </code></pre></div></div>
@@ -1416,11 +1416,11 @@ duplicates, <em>but not</em> the original data frame.</p>
 
 <p>For example, consider this.  Is this a view or a copy?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">first_row</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Spanglish
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Spanglish
 Number of Professors        23343
 Clarity                   3.75615
 Name: 0, dtype: object
@@ -1428,17 +1428,17 @@ Name: 0, dtype: object
 
 <p>To test whether it is a view or a copy, we set the first value:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 <span class="n">first_row</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Franglais
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Franglais
 Number of Professors        23343
 Clarity                   3.75615
 Name: 0, dtype: object
 </code></pre></div></div>
 
-<p>Now we look at the data frame from which <code class="highlighter-rouge">first_row</code> came.   If it was a view, then the original data frame will have changed in the same way as <code class="highlighter-rouge">first_row</code>.  If it was a copy, the original data frame will not change.</p>
+<p>Now we look at the data frame from which <code class="language-plaintext highlighter-rouge">first_row</code> came.   If it was a view, then the original data frame will have changed in the same way as <code class="language-plaintext highlighter-rouge">first_row</code>.  If it was a copy, the original data frame will not change.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
 </code></pre></div></div>
@@ -1491,18 +1491,18 @@ Name: 0, dtype: object
 </div>
 </div>
 
-<p><code class="highlighter-rouge">first_row</code> was a copy — because changing <code class="highlighter-rouge">first_row</code> did <em>not</em> change the
+<p><code class="language-plaintext highlighter-rouge">first_row</code> was a copy — because changing <code class="language-plaintext highlighter-rouge">first_row</code> did <em>not</em> change the
 original data frame.</p>
 
 <p>Maybe you are thinking that you are getting the hang of this, but tarry awhile – there are many ways in which this can be confusing.</p>
 
-<p>Look at this bit of code.   Do you think that <code class="highlighter-rouge">first_33</code> will change?</p>
+<p>Look at this bit of code.   Do you think that <code class="language-plaintext highlighter-rouge">first_33</code> will change?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Will first_33 change?
-</span><span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+</span><span class="n">first_33</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
-<p>First guess whether <code class="highlighter-rouge">first_33</code> will change.  Now have a look whether the top
+<p>First guess whether <code class="language-plaintext highlighter-rouge">first_33</code> will change.  Now have a look whether the top
 left value has changed to ‘Franglais’.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span>
@@ -1556,11 +1556,11 @@ left value has changed to ‘Franglais’.</p>
 </div>
 </div>
 
-<p>In fact the code above: <code class="highlighter-rouge">first_33.iloc[0].iloc[0] = 'Franglais'</code> is exactly
+<p>In fact the code above: <code class="language-plaintext highlighter-rouge">first_33.iloc[0].iloc[0] = 'Franglais'</code> is exactly
 equivalent to the code we have already seen above:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
 <p>Because it is exactly equivalent - it has the same result - it does not change the underlying data frame, even though it looks as if it should.</p>
@@ -1618,42 +1618,42 @@ equivalent to the code we have already seen above:</p>
 
 <p>The two versions are equivalent, because, when we run:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_33</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
-<p>— this first causes <code class="highlighter-rouge">first_33.iloc[0]</code> to make a copy, and after that, the
-<code class="highlighter-rouge">.iloc[0] = 'Franglais'</code> works on that copy, but we don’t see the result,
+<p>— this first causes <code class="language-plaintext highlighter-rouge">first_33.iloc[0]</code> to make a copy, and after that, the
+<code class="language-plaintext highlighter-rouge">.iloc[0] = 'Franglais'</code> works on that copy, but we don’t see the result,
 because we aren’t saving the copy anywhere, and it disappears into obscurity
 when we have run the code.</p>
 
 <p>The <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">Pandas indexing
 documentation</a>
 refers to this as <em>chained assignment</em>, in the sense that we first do
-<code class="highlighter-rouge">first_33.iloc[0]</code> and then, in a subsequent (chained) assignment, we do
-<code class="highlighter-rouge">.iloc[0] = 'Franglais'</code> on the result.</p>
+<code class="language-plaintext highlighter-rouge">first_33.iloc[0]</code> and then, in a subsequent (chained) assignment, we do
+<code class="language-plaintext highlighter-rouge">.iloc[0] = 'Franglais'</code> on the result.</p>
 
 <p>The chaining is fairly obvious in the both-at-the-same-time version above, but it can be a harder to spot when the assignments are separated, even by a line, as in:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_row</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
 <p>This version over two lines is exactly equivalent, so is also chained
 assignment.  It can be even more difficult to spot when the lines are a bit separated:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">first_33</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="c1"># Do something
 # Do something else
 # And something else again.
 # And then - the chained assignment!
-</span><span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
+</span><span class="n">first_row</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Franglais'</span>
 </code></pre></div></div>
 
 <p>If you are already feeling confused, the confusion can get worse.  Consider
-this slight variation on our original <code class="highlighter-rouge">first_33</code> data frame:</p>
+this slight variation on our original <code class="language-plaintext highlighter-rouge">first_33</code> data frame:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># First 3 rows, last three columns.
-</span><span class="n">first_3_end_3</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
+</span><span class="n">first_3_end_3</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
 <span class="n">first_3_end_3</span>
 </code></pre></div></div>
 
@@ -1707,11 +1707,11 @@ this slight variation on our original <code class="highlighter-rouge">first_33</
 
 <p>Knowing what you know now - does the following give a view on the row, or a copy of the row?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row_f3e3</span> <span class="o">=</span> <span class="n">first_3_end_3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row_f3e3</span> <span class="o">=</span> <span class="n">first_3_end_3</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">first_row_f3e3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Helpfulness        3.821866
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Helpfulness        3.821866
 Overall Quality    3.791364
 Easiness           3.162754
 Name: 0, dtype: float64
@@ -1719,19 +1719,19 @@ Name: 0, dtype: float64
 
 <p>We can check by setting a value on the row.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row_f3e3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row_f3e3</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 <span class="n">first_row_f3e3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Helpfulness        99.000000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Helpfulness        99.000000
 Overall Quality     3.791364
 Easiness            3.162754
 Name: 0, dtype: float64
 </code></pre></div></div>
 
 <p>Now you have guessed, have a look at the output of the cell below.  If
-<code class="highlighter-rouge">first_row_f3e3</code> was a view, then the first value in the first column of the
-underlying data frame — <code class="highlighter-rouge">first_3_end_3</code> — will have changed to 99.  If it
+<code class="language-plaintext highlighter-rouge">first_row_f3e3</code> was a view, then the first value in the first column of the
+underlying data frame — <code class="language-plaintext highlighter-rouge">first_3_end_3</code> — will have changed to 99.  If it
 was a copy, it will have the value it had before - 3.821866.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_3_end_3</span>
@@ -1785,14 +1785,14 @@ was a copy, it will have the value it had before - 3.821866.</p>
 </div>
 </div>
 
-<p>Was <code class="highlighter-rouge">first_row_f3e3</code> a view or a copy?  Did you guess right?</p>
+<p>Was <code class="language-plaintext highlighter-rouge">first_row_f3e3</code> a view or a copy?  Did you guess right?</p>
 
 <p>The point of all this is to say that - when you take stuff out of a Pandas data
 frame with indexing, it can be very difficult to predict whether you have
 a view or a copy, and it can depend what data you have in your date frame.</p>
 
 <p>For example, above, we found that if all the data in the data frame are floats,
-then I get a view, but in our previous data frame – <code class="highlighter-rouge">first_33</code> — that has
+then I get a view, but in our previous data frame – <code class="language-plaintext highlighter-rouge">first_33</code> — that has
 a mixture of column types, including strings and numbers, I got a copy.</p>
 
 <p>The way out of this steaming set of tubes into hell, is to use <a href="/cfd2019/chapters/07/safe_pandas">safe handling

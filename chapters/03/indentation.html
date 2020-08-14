@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1179,27 +1179,27 @@
 
 <p>You are going see this often in Python code.</p>
 
-<p><code class="highlighter-rouge">for</code> loops are one of many places that Python depends on indentation.  The indentation tells Python which statements are in the loop, and which are outside the loop.</p>
+<p><code class="language-plaintext highlighter-rouge">for</code> loops are one of many places that Python depends on indentation.  The indentation tells Python which statements are in the loop, and which are outside the loop.</p>
 
-<p>Remember that the <code class="highlighter-rouge">for</code> statement:</p>
+<p>Remember that the <code class="language-plaintext highlighter-rouge">for</code> statement:</p>
 
 <ul>
-  <li>starts with the word <code class="highlighter-rouge">for</code>, followed by</li>
+  <li>starts with the word <code class="language-plaintext highlighter-rouge">for</code>, followed by</li>
   <li>a variable name (the <em>loop variable</em>) followed by</li>
-  <li>the word <code class="highlighter-rouge">in</code> followed by</li>
+  <li>the word <code class="language-plaintext highlighter-rouge">in</code> followed by</li>
   <li>an expression that gives sequence of values followed by</li>
-  <li>the character <code class="highlighter-rouge">:</code> followed by</li>
+  <li>the character <code class="language-plaintext highlighter-rouge">:</code> followed by</li>
   <li>an indented block of one or more statements.  This is the <em>body</em> of
-the <code class="highlighter-rouge">for</code> loop.</li>
+the <code class="language-plaintext highlighter-rouge">for</code> loop.</li>
 </ul>
 
-<p>Here was our first <code class="highlighter-rouge">for</code> loop:</p>
+<p>Here was our first <code class="language-plaintext highlighter-rouge">for</code> loop:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 1
 2
 
@@ -1208,22 +1208,22 @@ the <code class="highlighter-rouge">for</code> loop.</li>
 <p>Following the sequence above, we have:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">for</code></li>
-  <li><code class="highlighter-rouge">i</code> (the loop variable name)</li>
-  <li><code class="highlighter-rouge">in</code></li>
-  <li><code class="highlighter-rouge">np.arange(3)</code> (a sequence with three values - 0, 1, 2)</li>
-  <li><code class="highlighter-rouge">:</code></li>
-  <li><code class="highlighter-rouge">    print(i)</code> (the indented block, consisting of one statement.</li>
+  <li><code class="language-plaintext highlighter-rouge">for</code></li>
+  <li><code class="language-plaintext highlighter-rouge">i</code> (the loop variable name)</li>
+  <li><code class="language-plaintext highlighter-rouge">in</code></li>
+  <li><code class="language-plaintext highlighter-rouge">np.arange(3)</code> (a sequence with three values - 0, 1, 2)</li>
+  <li><code class="language-plaintext highlighter-rouge">:</code></li>
+  <li><code class="language-plaintext highlighter-rouge">    print(i)</code> (the indented block, consisting of one statement.</li>
 </ul>
 
 <p>If we want to execute more than one statement in the loop, we need to indent each statement:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Finished this iteration of the loop'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 Finished this iteration of the loop
 1
 Finished this iteration of the loop
@@ -1234,15 +1234,15 @@ Finished this iteration of the loop
 
 <p>In the above, both statements are indented, so Python runs both statements for each run through the loop.</p>
 
-<p>The first not-indented statement signals that the <code class="highlighter-rouge">for</code> loop body is over:</p>
+<p>The first not-indented statement signals that the <code class="language-plaintext highlighter-rouge">for</code> loop body is over:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Finished this iteration of the loop'</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Now the loop has finished'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 Finished this iteration of the loop
 1
 Finished this iteration of the loop
@@ -1252,13 +1252,13 @@ Now the loop has finished
 
 </code></pre></div></div>
 
-<p>The lines in the <code class="highlighter-rouge">for</code> block must have the same indentation.  Try
+<p>The lines in the <code class="language-plaintext highlighter-rouge">for</code> block must have the same indentation.  Try
 knocking one space off the indentation in one of the lines in the loop above, and see what happens.</p>
 
 <p>The first line must end with a colon character.  Try knocking the
-colon off the line beginning <code class="highlighter-rouge">for</code> above, and see what happens.</p>
+colon off the line beginning <code class="language-plaintext highlighter-rouge">for</code> above, and see what happens.</p>
 
-<p>There must be a <code class="highlighter-rouge">for</code> block.  Try removing all the indentation from the line <code class="highlighter-rouge">print(i)</code> above, and see what happens.</p>
+<p>There must be a <code class="language-plaintext highlighter-rouge">for</code> block.  Try removing all the indentation from the line <code class="language-plaintext highlighter-rouge">print(i)</code> above, and see what happens.</p>
 
 <p>Now try the <a href="../../exercises/fix_my_fors.zip">fix my fors exercise</a>.</p>
 

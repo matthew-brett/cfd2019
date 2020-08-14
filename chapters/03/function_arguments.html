@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1167,23 +1167,23 @@
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
 </code></pre></div></div>
 
-<p>Here is another Numpy function, from the <code class="highlighter-rouge">random</code> sub-package of the Numpy library.  We get to the sub-packages with the dot <code class="highlighter-rouge">.</code> - so to get to the <code class="highlighter-rouge">random</code> sub-package, we use <code class="highlighter-rouge">np.random</code>.  Then, to get to the functions in this sub-package, we use the dot again, like this:</p>
+<p>Here is another Numpy function, from the <code class="language-plaintext highlighter-rouge">random</code> sub-package of the Numpy library.  We get to the sub-packages with the dot <code class="language-plaintext highlighter-rouge">.</code> - so to get to the <code class="language-plaintext highlighter-rouge">random</code> sub-package, we use <code class="language-plaintext highlighter-rouge">np.random</code>.  Then, to get to the functions in this sub-package, we use the dot again, like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>Remember, this is a random integer from 0 up to, but <em>not including</em> 2, so it is a random integer that can either be 0 or 1.</p>
 
-<p>Now let us look at the help for the <code class="highlighter-rouge">np.random.randint</code> function.  As usual, we do this by appending <code class="highlighter-rouge">?</code> to the function name, and pressing Enter in the notebook.</p>
+<p>Now let us look at the help for the <code class="language-plaintext highlighter-rouge">np.random.randint</code> function.  As usual, we do this by appending <code class="language-plaintext highlighter-rouge">?</code> to the function name, and pressing Enter in the notebook.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To see the help for np.random.randint, remove the # at the beginning
 # of the next line, and execute this cell.
@@ -1191,41 +1191,41 @@
 </span></code></pre></div></div>
 
 <p>We find that the function can accept up to four arguments.  We have passed two.
-The first sets the argument called <code class="highlighter-rouge">low</code> to be 0, and the second sets the
-argument called <code class="highlighter-rouge">high</code> to be 2.</p>
+The first sets the argument called <code class="language-plaintext highlighter-rouge">low</code> to be 0, and the second sets the
+argument called <code class="language-plaintext highlighter-rouge">high</code> to be 2.</p>
 
 <p>To take another example, in this case we are asking for a random number
 starting at 1 up to, but not including 11. This gives us a random integer from
-1 through 10. <code class="highlighter-rouge">low</code> is 1 and <code class="highlighter-rouge">high</code> is 11.</p>
+1 through 10. <code class="language-plaintext highlighter-rouge">low</code> is 1 and <code class="language-plaintext highlighter-rouge">high</code> is 11.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Random integer from 1 through 10.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
 </code></pre></div></div>
 
-<p>If we pass three arguments, we also set the <code class="highlighter-rouge">size</code> argument.  This tells the function how many random numbers to return.  The following asks for an array of four random integers from 1 through 20:</p>
+<p>If we pass three arguments, we also set the <code class="language-plaintext highlighter-rouge">size</code> argument.  This tells the function how many random numbers to return.  The following asks for an array of four random integers from 1 through 20:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Four random integers from 1 through 20.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10,  6, 11, 12])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([10,  6, 11, 12])
 </code></pre></div></div>
 
 <p>Notice that this is an <em>array</em>.</p>
 
 <p>Now look again at the help.  Notice that the help gives each argument a <em>name</em>
-— <code class="highlighter-rouge">low</code>, <code class="highlighter-rouge">high</code>, <code class="highlighter-rouge">size</code>.  We can also use these names when we set these
+— <code class="language-plaintext highlighter-rouge">low</code>, <code class="language-plaintext highlighter-rouge">high</code>, <code class="language-plaintext highlighter-rouge">size</code>.  We can also use these names when we set these
 arguments.  For example, the cell below does exactly the same thing as the cell
 above.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Four random integers from 1 through 20, using keyword arguments.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 18,  7,  3])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 18,  7,  3])
 </code></pre></div></div>
 
 <p>When we call the function using the arguments with their names like this, the named arguments are called <em>keyword</em> arguments.</p>
@@ -1234,10 +1234,10 @@ above.</p>
 clearer what each argument means.   For example, it’s a common pattern to call a function with one or a few keyword arguments, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Four random integers from 1 through 20.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([18, 18,  4,  9])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([18, 18,  4,  9])
 </code></pre></div></div>
 
 <p>Writing the call like the cell gives exactly the same result as the cell below,
@@ -1246,21 +1246,21 @@ does not have to guess what the 4 means — they can see that it means the size
 of the output array.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Four random integers from 1 through 20 - but no keyword argument.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 5,  7, 16, 19])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 5,  7, 16, 19])
 </code></pre></div></div>
 
-<p>To take another example, we have already seen the function <code class="highlighter-rouge">round</code>.  Inspect
-the help for <code class="highlighter-rouge">round</code> with <code class="highlighter-rouge">round?</code> and Enter in a notebook cell.</p>
+<p>To take another example, we have already seen the function <code class="language-plaintext highlighter-rouge">round</code>.  Inspect
+the help for <code class="language-plaintext highlighter-rouge">round</code> with <code class="language-plaintext highlighter-rouge">round?</code> and Enter in a notebook cell.</p>
 
-<p><code class="highlighter-rouge">round</code> takes up to two arguments.  If we pass one argument, it is just the value that <code class="highlighter-rouge">round</code> will round to the nearest integer:</p>
+<p><code class="language-plaintext highlighter-rouge">round</code> takes up to two arguments.  If we pass one argument, it is just the value that <code class="language-plaintext highlighter-rouge">round</code> will round to the nearest integer:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mf">3.1415</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
 <p>If we pass two arguments, the first argument is the value we will round, and the second is the number of digits to round to, like this:</p>
@@ -1268,19 +1268,19 @@ the help for <code class="highlighter-rouge">round</code> with <code class="high
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mf">3.1415</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
 </code></pre></div></div>
 
-<p>As you saw in the help, the second argument has the name <code class="highlighter-rouge">ndigits</code>, so we can also write:</p>
+<p>As you saw in the help, the second argument has the name <code class="language-plaintext highlighter-rouge">ndigits</code>, so we can also write:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mf">3.1415</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
 </code></pre></div></div>
 
 <p>As before, this makes the code a little bit easier to read and understand,
-because it is immediately clear from the name <code class="highlighter-rouge">ndigits</code> that the 2 means the
+because it is immediately clear from the name <code class="language-plaintext highlighter-rouge">ndigits</code> that the 2 means the
 number of digits to round to.</p>
 
           

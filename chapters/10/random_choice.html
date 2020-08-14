@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1163,111 +1163,111 @@
 
           <p>Sometimes it is useful to take a random choice between two or more options.</p>
 
-<p>Numpy has a function for that, called <code class="highlighter-rouge">random.choice</code>:</p>
+<p>Numpy has a function for that, called <code class="language-plaintext highlighter-rouge">random.choice</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
 <p>Say we want to choose randomly between 0 and 1.  We want an equal probability of getting 0 and getting 1.  We could do it like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>If we do that lots of times, we see that we have a roughly 50% chance of getting 0 (and therefore, a roughly 50% chance of getting 1).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make 10000 random numbers that can be 0 or 1, with equal probability.
-</span><span class="n">lots_of_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span><span class="n">lots_of_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="c1"># Count the proportion that are 1.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">lots_of_0_1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">lots_of_0_1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.4994
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.4994
 </code></pre></div></div>
 
 <p>Run the cell above a few times to confirm you get numbers very close to 0.5.</p>
 
-<p>Another way of doing this is to use <code class="highlighter-rouge">np.random.choice</code>.</p>
+<p>Another way of doing this is to use <code class="language-plaintext highlighter-rouge">np.random.choice</code>.</p>
 
-<p>As usual, check the arguments that the function expects with <code class="highlighter-rouge">np.random.choice?</code> in a notebook cell.</p>
+<p>As usual, check the arguments that the function expects with <code class="language-plaintext highlighter-rouge">np.random.choice?</code> in a notebook cell.</p>
 
 <p>The first argument is a sequence, like a list, with the options that Numpy should chose from.</p>
 
-<p>For example, we can ask Numpy to choose randomly from the list <code class="highlighter-rouge">[0, 1]</code>:</p>
+<p>For example, we can ask Numpy to choose randomly from the list <code class="language-plaintext highlighter-rouge">[0, 1]</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
-<p>A second <code class="highlighter-rouge">size</code> argument to the function says how many items to choose:</p>
+<p>A second <code class="language-plaintext highlighter-rouge">size</code> argument to the function says how many items to choose:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ten numbers, where each has a 50% chance of 0 and 50% chance of 1.
-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 0, 1, 0, 1, 1, 1, 1, 0, 1])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 0, 1, 0, 1, 1, 1, 1, 0, 1])
 </code></pre></div></div>
 
 <p>By default, Numpy will chose each item in the sequence with equal probability,  In this case, Numpy will chose 0 with 50% probability, and 1 with 50% probability:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use choice to make another 10000 random numbers that can be 0 or 1,
 # with equal probability.
-</span><span class="n">more_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span><span class="n">more_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="c1"># Count the proportion that are 1.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">more_0_1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">more_0_1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5029
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5029
 </code></pre></div></div>
 
-<p>If you want, you can change these proportions with the <code class="highlighter-rouge">p</code> argument:</p>
+<p>If you want, you can change these proportions with the <code class="language-plaintext highlighter-rouge">p</code> argument:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use choice to make another 10000 random numbers that can be 0 or 1,
 # where 0 has probability 0.25, and 1 has probability 0.75.
-</span><span class="n">weighted_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+</span><span class="n">weighted_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
 <span class="c1"># Count the proportion that are 1.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">weighted_0_1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">weighted_0_1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7513
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7513
 </code></pre></div></div>
 
 <p>There can be more than two choices:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use choice to make another 10000 random numbers that can be 0 or 10 or 20, or
 # 30, where each has probability 0.25.
-</span><span class="n">multi_nos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</span><span class="n">multi_nos</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="n">multi_nos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0, 10, 10, 20, 20, 30, 20, 30, 10, 30])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 0, 10, 10, 20, 20, 30, 20, 30, 10, 30])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">multi_nos</span> <span class="o">==</span> <span class="mi">30</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">multi_nos</span> <span class="o">==</span> <span class="mi">30</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2467
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2467
 </code></pre></div></div>
 
 <p>The choices don’t have to be numbers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">'Heads'</span><span class="p">,</span> <span class="s">'Tails'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="s">'Heads'</span><span class="p">,</span> <span class="s">'Tails'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['Tails', 'Heads', 'Heads', 'Tails', 'Heads', 'Tails', 'Tails',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['Tails', 'Heads', 'Heads', 'Tails', 'Heads', 'Tails', 'Tails',
        'Tails', 'Tails', 'Tails'], dtype='&lt;U5')
 </code></pre></div></div>
 
 <p>You can also do choices <em>without replacement</em>, so once you have chosen an element, all subsequent choices cannot chose that element again.   For example, this <em>must</em> return all the elements from the choices, but in random order:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([30,  0, 20, 10])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([30,  0, 20, 10])
 </code></pre></div></div>
 
 

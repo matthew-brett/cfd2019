@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1181,11 +1181,11 @@
 
 <p>Here is an array.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
 <span class="n">arr</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 2, 99, -1,  4, 99])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 2, 99, -1,  4, 99])
 </code></pre></div></div>
 
 <p>As you know, we can get element using their <em>index</em> in the array.  In
@@ -1196,7 +1196,7 @@ Python, array indices start at zero.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <p>We might also be interested to find which positions hold particular values.</p>
@@ -1206,22 +1206,22 @@ that the values of 99 are in positions 1 and 4.  We can ask for these
 elements by passing a list or an array between the square brackets, to
 index the array:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">positions_with_99</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">positions_with_99</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">arr</span><span class="p">[</span><span class="n">positions_with_99</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
 </code></pre></div></div>
 
 <p>Of course, we are already used to finding and then selecting elements according to various conditions, using <em>Boolean vectors</em>.</p>
 
-<p>Here we identify the elements that contain 99.  There is a <code class="highlighter-rouge">True</code> at the position where the array contains 99, and <code class="highlighter-rouge">False</code> otherwise.</p>
+<p>Here we identify the elements that contain 99.  There is a <code class="language-plaintext highlighter-rouge">True</code> at the position where the array contains 99, and <code class="language-plaintext highlighter-rouge">False</code> otherwise.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contains_99</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">==</span> <span class="mi">99</span>
 <span class="n">contains_99</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False, False,  True])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True, False, False,  True])
 </code></pre></div></div>
 
 <p>We can then get the 99 values with:</p>
@@ -1229,7 +1229,7 @@ index the array:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="n">contains_99</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
 </code></pre></div></div>
 
 <h2 id="enter-where">Enter “where”</h2>
@@ -1238,41 +1238,41 @@ index the array:</p>
 
 <p>In that case, you can use the Numpy <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html">where
 function</a>.
-<code class="highlighter-rouge">where</code> finds the index positions of the <code class="highlighter-rouge">True</code> values in Boolean
+<code class="language-plaintext highlighter-rouge">where</code> finds the index positions of the <code class="language-plaintext highlighter-rouge">True</code> values in Boolean
 vectors.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span>
 <span class="n">indices</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([1, 4]),)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([1, 4]),)
 </code></pre></div></div>
 
-<p>We can use the returned <code class="highlighter-rouge">indices</code> to index into the array, using square brackets.</p>
+<p>We can use the returned <code class="language-plaintext highlighter-rouge">indices</code> to index into the array, using square brackets.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
 </code></pre></div></div>
 
 <p>This also works in two or more dimensions.  Here is a two-dimensional array, with some values of 99.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">99</span><span class="p">]])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">99</span><span class="p">]])</span>
 <span class="n">arr2d</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 4, 99,  3],
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 4, 99,  3],
        [ 8,  8, 99]])
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">where</code> now returns two index arrays, one for the rows, and one for the columns.</p>
+<p><code class="language-plaintext highlighter-rouge">where</code> now returns two index arrays, one for the rows, and one for the columns.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">indices2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr2d</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">indices2d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr2d</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span>
 <span class="n">indices2d</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([0, 1]), array([1, 2]))
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([0, 1]), array([1, 2]))
 </code></pre></div></div>
 
 <p>Just as for the one-dimensional case, we can use the returned indices to index into the array, and get the elements.</p>
@@ -1280,18 +1280,18 @@ vectors.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr2d</span><span class="p">[</span><span class="n">indices2d</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([99, 99])
 </code></pre></div></div>
 
 <h2 id="where-summary">Where summary</h2>
 
-<p>Numpy <code class="highlighter-rouge">where</code> returns the indices of <code class="highlighter-rouge">True</code> values in a Boolean array/</p>
+<p>Numpy <code class="language-plaintext highlighter-rouge">where</code> returns the indices of <code class="language-plaintext highlighter-rouge">True</code> values in a Boolean array/</p>
 
 <p>You can use these indices to index into an array, and get the matching elements.</p>
 
 <h2 id="argmin">Argmin</h2>
 
-<p>Numpy has various <em>argmin</em> functions that are a shortcut for using <code class="highlighter-rouge">where</code>, for particular cases.</p>
+<p>Numpy has various <em>argmin</em> functions that are a shortcut for using <code class="language-plaintext highlighter-rouge">where</code>, for particular cases.</p>
 
 <p>A typical case is where you want to know the index (position) of the minimum value in an array.</p>
 
@@ -1300,24 +1300,24 @@ vectors.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 2, 99, -1,  4, 99])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 2, 99, -1,  4, 99])
 </code></pre></div></div>
 
-<p>We can get the minimum value with Numpy <code class="highlighter-rouge">min</code>:</p>
+<p>We can get the minimum value with Numpy <code class="language-plaintext highlighter-rouge">min</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
 </code></pre></div></div>
 
-<p>Sometimes we want to know the <em>index position</em> of the minimum value.  Numpy <code class="highlighter-rouge">argmin</code> returns the index of the minimum value:</p>
+<p>Sometimes we want to know the <em>index position</em> of the minimum value.  Numpy <code class="language-plaintext highlighter-rouge">argmin</code> returns the index of the minimum value:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_pos</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 <span class="n">min_pos</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <p>Therefore, we can get the minimum value again with:</p>
@@ -1325,57 +1325,57 @@ vectors.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="n">min_pos</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
 </code></pre></div></div>
 
-<p>There is a matching <code class="highlighter-rouge">argmax</code> function that returns the position of the maximum value:</p>
+<p>There is a matching <code class="language-plaintext highlighter-rouge">argmax</code> function that returns the position of the maximum value:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>99
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>99
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_pos</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 <span class="n">max_pos</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="n">max_pos</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>99
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>99
 </code></pre></div></div>
 
-<p>We could also have found the position of the minimum value above, using <code class="highlighter-rouge">np.min</code> and <code class="highlighter-rouge">where</code>:</p>
+<p>We could also have found the position of the minimum value above, using <code class="language-plaintext highlighter-rouge">np.min</code> and <code class="language-plaintext highlighter-rouge">where</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="n">min_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="n">min_value</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_value</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">min_indices</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="n">min_value</span><span class="p">)</span>
 <span class="n">arr</span><span class="p">[</span><span class="n">min_indices</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-1])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([-1])
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">argmin</code> and <code class="highlighter-rouge">argmax</code> functions are not quite the same, in that they only return the <em>first</em> position of the minimum or maximum, if there are multiple values with the same value.</p>
+<p>The <code class="language-plaintext highlighter-rouge">argmin</code> and <code class="language-plaintext highlighter-rouge">argmax</code> functions are not quite the same, in that they only return the <em>first</em> position of the minimum or maximum, if there are multiple values with the same value.</p>
 
 <p>Compare:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>to</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="n">max_value</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_value</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="n">max_value</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([1, 4]),)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([1, 4]),)
 </code></pre></div></div>
 
 

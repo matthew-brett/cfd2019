@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1180,13 +1180,13 @@ notebook in Jupyter);</li>
   <li>The kernel (that does the work of running code, and generating results).</li>
 </ul>
 
-<p>For example, consider this cell, where I make a new variable <code class="highlighter-rouge">a</code>, and display the value of <code class="highlighter-rouge">a</code>:</p>
+<p>For example, consider this cell, where I make a new variable <code class="language-plaintext highlighter-rouge">a</code>, and display the value of <code class="language-plaintext highlighter-rouge">a</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">10.50</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.5
 </code></pre></div></div>
 
 <p>I type this code in the web client.</p>
@@ -1206,14 +1206,14 @@ results.</p>
 
 <h2 id="the-prompts">The prompts</h2>
 
-<p>Notice the prompts for the code cells.  Before I have run the cell, there is an empty prompt, like this <code class="highlighter-rouge">In [ ]:</code>.  <code class="highlighter-rouge">In</code> means “Input”, meaning, this is a cell where you input code.</p>
+<p>Notice the prompts for the code cells.  Before I have run the cell, there is an empty prompt, like this <code class="language-plaintext highlighter-rouge">In [ ]:</code>.  <code class="language-plaintext highlighter-rouge">In</code> means “Input”, meaning, this is a cell where you input code.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mf">9.25</span>
 </code></pre></div></div>
 
-<p>Then, when you run the cell, the prompt changes to something like <code class="highlighter-rouge">In [1]:</code> where 1 means this is the first piece of code that the kernel ran.</p>
+<p>Then, when you run the cell, the prompt changes to something like <code class="language-plaintext highlighter-rouge">In [1]:</code> where 1 means this is the first piece of code that the kernel ran.</p>
 
-<p>If there is any output, you will now see the <em>output</em> from that cell, with a prefix <code class="highlighter-rouge">Out [1]:</code> where 1 is the same number as the number for the input cell.  This is output from the first piece of code that the kernel ran.</p>
+<p>If there is any output, you will now see the <em>output</em> from that cell, with a prefix <code class="language-plaintext highlighter-rouge">Out [1]:</code> where 1 is the same number as the number for the input cell.  This is output from the first piece of code that the kernel ran.</p>
 
 <h1 id="interrupting-restarting">Interrupting, restarting</h1>
 
@@ -1221,7 +1221,7 @@ results.</p>
 
 <p>In the next cell I load a function that makes the computer wait for a number of seconds.</p>
 
-<p>Don’t worry about the <code class="highlighter-rouge">from ... import</code> here, we will come onto that later.</p>
+<p>Don’t worry about the <code class="language-plaintext highlighter-rouge">from ... import</code> here, we will come onto that later.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the sleep function
 </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
@@ -1232,9 +1232,9 @@ results.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>I can ask the computer to sleep for much longer.  Try making a new code cell and executing the code <code class="highlighter-rouge">sleep(1000)</code>.</p>
+<p>I can ask the computer to sleep for much longer.  Try making a new code cell and executing the code <code class="language-plaintext highlighter-rouge">sleep(1000)</code>.</p>
 
-<p>When you do this, notice that the prompt gets an asterisk symbol <code class="highlighter-rouge">*</code> instead of a number, meaning that the kernel is busy doing something (busy sleeping).</p>
+<p>When you do this, notice that the prompt gets an asterisk symbol <code class="language-plaintext highlighter-rouge">*</code> instead of a number, meaning that the kernel is busy doing something (busy sleeping).</p>
 
 <p>You can interrupt this long-running process by clicking on the stop icon in the toolbar, or selecting “Interrupt” from the “Kernel” menu.  Try it.</p>
 

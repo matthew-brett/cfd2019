@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1178,7 +1178,7 @@
     <a class="interact-button" href="https://mybinder.org/v2/gh/matthew-brett/cfd2019/master?filepath=ipynb%2F08%2Fusing_minimize.ipynb">Interact</a>
 
 
-          <p>We have already used the <code class="highlighter-rouge">minimize</code> function a few times:</p>
+          <p>We have already used the <code class="language-plaintext highlighter-rouge">minimize</code> function a few times:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 </code></pre></div></div>
@@ -1193,7 +1193,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="c1"># Make plots look a little bit more fancy
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We used the <a href="/cfd2019/data/rate_my_professors">students ratings dataset</a> dataset.  Download the data file via
@@ -1203,20 +1203,20 @@
 Overall Quality ratings.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read the Excel format data file, get columns as arrays.
-</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">'disciplines_SI.xlsx'</span><span class="p">)</span>
-<span class="n">easiness</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Easiness'</span><span class="p">])</span>
-<span class="n">quality</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Overall Quality'</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">quality</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Easiness'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Overall quality'</span><span class="p">)</span>
+</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">'disciplines_SI.xlsx'</span><span class="p">)</span>
+<span class="n">easiness</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Easiness'</span><span class="p">])</span>
+<span class="n">quality</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Overall Quality'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">quality</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Easiness'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Overall quality'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Overall quality')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0, 0.5, 'Overall quality')
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/using_minimize_5_1.png" alt="png" /></p>
 
-<p>Here is the function we used to calculate sum of squared error, adapted for <code class="highlighter-rouge">minimize</code>.</p>
+<p>Here is the function we used to calculate sum of squared error, adapted for <code class="language-plaintext highlighter-rouge">minimize</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sos_error_for_minimize</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
     <span class="c1"># c_s has two elements, the intercept c and the slope s.
@@ -1224,16 +1224,16 @@ Overall Quality ratings.</p>
     <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>We called <code class="highlighter-rouge">minimize</code> to find the best intercept and slope:</p>
+<p>We called <code class="language-plaintext highlighter-rouge">minimize</code> to find the best intercept and slope:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">sos_error_for_minimize</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
 <span class="n">min_res</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
  hess_inv: array([[ 0.98777009, -0.30796915],
        [-0.30796915,  0.09667176]])
       jac: array([-1.49011612e-08,  1.49011612e-08])
@@ -1246,60 +1246,60 @@ Overall Quality ratings.</p>
         x: array([2.11480098, 0.50886336])
 </code></pre></div></div>
 
-<h2 id="the-result-of-minimize">The result of <code class="highlighter-rouge">minimize</code></h2>
+<h2 id="the-result-of-minimize">The result of <code class="language-plaintext highlighter-rouge">minimize</code></h2>
 
-<p>Notice the thing that <code class="highlighter-rouge">minimize</code> returns is a special kind of thing that stores
+<p>Notice the thing that <code class="language-plaintext highlighter-rouge">minimize</code> returns is a special kind of thing that stores
 information about the result:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The value that comes back is a special thing to contain minimize results:
 </span><span class="nb">type</span><span class="p">(</span><span class="n">min_res</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scipy.optimize.optimize.OptimizeResult
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scipy.optimize.optimize.OptimizeResult
 </code></pre></div></div>
 
-<p>Among the interesting thing that the results contain is the attribute <code class="highlighter-rouge">fun</code>.
+<p>Among the interesting thing that the results contain is the attribute <code class="language-plaintext highlighter-rouge">fun</code>.
 This value is the final minimal value of the function we are trying to minimize
 — here the sum of squared error given an intercept and slope:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The minimal value that `minimize` could find for our function.
-</span><span class="n">min_res</span><span class="o">.</span><span class="n">fun</span>
+</span><span class="n">min_res</span><span class="p">.</span><span class="n">fun</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0674471058042072
 </code></pre></div></div>
 
 <p>We also have an array with the values for the intercept and slope that give the minimal value:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_res</span><span class="o">.</span><span class="n">x</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_res</span><span class="p">.</span><span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.11480098, 0.50886336])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.11480098, 0.50886336])
 </code></pre></div></div>
 
-<p>We confirm that <code class="highlighter-rouge">min_res.fun</code> is indeed the value we get from our function given the intercept, slope array in <code class="highlighter-rouge">min_res.x</code>:</p>
+<p>We confirm that <code class="language-plaintext highlighter-rouge">min_res.fun</code> is indeed the value we get from our function given the intercept, slope array in <code class="language-plaintext highlighter-rouge">min_res.x</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_for_minimize</span><span class="p">(</span><span class="n">min_res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sos_error_for_minimize</span><span class="p">(</span><span class="n">min_res</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0674471058042072
 </code></pre></div></div>
 
 <h2 id="the-function-to-minimize">The function to minimize</h2>
 
-<p><code class="highlighter-rouge">sos_error_for_minimize</code> is a <em>function</em>:</p>
+<p><code class="language-plaintext highlighter-rouge">sos_error_for_minimize</code> is a <em>function</em>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">sos_error_for_minimize</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function
 </code></pre></div></div>
 
-<p>We pass the function to <code class="highlighter-rouge">minimize</code> as an argument for it to use.  Try the <a href="/cfd2019/exercises/function_vals.zip">functions as values exercise</a> for more practice on the idea of using functions as values like this.</p>
+<p>We pass the function to <code class="language-plaintext highlighter-rouge">minimize</code> as an argument for it to use.  Try the <a href="/cfd2019/exercises/function_vals.zip">functions as values exercise</a> for more practice on the idea of using functions as values like this.</p>
 
-<p>We can call the function we pass to <code class="highlighter-rouge">minimize</code> – the <em>objective function</em> – in the sense that our objective is to minimize this function.</p>
+<p>We can call the function we pass to <code class="language-plaintext highlighter-rouge">minimize</code> – the <em>objective function</em> – in the sense that our objective is to minimize this function.</p>
 
-<p>How is <code class="highlighter-rouge">minimize</code> using our objective function?   Clearly <code class="highlighter-rouge">minimize</code> is
+<p>How is <code class="language-plaintext highlighter-rouge">minimize</code> using our objective function?   Clearly <code class="language-plaintext highlighter-rouge">minimize</code> is
 <a href="/cfd2019/02/Calls">calling</a> the function, but what arguments is it
 sending?  How many times does it call the function?</p>
 
@@ -1315,16 +1315,16 @@ each time it is called:</p>
     <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>The we call <code class="highlighter-rouge">minimize</code> with the new objective function:</p>
+<p>The we call <code class="language-plaintext highlighter-rouge">minimize</code> with the new objective function:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">min_res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_func_for_info</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
 <span class="n">min_res</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Called with [2.25 0.47] of type &lt;class 'numpy.ndarray'&gt;
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Called with [2.25 0.47] of type &lt;class 'numpy.ndarray'&gt;
 Called with [2.25000001 0.47      ] of type &lt;class 'numpy.ndarray'&gt;
 Called with [2.25       0.47000001] of type &lt;class 'numpy.ndarray'&gt;
 Called with [2.25 0.47] of type &lt;class 'numpy.ndarray'&gt;
@@ -1347,7 +1347,7 @@ Called with [2.11480098 0.50886338] of type &lt;class 'numpy.ndarray'&gt;
 
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
  hess_inv: array([[ 0.98777009, -0.30796915],
        [-0.30796915,  0.09667176]])
       jac: array([-1.49011612e-08,  1.49011612e-08])
@@ -1363,17 +1363,17 @@ Called with [2.11480098 0.50886338] of type &lt;class 'numpy.ndarray'&gt;
 <p>This shows that:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">minimize</code> calls our function multiple times, as it searches for the values
+  <li><code class="language-plaintext highlighter-rouge">minimize</code> calls our function multiple times, as it searches for the values
 of intercept and slope giving the minimum sum of squares;</li>
   <li>At each call, it passes a single argument that is an <em>array</em> containing the
 two values (intercept and slope).</li>
 </ul>
 
-<p>Looking carefully, we see signs that <code class="highlighter-rouge">minimize</code> is trying small changes in the
+<p>Looking carefully, we see signs that <code class="language-plaintext highlighter-rouge">minimize</code> is trying small changes in the
 slope or intercept, presumably to calculate the gradient — as we saw in the
 <a href="optimization">optimization</a> page — but that is not our concern here.</p>
 
-<p>The values in the array that <code class="highlighter-rouge">minimize</code> passes are the <em>parameters</em> that
+<p>The values in the array that <code class="language-plaintext highlighter-rouge">minimize</code> passes are the <em>parameters</em> that
 minimize is trying to optimize — in our case, the intercept and slope.  Call
 this the <em>parameter array</em>.</p>
 
@@ -1383,7 +1383,7 @@ this the <em>parameter array</em>.</p>
 
 <p>Near the top of our function, we have these two lines of code:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    c = c_s[0]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    c = c_s[0]
     s = c_s[1]
 </code></pre></div></div>
 
@@ -1393,7 +1393,7 @@ array</em>, and the slope from the second.</p>
 <p>It turns out there is neat and versatile way of doing this in Python, called
 <em>unpacking</em>.   Consider this array:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c_s</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </code></pre></div></div>
 
 <p>We can <em>unpack</em> these two values into variables like this:</p>
@@ -1409,7 +1409,7 @@ two variable names, separated by a comma.  Python take the two values from the r
 <span class="k">print</span><span class="p">(</span><span class="s">'s_is'</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c is 2
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c is 2
 s_is 1
 
 </code></pre></div></div>
@@ -1422,7 +1422,7 @@ s_is 1
 <span class="k">print</span><span class="p">(</span><span class="s">'my_var2 is'</span><span class="p">,</span> <span class="n">my_var2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_var1 is 6
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_var1 is 6
 my_var2 is 7
 
 </code></pre></div></div>
@@ -1436,7 +1436,7 @@ my_var2 is 7
 <span class="k">print</span><span class="p">(</span><span class="s">'y is'</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>w is 10
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>w is 10
 x is 100
 y is 10000
 
@@ -1448,14 +1448,14 @@ y is 10000
 </span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
    ...
 ValueError: not enough values to unpack (expected 3, got 2)
 </code></pre></div></div>
 
 <h3 id="using-unpacking-in-minimize">Using unpacking in minimize</h3>
 
-<p>Unpacking has two good uses with <code class="highlighter-rouge">minimize</code>.  The first is that we can make our function to minimize a little neater:</p>
+<p>Unpacking has two good uses with <code class="language-plaintext highlighter-rouge">minimize</code>.  The first is that we can make our function to minimize a little neater:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ss_with_unpacking</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
     <span class="c1"># c_s has two elements, the intercept c and the slope s.
@@ -1463,16 +1463,16 @@ ValueError: not enough values to unpack (expected 3, got 2)
 </span>    <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>The second is, we can use unpacking to — er — unpack the best fit intercept and slope from the result of <code class="highlighter-rouge">minimize</code>.  Remember, <code class="highlighter-rouge">minimize</code> returns a result value, that includes an array <code class="highlighter-rouge">x</code> with the parameters minimizing our function:</p>
+<p>The second is, we can use unpacking to — er — unpack the best fit intercept and slope from the result of <code class="language-plaintext highlighter-rouge">minimize</code>.  Remember, <code class="language-plaintext highlighter-rouge">minimize</code> returns a result value, that includes an array <code class="language-plaintext highlighter-rouge">x</code> with the parameters minimizing our function:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m_r</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_with_unpacking</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
 <span class="n">m_r</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
  hess_inv: array([[ 0.98777009, -0.30796915],
        [-0.30796915,  0.09667176]])
       jac: array([-1.49011612e-08,  1.49011612e-08])
@@ -1487,33 +1487,33 @@ ValueError: not enough values to unpack (expected 3, got 2)
 
 <p>We can get the best-fit intercept and slope values by unpacking:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_c</span><span class="p">,</span> <span class="n">best_s</span> <span class="o">=</span> <span class="n">m_r</span><span class="o">.</span><span class="n">x</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_c</span><span class="p">,</span> <span class="n">best_s</span> <span class="o">=</span> <span class="n">m_r</span><span class="p">.</span><span class="n">x</span>
 <span class="k">print</span><span class="p">(</span><span class="n">best_c</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">best_s</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.114800980276273
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.114800980276273
 0.5088633619994262
 
 </code></pre></div></div>
 
 <p>We often end up doing this all in one shot:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_c</span><span class="p">,</span> <span class="n">best_s</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_with_unpacking</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span><span class="o">.</span><span class="n">x</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best_c</span><span class="p">,</span> <span class="n">best_s</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_with_unpacking</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">]).</span><span class="n">x</span>
 <span class="k">print</span><span class="p">(</span><span class="n">best_c</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">best_s</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.114800980276273
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.114800980276273
 0.5088633619994262
 
 </code></pre></div></div>
 
 <h3 id="other-arguments-to-our-function">Other arguments to our function</h3>
 
-<p>Inspect the help for <code class="highlighter-rouge">minimize</code> with <code class="highlighter-rouge">minimize?</code>.   You will notice that there
-is an argument we can pass to <code class="highlighter-rouge">minimize</code> called <code class="highlighter-rouge">args</code>.  These are “Extra
-arguments passed to the objective function”.  In fact, this is very useful to make our objective function more general.  First we try this silly use of <code class="highlighter-rouge">args</code> where we pass a couple of useless numbers to our objective function:</p>
+<p>Inspect the help for <code class="language-plaintext highlighter-rouge">minimize</code> with <code class="language-plaintext highlighter-rouge">minimize?</code>.   You will notice that there
+is an argument we can pass to <code class="language-plaintext highlighter-rouge">minimize</code> called <code class="language-plaintext highlighter-rouge">args</code>.  These are “Extra
+arguments passed to the objective function”.  In fact, this is very useful to make our objective function more general.  First we try this silly use of <code class="language-plaintext highlighter-rouge">args</code> where we pass a couple of useless numbers to our objective function:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ss_with_extra_numbers</span><span class="p">(</span><span class="n">c_s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="c1"># An objective function with some useless extra arguments.
@@ -1521,16 +1521,16 @@ arguments passed to the objective function”.  In fact, this is very useful to 
     <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">quality</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Now we tell <code class="highlighter-rouge">minimize</code> to pass some value for <code class="highlighter-rouge">p</code> and <code class="highlighter-rouge">q</code> for each call to the objective function:</p>
+<p>Now we tell <code class="language-plaintext highlighter-rouge">minimize</code> to pass some value for <code class="language-plaintext highlighter-rouge">p</code> and <code class="language-plaintext highlighter-rouge">q</code> for each call to the objective function:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># args has two values, one that becomes "p" and the other that becomes "q".
 </span><span class="n">minimize</span><span class="p">(</span><span class="n">ss_with_extra_numbers</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c_s [2.25 0.47] p 99 q 101
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c_s [2.25 0.47] p 99 q 101
 c_s [2.25000001 0.47      ] p 99 q 101
 c_s [2.25       0.47000001] p 99 q 101
 c_s [2.25 0.47] p 99 q 101
@@ -1553,7 +1553,7 @@ c_s [2.11480098 0.50886338] p 99 q 101
 
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
  hess_inv: array([[ 0.98777009, -0.30796915],
        [-0.30796915,  0.09667176]])
       jac: array([-1.49011612e-08,  1.49011612e-08])
@@ -1566,26 +1566,26 @@ c_s [2.11480098 0.50886338] p 99 q 101
         x: array([2.11480098, 0.50886336])
 </code></pre></div></div>
 
-<p>Notice that, each time <code class="highlighter-rouge">minimize</code> calls <code class="highlighter-rouge">ss_with_extra_numbers</code> it passes the first value of <code class="highlighter-rouge">args</code> as the second argument to the function (<code class="highlighter-rouge">p</code>) and the second value of <code class="highlighter-rouge">args</code> as the third argument to the function (<code class="highlighter-rouge">q</code>).</p>
+<p>Notice that, each time <code class="language-plaintext highlighter-rouge">minimize</code> calls <code class="language-plaintext highlighter-rouge">ss_with_extra_numbers</code> it passes the first value of <code class="language-plaintext highlighter-rouge">args</code> as the second argument to the function (<code class="language-plaintext highlighter-rouge">p</code>) and the second value of <code class="language-plaintext highlighter-rouge">args</code> as the third argument to the function (<code class="language-plaintext highlighter-rouge">q</code>).</p>
 
-<p>This isn’t very exciting so far, but now we can solve a problem that may not have been obvious — our objective function has been using <code class="highlighter-rouge">easiness</code> and <code class="highlighter-rouge">quality</code> from the global namespace.   This means that each time we want to find a least-squares intercept and slope for a pair of arrays, we have to write a new objective function, using different values from the global namespace.</p>
+<p>This isn’t very exciting so far, but now we can solve a problem that may not have been obvious — our objective function has been using <code class="language-plaintext highlighter-rouge">easiness</code> and <code class="language-plaintext highlighter-rouge">quality</code> from the global namespace.   This means that each time we want to find a least-squares intercept and slope for a pair of arrays, we have to write a new objective function, using different values from the global namespace.</p>
 
-<p>For example, we might want to find the best slope relating <code class="highlighter-rouge">easiness</code> to the ratings for “Clarity”.  We have to write a whole new function to do that, where we replace <code class="highlighter-rouge">quality</code> with <code class="highlighter-rouge">clarity</code>:</p>
+<p>For example, we might want to find the best slope relating <code class="language-plaintext highlighter-rouge">easiness</code> to the ratings for “Clarity”.  We have to write a whole new function to do that, where we replace <code class="language-plaintext highlighter-rouge">quality</code> with <code class="language-plaintext highlighter-rouge">clarity</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clarity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clarity</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">ratings</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">])</span>
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ss_clarity</span><span class="p">(</span><span class="n">c_s</span><span class="p">):</span>
     <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">easiness</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">clarity</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">minimize</span><span class="p">(</span><span class="n">ss_clarity</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.1958591481237515
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.1958591481237515
  hess_inv: array([[ 0.98777016, -0.30796917],
        [-0.30796917,  0.09667177]])
       jac: array([-1.49011612e-08, -1.49011612e-08])
@@ -1600,21 +1600,21 @@ c_s [2.11480098 0.50886338] p 99 q 101
 
 <p>That is annoying, because we’re doing exactly the same work in our objective function, just with different variables.</p>
 
-<p>Aha - we can use <code class="highlighter-rouge">args</code> to pass the <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> values for our function to work on:</p>
+<p>Aha - we can use <code class="language-plaintext highlighter-rouge">args</code> to pass the <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> values for our function to work on:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ss_any_line</span><span class="p">(</span><span class="n">c_s</span><span class="p">,</span> <span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">):</span>
     <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">x_values</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">y_values</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Now we can use the same objective function for any pair of <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> values:</p>
+<p>Now we can use the same objective function for any pair of <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> values:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">quality</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.0674471058042072
  hess_inv: array([[ 0.98777009, -0.30796915],
        [-0.30796915,  0.09667176]])
       jac: array([-1.49011612e-08,  1.49011612e-08])
@@ -1630,7 +1630,7 @@ c_s [2.11480098 0.50886338] p 99 q 101
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.25</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="n">clarity</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.1958591481237515
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      fun: 1.1958591481237515
  hess_inv: array([[ 0.98777016, -0.30796917],
        [-0.30796917,  0.09667177]])
       jac: array([-1.49011612e-08, -1.49011612e-08])

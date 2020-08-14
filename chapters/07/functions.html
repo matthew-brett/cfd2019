@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1188,7 +1188,7 @@
 
 <p>We have already used functions.</p>
 
-<p>For example, we have used the <code class="highlighter-rouge">round</code> function:</p>
+<p>For example, we have used the <code class="language-plaintext highlighter-rouge">round</code> function:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mf">3.1415</span>
 </code></pre></div></div>
@@ -1200,7 +1200,7 @@
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
 </code></pre></div></div>
 
 <p>We often need to define our own functions. Before we do, we need to go into
@@ -1224,7 +1224,7 @@ for this metaphor.</p>
 ingredients: two eggs; butter; and cheese - to the meal - a cheese
 omelette.</p>
 
-<p>The function <code class="highlighter-rouge">round</code> has the procedure to go from the arguments - two
+<p>The function <code class="language-plaintext highlighter-rouge">round</code> has the procedure to go from the arguments - two
 numbers, to the return value, which is the value of the first argument
 rounded to the number of digits specified in the second.</p>
 
@@ -1233,11 +1233,11 @@ rounded to the number of digits specified in the second.</p>
 prefer a name that describes what the recipe makes, to help me
 remember.</p>
 
-<p>Likewise, the name <code class="highlighter-rouge">round</code> refers to a procedure above.  I could give it
-another name, like <code class="highlighter-rouge">my_function</code>, but <code class="highlighter-rouge">round</code> is a good name, because it helps
+<p>Likewise, the name <code class="language-plaintext highlighter-rouge">round</code> refers to a procedure above.  I could give it
+another name, like <code class="language-plaintext highlighter-rouge">my_function</code>, but <code class="language-plaintext highlighter-rouge">round</code> is a good name, because it helps
 me remember what the procedure does.</p>
 
-<p>I say <code class="highlighter-rouge">round</code> has a procedure, but we can’t see what that procedure is, it’s
+<p>I say <code class="language-plaintext highlighter-rouge">round</code> has a procedure, but we can’t see what that procedure is, it’s
 buried inside the internal workings of Python.</p>
 
 <p>Now we are going to write our own function, where we can see the
@@ -1255,7 +1255,7 @@ procedure.</p>
 <p>We also know that we have, on the left, a variable name, ‘a’, and on
 the right, an expression, that gives a value.</p>
 
-<p>In this case, the expression on the right is <code class="highlighter-rouge">2</code>. Python evaluates
+<p>In this case, the expression on the right is <code class="language-plaintext highlighter-rouge">2</code>. Python evaluates
 this expression, to make its own internal computer representation of the
 integer 2.  Call this: Computer Representation (CR) of int 2.</p>
 
@@ -1266,9 +1266,9 @@ integer 2.  Call this: Computer Representation (CR) of int 2.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<p>The right side <code class="highlighter-rouge">a * 4</code> is an expression.  Python evaluates the
-expression.  First it gets the value of <code class="highlighter-rouge">a</code>.  This is the CR of int 2.
-Next it gets the value of <code class="highlighter-rouge">4</code>.  This is the CR of int 4. Then it
+<p>The right side <code class="language-plaintext highlighter-rouge">a * 4</code> is an expression.  Python evaluates the
+expression.  First it gets the value of <code class="language-plaintext highlighter-rouge">a</code>.  This is the CR of int 2.
+Next it gets the value of <code class="language-plaintext highlighter-rouge">4</code>.  This is the CR of int 4. Then it
 multiplies these results to get an CR of int 8.</p>
 
 <p>“b” now points to the CR of int 8.</p>
@@ -1283,12 +1283,12 @@ multiplies these results to get an CR of int 8.</p>
 <p>What value does “b” have now?</p>
 
 <p>The same value as it had before.  It pointed to the CR of int
-8 before.  Changing <code class="highlighter-rouge">a</code> has no effect on <code class="highlighter-rouge">b</code>.</p>
+8 before.  Changing <code class="language-plaintext highlighter-rouge">a</code> has no effect on <code class="language-plaintext highlighter-rouge">b</code>.</p>
 
 <h2 id="defining-a-function">Defining a function</h2>
 
-<p>We define our function called <code class="highlighter-rouge">double</code>.  It accepts one argument
-(ingredient), call that <code class="highlighter-rouge">x</code>.  It’s procedure is to multiply the
+<p>We define our function called <code class="language-plaintext highlighter-rouge">double</code>.  It accepts one argument
+(ingredient), call that <code class="language-plaintext highlighter-rouge">x</code>.  It’s procedure is to multiply the
 argument by 2.  The return value is the argument multiplied by 2.</p>
 
 <p>Here it is:</p>
@@ -1300,23 +1300,23 @@ argument by 2.  The return value is the argument multiplied by 2.</p>
 
 <p>Let’s look at the first line:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def double(x):
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def double(x):
 </code></pre></div></div>
 
-<p>The first word <code class="highlighter-rouge">def</code> tells Python we are defining a function.</p>
+<p>The first word <code class="language-plaintext highlighter-rouge">def</code> tells Python we are defining a function.</p>
 
-<p>The next word <code class="highlighter-rouge">double</code> is the name we will give to our function.</p>
+<p>The next word <code class="language-plaintext highlighter-rouge">double</code> is the name we will give to our function.</p>
 
-<p>Between the parentheses, we have the function signature.  This specifies how many arguments the function has.  In our case, there is only one argument, named <code class="highlighter-rouge">x</code>.</p>
+<p>Between the parentheses, we have the function signature.  This specifies how many arguments the function has.  In our case, there is only one argument, named <code class="language-plaintext highlighter-rouge">x</code>.</p>
 
-<p>Finally there is a colon <code class="highlighter-rouge">:</code> signifying the end of the signature.</p>
+<p>Finally there is a colon <code class="language-plaintext highlighter-rouge">:</code> signifying the end of the signature.</p>
 
 <p>As in <a href="../05/iteration">for loops</a>, the colon signifies that the next
 bit of code must be <a href="../03/indentation">indented</a>.</p>
 
 <p>Here is the indented part:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    d = x * 2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    d = x * 2
     return d
 </code></pre></div></div>
 
@@ -1327,36 +1327,36 @@ bit of code must be <a href="../03/indentation">indented</a>.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
 </code></pre></div></div>
 
-<p>Notice that <code class="highlighter-rouge">double(4)</code> is a <a href="../02/Calls">call expression</a>.</p>
+<p>Notice that <code class="language-plaintext highlighter-rouge">double(4)</code> is a <a href="../02/Calls">call expression</a>.</p>
 
 <p>So, what just happened?</p>
 
 <ol>
-  <li>Python finds what <code class="highlighter-rouge">double</code> points to.  It points to internal
+  <li>Python finds what <code class="language-plaintext highlighter-rouge">double</code> points to.  It points to internal
 representation of our function (procedure).</li>
-  <li>Next it sees the parenthesis <code class="highlighter-rouge">(</code> and sees that we want to <em>call</em>
+  <li>Next it sees the parenthesis <code class="language-plaintext highlighter-rouge">(</code> and sees that we want to <em>call</em>
 our function.</li>
   <li>Now Python knows we want to call the function, it knows that
 there are one or more <em>expressions</em> inside the parentheses.  In
-our case there is one, <code class="highlighter-rouge">4</code>.  As usual, it evaluates this
+our case there is one, <code class="language-plaintext highlighter-rouge">4</code>.  As usual, it evaluates this
 expression to the CR of int 4.</li>
   <li>
     <p>Now Python does the <em>call</em>.  To do this it:</p>
 
     <ol>
       <li>Puts itself into <em>function world</em> (more on this later).</li>
-      <li>Sets the new variable <code class="highlighter-rouge">x</code> to have the value CR of int 4, from
+      <li>Sets the new variable <code class="language-plaintext highlighter-rouge">x</code> to have the value CR of int 4, from
 above.</li>
       <li>Executes the code in the function body (procedure).</li>
-      <li>The first line <code class="highlighter-rouge">d = x * 2</code> is an assignment statement.  <code class="highlighter-rouge">x</code>
-evaluates to CR of int 4, 2 evaluates to CR of int 2, so <code class="highlighter-rouge">d</code>
+      <li>The first line <code class="language-plaintext highlighter-rouge">d = x * 2</code> is an assignment statement.  <code class="language-plaintext highlighter-rouge">x</code>
+evaluates to CR of int 4, 2 evaluates to CR of int 2, so <code class="language-plaintext highlighter-rouge">d</code>
 has the value CR of int 8.  This is how the statement would
 work anywhere in Python, function body or not.</li>
-      <li>The next line starts with <code class="highlighter-rouge">return</code>.  This is a <em>return
-statement</em>. When Python sees a <code class="highlighter-rouge">return</code> statement, it evaluates
+      <li>The next line starts with <code class="language-plaintext highlighter-rouge">return</code>.  This is a <em>return
+statement</em>. When Python sees a <code class="language-plaintext highlighter-rouge">return</code> statement, it evaluates
 the expression to the right, to get the <em>return value</em>, then</li>
       <li>Pulls itself out of <em>function world</em>.</li>
       <li>Gives the <em>return value</em> as the final result of the call
@@ -1370,12 +1370,12 @@ expression.  This is CR of int 8.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
 <p>This time round, everything happened in the same way as before, except
 Python found the <em>argument</em> inside the parentheses evaluated to CR of
-int 2.  Thus, in <em>function world</em>, <code class="highlighter-rouge">x</code> gets the value CR of 2, and the <em>return value</em> becomes CR of int 4.</p>
+int 2.  Thus, in <em>function world</em>, <code class="language-plaintext highlighter-rouge">x</code> gets the value CR of 2, and the <em>return value</em> becomes CR of int 4.</p>
 
 <h2 id="function-world">Function world</h2>
 
@@ -1394,23 +1394,23 @@ code runs in our usual top-level world, and so, not inside a function.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
    ...
 NameError: name 'd' is not defined
 </code></pre></div></div>
 
-<p>Notice that, in the function, we set <code class="highlighter-rouge">d</code> to point to the result of <code class="highlighter-rouge">x * 2</code>.  We called the function a couple of times, so we executed this statement a couple of times.  But the <code class="highlighter-rouge">d</code> in the function, gets thrown away, when we come back from function world.</p>
+<p>Notice that, in the function, we set <code class="language-plaintext highlighter-rouge">d</code> to point to the result of <code class="language-plaintext highlighter-rouge">x * 2</code>.  We called the function a couple of times, so we executed this statement a couple of times.  But the <code class="language-plaintext highlighter-rouge">d</code> in the function, gets thrown away, when we come back from function world.</p>
 
 <p>In technical terms, this is called <em>scope</em>.   The <em>scope</em> of
 a variable, is the pieces of code in which the variable is visible.
-<code class="highlighter-rouge">d</code> can only be seen inside the function.  Its scope is the function.  We can also say that its scope is piece of code where it is defined, that is, it has <em>local</em> scope.</p>
+<code class="language-plaintext highlighter-rouge">d</code> can only be seen inside the function.  Its scope is the function.  We can also say that its scope is piece of code where it is defined, that is, it has <em>local</em> scope.</p>
 
-<p>The same is true for <code class="highlighter-rouge">x</code>, the argument variable:</p>
+<p>The same is true for <code class="language-plaintext highlighter-rouge">x</code>, the argument variable:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
    ...
 NameError: name 'x' is not defined
 </code></pre></div></div>
@@ -1419,18 +1419,18 @@ NameError: name 'x' is not defined
 
 <p>We have not seen this yet, but function world has limited access to variables defined at the top level.</p>
 
-<p>We won’t go into much detail here, but the summary is that functions can see the values of variables defined at the top level, but they can’t change what top level variables point to.  For example, say you have a variable <code class="highlighter-rouge">a</code> at the top level.  A function can see and use the value of <code class="highlighter-rouge">a</code>, but it cannot change top-level <code class="highlighter-rouge">a</code> to point to a different value.   We will come back to this later.</p>
+<p>We won’t go into much detail here, but the summary is that functions can see the values of variables defined at the top level, but they can’t change what top level variables point to.  For example, say you have a variable <code class="language-plaintext highlighter-rouge">a</code> at the top level.  A function can see and use the value of <code class="language-plaintext highlighter-rouge">a</code>, but it cannot change top-level <code class="language-plaintext highlighter-rouge">a</code> to point to a different value.   We will come back to this later.</p>
 
 <h2 id="python-checks-the-function-signature">Python checks the function signature</h2>
 
-<p>The signature for <code class="highlighter-rouge">double</code> is <code class="highlighter-rouge">(a)</code>.  That tells Python to expect one
+<p>The signature for <code class="language-plaintext highlighter-rouge">double</code> is <code class="language-plaintext highlighter-rouge">(a)</code>.  That tells Python to expect one
 and only one argument.  If we try to call it with no arguments
 (nothing inside the parentheses), we get an error:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
    ...
 TypeError: double() missing 1 required positional argument: 'x'
 </code></pre></div></div>
@@ -1440,7 +1440,7 @@ TypeError: double() missing 1 required positional argument: 'x'
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
    ...
 TypeError: double() takes 1 positional argument but 2 were given
 </code></pre></div></div>
@@ -1448,7 +1448,7 @@ TypeError: double() takes 1 positional argument but 2 were given
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
    ...
 TypeError: double() takes 1 positional argument but 3 were given
 </code></pre></div></div>
@@ -1463,12 +1463,12 @@ expressions, and evaluates them, before running the function.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
 </code></pre></div></div>
 
 <p>All the procedure is the same as above.  Python evaluates the
-expression <code class="highlighter-rouge">2 + 3</code>, to get CR of int 5, then goes into function world,
-sets <code class="highlighter-rouge">x</code> to have the value CR of int 5, and continues from there.</p>
+expression <code class="language-plaintext highlighter-rouge">2 + 3</code>, to get CR of int 5, then goes into function world,
+sets <code class="language-plaintext highlighter-rouge">x</code> to have the value CR of int 5, and continues from there.</p>
 
 <h2 id="functions-can-have-many-arguments">Functions can have many arguments</h2>
 
@@ -1478,12 +1478,12 @@ sets <code class="highlighter-rouge">x</code> to have the value CR of int 5, and
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 </code></pre></div></div>
 
-<p>The new thing here is that the function signature <code class="highlighter-rouge">(a, b)</code> has two arguments, separated by commas.  We need to give the function two values, when we call it:</p>
+<p>The new thing here is that the function signature <code class="language-plaintext highlighter-rouge">(a, b)</code> has two arguments, separated by commas.  We need to give the function two values, when we call it:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
 </code></pre></div></div>
 
 <p>If we do not give it exactly two arguments, we get an error.</p>
@@ -1491,7 +1491,7 @@ sets <code class="highlighter-rouge">x</code> to have the value CR of int 5, and
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
    ...
 TypeError: multiply() missing 1 required positional argument: 'b'
 </code></pre></div></div>
@@ -1499,7 +1499,7 @@ TypeError: multiply() missing 1 required positional argument: 'b'
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
    ...
 TypeError: multiply() takes 2 positional arguments but 3 were given
 </code></pre></div></div>
@@ -1515,7 +1515,7 @@ TypeError: multiply() takes 2 positional arguments but 3 were given
 </span>
 <span class="k">def</span> <span class="nf">biased_coin</span><span class="p">():</span>
     <span class="c1"># A single random number
-</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">()</span>
     <span class="c1"># A biased coin
 </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mf">0.45</span>
     <span class="k">return</span> <span class="n">result</span>
@@ -1526,7 +1526,7 @@ TypeError: multiply() takes 2 positional arguments but 3 were given
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
 
 <p>As you would expect by now, if we try and send an argument, Python will complain:</p>
@@ -1534,14 +1534,14 @@ TypeError: multiply() takes 2 positional arguments but 3 were given
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">biased_coin</span><span class="p">(</span><span class="mf">0.45</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError                                 Traceback (most recent call last)
    ...
 TypeError: biased_coin() takes 0 positional arguments but 1 was given
 </code></pre></div></div>
 
 <h2 id="without-a-return-statement-functions-return-none">Without a return statement, functions return None</h2>
 
-<p>Our functions so far all have a <code class="highlighter-rouge">return</code> statement.  This is not true of every function.</p>
+<p>Our functions so far all have a <code class="language-plaintext highlighter-rouge">return</code> statement.  This is not true of every function.</p>
 
 <p>If your function does not have a return statement, the function returns the value <a href="none">None</a>.</p>
 
@@ -1549,7 +1549,7 @@ TypeError: biased_coin() takes 0 positional arguments but 1 was given
     <span class="n">result</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
 </code></pre></div></div>
 
-<p>Notice that the body of this function has no <code class="highlighter-rouge">return</code> statement.  When we call it, it returns <code class="highlighter-rouge">None</code>:</p>
+<p>Notice that the body of this function has no <code class="language-plaintext highlighter-rouge">return</code> statement.  When we call it, it returns <code class="language-plaintext highlighter-rouge">None</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">silent_addition</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">result</span>
@@ -1558,7 +1558,7 @@ TypeError: biased_coin() takes 0 positional arguments but 1 was given
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="ow">is</span> <span class="bp">None</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <h2 id="end-of-the-introduction">End of the introduction</h2>

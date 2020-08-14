@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1165,11 +1165,11 @@
 
 <p>We will soon go into more detail on functions, in the page on <a href="Calls">call expressions</a>.</p>
 
-<p>For now, we start with something simple, the function <code class="highlighter-rouge">cos</code>.</p>
+<p>For now, we start with something simple, the function <code class="language-plaintext highlighter-rouge">cos</code>.</p>
 
 <p>Remember functions from mathematics?  We might write something like this, in mathematics:</p>
 
-<script type="math/tex; mode=display">y = cos(0)</script>
+\[y = cos(0)\]
 
 <p>You can read $cos(0)$ as:</p>
 
@@ -1191,7 +1191,7 @@
 
 <p>Functions in Python work in a similar way.</p>
 
-<p>First we load up the <code class="highlighter-rouge">cos</code> function from a library called <code class="highlighter-rouge">numpy</code>.</p>
+<p>First we load up the <code class="language-plaintext highlighter-rouge">cos</code> function from a library called <code class="language-plaintext highlighter-rouge">numpy</code>.</p>
 
 <p>Don’t worry about the command to load the function, for now.  We will come back
 to that later.  Here is the command you need. Just run it in the notebook.</p>
@@ -1200,26 +1200,26 @@ to that later.  Here is the command you need. Just run it in the notebook.</p>
 </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span>
 </code></pre></div></div>
 
-<p>Now we <em>call</em> the <code class="highlighter-rouge">cos</code> function with the value 0, and see what we get:</p>
+<p>Now we <em>call</em> the <code class="language-plaintext highlighter-rouge">cos</code> function with the value 0, and see what we get:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">cos</code> is the <em>name</em> of the function;</li>
-  <li><code class="highlighter-rouge">0</code> is the <em>value</em> we as <em>passing</em> to the function.</li>
-  <li>The value we pass to the function goes between the parentheses <code class="highlighter-rouge">(</code> and <code class="highlighter-rouge">)</code>.</li>
-  <li><code class="highlighter-rouge">1.0</code> is the value that the function <em>returns</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cos</code> is the <em>name</em> of the function;</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> is the <em>value</em> we as <em>passing</em> to the function.</li>
+  <li>The value we pass to the function goes between the parentheses <code class="language-plaintext highlighter-rouge">(</code> and <code class="language-plaintext highlighter-rouge">)</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">1.0</code> is the value that the function <em>returns</em>.</li>
 </ul>
 
 <p>The value we pass to the function is also called the function <em>argument</em>.</p>
 
-<p>In our case we pass <code class="highlighter-rouge">0</code> as the <em>argument</em> to the <code class="highlighter-rouge">cos</code> function.</p>
+<p>In our case we pass <code class="language-plaintext highlighter-rouge">0</code> as the <em>argument</em> to the <code class="language-plaintext highlighter-rouge">cos</code> function.</p>
 
-<p>Let’s try the same thing with the <code class="highlighter-rouge">sin</code> function:</p>
+<p>Let’s try the same thing with the <code class="language-plaintext highlighter-rouge">sin</code> function:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the sin function from the numpy library.
 </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span>
@@ -1228,27 +1228,27 @@ to that later.  Here is the command you need. Just run it in the notebook.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">sin</code> - the function name;</li>
-  <li><code class="highlighter-rouge">0</code> - the value we pass to the function;</li>
+  <li><code class="language-plaintext highlighter-rouge">sin</code> - the function name;</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> - the value we pass to the function;</li>
   <li>The value goes after the function name, and between parentheses;</li>
-  <li><code class="highlighter-rouge">0.0</code> - the value that the function returns.</li>
+  <li><code class="language-plaintext highlighter-rouge">0.0</code> - the value that the function returns.</li>
 </ul>
 
-<p>We pass <code class="highlighter-rouge">0</code> as the <em>argument</em> to the <code class="highlighter-rouge">sin</code> function.</p>
+<p>We pass <code class="language-plaintext highlighter-rouge">0</code> as the <em>argument</em> to the <code class="language-plaintext highlighter-rouge">sin</code> function.</p>
 
 <p>Now your turn.</p>
 
-<p>Try importing the <code class="highlighter-rouge">sqrt</code> function.</p>
+<p>Try importing the <code class="language-plaintext highlighter-rouge">sqrt</code> function.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the sqrt function from the numpy library.
 # Your code here.
 </span></code></pre></div></div>
 
-<p>Call the <code class="highlighter-rouge">sqrt</code> function with the value <code class="highlighter-rouge">9</code>; you should see this returns the value <code class="highlighter-rouge">3.0</code>.</p>
+<p>Call the <code class="language-plaintext highlighter-rouge">sqrt</code> function with the value <code class="language-plaintext highlighter-rouge">9</code>; you should see this returns the value <code class="language-plaintext highlighter-rouge">3.0</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Your code here.
 </span></code></pre></div></div>

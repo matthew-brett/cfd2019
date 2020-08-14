@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1176,7 +1176,7 @@
 
 <p>There are several kinds of sequences in Python.  A <a href="lists">list</a> is one.  However, the sequence type that we will use most in the class, is the array.</p>
 
-<p>The <code class="highlighter-rouge">numpy</code> package, abbreviated <code class="highlighter-rouge">np</code> in programs, provides Python programmers
+<p>The <code class="language-plaintext highlighter-rouge">numpy</code> package, abbreviated <code class="language-plaintext highlighter-rouge">np</code> in programs, provides Python programmers
 with convenient and powerful functions for creating and manipulating arrays.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the numpy package, and call it "np".
@@ -1185,48 +1185,48 @@ with convenient and powerful functions for creating and manipulating arrays.</p>
 
 <h2 id="creating-arrays">Creating arrays</h2>
 
-<p>The <code class="highlighter-rouge">array</code> function from the Numpy package creates an array from single values, or sequences of values.</p>
+<p>The <code class="language-plaintext highlighter-rouge">array</code> function from the Numpy package creates an array from single values, or sequences of values.</p>
 
-<p>For example, remember <code class="highlighter-rouge">my_list</code>?</p>
+<p>For example, remember <code class="language-plaintext highlighter-rouge">my_list</code>?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>This is a <code class="highlighter-rouge">list</code>:</p>
+<p>This is a <code class="language-plaintext highlighter-rouge">list</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">array</code> function from Numpy can make an array from this list:</p>
+<p>The <code class="language-plaintext highlighter-rouge">array</code> function from Numpy can make an array from this list:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
 <span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
 </code></pre></div></div>
 
-<p>As you can see from the display above, this is an array.  We confirm it with <code class="highlighter-rouge">type</code>:</p>
+<p>As you can see from the display above, this is an array.  We confirm it with <code class="language-plaintext highlighter-rouge">type</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.ndarray
 </code></pre></div></div>
 
 <p>We can also create the list and then the array in one call, like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
 </code></pre></div></div>
 
-<p>Here <code class="highlighter-rouge">[1, 2, 3]</code> is an <em>expression</em> that returns a list. <code class="highlighter-rouge">np.array</code> then operates on the returned list, to create an array.</p>
+<p>Here <code class="language-plaintext highlighter-rouge">[1, 2, 3]</code> is an <em>expression</em> that returns a list. <code class="language-plaintext highlighter-rouge">np.array</code> then operates on the returned list, to create an array.</p>
 
 <p>Arrays often contain numbers, but, like lists, they can also contain strings
 or other types of values.  However, a single array can only contain a single
@@ -1235,11 +1235,11 @@ anyway.)</p>
 
 <p>For example,</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">"noun"</span><span class="p">,</span> <span class="s">"pronoun"</span><span class="p">,</span> <span class="s">"verb"</span><span class="p">,</span> <span class="s">"adverb"</span><span class="p">,</span> <span class="s">"adjective"</span><span class="p">,</span> <span class="s">"conjunction"</span><span class="p">,</span> <span class="s">"preposition"</span><span class="p">,</span> <span class="s">"interjection"</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="s">"noun"</span><span class="p">,</span> <span class="s">"pronoun"</span><span class="p">,</span> <span class="s">"verb"</span><span class="p">,</span> <span class="s">"adverb"</span><span class="p">,</span> <span class="s">"adjective"</span><span class="p">,</span> <span class="s">"conjunction"</span><span class="p">,</span> <span class="s">"preposition"</span><span class="p">,</span> <span class="s">"interjection"</span><span class="p">])</span>
 <span class="n">english_parts_of_speech</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
        'preposition', 'interjection'], dtype='&lt;U12')
 </code></pre></div></div>
 
@@ -1248,7 +1248,7 @@ round and square brackets across many lines.  It knows that the expression has
 not finished yet because it is waiting for the closing bracket.  For example, this cell works in the exactly the same way as the cell above, and may be easier to read:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An expression between brackets spread across many lines.
-</span><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+</span><span class="n">english_parts_of_speech</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span>
     <span class="p">[</span><span class="s">"noun"</span><span class="p">,</span>
     <span class="s">"pronoun"</span><span class="p">,</span>
     <span class="s">"verb"</span><span class="p">,</span>
@@ -1261,11 +1261,11 @@ not finished yet because it is waiting for the closing bracket.  For example, th
 <span class="n">english_parts_of_speech</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['noun', 'pronoun', 'verb', 'adverb', 'adjective', 'conjunction',
        'preposition', 'interjection'], dtype='&lt;U12')
 </code></pre></div></div>
 
-<p>Below, we collect four different temperatures into a list called <code class="highlighter-rouge">temps</code>.
+<p>Below, we collect four different temperatures into a list called <code class="language-plaintext highlighter-rouge">temps</code>.
 These are the <a href="http://berkeleyearth.lbl.gov/regions/global-land">estimated average daily high
 temperatures</a> over all land
 on Earth (in degrees Celsius) for the decades surrounding 1850, 1900, 1950,
@@ -1276,14 +1276,14 @@ temperature between 1951 and 1980, which was 14.48 degrees.</p>
 temperatures</a>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_high</span> <span class="o">=</span> <span class="mf">14.48</span>
-<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
+<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
                   <span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.093</span><span class="p">,</span>
                   <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.105</span><span class="p">,</span>
                   <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.684</span><span class="p">])</span>
 <span class="n">highs</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
 </code></pre></div></div>
 
 <h2 id="calculations-with-arrays">Calculations with arrays</h2>
@@ -1296,54 +1296,54 @@ to Fahrenheit by writing the familiar conversion formula.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">highs</span> <span class="o">+</span> <span class="mi">32</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([56.48  , 57.8966, 58.253 , 59.2952])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([56.48  , 57.8966, 58.253 , 59.2952])
 </code></pre></div></div>
 
 <p><img src="/cfd2019/images/array_arithmetic.png" /></p>
 
 <p>As we saw for strings, arrays have <em>methods</em>, which are functions that
-operate on the array values. The <code class="highlighter-rouge">mean</code> of a collection of numbers is its
+operate on the array values. The <code class="language-plaintext highlighter-rouge">mean</code> of a collection of numbers is its
 average value: the sum divided by the length. Each pair of parentheses in the
 examples below is part of a call expression; it’s calling a function with no
-arguments to perform a computation on the array called <code class="highlighter-rouge">highs</code>.</p>
+arguments to perform a computation on the array called <code class="language-plaintext highlighter-rouge">highs</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The number of elements in the array
-</span><span class="n">highs</span><span class="o">.</span><span class="n">size</span>
+</span><span class="n">highs</span><span class="p">.</span><span class="n">size</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>57.736000000000004
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>57.736000000000004
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14.434000000000001
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>14.434000000000001
 </code></pre></div></div>
 
 <h2 id="functions-on-arrays">Functions on Arrays</h2>
 
 <p>Numpy provides various useful functions for operating on arrays.</p>
 
-<p>For example, the <code class="highlighter-rouge">diff</code> function computes the difference between each adjacent
-pair of elements in an array. The first element of the <code class="highlighter-rouge">diff</code> is the second
+<p>For example, the <code class="language-plaintext highlighter-rouge">diff</code> function computes the difference between each adjacent
+pair of elements in an array. The first element of the <code class="language-plaintext highlighter-rouge">diff</code> is the second
 element minus the first.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">diff</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.787, 0.198, 0.579])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.787, 0.198, 0.579])
 </code></pre></div></div>
 
 <p>The <a href="http://docs.scipy.org/doc/numpy/reference/">full Numpy reference</a> lists
 these functions exhaustively, but only a small subset are used commonly for
 data processing applications. These are grouped into different packages within
-<code class="highlighter-rouge">np</code>. Learning this vocabulary is an important part of learning the Python
+<code class="language-plaintext highlighter-rouge">np</code>. Learning this vocabulary is an important part of learning the Python
 language, so refer back to this list often as you work through examples and
 problems.</p>
 
@@ -1361,23 +1361,23 @@ value.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">np.prod</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.prod</code></td>
       <td>Multiply all elements together</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.sum</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.sum</code></td>
       <td>Add all elements together</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.all</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.all</code></td>
       <td>Test whether all elements are true values (non-zero numbers are true)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.any</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.any</code></td>
       <td>Test whether any elements are true values (non-zero numbers are true)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.count_nonzero</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.count_nonzero</code></td>
       <td>Count the number of non-zero elements</td>
     </tr>
   </tbody>
@@ -1394,35 +1394,35 @@ value.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">np.diff</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.diff</code></td>
       <td>Difference between adjacent elements</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.round</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.round</code></td>
       <td>Round each number to the nearest integer (whole number)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.cumprod</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.cumprod</code></td>
       <td>A cumulative product: for each element, multiply all elements so far</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.cumsum</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.cumsum</code></td>
       <td>A cumulative sum: for each element, add all elements so far</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.exp</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.exp</code></td>
       <td>Exponentiate each element</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.log</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.log</code></td>
       <td>Take the natural logarithm of each element</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.sqrt</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.sqrt</code></td>
       <td>Take the square root of each element</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.sort</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.sort</code></td>
       <td>Sort the elements</td>
     </tr>
   </tbody>
@@ -1439,23 +1439,23 @@ value.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">np.char.lower</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.lower</code></td>
       <td>Lowercase each element</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.upper</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.upper</code></td>
       <td>Uppercase each element</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.strip</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.strip</code></td>
       <td>Remove spaces at the beginning or end of each element</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.isalpha</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.isalpha</code></td>
       <td>Whether each element is only letters (no numbers or symbols)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.isnumeric</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.isnumeric</code></td>
       <td>Whether each element is only numeric (no letters)</td>
     </tr>
   </tbody>
@@ -1472,19 +1472,19 @@ value.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">np.char.count</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.count</code></td>
       <td>Count the number of times a search string appears among the elements of an array</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.find</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.find</code></td>
       <td>The position within each element that a search string is found first</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.rfind</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.rfind</code></td>
       <td>The position within each element that a search string is found last</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">np.char.startswith</code></td>
+      <td><code class="language-plaintext highlighter-rouge">np.char.startswith</code></td>
       <td>Whether each element starts with the search string</td>
     </tr>
   </tbody>

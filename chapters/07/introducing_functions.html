@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1201,7 +1201,7 @@ license</a>.</p>
 </span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">argument_1</span><span class="p">,</span> <span class="n">argument_2</span><span class="p">):</span>
     <span class="c1"># Do whatever we want this function to do,
 </span>    <span class="c1"># using argument_1 and argument_2
-</span>    <span class="o">...</span>
+</span>    <span class="p">...</span>
 </code></pre></div></div>
 
 <p>We would call the function like this:</p>
@@ -1215,7 +1215,7 @@ license</a>.</p>
 <ul>
   <li><strong>Defining a function</strong>
     <ul>
-      <li>Give the keyword <code class="highlighter-rouge">def</code>, which tells Python that you are about to <em>define</em> a function.</li>
+      <li>Give the keyword <code class="language-plaintext highlighter-rouge">def</code>, which tells Python that you are about to <em>define</em> a function.</li>
       <li>Give your function a name. A variable name tells you what kind of value the variable contains; a function name should tell you what the function does.</li>
       <li>Give names for each value the function needs in order to do its work.
         <ul>
@@ -1234,7 +1234,7 @@ license</a>.</p>
       <li>Inside the parentheses, give the values you want the function to work
 with.
         <ul>
-          <li>These can be variables such as <code class="highlighter-rouge">current_name</code> and <code class="highlighter-rouge">current_age</code>, or
+          <li>These can be variables such as <code class="language-plaintext highlighter-rouge">current_name</code> and <code class="language-plaintext highlighter-rouge">current_age</code>, or
 they can be actual values such as “eric” and 5.</li>
         </ul>
       </li>
@@ -1259,7 +1259,7 @@ they can be actual values such as “eric” and 5.</li>
 <span class="k">print</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are doing good work, Adriana!
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are doing good work, Adriana!
 Thank you very much for your efforts on this project.
 
 You are doing good work, Billy!
@@ -1284,7 +1284,7 @@ Thank you very much for your efforts on this project.
 <span class="n">thank_you</span><span class="p">(</span><span class="s">'Caroline'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are doing good work, Adriana!
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are doing good work, Adriana!
 Thank you very much for your efforts on this project.
 
 You are doing good work, Billy!
@@ -1298,7 +1298,7 @@ Thank you very much for your efforts on this project.
 
 <p>In our original code, each pair of print statements was run three times, and the only difference was the name of the person being thanked. When you see repetition like this, you can usually make your program more efficient by defining a function.</p>
 
-<p>The keyword <em>def</em> tells Python that we are about to define a function. We give our function a name, <em>thank_you()</em> in this case. A variable’s name should tell us what kind of information it holds; a function’s name should tell us what the variable does.  We then put parentheses. Inside these parentheses we create variable names for any variable the function will need to be given in order to do its job. In this case the function will need a name to include in the thank you message. The variable <code class="highlighter-rouge">name</code> will hold the value that is passed into the function <code class="highlighter-rouge">thank_you()</code>.</p>
+<p>The keyword <em>def</em> tells Python that we are about to define a function. We give our function a name, <em>thank_you()</em> in this case. A variable’s name should tell us what kind of information it holds; a function’s name should tell us what the variable does.  We then put parentheses. Inside these parentheses we create variable names for any variable the function will need to be given in order to do its job. In this case the function will need a name to include in the thank you message. The variable <code class="language-plaintext highlighter-rouge">name</code> will hold the value that is passed into the function <code class="language-plaintext highlighter-rouge">thank_you()</code>.</p>
 
 <p>To use a function we give the function’s name, and then put any values the function needs in order to do its work. In this case we call the function three times, each time passing it a different name.</p>
 
@@ -1319,12 +1319,12 @@ not work.</p>
     <span class="k">print</span><span class="p">()</span>  <span class="c1"># Print a blank line.
 </span></code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
    ...
 NameError: name 'thank_you_effusively' is not defined
 </code></pre></div></div>
 
-<p>On the first line we ask Python to run the function <code class="highlighter-rouge">thank_you_effusively()</code>,
+<p>On the first line we ask Python to run the function <code class="language-plaintext highlighter-rouge">thank_you_effusively()</code>,
 but Python does not yet know how to do this function. We define our functions
 at the beginning of our programs, and then we can use them when we need to.</p>
 

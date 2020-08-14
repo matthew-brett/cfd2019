@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1188,7 +1188,7 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Our data is from this book:</p>
@@ -1217,7 +1217,7 @@ controls who were not active, and the authors termed these “bystanders”.</p>
 <a href="/cfd2019/data/oliner_tab6_8a_1.csv">oliner_tab6_8a_1.csv</a> to the same directory as this notebook.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the table
-</span><span class="n">party_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'oliner_tab6_8a_1.csv'</span><span class="p">)</span>
+</span><span class="n">party_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'oliner_tab6_8a_1.csv'</span><span class="p">)</span>
 <span class="n">party_tab</span>
 </code></pre></div></div>
 
@@ -1277,20 +1277,20 @@ controls who were not active, and the authors termed these “bystanders”.</p>
 
 <p>We have already seen <a href="/cfd2019/chapters/07/pandas_indexing">Pandas indexing</a>.   We are going to be selecting data out of this table with indexing, and we would like to make the index (row labels) be as informative as possible.  The current index, which Pandas created automatically, is sequential numbers, which are not memorable or informative.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">party_tab</span><span class="o">.</span><span class="n">index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">party_tab</span><span class="p">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=0, stop=3, step=1)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=0, stop=3, step=1)
 </code></pre></div></div>
 
 <p>Row labels need not be numbers.  They can also be strings.  Strings are often more useful in identifying the data in the rows.</p>
 
-<p>We might prefer to use the values in the first column - <code class="highlighter-rouge">party_yn</code> as the labels for the rows.</p>
+<p>We might prefer to use the values in the first column - <code class="language-plaintext highlighter-rouge">party_yn</code> as the labels for the rows.</p>
 
-<p>We can do this with the data frame <code class="highlighter-rouge">set_index</code> method.  It replaces the current index (the sequential numbers) with the data from a column.</p>
+<p>We can do this with the data frame <code class="language-plaintext highlighter-rouge">set_index</code> method.  It replaces the current index (the sequential numbers) with the data from a column.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Replace the numerical index with the party_yn labels.
-</span><span class="n">party_tab</span> <span class="o">=</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'party_yn'</span><span class="p">)</span>
+</span><span class="n">party_tab</span> <span class="o">=</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'party_yn'</span><span class="p">)</span>
 <span class="n">party_tab</span>
 </code></pre></div></div>
 
@@ -1348,15 +1348,15 @@ controls who were not active, and the authors termed these “bystanders”.</p>
 </div>
 </div>
 
-<p>Notice that Pandas took the <code class="highlighter-rouge">party_yn</code> column out of the data frame and used it to replace the index.</p>
+<p>Notice that Pandas took the <code class="language-plaintext highlighter-rouge">party_yn</code> column out of the data frame and used it to replace the index.</p>
 
-<p>This makes it easier to use the <code class="highlighter-rouge">.loc</code> attribute to select data, using row labels.  For example, we can select individual elements like this:</p>
+<p>This makes it easier to use the <code class="language-plaintext highlighter-rouge">.loc</code> attribute to select data, using row labels.  For example, we can select individual elements like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># How many rescuers were there, in total?
-</span><span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'out of'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span>
+</span><span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'out of'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>209
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>209
 </code></pre></div></div>
 
 <h2 id="the-question">The question</h2>
@@ -1366,20 +1366,20 @@ tendency to belong to a political party than, say, the Bystanders.</p>
 
 <p>To get more specific, we look at the proportion of rescuers and bystanders that answered Yes (to being a member of a political party before the war).</p>
 
-<p>The <code class="highlighter-rouge">out of</code> row has the total number of people in each column.</p>
+<p>The <code class="language-plaintext highlighter-rouge">out of</code> row has the total number of people in each column.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of Yes for Rescuers.
-</span><span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span> <span class="o">/</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'out of'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span>
+</span><span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span> <span class="o">/</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'out of'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.21052631578947367
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.21052631578947367
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of Yes for Bystanders.
-</span><span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span> <span class="o">/</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'out of'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
+</span><span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span> <span class="o">/</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'out of'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.09859154929577464
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.09859154929577464
 </code></pre></div></div>
 
 <p>That looks like a substantial difference - but could it have come about by chance?</p>
@@ -1397,21 +1397,21 @@ tendency to belong to a political party than, say, the Bystanders.</p>
 <p>We will assume that the same number of people overall are members of a political party:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Number of people who belonged to a political party.
-</span><span class="n">n_yes</span> <span class="o">=</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span> <span class="o">+</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
+</span><span class="n">n_yes</span> <span class="o">=</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span> <span class="o">+</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
 <span class="n">n_yes</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>51
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>51
 </code></pre></div></div>
 
 <p>This leaves the rest, who were not a member of a political party:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Number of people who did not belong to a political party.
-</span><span class="n">n_no</span> <span class="o">=</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span> <span class="o">+</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
+</span><span class="n">n_no</span> <span class="o">=</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span> <span class="o">+</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
 <span class="n">n_no</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>229
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>229
 </code></pre></div></div>
 
 <p>This is a total of:</p>
@@ -1419,7 +1419,7 @@ tendency to belong to a political party than, say, the Bystanders.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_yes</span> <span class="o">+</span> <span class="n">n_no</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>280
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>280
 </code></pre></div></div>
 
 <p>We therefore have 280 labels (51 Yes labels and 229 No labels) to assign to our
@@ -1437,14 +1437,14 @@ ideal world, of no association between rescuer / bystander and Yes / No.</p>
 
 <p>We start by selecting the data we need from the original table.</p>
 
-<p>First we use <code class="highlighter-rouge">loc</code> indexing to specify that we want:</p>
+<p>First we use <code class="language-plaintext highlighter-rouge">loc</code> indexing to specify that we want:</p>
 
 <ul>
   <li>The rows labeled “Yes” and “No”;</li>
   <li>The columns labeled “rescuers” and “bystanders”.</li>
 </ul>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bystander_tab</span> <span class="o">=</span> <span class="n">party_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'No'</span><span class="p">],</span> <span class="p">[</span><span class="s">'rescuers'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bystander_tab</span> <span class="o">=</span> <span class="n">party_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'No'</span><span class="p">],</span> <span class="p">[</span><span class="s">'rescuers'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]]</span>
 <span class="n">bystander_tab</span>
 </code></pre></div></div>
 
@@ -1492,7 +1492,7 @@ ideal world, of no association between rescuer / bystander and Yes / No.</p>
 </div>
 </div>
 
-<p>Notice the <em>lists</em> <code class="highlighter-rouge">['Yes', 'No']</code> and <code class="highlighter-rouge">['rescuers', 'bystanders']</code> specifying
+<p>Notice the <em>lists</em> <code class="language-plaintext highlighter-rouge">['Yes', 'No']</code> and <code class="language-plaintext highlighter-rouge">['rescuers', 'bystanders']</code> specifying
 the row labels and columns labels that we want.</p>
 
 <h2 id="recreating-the-original-data">Recreating the original data</h2>
@@ -1504,17 +1504,17 @@ the row labels and columns labels that we want.</p>
 <p>First we create a list of 280 <em>respondent</em> labels, of which the first 209 are
 ‘rescuer’ and the final 71 are ‘bystander’.  These identify the type of respondent.</p>
 
-<p>To do this, we use <code class="highlighter-rouge">np.repeat</code>.  Check the function signature with <code class="highlighter-rouge">np.repeat?</code> and Enter in a new cell.</p>
+<p>To do this, we use <code class="language-plaintext highlighter-rouge">np.repeat</code>.  Check the function signature with <code class="language-plaintext highlighter-rouge">np.repeat?</code> and Enter in a new cell.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make the 280 respondent labels.
-</span><span class="n">respondent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'rescuer'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">],</span> <span class="p">[</span><span class="mi">209</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span>
+</span><span class="n">respondent</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'rescuer'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">],</span> <span class="p">[</span><span class="mi">209</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span>
 <span class="c1"># Show the first 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'First 10:'</span><span class="p">,</span> <span class="n">respondent</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="c1"># Show the last 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'Last 10:'</span><span class="p">,</span> <span class="n">respondent</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:])</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer'
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer'
  'rescuer' 'rescuer' 'rescuer']
 Last 10: ['bystander' 'bystander' 'bystander' 'bystander' 'bystander' 'bystander'
  'bystander' 'bystander' 'bystander' 'bystander']
@@ -1523,10 +1523,10 @@ Last 10: ['bystander' 'bystander' 'bystander' 'bystander' 'bystander' 'bystander
 
 <p>Here we typed (“hard-coded”) the numbers 209, 71.  We can also get these numbers using the sum of the values in the columns of our table:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bystander_tab</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bystander_tab</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rescuers      209
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rescuers      209
 bystanders     71
 dtype: int64
 </code></pre></div></div>
@@ -1534,14 +1534,14 @@ dtype: int64
 <p>Our code above is a little clearer as:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make the 280 respondent labels.
-</span><span class="n">respondent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'rescuer'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">],</span> <span class="n">bystander_tab</span><span class="o">.</span><span class="nb">sum</span><span class="p">())</span>
+</span><span class="n">respondent</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'rescuer'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">],</span> <span class="n">bystander_tab</span><span class="p">.</span><span class="nb">sum</span><span class="p">())</span>
 <span class="c1"># Show the first 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'First 10:'</span><span class="p">,</span> <span class="n">respondent</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="c1"># Show the last 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'Last 10:'</span><span class="p">,</span> <span class="n">respondent</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:])</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer'
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer' 'rescuer'
  'rescuer' 'rescuer' 'rescuer']
 Last 10: ['bystander' 'bystander' 'bystander' 'bystander' 'bystander' 'bystander'
  'bystander' 'bystander' 'bystander' 'bystander']
@@ -1551,23 +1551,23 @@ Last 10: ['bystander' 'bystander' 'bystander' 'bystander' 'bystander' 'bystander
 <p>Now to create the ‘Yes’, ‘No’ labels.   Again, we could do this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make the 280 Yes No labels.
-</span><span class="n">party_yn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'No'</span><span class="p">],</span> <span class="p">[</span><span class="mi">51</span><span class="p">,</span> <span class="mi">229</span><span class="p">])</span>
+</span><span class="n">party_yn</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'No'</span><span class="p">],</span> <span class="p">[</span><span class="mi">51</span><span class="p">,</span> <span class="mi">229</span><span class="p">])</span>
 <span class="c1"># Show the first 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'First 10:'</span><span class="p">,</span> <span class="n">party_yn</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="c1"># Show the last 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'Last 10:'</span><span class="p">,</span> <span class="n">party_yn</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:])</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes']
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes']
 Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 
 </code></pre></div></div>
 
-<p>We would like to use <code class="highlighter-rouge">sum</code> again to get those totals automatically, but we have already seen that <code class="highlighter-rouge">sum</code>, by default, works down the columns.</p>
+<p>We would like to use <code class="language-plaintext highlighter-rouge">sum</code> again to get those totals automatically, but we have already seen that <code class="language-plaintext highlighter-rouge">sum</code>, by default, works down the columns.</p>
 
-<p>Luckily Pandas has a method called <code class="highlighter-rouge">transpose</code> that flips the rows and columns of a data frame, like this:</p>
+<p>Luckily Pandas has a method called <code class="language-plaintext highlighter-rouge">transpose</code> that flips the rows and columns of a data frame, like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flipped_tab</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flipped_tab</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="n">flipped_tab</span>
 </code></pre></div></div>
 
@@ -1612,10 +1612,10 @@ Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 
 <p>We can get the sum of Yes and No with:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flipped_tab</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flipped_tab</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>party_yn
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>party_yn
 Yes     51
 No     229
 dtype: int64
@@ -1623,10 +1623,10 @@ dtype: int64
 
 <p>Or, all in one go:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bystander_tab</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bystander_tab</span><span class="p">.</span><span class="n">transpose</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>party_yn
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>party_yn
 Yes     51
 No     229
 dtype: int64
@@ -1635,34 +1635,34 @@ dtype: int64
 <p>This allows us to do:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make the 280 Yes No labels.
-</span><span class="n">party_yn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'No'</span><span class="p">],</span> <span class="n">bystander_tab</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="nb">sum</span><span class="p">())</span>
+</span><span class="n">party_yn</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">repeat</span><span class="p">([</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'No'</span><span class="p">],</span> <span class="n">bystander_tab</span><span class="p">.</span><span class="n">transpose</span><span class="p">().</span><span class="nb">sum</span><span class="p">())</span>
 <span class="c1"># Show the first 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'First 10:'</span><span class="p">,</span> <span class="n">party_yn</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="c1"># Show the last 10.
 </span><span class="k">print</span><span class="p">(</span><span class="s">'Last 10:'</span><span class="p">,</span> <span class="n">party_yn</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:])</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes']
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First 10: ['Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes' 'Yes']
 Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 
 </code></pre></div></div>
 
 <p>Next we shuffle the Yes, No labels randomly:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">party_yn</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">party_yn</span><span class="p">)</span>
 <span class="n">party_yn</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Yes'],
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'Yes'],
       dtype='&lt;U3')
 </code></pre></div></div>
 
 <p>We can look at the new random pairing by putting the rows into a table, with 280 rows, one for each person:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">fake_data</span><span class="p">[</span><span class="s">'party_yn'</span><span class="p">]</span> <span class="o">=</span> <span class="n">party_yn</span>
 <span class="n">fake_data</span><span class="p">[</span><span class="s">'respondent'</span><span class="p">]</span> <span class="o">=</span> <span class="n">respondent</span>
-<span class="n">fake_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">fake_data</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1738,12 +1738,12 @@ Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 </span><span class="nb">len</span><span class="p">(</span><span class="n">fake_nos_bystanders</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>59
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>59
 </code></pre></div></div>
 
-<p>Luckily, Pandas has a <code class="highlighter-rouge">crosstab</code> function that does this work for us:</p>
+<p>Luckily, Pandas has a <code class="language-plaintext highlighter-rouge">crosstab</code> function that does this work for us:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">party_yn</span><span class="p">,</span> <span class="n">respondent</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">party_yn</span><span class="p">,</span> <span class="n">respondent</span><span class="p">)</span>
 <span class="n">fake_tab</span>
 </code></pre></div></div>
 
@@ -1795,40 +1795,40 @@ Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 
 <p>That count, in our original data, was:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">actual_y_by</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">actual_y_by</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
 <span class="n">actual_y_by</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
 </code></pre></div></div>
 
 <p>The equivalent count in our new fake table is:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_y_by</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_y_by</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">]</span>
 <span class="n">fake_y_by</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
 </code></pre></div></div>
 
 <p>We need more random samples to see if the fake value is often as small as the real value.  If so, then the ideal world, where the association between rescuer / bystander and Yes / No is random, is a reasonable explanation of what we see, and we might not want to investigate these data much further.</p>
 
-<p>Unfortunately, <code class="highlighter-rouge">pd.crosstab</code> is horribly slow, so we need to drop our usual number of iterations to 1000 to keep the run-time down.</p>
+<p>Unfortunately, <code class="language-plaintext highlighter-rouge">pd.crosstab</code> is horribly slow, so we need to drop our usual number of iterations to 1000 to keep the run-time down.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">party_yn</span><span class="p">)</span>
-    <span class="n">fake_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">party_yn</span><span class="p">,</span> <span class="n">respondent</span><span class="p">)</span>
-    <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">party_yn</span><span class="p">)</span>
+    <span class="n">fake_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">party_yn</span><span class="p">,</span> <span class="n">respondent</span><span class="p">)</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">]</span>
 <span class="n">counts</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 5., 16., 15., 11.,  7., 14., 13., 15.,  7., 15.])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 5., 16., 15., 11.,  7., 14., 13., 15.,  7., 15.])
 </code></pre></div></div>
 
 <p>Here is our <em>sampling distribution</em> from sampling in the ideal world:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">counts</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/07/noble_politics_57_0.png" alt="png" /></p>
@@ -1836,11 +1836,11 @@ Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 <p>How unusual is the actual value, in this ideal world?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times we see ideal world sample &gt;= actual value.
-</span><span class="n">p_lte</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">&lt;=</span> <span class="n">actual_y_by</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</span><span class="n">p_lte</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">&lt;=</span> <span class="n">actual_y_by</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 <span class="n">p_lte</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.025
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.025
 </code></pre></div></div>
 
 <h2 id="a-question">A question</h2>
@@ -1853,36 +1853,36 @@ Last 10: ['No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No' 'No']
 </ul>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Yes, bystander
-</span><span class="n">counts_y_by</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class="n">counts_y_by</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="c1"># No, rescuer
-</span><span class="n">counts_n_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">party_yn</span><span class="p">)</span>
-    <span class="n">fake_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">party_yn</span><span class="p">,</span> <span class="n">respondent</span><span class="p">)</span>
-    <span class="n">counts_y_by</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">]</span>
-    <span class="n">counts_n_r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'rescuer'</span><span class="p">]</span>
+</span><span class="n">counts_n_r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">party_yn</span><span class="p">)</span>
+    <span class="n">fake_tab</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">party_yn</span><span class="p">,</span> <span class="n">respondent</span><span class="p">)</span>
+    <span class="n">counts_y_by</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystander'</span><span class="p">]</span>
+    <span class="n">counts_n_r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fake_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'rescuer'</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>The test for “Yes”, “bystander”:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times we see ideal world sample &gt;= actual value.
-</span><span class="n">actual_y_by</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
-<span class="n">p_lte_y_by</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts_y_by</span> <span class="o">&lt;=</span> <span class="n">actual_y_by</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</span><span class="n">actual_y_by</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'Yes'</span><span class="p">,</span> <span class="s">'bystanders'</span><span class="p">]</span>
+<span class="n">p_lte_y_by</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts_y_by</span> <span class="o">&lt;=</span> <span class="n">actual_y_by</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 <span class="n">p_lte_y_by</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.023
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.023
 </code></pre></div></div>
 
 <p>The test for “No”, “rescuer”:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times we see ideal world sample &gt;= actual value.
-</span><span class="n">actual_n_r</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span>
-<span class="n">p_lte_n_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts_n_r</span> <span class="o">&lt;=</span> <span class="n">actual_n_r</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</span><span class="n">actual_n_r</span> <span class="o">=</span> <span class="n">bystander_tab</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'No'</span><span class="p">,</span> <span class="s">'rescuers'</span><span class="p">]</span>
+<span class="n">p_lte_n_r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts_n_r</span> <span class="o">&lt;=</span> <span class="n">actual_n_r</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 <span class="n">p_lte_n_r</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.023
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.023
 </code></pre></div></div>
 
 <p>See if you can work out why these two answers are <em>exactly</em> the same.</p>

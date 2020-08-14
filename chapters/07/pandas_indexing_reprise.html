@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1188,11 +1188,11 @@ all University professors / lecturers teaching that subject. See <a href="/cfd20
 page</a> for more detail.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the dataset as a data frame
-</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
+</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
 <span class="c1"># Reorder by Easiness
-</span><span class="n">ratings_by_easy</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Easiness'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</span><span class="n">ratings_by_easy</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Easiness'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="c1"># Make a smaller data frame with the first six rows
-</span><span class="n">top_by_easy</span> <span class="o">=</span> <span class="n">ratings_by_easy</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</span><span class="n">top_by_easy</span> <span class="o">=</span> <span class="n">ratings_by_easy</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="c1"># Show the smaller data frame.
 </span><span class="n">top_by_easy</span>
 </code></pre></div></div>
@@ -1291,7 +1291,7 @@ rating was greater than 4.1, and False otherwise.</p>
 <span class="n">is_clear</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64     True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64     True
 36    False
 49     True
 61    False
@@ -1304,14 +1304,14 @@ Name: Clarity, dtype: bool
 
 <h2 id="direct-indexing">Direct indexing</h2>
 
-<p>Direct indexing is where the indexing bracket <code class="highlighter-rouge">[</code> goes right after the data
+<p>Direct indexing is where the indexing bracket <code class="language-plaintext highlighter-rouge">[</code> goes right after the data
 frame.  Examples are:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Direct indexing with a column name.
 </span><span class="n">top_by_easy</span><span class="p">[</span><span class="s">'Discipline'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64               Reading
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64               Reading
 36    Physical Education
 49                Speech
 61     Child Development
@@ -1383,14 +1383,14 @@ direct indexing into Pandas data frames:</p>
   <li>Direct indexing with a Boolean sequence.</li>
 </ol>
 
-<h2 id="indirect-indexing-by-position-with-iloc">Indirect indexing by position with <code class="highlighter-rouge">iloc</code></h2>
+<h2 id="indirect-indexing-by-position-with-iloc">Indirect indexing by position with <code class="language-plaintext highlighter-rouge">iloc</code></h2>
 
-<p>Indirect indexing is where we use the special <code class="highlighter-rouge">.iloc</code> and <code class="highlighter-rouge">.loc</code> attributes of data frames and Series.  The data frame or series goes first, followed by <code class="highlighter-rouge">.iloc</code> or <code class="highlighter-rouge">.loc</code>, followed by the opening square bracket <code class="highlighter-rouge">[</code>, the specifiers for the values we want, and the closing square bracket <code class="highlighter-rouge">]</code>.</p>
+<p>Indirect indexing is where we use the special <code class="language-plaintext highlighter-rouge">.iloc</code> and <code class="language-plaintext highlighter-rouge">.loc</code> attributes of data frames and Series.  The data frame or series goes first, followed by <code class="language-plaintext highlighter-rouge">.iloc</code> or <code class="language-plaintext highlighter-rouge">.loc</code>, followed by the opening square bracket <code class="language-plaintext highlighter-rouge">[</code>, the specifiers for the values we want, and the closing square bracket <code class="language-plaintext highlighter-rouge">]</code>.</p>
 
-<p><code class="highlighter-rouge">.iloc</code> selects rows and columns by <em>position</em>.  For example, here we ask for
+<p><code class="language-plaintext highlighter-rouge">.iloc</code> selects rows and columns by <em>position</em>.  For example, here we ask for
 the first three rows:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_by_easy</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
 
 <div>
@@ -1453,10 +1453,10 @@ the first three rows:</p>
 </div>
 </div>
 
-<p>If we send <code class="highlighter-rouge">.iloc</code> two arguments, separated by commas, then the first argument
+<p>If we send <code class="language-plaintext highlighter-rouge">.iloc</code> two arguments, separated by commas, then the first argument
 refers to the rows, and the second to the columns.  Here we ask for the first three rows and the first three columns:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_by_easy</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
 
 <div>
@@ -1507,14 +1507,14 @@ refers to the rows, and the second to the columns.  Here we ask for the first th
 </div>
 </div>
 
-<p>We can use <code class="highlighter-rouge">:</code> to select everything.  For example, this selects all rows, and
+<p>We can use <code class="language-plaintext highlighter-rouge">:</code> to select everything.  For example, this selects all rows, and
 the last column:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clarity_with_iloc</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clarity_with_iloc</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">clarity_with_iloc</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    3.882635
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    3.882635
 36    3.832250
 49    3.674701
 61    3.606082
@@ -1523,15 +1523,15 @@ the last column:</p>
 Name: Easiness, dtype: float64
 </code></pre></div></div>
 
-<h2 id="indirect-indexing-by-label-with-loc">Indirect indexing by label with <code class="highlighter-rouge">.loc</code></h2>
+<h2 id="indirect-indexing-by-label-with-loc">Indirect indexing by label with <code class="language-plaintext highlighter-rouge">.loc</code></h2>
 
 <p>We can also select items by their row and column <em>labels</em>.  In this case, the row labels are also counting numbers (integers), so they are easily mistaken for positions if you are not careful.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_labeled_64</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_labeled_64</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span>
 <span class="n">row_labeled_64</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Reading
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Reading
 Number of Professors        148
 Clarity                 4.15939
 Helpfulness             4.18892
@@ -1540,13 +1540,13 @@ Easiness                3.88264
 Name: 64, dtype: object
 </code></pre></div></div>
 
-<p>This is a different result than the one we get from <code class="highlighter-rouge">iloc</code>, which does look at position rather than label:</p>
+<p>This is a different result than the one we get from <code class="language-plaintext highlighter-rouge">iloc</code>, which does look at position rather than label:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_position_0</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_position_0</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">row_position_0</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Reading
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Discipline              Reading
 Number of Professors        148
 Clarity                 4.15939
 Helpfulness             4.18892
@@ -1557,7 +1557,7 @@ Name: 64, dtype: object
 
 <p>We can ask for multiple rows by label:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">]]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">]]</span>
 <span class="n">ratings_by_label</span>
 </code></pre></div></div>
 
@@ -1621,15 +1621,15 @@ Name: 64, dtype: object
 </div>
 </div>
 
-<p>If we send <code class="highlighter-rouge">.loc</code> two arguments, separated by commas, then the first argument
+<p>If we send <code class="language-plaintext highlighter-rouge">.loc</code> two arguments, separated by commas, then the first argument
 refers to the rows, and the second to the columns.  The column labels are the
 column names.  Here we ask for the rows labeled 64, 49, 31, and the column labeled “Discipline”:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_row_col_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="s">'Discipline'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_row_col_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="s">'Discipline'</span><span class="p">]</span>
 <span class="n">ratings_by_row_col_label</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    Reading
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    Reading
 49     Speech
 31    Theater
 Name: Discipline, dtype: object
@@ -1637,7 +1637,7 @@ Name: Discipline, dtype: object
 
 <p>If we want multiple columns we can pass a list of column names:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_row_col_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="p">[</span><span class="s">'Discipline'</span><span class="p">,</span> <span class="s">'Clarity'</span><span class="p">]]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings_by_row_col_label</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">31</span><span class="p">],</span> <span class="p">[</span><span class="s">'Discipline'</span><span class="p">,</span> <span class="s">'Clarity'</span><span class="p">]]</span>
 <span class="n">ratings_by_row_col_label</span>
 </code></pre></div></div>
 
@@ -1686,9 +1686,9 @@ Name: Discipline, dtype: object
 </div>
 
 <p>This is a good way of selecting a subset of the columns from the data frame,
-using <code class="highlighter-rouge">:</code> to select all the rows:</p>
+using <code class="language-plaintext highlighter-rouge">:</code> to select all the rows:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_columns</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">'Discipline'</span><span class="p">,</span> <span class="s">'Easiness'</span><span class="p">]]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_columns</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s">'Discipline'</span><span class="p">,</span> <span class="s">'Easiness'</span><span class="p">]]</span>
 <span class="n">some_columns</span>
 </code></pre></div></div>
 
@@ -1751,18 +1751,18 @@ using <code class="highlighter-rouge">:</code> to select all the rows:</p>
 </div>
 </div>
 
-<p>You can use Boolean sequences to select rows with <code class="highlighter-rouge">.loc</code>.</p>
+<p>You can use Boolean sequences to select rows with <code class="language-plaintext highlighter-rouge">.loc</code>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clear_clarity</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_clear</span><span class="p">,</span> <span class="s">'Clarity'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clear_clarity</span> <span class="o">=</span> <span class="n">top_by_easy</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_clear</span><span class="p">,</span> <span class="s">'Clarity'</span><span class="p">]</span>
 <span class="n">clear_clarity</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    4.159392
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64    4.159392
 49    4.133191
 Name: Clarity, dtype: float64
 </code></pre></div></div>
 
-<p>You can also use some Boolean sequences for <code class="highlighter-rouge">.iloc</code>, but it’s a bit more
+<p>You can also use some Boolean sequences for <code class="language-plaintext highlighter-rouge">.iloc</code>, but it’s a bit more
 complicated.  See <a href="/cfd2019/chapters/07/booleans_and_labels">Booleans and labels</a> for more detail.</p>
 
           

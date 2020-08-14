@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1190,7 +1190,7 @@ a column of a table.</p>
 
 <h3 id="defining-a-function">Defining a Function</h3>
 
-<p>The definition of the <code class="highlighter-rouge">double</code> function below simply doubles a number.</p>
+<p>The definition of the <code class="language-plaintext highlighter-rouge">double</code> function below simply doubles a number.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Our first function definition
 </span>
@@ -1199,47 +1199,47 @@ a column of a table.</p>
     <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
 </code></pre></div></div>
 
-<p>We start any function definition by writing <code class="highlighter-rouge">def</code>.  Here is a breakdown of the
+<p>We start any function definition by writing <code class="language-plaintext highlighter-rouge">def</code>.  Here is a breakdown of the
 other parts (the <em>syntax</em>) of this small function:</p>
 
 <p><img src="/cfd2019/images/function_definition.jpg" alt="function definition" /></p>
 
 <p>When we run the cell above, no particular number is doubled, and the code
-inside the body of <code class="highlighter-rouge">double</code> is not yet evaluated.  In this respect, our
+inside the body of <code class="language-plaintext highlighter-rouge">double</code> is not yet evaluated.  In this respect, our
 function is analogous to a <em>recipe</em>.  Each time we follow the instructions in
 a recipe, we need to start with ingredients.  Each time we want to use our
 function to double a number, we need to specify a number.</p>
 
-<p>We can call <code class="highlighter-rouge">double</code> in exactly the same way we have called other functions.
+<p>We can call <code class="language-plaintext highlighter-rouge">double</code> in exactly the same way we have called other functions.
 Each time we do that, the code in the body is executed, with the value of the
-argument given the name <code class="highlighter-rouge">x</code>.</p>
+argument given the name <code class="language-plaintext highlighter-rouge">x</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.3
 </code></pre></div></div>
 
 <p>The two expressions above are both <em>call expressions</em>. In the second one, the
-value of the expression <code class="highlighter-rouge">-0.6/4</code> is computed and then passed as the argument
-named <code class="highlighter-rouge">x</code> to the <code class="highlighter-rouge">double</code> function. Each call expression results in the body of
-<code class="highlighter-rouge">double</code> being executed, but with a different value of <code class="highlighter-rouge">x</code>.</p>
+value of the expression <code class="language-plaintext highlighter-rouge">-0.6/4</code> is computed and then passed as the argument
+named <code class="language-plaintext highlighter-rouge">x</code> to the <code class="language-plaintext highlighter-rouge">double</code> function. Each call expression results in the body of
+<code class="language-plaintext highlighter-rouge">double</code> being executed, but with a different value of <code class="language-plaintext highlighter-rouge">x</code>.</p>
 
-<p>The body of <code class="highlighter-rouge">double</code> has only a single line:</p>
+<p>The body of <code class="language-plaintext highlighter-rouge">double</code> has only a single line:</p>
 
-<p><code class="highlighter-rouge">return 2*x</code></p>
+<p><code class="language-plaintext highlighter-rouge">return 2*x</code></p>
 
-<p>Executing this <em><code class="highlighter-rouge">return</code> statement</em> completes execution of the <code class="highlighter-rouge">double</code>
+<p>Executing this <em><code class="language-plaintext highlighter-rouge">return</code> statement</em> completes execution of the <code class="language-plaintext highlighter-rouge">double</code>
 function’s body and computes the value of the call expression.</p>
 
-<p>The argument to <code class="highlighter-rouge">double</code> can be any expression, as long as its value is
-a number.  For example, it can be a name.  The <code class="highlighter-rouge">double</code> function does not know
+<p>The argument to <code class="language-plaintext highlighter-rouge">double</code> can be any expression, as long as its value is
+a number.  For example, it can be a name.  The <code class="language-plaintext highlighter-rouge">double</code> function does not know
 or care how its argument is computed or stored; its only job is to execute its
 own body using the values of the arguments passed to it.</p>
 
@@ -1247,43 +1247,43 @@ own body using the values of the arguments passed to it.</p>
 <span class="n">double</span><span class="p">(</span><span class="n">any_name</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>84
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>84
 </code></pre></div></div>
 
 <p>The argument can also be any value that can be doubled. For example, a whole
-array of numbers can be passed as an argument to <code class="highlighter-rouge">double</code>, and the result will
+array of numbers can be passed as an argument to <code class="language-plaintext highlighter-rouge">double</code>, and the result will
 be another array.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 6,  8, 10])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 6,  8, 10])
 </code></pre></div></div>
 
 <p>However, names that are defined inside a function, including arguments like
-<code class="highlighter-rouge">double</code>’s <code class="highlighter-rouge">x</code>, have only a fleeting existence.  They are defined only while
+<code class="language-plaintext highlighter-rouge">double</code>’s <code class="language-plaintext highlighter-rouge">x</code>, have only a fleeting existence.  They are defined only while
 the function is being called, and they are only accessible inside the body of
-the function. We can’t refer to <code class="highlighter-rouge">x</code> outside the body of <code class="highlighter-rouge">double</code>. The technical
-terminology is that <code class="highlighter-rouge">x</code> has <em>local scope</em>.</p>
+the function. We can’t refer to <code class="language-plaintext highlighter-rouge">x</code> outside the body of <code class="language-plaintext highlighter-rouge">double</code>. The technical
+terminology is that <code class="language-plaintext highlighter-rouge">x</code> has <em>local scope</em>.</p>
 
-<p>Therefore the name <code class="highlighter-rouge">x</code> isn’t recognized outside the body of the function, even
-though we have called <code class="highlighter-rouge">double</code> in the cells above.</p>
+<p>Therefore the name <code class="language-plaintext highlighter-rouge">x</code> isn’t recognized outside the body of the function, even
+though we have called <code class="language-plaintext highlighter-rouge">double</code> in the cells above.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NameError                                 Traceback (most recent call last)
    ...
 NameError: name 'x' is not defined
 </code></pre></div></div>
 
-<p><strong>Docstrings.</strong> Though <code class="highlighter-rouge">double</code> is relatively easy to understand, many
+<p><strong>Docstrings.</strong> Though <code class="language-plaintext highlighter-rouge">double</code> is relatively easy to understand, many
 functions perform complicated tasks and are difficult to use without
 explanation. (You may have discovered this yourself!) Therefore,
 a well-composed function has a name that evokes its behavior, as well as
 documentation.  In Python, this is called a <em>docstring</em> — a description of its
 behavior and expectations about its arguments. The docstring can also show
-example calls to the function, where the call is preceded by <code class="highlighter-rouge">&gt;&gt;&gt;</code>.</p>
+example calls to the function, where the call is preceded by <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code>.</p>
 
 <p>A docstring can be any string, as long as it is the first thing in a function’s
 body. Docstrings are typically defined using triple quotation marks at the
@@ -1291,7 +1291,7 @@ start and end, which allows a string to span multiple lines. The first line is
 conventionally a complete but short description of the function, while
 following lines provide further guidance to future users of the function.</p>
 
-<p>Here is a definition of a function called <code class="highlighter-rouge">percent</code> that takes two arguments.
+<p>Here is a definition of a function called <code class="language-plaintext highlighter-rouge">percent</code> that takes two arguments.
 The definition includes a docstring.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A function with more than one argument
@@ -1314,29 +1314,29 @@ The definition includes a docstring.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">percent</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16.5
 </code></pre></div></div>
 
-<p>Contrast the function <code class="highlighter-rouge">percent</code> defined above with the function <code class="highlighter-rouge">percents</code>
+<p>Contrast the function <code class="language-plaintext highlighter-rouge">percent</code> defined above with the function <code class="language-plaintext highlighter-rouge">percents</code>
 defined below. The latter takes an array as its argument, and converts all the
 numbers in the array to percents out of the total of the values in the array.
-The percents are all rounded to two decimal places, this time replacing <code class="highlighter-rouge">round</code>
-by <code class="highlighter-rouge">np.round</code> because the argument is an array and not a number.</p>
+The percents are all rounded to two decimal places, this time replacing <code class="language-plaintext highlighter-rouge">round</code>
+by <code class="language-plaintext highlighter-rouge">np.round</code> because the argument is an array and not a number.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
     <span class="s">"""Convert the values in array_x to percents out of the total of array_x."""</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>The function <code class="highlighter-rouge">percents</code> returns an array of percents that add up to 100 apart
+<p>The function <code class="language-plaintext highlighter-rouge">percents</code> returns an array of percents that add up to 100 apart
 from rounding.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">percents</span><span class="p">(</span><span class="n">some_array</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([33.33, 47.62, 19.05])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([33.33, 47.62, 19.05])
 </code></pre></div></div>
 
 <p>It is helpful to understand the steps Python takes to execute a function.  To
@@ -1345,16 +1345,16 @@ in the same cell below.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">biggest_difference</span><span class="p">(</span><span class="n">array_x</span><span class="p">):</span>
     <span class="s">"""Find the biggest difference in absolute value between two adjacent elements of array_x."""</span>
-    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">array_x</span><span class="p">)</span>
+    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">diff</span><span class="p">(</span><span class="n">array_x</span><span class="p">)</span>
     <span class="n">absolute_diffs</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">absolute_diffs</span><span class="p">)</span>
 
-<span class="n">some_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">some_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">big_diff</span> <span class="o">=</span> <span class="n">biggest_difference</span><span class="p">(</span><span class="n">some_numbers</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"The biggest difference is"</span><span class="p">,</span> <span class="n">big_diff</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The biggest difference is 5
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The biggest difference is 5
 
 </code></pre></div></div>
 
@@ -1366,22 +1366,22 @@ in the same cell below.</p>
 
 <p>There can be multiple ways to generalize an expression or block of code, and so
 a function can take multiple arguments that each determine different aspects of
-the result. For example, the <code class="highlighter-rouge">percents</code> function we defined previously rounded
+the result. For example, the <code class="language-plaintext highlighter-rouge">percents</code> function we defined previously rounded
 to two decimal places every time. The following two-argument definition allows
 different calls to round to different amounts.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">):</span>
     <span class="s">"""Convert the values in array_x to percents out of the total of array_x."""</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>
 
-<span class="n">parts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 1 decimal place: "</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 2 decimal places:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 3 decimal places:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rounded to 1 decimal place:  [28.6 14.3 57.1]
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rounded to 1 decimal place:  [28.6 14.3 57.1]
 Rounded to 2 decimal places: [28.57 14.29 57.14]
 Rounded to 3 decimal places: [28.571 14.286 57.143]
 
@@ -1391,21 +1391,21 @@ Rounded to 3 decimal places: [28.571 14.286 57.143]
 function is called, the number of decimal places must be specified. Default
 argument values allow a function to be called with a variable number of
 arguments; any argument that isn’t specified in the call expression is given
-its default value, which is stated in the first line of the <code class="highlighter-rouge">def</code> statement.
-For example, in this final definition of <code class="highlighter-rouge">percents</code>, the optional argument
-<code class="highlighter-rouge">decimal_places</code> is given a default value of 2.</p>
+its default value, which is stated in the first line of the <code class="language-plaintext highlighter-rouge">def</code> statement.
+For example, in this final definition of <code class="language-plaintext highlighter-rouge">percents</code>, the optional argument
+<code class="language-plaintext highlighter-rouge">decimal_places</code> is given a default value of 2.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="s">"""Convert the values in array_x to percents out of the total of array_x."""</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">round</span><span class="p">((</span><span class="n">counts</span><span class="o">/</span><span class="n">total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>
 
-<span class="n">parts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Rounded to 1 decimal place:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Rounded to the default number of decimal places:"</span><span class="p">,</span> <span class="n">percents</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rounded to 1 decimal place: [28.6 14.3 57.1]
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rounded to 1 decimal place: [28.6 14.3 57.1]
 Rounded to the default number of decimal places: [28.57 14.29 57.14]
 
 </code></pre></div></div>
@@ -1415,7 +1415,7 @@ Rounded to the default number of decimal places: [28.57 14.29 57.14]
 <p>Functions are called by placing argument expressions in parentheses after the
 function name. Any function that is defined in isolation is called in this way.
 You have also seen examples of methods, which are like functions but are called
-using dot notation, such as <code class="highlighter-rouge">some_table.sort(some_label)</code>. The functions that
+using dot notation, such as <code class="language-plaintext highlighter-rouge">some_table.sort(some_label)</code>. The functions that
 you define will always be called using the function name first, passing in all
 of the arguments.</p>
 

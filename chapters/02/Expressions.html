@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1188,23 +1188,23 @@ example, this is an expression:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
 </code></pre></div></div>
 
 <p>Notice that the Notebook displays the value.  This the <em>value</em> that the
 expression returns.</p>
 
 <p>An expression can describe to the computer how to combine pieces of data. In
-our example, we have a multiplication expression that consists of a <code class="highlighter-rouge">*</code> symbol
-between two numerical expressions. Expressions, such as <code class="highlighter-rouge">3 * 4</code>, are
+our example, we have a multiplication expression that consists of a <code class="language-plaintext highlighter-rouge">*</code> symbol
+between two numerical expressions. Expressions, such as <code class="language-plaintext highlighter-rouge">3 * 4</code>, are
 <em>evaluated</em> by the computer. The value (the result of <em>evaluation</em>) of the
-last expression in each cell, <code class="highlighter-rouge">12</code> in this case, is displayed below the cell.</p>
+last expression in each cell, <code class="language-plaintext highlighter-rouge">12</code> in this case, is displayed below the cell.</p>
 
-<p>The grammar rules of a programming language are rigid. In Python, the <code class="highlighter-rouge">*</code>
+<p>The grammar rules of a programming language are rigid. In Python, the <code class="language-plaintext highlighter-rouge">*</code>
 symbol cannot appear twice in a row. The computer will not try to interpret an
 expression that differs from its prescribed expression structures. Instead, it
-will show a <code class="highlighter-rouge">SyntaxError</code> error. The <em>Syntax</em> of a language is its set of
-grammar rules, and a <code class="highlighter-rouge">SyntaxError</code> indicates that an expression structure
+will show a <code class="language-plaintext highlighter-rouge">SyntaxError</code> error. The <em>Syntax</em> of a language is its set of
+grammar rules, and a <code class="language-plaintext highlighter-rouge">SyntaxError</code> indicates that an expression structure
 doesn’t match any of the rules of the language.</p>
 
 <p>For example, consider this code, and the resulting error:</p>
@@ -1212,7 +1212,7 @@ doesn’t match any of the rules of the language.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  File "&lt;ipython-input-2-012ea60b41dd&gt;", line 1
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  File "&lt;ipython-input-2-012ea60b41dd&gt;", line 1
     3 * * 4
         ^
 SyntaxError: invalid syntax
@@ -1220,16 +1220,16 @@ SyntaxError: invalid syntax
 </code></pre></div></div>
 
 <p>Small changes to an expression can change its meaning entirely. Below, we
-removed the space between the <code class="highlighter-rouge">*</code>’s. Because <code class="highlighter-rouge">**</code> appears between two
+removed the space between the <code class="language-plaintext highlighter-rouge">*</code>’s. Because <code class="language-plaintext highlighter-rouge">**</code> appears between two
 numerical expressions, the expression is a well-formed <em>exponentiation</em>
 expression (the first number raised to the power of the second: 3 times
-3 times 3 times 3). The symbols <code class="highlighter-rouge">*</code> and <code class="highlighter-rouge">**</code> are called <em>operators</em>, and the
+3 times 3 times 3). The symbols <code class="language-plaintext highlighter-rouge">*</code> and <code class="language-plaintext highlighter-rouge">**</code> are called <em>operators</em>, and the
 values they combine are called <em>operands</em>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">**</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>81
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>81
 </code></pre></div></div>
 
 <h2 id="walking-a-mile-in-pythons-shoes">Walking a mile in Python’s shoes</h2>
@@ -1241,7 +1241,7 @@ values they combine are called <em>operands</em>.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
 </code></pre></div></div>
 
 <p>It is an expression because it is a recipe that returns a value.  We see the
@@ -1252,27 +1252,27 @@ notebook display the value.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
 <p>It’s an expression because it returns a value.  We see the notebook display the value.</p>
 
-<p>More specifically, when Python sees the code <code class="highlighter-rouge">3</code>, it generates a computer representation of the number 3.</p>
+<p>More specifically, when Python sees the code <code class="language-plaintext highlighter-rouge">3</code>, it generates a computer representation of the number 3.</p>
 
 <p>We will use <em>CR</em> as a shorthand for <em>computer representation</em>.  To repeat then,
-the expression <code class="highlighter-rouge">3</code> causes Python to make and return a CR of the number 3.</p>
+the expression <code class="language-plaintext highlighter-rouge">3</code> causes Python to make and return a CR of the number 3.</p>
 
 <p>The Notebook then makes a human-readable display for the computer representation, and shows it to us.</p>
 
 <p>We will uses <em>HR</em> as a shorthand for <em>human readable</em>.  You can also read HR as <em>human representation</em>.</p>
 
-<p>In this case the HR <code class="highlighter-rouge">3</code> is the same as the code we typed, but this isn’t always
+<p>In this case the HR <code class="language-plaintext highlighter-rouge">3</code> is the same as the code we typed, but this isn’t always
 so.  Consider the expression we saw above:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
 </code></pre></div></div>
 
 <p>Python does the following:</p>
@@ -1284,7 +1284,7 @@ so.  Consider the expression we saw above:</p>
 </ul>
 
 <p>The CR of 7 is the value returned from the expression.  The notebook turns that
-into something that humans can read easily - the HR of 7 - which is <code class="highlighter-rouge">7</code>.</p>
+into something that humans can read easily - the HR of 7 - which is <code class="language-plaintext highlighter-rouge">7</code>.</p>
 
 <h2 id="common-operators">Common Operators</h2>
 
@@ -1305,39 +1305,39 @@ essential.</p>
   <tbody>
     <tr>
       <td>Addition</td>
-      <td><code class="highlighter-rouge">+</code></td>
-      <td><code class="highlighter-rouge">2 + 3</code></td>
-      <td><code class="highlighter-rouge">5</code></td>
+      <td><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2 + 3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">5</code></td>
     </tr>
     <tr>
       <td>Subtraction</td>
-      <td><code class="highlighter-rouge">-</code></td>
-      <td><code class="highlighter-rouge">2 - 3</code></td>
-      <td><code class="highlighter-rouge">-1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2 - 3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">-1</code></td>
     </tr>
     <tr>
       <td>Multiplication</td>
-      <td><code class="highlighter-rouge">*</code></td>
-      <td><code class="highlighter-rouge">2 * 3</code></td>
-      <td><code class="highlighter-rouge">6</code></td>
+      <td><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2 * 3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">6</code></td>
     </tr>
     <tr>
       <td>Division</td>
-      <td><code class="highlighter-rouge">/</code></td>
-      <td><code class="highlighter-rouge">7 / 3</code></td>
-      <td><code class="highlighter-rouge">2.66667</code></td>
+      <td><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7 / 3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2.66667</code></td>
     </tr>
     <tr>
       <td>Remainder</td>
-      <td><code class="highlighter-rouge">%</code></td>
-      <td><code class="highlighter-rouge">7 % 3</code></td>
-      <td><code class="highlighter-rouge">1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7 % 3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
     </tr>
     <tr>
       <td>Exponentiation</td>
-      <td><code class="highlighter-rouge">**</code></td>
-      <td><code class="highlighter-rouge">2 ** 0.5</code></td>
-      <td><code class="highlighter-rouge">1.41421</code></td>
+      <td><code class="language-plaintext highlighter-rouge">**</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2 ** 0.5</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1.41421</code></td>
     </tr>
   </tbody>
 </table>
@@ -1349,26 +1349,26 @@ essential.</p>
 multiplication and division occur before addition and subtraction. Parentheses
 can be used to group together smaller expressions within a larger expression.</p>
 
-<p>Multiplication has precedence (we do <code class="highlighter-rouge">2 * 3</code> before adding to 1).</p>
+<p>Multiplication has precedence (we do <code class="language-plaintext highlighter-rouge">2 * 3</code> before adding to 1).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
 </code></pre></div></div>
 
 <p>We can use parentheses to group expressions that should be evaluated first.
-Here we force <code class="highlighter-rouge">1 + 2</code> <em>before</em> the multiplication by 3.</p>
+Here we force <code class="language-plaintext highlighter-rouge">1 + 2</code> <em>before</em> the multiplication by 3.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
 </code></pre></div></div>
 
-<p>In the expression above, the <code class="highlighter-rouge">1 + 2</code> is a <em>sub-expression</em> within the whole
-expression <code class="highlighter-rouge">(1 + 2) * 3</code>.  When Python sees this line, it finds the expression
-<code class="highlighter-rouge">(1 + 2)</code> and evaluates that to get <code class="highlighter-rouge">3</code>.  Then it evaluates <code class="highlighter-rouge">3 * 3</code> to get <code class="highlighter-rouge">9</code>.</p>
+<p>In the expression above, the <code class="language-plaintext highlighter-rouge">1 + 2</code> is a <em>sub-expression</em> within the whole
+expression <code class="language-plaintext highlighter-rouge">(1 + 2) * 3</code>.  When Python sees this line, it finds the expression
+<code class="language-plaintext highlighter-rouge">(1 + 2)</code> and evaluates that to get <code class="language-plaintext highlighter-rouge">3</code>.  Then it evaluates <code class="language-plaintext highlighter-rouge">3 * 3</code> to get <code class="language-plaintext highlighter-rouge">9</code>.</p>
 
 <p>As you learn to program, you will learn to think about what Python is doing,
 and the logical steps it follows.  Over time, you will find it easier to
@@ -1403,7 +1403,7 @@ about \$900.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">25050</span> <span class="o">-</span> <span class="mi">3262</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1963</span> <span class="o">-</span> <span class="mi">1939</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>907.8333333333334
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>907.8333333333334
 </code></pre></div></div>
 
 <p>In Ross Ihaka’s graph you can see that in this period, the doctors’ incomes
@@ -1415,7 +1415,7 @@ have just calculated.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">62799</span> <span class="o">-</span> <span class="mi">25050</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1976</span> <span class="o">-</span> <span class="mi">1963</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2903.769230769231
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2903.769230769231
 </code></pre></div></div>
 
 <p>That is why the graph rises much more steeply after 1963.</p>

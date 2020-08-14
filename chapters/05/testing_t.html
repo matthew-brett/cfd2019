@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1203,16 +1203,16 @@ squared standard deviation.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">t_test</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">):</span>
     <span class="s">""" Independent sample t value and one-tail upper-tail p value.
     """</span>
-    <span class="n">g1_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>
-    <span class="n">g2_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>
+    <span class="n">g1_mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>
+    <span class="n">g2_mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>
     <span class="n">omd</span> <span class="o">=</span> <span class="n">g1_mean</span> <span class="o">-</span> <span class="n">g2_mean</span>  <span class="c1"># The observed mean difference.
-</span>    <span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group1</span> <span class="o">-</span> <span class="n">g1_mean</span><span class="p">,</span> <span class="n">group2</span> <span class="o">-</span> <span class="n">g2_mean</span><span class="p">)</span>
+</span>    <span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">group1</span> <span class="o">-</span> <span class="n">g1_mean</span><span class="p">,</span> <span class="n">group2</span> <span class="o">-</span> <span class="n">g2_mean</span><span class="p">)</span>
     <span class="n">g1_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>  <span class="c1"># Number of observations in group1
 </span>    <span class="n">g2_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>  <span class="c1"># Number of observations in group2
 </span>    <span class="n">df</span> <span class="o">=</span> <span class="n">g1_n</span> <span class="o">+</span> <span class="n">g2_n</span> <span class="o">-</span> <span class="mi">2</span>  <span class="c1"># The "degrees of freedom".
-</span>    <span class="n">estimated_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">)</span>
-    <span class="n">t_stat</span> <span class="o">=</span> <span class="n">omd</span> <span class="o">/</span> <span class="p">(</span><span class="n">estimated_sd</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">g1_n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">g2_n</span><span class="p">))</span>
-    <span class="n">upper_tail_p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sps</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</span>    <span class="n">estimated_sd</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">)</span>
+    <span class="n">t_stat</span> <span class="o">=</span> <span class="n">omd</span> <span class="o">/</span> <span class="p">(</span><span class="n">estimated_sd</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">g1_n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">g2_n</span><span class="p">))</span>
+    <span class="n">upper_tail_p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sps</span><span class="p">.</span><span class="n">t</span><span class="p">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">t_stat</span><span class="p">,</span> <span class="n">upper_tail_p</span><span class="p">]</span>
 </code></pre></div></div>
 
@@ -1224,14 +1224,14 @@ the t statistic; the details of this are not important for our purpose.</p>
 logic for permutation test p values:</p>
 
 <ul>
-  <li>Notice that the function calculates <code class="highlighter-rouge">omd = np.mean(group1) -
-np.mean(group2)</code>. Call <code class="highlighter-rouge">omd</code> the <em>observed mean difference</em>.</li>
-  <li>Assume that we are in the null (ideal) world where the numbers from <code class="highlighter-rouge">group1</code>
-and the numbers from <code class="highlighter-rouge">group2</code> have been drawn at random from the <em>same</em>
+  <li>Notice that the function calculates <code class="language-plaintext highlighter-rouge">omd = np.mean(group1) -
+np.mean(group2)</code>. Call <code class="language-plaintext highlighter-rouge">omd</code> the <em>observed mean difference</em>.</li>
+  <li>Assume that we are in the null (ideal) world where the numbers from <code class="language-plaintext highlighter-rouge">group1</code>
+and the numbers from <code class="language-plaintext highlighter-rouge">group2</code> have been drawn at random from the <em>same</em>
 distribution.</li>
   <li>The p value is the probability, in this null world, of seeing a mean
 difference that is equal to or greater than the observed mean difference
-<code class="highlighter-rouge">omd</code>.</li>
+<code class="language-plaintext highlighter-rouge">omd</code>.</li>
 </ul>
 
 <p>You can also think of a p value as an <em>index of surprise</em>.  The p value tells
@@ -1246,11 +1246,11 @@ world, and it is surprising at a 1% level.</p>
 <p>Here we recreate the mosquito, beer, water data from the <a href="/cfd2019/chapters/05/permutation_and_t_test">permutation and
 t-test page</a>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beer_activated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beer_activated</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span>
                            <span class="mi">25</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>
                            <span class="mi">23</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span>
                            <span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">23</span><span class="p">])</span>
-<span class="n">water_activated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>
+<span class="n">water_activated</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>
                             <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span>
                             <span class="mi">25</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div></div>
@@ -1263,7 +1263,7 @@ t-test page</a>:</p>
 <span class="k">print</span><span class="p">(</span><span class="s">'Upper-tail p value:'</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t statistic: 1.640250605001883
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t statistic: 1.640250605001883
 Upper-tail p value: 0.054302080886695414
 
 </code></pre></div></div>
@@ -1272,12 +1272,12 @@ Upper-tail p value: 0.054302080886695414
 p values are the same as the ones we get from using the standard Scipy function
 for independent t-tests:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Scipy t statistic:'</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">statistic</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Scipy upper-tail p value:'</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">sps</span><span class="p">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Scipy t statistic:'</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">statistic</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Scipy upper-tail p value:'</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">pvalue</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Scipy t statistic: 1.6402506050018828
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Scipy t statistic: 1.6402506050018828
 Scipy upper-tail p value: 0.054302080886695414
 
 </code></pre></div></div>
@@ -1285,10 +1285,10 @@ Scipy upper-tail p value: 0.054302080886695414
 <p>Here is the observed difference in means:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Observed mean difference
-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
 </code></pre></div></div>
 
 <p>The t-test p value above asserts that a difference in means as large as the
@@ -1309,11 +1309,11 @@ null world, and check that the t-test only tells us that the result is
 surprising at the 5% level — about 5% of the time.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+<span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
     <span class="c1"># Make 40 numbers from a normal distribution with mean 10, sd 2.
 </span>    <span class="c1"># These are our numbers from the null world.
-</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
     <span class="c1"># Split into two groups of size 20, and do a t-test.
 </span>    <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">t_test</span><span class="p">(</span><span class="n">randoms</span><span class="p">[:</span><span class="mi">20</span><span class="p">],</span> <span class="n">randoms</span><span class="p">[</span><span class="mi">20</span><span class="p">:])</span>
     <span class="c1"># Store the p value from the t-test.
@@ -1322,17 +1322,17 @@ surprising at the 5% level — about 5% of the time.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.37891583, 0.49396548, 0.59678073, 0.69451794, 0.027721  ])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.37891583, 0.49396548, 0.59678073, 0.69451794, 0.027721  ])
 </code></pre></div></div>
 
 <p>If the t-test calculation is correct, then we should only see a p value of 0.05
 or smaller about 5% of the time.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times the t-test said: surprising at 5% level.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0491
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0491
 </code></pre></div></div>
 
 <p>Here the t-test is doing a good job — it labels the result as surprising, at
@@ -1343,10 +1343,10 @@ do the same calculation, but split the numbers from the null world into one
 group of 3 and another of 37:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># t-test working on unequal group sizes.
-</span><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+</span><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
     <span class="c1"># Make 40 numbers from a normal distribution with mean 10, sd 2.
-</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
     <span class="c1"># Split into two groups of size 3 and 37, and do a t-test.
 </span>    <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">t_test</span><span class="p">(</span><span class="n">randoms</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">randoms</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
     <span class="c1"># Store the p value from the t-test.
@@ -1355,17 +1355,17 @@ group of 3 and another of 37:</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.18448949, 0.91189917, 0.30919735, 0.13982882, 0.85742438])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.18448949, 0.91189917, 0.30919735, 0.13982882, 0.85742438])
 </code></pre></div></div>
 
 <p>How good a job is it doing now, with unequal group sizes?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times the t-test said: surprising at 5% level.
 # This time wih unequal group sizes.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0509
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0509
 </code></pre></div></div>
 
 <p>The proportion is still around 5%, close to what it should be.</p>
@@ -1376,9 +1376,9 @@ group of 3 and another of 37:</p>
 distribution</a>.  The
 distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_chi2_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">some_chi2_numbers</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'1000 random samples from chi-squared distribution, k=2'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">some_chi2_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">some_chi2_numbers</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'1000 random samples from chi-squared distribution, k=2'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/testing_t_22_0.png" alt="png" /></p>
@@ -1386,10 +1386,10 @@ distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p
 <p>We use this highly not-normal distribution to provide numbers to our t-test:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># t-test working on unequal group sizes and not-normal distribution.
-</span><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+</span><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
     <span class="c1"># Make 40 numbers from a chi-squared distribution with k=2
-</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
     <span class="c1"># Split into two groups of size 3 and 37, and do a t-test.
 </span>    <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">t_test</span><span class="p">(</span><span class="n">randoms</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">randoms</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
     <span class="c1"># Store the p value from the t-test.
@@ -1398,7 +1398,7 @@ distribution looks like this, with a $k$ value of 2 (see the Wikipedia page):</p
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.11381436, 0.81548644, 0.64859727, 0.74229967, 0.10194744])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.11381436, 0.81548644, 0.64859727, 0.74229967, 0.10194744])
 </code></pre></div></div>
 
 <p>In this situation the t-test starts to be less accurate - labeling too many
@@ -1406,10 +1406,10 @@ random differences as being surprising at the 5% level:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times the t-test said: surprising at 5% level.
 # This time wih unequal group sizes.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0697
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0697
 </code></pre></div></div>
 
 <p>Does a permutation test do a better job in this situation?</p>
@@ -1419,14 +1419,14 @@ random differences as being surprising at the 5% level:</p>
 <p>Here is a function that does a permutation test:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">permutation</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">niters</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">omd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>
+    <span class="n">omd</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>
     <span class="n">g1_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>
-    <span class="n">fake_mds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-    <span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">niters</span><span class="p">):</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
-        <span class="n">fake_mds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="n">g1_n</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="n">g1_n</span><span class="p">:])</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fake_mds</span> <span class="o">&gt;=</span> <span class="n">omd</span><span class="p">)</span> <span class="o">/</span> <span class="n">niters</span>
+    <span class="n">fake_mds</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+    <span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">niters</span><span class="p">):</span>
+        <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+        <span class="n">fake_mds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="n">g1_n</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="n">g1_n</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fake_mds</span> <span class="o">&gt;=</span> <span class="n">omd</span><span class="p">)</span> <span class="o">/</span> <span class="n">niters</span>
 </code></pre></div></div>
 
 <p>Test this on the mosquito data:</p>
@@ -1434,7 +1434,7 @@ random differences as being surprising at the 5% level:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0543
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0543
 </code></pre></div></div>
 
 <p>This is very similar to the t-statistic p value — <em>for these data</em> that have
@@ -1443,23 +1443,23 @@ fairly equal group size, and a distribution not far from normal:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_test</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1.640250605001883, 0.054302080886695414]
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1.640250605001883, 0.054302080886695414]
 </code></pre></div></div>
 
 <p>Now let’s check how the permutation test does when there are unequal group
 sizes and a not-normal distribution.</p>
 
 <p>The code below will take a few tens of seconds to run, because you are running
-many loops in the <code class="highlighter-rouge">permutation</code> function, each time you go through the main
+many loops in the <code class="language-plaintext highlighter-rouge">permutation</code> function, each time you go through the main
 loop.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Permutation working on unequal group sizes and not-normal distribution.
 # This is slow - do fewer iterations.
 </span><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+<span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>  <span class="c1"># Store the p values
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
     <span class="c1"># Make 40 numbers from a chi-squared distribution with k=2
-</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</span>    <span class="n">randoms</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">chisquare</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
     <span class="c1"># Split into two groups of size 3 and 37, and do a t-test.
 </span>    <span class="c1"># Use fewer iterations than usual to save computation time.
 </span>    <span class="n">p</span> <span class="o">=</span> <span class="n">permutation</span><span class="p">(</span><span class="n">randoms</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">randoms</span><span class="p">[</span><span class="mi">3</span><span class="p">:],</span> <span class="n">niters</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -1469,17 +1469,17 @@ loop.</p>
 </span><span class="n">p_values</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.365, 0.922, 0.113, 0.922, 0.271])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.365, 0.922, 0.113, 0.922, 0.271])
 </code></pre></div></div>
 
 <p>How does the permutation test do?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proportion of times the permutation test said: surprising at 5% level.
 # With unequal group sizes, not-normal distribution.
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">p_values</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_iters</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.045
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.045
 </code></pre></div></div>
 
 <p>It is more accurate than the t-test.   In general the permutation method is

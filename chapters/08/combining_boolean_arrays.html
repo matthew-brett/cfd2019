@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1174,12 +1174,12 @@ elements from arrays or tables.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="c1"># Make plots look a little bit more fancy
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read the Excel format data file
-</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">'disciplines_SI.xlsx'</span><span class="p">)</span>
-<span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span><span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">'disciplines_SI.xlsx'</span><span class="p">)</span>
+<span class="n">ratings</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1263,11 +1263,11 @@ elements from arrays or tables.</p>
 <p>We can select the rows from this table where the Easiness rating was above the median, using a <em>boolean series</em>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easiness</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="s">'Easiness'</span><span class="p">]</span>
-<span class="n">is_gt_median</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">easiness</span><span class="p">)</span>
-<span class="n">is_gt_median</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">is_gt_median</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">(</span><span class="n">easiness</span><span class="p">)</span>
+<span class="n">is_gt_median</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
 1    False
 2    False
 3     True
@@ -1276,7 +1276,7 @@ Name: Easiness, dtype: bool
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">above_median</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">is_gt_median</span><span class="p">]</span>
-<span class="n">above_median</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">above_median</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1360,22 +1360,22 @@ Name: Easiness, dtype: bool
 <p>What if we wanted to select the rows that were between the 25th and 75th
 percentile?  Here’s how to get the percentile values.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q25</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
-<span class="n">q75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q25</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">q75</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">q25</span><span class="p">,</span> <span class="n">q75</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0283298724604153 3.34694063174731
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0283298724604153 3.34694063174731
 
 </code></pre></div></div>
 
 <p>We can do this more neatly with <a href="using_minimize">unpacking</a>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q25</span><span class="p">,</span> <span class="n">q75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q25</span><span class="p">,</span> <span class="n">q75</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">easiness</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">q25</span><span class="p">,</span> <span class="n">q75</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0283298724604153 3.34694063174731
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0283298724604153 3.34694063174731
 
 </code></pre></div></div>
 
@@ -1388,7 +1388,7 @@ values.   We can do this the long way round, by selecting twice:</p>
 </span><span class="n">q25_easiness</span> <span class="o">=</span> <span class="n">above_q25</span><span class="p">[</span><span class="s">'Easiness'</span><span class="p">]</span>
 <span class="c1"># Select values below the 75th percentile.
 </span><span class="n">between_25_75</span> <span class="o">=</span> <span class="n">above_q25</span><span class="p">[</span><span class="n">q25_easiness</span> <span class="o">&lt;</span> <span class="n">q75</span><span class="p">]</span>
-<span class="n">between_25_75</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">between_25_75</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1480,10 +1480,10 @@ below the 75th percentile.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># True if Easiness is above 25th percentile.
 </span><span class="n">is_gt_q25</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">q25</span>
 <span class="c1"># Show the first 10 values
-</span><span class="n">is_gt_q25</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="n">is_gt_q25</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     True
 1     True
 2    False
 3     True
@@ -1499,10 +1499,10 @@ Name: Easiness, dtype: bool
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># True if Easiness is below 75th percentile.
 </span><span class="n">is_lt_q75</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&lt;</span> <span class="n">q75</span>
 <span class="c1"># Show the first 10 values
-</span><span class="n">is_lt_q75</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="n">is_lt_q75</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     True
 1     True
 2     True
 3     True
@@ -1516,21 +1516,21 @@ Name: Easiness, dtype: bool
 </code></pre></div></div>
 
 <p>We can combine these two with Numpy functions.  The function we need in this
-case is <code class="highlighter-rouge">np.logical_and</code>.</p>
+case is <code class="language-plaintext highlighter-rouge">np.logical_and</code>.</p>
 
-<p><code class="highlighter-rouge">np.logical_and</code> can work on Pandas Series, or on Numpy arrays.   We will use
+<p><code class="language-plaintext highlighter-rouge">np.logical_and</code> can work on Pandas Series, or on Numpy arrays.   We will use
 the term <em>sequence</em> for something that can be a Pandas Series or a Numpy
 array.</p>
 
-<p><code class="highlighter-rouge">np.logical_and</code> combines the two input sequences into a new sequence that
+<p><code class="language-plaintext highlighter-rouge">np.logical_and</code> combines the two input sequences into a new sequence that
 only has True in positions where <em>both</em> of the input sequences have a True in
 the corresponding position:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_between_25_75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">is_gt_q25</span><span class="p">,</span> <span class="n">is_lt_q75</span><span class="p">)</span>
-<span class="n">is_between_25_75</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_between_25_75</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">is_gt_q25</span><span class="p">,</span> <span class="n">is_lt_q75</span><span class="p">)</span>
+<span class="n">is_between_25_75</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     True
 1     True
 2    False
 3     True
@@ -1545,13 +1545,13 @@ Name: Easiness, dtype: bool
 
 <p>It might be easier to see what is going on if we make some small test arrays:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">])</span>
 </code></pre></div></div>
 
 <p>We can show these conveniently as a DataFrame:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">ab</span><span class="p">[</span><span class="s">'first input'</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">ab</span><span class="p">[</span><span class="s">'second input'</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
 <span class="n">ab</span>
@@ -1606,11 +1606,11 @@ Name: Easiness, dtype: bool
 </div>
 </div>
 
-<p>Before you look, try to work out what you would get from <code class="highlighter-rouge">np.logical_and(a,
+<p>Before you look, try to work out what you would get from <code class="language-plaintext highlighter-rouge">np.logical_and(a,
 b)</code>.</p>
 
 <p>Remember, the rule is, the result will have True where the corresponding
-element from <em>both</em> <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> are True, and False otherwise.</p>
+element from <em>both</em> <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> are True, and False otherwise.</p>
 
 <p>Here’s something to keep you entertained while you are thinking:</p>
 
@@ -1626,16 +1626,16 @@ element from <em>both</em> <code class="highlighter-rouge">a</code> and <code cl
 
 <p>The result:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False, False, False])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False, False, False])
 </code></pre></div></div>
 
 <p>Here are the two input columns and the result, displayed as a data frame, to
 show them nicely:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span><span class="p">[</span><span class="s">'and result'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span><span class="p">[</span><span class="s">'and result'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">ab</span>
 </code></pre></div></div>
 
@@ -1693,15 +1693,15 @@ show them nicely:</p>
 </div>
 </div>
 
-<p>Check that you agree with Python’s results for combining <code class="highlighter-rouge">is_gt_q25</code> and
-<code class="highlighter-rouge">is_lt_q75</code> in the same way.  Here’s a display showing <code class="highlighter-rouge">is_gt_q25</code>,
-<code class="highlighter-rouge">is_lt_q75</code> and the result of <code class="highlighter-rouge">logical_and</code>:</p>
+<p>Check that you agree with Python’s results for combining <code class="language-plaintext highlighter-rouge">is_gt_q25</code> and
+<code class="language-plaintext highlighter-rouge">is_lt_q75</code> in the same way.  Here’s a display showing <code class="language-plaintext highlighter-rouge">is_gt_q25</code>,
+<code class="language-plaintext highlighter-rouge">is_lt_q75</code> and the result of <code class="language-plaintext highlighter-rouge">logical_and</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">qbools</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">qbools</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">qbools</span><span class="p">[</span><span class="s">'is_gt_q25'</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_gt_q25</span>
 <span class="n">qbools</span><span class="p">[</span><span class="s">'is_lt_q75'</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_lt_q75</span>
-<span class="n">qbools</span><span class="p">[</span><span class="s">'and_result'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">is_gt_q25</span><span class="p">,</span> <span class="n">is_lt_q75</span><span class="p">)</span>
-<span class="n">qbools</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">qbools</span><span class="p">[</span><span class="s">'and_result'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">is_gt_q25</span><span class="p">,</span> <span class="n">is_lt_q75</span><span class="p">)</span>
+<span class="n">qbools</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div>
@@ -1794,11 +1794,11 @@ show them nicely:</p>
 </div>
 </div>
 
-<p>We can use the combined Boolean series from <code class="highlighter-rouge">logical_and</code> to select the rows
+<p>We can use the combined Boolean series from <code class="language-plaintext highlighter-rouge">logical_and</code> to select the rows
 that we want:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">betweeners</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">is_gt_q25</span><span class="p">,</span> <span class="n">is_lt_q75</span><span class="p">)]</span>
-<span class="n">betweeners</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">betweeners</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">is_gt_q25</span><span class="p">,</span> <span class="n">is_lt_q75</span><span class="p">)]</span>
+<span class="n">betweeners</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1880,11 +1880,11 @@ that we want:</p>
 </div>
 
 <p>Notice that we only have rows where there is a corresponding True value in the
-result of the <code class="highlighter-rouge">logical_and</code>, and therefore, that we only have rows that are
+result of the <code class="language-plaintext highlighter-rouge">logical_and</code>, and therefore, that we only have rows that are
 above the 25th percentile, and below the 75th percentile.</p>
 
 <p>You may not be surprised to know there is an equivalent function to
-<code class="highlighter-rouge">logical_and</code> called <code class="highlighter-rouge">logical_or</code>.  Like <code class="highlighter-rouge">logical_and</code> this returns a Boolean
+<code class="language-plaintext highlighter-rouge">logical_and</code> called <code class="language-plaintext highlighter-rouge">logical_or</code>.  Like <code class="language-plaintext highlighter-rouge">logical_and</code> this returns a Boolean
 sequence of the same length as the input sequences.  There is a True in the
 output sequence where <em>one or both</em> of the input sequences have True in the
 corresponding positions.</p>
@@ -1892,22 +1892,22 @@ corresponding positions.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True, False, False])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True, False, False])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True, False])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True, False,  True, False])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True,  True, False])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True,  True, False])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span><span class="p">[</span><span class="s">'or result'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ab</span><span class="p">[</span><span class="s">'or result'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">ab</span>
 </code></pre></div></div>
 
@@ -1973,8 +1973,8 @@ corresponding positions.</p>
 <p>We can use this function to find all the rows that have Easiness ratings above
 the 75th percentile or below the 25th percentile:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_or_hard</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">easiness</span> <span class="o">&lt;</span> <span class="n">q25</span><span class="p">,</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">q75</span><span class="p">)]</span>
-<span class="n">easy_or_hard</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_or_hard</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">easiness</span> <span class="o">&lt;</span> <span class="n">q25</span><span class="p">,</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="n">q75</span><span class="p">)]</span>
+<span class="n">easy_or_hard</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>

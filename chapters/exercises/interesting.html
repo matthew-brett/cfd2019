@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1176,32 +1176,32 @@
 
           <p>For this assignment, you will probably eventually need the <em>power</em> operator.</p>
 
-<p>As in introduction, the <em>multiplication</em> operator is the <code class="highlighter-rouge">*</code> sign, as in:</p>
+<p>As in introduction, the <em>multiplication</em> operator is the <code class="language-plaintext highlighter-rouge">*</code> sign, as in:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">10.50</span> <span class="o">*</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>31.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>31.5
 </code></pre></div></div>
 
 <p>It tells Python to multiply the values on the left by the value on the right.</p>
 
-<p>The <em>power</em> operator is <code class="highlighter-rouge">**</code>.  It works like this:</p>
+<p>The <em>power</em> operator is <code class="language-plaintext highlighter-rouge">**</code>.  It works like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
 </code></pre></div></div>
 
 <p>The line above tells Python to calculate the number to the left (here 2) <em>to
 the power of</em> the number to the right, here 4.  In other words, the calculation
-<code class="highlighter-rouge">2 ** 4</code> in Python is the same as:</p>
+<code class="language-plaintext highlighter-rouge">2 ** 4</code> in Python is the same as:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
 </code></pre></div></div>
 
 <p>Likewise:</p>
@@ -1209,7 +1209,7 @@ the power of</em> the number to the right, here 4.  In other words, the calculat
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">3.5</span> <span class="o">**</span> <span class="mi">5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>525.21875
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>525.21875
 </code></pre></div></div>
 
 <p>results in the same calculation as:</p>
@@ -1217,14 +1217,14 @@ the power of</em> the number to the right, here 4.  In other words, the calculat
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">3.5</span> <span class="o">*</span> <span class="mf">3.5</span> <span class="o">*</span> <span class="mf">3.5</span> <span class="o">*</span> <span class="mf">3.5</span> <span class="o">*</span> <span class="mf">3.5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>525.21875
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>525.21875
 </code></pre></div></div>
 
 <p>Don’t forget to execute the cells in the notebook, that we have written for you.</p>
 
 <h2 id="comments">Comments</h2>
 
-<p>In what follows, you will see me using <em>comments</em>.  Comments start with a hash character - <code class="highlighter-rouge">#</code>.  Python ignores everything after the hash character.  This is useful to write text for you or others to read, inside your code.</p>
+<p>In what follows, you will see me using <em>comments</em>.  Comments start with a hash character - <code class="language-plaintext highlighter-rouge">#</code>.  Python ignores everything after the hash character.  This is useful to write text for you or others to read, inside your code.</p>
 
 <p>For example, try executing the following cell.</p>
 
@@ -1293,7 +1293,7 @@ interest by multiplying my current debt by 0.1.  Let’s give that a name too.</
 <span class="n">interest</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>50.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>50.0
 </code></pre></div></div>
 
 <p>Then my total new debt at the start of the second year will be:</p>
@@ -1301,44 +1301,44 @@ interest by multiplying my current debt by 0.1.  Let’s give that a name too.</
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_debt</span> <span class="o">+</span> <span class="n">interest</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>550.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>550.0
 </code></pre></div></div>
 
 <p>There is a short cut to calculate my total debt at the start of the second
 year.</p>
 
-<p>Remember the total debt is the original debt plus interest, which is <code class="highlighter-rouge">my_debt +
-my_debt * interest_rate</code>.  I could also write this as <code class="highlighter-rouge">my_debt * 1 + my_debt *
-interest_rate</code>, and this is also equal to <code class="highlighter-rouge">my_debt * (1 + interest_rate)</code>.</p>
+<p>Remember the total debt is the original debt plus interest, which is <code class="language-plaintext highlighter-rouge">my_debt +
+my_debt * interest_rate</code>.  I could also write this as <code class="language-plaintext highlighter-rouge">my_debt * 1 + my_debt *
+interest_rate</code>, and this is also equal to <code class="language-plaintext highlighter-rouge">my_debt * (1 + interest_rate)</code>.</p>
 
-<p>Now make a new variable <code class="highlighter-rouge">debt_increaser</code> that is equal to <code class="highlighter-rouge">1 + interest_rate</code>.</p>
+<p>Now make a new variable <code class="language-plaintext highlighter-rouge">debt_increaser</code> that is equal to <code class="language-plaintext highlighter-rouge">1 + interest_rate</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">debt_increaser</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">interest_rate</span>
 <span class="n">debt_increaser</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.1
 </code></pre></div></div>
 
-<p>This variable allows me to calculate <code class="highlighter-rouge">my_debt + my_debt * interest_rate</code> in a
+<p>This variable allows me to calculate <code class="language-plaintext highlighter-rouge">my_debt + my_debt * interest_rate</code> in a
 more compact way, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_debt</span> <span class="o">*</span> <span class="n">debt_increaser</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>550.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>550.0
 </code></pre></div></div>
 
-<p>Because of the definition of <code class="highlighter-rouge">debt_increaser</code> above, this is mathematically
-equal to <code class="highlighter-rouge">my_debt * (1 + interest_rate)</code>, which in turn is mathematically equal
-to <code class="highlighter-rouge">my_debt * 1 + my_debt * interest_rate</code> which is <code class="highlighter-rouge">my_debt + my_debt *
+<p>Because of the definition of <code class="language-plaintext highlighter-rouge">debt_increaser</code> above, this is mathematically
+equal to <code class="language-plaintext highlighter-rouge">my_debt * (1 + interest_rate)</code>, which in turn is mathematically equal
+to <code class="language-plaintext highlighter-rouge">my_debt * 1 + my_debt * interest_rate</code> which is <code class="language-plaintext highlighter-rouge">my_debt + my_debt *
 interest_rate</code> - the calculation we want.</p>
 
 <h2 id="now-your-turn">Now your turn</h2>
 
 <p>Add your code to the cell below, and execute it, to show my total debt at the beginning of the third year.  Your code will probably start with:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_debt * debt_increaser
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_debt * debt_increaser
 </code></pre></div></div>
 
 <p>You should get the same answer as the table above.</p>
@@ -1356,8 +1356,8 @@ interest_rate</code> - the calculation we want.</p>
 from the table above, to check your answer is correct.</p>
 
 <p>Now show my debt after 10 years - at the beginning of the eleventh year.   You
-might want to use the <em>power</em> operator <code class="highlighter-rouge">**</code> to do this.  If you need a
-refresher on powers, you may remember that, if I have some number <code class="highlighter-rouge">x</code> then <code class="highlighter-rouge">x
+might want to use the <em>power</em> operator <code class="language-plaintext highlighter-rouge">**</code> to do this.  If you need a
+refresher on powers, you may remember that, if I have some number <code class="language-plaintext highlighter-rouge">x</code> then <code class="language-plaintext highlighter-rouge">x
 ** 4</code> (read as “x to the power of four”) is another way of writing `x * x * x</p>
 <ul>
   <li>x`.</li>
@@ -1376,7 +1376,7 @@ refresher on powers, you may remember that, if I have some number <code class="h
 <span class="n">weekly_interest_rate</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0018867924528301887
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0018867924528301887
 </code></pre></div></div>
 
 <p>That corresponds to:</p>
@@ -1385,7 +1385,7 @@ refresher on powers, you may remember that, if I have some number <code class="h
 <span class="n">weekly_debt_increaser</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0018867924528303
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0018867924528303
 </code></pre></div></div>
 
 <p>So, starting from my original debt, I will owe this much after one week:</p>
@@ -1394,10 +1394,10 @@ refresher on powers, you may remember that, if I have some number <code class="h
 </span><span class="n">my_debt</span> <span class="o">*</span> <span class="n">weekly_debt_increaser</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>500.94339622641513
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>500.94339622641513
 </code></pre></div></div>
 
-<p>Fill in the cell below, to show how much I will owe after 52 weeks.  You will probably want <code class="highlighter-rouge">**</code> here again.</p>
+<p>Fill in the cell below, to show how much I will owe after 52 weeks.  You will probably want <code class="language-plaintext highlighter-rouge">**</code> here again.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show my debt after 52 weeks, on the new deal
 </span></code></pre></div></div>

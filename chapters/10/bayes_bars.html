@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1209,16 +1209,16 @@ the probabilities.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 <span class="n">x_locations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">box_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'BOX4'</span><span class="p">,</span> <span class="s">'BOX2'</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_probabilities</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting box"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial probability of boxes; P(BOX4)=0.3)'</span><span class="p">);</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_probabilities</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting box"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial probability of boxes; P(BOX4)=0.3)'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_3_0.png" alt="png" /></p>
@@ -1226,11 +1226,11 @@ the probabilities.</p>
 <p>Next we express the initial probabilities of getting a red ball from BOX4 and
 from BOX2:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">red_probabilities</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting red ball"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red for each box'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">red_probabilities</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red for each box'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_5_0.png" alt="png" /></p>
@@ -1249,10 +1249,10 @@ first bar graph (0.3, and 0.7 in this case), by the values expressed by heights
 in the second bar graph (0.8 and 0.4 in this case).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_and_red_probs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"P of box and red ball"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P for each box and red; P(BOX4)=0.3'</span><span class="p">);</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"P of box and red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P for each box and red; P(BOX4)=0.3'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_7_0.png" alt="png" /></p>
@@ -1269,11 +1269,11 @@ BOX4, given we have a red ball.</p>
 <p>We can do this calculation by dividing the heights of the bars above by the sum
 of the heights, so the heights of the bars now sum to 1.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of box given red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of box given red; P(BOX4)=0.3'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of box given red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of box given red; P(BOX4)=0.3'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_9_0.png" alt="png" /></p>
@@ -1289,25 +1289,25 @@ the height of the bars sums to 1.</p>
 <p>Now imagine a slight change to the game; say there is an equal (50%) chance of
 getting BOX4 or BOX2:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
 </code></pre></div></div>
 
 <p>Show the new probabilities:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_probabilities</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of getting box'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial P of boxes; P(BOX4)=0.5'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_probabilities</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of getting box'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Initial P of boxes; P(BOX4)=0.5'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_14_0.png" alt="png" /></p>
 
 <p>The probabilities of getting red from each box have not changed:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">red_probabilities</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting red ball"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red for each box'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">red_probabilities</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Probability of getting red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Probability of getting red for each box'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_16_0.png" alt="png" /></p>
@@ -1315,21 +1315,21 @@ getting BOX4 or BOX2:</p>
 <p>We scale the red-ball bars by the probabilities of the boxes:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_and_red_probs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"P of box and red ball"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P for each box and red (box p equal)'</span><span class="p">);</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"P of box and red ball"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P for each box and red (box p equal)'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_18_0.png" alt="png" /></p>
 
 <p>Last we divide by the sum of the heights of the bars:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of box given red'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of box given red; P(BOX4)=0.5'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_locations</span><span class="p">,</span> <span class="n">box_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'P of box given red'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'P of box given red; P(BOX4)=0.5'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_bars_20_0.png" alt="png" /></p>
@@ -1340,7 +1340,7 @@ BOX4, given we drew a red ball, has also increased.  That probability is now:</p
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'P(BOX4 | red)'</span><span class="p">,</span> <span class="n">box_given_red_probs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>P(BOX4 | red) 0.6666666666666666
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>P(BOX4 | red) 0.6666666666666666
 
 </code></pre></div></div>
 
@@ -1354,17 +1354,17 @@ probabilities — here (0.67, 0.34).</li>
 </ol>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 1 - P of reds.
-</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
 <span class="c1"># Step 2 - scale by P of the boxes
-</span><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+</span><span class="n">box_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
 <span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_probabilities</span> <span class="o">*</span> <span class="n">red_probabilities</span>
 <span class="c1"># Step 3 - divide each bar by sum of bar heights.
-</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
 <span class="c1"># Show result
 </span><span class="n">box_given_red_probs</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
 <p>Notice also, in this case, where the probability of each box is the same, we
@@ -1375,14 +1375,14 @@ result is the same.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># When box probabilities are equal, we can miss out step 2.
 # Step 1 - P of reds.
-</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+</span><span class="n">red_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
 <span class="c1"># Step 3 - divide each bar by sum of bar heights.
-</span><span class="n">shortcut_box_given_red_probs</span> <span class="o">=</span> <span class="n">red_probabilities</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">red_probabilities</span><span class="p">)</span>
+</span><span class="n">shortcut_box_given_red_probs</span> <span class="o">=</span> <span class="n">red_probabilities</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">red_probabilities</span><span class="p">)</span>
 <span class="c1"># Show result is the same as with step 2.
 </span><span class="n">shortcut_box_given_red_probs</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
 <p>If you do not mind a little basic algebra, see why this must be true in the

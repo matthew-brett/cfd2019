@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1195,7 +1195,7 @@ directory as this notebook.</p>
 
 <p>Suppose we use a 1-nearest neighbor classifier to predict whether a patient has chronic kidney disease, based on glucose and white blood cell count.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WBC'</span><span class="p">,</span> <span class="s">'Glucose'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ckd</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WBC'</span><span class="p">,</span> <span class="s">'Glucose'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ckd</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/09/Training_and_Testing_3_0.png" alt="png" /></p>
@@ -1231,19 +1231,19 @@ directory as this notebook.</p>
 
 <p>How to generate the training and testing sets? You’ve guessed it – we’ll select at random.</p>
 
-<p>There are 158 individuals in <code class="highlighter-rouge">ckd</code>. Let’s use a random half of them for training and the other half for testing. To do this, we’ll shuffle all the rows, take the first 79 as the training set, and the remaining 79 for testing.</p>
+<p>There are 158 individuals in <code class="language-plaintext highlighter-rouge">ckd</code>. Let’s use a random half of them for training and the other half for testing. To do this, we’ll shuffle all the rows, take the first 79 as the training set, and the remaining 79 for testing.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ckd</span><span class="p">)</span>
-<span class="n">shuffled_ckd</span> <span class="o">=</span> <span class="n">ckd</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">training</span> <span class="o">=</span> <span class="n">shuffled_ckd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">79</span><span class="p">]</span>
-<span class="n">testing</span> <span class="o">=</span> <span class="n">shuffled_ckd</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">79</span><span class="p">:]</span>
+<span class="n">shuffled_ckd</span> <span class="o">=</span> <span class="n">ckd</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">training</span> <span class="o">=</span> <span class="n">shuffled_ckd</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">79</span><span class="p">]</span>
+<span class="n">testing</span> <span class="o">=</span> <span class="n">shuffled_ckd</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">79</span><span class="p">:]</span>
 </code></pre></div></div>
 
 <p>Now let’s construct our classifier based on the points in the training sample:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">training</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WBC'</span><span class="p">,</span> <span class="s">'Glucose'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">training</span><span class="p">[</span><span class="s">'Color'</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">training</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WBC'</span><span class="p">,</span> <span class="s">'Glucose'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">training</span><span class="p">[</span><span class="s">'Color'</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/09/Training_and_Testing_9_0.png" alt="png" /></p>

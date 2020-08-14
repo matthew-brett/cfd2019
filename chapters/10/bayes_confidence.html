@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1208,15 +1208,15 @@ around 62.25.</p>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2018.csv'</span><span class="p">)</span>
-<span class="n">marks_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">marks_2018</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">havana_2018</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'havana_math_2018.csv'</span><span class="p">)</span>
+<span class="n">marks_2018</span> <span class="o">=</span> <span class="n">havana_2018</span><span class="p">[</span><span class="s">'mark'</span><span class="p">].</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">marks_2018</span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65.25609088420477
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65.25609088420477
 </code></pre></div></div>
 
 <p>To get the <em>sampling distribution</em> of the mean of a sample of 50, we would have
@@ -1226,41 +1226,41 @@ by taking many thousands of samples.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Take 10000 samples, calculate their means.
 </span><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
-    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">marks_2018</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">marks_2018</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 <span class="n">sample_means</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([68.28, 60.9 , 68.08, 68.82, 70.  ])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([68.28, 60.9 , 68.08, 68.82, 70.  ])
 </code></pre></div></div>
 
 <p>The next cell has a histogram of the sampling distribution.  Notice that we
-have asked <code class="highlighter-rouge">plt.hist</code> to break the histogram into bins with <em>edges</em>
-<code class="highlighter-rouge">np.arange(50, 80, 0.5)</code>.  This means that each bin covers a range of 0.5 units
+have asked <code class="language-plaintext highlighter-rouge">plt.hist</code> to break the histogram into bins with <em>edges</em>
+<code class="language-plaintext highlighter-rouge">np.arange(50, 80, 0.5)</code>.  This means that each bin covers a range of 0.5 units
 — so the first bin in the histogram gives the counts of all sample means that
 were between 50 and 50.5 (excluding 50.5), the second bin covers 50.5 up to
 (not including) 51, and so on.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mean mark for sample of 50'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Estimated sampling distribution for mean of 50 marks'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mean mark for sample of 50'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Estimated sampling distribution for mean of 50 marks'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/10/bayes_confidence_7_0.png" alt="png" /></p>
 
-<p>We can use <code class="highlighter-rouge">plt.hist</code> to give us the counts for each of these bins, by storing the values that <code class="highlighter-rouge">plt.hist</code> returns, like this:</p>
+<p>We can use <code class="language-plaintext highlighter-rouge">plt.hist</code> to give us the counts for each of these bins, by storing the values that <code class="language-plaintext highlighter-rouge">plt.hist</code> returns, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Store the values that plt.hist returns.
-</span><span class="n">hist_vals</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
+</span><span class="n">hist_vals</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
 <span class="c1"># Counts per bin is the first returned value.
 </span><span class="n">counts</span> <span class="o">=</span> <span class="n">hist_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  0.,   0.,   0.,   1.,   4.,   1.,   2.,   7.,  13.,  18.,  15.,
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  0.,   0.,   0.,   1.,   4.,   1.,   2.,   7.,  13.,  18.,  15.,
         18.,  41.,  49.,  46.,  67., 102., 125., 128., 164., 209., 272.,
        285., 299., 349., 423., 465., 496., 534., 499., 507., 515., 523.,
        502., 471., 424., 397., 376., 323., 255., 238., 196., 138., 137.,
@@ -1271,16 +1271,16 @@ were between 50 and 50.5 (excluding 50.5), the second bin covers 50.5 up to
 <p><img src="../../images/chapters/10/bayes_confidence_9_1.png" alt="png" /></p>
 
 <p>As we saw in the page on <a href="/cfd2019/chapters/08/using_minimize#unpacking">using minimize</a>, we can get this value a little more
-neatly by <em>unpacking</em> the return values from <code class="highlighter-rouge">plt.hist</code>, like this:</p>
+neatly by <em>unpacking</em> the return values from <code class="language-plaintext highlighter-rouge">plt.hist</code>, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Store the values that plt.hist returns.
 # We will only use the first of these.
-</span><span class="n">counts</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
+</span><span class="n">counts</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bin_edges</span><span class="p">)</span>
 <span class="c1"># Counts per bin (again):
 </span><span class="n">counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  0.,   0.,   0.,   1.,   4.,   1.,   2.,   7.,  13.,  18.,  15.,
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  0.,   0.,   0.,   1.,   4.,   1.,   2.,   7.,  13.,  18.,  15.,
         18.,  41.,  49.,  46.,  67., 102., 125., 128., 164., 209., 272.,
        285., 299., 349., 423., 465., 496., 534., 499., 507., 515., 523.,
        502., 471., 424., 397., 376., 323., 255., 238., 196., 138., 137.,
@@ -1297,7 +1297,7 @@ between the bin edges.  For example, the left (lower) edge of the bin at index
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_edges</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60.0
 </code></pre></div></div>
 
 <p>This the bin counting all the sample mean values between 60 and 60.5.  The
@@ -1306,7 +1306,7 @@ counts in that that bin are:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">counts</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>209.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>209.0
 </code></pre></div></div>
 
 <p>This is the count of the 10000 sample means from our estimated sampling
@@ -1319,7 +1319,7 @@ samples that fall in this range:</p>
 <span class="n">proportions</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.    , 0.    , 0.    , 0.0001, 0.0004, 0.0001, 0.0002, 0.0007,
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.    , 0.    , 0.    , 0.0001, 0.0004, 0.0001, 0.0002, 0.0007,
        0.0013, 0.0018, 0.0015, 0.0018, 0.0041, 0.0049, 0.0046, 0.0067,
        0.0102, 0.0125, 0.0128, 0.0164, 0.0209, 0.0272, 0.0285, 0.0299,
        0.0349, 0.0423, 0.0465, 0.0496, 0.0534, 0.0499, 0.0507, 0.0515,
@@ -1334,7 +1334,7 @@ samples that fall in this range:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proportions</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0209
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0209
 </code></pre></div></div>
 
 <p>In other words, given this estimated sampling distribution, for this world with
@@ -1344,7 +1344,7 @@ a mean of 62.25, the probability of any one sample mean being between 60 and
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proportions</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0209
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0209
 </code></pre></div></div>
 
 <p>Now we are in a position to answer our intermediate question:</p>
@@ -1361,14 +1361,14 @@ distribution we have already been using.</p>
 <p>We find the bin corresponding to the sample mean of 54.51; this is the bin with
 the left (lower) edge of 54.5.   It turns out this is the bin at index 9.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_54p5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bin_edges</span> <span class="o">==</span> <span class="mf">54.5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bin_54p5</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">bin_edges</span> <span class="o">==</span> <span class="mf">54.5</span><span class="p">)</span>
 <span class="n">bin_54p5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([9]),)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([9]),)
 </code></pre></div></div>
 
-<p>Look back at <a href="/cfd2019/chapters/08/where_and_argmin">where and argmin</a> for this trick of using <code class="highlighter-rouge">np.where</code> to find the
+<p>Look back at <a href="/cfd2019/chapters/08/where_and_argmin">where and argmin</a> for this trick of using <code class="language-plaintext highlighter-rouge">np.where</code> to find the
 index.</p>
 
 <p>We get the proportion at that index, to give the probability that we will see a
@@ -1378,7 +1378,7 @@ sample mean between 54.5 and 55:</p>
 <span class="n">p_around_54p5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0018])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.0018])
 </code></pre></div></div>
 
 

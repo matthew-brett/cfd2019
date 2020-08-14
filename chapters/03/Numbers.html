@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1178,65 +1178,65 @@ with quantitative data should know. Python (and most other programming
 languages) distinguishes between two different types of numbers:</p>
 
 <ul>
-  <li>Integers are called <code class="highlighter-rouge">int</code> values in the Python language. They can only
+  <li>Integers are called <code class="language-plaintext highlighter-rouge">int</code> values in the Python language. They can only
 represent whole numbers (negative, zero, or positive) that don’t have a
 fractional component</li>
-  <li>Real numbers are called <code class="highlighter-rouge">float</code> values (or <em>floating point values</em>) in the
+  <li>Real numbers are called <code class="language-plaintext highlighter-rouge">float</code> values (or <em>floating point values</em>) in the
 Python language. They can represent whole or fractional numbers but have
 some limitations.</li>
 </ul>
 
-<p>The type of a number is evident from the way it is displayed: <code class="highlighter-rouge">int</code> values
-have no decimal point and <code class="highlighter-rouge">float</code> values always have a decimal point.</p>
+<p>The type of a number is evident from the way it is displayed: <code class="language-plaintext highlighter-rouge">int</code> values
+have no decimal point and <code class="language-plaintext highlighter-rouge">float</code> values always have a decimal point.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Some int values
 </span><span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mi">1234567890000000000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1234567890000000000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1234567890000000000
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Some float values
 </span><span class="mf">1.2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.2
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.2
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">1.5</span> <span class="o">+</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.5
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">/</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span><span class="mf">12345678900000000000.0</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.23456789e+19
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.23456789e+19
 </code></pre></div></div>
 
-<p>When a <code class="highlighter-rouge">float</code> value is combined with an <code class="highlighter-rouge">int</code> value using some arithmetic
-operator, then the result is always a <code class="highlighter-rouge">float</code> value. In most cases, two
-integers combine to form another integer, but any number (<code class="highlighter-rouge">int</code> or <code class="highlighter-rouge">float</code>)
-divided by another will be a <code class="highlighter-rouge">float</code> value. Very large or very small <code class="highlighter-rouge">float</code>
+<p>When a <code class="language-plaintext highlighter-rouge">float</code> value is combined with an <code class="language-plaintext highlighter-rouge">int</code> value using some arithmetic
+operator, then the result is always a <code class="language-plaintext highlighter-rouge">float</code> value. In most cases, two
+integers combine to form another integer, but any number (<code class="language-plaintext highlighter-rouge">int</code> or <code class="language-plaintext highlighter-rouge">float</code>)
+divided by another will be a <code class="language-plaintext highlighter-rouge">float</code> value. Very large or very small <code class="language-plaintext highlighter-rouge">float</code>
 values are displayed using scientific notation.</p>
 
 <h2 id="float-values">Float Values</h2>
@@ -1244,12 +1244,12 @@ values are displayed using scientific notation.</p>
 <p>Float values are very flexible, but they do have limits.</p>
 
 <ol>
-  <li>A <code class="highlighter-rouge">float</code> can represent extremely large and extremely small numbers. There
+  <li>A <code class="language-plaintext highlighter-rouge">float</code> can represent extremely large and extremely small numbers. There
 are limits, but you will rarely encounter them.</li>
-  <li>A <code class="highlighter-rouge">float</code> only represents 15 or 16 significant digits for any number; the
+  <li>A <code class="language-plaintext highlighter-rouge">float</code> only represents 15 or 16 significant digits for any number; the
 remaining precision is lost. This limited precision is enough for the vast
 majority of applications.</li>
-  <li>After combining <code class="highlighter-rouge">float</code> values with arithmetic, the last few digits may be
+  <li>After combining <code class="language-plaintext highlighter-rouge">float</code> values with arithmetic, the last few digits may be
 incorrect. Small rounding errors are often confusing when first
 encountered.</li>
 </ol>
@@ -1261,25 +1261,25 @@ very small number, then it is represented as zero.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">10</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e+307
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e+307
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e306</span> <span class="o">*</span> <span class="mi">100</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inf
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inf
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">10</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e-323
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2e-323
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2e-322</span> <span class="o">/</span> <span class="mi">100</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
 </code></pre></div></div>
 
 <p>The second limit can be observed by an expression that involves numbers with
@@ -1289,41 +1289,41 @@ arithmetic is carried out.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">0.6666666666666666</span> <span class="o">-</span> <span class="mf">0.6666666666666666123456789</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
 </code></pre></div></div>
 
 <p>The third limit can be observed when taking the difference between two
-expressions that should be equivalent. For example, the expression <code class="highlighter-rouge">2 ** 0.5</code>
+expressions that should be equivalent. For example, the expression <code class="language-plaintext highlighter-rouge">2 ** 0.5</code>
 computes the square root of 2, but squaring this value does not exactly
 recover 2.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.4142135623730951
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.4142135623730951
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.0000000000000004
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.0000000000000004
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.440892098500626e-16
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.440892098500626e-16
 </code></pre></div></div>
 
-<p>The final result above is <code class="highlighter-rouge">0.0000000000000004440892098500626</code>, a number that
+<p>The final result above is <code class="language-plaintext highlighter-rouge">0.0000000000000004440892098500626</code>, a number that
 is very close to zero. The correct answer to this arithmetic expression is 0,
 but a small error in the final significant digit appears very different in
 scientific notation. This behavior appears in almost all programming languages
 because it is the result of the standard way that arithmetic is carried out on
 computers.</p>
 
-<p>Although <code class="highlighter-rouge">float</code> values are not always exact, they are predictable and work
+<p>Although <code class="language-plaintext highlighter-rouge">float</code> values are not always exact, they are predictable and work
 in the same way across all different kinds of computers and programming
 languages.</p>
 

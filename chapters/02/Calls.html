@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1174,52 +1174,52 @@
 The name of the function appears first, followed by expressions in
 parentheses.</p>
 
-<p>For example, <code class="highlighter-rouge">abs</code> is a function that returns the absolute value of the input
+<p>For example, <code class="language-plaintext highlighter-rouge">abs</code> is a function that returns the absolute value of the input
 argument:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">round</code> is a function that returns the input argument rounded to the nearest integer (counting number).</p>
+<p><code class="language-plaintext highlighter-rouge">round</code> is a function that returns the input argument rounded to the nearest integer (counting number).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="mf">1.3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
 </code></pre></div></div>
 
-<p>In this last example, the <code class="highlighter-rouge">max</code> function is <em>called</em> on three <em>arguments</em>: 2,
+<p>In this last example, the <code class="language-plaintext highlighter-rouge">max</code> function is <em>called</em> on three <em>arguments</em>: 2,
 5, and 4. The value of each expression within parentheses is passed to the
 function, and the function <em>returns</em> the final value of the full call
-expression. You separate the expressions with commas: <code class="highlighter-rouge">,</code>. The <code class="highlighter-rouge">max</code> function
+expression. You separate the expressions with commas: <code class="language-plaintext highlighter-rouge">,</code>. The <code class="language-plaintext highlighter-rouge">max</code> function
 can take any number of arguments and returns the maximum.</p>
 
-<p>Many functions, like <code class="highlighter-rouge">max</code> can accept a variable number of arguments.</p>
+<p>Many functions, like <code class="language-plaintext highlighter-rouge">max</code> can accept a variable number of arguments.</p>
 
-<p><code class="highlighter-rouge">round</code> is an example.  If you call <code class="highlighter-rouge">round</code> with one argument, it returns the number rounded to the nearest integer, as you have already seen:</p>
+<p><code class="language-plaintext highlighter-rouge">round</code> is an example.  If you call <code class="language-plaintext highlighter-rouge">round</code> with one argument, it returns the number rounded to the nearest integer, as you have already seen:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">round</span><span class="p">(</span><span class="mf">3.3333</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
-<p>You can also call round with two arguments, where the first argument is the number you want to round, and the second argument is the number of decimal places you want to round to.   If you don’t pass this second argument, <code class="highlighter-rouge">round</code> assumes you mean 0, corresponding to no decimal places, and rounding to the nearest integer:</p>
+<p>You can also call round with two arguments, where the first argument is the number you want to round, and the second argument is the number of decimal places you want to round to.   If you don’t pass this second argument, <code class="language-plaintext highlighter-rouge">round</code> assumes you mean 0, corresponding to no decimal places, and rounding to the nearest integer:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The same as above, rounding to 0 decimal places.
 </span><span class="nb">round</span><span class="p">(</span><span class="mf">3.3333</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
 </code></pre></div></div>
 
 <p>You can also round to - say - 2 decimal places, like this:</p>
@@ -1228,26 +1228,26 @@ can take any number of arguments and returns the maximum.</p>
 </span><span class="nb">round</span><span class="p">(</span><span class="mf">3.3333</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.33
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.33
 </code></pre></div></div>
 
-<p>A few functions are available by default, such as <code class="highlighter-rouge">abs</code> and <code class="highlighter-rouge">round</code>, but most
+<p>A few functions are available by default, such as <code class="language-plaintext highlighter-rouge">abs</code> and <code class="language-plaintext highlighter-rouge">round</code>, but most
 functions that are built into the Python language are stored in a collection
 of functions called a <em>module</em>. An <em>import statement</em> is used to provide
-access to a module, such as <code class="highlighter-rouge">math</code>.</p>
+access to a module, such as <code class="language-plaintext highlighter-rouge">math</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.23606797749979
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.23606797749979
 </code></pre></div></div>
 
 <p>Operators and call expressions can be used together in an expression. The
 <em>percent difference</em> between two values is used to compare values for which
-neither one is obviously <code class="highlighter-rouge">initial</code> or <code class="highlighter-rouge">changed</code>. For example, in 2014 Florida
+neither one is obviously <code class="language-plaintext highlighter-rouge">initial</code> or <code class="language-plaintext highlighter-rouge">changed</code>. For example, in 2014 Florida
 farms produced 2.72 billion eggs while Iowa farms produced 16.25 billion eggs
-<sup id="fnref:eggs"><a href="#fn:eggs" class="footnote">1</a></sup>.  The percent difference is 100 times the absolute value of the
+<sup id="fnref:eggs" role="doc-noteref"><a href="#fn:eggs" class="footnote">1</a></sup>.  The percent difference is 100 times the absolute value of the
 difference between the values, divided by their average. In this case, the
 difference is larger than the average, and so the percent difference is
 greater than 100.</p>
@@ -1257,21 +1257,21 @@ greater than 100.</p>
 <span class="mi">100</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">florida</span><span class="o">-</span><span class="n">iowa</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">florida</span><span class="o">+</span><span class="n">iowa</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>142.6462836056932
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>142.6462836056932
 </code></pre></div></div>
 
 <p>Learning how different functions behave is an important part of learning a
 programming language. A Jupyter notebook can assist in remembering the names
 and effects of different functions. When editing a code cell, press the <em>tab</em>
 key after typing the beginning of a name to bring up a list of ways to
-complete that name. For example, press <em>tab</em> after <code class="highlighter-rouge">math.</code> to see all of the
-functions available in the <code class="highlighter-rouge">math</code> module. Typing will narrow down the list of
-options. To learn more about a function, place a <code class="highlighter-rouge">?</code> after its name. For
-example, typing <code class="highlighter-rouge">math.sin?</code> will bring up a description of the <code class="highlighter-rouge">sin</code>
-function in the <code class="highlighter-rouge">math</code> module.  Try it now.  You should get something like
+complete that name. For example, press <em>tab</em> after <code class="language-plaintext highlighter-rouge">math.</code> to see all of the
+functions available in the <code class="language-plaintext highlighter-rouge">math</code> module. Typing will narrow down the list of
+options. To learn more about a function, place a <code class="language-plaintext highlighter-rouge">?</code> after its name. For
+example, typing <code class="language-plaintext highlighter-rouge">math.sin?</code> will bring up a description of the <code class="language-plaintext highlighter-rouge">sin</code>
+function in the <code class="language-plaintext highlighter-rouge">math</code> module.  Try it now.  You should get something like
 this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqrt(x)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqrt(x)
 
 Return the square root of x.
 </code></pre></div></div>
@@ -1279,7 +1279,7 @@ Return the square root of x.
 <p>The list of <a href="https://docs.python.org/3/library/functions.html">Python’s built-in
 functions</a> is quite long and
 includes many functions that are never needed in data science applications.
-The list of <a href="https://docs.python.org/3/library/math.html">mathematical functions in the <code class="highlighter-rouge">math</code>
+The list of <a href="https://docs.python.org/3/library/math.html">mathematical functions in the <code class="language-plaintext highlighter-rouge">math</code>
 module</a> is similarly long. This
 text will introduce the most important functions in context, rather than
 expecting the reader to memorize or understand these lists.</p>
@@ -1343,13 +1343,13 @@ change.</p>
 <span class="n">wixma</span> <span class="o">-</span> <span class="n">moscou</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-45000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-45000
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">wixma</span> <span class="o">-</span> <span class="n">moscou</span><span class="p">)</span><span class="o">/</span><span class="n">moscou</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.45
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.45
 </code></pre></div></div>
 
 <p>That’s a 45% drop in the number of men in the fighting at Moscow. In other
@@ -1365,7 +1365,7 @@ advance made it as far as Moiodexno on the way back.</p>
 <span class="p">(</span><span class="n">moiodexno</span> <span class="o">-</span> <span class="n">smolensk_A</span><span class="p">)</span><span class="o">/</span><span class="n">smolensk_A</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.9172413793103448
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.9172413793103448
 </code></pre></div></div>
 
 <p>Yes, you could do these calculations by just using the numbers without names.
@@ -1390,25 +1390,25 @@ retreat.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">abs</span><span class="p">(</span><span class="n">dorogobouge</span> <span class="o">-</span> <span class="n">smolensk_A</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5000
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">abs</span><span class="p">(</span><span class="n">dorogobouge</span> <span class="o">-</span> <span class="n">smolensk_A</span><span class="p">)</span><span class="o">/</span><span class="n">smolensk_A</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.034482758620689655
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.034482758620689655
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">abs</span><span class="p">(</span><span class="n">orscha</span> <span class="o">-</span> <span class="n">smolensk_R</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4000
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">abs</span><span class="p">(</span><span class="n">orscha</span> <span class="o">-</span> <span class="n">smolensk_R</span><span class="p">)</span><span class="o">/</span><span class="n">smolensk_R</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.16666666666666666
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.16666666666666666
 </code></pre></div></div>
 
 <div class="isa_info">
@@ -1420,10 +1420,10 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
 <a href="/cfd2019/license">license</a>
 </div>
 
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:eggs">
-      <p><a href="http://quickstats.nass.usda.gov">http://quickstats.nass.usda.gov</a> <a href="#fnref:eggs" class="reversefootnote">&#8617;</a></p>
+    <li id="fn:eggs" role="doc-endnote">
+      <p><a href="http://quickstats.nass.usda.gov">http://quickstats.nass.usda.gov</a> <a href="#fnref:eggs" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>

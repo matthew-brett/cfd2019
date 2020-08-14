@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1202,17 +1202,17 @@ file to the same directory as this notebook.</p>
 <p>See the <a href="/cfd2019/data/gender_stats">gender statistics description page</a> for more detail on the dataset.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file
-</span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
+</span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>This is our usual assignment statement. The LHS is <code class="highlighter-rouge">gender_data</code>, the variable name.  The RHS is an expression, that returns a value.</p>
+<p>This is our usual assignment statement. The LHS is <code class="language-plaintext highlighter-rouge">gender_data</code>, the variable name.  The RHS is an expression, that returns a value.</p>
 
 <p>What type of value does it return?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">gender_data</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
 </code></pre></div></div>
 
 <p>Pandas integrates with the Notebook, so, if you display a data
@@ -1991,24 +1991,24 @@ columns.</p>
 </div>
 </div>
 
-<p>The data frame has rows and columns.  Like other Python objects, it has <em>attributes</em>.  These are pieces of data associated with the data frame.  You have already seen <em>methods</em>, which are functions associated with the data frame.  You can access attributes in the same way as you access methods, by typing the variable name, followed by a dot <code class="highlighter-rouge">.</code>, followed by the attribute name.</p>
+<p>The data frame has rows and columns.  Like other Python objects, it has <em>attributes</em>.  These are pieces of data associated with the data frame.  You have already seen <em>methods</em>, which are functions associated with the data frame.  You can access attributes in the same way as you access methods, by typing the variable name, followed by a dot <code class="language-plaintext highlighter-rouge">.</code>, followed by the attribute name.</p>
 
-<p>For example, one attribute of the data frame, is the <code class="highlighter-rouge">shape</code>:</p>
+<p>For example, one attribute of the data frame, is the <code class="language-plaintext highlighter-rouge">shape</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">shape</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">.</span><span class="n">shape</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(216, 9)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(216, 9)
 </code></pre></div></div>
 
-<p>Another attribute is <code class="highlighter-rouge">columns</code>.  This has the column names. For
+<p>Another attribute is <code class="language-plaintext highlighter-rouge">columns</code>.  This has the column names. For
 example, here is a good way of quickly seeing the column names
 for a data frame:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">columns</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">.</span><span class="n">columns</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
        'health_exp_per_cap', 'health_exp_pub', 'prim_ed_girls',
        'mat_mort_ratio', 'population'],
       dtype='object')
@@ -2017,13 +2017,13 @@ for a data frame:</p>
 <p>You need more information about what these column names refer to.  Here are the longer descriptions from the original data source (link above):</p>
 
 <ul>
-  <li><code class="highlighter-rouge">fert_rate</code>: Fertility rate, total (births per woman).</li>
-  <li><code class="highlighter-rouge">gdp_us_billion</code>: GDP (in current US \$ billions).</li>
-  <li><code class="highlighter-rouge">health_exp_per_cap</code>: Health expenditure per capita, PPP (constant 2011 international \$).</li>
-  <li><code class="highlighter-rouge">health_exp_pub</code>: Health expenditure, public (% of GDP).</li>
-  <li><code class="highlighter-rouge">prim_ed_girls</code>: Primary education, pupils (% female).</li>
-  <li><code class="highlighter-rouge">mat_mort_ratio</code>: Maternal mortality ratio (modeled estimate, per 100,000 live births).</li>
-  <li><code class="highlighter-rouge">population</code>: Population, total.</li>
+  <li><code class="language-plaintext highlighter-rouge">fert_rate</code>: Fertility rate, total (births per woman).</li>
+  <li><code class="language-plaintext highlighter-rouge">gdp_us_billion</code>: GDP (in current US \$ billions).</li>
+  <li><code class="language-plaintext highlighter-rouge">health_exp_per_cap</code>: Health expenditure per capita, PPP (constant 2011 international \$).</li>
+  <li><code class="language-plaintext highlighter-rouge">health_exp_pub</code>: Health expenditure, public (% of GDP).</li>
+  <li><code class="language-plaintext highlighter-rouge">prim_ed_girls</code>: Primary education, pupils (% female).</li>
+  <li><code class="language-plaintext highlighter-rouge">mat_mort_ratio</code>: Maternal mortality ratio (modeled estimate, per 100,000 live births).</li>
+  <li><code class="language-plaintext highlighter-rouge">population</code>: Population, total.</li>
 </ul>
 
 <p>You have just seen array slicing (in <a href="../03/array_indexing">Selecting with
@@ -2037,22 +2037,22 @@ column inside the square brackets.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="p">[</span><span class="s">'gdp_us_billion'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>What <code class="highlighter-rouge">type</code> of thing is this column of data?</p>
+<p>What <code class="language-plaintext highlighter-rouge">type</code> of thing is this column of data?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">gdp</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
-<p>Here are the values for <code class="highlighter-rouge">gdp</code>.  You will notice that these are the
+<p>Here are the values for <code class="language-plaintext highlighter-rouge">gdp</code>.  You will notice that these are the
 same values you saw in the “gdp_us_billion” column when you displayed the whole
 data frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0               NaN
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0               NaN
 1         19.961015
 2        111.936542
 3         12.327586
@@ -2116,48 +2116,48 @@ data frame.</p>
 Name: gdp_us_billion, Length: 216, dtype: float64
 </code></pre></div></div>
 
-<h2 id="missing-values-and-nan">Missing values and <code class="highlighter-rouge">NaN</code></h2>
+<h2 id="missing-values-and-nan">Missing values and <code class="language-plaintext highlighter-rouge">NaN</code></h2>
 
-<p>Looking at the values of <code class="highlighter-rouge">gdp</code> (and therefore, the values of the
-<code class="highlighter-rouge">gdp_us_billion</code> column of <code class="highlighter-rouge">gender_data</code>, we see that some of the values are
-<code class="highlighter-rouge">NaN</code>, which means Not a Number.  Pandas uses this marker to indicate values
+<p>Looking at the values of <code class="language-plaintext highlighter-rouge">gdp</code> (and therefore, the values of the
+<code class="language-plaintext highlighter-rouge">gdp_us_billion</code> column of <code class="language-plaintext highlighter-rouge">gender_data</code>, we see that some of the values are
+<code class="language-plaintext highlighter-rouge">NaN</code>, which means Not a Number.  Pandas uses this marker to indicate values
 that are not available, or <em>missing data</em>.</p>
 
-<p>Numpy does not like to calculate with <code class="highlighter-rouge">NaN</code> values.  Here is Numpy trying to
-calculate the median of the <code class="highlighter-rouge">gdp</code> values.</p>
+<p>Numpy does not like to calculate with <code class="language-plaintext highlighter-rouge">NaN</code> values.  Here is Numpy trying to
+calculate the median of the <code class="language-plaintext highlighter-rouge">gdp</code> values.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">gdp</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">(</span><span class="n">gdp</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/function_base.py:3250: RuntimeWarning: Invalid value encountered in median
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/function_base.py:3250: RuntimeWarning: Invalid value encountered in median
   r = func(a, **kwargs)
 
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nan
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nan
 </code></pre></div></div>
 
 <p>Notice the warning about an invalid value.</p>
 
-<p>Numpy recognizes that one or more values are <code class="highlighter-rouge">NaN</code> and refuses to guess what to do, when calculating the median.</p>
+<p>Numpy recognizes that one or more values are <code class="language-plaintext highlighter-rouge">NaN</code> and refuses to guess what to do, when calculating the median.</p>
 
-<p>You saw from the shape above that <code class="highlighter-rouge">gender_data</code> has 263 rows.  We can use the
-general Python <code class="highlighter-rouge">len</code> function, to see how many elements there are in <code class="highlighter-rouge">gdp</code>.</p>
+<p>You saw from the shape above that <code class="language-plaintext highlighter-rouge">gender_data</code> has 263 rows.  We can use the
+general Python <code class="language-plaintext highlighter-rouge">len</code> function, to see how many elements there are in <code class="language-plaintext highlighter-rouge">gdp</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">gdp</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>216
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>216
 </code></pre></div></div>
 
-<p>As expected, it has the same number of elements as there are rows in <code class="highlighter-rouge">gender_data</code>.</p>
+<p>As expected, it has the same number of elements as there are rows in <code class="language-plaintext highlighter-rouge">gender_data</code>.</p>
 
-<p>The <code class="highlighter-rouge">count</code> method of the series gives the number of values that are not missing - that is - not <code class="highlighter-rouge">NaN</code>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">count</code> method of the series gives the number of values that are not missing - that is - not <code class="language-plaintext highlighter-rouge">NaN</code>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="p">.</span><span class="n">count</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>200
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>200
 </code></pre></div></div>
 
 <h2 id="plotting-with-methods">Plotting with methods</h2>
@@ -2169,16 +2169,16 @@ general Python <code class="highlighter-rouge">len</code> function, to see how m
 <span class="c1"># Display plots inside the notebook.
 </span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="c1"># Make plots look a little more fancy
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">gdp</code> variable is a sequence of values, so we can do a histogram on these
+<p>The <code class="language-plaintext highlighter-rouge">gdp</code> variable is a sequence of values, so we can do a histogram on these
 values, as we have done histograms on arrays.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gdp</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gdp</span><span class="p">);</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/histograms.py:754: RuntimeWarning: invalid value encountered in greater_equal
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/histograms.py:754: RuntimeWarning: invalid value encountered in greater_equal
   keep = (tmp_a &gt;= first_edge)
 /Users/mb312/Library/Python/3.7/lib/python/site-packages/numpy/lib/histograms.py:755: RuntimeWarning: invalid value encountered in less_equal
   keep &amp;= (tmp_a &lt;= last_edge)
@@ -2187,28 +2187,28 @@ values, as we have done histograms on arrays.</p>
 
 <p><img src="../../images/chapters/04/data_frame_intro_32_1.png" alt="png" /></p>
 
-<p>Notice the multiple warnings as Matplotlib tried to calculate the bin widths for the histogram.  These warnings result from Matplotlib struggline with <code class="highlighter-rouge">NaN</code> values.</p>
+<p>Notice the multiple warnings as Matplotlib tried to calculate the bin widths for the histogram.  These warnings result from Matplotlib struggline with <code class="language-plaintext highlighter-rouge">NaN</code> values.</p>
 
-<p>Another way to do the histogram, is to use the <code class="highlighter-rouge">hist</code> <em>method</em> of the series.</p>
+<p>Another way to do the histogram, is to use the <code class="language-plaintext highlighter-rouge">hist</code> <em>method</em> of the series.</p>
 
-<p>A method is a function attached to a value.  In this case <code class="highlighter-rouge">hist</code> is a function attached to a value of type <code class="highlighter-rouge">Series</code>.</p>
+<p>A method is a function attached to a value.  In this case <code class="language-plaintext highlighter-rouge">hist</code> is a function attached to a value of type <code class="language-plaintext highlighter-rouge">Series</code>.</p>
 
-<p>Using the <code class="highlighter-rouge">hist</code> method instead of the <code class="highlighter-rouge">plt.hist</code> function can make the code a bit easier to read.  The method also has the advantage that it discards the <code class="highlighter-rouge">NaN</code> values, by default, so it does not generate the same warnings.</p>
+<p>Using the <code class="language-plaintext highlighter-rouge">hist</code> method instead of the <code class="language-plaintext highlighter-rouge">plt.hist</code> function can make the code a bit easier to read.  The method also has the advantage that it discards the <code class="language-plaintext highlighter-rouge">NaN</code> values, by default, so it does not generate the same warnings.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="p">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_35_0.png" alt="png" /></p>
 
 <p>Now we have had a look at the GDP values, we will look at the
-values for the <code class="highlighter-rouge">mat_mort_ratio</code> column.  These are the numbers
+values for the <code class="language-plaintext highlighter-rouge">mat_mort_ratio</code> column.  These are the numbers
 of women who die in childbirth for every 100,000 births.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span> <span class="o">=</span> <span class="n">gender_data</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">]</span>
 <span class="n">mmr</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0         NaN
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0         NaN
 1      444.00
 2      501.25
 3       29.25
@@ -2272,31 +2272,31 @@ of women who die in childbirth for every 100,000 births.</p>
 Name: mat_mort_ratio, Length: 216, dtype: float64
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mmr</span><span class="p">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_38_0.png" alt="png" /></p>
 
-<p>We are interested in the relationship of <code class="highlighter-rouge">gpp</code> and <code class="highlighter-rouge">mmr</code>.  Maybe richer countries have better health care, and fewer maternal deaths.</p>
+<p>We are interested in the relationship of <code class="language-plaintext highlighter-rouge">gpp</code> and <code class="language-plaintext highlighter-rouge">mmr</code>.  Maybe richer countries have better health care, and fewer maternal deaths.</p>
 
-<p>Here is a plot, using the standard Matplotlib <code class="highlighter-rouge">scatter</code>
+<p>Here is a plot, using the standard Matplotlib <code class="language-plaintext highlighter-rouge">scatter</code>
 function.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp</span><span class="p">,</span> <span class="n">mmr</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp</span><span class="p">,</span> <span class="n">mmr</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_40_0.png" alt="png" /></p>
 
-<p>We can do the same plot using the <code class="highlighter-rouge">plot.scatter</code> method on the data frame.  In that case, we specify the column names that should go on the x and the y axes.</p>
+<p>We can do the same plot using the <code class="language-plaintext highlighter-rouge">plot.scatter</code> method on the data frame.  In that case, we specify the column names that should go on the x and the y axes.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_42_0.png" alt="png" /></p>
 
 <p>An advantage of doing it this way is that we get the column names on the x and y axes by default.</p>
 
-<h2 id="showing-the-top-5-values-with-the-head-method">Showing the top 5 values with the <code class="highlighter-rouge">head</code> method</h2>
+<h2 id="showing-the-top-5-values-with-the-head-method">Showing the top 5 values with the <code class="language-plaintext highlighter-rouge">head</code> method</h2>
 
 <p>We have already seen that Pandas will display the data frame with nice formatting.  If the data frame is long, it will display only the first few and the last few rows:</p>
 
@@ -3072,11 +3072,11 @@ function.</p>
 </div>
 </div>
 
-<p>Notice the <code class="highlighter-rouge">...</code> in the center of this listing, to show that it has not printed some rows.</p>
+<p>Notice the <code class="language-plaintext highlighter-rouge">...</code> in the center of this listing, to show that it has not printed some rows.</p>
 
-<p>Sometimes we do not want to see all these rows, but only - say - the top five rows.   The <code class="highlighter-rouge">head</code> method of the data frame is a useful way to do this:</p>
+<p>Sometimes we do not want to see all these rows, but only - say - the top five rows.   The <code class="language-plaintext highlighter-rouge">head</code> method of the data frame is a useful way to do this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -3175,12 +3175,12 @@ function.</p>
 </div>
 </div>
 
-<p>The <code class="highlighter-rouge">Series</code> also has a <code class="highlighter-rouge">head</code> method, that does the same thing:</p>
+<p>The <code class="language-plaintext highlighter-rouge">Series</code> also has a <code class="language-plaintext highlighter-rouge">head</code> method, that does the same thing:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gdp</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0           NaN
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0           NaN
 1     19.961015
 2    111.936542
 3     12.327586
@@ -3194,14 +3194,14 @@ Name: gdp_us_billion, dtype: float64
 
 <p>Say we want to select the rows corresponding the countries with a high GDP.</p>
 
-<p>Looking at the histogram of <code class="highlighter-rouge">gdp</code> above, we could try this as a threshold to
+<p>Looking at the histogram of <code class="language-plaintext highlighter-rouge">gdp</code> above, we could try this as a threshold to
 identify high GDP countries.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">high_gdp</span> <span class="o">=</span> <span class="n">gdp</span> <span class="o">&gt;</span> <span class="mi">1000</span>
-<span class="n">high_gdp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">high_gdp</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
 1    False
 2    False
 3    False
@@ -3212,12 +3212,12 @@ Name: gdp_us_billion, dtype: bool
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">high_gdp</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
-<p>Notice that <code class="highlighter-rouge">high_gdp</code> is a Boolean series, like the Boolean arrays you have
-already seen.  It has <code class="highlighter-rouge">True</code> for elements corresponding to countries with <code class="highlighter-rouge">gdp</code>
-value greater than <code class="highlighter-rouge">1000</code> and <code class="highlighter-rouge">False</code> otherwise.</p>
+<p>Notice that <code class="language-plaintext highlighter-rouge">high_gdp</code> is a Boolean series, like the Boolean arrays you have
+already seen.  It has <code class="language-plaintext highlighter-rouge">True</code> for elements corresponding to countries with <code class="language-plaintext highlighter-rouge">gdp</code>
+value greater than <code class="language-plaintext highlighter-rouge">1000</code> and <code class="language-plaintext highlighter-rouge">False</code> otherwise.</p>
 
 <p>We can use this Boolean series to select rows from the data frame.</p>
 
@@ -3451,23 +3451,23 @@ what we want.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">rich_gender_data</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">rich_gender_data</code> is a new data frame, that is a subset of the original
-<code class="highlighter-rouge">gender_data</code> frame.  It contains only the rows where the GDP value is greater
-than <code class="highlighter-rouge">1000</code> billion dollars.  Check the display of <code class="highlighter-rouge">rich_gender_data</code> above to
-confirm that the values in the <code class="highlighter-rouge">gdp_us_billion</code> column are all greater than
-<code class="highlighter-rouge">1000</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">rich_gender_data</code> is a new data frame, that is a subset of the original
+<code class="language-plaintext highlighter-rouge">gender_data</code> frame.  It contains only the rows where the GDP value is greater
+than <code class="language-plaintext highlighter-rouge">1000</code> billion dollars.  Check the display of <code class="language-plaintext highlighter-rouge">rich_gender_data</code> above to
+confirm that the values in the <code class="language-plaintext highlighter-rouge">gdp_us_billion</code> column are all greater than
+<code class="language-plaintext highlighter-rouge">1000</code>.</p>
 
 <p>We can do a scatter plot of GDP values against maternal
 mortality rate, and we find, oddly, that for rich countries,
 there is little relationship between GDP and maternal mortality.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="s">'mat_mort_ratio'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1150beb90&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1150beb90&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_60_1.png" alt="png" /></p>
@@ -3476,12 +3476,12 @@ there is little relationship between GDP and maternal mortality.</p>
 
 <h2 id="sorting-data-frames">Sorting data frames</h2>
 
-<p>Data frames have a method <code class="highlighter-rouge">sort_value</code>.  This returns a new data frame with the
+<p>Data frames have a method <code class="language-plaintext highlighter-rouge">sort_value</code>.  This returns a new data frame with the
 rows sorted by the values in the column we specify.</p>
 
 <p>Here are the first five rows of the data frame of the rich countries:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_gender_data</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -3581,10 +3581,10 @@ rows sorted by the values in the column we specify.</p>
 </div>
 
 <p>We are interested to find which of these richer countries has a high maternal mortality ratio.  To do this, we can make a new data frame where the rows are sorted by the values in the
-<code class="highlighter-rouge">mat_mort_ratio</code> column:</p>
+<code class="language-plaintext highlighter-rouge">mat_mort_ratio</code> column:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_by_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mat_mort_ratio'</span><span class="p">)</span>
-<span class="n">rich_by_mmr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_by_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mat_mort_ratio'</span><span class="p">)</span>
+<span class="n">rich_by_mmr</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -3683,17 +3683,17 @@ rows sorted by the values in the column we specify.</p>
 </div>
 </div>
 
-<p>Notice that the rows are in <em>ascending</em> order of <code class="highlighter-rouge">mat_mort_ratio</code>.  To find the countries with high maternal mortality, we might prefer to sort in <em>descending</em> order.  As usual you can explore how
-you might do this by looking at the help for the <code class="highlighter-rouge">sort_values</code> method with:</p>
+<p>Notice that the rows are in <em>ascending</em> order of <code class="language-plaintext highlighter-rouge">mat_mort_ratio</code>.  To find the countries with high maternal mortality, we might prefer to sort in <em>descending</em> order.  As usual you can explore how
+you might do this by looking at the help for the <code class="language-plaintext highlighter-rouge">sort_values</code> method with:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rich_by_mmr.sort_values?
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rich_by_mmr.sort_values?
 </code></pre></div></div>
 
-<p>in a new cell.   If you do that, you discover the <code class="highlighter-rouge">ascending</code> argument, that
+<p>in a new cell.   If you do that, you discover the <code class="language-plaintext highlighter-rouge">ascending</code> argument, that
 you can use like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_by_descending_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mat_mort_ratio'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">rich_by_descending_mmr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_by_descending_mmr</span> <span class="o">=</span> <span class="n">rich_gender_data</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mat_mort_ratio'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">rich_by_descending_mmr</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -3792,7 +3792,7 @@ you can use like this:</p>
 </div>
 </div>
 
-<p>As you might have guessed by now, <code class="highlighter-rouge">Series</code> also have a <code class="highlighter-rouge">sort_values</code> method.
+<p>As you might have guessed by now, <code class="language-plaintext highlighter-rouge">Series</code> also have a <code class="language-plaintext highlighter-rouge">sort_values</code> method.
 For a Series, you don’t have to specify the column to sort from, because you
 are using the Series values.</p>
 
@@ -3800,13 +3800,13 @@ are using the Series values.</p>
 <span class="nb">type</span><span class="p">(</span><span class="n">rich_mmr</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_mmr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_mmr</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88     185.25
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88     185.25
 26      49.50
 124     40.00
 35      28.75
@@ -3836,7 +3836,7 @@ Name: mat_mort_ratio, dtype: float64
 <span class="n">rich_population</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88     1293.742537
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88     1293.742537
 26      204.159544
 124     124.203450
 35     1364.446000
@@ -3862,7 +3862,7 @@ Name: population, dtype: float64
 <span class="n">rich_gdp</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88      2019.005411
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88      2019.005411
 26      2198.765606
 124     1188.802780
 35     10182.790479
@@ -3884,7 +3884,7 @@ Name: gdp_us_billion, dtype: float64
 <span class="n">gdp_per_million</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88      1.560593
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>88      1.560593
 26     10.769840
 124     9.571415
 35      7.462949
@@ -3903,18 +3903,18 @@ dtype: float64
 </code></pre></div></div>
 
 <p>Notice that the result is <em>elementwise</em> division, that is Python divides
-each element in <code class="highlighter-rouge">rich_gdp</code> by the <em>corresponding</em> element in
-<code class="highlighter-rouge">rich_population</code>.</p>
+each element in <code class="language-plaintext highlighter-rouge">rich_gdp</code> by the <em>corresponding</em> element in
+<code class="language-plaintext highlighter-rouge">rich_population</code>.</p>
 
-<p>Remember that India is the first country in the <code class="highlighter-rouge">rich_by_descending_mmr</code>
+<p>Remember that India is the first country in the <code class="language-plaintext highlighter-rouge">rich_by_descending_mmr</code>
 data frame.  It also has by far the lowest GDP per million population of
 any of this selection of rich countries.   Here’s a plot of
-<code class="highlighter-rouge">gdp_per_million</code> against the corresponding values in <code class="highlighter-rouge">mat_mort_ratio</code>:</p>
+<code class="language-plaintext highlighter-rouge">gdp_per_million</code> against the corresponding values in <code class="language-plaintext highlighter-rouge">mat_mort_ratio</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp_per_million</span><span class="p">,</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">gdp_per_million</span><span class="p">,</span> <span class="n">rich_by_descending_mmr</span><span class="p">[</span><span class="s">'mat_mort_ratio'</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x114251dd0&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.PathCollection at 0x114251dd0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/04/data_frame_intro_80_1.png" alt="png" /></p>

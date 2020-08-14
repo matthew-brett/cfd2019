@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1189,7 +1189,7 @@ more details on the dataset, and <a href="/cfd2019/data/license">the data licens
 <span class="c1"># Set up plotting
 </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Read in the data, get the numbers of mosquitoes flying towards the beer
@@ -1197,12 +1197,12 @@ drinkers, and towards the water drinkers, after they had drunk their beer or
 water.  See the <a href="/cfd2019/chapters/05/permutation_idea">the idea of permutation</a>,</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read in the data, select beer and water values.
-</span><span class="n">mosquitoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mosquito_beer.csv'</span><span class="p">)</span>
+</span><span class="n">mosquitoes</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'mosquito_beer.csv'</span><span class="p">)</span>
 <span class="n">after_rows</span> <span class="o">=</span> <span class="n">mosquitoes</span><span class="p">[</span><span class="n">mosquitoes</span><span class="p">[</span><span class="s">'test'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'after'</span><span class="p">]</span>
 <span class="n">beer_rows</span> <span class="o">=</span> <span class="n">after_rows</span><span class="p">[</span><span class="n">after_rows</span><span class="p">[</span><span class="s">'group'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'beer'</span><span class="p">]</span>
-<span class="n">beer_activated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">beer_rows</span><span class="p">[</span><span class="s">'activated'</span><span class="p">])</span>
+<span class="n">beer_activated</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">beer_rows</span><span class="p">[</span><span class="s">'activated'</span><span class="p">])</span>
 <span class="n">water_rows</span> <span class="o">=</span> <span class="n">after_rows</span><span class="p">[</span><span class="n">after_rows</span><span class="p">[</span><span class="s">'group'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'water'</span><span class="p">]</span>
-<span class="n">water_activated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">water_rows</span><span class="p">[</span><span class="s">'activated'</span><span class="p">])</span>
+<span class="n">water_activated</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">water_rows</span><span class="p">[</span><span class="s">'activated'</span><span class="p">])</span>
 </code></pre></div></div>
 
 <p>There are 25 values in the beer group, and 18 in the water group:</p>
@@ -1211,18 +1211,18 @@ water.  See the <a href="/cfd2019/chapters/05/permutation_idea">the idea of perm
 <span class="k">print</span><span class="p">(</span><span class="s">'Number in water group:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">water_activated</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number in beer group: 25
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number in beer group: 25
 Number in water group: 18
 
 </code></pre></div></div>
 
 <p>We are interested in the difference between the means of these numbers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">observed_difference</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">observed_difference</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
 <span class="n">observed_difference</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.433333333333334
 </code></pre></div></div>
 
 <p>In the permutation test we simulate a ideal (null) world in which there is no
@@ -1233,16 +1233,16 @@ will, in the long run, be zero.  By doing this shuffle, sample step many times
 we build up the distribution of the average difference.  This is the <em>sampling
 distribution</em> of the mean difference:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
 <span class="n">n_iters</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">fake_differences</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
-    <span class="n">fake_differences</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="mi">25</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="mi">25</span><span class="p">:])</span>
+<span class="n">fake_differences</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iters</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+    <span class="n">fake_differences</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="mi">25</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="mi">25</span><span class="p">:])</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Sampling difference of means'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Sampling difference of means'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/permutation_and_t_test_10_0.png" alt="png" /></p>
@@ -1251,22 +1251,22 @@ distribution</em> of the mean difference:</p>
 than or equal to the observed value, to get an estimate of the probability of
 the observed value, if we are in fact in the null (ideal) world:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">permutation_p</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span>
     <span class="n">fake_differences</span> <span class="o">&gt;=</span> <span class="n">observed_difference</span><span class="p">)</span><span class="o">/</span> <span class="n">n_iters</span>
 <span class="n">permutation_p</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0583
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0583
 </code></pre></div></div>
 
 <p>Remember that the <em>standard deviation</em> is a measure of the spread of
 a distribution.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sampling_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sampling_sd</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">fake_differences</span><span class="p">)</span>
 <span class="n">sampling_sd</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7544559015909003
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7544559015909003
 </code></pre></div></div>
 
 <p>We can use the standard deviation as unit of distance in the distribution.</p>
@@ -1279,25 +1279,25 @@ distribution, which is zero.</p>
 <span class="n">like_t</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6095132729381358
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6095132729381358
 </code></pre></div></div>
 
-<p>Notice the variable name <code class="highlighter-rouge">like_t</code>.  This number is rather like the famous <a href="https://en.wikipedia.org/wiki/T-statistic">t
+<p>Notice the variable name <code class="language-plaintext highlighter-rouge">like_t</code>.  This number is rather like the famous <a href="https://en.wikipedia.org/wiki/T-statistic">t
 statistic</a>.</p>
 
-<p>The difference between this <code class="highlighter-rouge">like_t</code> value and the <em>t statistic</em> is that the t
+<p>The difference between this <code class="language-plaintext highlighter-rouge">like_t</code> value and the <em>t statistic</em> is that the t
 statistic is the observed difference divided by another <em>estimate</em> of the
 standard deviation of the sampling distribution.  Specifically it is an
-estimate that relies on the assumption that the <code class="highlighter-rouge">beer_activated</code> and
-<code class="highlighter-rouge">water_activated</code> numbers come from a simple bell-shaped <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal
+estimate that relies on the assumption that the <code class="language-plaintext highlighter-rouge">beer_activated</code> and
+<code class="language-plaintext highlighter-rouge">water_activated</code> numbers come from a simple bell-shaped <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal
 distribution</a>.</p>
 
 <p>The specific calculation relies on calculating the <em>prediction errors</em> when we
 use the mean from each group as the prediction for the values in the group.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beer_errors</span> <span class="o">=</span> <span class="n">beer_activated</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
-<span class="n">water_errors</span> <span class="o">=</span> <span class="n">water_activated</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
-<span class="n">all_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_errors</span><span class="p">,</span> <span class="n">water_errors</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beer_errors</span> <span class="o">=</span> <span class="n">beer_activated</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
+<span class="n">water_errors</span> <span class="o">=</span> <span class="n">water_activated</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
+<span class="n">all_errors</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">beer_errors</span><span class="p">,</span> <span class="n">water_errors</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The estimate for the standard deviation of the sampling distribution follows
@@ -1307,12 +1307,12 @@ class.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The t-statistic estimate.
 </span><span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">)</span>
 <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">water_activated</span><span class="p">)</span>
-<span class="n">est_error_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">all_errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">sampling_sd_estimate</span> <span class="o">=</span> <span class="n">est_error_sd</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">n1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n2</span><span class="p">)</span>
+<span class="n">est_error_sd</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">all_errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">sampling_sd_estimate</span> <span class="o">=</span> <span class="n">est_error_sd</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">n1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n2</span><span class="p">)</span>
 <span class="n">sampling_sd_estimate</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7028390172904366
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7028390172904366
 </code></pre></div></div>
 
 <p>Notice that this is rather similar to the estimate we got directly from the
@@ -1321,7 +1321,7 @@ permutation distribution:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sampling_sd</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7544559015909003
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.7544559015909003
 </code></pre></div></div>
 
 <p>The t statistic is the observed mean difference divided by the estimate of the
@@ -1331,7 +1331,7 @@ standard deviation of the sampling distribution.</p>
 <span class="n">t_statistic</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.640250605001883
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.640250605001883
 </code></pre></div></div>
 
 <p>This is the same t statistic value calculated by the <em>independent sample t
@@ -1339,10 +1339,10 @@ test</em> routine from Scipy:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
 <span class="n">t_result</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer_activated</span><span class="p">,</span> <span class="n">water_activated</span><span class="p">)</span>
-<span class="n">t_result</span><span class="o">.</span><span class="n">statistic</span>
+<span class="n">t_result</span><span class="p">.</span><span class="n">statistic</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6402506050018828
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6402506050018828
 </code></pre></div></div>
 
 <p>The equivalent probability from a t test is also outside the scope of the
@@ -1351,17 +1351,17 @@ a normal distribution, then the matching p value is similar to that of the
 permutation test.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The "one-tailed" probability from the t-test.
-</span><span class="n">t_result</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">/</span> <span class="mi">2</span>
+</span><span class="n">t_result</span><span class="p">.</span><span class="n">pvalue</span> <span class="o">/</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.054302080886695414
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.054302080886695414
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The permutation p value is very similar.
 </span><span class="n">permutation_p</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0583
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0583
 </code></pre></div></div>
 
 <p>The permutation test is more general than the t test, because the t test relies

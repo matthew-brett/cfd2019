@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1181,16 +1181,16 @@
 <p>It is often the case in programming – especially when dealing with randomness
 – that we want to repeat a process multiple times.</p>
 
-<p>We know the numpy function <code class="highlighter-rouge">random.randint</code> claims to choose randomly
+<p>We know the numpy function <code class="language-plaintext highlighter-rouge">random.randint</code> claims to choose randomly
 between the integers in the range we specify.</p>
 
 <p>We have been choosing randomly between 0 and 1 with:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">coin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">coin</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">coin</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>We might want to check this really does in fact pick 0 or 1 with
@@ -1198,10 +1198,10 @@ about the same probability.  To do that, we could start by running
 the following cell many times to see if we get roughly equal numbers of
 0s and 1s.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>We might want to re-run code with slightly different input or other slightly
@@ -1209,18 +1209,18 @@ different behavior. We could copy-paste the code multiple times, but that’s
 tedious and prone to typos, and if we wanted to do it a thousand times or
 a million times, forget it.</p>
 
-<p>A more automated solution is to use a <code class="highlighter-rouge">for</code> statement to loop over the
-contents of a sequence. This is called <em>iteration</em>. A <code class="highlighter-rouge">for</code> statement begins
-with the word <code class="highlighter-rouge">for</code>, followed by a name we want to give each item in the
-sequence, followed by the word <code class="highlighter-rouge">in</code>, and ending with an expression that
-evaluates to a sequence. The indented body of the <code class="highlighter-rouge">for</code> statement is executed
+<p>A more automated solution is to use a <code class="language-plaintext highlighter-rouge">for</code> statement to loop over the
+contents of a sequence. This is called <em>iteration</em>. A <code class="language-plaintext highlighter-rouge">for</code> statement begins
+with the word <code class="language-plaintext highlighter-rouge">for</code>, followed by a name we want to give each item in the
+sequence, followed by the word <code class="language-plaintext highlighter-rouge">in</code>, and ending with an expression that
+evaluates to a sequence. The indented body of the <code class="language-plaintext highlighter-rouge">for</code> statement is executed
 once <em>for each item in that sequence</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 1
 2
 
@@ -1235,7 +1235,7 @@ same steps on each.  For example, imagine a librarian describing the sequence
 of steps that he goes through, in issuing a stack of books.  He might say
 something like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Get the stack of books to issue from the reader
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Get the stack of books to issue from the reader
  Put stack of books to issue on my left
  For each *book* in [the stack of books on my left]:
      Open *book* to first page
@@ -1248,7 +1248,7 @@ something like:</p>
 
 <p>Imagine a passport control officer describing their procedure at work:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sign into computer at immigration station
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sign into computer at immigration station
 Open immigration station
 For each *person* of [the people in the immigration line]:
     Ask *person* for their passport.
@@ -1280,7 +1280,7 @@ member of the cabin crew going through the cabin, clicking a clicker once for
 each passenger.  This is to count the number of passengers.  That loop might
 be:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get clicker from equipment cupboard
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get clicker from equipment cupboard
 For each *passenger* of the [passengers in the aircraft]:
     Press the clicker
 (Now I have finished counting the passengers)
@@ -1294,11 +1294,11 @@ Put clicker back in cuboard
 
 <p>Here is the actual Python for loop.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 1
 2
 
@@ -1306,19 +1306,19 @@ Put clicker back in cuboard
 
 <p>We can read that as:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each value in the sequence "np.arange(3)":
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For each value in the sequence "np.arange(3)":
     Put the value into the variable "v"
     Execute the statement "print(v)"
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">v</code> is the <em>loop variable</em>;</li>
-  <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
-  <li><code class="highlighter-rouge">print(v)</code> is the <em>body</em> of the loop.</li>
+  <li><code class="language-plaintext highlighter-rouge">v</code> is the <em>loop variable</em>;</li>
+  <li><code class="language-plaintext highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
+  <li><code class="language-plaintext highlighter-rouge">print(v)</code> is the <em>body</em> of the loop.</li>
 </ul>
 
-<p>It is instructive to imagine code that exactly replicates the <code class="highlighter-rouge">for</code> statement
-without the <code class="highlighter-rouge">for</code> statement.  (This is called <em>unrolling</em> the loop.)  A <code class="highlighter-rouge">for</code>
+<p>It is instructive to imagine code that exactly replicates the <code class="language-plaintext highlighter-rouge">for</code> statement
+without the <code class="language-plaintext highlighter-rouge">for</code> statement.  (This is called <em>unrolling</em> the loop.)  A <code class="language-plaintext highlighter-rouge">for</code>
 statement simply replicates the code inside it, but before each iteration, it
 assigns a new value from the given sequence to the name we chose.  For
 example, here is an unrolled version of the loop above:</p>
@@ -1331,59 +1331,59 @@ example, here is an unrolled version of the loop above:</p>
 <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 1
 2
 
 </code></pre></div></div>
 
-<p>Notice that the name <code class="highlighter-rouge">v</code> is arbitrary, just like any name we assign with <code class="highlighter-rouge">=</code>.
-For example, the following <code class="highlighter-rouge">for</code> loop works in just the same way as the <code class="highlighter-rouge">for</code>
+<p>Notice that the name <code class="language-plaintext highlighter-rouge">v</code> is arbitrary, just like any name we assign with <code class="language-plaintext highlighter-rouge">=</code>.
+For example, the following <code class="language-plaintext highlighter-rouge">for</code> loop works in just the same way as the <code class="language-plaintext highlighter-rouge">for</code>
 loop above:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">my_variable</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">my_variable</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 1
 2
 
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">my_variable</code> is the <em>loop variable</em>;</li>
-  <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
-  <li><code class="highlighter-rouge">print(my_variable)</code> is the <em>body</em> of the loop.</li>
+  <li><code class="language-plaintext highlighter-rouge">my_variable</code> is the <em>loop variable</em>;</li>
+  <li><code class="language-plaintext highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
+  <li><code class="language-plaintext highlighter-rouge">print(my_variable)</code> is the <em>body</em> of the loop.</li>
 </ul>
 
 <p>As in the examples above, the body of the loop need not use the loop variable.  We might just use the loop to repeat something several times.  Here is an old-school comedy policeman:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
 Hello
 Hello
 
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">i</code> is the <em>loop variable</em>;</li>
-  <li><code class="highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
-  <li><code class="highlighter-rouge">print("Hello")</code> is the <em>body</em> of the loop.  It does not use the loop
+  <li><code class="language-plaintext highlighter-rouge">i</code> is the <em>loop variable</em>;</li>
+  <li><code class="language-plaintext highlighter-rouge">np.arange(3)</code> is the <em>sequence</em>;</li>
+  <li><code class="language-plaintext highlighter-rouge">print("Hello")</code> is the <em>body</em> of the loop.  It does not use the loop
 variable.</li>
 </ul>
 
-<p>In the next example, we use a <code class="highlighter-rouge">for</code> statement in a more realistic way: we
+<p>In the next example, we use a <code class="language-plaintext highlighter-rouge">for</code> statement in a more realistic way: we
 print the results of five random integers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 1
 1
 1
@@ -1392,8 +1392,8 @@ print the results of five random integers:</p>
 </code></pre></div></div>
 
 <p>In this case, we simply perform exactly the same (random) action several
-times, so the code inside our <code class="highlighter-rouge">for</code> statement does not actually refer to the
-variable <code class="highlighter-rouge">v</code>.</p>
+times, so the code inside our <code class="language-plaintext highlighter-rouge">for</code> statement does not actually refer to the
+variable <code class="language-plaintext highlighter-rouge">v</code>.</p>
 
 <h3 id="example-counting-the-number-of-heads">Example: Counting the Number of Heads</h3>
 
@@ -1402,46 +1402,46 @@ an array. We will start by creating an empty array and then appending
 the result of each toss.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty array.
-</span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+</span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([])</span>
 
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 1., 0., 1.])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 1., 0., 1.])
 </code></pre></div></div>
 
-<p>Let us rewrite the cell with the <code class="highlighter-rouge">for</code> statement unrolled:</p>
+<p>Let us rewrite the cell with the <code class="language-plaintext highlighter-rouge">for</code> statement unrolled:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty array.
-</span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+</span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 1., 0., 0.])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 1., 0., 0.])
 </code></pre></div></div>
 
-<p>Now we have an array, we can use <code class="highlighter-rouge">np.sum</code> to count the
+<p>Now we have an array, we can use <code class="language-plaintext highlighter-rouge">np.sum</code> to count the
 number of heads in the five tosses.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
 </code></pre></div></div>
 
 <p>Iteration is a powerful technique. For example, by running exactly the
@@ -1449,15 +1449,15 @@ same code for 1000 tosses instead of 5, we can count the number of
 heads in 1000 tosses.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An empty array.
-</span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+</span><span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([])</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tosses</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">tosses</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 1., 1., 1., 1., 0.,
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 1., 1., 1., 1., 0.,
        1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 0.,
        1., 1., 1., 0., 0., 1., 0., 1., 0., 1., 1., 0., 0., 1., 1., 0., 1.,
        0., 0., 1., 0., 0., 0., 0., 1., 1., 0., 0., 1., 0., 0., 0., 0., 1.,
@@ -1539,31 +1539,31 @@ experiment:</p>
 <p>The histogram of our results will give us some insight into how many
 heads are likely.</p>
 
-<p>As y’all have already seen, <code class="highlighter-rouge">np.randint</code> can take a <code class="highlighter-rouge">size</code> argument, to return an array of random integers:</p>
+<p>As y’all have already seen, <code class="language-plaintext highlighter-rouge">np.randint</code> can take a <code class="language-plaintext highlighter-rouge">size</code> argument, to return an array of random integers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 0, 0, 0, 1, 1, 0, 1])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 1, 0, 0, 0, 0, 1, 1, 0, 1])
 </code></pre></div></div>
 
 <p>Now let’s study 100 tosses. We will start by creating an empty array
-called <code class="highlighter-rouge">heads</code>. Then, in each of the 10,000 repetitions, we will toss
-a coin 100 times, count the number of heads, and append it to <code class="highlighter-rouge">heads</code>.</p>
+called <code class="language-plaintext highlighter-rouge">heads</code>. Then, in each of the 10,000 repetitions, we will toss
+a coin 100 times, count the number of heads, and append it to <code class="language-plaintext highlighter-rouge">heads</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 
-<span class="n">head_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+<span class="n">head_counts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([])</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">n_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
-    <span class="n">head_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">head_counts</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">tosses</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">n_heads</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">tosses</span><span class="p">)</span>
+    <span class="n">head_counts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">head_counts</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>
 
 <span class="n">head_counts</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([46., 54., 52., ..., 53., 55., 53.])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([46., 54., 52., ..., 53., 55., 53.])
 </code></pre></div></div>
 
 <p>Here is a histogram of the data, with bins of width 1 centered at each value
@@ -1576,13 +1576,13 @@ of the number of heads.</p>
 </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="c1"># Fancy plots
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Now we do the histogram:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Again, don't worry about the details here.
-</span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">head_counts</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">30.5</span><span class="p">,</span> <span class="mf">69.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">head_counts</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">30.5</span><span class="p">,</span> <span class="mf">69.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/03/iteration_33_0.png" alt="png" /></p>

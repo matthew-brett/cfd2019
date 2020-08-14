@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1176,13 +1176,13 @@
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
 <span class="c1"># Fancy plots
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We load the Brexit survey data again:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data frame, and put it in the variable "audit_data"
-</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
+</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Again, we get the ages for the Leavers and the Remainers:</p>
@@ -1197,12 +1197,12 @@
 <span class="n">leave_ages</span> <span class="o">=</span> <span class="n">good_data</span><span class="p">[</span><span class="n">is_leave</span><span class="p">][</span><span class="s">'numage'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">remain_ages</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">remain_ages</span><span class="p">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/brexit_ages_6_0.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leave_ages</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leave_ages</span><span class="p">.</span><span class="n">hist</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/brexit_ages_7_0.png" alt="png" /></p>
@@ -1213,50 +1213,50 @@
 <span class="n">n_remain</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>774
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>774
 </code></pre></div></div>
 
 <p>Here was the actual difference between the means of the two groups:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">actual_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">leave_ages</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">actual_diff</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">leave_ages</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">)</span>
 <span class="n">actual_diff</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.6998380833655773
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.6998380833655773
 </code></pre></div></div>
 
 <p>We want to know if we have a reasonable chance of seeing a difference of this magnitude, if the two groups are samples from the same underlying population.  We don’t have the actual population to take samples from, so we need to wing it, by using the data we have.</p>
 
 <p>We asserted we could use permutation to take random samples from the data that we already have:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">,</span> <span class="n">leave_ages</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">,</span> <span class="n">leave_ages</span><span class="p">)</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
 <span class="n">fake_remainers</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[:</span><span class="n">n_remain</span><span class="p">]</span>
 <span class="n">fake_leavers</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[</span><span class="n">n_remain</span><span class="p">:]</span>
 </code></pre></div></div>
 
 <p>Those are our samples.  Now we get the difference in mean ages, as one example of a difference we might see, if the samples are from the same population:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">example_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_remainers</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">example_diff</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_remainers</span><span class="p">)</span>
 <span class="n">example_diff</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9205677112438906
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9205677112438906
 </code></pre></div></div>
 
-<p>Now we know how do to this once, we can use the <code class="highlighter-rouge">for</code> loop to do the
+<p>Now we know how do to this once, we can use the <code class="language-plaintext highlighter-rouge">for</code> loop to do the
 shuffle operation many times.  We collect the results in an array.
-You will recognize the code in the <code class="highlighter-rouge">for</code> loop from the code in the
+You will recognize the code in the <code class="language-plaintext highlighter-rouge">for</code> loop from the code in the
 cells above.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An array of zeros to store the fake differences
-</span><span class="n">example_diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</span><span class="n">example_diffs</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="c1"># Do the shuffle / difference steps 10000 times
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
     <span class="n">fake_remainers</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[:</span><span class="n">n_remain</span><span class="p">]</span>
     <span class="n">fake_leavers</span> <span class="o">=</span> <span class="n">pooled</span><span class="p">[</span><span class="n">n_remain</span><span class="p">:]</span>
-    <span class="n">eg_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_remainers</span><span class="p">)</span>
+    <span class="n">eg_diff</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_remainers</span><span class="p">)</span>
     <span class="c1"># Collect the results in the results array
 </span>    <span class="n">example_diffs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">eg_diff</span>
 </code></pre></div></div>
@@ -1265,7 +1265,7 @@ cells above.</p>
 
 <p>What distribution do these differences have?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">example_diffs</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">example_diffs</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/brexit_ages_19_0.png" alt="png" /></p>
@@ -1283,11 +1283,11 @@ see, when taking random <em>samples</em> from the same underlying population.</p
 distribution are as large, or larger than the value we actually saw.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">are_as_high</span> <span class="o">=</span> <span class="n">example_diffs</span>  <span class="o">&gt;=</span> <span class="n">actual_diff</span>
-<span class="n">n_as_high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">are_as_high</span><span class="p">)</span>
+<span class="n">n_as_high</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">are_as_high</span><span class="p">)</span>
 <span class="n">n_as_high</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
 <p>The number above is the number of values in the sampling distribution
@@ -1299,7 +1299,7 @@ that is as high, or higher.</p>
 <span class="n">proportion</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0001
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0001
 </code></pre></div></div>
 
 <p>We think of this proportion as an estimate of the <em>probability</em> that

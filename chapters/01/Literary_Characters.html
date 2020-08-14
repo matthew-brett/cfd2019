@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1173,26 +1173,26 @@ sisters.</p>
 times their names are mentioned in each chapter.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Count how many times the characters appear in each chapter.
-</span><span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span>
-        <span class="s">'Elizabeth'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">),</span>
-        <span class="s">'Darcy'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Darcy'</span><span class="p">),</span>
-        <span class="s">'Lydia'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Lydia'</span><span class="p">),</span>
-        <span class="s">'Wickham'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Wickham'</span><span class="p">),</span>
-        <span class="s">'Bingley'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Bingley'</span><span class="p">),</span>
-        <span class="s">'Jane'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Jane'</span><span class="p">)},</span>
+</span><span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_dict</span><span class="p">({</span>
+        <span class="s">'Elizabeth'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">char</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Elizabeth'</span><span class="p">),</span>
+        <span class="s">'Darcy'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">char</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Darcy'</span><span class="p">),</span>
+        <span class="s">'Lydia'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">char</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Lydia'</span><span class="p">),</span>
+        <span class="s">'Wickham'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">char</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Wickham'</span><span class="p">),</span>
+        <span class="s">'Bingley'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">char</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Bingley'</span><span class="p">),</span>
+        <span class="s">'Jane'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">char</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">,</span> <span class="s">'Jane'</span><span class="p">)},</span>
     <span class="p">)</span>
 
 <span class="c1"># The cumulative counts:
 # how many times in Chapter 1, how many times in Chapters 1 and 2, and so on.
-</span><span class="n">cum_counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+</span><span class="n">cum_counts</span> <span class="o">=</span> <span class="n">counts</span><span class="p">.</span><span class="n">cumsum</span><span class="p">()</span>
 
 <span class="c1"># Add the chapter numbers
 </span><span class="n">number_of_chapters</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">book_chapters</span><span class="p">)</span>
-<span class="n">cum_counts</span><span class="p">[</span><span class="s">'Chapter'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">number_of_chapters</span><span class="p">)</span>
+<span class="n">cum_counts</span><span class="p">[</span><span class="s">'Chapter'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">number_of_chapters</span><span class="p">)</span>
 
 <span class="c1"># Do the plot
-</span><span class="n">cum_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'Chapter'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Cumulative Number of Times Each Name Appears'</span><span class="p">);</span>
+</span><span class="n">cum_counts</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'Chapter'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Cumulative Number of Times Each Name Appears'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/01/Literary_Characters_1_0.png" alt="png" /></p>

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1178,57 +1178,57 @@
 
 <p>You have seen how to create arrays from a sequence of values:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3])
 </code></pre></div></div>
 
-<p>You have also seen how to create arrays that are sequential integers, using <code class="highlighter-rouge">np.arange</code>:</p>
+<p>You have also seen how to create arrays that are sequential integers, using <code class="language-plaintext highlighter-rouge">np.arange</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4])
 </code></pre></div></div>
 
 <p>We often find that we want to create an empty or default array, that we will fill later.</p>
 
-<p>Numpy has routines for that.  The main ones we will use are <code class="highlighter-rouge">np.zeros</code> and <code class="highlighter-rouge">np.ones</code>.</p>
+<p>Numpy has routines for that.  The main ones we will use are <code class="language-plaintext highlighter-rouge">np.zeros</code> and <code class="language-plaintext highlighter-rouge">np.ones</code>.</p>
 
 <p>You can guess what they do:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 0., 0., 0.])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0., 0., 0., 0., 0.])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 1.])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1., 1., 1., 1., 1.])
 </code></pre></div></div>
 
 <p>These arrays aren’t very useful at the moment; usually, we will want to fill in the elements of these arrays with other values.</p>
 
 <p>We can do that using <em>assignment</em>.</p>
 
-<p>Remember the basic assignment statement.  We have so far learned that the assignment statement is a <em>name</em> followed by <code class="highlighter-rouge">=</code> followed by an expression (a recipe that returns a value).</p>
+<p>Remember the basic assignment statement.  We have so far learned that the assignment statement is a <em>name</em> followed by <code class="language-plaintext highlighter-rouge">=</code> followed by an expression (a recipe that returns a value).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># An assignment statement
 </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
-<p>Here the left hand side (LHS) is <code class="highlighter-rouge">a</code>.</p>
+<p>Here the left hand side (LHS) is <code class="language-plaintext highlighter-rouge">a</code>.</p>
 
-<p>The right hand side (RHS) is an expression: <code class="highlighter-rouge">1</code>.</p>
+<p>The right hand side (RHS) is an expression: <code class="language-plaintext highlighter-rouge">1</code>.</p>
 
-<p>We can read <code class="highlighter-rouge">a = 1</code> as “a gets the value 1.”  We can also read it as: “Make the location called ‘a’ point to the value 1.”</p>
+<p>We can read <code class="language-plaintext highlighter-rouge">a = 1</code> as “a gets the value 1.”  We can also read it as: “Make the location called ‘a’ point to the value 1.”</p>
 
 <p>So far, the left hand side (LHS) has always been a <em>name</em>.</p>
 
@@ -1238,11 +1238,11 @@
 
 <p>Here is an example array:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
 <span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
 </code></pre></div></div>
 
 <p>We can retrieve one or more values by indexing:</p>
@@ -1250,13 +1250,13 @@
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 6,  7,  8,  9, 10])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 6,  7,  8,  9, 10])
 </code></pre></div></div>
 
 <p>In fact we can use these exact same specifications on the LHS of an assignment statement:</p>
@@ -1265,34 +1265,34 @@
 <span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 99,  3,  4,  5,  6,  7,  8,  9, 10])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1, 99,  3,  4,  5,  6,  7,  8,  9, 10])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_array</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  1,  99,   3,   4,   5, 100, 100, 100, 100, 100])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([  1,  99,   3,   4,   5, 100, 100, 100, 100, 100])
 </code></pre></div></div>
 
 <p>When you use array indexing on the LHS, it means <em>specify the elements to assign</em>.  So:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">my_array[5]</code> on the RHS means - get the value at offset 5 in <code class="highlighter-rouge">my_array</code></li>
-  <li><code class="highlighter-rouge">my_array[5]</code> on the LHS means - use this location to store the data returned from the RHS.</li>
+  <li><code class="language-plaintext highlighter-rouge">my_array[5]</code> on the RHS means - get the value at offset 5 in <code class="language-plaintext highlighter-rouge">my_array</code></li>
+  <li><code class="language-plaintext highlighter-rouge">my_array[5]</code> on the LHS means - use this location to store the data returned from the RHS.</li>
 </ul>
 
-<p>So we can read <code class="highlighter-rouge">my_array[1] = 99</code> as “Make the location ‘my_array[5]’ point to the value 99.”.</p>
+<p>So we can read <code class="language-plaintext highlighter-rouge">my_array[1] = 99</code> as “Make the location ‘my_array[5]’ point to the value 99.”.</p>
 
 <p>Remember too that we can get array values using Boolean arrays:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create the Boolean array
-</span><span class="n">another_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</span><span class="n">another_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">are_gt_2</span> <span class="o">=</span> <span class="n">another_array</span> <span class="o">&gt;</span> <span class="mi">2</span>
 <span class="n">are_gt_2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True,  True, False, False,  True, False, False,  True])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False,  True,  True, False, False,  True, False, False,  True])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the values by indexing with the Boolean array.
@@ -1300,12 +1300,12 @@
 </span><span class="n">another_array</span><span class="p">[</span><span class="n">are_gt_2</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 5, 3])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 5, 3])
 </code></pre></div></div>
 
 <p>Given what you know, what do you think would happen with:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>another_array[are_gt_2] = 10
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>another_array[are_gt_2] = 10
 another_array
 </code></pre></div></div>
 
@@ -1315,27 +1315,27 @@ another_array
 
 <p>So far this is a bit abstract, but we will often use this kind of assignment when we create arrays, and then fill them in.</p>
 
-<p>For example, remember the solution to the three girls problem.  Our first approach to this, in <a href="leaping_ahead">leaping ahead</a> was to use <code class="highlighter-rouge">np.append</code> to append values to the end of an array, as we run through the loop:</p>
+<p>For example, remember the solution to the three girls problem.  Our first approach to this, in <a href="leaping_ahead">leaping ahead</a> was to use <code class="language-plaintext highlighter-rouge">np.append</code> to append values to the end of an array, as we run through the loop:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Reset the counts array to empty.
-</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="c1"># Repeat the indented stuff 10000 times.
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="c1"># The procedure for one family.
-</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
     <span class="c1"># Store the count in the counts array.
-</span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</span>    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
 
 <span class="c1"># Proportion
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2552
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2552
 </code></pre></div></div>
 
-<p>This works fine for relatively small numbers of iterations, such as 10000 (yes, that is small for the computer!).  Try changing the 10000 above to 1000000 and you will find it becomes very slow.  This is because it is inefficient to make a new array each time we go through the loop, which is what we have to do using <code class="highlighter-rouge">np.append</code>.   Each new array is one element longer than the last, so by the end of the one million iterations we will be making a new array of nearly one million values for each time through the loop.</p>
+<p>This works fine for relatively small numbers of iterations, such as 10000 (yes, that is small for the computer!).  Try changing the 10000 above to 1000000 and you will find it becomes very slow.  This is because it is inefficient to make a new array each time we go through the loop, which is what we have to do using <code class="language-plaintext highlighter-rouge">np.append</code>.   Each new array is one element longer than the last, so by the end of the one million iterations we will be making a new array of nearly one million values for each time through the loop.</p>
 
 <p>It is much more efficient to:</p>
 
@@ -1345,21 +1345,21 @@ another_array
 </ul>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Reset the counts array to empty (all zeros)
-</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</span><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 
 <span class="c1"># Repeat the indented stuff 10000 times.
-</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
     <span class="c1"># The procedure for one family.
-</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+</span>    <span class="n">family</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
     <span class="c1"># Fill in the corresponding value in the counts array.
 </span>    <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
 
 <span class="c1"># Proportion
-</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">counts</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2506
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.2506
 </code></pre></div></div>
 
 <p>We will use loops like these many times to solve problems in statistics.</p>

@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1188,8 +1188,8 @@
 <a href="/cfd2019/data/banknote.csv">banknote</a> file to the
 same directory as this notebook.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'banknote.csv'</span><span class="p">)</span>
-<span class="n">banknotes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'banknote.csv'</span><span class="p">)</span>
+<span class="n">banknotes</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1267,10 +1267,10 @@ same directory as this notebook.</p>
 <p>Let’s look at whether the first two numbers tell us anything about whether the banknote is counterfeit or not.  Here’s a scatterplot:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'darkblue'</span>
-<span class="n">banknotes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
+<span class="n">banknotes</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WaveletVar'</span><span class="p">,</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WaveletVar'</span><span class="p">,</span>
                        <span class="s">'WaveletCurt'</span><span class="p">,</span>
                        <span class="n">c</span><span class="o">=</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
 </code></pre></div></div>
@@ -1283,7 +1283,7 @@ same directory as this notebook.</p>
 
 <p>The patterns that show up in the data can get pretty wild.  For instance, here’s what we’d get if used a different pair of measurements from the images:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WaveletSkew'</span><span class="p">,</span> <span class="s">'Entropy'</span><span class="p">,</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">banknotes</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'WaveletSkew'</span><span class="p">,</span> <span class="s">'Entropy'</span><span class="p">,</span>
                        <span class="n">c</span><span class="o">=</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
 </code></pre></div></div>
 
@@ -1302,8 +1302,8 @@ same directory as this notebook.</p>
 <p>For instance, let’s see what happens if we try to predict whether a banknote is counterfeit or not using 3 of the measurements, instead of just 2.  Here’s what you get:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s">'3d'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'WaveletSkew'</span><span class="p">],</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)).</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s">'3d'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'WaveletSkew'</span><span class="p">],</span>
            <span class="n">banknotes</span><span class="p">[</span><span class="s">'WaveletVar'</span><span class="p">],</span>
            <span class="n">banknotes</span><span class="p">[</span><span class="s">'WaveletCurt'</span><span class="p">],</span>
            <span class="n">c</span><span class="o">=</span><span class="n">banknotes</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
@@ -1327,30 +1327,30 @@ same directory as this notebook.</p>
 
 <p>We know how to compute distance in 2-dimensional space. If we have a point at coordinates $(x_0,y_0)$ and another at $(x_1,y_1)$, the distance between them is</p>
 
-<script type="math/tex; mode=display">D = \sqrt{(x_0-x_1)^2 + (y_0-y_1)^2}.</script>
+\[D = \sqrt{(x_0-x_1)^2 + (y_0-y_1)^2}.\]
 
 <p>In 3-dimensional space, the points are $(x_0, y_0, z_0)$ and $(x_1, y_1, z_1)$, and the formula for the distance between them is</p>
 
-<script type="math/tex; mode=display">D = \sqrt{(x_0-x_1)^2 + (y_0-y_1)^2 + (z_0-z_1)^2}</script>
+\[D = \sqrt{(x_0-x_1)^2 + (y_0-y_1)^2 + (z_0-z_1)^2}\]
 
 <p>In $n$-dimensional space, things are a bit harder to visualize, but I think you can see how the formula generalized: we sum up the squares of the differences between each individual coordinate, and then take the square root of that.</p>
 
-<p>In the last section, we defined the function <code class="highlighter-rouge">distance</code> which returned the distance between two points. We used it in two-dimensions, but the great news is that the function doesn’t care how many dimensions there are! It just subtracts the two arrays of coordinates (no matter how long the arrays are), squares the differences and adds up, and then takes the square root. To work in multiple dimensions, we don’t have to change the code at all.</p>
+<p>In the last section, we defined the function <code class="language-plaintext highlighter-rouge">distance</code> which returned the distance between two points. We used it in two-dimensions, but the great news is that the function doesn’t care how many dimensions there are! It just subtracts the two arrays of coordinates (no matter how long the arrays are), squares the differences and adds up, and then takes the square root. To work in multiple dimensions, we don’t have to change the code at all.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">):</span>
     <span class="s">"""Returns the distance between point1 and point2
     where each argument is an array 
     consisting of the coordinates of the point"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">point1</span> <span class="o">-</span> <span class="n">point2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">point1</span> <span class="o">-</span> <span class="n">point2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p>Let’s use this on a <a href="https://archive.ics.uci.edu/ml/datasets/Wine">new dataset</a>. The table <code class="highlighter-rouge">wine</code> contains the chemical composition of 178 different Italian wines. The classes are the grape species, called cultivars. There are three classes but let’s just see whether we can tell Class 1 apart from the other two.</p>
+<p>Let’s use this on a <a href="https://archive.ics.uci.edu/ml/datasets/Wine">new dataset</a>. The table <code class="language-plaintext highlighter-rouge">wine</code> contains the chemical composition of 178 different Italian wines. The classes are the grape species, called cultivars. There are three classes but let’s just see whether we can tell Class 1 apart from the other two.</p>
 
 <p>You can download the file from
 <a href="/cfd2019/data/wine.csv">wine.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'wine.csv'</span><span class="p">)</span>
-<span class="n">wine</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'wine.csv'</span><span class="p">)</span>
+<span class="n">wine</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1481,19 +1481,19 @@ same directory as this notebook.</p>
 
 <p>The dataset classifies the wine into three classes:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine</span><span class="p">[</span><span class="s">'Class'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2    71
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2    71
 1    59
 3    48
 Name: Class, dtype: int64
 </code></pre></div></div>
 
-<p>For the moment, we’ll pool classes 2 and 3 into one class, <code class="highlighter-rouge">0</code>:</p>
+<p>For the moment, we’ll pool classes 2 and 3 into one class, <code class="language-plaintext highlighter-rouge">0</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">wine</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'Class'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">wine</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">wine</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'Class'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">wine</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1624,8 +1624,8 @@ Name: Class, dtype: int64
 
 <p>The first two wines are both in Class 1. To find the distance between them, we first need a table of just the attributes:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_attributes</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span>
-<span class="n">wine_attributes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_attributes</span> <span class="o">=</span> <span class="n">wine</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span>
+<span class="n">wine_attributes</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1748,30 +1748,30 @@ Name: Class, dtype: int64
 </div>
 </div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+         <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>31.265012394048398
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>31.265012394048398
 </code></pre></div></div>
 
 <p>The last wine in the table is of Class 0. Its distance from the first wine is:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">177</span><span class="p">]))</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+         <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">wine_attributes</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">177</span><span class="p">]))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>506.05936766351834
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>506.05936766351834
 </code></pre></div></div>
 
 <p>That’s quite a bit bigger! Let’s do some visualization to see if Class 1 really looks different from Class 0.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span> <span class="o">=</span> <span class="n">wine</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">wine_with_colors</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'darkblue'</span>
-<span class="n">wine_with_colors</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">wine</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
+<span class="n">wine_with_colors</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">wine</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Flavanoids'</span><span class="p">,</span> <span class="s">'Alcohol'</span><span class="p">,</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Flavanoids'</span><span class="p">,</span> <span class="s">'Alcohol'</span><span class="p">,</span>
                               <span class="n">c</span><span class="o">=</span><span class="n">wine_with_colors</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
 </code></pre></div></div>
 
@@ -1779,7 +1779,7 @@ Name: Class, dtype: int64
 
 <p>The blue points (Class 1) are almost entirely separate from the gold ones. That is one indication of why the distance between two Class 1 wines would be smaller than the distance between wines of two different classes. We can see a similar phenomenon with a different pair of attributes too:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Alcalinity of Ash'</span><span class="p">,</span> <span class="s">'Ash'</span><span class="p">,</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Alcalinity of Ash'</span><span class="p">,</span> <span class="s">'Ash'</span><span class="p">,</span>
                               <span class="n">c</span><span class="o">=</span><span class="n">wine_with_colors</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
 </code></pre></div></div>
 
@@ -1787,7 +1787,7 @@ Name: Class, dtype: int64
 
 <p>But for some pairs the picture is more murky.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Magnesium'</span><span class="p">,</span> <span class="s">'Total Phenols'</span><span class="p">,</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wine_with_colors</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Magnesium'</span><span class="p">,</span> <span class="s">'Total Phenols'</span><span class="p">,</span>
                               <span class="n">c</span><span class="o">=</span><span class="n">wine_with_colors</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
 </code></pre></div></div>
 
@@ -1797,14 +1797,14 @@ Name: Class, dtype: int64
 
 <h3 id="a-plan-for-the-implementation">A Plan for the Implementation</h3>
 
-<p>It’s time to write some code to implement the classifier.  The input is a <code class="highlighter-rouge">point</code> that we want to classify.  The classifier works by finding the $k$ nearest neighbors of <code class="highlighter-rouge">point</code> from the training set.  So, our approach will go like this:</p>
+<p>It’s time to write some code to implement the classifier.  The input is a <code class="language-plaintext highlighter-rouge">point</code> that we want to classify.  The classifier works by finding the $k$ nearest neighbors of <code class="language-plaintext highlighter-rouge">point</code> from the training set.  So, our approach will go like this:</p>
 
 <ol>
   <li>
-    <p>Find the closest $k$ neighbors of <code class="highlighter-rouge">point</code>, i.e., the $k$ wines from the training set that are most similar to <code class="highlighter-rouge">point</code>.</p>
+    <p>Find the closest $k$ neighbors of <code class="language-plaintext highlighter-rouge">point</code>, i.e., the $k$ wines from the training set that are most similar to <code class="language-plaintext highlighter-rouge">point</code>.</p>
   </li>
   <li>
-    <p>Look at the classes of those $k$ neighbors, and take the majority vote to find the most-common class of wine.  Use that as our predicted class for <code class="highlighter-rouge">point</code>.</p>
+    <p>Look at the classes of those $k$ neighbors, and take the majority vote to find the most-common class of wine.  Use that as our predicted class for <code class="language-plaintext highlighter-rouge">point</code>.</p>
   </li>
 </ol>
 
@@ -1818,35 +1818,35 @@ Name: Class, dtype: int64
 
 <span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
     <span class="n">kclosest</span> <span class="o">=</span> <span class="n">closest</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-    <span class="n">kclosest</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">kclosest</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'Class'</span><span class="p">)</span>
+    <span class="n">kclosest</span><span class="p">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">kclosest</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">'Class'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">majority</span><span class="p">(</span><span class="n">kclosest</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="implementation-step-1">Implementation Step 1</h3>
 
-<p>To implement the first step for the kidney disease data, we had to compute the distance from each patient in the training set to <code class="highlighter-rouge">point</code>, sort them by distance, and take the $k$ closest patients in the training set.</p>
+<p>To implement the first step for the kidney disease data, we had to compute the distance from each patient in the training set to <code class="language-plaintext highlighter-rouge">point</code>, sort them by distance, and take the $k$ closest patients in the training set.</p>
 
-<p>That’s what we did in the previous section with the point corresponding to Alice. Let’s generalize that code. We’ll redefine <code class="highlighter-rouge">distance</code> here, just for convenience.</p>
+<p>That’s what we did in the previous section with the point corresponding to Alice. Let’s generalize that code. We’ll redefine <code class="language-plaintext highlighter-rouge">distance</code> here, just for convenience.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">):</span>
     <span class="s">"""Returns the distance between point1 and point2
     where each argument is an array
     consisting of the coordinates of the point"""</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">point1</span> <span class="o">-</span> <span class="n">point2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">point1</span> <span class="o">-</span> <span class="n">point2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">all_distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">new_point</span><span class="p">):</span>
     <span class="s">"""Returns an array of distances
     between each point in the training set
     and the new point (which is a row of attributes)"""</span>
-    <span class="n">attributes</span> <span class="o">=</span> <span class="n">training</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span>
+    <span class="n">attributes</span> <span class="o">=</span> <span class="n">training</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">distance_from_point</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_point</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">attributes</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">distance_from_point</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">distance</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_point</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">attributes</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">distance_from_point</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">table_with_distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">new_point</span><span class="p">):</span>
     <span class="s">"""Augments the training table
     with a column of distances from new_point"""</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">training</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">training</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">out</span><span class="p">[</span><span class="s">'Distance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">new_point</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 
@@ -1854,16 +1854,16 @@ Name: Class, dtype: int64
     <span class="s">"""Returns a table of the k rows of the augmented table
     corresponding to the k smallest distances"""</span>
     <span class="n">with_dists</span> <span class="o">=</span> <span class="n">table_with_distances</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">new_point</span><span class="p">)</span>
-    <span class="n">sorted_by_distance</span> <span class="o">=</span> <span class="n">with_dists</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Distance'</span><span class="p">)</span>
-    <span class="n">topk</span> <span class="o">=</span> <span class="n">sorted_by_distance</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">sorted_by_distance</span> <span class="o">=</span> <span class="n">with_dists</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Distance'</span><span class="p">)</span>
+    <span class="n">topk</span> <span class="o">=</span> <span class="n">sorted_by_distance</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">topk</span>
 </code></pre></div></div>
 
-<p>Let’s see how this works on our <code class="highlighter-rouge">wine</code> data. We’ll just take the first wine and find its five nearest neighbors among all the wines. Remember that since this wine is part of the dataset, it is its own nearest neighbor. So we should expect to see it at the top of the list, followed by four others.</p>
+<p>Let’s see how this works on our <code class="language-plaintext highlighter-rouge">wine</code> data. We’ll just take the first wine and find its five nearest neighbors among all the wines. Remember that since this wine is part of the dataset, it is its own nearest neighbor. So we should expect to see it at the top of the list, followed by four others.</p>
 
 <p>First let’s extract its attributes:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">special_wine</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">special_wine</span> <span class="o">=</span> <span class="n">wine</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">).</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>And now let’s find its 5 nearest neighbors.</p>
@@ -2003,15 +2003,15 @@ Name: Class, dtype: int64
 </div>
 </div>
 
-<p>Bingo! The first row is the nearest neighbor, which is itself – there’s a 0 in the <code class="highlighter-rouge">Distance</code> column as expected. All five nearest neighbors are of Class 1, which is consistent with our earlier observation that Class 1 wines appear to be clumped together in some dimensions.</p>
+<p>Bingo! The first row is the nearest neighbor, which is itself – there’s a 0 in the <code class="language-plaintext highlighter-rouge">Distance</code> column as expected. All five nearest neighbors are of Class 1, which is consistent with our earlier observation that Class 1 wines appear to be clumped together in some dimensions.</p>
 
 <h3 id="implementation-steps-2-and-3">Implementation Steps 2 and 3</h3>
 
 <p>Next we need to take a “majority vote” of the nearest neighbors and assign our point the same class as the majority.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">majority</span><span class="p">(</span><span class="n">topkclasses</span><span class="p">):</span>
-    <span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">topkclasses</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">topkclasses</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">topkclasses</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">topkclasses</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ones</span> <span class="o">&gt;</span> <span class="n">zeros</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2025,16 +2025,16 @@ Name: Class, dtype: int64
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="n">wine</span><span class="p">,</span> <span class="n">special_wine</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
 </code></pre></div></div>
 
-<p>If we change <code class="highlighter-rouge">special_wine</code> to be the last one in the dataset, is our classifier able to tell that it’s in Class 0?</p>
+<p>If we change <code class="language-plaintext highlighter-rouge">special_wine</code> to be the last one in the dataset, is our classifier able to tell that it’s in Class 0?</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">special_wine</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">177</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">special_wine</span> <span class="o">=</span> <span class="n">wine</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">).</span><span class="n">iloc</span><span class="p">[</span><span class="mi">177</span><span class="p">]</span>
 <span class="n">classify</span><span class="p">(</span><span class="n">wine</span><span class="p">,</span> <span class="n">special_wine</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
 </code></pre></div></div>
 
 <p>Yes! The classifier gets this one right too.</p>

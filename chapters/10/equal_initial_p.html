@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1186,26 +1186,26 @@ box probabilities.</p>
 <p>As you remember, the calculation works out like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Step 1 - P of reds.
-</span><span class="n">red_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+</span><span class="n">red_ps</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
 <span class="c1"># Step 2 - scale by P of the boxes
-</span><span class="n">box_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
+</span><span class="n">box_ps</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">])</span>
 <span class="n">box_and_red_probs</span> <span class="o">=</span> <span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span>
 <span class="c1"># Step 3 - divide each bar by sum of bar heights.
-</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
+</span><span class="n">box_given_red_probs</span> <span class="o">=</span> <span class="n">box_and_red_probs</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_and_red_probs</span><span class="p">)</span>
 <span class="c1"># Show result
 </span><span class="n">box_given_red_probs</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
 </code></pre></div></div>
 
 <p>Doing the same calculation, but removing the intermediate variables:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># All in one go.
-</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span><span class="p">)</span>
+</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
 </code></pre></div></div>
 
 <p>We can replace those numbers (0.3, 0.7 etc) with variables, and do the
@@ -1217,65 +1217,65 @@ discussion below.</p>
 </span><span class="n">c</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># Probability of BOX2
 </span><span class="n">r</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># Probability of red if you have BOX4
 </span><span class="n">s</span> <span class="o">=</span> <span class="mf">0.4</span>  <span class="c1"># Probability of red if you have BOX2
-</span><span class="n">box_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
-<span class="n">red_ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span>
+</span><span class="n">box_ps</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+<span class="n">red_ps</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span>
 </code></pre></div></div>
 
 <p>Of course we get the same answer, because we are doing the same calculation:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># All in one go.
-</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span><span class="p">)</span>
+</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">box_ps</span> <span class="o">*</span> <span class="n">red_ps</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
 </code></pre></div></div>
 
 <p>By working through what calculations are happending above, we find this is the
 same as:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># All in one go, using individual variables.
-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">))</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.46153846, 0.53846154])
 </code></pre></div></div>
 
-<p>Now — what happens if the box probabilities are the same, and so <code class="highlighter-rouge">b == c</code>?</p>
+<p>Now — what happens if the box probabilities are the same, and so <code class="language-plaintext highlighter-rouge">b == c</code>?</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Probability of BOX4
 </span><span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Probability of BOX2
 </span></code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Individual variables, equal box probabilities.
-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">))</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">b</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">s</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
-<p>Because <code class="highlighter-rouge">b == c</code>, we can replace all the <code class="highlighter-rouge">c</code>s in the calculation above with
-<code class="highlighter-rouge">b</code>s, to get:</p>
+<p>Because <code class="language-plaintext highlighter-rouge">b == c</code>, we can replace all the <code class="language-plaintext highlighter-rouge">c</code>s in the calculation above with
+<code class="language-plaintext highlighter-rouge">b</code>s, to get:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
-<p>Then we can take the <code class="highlighter-rouge">b</code> values outside the brackets to get:</p>
+<p>Then we can take the <code class="language-plaintext highlighter-rouge">b</code> values outside the brackets to get:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="p">((</span><span class="n">r</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">b</code>s on top and bottom cancel, and so:</p>
+<p>The <code class="language-plaintext highlighter-rouge">b</code>s on top and bottom cancel, and so:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.66666667, 0.33333333])
 </code></pre></div></div>
 
 <p>We have shown that we can omit the box probabilities from the calculation, when

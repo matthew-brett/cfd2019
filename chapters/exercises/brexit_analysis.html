@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1170,7 +1170,7 @@
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
 <span class="c1"># Fancy plots
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 
 <span class="c1"># Data frame library
 </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
@@ -1182,13 +1182,13 @@
 directory as this notebook.</p>
 
 <p>In the moment, we are going to try and analyze these data.  We will focus on
-two questions labeled <code class="highlighter-rouge">cut15</code> and <code class="highlighter-rouge">numage</code>.  <code class="highlighter-rouge">cut15</code> is the question about
+two questions labeled <code class="language-plaintext highlighter-rouge">cut15</code> and <code class="language-plaintext highlighter-rouge">numage</code>.  <code class="language-plaintext highlighter-rouge">cut15</code> is the question about
 Brexit. The data dictionary has the <em>variable label</em> “CUT15 - How did you vote
 on the question ‘Should the United Kingdom remain a member of the European
 Union or leave the European Union’?”.  The recorded values run from 1 through
 6 and have the following labels:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value label information for cut15
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Value label information for cut15
 Value = 1.0    Label = Remain a member of the European Union
 Value = 2.0    Label = Leave the European Union
 Value = 3.0    Label = Did not vote
@@ -1197,14 +1197,14 @@ Value = 5.0    Label = Can't remember
 Value = 6.0    Label = Refused
 </code></pre></div></div>
 
-<p>We also want the variable <code class="highlighter-rouge">numage</code>; this is the age of the respondent in years.</p>
+<p>We also want the variable <code class="language-plaintext highlighter-rouge">numage</code>; this is the age of the respondent in years.</p>
 
 <p>The data file that you just downloaded should be called
-<code class="highlighter-rouge">audit_of_political_engagement_14_2017.tab</code>.  The cell below loads the data
+<code class="language-plaintext highlighter-rouge">audit_of_political_engagement_14_2017.tab</code>.  The cell below loads the data
 file into memory with Pandas:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data frame, and put it in the variable "audit_data"
-</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">)</span>
+</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_table</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>As you know, we now have a <em>data frame</em>:</p>
@@ -1212,7 +1212,7 @@ file into memory with Pandas:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">audit_data</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
 </code></pre></div></div>
 
 <p>The data frame has one row per person surveyed, and one column for each
@@ -2738,10 +2738,10 @@ read about in the data dictionary:</p>
 <p>The data frame has columns for all the questions listed in the data
 dictionary:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span><span class="o">.</span><span class="n">columns</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span><span class="p">.</span><span class="n">columns</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['cu041', 'cu042', 'cu043', 'cu044', 'cu045', 'cu046', 'cu047', 'cu048',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['cu041', 'cu042', 'cu043', 'cu044', 'cu045', 'cu046', 'cu047', 'cu048',
        'cu049', 'cu0410',
        ...
        'intten', 'cx_971_980', 'serial', 'week', 'wts', 'numage', 'weight0',
@@ -2753,7 +2753,7 @@ dictionary:</p>
 questions we are interested in:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the age and Brexit vote questions only
-</span><span class="n">mini_brexit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span><span class="n">mini_brexit</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">mini_brexit</span><span class="p">[</span><span class="s">'numage'</span><span class="p">]</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[</span><span class="s">'numage'</span><span class="p">]</span>
 <span class="n">mini_brexit</span><span class="p">[</span><span class="s">'cut15'</span><span class="p">]</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[</span><span class="s">'cut15'</span><span class="p">]</span>
 <span class="n">mini_brexit</span>
@@ -3094,52 +3094,52 @@ questions we are interested in:</p>
 </div>
 </div>
 
-<p>To get started on exploring, we make a new variable <code class="highlighter-rouge">ages</code> that refers
-to the <code class="highlighter-rouge">numage</code> column in the <code class="highlighter-rouge">mini_brexit</code> data frame.</p>
+<p>To get started on exploring, we make a new variable <code class="language-plaintext highlighter-rouge">ages</code> that refers
+to the <code class="language-plaintext highlighter-rouge">numage</code> column in the <code class="language-plaintext highlighter-rouge">mini_brexit</code> data frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a new variable "ages" that refers to the "numage" column in "mini_brexit"
 </span><span class="n">ages</span> <span class="o">=</span> <span class="n">mini_brexit</span><span class="p">[</span><span class="s">"numage"</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>Confirm that <code class="highlighter-rouge">ages</code> has a value of type <code class="highlighter-rouge">Series</code>, the Pandas type for a column of a data frame:</p>
+<p>Confirm that <code class="language-plaintext highlighter-rouge">ages</code> has a value of type <code class="language-plaintext highlighter-rouge">Series</code>, the Pandas type for a column of a data frame:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
 <p>Here are the numbers of rows, columns in the original data frame:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span><span class="o">.</span><span class="n">shape</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">audit_data</span><span class="p">.</span><span class="n">shape</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1771, 370)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1771, 370)
 </code></pre></div></div>
 
-<p>Run the cell below to confirm that <code class="highlighter-rouge">ages</code> has the same number of values, as
-<code class="highlighter-rouge">audit_data</code> has rows.  To do this, we can use the <code class="highlighter-rouge">len</code> function, as applied
-to the <code class="highlighter-rouge">ages</code> Series.  It returns the number of values.</p>
+<p>Run the cell below to confirm that <code class="language-plaintext highlighter-rouge">ages</code> has the same number of values, as
+<code class="language-plaintext highlighter-rouge">audit_data</code> has rows.  To do this, we can use the <code class="language-plaintext highlighter-rouge">len</code> function, as applied
+to the <code class="language-plaintext highlighter-rouge">ages</code> Series.  It returns the number of values.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">ages</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1771
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1771
 </code></pre></div></div>
 
-<p>In fact, <code class="highlighter-rouge">len</code>, as applied to the <em>data frame</em>, returns the number of rows:</p>
+<p>In fact, <code class="language-plaintext highlighter-rouge">len</code>, as applied to the <em>data frame</em>, returns the number of rows:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">audit_data</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1771
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1771
 </code></pre></div></div>
 
-<p>Start by doing a histogram of the values in <code class="highlighter-rouge">ages</code> (which are also the values
-in the <code class="highlighter-rouge">numage</code> column of <code class="highlighter-rouge">mini_brexit</code>).  If you can’t remember how to do
+<p>Start by doing a histogram of the values in <code class="language-plaintext highlighter-rouge">ages</code> (which are also the values
+in the <code class="language-plaintext highlighter-rouge">numage</code> column of <code class="language-plaintext highlighter-rouge">mini_brexit</code>).  If you can’t remember how to do
 histograms, have a look at the <a href="../04/data_frame_intro">introduction to data
-frames</a> notebook.   Hint: consider using the <code class="highlighter-rouge">hist</code>
-method of the <code class="highlighter-rouge">ages</code> variable.</p>
+frames</a> notebook.   Hint: consider using the <code class="language-plaintext highlighter-rouge">hist</code>
+method of the <code class="language-plaintext highlighter-rouge">ages</code> variable.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Do a histogram of the values in the "numage" column.
 # Your code here.
@@ -3156,21 +3156,21 @@ selecting the cases that have ages not equal to 0.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">==</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
-<p>The operator for <em>not equal</em> is <code class="highlighter-rouge">!=</code>, as in:</p>
+<p>The operator for <em>not equal</em> is <code class="language-plaintext highlighter-rouge">!=</code>, as in:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <p>Prepare for brain-bending double negative…</p>
@@ -3178,13 +3178,13 @@ selecting the cases that have ages not equal to 0.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">!=</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
 
-<p>To identify the values in <code class="highlighter-rouge">ages</code> that are <em>not equal</em> to 0, use the comparison
-I’ve hinted at above, to make a new variable, <code class="highlighter-rouge">age_not_0</code>, that has the same
-number of values as <code class="highlighter-rouge">ages</code>, and has <code class="highlighter-rouge">True</code> at positions where <code class="highlighter-rouge">ages</code> is <em>not
-equal</em> to 0, and <code class="highlighter-rouge">False</code> otherwise.   We will refer to these sequences of True
+<p>To identify the values in <code class="language-plaintext highlighter-rouge">ages</code> that are <em>not equal</em> to 0, use the comparison
+I’ve hinted at above, to make a new variable, <code class="language-plaintext highlighter-rouge">age_not_0</code>, that has the same
+number of values as <code class="language-plaintext highlighter-rouge">ages</code>, and has <code class="language-plaintext highlighter-rouge">True</code> at positions where <code class="language-plaintext highlighter-rouge">ages</code> is <em>not
+equal</em> to 0, and <code class="language-plaintext highlighter-rouge">False</code> otherwise.   We will refer to these sequences of True
 and False values, as <em>Boolean vectors</em>.</p>
 
 <p>Check back to the <a href="../04/data_frame_intro">introduction to data frames</a>
@@ -3196,8 +3196,8 @@ data frames.</p>
 # age_not_0 = ?
 </span></code></pre></div></div>
 
-<p>Use <code class="highlighter-rouge">age_not_0</code> to select rows in the <code class="highlighter-rouge">mini_brexit</code> data frame where the value
-is <code class="highlighter-rouge">True</code>, and throw away the rows where the value is <code class="highlighter-rouge">False</code>.  To do this, index into the data frame with the Boolean Series you created above.</p>
+<p>Use <code class="language-plaintext highlighter-rouge">age_not_0</code> to select rows in the <code class="language-plaintext highlighter-rouge">mini_brexit</code> data frame where the value
+is <code class="language-plaintext highlighter-rouge">True</code>, and throw away the rows where the value is <code class="language-plaintext highlighter-rouge">False</code>.  To do this, index into the data frame with the Boolean Series you created above.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select rows in the data frame where the age is not equal to 0.
 # Make a new data # frame called "good_brexit" that only contains these rows. 
@@ -3212,8 +3212,8 @@ Remain or Leave.</p>
 they voted No in the referendum (remain).  Remember, from the data dictionary,
 that 1 is the code for a No vote.</p>
 
-<p>First, make a new variable <code class="highlighter-rouge">votes</code> that has the values of <code class="highlighter-rouge">cut15</code> column of the
-<code class="highlighter-rouge">good_brexit</code> data frame.</p>
+<p>First, make a new variable <code class="language-plaintext highlighter-rouge">votes</code> that has the values of <code class="language-plaintext highlighter-rouge">cut15</code> column of the
+<code class="language-plaintext highlighter-rouge">good_brexit</code> data frame.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a new variable "votes" that refers to the "cut15" column in "good_brexit".
 # Your code will start with
@@ -3221,8 +3221,8 @@ that 1 is the code for a No vote.</p>
 </span>
 </code></pre></div></div>
 
-<p>Now make a new Boolean vector, that has True at the positions where <code class="highlighter-rouge">votes</code> is
-equal to 1, and False otherwise.  Call this variable <code class="highlighter-rouge">is_remain</code>.</p>
+<p>Now make a new Boolean vector, that has True at the positions where <code class="language-plaintext highlighter-rouge">votes</code> is
+equal to 1, and False otherwise.  Call this variable <code class="language-plaintext highlighter-rouge">is_remain</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Make a Boolean vector, called "is_remain", that True for Remain row, False
 # otherwise.
@@ -3230,15 +3230,15 @@ equal to 1, and False otherwise.  Call this variable <code class="highlighter-ro
 </span>
 </code></pre></div></div>
 
-<p>Next, use <code class="highlighter-rouge">is_remain</code> to select the rows in <code class="highlighter-rouge">good_brexit</code> that correspond to
-confessed “Remain” voters.  Call the new data frame <code class="highlighter-rouge">remainers</code>:</p>
+<p>Next, use <code class="language-plaintext highlighter-rouge">is_remain</code> to select the rows in <code class="language-plaintext highlighter-rouge">good_brexit</code> that correspond to
+confessed “Remain” voters.  Call the new data frame <code class="language-plaintext highlighter-rouge">remainers</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the rows from "good_brexit" that correspond to Remain voters
 # remainers = good_brexit?
 </span>
 </code></pre></div></div>
 
-<p>Do a histogram of the values in the <code class="highlighter-rouge">numage</code> column of <code class="highlighter-rouge">remainers</code>:</p>
+<p>Do a histogram of the values in the <code class="language-plaintext highlighter-rouge">numage</code> column of <code class="language-plaintext highlighter-rouge">remainers</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show a histogram of the `numage` column from `remainers`
 </span></code></pre></div></div>
@@ -3252,14 +3252,14 @@ to vote Yes (leave) (code 2):</p>
 </span>
 </code></pre></div></div>
 
-<p>Next, use <code class="highlighter-rouge">is_leave</code> to select the rows in <code class="highlighter-rouge">good_brexit</code> that correspond to confessed “Leave” voters.  Call the new data frame <code class="highlighter-rouge">leavers</code>:</p>
+<p>Next, use <code class="language-plaintext highlighter-rouge">is_leave</code> to select the rows in <code class="language-plaintext highlighter-rouge">good_brexit</code> that correspond to confessed “Leave” voters.  Call the new data frame <code class="language-plaintext highlighter-rouge">leavers</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Select the rows from "good_brexit" that correspond to Leave voters
 # leavers = good_brexit?
 </span>
 </code></pre></div></div>
 
-<p>Do a histogram of the values in the <code class="highlighter-rouge">numage</code> column of <code class="highlighter-rouge">leavers</code>:</p>
+<p>Do a histogram of the values in the <code class="language-plaintext highlighter-rouge">numage</code> column of <code class="language-plaintext highlighter-rouge">leavers</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show a histgram of the `numage` column from `remainers`
 </span>
@@ -3290,7 +3290,7 @@ to vote Yes (leave) (code 2):</p>
 </span></code></pre></div></div>
 
 <p>As you remember, the proportion of Leave voters in the referendum was 51.9%.
-<code class="highlighter-rouge">leave_proportion</code> from the survey seems a way off.  Is it too far off?</p>
+<code class="language-plaintext highlighter-rouge">leave_proportion</code> from the survey seems a way off.  Is it too far off?</p>
 
 <p>You go back to the survey company and tell them that the proportion of Leave voters seems too low.</p>
 
@@ -3309,9 +3309,9 @@ and the survey, is due to sampling error.</p>
 <p>Time for a simulation.</p>
 
 <p>The null hypothesis offered by the survey company is that the proportion we saw
-above is a plausible value if we took a random sample of <code class="highlighter-rouge">n_total</code> voters.</p>
+above is a plausible value if we took a random sample of <code class="language-plaintext highlighter-rouge">n_total</code> voters.</p>
 
-<p>We can simulate a new survey, with <code class="highlighter-rouge">n_total</code> voters, by taking <code class="highlighter-rouge">n_total</code> random
+<p>We can simulate a new survey, with <code class="language-plaintext highlighter-rouge">n_total</code> voters, by taking <code class="language-plaintext highlighter-rouge">n_total</code> random
 numbers between 0 and 1.  We consider the values less than 0.52 as
 corresponding to a Leave vote, and the rest are Remain votes.  We then
 calculate the proportion of Leave votes (proportion of values where value &lt;
@@ -3319,7 +3319,7 @@ calculate the proportion of Leave votes (proportion of values where value &lt;
 
 <p>We do this 10000 times, to get 10000 simulated surveys.  We calculate the
 proportions for each simulated survey, and do a histogram of the proportions.
-Is <code class="highlighter-rouge">leave_proportion</code> a plausible value on this histogram?</p>
+Is <code class="language-plaintext highlighter-rouge">leave_proportion</code> a plausible value on this histogram?</p>
 
 <p>See:</p>
 

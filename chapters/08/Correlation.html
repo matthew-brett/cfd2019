@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1198,24 +1198,24 @@ notebook from the UC Berkeley course.  See the Berkeley course section of the
 a scatter diagram is about a straight line. Formally, this is called
 measuring <em>linear association</em>.</p>
 
-<p>The table <code class="highlighter-rouge">hybrid</code> contains data on hybrid passenger cars sold in the
+<p>The table <code class="language-plaintext highlighter-rouge">hybrid</code> contains data on hybrid passenger cars sold in the
 United States from 1997 to 2013. The data were adapted from the online
 data archive of <a href="http://www.stat.ufl.edu/%7Ewinner/">Prof. Larry Winner</a>
 of the University of Florida. The columns:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">vehicle</code>: model of the car</li>
-  <li><code class="highlighter-rouge">year</code>: year of manufacture</li>
-  <li><code class="highlighter-rouge">msrp</code>: manufacturer’s suggested retail price in 2013 dollars</li>
-  <li><code class="highlighter-rouge">acceleration</code>: acceleration rate in km per hour per second</li>
-  <li><code class="highlighter-rouge">mpg</code>: fuel economy in miles per gallon</li>
-  <li><code class="highlighter-rouge">class</code>: the model’s class.</li>
+  <li><code class="language-plaintext highlighter-rouge">vehicle</code>: model of the car</li>
+  <li><code class="language-plaintext highlighter-rouge">year</code>: year of manufacture</li>
+  <li><code class="language-plaintext highlighter-rouge">msrp</code>: manufacturer’s suggested retail price in 2013 dollars</li>
+  <li><code class="language-plaintext highlighter-rouge">acceleration</code>: acceleration rate in km per hour per second</li>
+  <li><code class="language-plaintext highlighter-rouge">mpg</code>: fuel economy in miles per gallon</li>
+  <li><code class="language-plaintext highlighter-rouge">class</code>: the model’s class.</li>
 </ul>
 
 <p>You can download the file via <a href="/cfd2019/data/hybrid.csv">hybrid.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'hybrid.csv'</span><span class="p">)</span>
-<span class="n">hybrid</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'hybrid.csv'</span><span class="p">)</span>
+<span class="n">hybrid</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1296,14 +1296,14 @@ of the University of Florida. The columns:</p>
 </div>
 </div>
 
-<p>The graph below is a scatter plot of <code class="highlighter-rouge">msrp</code> <em>versus</em> <code class="highlighter-rouge">acceleration</code>.
-That means <code class="highlighter-rouge">msrp</code> is plotted on the vertical axis and <code class="highlighter-rouge">accelaration</code> on
+<p>The graph below is a scatter plot of <code class="language-plaintext highlighter-rouge">msrp</code> <em>versus</em> <code class="language-plaintext highlighter-rouge">acceleration</code>.
+That means <code class="language-plaintext highlighter-rouge">msrp</code> is plotted on the vertical axis and <code class="language-plaintext highlighter-rouge">accelaration</code> on
 the horizontal.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fbbd850&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fbbd850&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_5_1.png" alt="png" /></p>
@@ -1320,10 +1320,10 @@ accelerate fast tend to be less fuel efficient and have lower miles per
 gallon. As the previous scatter plot showed, those were also the cars
 that tended to cost more.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hybrid</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124d191d0&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124d191d0&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_7_1.png" alt="png" /></p>
@@ -1339,18 +1339,18 @@ to be more linear. The relation between the price and acceleration of
 SUVs also shows a linear trend, but with a positive slope.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">suv</span> <span class="o">=</span> <span class="n">hybrid</span><span class="p">[</span><span class="n">hybrid</span><span class="p">[</span><span class="s">'class'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'SUV'</span><span class="p">]</span>
-<span class="n">suv</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
+<span class="n">suv</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124e10150&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124e10150&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_9_1.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">suv</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">suv</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124f19190&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x124f19190&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_10_1.png" alt="png" /></p>
@@ -1364,11 +1364,11 @@ would look the same. This gives us a way to compare the degree of
 linearity in two scatter diagrams.</p>
 
 <p>Recall that in an earlier section we defined the function
-<code class="highlighter-rouge">standard_units</code> to convert an array of numbers to standard units.</p>
+<code class="language-plaintext highlighter-rouge">standard_units</code> to convert an array of numbers to standard units.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="s">"Convert any array of numbers to standard units."</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We can use this function to re-draw the two scatter diagrams for SUVs,
@@ -1376,21 +1376,21 @@ with all the variables measured in standard units.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">suv_mpg_su</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">suv</span><span class="p">[</span><span class="s">'mpg'</span><span class="p">])</span>
 <span class="n">suv_msrp_su</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">suv</span><span class="p">[</span><span class="s">'msrp'</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">suv_mpg_su</span><span class="p">,</span> <span class="n">suv_msrp_su</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mpg (standard units)'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'msrp (standard units)'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">suv_mpg_su</span><span class="p">,</span> <span class="n">suv_msrp_su</span><span class="p">,</span> <span class="s">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'mpg (standard units)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'msrp (standard units)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_14_0.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">standard_units</span><span class="p">(</span><span class="n">suv</span><span class="p">[</span><span class="s">'acceleration'</span><span class="p">]),</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">standard_units</span><span class="p">(</span><span class="n">suv</span><span class="p">[</span><span class="s">'acceleration'</span><span class="p">]),</span>
          <span class="n">standard_units</span><span class="p">(</span><span class="n">suv</span><span class="p">[</span><span class="s">'msrp'</span><span class="p">]),</span> <span class="s">'o'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'acceleration (standard units)'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'msrp (standard units)'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'acceleration (standard units)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'msrp (standard units)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_15_0.png" alt="png" /></p>
@@ -1424,12 +1424,12 @@ upwards, and $r = -1$ if the scatter diagram is a perfect straight
 line sloping downwards.</li>
 </ul>
 
-<p>The function <code class="highlighter-rouge">r_scatter</code> takes a value of $r$ as its argument and
+<p>The function <code class="language-plaintext highlighter-rouge">r_scatter</code> takes a value of $r$ as its argument and
 simulates a scatter plot with a correlation very close to $r$. Because
 of randomness in the simulation, the correlation is not expected to be
 exactly equal to $r$.</p>
 
-<p>Call <code class="highlighter-rouge">r_scatter</code> a few times, with different values of $r$ as the
+<p>Call <code class="language-plaintext highlighter-rouge">r_scatter</code> a few times, with different values of $r$ as the
 argument, and see how the scatter plot changes.</p>
 
 <p>When $r=1$ the scatter plot is perfectly linear and slopes upward. When
@@ -1467,19 +1467,19 @@ and the variables are said to be <em>uncorrelated</em>.</p>
     <span class="n">c</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">c_s</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">x_values</span> <span class="o">*</span> <span class="n">s</span>
     <span class="n">error</span> <span class="o">=</span> <span class="n">y_values</span> <span class="o">-</span> <span class="n">predicted</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Find the best intercept and slope:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
 <span class="n">best_c</span><span class="p">,</span> <span class="n">best_s</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">],</span>
-                          <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">suv_mpg_su</span><span class="p">,</span> <span class="n">suv_msrp_su</span><span class="p">))</span><span class="o">.</span><span class="n">x</span>
+                          <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">suv_mpg_su</span><span class="p">,</span> <span class="n">suv_msrp_su</span><span class="p">)).</span><span class="n">x</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Intercept'</span><span class="p">,</span> <span class="n">best_c</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Slope'</span><span class="p">,</span> <span class="n">best_s</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Intercept 0.0
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Intercept 0.0
 Slope -0.6667143664191213
 
 </code></pre></div></div>
@@ -1492,7 +1492,7 @@ units</em>.</p>
 
 <p><strong>The correlation coefficient is the least-squares slope between the two input arrays that have been converted to standard units</strong>.</p>
 
-<p>We will soon see that we can get this same value, without using <code class="highlighter-rouge">minimize</code>, using a simple calculation on the x and y values.</p>
+<p>We will soon see that we can get this same value, without using <code class="language-plaintext highlighter-rouge">minimize</code>, using a simple calculation on the x and y values.</p>
 
 <h2 id="r-by-calculation">$r$ by calculation</h2>
 
@@ -1509,9 +1509,9 @@ variables are measured in standard units.</strong></p>
 <p>Here are the steps in the calculation. We will apply the steps to
 a simple table of values of $x$ and $y$.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">t</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">t</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">t</span>
@@ -1579,17 +1579,17 @@ a simple table of values of $x$ and $y$.</p>
 <p>Based on the scatter diagram, we expect that $r$ will be positive but
 not equal to 1.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12556d790&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12556d790&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_31_1.png" alt="png" /></p>
 
 <p><strong>Step 1.</strong> Convert each variable to standard units.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_su</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_su</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">t_su</span><span class="p">[</span><span class="s">'x (standard units)'</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">t_su</span><span class="p">[</span><span class="s">'y (standard units)'</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">t_su</span>
@@ -1730,11 +1730,11 @@ not equal to 1.</p>
 <p><strong>Step 3.</strong> $r$ is the average of the products computed in Step 2.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># r is the average of the products of standard units
-</span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t_su</span><span class="p">[</span><span class="s">'product of standard units'</span><span class="p">])</span>
+</span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t_su</span><span class="p">[</span><span class="s">'product of standard units'</span><span class="p">])</span>
 <span class="n">r</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163971897709
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163971897709
 </code></pre></div></div>
 
 <p>As expected, $r$ is positive but not equal to 1.</p>
@@ -1755,19 +1755,19 @@ reflects the scatter plot about the line $y=x$, but does not change
 the amount of clustering nor the sign of the association.</li>
 </ul>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'y'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'y'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'red'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12566f650&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12566f650&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_40_1.png" alt="png" /></p>
 
-<h3 id="the-correlation-function">The <code class="highlighter-rouge">correlation</code> function</h3>
+<h3 id="the-correlation-function">The <code class="language-plaintext highlighter-rouge">correlation</code> function</h3>
 
 <p>We are going to be calculating correlations repeatedly, so it will help
 to define a function that computes it by performing all the steps
-described above. Let’s define a function <code class="highlighter-rouge">correlation</code> that takes
+described above. Let’s define a function <code class="language-plaintext highlighter-rouge">correlation</code> that takes
 a table and the labels of two columns in the table. The function returns
 $r$, the mean of the products of those column values in standard units.</p>
 
@@ -1776,10 +1776,10 @@ $r$, the mean of the products of those column values in standard units.</p>
     """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">x_name</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">y_name</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p>This is a <code class="highlighter-rouge">minimize</code> version of the function - it will return very similar results:</p>
+<p>This is a <code class="language-plaintext highlighter-rouge">minimize</code> version of the function - it will return very similar results:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">correlation_minimize</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_name</span><span class="p">,</span> <span class="n">y_name</span><span class="p">):</span>
     <span class="s">""" Correlation by minimization
@@ -1787,20 +1787,20 @@ $r$, the mean of the products of those column values in standard units.</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">x_name</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">y_name</span><span class="p">]</span>
     <span class="n">x_su</span><span class="p">,</span> <span class="n">y_su</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x_su</span><span class="p">,</span> <span class="n">y_su</span><span class="p">))</span><span class="o">.</span><span class="n">x</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">ss_any_line</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x_su</span><span class="p">,</span> <span class="n">y_su</span><span class="p">)).</span><span class="n">x</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="p">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Oh dear, intercept not near 0'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">slope</span>
 </code></pre></div></div>
 
-<p>Let’s call the function on the <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> columns of <code class="highlighter-rouge">t</code>. The
+<p>Let’s call the function on the <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> columns of <code class="language-plaintext highlighter-rouge">t</code>. The
 function returns the same answer to the correlation between $x$ and $y$
 as we got by direct application of the formula for $r$.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163971897709
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163971897709
 </code></pre></div></div>
 
 <p>The minimize version returns almost exactly the same result:</p>
@@ -1808,7 +1808,7 @@ as we got by direct application of the formula for $r$.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation_minimize</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163997127619
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163997127619
 </code></pre></div></div>
 
 <p>As we noticed, the order in which the variables are specified doesn’t
@@ -1817,23 +1817,23 @@ matter.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163971897709
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6174163971897709
 </code></pre></div></div>
 
-<p>Calling <code class="highlighter-rouge">correlation</code> on columns of the table <code class="highlighter-rouge">suv</code> gives us the
+<p>Calling <code class="language-plaintext highlighter-rouge">correlation</code> on columns of the table <code class="language-plaintext highlighter-rouge">suv</code> gives us the
 correlation between price and miles per gallon as well as the
 correlation between price and acceleration.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">suv</span><span class="p">,</span> <span class="s">'mpg'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.6667143635709919
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-0.6667143635709919
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">suv</span><span class="p">,</span> <span class="s">'acceleration'</span><span class="p">,</span> <span class="s">'msrp'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.48699799279959155
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.48699799279959155
 </code></pre></div></div>
 
 <p>These values confirm what we had observed:</p>
@@ -1867,11 +1867,11 @@ that have strong non-linear association might have very low correlation.
 Here is an example of variables that have a perfect quadratic relation
 $y = x^2$ but have correlation equal to 0.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">nonlinear</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">nonlinear</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">nonlinear</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_x</span>
 <span class="n">nonlinear</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_x</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">nonlinear</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">);</span>
+<span class="n">nonlinear</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_58_0.png" alt="png" /></p>
@@ -1879,7 +1879,7 @@ $y = x^2$ but have correlation equal to 0.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">nonlinear</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
 </code></pre></div></div>
 
 <h3 id="correlation-is-affected-by-outliers">Correlation is Affected by Outliers</h3>
@@ -1888,13 +1888,13 @@ $y = x^2$ but have correlation equal to 0.</p>
 a scatter plot for which $r$ is equal to 1 is turned into a plot for
 which $r$ is equal to 0, by the addition of just one outlying point.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">line</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">line</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">line</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">line</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">line</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">line</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">line</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">line</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1252d7490&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1252d7490&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_61_1.png" alt="png" /></p>
@@ -1902,13 +1902,13 @@ which $r$ is equal to 0, by the addition of just one outlying point.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">outlier</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">outlier</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<span class="n">outlier</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">outlier</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">outlier</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">outlier</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">outlier</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">outlier</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_63_0.png" alt="png" /></p>
@@ -1916,7 +1916,7 @@ which $r$ is equal to 0, by the addition of just one outlying point.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">outlier</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0
 </code></pre></div></div>
 
 <h3 id="ecological-correlations-should-be-interpreted-with-care">Ecological Correlations Should be Interpreted with Care</h3>
@@ -1924,15 +1924,15 @@ which $r$ is equal to 0, by the addition of just one outlying point.</p>
 <p>Correlations based on aggregated data can be misleading. As an example,
 here are data on the Critical Reading and Math SAT scores in 2014. There
 is one point for each of the 50 states and one for Washington, D.C. The
-column <code class="highlighter-rouge">Participation Rate</code> contains the percent of high school
+column <code class="language-plaintext highlighter-rouge">Participation Rate</code> contains the percent of high school
 seniors who took the test. The next three columns show the average score
 in the state on each portion of the test, and the final column is the
 average of the total scores on the test.</p>
 
 <p>You can download the file via <a href="/cfd2019/data/sat2014.csv">sat2014.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sat2014</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'sat2014.csv'</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'State'</span><span class="p">)</span>
-<span class="n">sat2014</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sat2014</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'sat2014.csv'</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'State'</span><span class="p">)</span>
+<span class="n">sat2014</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -2017,10 +2017,10 @@ average of the total scores on the test.</p>
 very tightly clustered around a straight line; the correlation is close
 to 0.985.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sat2014</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Critical Reading'</span><span class="p">,</span> <span class="s">'Math'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sat2014</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="s">'Critical Reading'</span><span class="p">,</span> <span class="s">'Math'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1252bbd10&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1252bbd10&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/Correlation_68_1.png" alt="png" /></p>
@@ -2028,7 +2028,7 @@ to 0.985.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">correlation</span><span class="p">(</span><span class="n">sat2014</span><span class="p">,</span> <span class="s">'Critical Reading'</span><span class="p">,</span> <span class="s">'Math'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9847558411067434
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9847558411067434
 </code></pre></div></div>
 
 <p>That’s an extremely high correlation. But it’s important to note that

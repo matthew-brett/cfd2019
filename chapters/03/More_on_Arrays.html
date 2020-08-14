@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1183,7 +1183,7 @@ and
 <a href="http://berkeleyearth.lbl.gov/auto/Regional/TMIN/Text/global-land-TMIN-Trend.txt">low</a>
 temperatures for the decades surrounding 1850, 1900, 1950, and 2000.</p>
 
-<p>First we get Numpy, renamed as <code class="highlighter-rouge">np</code>:</p>
+<p>First we get Numpy, renamed as <code class="language-plaintext highlighter-rouge">np</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
@@ -1191,40 +1191,40 @@ temperatures for the decades surrounding 1850, 1900, 1950, and 2000.</p>
 <p>Next we create the array:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_high</span> <span class="o">=</span> <span class="mf">14.48</span>
-<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
+<span class="n">highs</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.880</span><span class="p">,</span>
                   <span class="n">baseline_high</span> <span class="o">-</span> <span class="mf">0.093</span><span class="p">,</span>
                   <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.105</span><span class="p">,</span>
                   <span class="n">baseline_high</span> <span class="o">+</span> <span class="mf">0.684</span><span class="p">])</span>
 <span class="n">highs</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([13.6  , 14.387, 14.585, 15.164])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">baseline_low</span> <span class="o">=</span> <span class="mf">3.00</span>
-<span class="n">lows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.872</span><span class="p">,</span> <span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.629</span><span class="p">,</span>
+<span class="n">lows</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.872</span><span class="p">,</span> <span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.629</span><span class="p">,</span>
                  <span class="n">baseline_low</span> <span class="o">-</span> <span class="mf">0.126</span><span class="p">,</span> <span class="n">baseline_low</span> <span class="o">+</span> <span class="mf">0.728</span><span class="p">])</span>
 <span class="n">lows</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.128, 2.371, 2.874, 3.728])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2.128, 2.371, 2.874, 3.728])
 </code></pre></div></div>
 
 <p>Suppose we’d like to compute the average daily <em>range</em> of temperatures for
 each decade.  That is, we want to subtract the average daily high in the 1850s
 from the average daily low in the 1850s, and the same for each other decade.</p>
 
-<p>We could write this laboriously using <code class="highlighter-rouge">.item</code>:</p>
+<p>We could write this laboriously using <code class="language-plaintext highlighter-rouge">.item</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-    <span class="n">highs</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="n">highs</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">highs</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">highs</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">highs</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">lows</span><span class="p">.</span><span class="n">item</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="p">])</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11.472, 12.016, 11.711, 11.436])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11.472, 12.016, 11.711, 11.436])
 </code></pre></div></div>
 
 <p>As when we converted an array of temperatures from Celsius to Fahrenheit,
@@ -1233,7 +1233,7 @@ Python provides a much cleaner way to write this:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">highs</span> <span class="o">-</span> <span class="n">lows</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11.472, 12.016, 11.711, 11.436])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([11.472, 12.016, 11.711, 11.436])
 </code></pre></div></div>
 
 <p><img src="/cfd2019/images/array_subtraction.png" /></p>
@@ -1246,10 +1246,10 @@ Python provides a much cleaner way to write this:</p>
 operation is performed on each corresponding pair of elements in the two
 arrays. The final result is an array.</p>
 
-<p>For example, if <code class="highlighter-rouge">array1</code> and <code class="highlighter-rouge">array2</code> have the same number of elements, then
-the value of <code class="highlighter-rouge">array1 * array2</code> is an array. Its first element is the first
-element of <code class="highlighter-rouge">array</code> times the first element of <code class="highlighter-rouge">array2</code>, its second element is
-the second element of <code class="highlighter-rouge">array1</code> times the second element of <code class="highlighter-rouge">array2</code>, and so
+<p>For example, if <code class="language-plaintext highlighter-rouge">array1</code> and <code class="language-plaintext highlighter-rouge">array2</code> have the same number of elements, then
+the value of <code class="language-plaintext highlighter-rouge">array1 * array2</code> is an array. Its first element is the first
+element of <code class="language-plaintext highlighter-rouge">array</code> times the first element of <code class="language-plaintext highlighter-rouge">array2</code>, its second element is
+the second element of <code class="language-plaintext highlighter-rouge">array1</code> times the second element of <code class="language-plaintext highlighter-rouge">array2</code>, and so
 on.</p>
 
 <div class="isa_info">

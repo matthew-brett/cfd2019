@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1179,8 +1179,8 @@ we analyze the <a href="/cfd2019/data/brexit_survey">Brexit survey</a>.</p>
 
 <p>As you will see in the link above, the data are from a survey of the UK
 population.  Each row in the survey corresponds to one person answering.  One
-of the questions, named <code class="highlighter-rouge">cut15</code> is how the person voted in the Brexit
-referendum.  Another, <code class="highlighter-rouge">numage</code> is the age of the person in years.</p>
+of the questions, named <code class="language-plaintext highlighter-rouge">cut15</code> is how the person voted in the Brexit
+referendum.  Another, <code class="language-plaintext highlighter-rouge">numage</code> is the age of the person in years.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Array library.
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -1193,7 +1193,7 @@ referendum.  Another, <code class="highlighter-rouge">numage</code> is the age o
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
 <span class="c1"># Fancy plots
-</span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>If you are running on your laptop, first <a href="/cfd2019/data/audit_of_political_engagement_14_2017.tab">download the data file</a> to the same directory as this notebook.</p>
@@ -1203,12 +1203,12 @@ referendum.  Another, <code class="highlighter-rouge">numage</code> is the age o
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data frame, and put it in the variable "audit_data".
 # The values are separated by tab characters, written as "\t" in Python
 # strings.
-</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
+</span><span class="n">audit_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'audit_of_political_engagement_14_2017.tab'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Now get the ages for the Leavers and the Remainers.</p>
 
-<p>A small number of ages are recorded as 0, meaning we do not have the correct age for that person / row.  First we drop rows with ages recorded as 0, then select the remaining rows corresponding to people who voted to remain (<code class="highlighter-rouge">cut15</code> value of 1) and leave (<code class="highlighter-rouge">cut15</code> value of 2):</p>
+<p>A small number of ages are recorded as 0, meaning we do not have the correct age for that person / row.  First we drop rows with ages recorded as 0, then select the remaining rows corresponding to people who voted to remain (<code class="language-plaintext highlighter-rouge">cut15</code> value of 1) and leave (<code class="language-plaintext highlighter-rouge">cut15</code> value of 2):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Drop rows where age is 0
 </span><span class="n">good_data</span> <span class="o">=</span> <span class="n">audit_data</span><span class="p">[</span><span class="n">audit_data</span><span class="p">[</span><span class="s">'numage'</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
@@ -1219,20 +1219,20 @@ referendum.  Another, <code class="highlighter-rouge">numage</code> is the age o
 
 <p>Show the age distributions for the two groups:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">remain_ages</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">remain_ages</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>774
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>774
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/population_permutation_7_1.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leave_ages</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leave_ages</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">leave_ages</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>541
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>541
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/05/population_permutation_8_1.png" alt="png" /></p>
@@ -1241,25 +1241,25 @@ referendum.  Another, <code class="highlighter-rouge">numage</code> is the age o
 
 <p>We might summarize the difference, by looking at the difference in means:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leave_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">leave_ages</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">leave_mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">leave_ages</span><span class="p">)</span>
 <span class="n">leave_mean</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>51.715341959334566
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>51.715341959334566
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">remain_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">remain_mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">)</span>
 <span class="n">remain_mean</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>48.01550387596899
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>48.01550387596899
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">difference</span> <span class="o">=</span> <span class="n">leave_mean</span> <span class="o">-</span> <span class="n">remain_mean</span>
 <span class="n">difference</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.6998380833655773
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.6998380833655773
 </code></pre></div></div>
 
 <p>The distributions do look different.</p>
@@ -1303,50 +1303,50 @@ random, one with 774 voters, and the other with 541.  The new groups
 have a random mix of the original Leave and Remain voters.  Then we
 calculate the difference in means between these two new, fake groups.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">,</span> <span class="n">leave_ages</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pooled</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">remain_ages</span><span class="p">,</span> <span class="n">leave_ages</span><span class="p">)</span>
 <span class="n">pooled</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([37, 55, 37, ..., 20, 40, 31])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([37, 55, 37, ..., 20, 40, 31])
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1315
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1315
 </code></pre></div></div>
 
-<p>We mix the two samples together, using <code class="highlighter-rouge">np.random.shuffle</code>.  It works like
+<p>We mix the two samples together, using <code class="language-plaintext highlighter-rouge">np.random.shuffle</code>.  It works like
 this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">'cat'</span><span class="p">,</span> <span class="s">'dog'</span><span class="p">,</span> <span class="s">'rabbit'</span><span class="p">])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pets</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="s">'cat'</span><span class="p">,</span> <span class="s">'dog'</span><span class="p">,</span> <span class="s">'rabbit'</span><span class="p">])</span>
 <span class="n">pets</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'dog', 'rabbit'], dtype='&lt;U6')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'dog', 'rabbit'], dtype='&lt;U6')
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
 <span class="n">pets</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'rabbit', 'dog'], dtype='&lt;U6')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'rabbit', 'dog'], dtype='&lt;U6')
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
 <span class="n">pets</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'rabbit', 'dog'], dtype='&lt;U6')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['cat', 'rabbit', 'dog'], dtype='&lt;U6')
 </code></pre></div></div>
 
 <p>Now to mix up ages of the Leavers and Remainers:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
 <span class="n">pooled</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([54, 50, 19, ..., 52, 80, 92])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([54, 50, 19, ..., 52, 80, 92])
 </code></pre></div></div>
 
 <p>We split the newly mixed group into 774 simulated Remain voters and 541
@@ -1360,31 +1360,31 @@ and Remain ages.</p>
 <span class="nb">len</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>541
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>541
 </code></pre></div></div>
 
 <p>Now we can calculate the mean difference.  This is our first simulation:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_difference</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_remainers</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fake_difference</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_leavers</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fake_remainers</span><span class="p">)</span>
 <span class="n">fake_difference</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.11033973835417754
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.11033973835417754
 </code></pre></div></div>
 
 <p>That looks a lot smaller than the difference we saw.   We want to keep doing
 this, to collect more simulations.  We need to mix up the ages again, to give
 us new random samples of fake Remainers and fake Leavers.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
-<span class="n">fake_difference_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="mi">774</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="mi">774</span><span class="p">:])</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">pooled</span><span class="p">)</span>
+<span class="n">fake_difference_2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[:</span><span class="mi">774</span><span class="p">])</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pooled</span><span class="p">[</span><span class="mi">774</span><span class="p">:])</span>
 <span class="n">fake_difference_2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.5329493186605347
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1.5329493186605347
 </code></pre></div></div>
 
-<p>We want to keep doing this - and that calls for a <code class="highlighter-rouge">for</code> loop.</p>
+<p>We want to keep doing this - and that calls for a <code class="language-plaintext highlighter-rouge">for</code> loop.</p>
 
           
         </section>

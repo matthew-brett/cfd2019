@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1173,8 +1173,8 @@
 
           <p>As you’ve already seen in the <a href="variables_intro">introduction to variables</a>,
 Python gives names to values using an <em>assignment</em> statement. In an
-assignment, a <em>name</em> is followed by <code class="highlighter-rouge">=</code>, which is followed by any
-<a href="Expressions">expression</a>. The value of the expression to the right of <code class="highlighter-rouge">=</code> is
+assignment, a <em>name</em> is followed by <code class="language-plaintext highlighter-rouge">=</code>, which is followed by any
+<a href="Expressions">expression</a>. The value of the expression to the right of <code class="language-plaintext highlighter-rouge">=</code> is
 <em>assigned</em> to the name. Once a name has a value assigned to it, the value will
 be substituted for that name in future expressions.</p>
 
@@ -1183,7 +1183,7 @@ statement</em>.</p>
 
 <p>A <em>statement</em> is a piece of code that performs an action.</p>
 
-<p>Here are two assignment statements, giving values to the names <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>.
+<p>Here are two assignment statements, giving values to the names <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code>.
 Then we use these variables in an expression.  The Notebook shows the human-readable display of the expression return value.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
@@ -1191,49 +1191,49 @@ Then we use these variables in an expression.  The Notebook shows the human-read
 <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
 </code></pre></div></div>
 
-<p>In the expression <code class="highlighter-rouge">a + b</code> above, Python evaluates the variable <code class="highlighter-rouge">a</code> to get
-a computer representation (CR) of the number 10, it evaluates the variable <code class="highlighter-rouge">b</code>
+<p>In the expression <code class="language-plaintext highlighter-rouge">a + b</code> above, Python evaluates the variable <code class="language-plaintext highlighter-rouge">a</code> to get
+a computer representation (CR) of the number 10, it evaluates the variable <code class="language-plaintext highlighter-rouge">b</code>
 to get the CR of 20, and then adds them, to give the final result of the
 expression; a CR of 30.</p>
 
 <p>Finally, the notebook creates a human-readable (HR) version of the result, and
 shows that to us.</p>
 
-<p>A variable can be used in the expression to the right of <code class="highlighter-rouge">=</code>.</p>
+<p>A variable can be used in the expression to the right of <code class="language-plaintext highlighter-rouge">=</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
 <span class="n">half</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">quarter</span>
 <span class="n">half</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
 </code></pre></div></div>
 
 <p>We can change the value for variables.  Here we change the value of variable
-<code class="highlighter-rouge">quarter</code> from 0.25 to 4.</p>
+<code class="language-plaintext highlighter-rouge">quarter</code> from 0.25 to 4.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quarter</span> <span class="o">=</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<p>Now we have changed the value of <code class="highlighter-rouge">quarter</code> What do you think will happen to
-the value of <code class="highlighter-rouge">half</code> above?  Will it change, or will it stay the same?</p>
+<p>Now we have changed the value of <code class="language-plaintext highlighter-rouge">quarter</code> What do you think will happen to
+the value of <code class="language-plaintext highlighter-rouge">half</code> above?  Will it change, or will it stay the same?</p>
 
 <p>Try working out the answer before reading further.</p>
 
 <p>Remember that an expression <em>evaluates</em> its variables before returning the
-result.  In the cell above, the expression <code class="highlighter-rouge">half = 2 * quarter</code> evaluated
-<code class="highlighter-rouge">quarter</code>, to get the CR of 0.25, and then evaluated 2 * 0.25, to give the CR
-of 0.5.  <code class="highlighter-rouge">half</code> has this value - the CR of 0.5.  When we changed <code class="highlighter-rouge">quarter</code> in
+result.  In the cell above, the expression <code class="language-plaintext highlighter-rouge">half = 2 * quarter</code> evaluated
+<code class="language-plaintext highlighter-rouge">quarter</code>, to get the CR of 0.25, and then evaluated 2 * 0.25, to give the CR
+of 0.5.  <code class="language-plaintext highlighter-rouge">half</code> has this value - the CR of 0.5.  When we changed <code class="language-plaintext highlighter-rouge">quarter</code> in
 the next cell, it did not affect the value that we have already given to
-<code class="highlighter-rouge">half</code>:</p>
+<code class="language-plaintext highlighter-rouge">half</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">half</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5
 </code></pre></div></div>
 
 <h2 id="reassigning-variables">Reassigning variables</h2>
@@ -1244,21 +1244,21 @@ the next cell, it did not affect the value that we have already given to
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
 </code></pre></div></div>
 
-<p>At this stage the variable <code class="highlighter-rouge">a</code> has the value 5.</p>
+<p>At this stage the variable <code class="language-plaintext highlighter-rouge">a</code> has the value 5.</p>
 
-<p>If you want, you can then <em>change</em> the value of <code class="highlighter-rouge">a</code>, like this:</p>
+<p>If you want, you can then <em>change</em> the value of <code class="language-plaintext highlighter-rouge">a</code>, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
 </code></pre></div></div>
 
-<p>Now the variable <code class="highlighter-rouge">a</code> has the value 7.  You can call this <em>reassigning</em> a variable.</p>
+<p>Now the variable <code class="language-plaintext highlighter-rouge">a</code> has the value 7.  You can call this <em>reassigning</em> a variable.</p>
 
 <p>Now consider this piece of code:</p>
 
@@ -1266,18 +1266,18 @@ the next cell, it did not affect the value that we have already given to
 <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<p>What value will <code class="highlighter-rouge">a</code> have?</p>
+<p>What value will <code class="language-plaintext highlighter-rouge">a</code> have?</p>
 
-<p>Remember that Python will evaluate the right hand side (RHS) of <code class="highlighter-rouge">a = a + 1</code>.
-The RHS is <code class="highlighter-rouge">a + 1</code>. This has two sub-expressions, <code class="highlighter-rouge">a</code> (which evaluates to the
-CR of 10) and <code class="highlighter-rouge">1</code> (which evaluates to a CR of 1), so the value returned from <code class="highlighter-rouge">a
-\+ 1</code> is the CR of 11.  After this Python sets the left-hand-side name <code class="highlighter-rouge">a</code> to
+<p>Remember that Python will evaluate the right hand side (RHS) of <code class="language-plaintext highlighter-rouge">a = a + 1</code>.
+The RHS is <code class="language-plaintext highlighter-rouge">a + 1</code>. This has two sub-expressions, <code class="language-plaintext highlighter-rouge">a</code> (which evaluates to the
+CR of 10) and <code class="language-plaintext highlighter-rouge">1</code> (which evaluates to a CR of 1), so the value returned from <code class="language-plaintext highlighter-rouge">a
+\+ 1</code> is the CR of 11.  After this Python sets the left-hand-side name <code class="language-plaintext highlighter-rouge">a</code> to
 have this value.   So:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
 </code></pre></div></div>
 
 <p>See <a href="https://runestone.academy/runestone/books/published/thinkcspy/SimplePythonData/Reassignment.html">this chapter in Think Like a Computer
@@ -1288,9 +1288,9 @@ for more explanation of variables and reassignment.</p>
 
 <p>Variable names must start with a letter, but can contain both letters and
 numbers. A name cannot contain a space; instead, it is common to use an
-underscore character <code class="highlighter-rouge">_</code> to replace each space. Names are only as useful as
+underscore character <code class="language-plaintext highlighter-rouge">_</code> to replace each space. Names are only as useful as
 you make them; it’s up to the programmer to choose names that are easy to
-interpret.  Typically, more meaningful names can be invented than <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>.
+interpret.  Typically, more meaningful names can be invented than <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code>.
 For example, let’s say you were calculating the 20% Value Added Tax for a
 restaurant bill, as well as 15% tip, on top of that.  The following names
 clarify the meaning of the various quantities involved.</p>
@@ -1302,7 +1302,7 @@ clarify the meaning of the various quantities involved.</p>
 <span class="n">meal_price_with_vat</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30.0
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tip_rate</span> <span class="o">=</span> <span class="mf">0.15</span>
@@ -1311,7 +1311,7 @@ clarify the meaning of the various quantities involved.</p>
 <span class="n">meal_price_total</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>34.5
 </code></pre></div></div>
 
 <p>See <a href="../../exercises/names">the Names exercises</a> to practice the material in this section.</p>

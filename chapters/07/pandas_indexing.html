@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1206,10 +1206,10 @@ some more detail.</p>
 on your own computer.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the data file as a data frame.
-</span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
+</span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'gender_stats.csv'</span><span class="p">)</span>
 
 <span class="c1"># Show the first 10 rows
-</span><span class="n">gender_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="n">gender_data</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div>
@@ -1369,13 +1369,13 @@ on your own computer.</p>
 </div>
 
 <p>As you know, the names at the top, in <strong>bold typeface</strong>, are the names of the
-columns.  We can see these names using the <code class="highlighter-rouge">columns</code> attribute of the data
+columns.  We can see these names using the <code class="language-plaintext highlighter-rouge">columns</code> attribute of the data
 frame:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">columns</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">.</span><span class="n">columns</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
        'health_exp_per_cap', 'health_exp_pub', 'prim_ed_girls',
        'mat_mort_ratio', 'population'],
       dtype='object')
@@ -1392,24 +1392,24 @@ first row, 1 for the second row, and so on.</p>
 <p>These numbers are the <em>index</em> of the data frame.  The index contains the <em>row
 labels</em>.</p>
 
-<p>We can see the row labels / index with the <code class="highlighter-rouge">index</code> attribute of the data frame.</p>
+<p>We can see the row labels / index with the <code class="language-plaintext highlighter-rouge">index</code> attribute of the data frame.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="o">.</span><span class="n">index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gender_data</span><span class="p">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=0, stop=216, step=1)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=0, stop=216, step=1)
 </code></pre></div></div>
 
-<p>This is saying we have a simple index, that is like a <code class="highlighter-rouge">np.arange</code>, starting at
+<p>This is saying we have a simple index, that is like a <code class="language-plaintext highlighter-rouge">np.arange</code>, starting at
 0, and continuing in steps of 1 up to, but not including 216.</p>
 
 <p>So far, the index looks like row numbers, with 0 for the first row, 1 for the
 second row.  We will soon see that the index is more than that.</p>
 
-<p>For example, let us look at the last 15 rows.  We can get these with the <code class="highlighter-rouge">tail</code>
+<p>For example, let us look at the last 15 rows.  We can get these with the <code class="language-plaintext highlighter-rouge">tail</code>
 method of the data frame.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">last_15</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">last_15</span> <span class="o">=</span> <span class="n">gender_data</span><span class="p">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">last_15</span>
 </code></pre></div></div>
 
@@ -1629,12 +1629,12 @@ method of the data frame.</p>
 </div>
 </div>
 
-<p>Here is the <code class="highlighter-rouge">index</code> of this new data frame.</p>
+<p>Here is the <code class="language-plaintext highlighter-rouge">index</code> of this new data frame.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">last_15</span><span class="o">.</span><span class="n">index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">last_15</span><span class="p">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=201, stop=216, step=1)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RangeIndex(start=201, stop=216, step=1)
 </code></pre></div></div>
 
 <p>Notice that the first row of this new data frame no longer has the label 0 - it
@@ -1648,9 +1648,9 @@ which we selected the rows.</p>
 select the top 15 rows.  By doing this, I select the top 15 richest countries.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Sort by GDP.
-</span><span class="n">df_by_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</span><span class="n">df_by_gdp</span> <span class="o">=</span> <span class="n">gender_data</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'gdp_us_billion'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="c1"># Take the top 15 rows.
-</span><span class="n">richest_15</span> <span class="o">=</span> <span class="n">df_by_gdp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</span><span class="n">richest_15</span> <span class="o">=</span> <span class="n">df_by_gdp</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">richest_15</span>
 </code></pre></div></div>
 
@@ -1876,16 +1876,16 @@ for the USA is now first, but it has kept its original index value (row label)
 
 <p>Here is the index for this small table:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="p">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67, 63, 26, 88, 94, 164, 32, 10, 104, 58, 124], dtype='int64')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67, 63, 26, 88, 94, 164, 32, 10, 104, 58, 124], dtype='int64')
 </code></pre></div></div>
 
 <p>Now let us say that I wanted to get the eleventh row of this table.</p>
 
-<p>I would be tempted to do something like <code class="highlighter-rouge">richest_15[10]</code> - but then - what
-would Pandas give me?   Does <code class="highlighter-rouge">10</code> mean the row label for “Australia”?  Or does
+<p>I would be tempted to do something like <code class="language-plaintext highlighter-rouge">richest_15[10]</code> - but then - what
+would Pandas give me?   Does <code class="language-plaintext highlighter-rouge">10</code> mean the row label for “Australia”?  Or does
 it mean the eleventh row of the table, as it would for an array, and therefore
 the row for “Canada”?  That is, will the indexing using the <em>labels</em> (index
 values)?  Or will it use the positions (as for indexing in Numpy arrays)?</p>
@@ -1895,22 +1895,22 @@ guess.   That’s a bad idea, because then we have to guess what Pandas has
 guessed, and it is starting to get really confusing.</p>
 
 <p>For that reason, we careful Pandas users do not index rows with code like
-<code class="highlighter-rouge">richest_15[10]</code>.  When we are not using Booleans to select rows, we always use
+<code class="language-plaintext highlighter-rouge">richest_15[10]</code>.  When we are not using Booleans to select rows, we always use
 one of the two indexing attributes that Pandas provides.  Each does a different
 type of indexing.</p>
 
 <ul>
-  <li>The <code class="highlighter-rouge">loc</code> (label locate) attribute indexes using the <em>labels</em> (row index).</li>
-  <li>The <code class="highlighter-rouge">iloc</code> (position locate) attribute indexes using the positions.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">loc</code> (label locate) attribute indexes using the <em>labels</em> (row index).</li>
+  <li>The <code class="language-plaintext highlighter-rouge">iloc</code> (position locate) attribute indexes using the positions.</li>
 </ul>
 
 <p>Here they are in action:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the row with label 10
-</span><span class="n">richest_15</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="n">richest_15</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country_name          Australia
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country_name          Australia
 country_code                AUS
 fert_rate                1.8615
 gdp_us_billion          1422.99
@@ -1923,10 +1923,10 @@ Name: 10, dtype: object
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the row at position / offset 10
-</span><span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="n">richest_15</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country_name           Canada
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country_name           Canada
 country_code              CAN
 fert_rate              1.6003
 gdp_us_billion        1708.47
@@ -1939,78 +1939,78 @@ Name: 32, dtype: object
 </code></pre></div></div>
 
 <p>In more details, what is happening in the first cell above is that
-<code class="highlighter-rouge">richest_15.loc</code> gives us a special value (AKA <em>object</em>) that:</p>
+<code class="language-plaintext highlighter-rouge">richest_15.loc</code> gives us a special value (AKA <em>object</em>) that:</p>
 
 <ul>
-  <li>knows about the <code class="highlighter-rouge">richest_15</code> data frame;</li>
-  <li>will give us rows and columns, if we use <code class="highlighter-rouge">[ something ]</code> on it.</li>
+  <li>knows about the <code class="language-plaintext highlighter-rouge">richest_15</code> data frame;</li>
+  <li>will give us rows and columns, if we use <code class="language-plaintext highlighter-rouge">[ something ]</code> on it.</li>
 </ul>
 
-<p>So, read <code class="highlighter-rouge">richest_15.loc[10]</code> as:</p>
+<p>So, read <code class="language-plaintext highlighter-rouge">richest_15.loc[10]</code> as:</p>
 
 <ul>
-  <li>Get the <code class="highlighter-rouge">richest_15</code> value (the data frame);</li>
-  <li>Get the <code class="highlighter-rouge">loc</code> attribute of this data frame. This evaluates to a special
+  <li>Get the <code class="language-plaintext highlighter-rouge">richest_15</code> value (the data frame);</li>
+  <li>Get the <code class="language-plaintext highlighter-rouge">loc</code> attribute of this data frame. This evaluates to a special
 object (value) that can give us rows and columns from the data frame, by
 looking at labels;</li>
-  <li>Use this object to fetch the row labeled 10, by using indexing (<code class="highlighter-rouge">[10]</code>)</li>
+  <li>Use this object to fetch the row labeled 10, by using indexing (<code class="language-plaintext highlighter-rouge">[10]</code>)</li>
 </ul>
 
-<p>Likewise, read <code class="highlighter-rouge">richest_15.iloc[10]</code> as:</p>
+<p>Likewise, read <code class="language-plaintext highlighter-rouge">richest_15.iloc[10]</code> as:</p>
 
 <ul>
-  <li>Get the <code class="highlighter-rouge">richest_15</code> value (the data frame);</li>
-  <li>Get the <code class="highlighter-rouge">iloc</code> attribute of this data frame. This evaluates to a special
+  <li>Get the <code class="language-plaintext highlighter-rouge">richest_15</code> value (the data frame);</li>
+  <li>Get the <code class="language-plaintext highlighter-rouge">iloc</code> attribute of this data frame. This evaluates to a special
 object (value) that can give us rows and columns from the data frame, by
 looking at positions (offsets);</li>
-  <li>Use this object to fetch the row at offset 10, by using indexing (<code class="highlighter-rouge">[10]</code>).</li>
+  <li>Use this object to fetch the row at offset 10, by using indexing (<code class="language-plaintext highlighter-rouge">[10]</code>).</li>
 </ul>
 
 <p>When you select rows and columns from a data frame, consider carefully what you
 want.</p>
 
 <p>Do you want to select rows and columns by <em>label</em> (by <em>index</em>, in the rows).
-Then you want <code class="highlighter-rouge">.loc</code>.</p>
+Then you want <code class="language-plaintext highlighter-rouge">.loc</code>.</p>
 
 <p>Do you want to select rows and columns by <em>position</em> (offset).  Then you want
-<code class="highlighter-rouge">.iloc</code>.</p>
+<code class="language-plaintext highlighter-rouge">.iloc</code>.</p>
 
 <h2 id="loc-and-iloc-indexing-work-on-columns-too">Loc and iloc indexing work on columns too</h2>
 
-<p>Consider this.  We use <code class="highlighter-rouge">.loc</code> and the label for the <em>row</em>, followed by the
+<p>Consider this.  We use <code class="language-plaintext highlighter-rouge">.loc</code> and the label for the <em>row</em>, followed by the
 label for the <em>column</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1422.994116449394
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1422.994116449394
 </code></pre></div></div>
 
 <p>This selects the row <em>labeled</em> 10 (the USA row) and returns the value from the
-<code class="highlighter-rouge">gdp_us_billion</code> column.</p>
+<code class="language-plaintext highlighter-rouge">gdp_us_billion</code> column.</p>
 
-<p>Conversely, <code class="highlighter-rouge">iloc</code> only understands positions, and so, integers.  It does not
+<p>Conversely, <code class="language-plaintext highlighter-rouge">iloc</code> only understands positions, and so, integers.  It does not
 understand or use labels:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We can't specify columns by label, using iloc.
-</span><span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
+</span><span class="n">richest_15</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">'gdp_us_billion'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
    ...
 ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
 </code></pre></div></div>
 
 <p>Notice the somewhat informative error right at the bottom of the error message.</p>
 
-<p><code class="highlighter-rouge">iloc</code> can get columns by their position.  For example, <code class="highlighter-rouge">fertility_rate</code> is the
-third column, and so we can get the fertility rate by asking <code class="highlighter-rouge">iloc</code> for the
+<p><code class="language-plaintext highlighter-rouge">iloc</code> can get columns by their position.  For example, <code class="language-plaintext highlighter-rouge">fertility_rate</code> is the
+third column, and so we can get the fertility rate by asking <code class="language-plaintext highlighter-rouge">iloc</code> for the
 eleventh row, third column, like so:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6002999999999998
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6002999999999998
 </code></pre></div></div>
 
 <p>This is the value from the row at offset 10 and the column at offset 2.</p>
@@ -2026,10 +2026,10 @@ index).</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the fert_rate column from the data frame
 </span><span class="n">rich_ferts</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">[</span><span class="s">'fert_rate'</span><span class="p">]</span>
-<span class="n">rich_ferts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">rich_ferts</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    1.860875
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    1.860875
 35     1.558750
 97     1.430000
 49     1.450000
@@ -2042,7 +2042,7 @@ Name: fert_rate, dtype: float64
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">rich_ferts</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
 <p>You probably also spotted the numbers to the left of the values.  Yes, the row
@@ -2052,38 +2052,38 @@ the first element has row label 202, and we remember that this is the row label
 
 <p>As for the data frames, here is the index for the series:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_ferts</span><span class="o">.</span><span class="n">index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rich_ferts</span><span class="p">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67, 63, 26, 88, 94, 164, 32, 10, 104, 58, 124], dtype='int64')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Int64Index([202, 35, 97, 49, 67, 63, 26, 88, 94, 164, 32, 10, 104, 58, 124], dtype='int64')
 </code></pre></div></div>
 
-<p>Like data frames, we can index by label, with <code class="highlighter-rouge">loc</code>, and by position, with
-<code class="highlighter-rouge">iloc</code>:</p>
+<p>Like data frames, we can index by label, with <code class="language-plaintext highlighter-rouge">loc</code>, and by position, with
+<code class="language-plaintext highlighter-rouge">iloc</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The value for row labeled 10 - Australia.
-</span><span class="n">rich_ferts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="n">rich_ferts</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.8615
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.8615
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The value for the row at position 10 - Canada
-</span><span class="n">rich_ferts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="n">rich_ferts</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6002999999999998
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6002999999999998
 </code></pre></div></div>
 
 <h2 id="rows-from-data-frames-are-series">Rows from data frames are Series</h2>
 
 <p>Here we select the row at position 0 (the first row):</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">richest_15</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">first_row</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country_name          United States
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>country_name          United States
 country_code                    USA
 fert_rate                   1.86088
 gdp_us_billion              17369.1
@@ -2100,7 +2100,7 @@ Name: 202, dtype: object
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">first_row</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
 <p>Notice that the Series has 9 elements, one for each column in the data frame.</p>
@@ -2108,10 +2108,10 @@ Name: 202, dtype: object
 <p>As you remember, we can see the number of rows and columns in a data frame
 with:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="o">.</span><span class="n">shape</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">richest_15</span><span class="p">.</span><span class="n">shape</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(15, 9)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(15, 9)
 </code></pre></div></div>
 
 <p>Remember, the columns have names, which we can also call <em>labels</em>.</p>
@@ -2119,41 +2119,41 @@ with:</p>
 <p>When we select a row out of a data frame, we have one element per column, and
 the labels for the columns now become the labels for the rows.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">index</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="p">.</span><span class="n">index</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country_name', 'country_code', 'fert_rate', 'gdp_us_billion',
        'health_exp_per_cap', 'health_exp_pub', 'prim_ed_girls',
        'mat_mort_ratio', 'population'],
       dtype='object')
 </code></pre></div></div>
 
-<p>As for any other Series, we can get elements by label, with <code class="highlighter-rouge">loc</code>:</p>
+<p>As for any other Series, we can get elements by label, with <code class="language-plaintext highlighter-rouge">loc</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'fert_rate'</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="s">'fert_rate'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.860875
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.860875
 </code></pre></div></div>
 
-<p>We can also get elements by position (offset), with <code class="highlighter-rouge">iloc</code>:</p>
+<p>We can also get elements by position (offset), with <code class="language-plaintext highlighter-rouge">iloc</code>:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_row</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'United States'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'United States'
 </code></pre></div></div>
 
 <h2 id="you-can-index-without-loc-and-iloc-but-please-dont-except-">You can index without loc and iloc, but please don’t, except …</h2>
 
 <p>In the <a href="../04/data_frame_intro">data frame introduction</a>, you saw that we can
-index into data frame directly, using <code class="highlighter-rouge">[ something ]</code> after the data frame
-value, without using <code class="highlighter-rouge">loc</code> or <code class="highlighter-rouge">iloc</code>.  Call this <em>direct indexing</em>.  This is
+index into data frame directly, using <code class="language-plaintext highlighter-rouge">[ something ]</code> after the data frame
+value, without using <code class="language-plaintext highlighter-rouge">loc</code> or <code class="language-plaintext highlighter-rouge">iloc</code>.  Call this <em>direct indexing</em>.  This is
 a very reasonable thing to do if:</p>
 
 <ul>
-  <li>the <code class="highlighter-rouge">something</code> is a Boolean sequence.  This is not ambiguous.</li>
-  <li>the <code class="highlighter-rouge">something</code> is a column name.  This isn’t ambiguous either.</li>
+  <li>the <code class="language-plaintext highlighter-rouge">something</code> is a Boolean sequence.  This is not ambiguous.</li>
+  <li>the <code class="language-plaintext highlighter-rouge">something</code> is a column name.  This isn’t ambiguous either.</li>
 </ul>
 
 <p>We used both types of direct indexing in the data frame introduction page.</p>
@@ -2305,7 +2305,7 @@ a very reasonable thing to do if:</p>
 <span class="n">country_code</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    USA
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202    USA
 35     CHN
 97     JPN
 49     DEU
@@ -2331,7 +2331,7 @@ Name: country_code, dtype: object
 </span><span class="n">country_code</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'AUS'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'AUS'
 </code></pre></div></div>
 
 <p>Please don’t do that.  This is ambiguous.  Did you really mean the country with
@@ -2340,19 +2340,19 @@ you.  Don’t let it.  If you are not selecting rows / elements with Booleans,
 always do this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># By label
-</span><span class="n">country_code</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="n">country_code</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'AUS'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'AUS'
 </code></pre></div></div>
 
 <p>or this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># By position
-</span><span class="n">country_code</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="n">country_code</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'CAN'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'CAN'
 </code></pre></div></div>
 
 <h2 id="you-can-use-boolean-indexing-with-loc">You can use Boolean indexing with loc</h2>
@@ -2364,7 +2364,7 @@ always do this:</p>
 <span class="n">is_big_spender</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     True
 35     False
 97      True
 49      True
@@ -2520,17 +2520,17 @@ Name: health_exp_per_cap, dtype: bool
 </div>
 </div>
 
-<p>We can also use Booleans with <code class="highlighter-rouge">loc</code> indexing.  This allows us to do things such
+<p>We can also use Booleans with <code class="language-plaintext highlighter-rouge">loc</code> indexing.  This allows us to do things such
 as selecting rows with Booleans, and columns with labels, in one shot, like
 this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Boolean indexing for rows, with "loc"
 # Get "country_name" column values for big health spenders:
-</span><span class="n">big_spender_names</span> <span class="o">=</span> <span class="n">richest_15</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="s">'country_name'</span><span class="p">]</span>
+</span><span class="n">big_spender_names</span> <span class="o">=</span> <span class="n">richest_15</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">is_big_spender</span><span class="p">,</span> <span class="s">'country_name'</span><span class="p">]</span>
 <span class="n">big_spender_names</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     United States
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>202     United States
 97              Japan
 49            Germany
 67     United Kingdom
@@ -2541,7 +2541,7 @@ this:</p>
 Name: country_name, dtype: object
 </code></pre></div></div>
 
-<p>In fact you can use some Boolean sequences with <code class="highlighter-rouge">iloc</code> as well, but that needs
+<p>In fact you can use some Boolean sequences with <code class="language-plaintext highlighter-rouge">iloc</code> as well, but that needs
 <a href="booleans_and_labels">a little more explanation</a>.</p>
 
           

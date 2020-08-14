@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1185,16 +1185,16 @@
 <p>OK, so let’s apply the hold-out method to evaluate the effectiveness of the $k$-nearest neighbor classifier for identifying wines.  The data set has 178 wines, so we’ll randomly permute the data set and put 89 of them in the training set and the remaining 89 in the test set.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_wine</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wine</span><span class="p">)</span>
-<span class="n">shuffled_wine</span> <span class="o">=</span> <span class="n">wine</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_wine</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">shuffled_wine</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">89</span><span class="p">]</span>
-<span class="n">test_set</span>  <span class="o">=</span> <span class="n">shuffled_wine</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">89</span><span class="p">:]</span>
+<span class="n">shuffled_wine</span> <span class="o">=</span> <span class="n">wine</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_wine</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">shuffled_wine</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">89</span><span class="p">]</span>
+<span class="n">test_set</span>  <span class="o">=</span> <span class="n">shuffled_wine</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">89</span><span class="p">:]</span>
 </code></pre></div></div>
 
 <p>We’ll train the classifier using the 89 wines in the training set, and evaluate how well it performs on the test set. To make our lives easier, we’ll write a function to evaluate a classifier on every wine in the test set:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">count_zero</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="s">"""Counts the number of 0's in an array"""</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">count_equal</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">):</span>
     <span class="s">"""Takes two numerical arrays of equal length
@@ -1202,10 +1202,10 @@
     <span class="k">return</span> <span class="n">count_zero</span><span class="p">(</span><span class="n">array1</span> <span class="o">-</span> <span class="n">array2</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">evaluate_accuracy</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-    <span class="n">test_attributes</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span>
+    <span class="n">test_attributes</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'Class'</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">classify_testrow</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">classify</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">test_attributes</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">classify_testrow</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">test_attributes</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">classify_testrow</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">count_equal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">test</span><span class="p">[</span><span class="s">'Class'</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -1214,7 +1214,7 @@
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">evaluate_accuracy</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9213483146067416
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9213483146067416
 </code></pre></div></div>
 
 <p>The accuracy rate isn’t bad at all for a simple classifier.</p>
@@ -1241,9 +1241,9 @@
 
 <p>Download the file from <a href="/cfd2019/data/breast-cancer.csv">breast-cancer.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'breast-cancer.csv'</span><span class="p">)</span>
-<span class="n">patients</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'ID'</span><span class="p">)</span>
-<span class="n">patients</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patients</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'breast-cancer.csv'</span><span class="p">)</span>
+<span class="n">patients</span> <span class="o">=</span> <span class="n">patients</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'ID'</span><span class="p">)</span>
+<span class="n">patients</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1350,12 +1350,12 @@
 
 <p>So we have 9 different attributes.  I don’t know how to make a 9-dimensional scatterplot of all of them, so I’m going to pick two and plot them:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patients_with_colors</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patients_with_colors</span> <span class="o">=</span> <span class="n">patients</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">patients_with_colors</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'darkblue'</span>
-<span class="n">patients_with_colors</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">patients</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
+<span class="n">patients_with_colors</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">patients</span><span class="p">[</span><span class="s">'Class'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'gold'</span>
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patients_with_colors</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">patients_with_colors</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="s">'Bland Chromatin'</span><span class="p">,</span>
     <span class="s">'Single Epithelial Cell Size'</span><span class="p">,</span>
     <span class="n">c</span><span class="o">=</span><span class="n">patients_with_colors</span><span class="p">[</span><span class="s">'Color'</span><span class="p">]);</span>
@@ -1374,9 +1374,9 @@
 <p>First we’ll create a training set and a test set. The data set has 683 patients, so we’ll randomly permute the data set and put 342 of them in the training set and the remaining 341 in the test set.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_patients</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span>
-<span class="n">shuffled_patients</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_patients</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">shuffled_patients</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">342</span><span class="p">]</span>
-<span class="n">test_set</span> <span class="o">=</span> <span class="n">shuffled_patients</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">342</span><span class="p">:]</span>
+<span class="n">shuffled_patients</span> <span class="o">=</span> <span class="n">patients</span><span class="p">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_patients</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">shuffled_patients</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">342</span><span class="p">]</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">shuffled_patients</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">342</span><span class="p">:]</span>
 </code></pre></div></div>
 
 <p>Let’s stick with 5 nearest neighbors, and see how well our classifier does.</p>
@@ -1384,7 +1384,7 @@
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">evaluate_accuracy</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9706744868035191
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9706744868035191
 </code></pre></div></div>
 
 <p>Over 96% accuracy.  Not bad!  Once again, pretty darn good for such a simple technique.</p>

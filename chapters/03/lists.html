@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1174,10 +1174,10 @@
           <p>Thus far we have seen the following data types:</p>
 
 <ul>
-  <li>integer (counting number) - <code class="highlighter-rouge">int</code>.</li>
-  <li>floating point number (number with decimal point) - <code class="highlighter-rouge">float</code>.</li>
-  <li>string (text) - <code class="highlighter-rouge">str</code>.</li>
-  <li>boolean (True or False value) - <code class="highlighter-rouge">bool</code>.</li>
+  <li>integer (counting number) - <code class="language-plaintext highlighter-rouge">int</code>.</li>
+  <li>floating point number (number with decimal point) - <code class="language-plaintext highlighter-rouge">float</code>.</li>
+  <li>string (text) - <code class="language-plaintext highlighter-rouge">str</code>.</li>
+  <li>boolean (True or False value) - <code class="language-plaintext highlighter-rouge">bool</code>.</li>
 </ul>
 
 <p>In data analysis, we often want to collect together several numbers, or
@@ -1204,15 +1204,15 @@ one place, and refer to all the values with a single name.  Now that we can refe
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
 </code></pre></div></div>
 
 <p>This gave us the number of girls for one simulated family.</p>
 
 <p>Now imagine that we were trying to simulate a family of 12 children.  We would
-have to give each child their own variable <code class="highlighter-rouge">a</code> through <code class="highlighter-rouge">l</code> (small L), and then have a long line like this:</p>
+have to give each child their own variable <code class="language-plaintext highlighter-rouge">a</code> through <code class="language-plaintext highlighter-rouge">l</code> (small L), and then have a long line like this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a + b + c + d + e + f + g + h + i + j + k + l
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a + b + c + d + e + f + g + h + i + j + k + l
 </code></pre></div></div>
 
 <p>That would be annoying in this case, and impractical when we have to simulate
@@ -1221,15 +1221,15 @@ larger units, such as the 100 members of Robert Swain’s jury panel.</p>
 <p>Sequences are part of the solution to this problem.  Sequences are values that contain zero or more other values.  There are various types of sequences, but the two we will use the most are:</p>
 
 <ul>
-  <li>Lists - <code class="highlighter-rouge">list</code></li>
-  <li>Arrays - <code class="highlighter-rouge">np.array</code></li>
+  <li>Lists - <code class="language-plaintext highlighter-rouge">list</code></li>
+  <li>Arrays - <code class="language-plaintext highlighter-rouge">np.array</code></li>
 </ul>
 
 <p>We will see arrays soon.   This page is about <em>lists</em>.</p>
 
 <h2 id="making-a-list">Making a list</h2>
 
-<p>You make a list using <em>square brackets</em> - <code class="highlighter-rouge">[</code> and <code class="highlighter-rouge">]</code>.</p>
+<p>You make a list using <em>square brackets</em> - <code class="language-plaintext highlighter-rouge">[</code> and <code class="language-plaintext highlighter-rouge">]</code>.</p>
 
 <p>Here we make a list that contains three integers:</p>
 
@@ -1237,16 +1237,16 @@ larger units, such as the 100 members of Robert Swain’s jury panel.</p>
 <span class="n">my_numbers</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">[1, 2, 3]</code> is a <em>list expression</em> because it is a recipe that results in
+<p><code class="language-plaintext highlighter-rouge">[1, 2, 3]</code> is a <em>list expression</em> because it is a recipe that results in
 a value that is a list).  We confirm it is an expression by showing that the notebook displays a value:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
 </code></pre></div></div>
 
 <p>What kind of value is it?</p>
@@ -1254,7 +1254,7 @@ a value that is a list).  We confirm it is an expression by showing that the not
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
 </code></pre></div></div>
 
 <p>Lists can be empty.  To make an empty list, put nothing inside the square brackets, like this:</p>
@@ -1263,7 +1263,7 @@ a value that is a list).  We confirm it is an expression by showing that the not
 <span class="n">my_empty_list</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
 </code></pre></div></div>
 
 <p>A list can have any kind of value as its elements.  For example, here is a list of strings:</p>
@@ -1272,29 +1272,29 @@ a value that is a list).  We confirm it is an expression by showing that the not
 <span class="n">some_strings</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Captain', 'Agent', 'Jessica', 'Luke']
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Captain', 'Agent', 'Jessica', 'Luke']
 </code></pre></div></div>
 
 <h2 id="functions-and-lists">Functions and lists</h2>
 
 <p>Python has some built-in functions that operate on sequences, like lists.</p>
 
-<p>One of these is the function <code class="highlighter-rouge">len</code>.  Here is a <em>call expression</em>, using the function <code class="highlighter-rouge">len</code> on our list:</p>
+<p>One of these is the function <code class="language-plaintext highlighter-rouge">len</code>.  Here is a <em>call expression</em>, using the function <code class="language-plaintext highlighter-rouge">len</code> on our list:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
-<p>As you might predict, calling <code class="highlighter-rouge">len</code> with the list as an argument, returns the number of elements in the list.</p>
+<p>As you might predict, calling <code class="language-plaintext highlighter-rouge">len</code> with the list as an argument, returns the number of elements in the list.</p>
 
-<p>Another function that operates on lists is <code class="highlighter-rouge">sum</code>.  This adds all the elements in the list together, and returns the result:</p>
+<p>Another function that operates on lists is <code class="language-plaintext highlighter-rouge">sum</code>.  This adds all the elements in the list together, and returns the result:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sum</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
 </code></pre></div></div>
 
 <p>Now we have another way of solving the problem of making the family of four
@@ -1308,7 +1308,7 @@ a family of four children.</p>
 </span><span class="nb">sum</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
 

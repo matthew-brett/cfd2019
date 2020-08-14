@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1168,37 +1168,37 @@
 Boole</a></p>
 
 <p>Boolean values most often arise from comparison operators. Python includes a
-variety of operators that compare values. For example, <code class="highlighter-rouge">3</code> is larger than <code class="highlighter-rouge">1</code>:</p>
+variety of operators that compare values. For example, <code class="language-plaintext highlighter-rouge">3</code> is larger than <code class="language-plaintext highlighter-rouge">1</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">&gt;</code> is the <em>greater than</em> comparison operator.  It takes the value to the left and asks if it is greater than the value to right.   The answer can only be <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">&gt;</code> is the <em>greater than</em> comparison operator.  It takes the value to the left and asks if it is greater than the value to right.   The answer can only be <code class="language-plaintext highlighter-rouge">True</code> or <code class="language-plaintext highlighter-rouge">False</code>.</p>
 
-<p>The value <code class="highlighter-rouge">True</code> indicates that the comparison is valid; Python has confirmed
-this simple fact about the relationship between <code class="highlighter-rouge">3</code> and <code class="highlighter-rouge">1</code>.</p>
+<p>The value <code class="language-plaintext highlighter-rouge">True</code> indicates that the comparison is valid; Python has confirmed
+this simple fact about the relationship between <code class="language-plaintext highlighter-rouge">3</code> and <code class="language-plaintext highlighter-rouge">1</code>.</p>
 
-<p>Python uses the special <code class="highlighter-rouge">bool</code> type for values that can only be <code class="highlighter-rouge">True</code> or <code class="highlighter-rouge">False</code>.</p>
+<p>Python uses the special <code class="language-plaintext highlighter-rouge">bool</code> type for values that can only be <code class="language-plaintext highlighter-rouge">True</code> or <code class="language-plaintext highlighter-rouge">False</code>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bool
 </code></pre></div></div>
 
-<p>Here we confirm to ourselves that <code class="highlighter-rouge">3</code> is greater than the result of the expression <code class="highlighter-rouge">1 + 1</code>:</p>
+<p>Here we confirm to ourselves that <code class="language-plaintext highlighter-rouge">3</code> is greater than the result of the expression <code class="language-plaintext highlighter-rouge">1 + 1</code>:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
-<p>The value <code class="highlighter-rouge">True</code> indicates that the comparison is valid; Python has confirmed
-this simple fact about the relationship between <code class="highlighter-rouge">3</code> and <code class="highlighter-rouge">1+1</code>. The full set of
+<p>The value <code class="language-plaintext highlighter-rouge">True</code> indicates that the comparison is valid; Python has confirmed
+this simple fact about the relationship between <code class="language-plaintext highlighter-rouge">3</code> and <code class="language-plaintext highlighter-rouge">1+1</code>. The full set of
 common comparison operators are listed below.</p>
 
 <table>
@@ -1255,24 +1255,24 @@ common comparison operators are listed below.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">5</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4</span> <span class="o">&lt;=</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
-<p>Notice the <code class="highlighter-rouge">==</code> in the table above.</p>
+<p>Notice the <code class="language-plaintext highlighter-rouge">==</code> in the table above.</p>
 
-<p>The double equals <code class="highlighter-rouge">==</code> is different from the single <code class="highlighter-rouge">=</code> that we saw before
+<p>The double equals <code class="language-plaintext highlighter-rouge">==</code> is different from the single <code class="language-plaintext highlighter-rouge">=</code> that we saw before
 in assignment.   Here is assignment.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
@@ -1280,17 +1280,17 @@ in assignment.   Here is assignment.</p>
 
 <p>Notice it does not display a value, because it is an assignment, and not an expression.</p>
 
-<p><code class="highlighter-rouge">==</code> is different - it’s a comparison operator like <code class="highlighter-rouge">&lt;</code> or <code class="highlighter-rouge">&gt;</code>.  It checks
+<p><code class="language-plaintext highlighter-rouge">==</code> is different - it’s a comparison operator like <code class="language-plaintext highlighter-rouge">&lt;</code> or <code class="language-plaintext highlighter-rouge">&gt;</code>.  It checks
 whether two values are equal, and returns True or False:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">==</span> <span class="mi">4</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
-<p>This is an expression, because <code class="highlighter-rouge">==</code> is an operator, to say how values should
-be combined, like <code class="highlighter-rouge">+</code> or <code class="highlighter-rouge">*</code>.</p>
+<p>This is an expression, because <code class="language-plaintext highlighter-rouge">==</code> is an operator, to say how values should
+be combined, like <code class="language-plaintext highlighter-rouge">+</code> or <code class="language-plaintext highlighter-rouge">*</code>.</p>
 
 <p>Strings can also be compared, and their order is alphabetical. A shorter
 string is less than a longer string that begins with the shorter string.</p>
@@ -1298,13 +1298,13 @@ string is less than a longer string that begins with the shorter string.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"Dog"</span> <span class="o">&gt;</span> <span class="s">"Catastrophe"</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"Catastrophe"</span> <span class="o">&gt;</span> <span class="s">"Cat"</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <div class="isa_info">

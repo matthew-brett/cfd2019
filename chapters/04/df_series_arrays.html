@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1210,11 +1210,11 @@ file to the same directory as this notebook.</p>
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read the file.
-</span><span class="n">courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
+</span><span class="n">courses</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'rate_my_course.csv'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show the first five rows.
-</span><span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span><span class="n">courses</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1295,32 +1295,32 @@ file to the same directory as this notebook.</p>
 </div>
 </div>
 
-<p>The <code class="highlighter-rouge">pd.read_csv</code> function returned this table in a structure called a <em>data frame</em>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">pd.read_csv</code> function returned this table in a structure called a <em>data frame</em>.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">courses</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
 </code></pre></div></div>
 
 <p>The data frame is a two-dimensional structure. It has rows, and columns.   We can see the number of rows and columns with:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">courses</span><span class="o">.</span><span class="n">shape</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">courses</span><span class="p">.</span><span class="n">shape</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(75, 6)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(75, 6)
 </code></pre></div></div>
 
 <p>This means there are 75 rows.  In this case, each row corresponds to one discpline.</p>
 
 <p>There are 6 columns.  In this case, each column corresponds to a different student rating.</p>
 
-<p>Passing the data frame to the Python <code class="highlighter-rouge">len</code> function shows us the number of rows:</p>
+<p>Passing the data frame to the Python <code class="language-plaintext highlighter-rouge">len</code> function shows us the number of rows:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">courses</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>75
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>75
 </code></pre></div></div>
 
 <h3 id="indexing-into-data-frames">Indexing into data frames</h3>
@@ -1329,7 +1329,7 @@ file to the same directory as this notebook.</p>
 
 <p>We index into a data frame to get a subset of of the data.</p>
 
-<p>To index into anything, we can give the name of thing - in this case <code class="highlighter-rouge">courses</code> - followed by an opening square bracket <code class="highlighter-rouge">[</code>, followed by something to specify which subset of the data we want, followed by a closing square bracket <code class="highlighter-rouge">]</code>.</p>
+<p>To index into anything, we can give the name of thing - in this case <code class="language-plaintext highlighter-rouge">courses</code> - followed by an opening square bracket <code class="language-plaintext highlighter-rouge">[</code>, followed by something to specify which subset of the data we want, followed by a closing square bracket <code class="language-plaintext highlighter-rouge">]</code>.</p>
 
 <p>The two simple ways of indexing into a data frame are:</p>
 
@@ -1348,7 +1348,7 @@ file to the same directory as this notebook.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">easiness</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
 <p>The Series is a structure that holds the data for a single column.</p>
@@ -1356,7 +1356,7 @@ file to the same directory as this notebook.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easiness</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     3.162754
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     3.162754
 1     3.063322
 2     2.710459
 3     3.316210
@@ -1428,7 +1428,7 @@ Name: Easiness, Length: 75, dtype: float64
 </span><span class="n">courses</span><span class="p">[</span><span class="s">'easiness'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError                                  Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KeyError                                  Traceback (most recent call last)
    ...
 KeyError: 'easiness'
 </code></pre></div></div>
@@ -1441,7 +1441,7 @@ KeyError: 'easiness'
 
 <p>For example, imagine we only wanted to look at courses with an easiness rating of greater than 3.25.</p>
 
-<p>We first make the Boolean sequence, by asking the question <code class="highlighter-rouge">&gt; 3.25</code> of the values in the “Easiness” column, like this:</p>
+<p>We first make the Boolean sequence, by asking the question <code class="language-plaintext highlighter-rouge">&gt; 3.25</code> of the values in the “Easiness” column, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_easy</span> <span class="o">=</span> <span class="n">easiness</span> <span class="o">&gt;</span> <span class="mf">3.25</span>
 </code></pre></div></div>
@@ -1451,13 +1451,13 @@ KeyError: 'easiness'
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">is_easy</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">is_easy</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     False
 1     False
 2     False
 3      True
@@ -1535,7 +1535,7 @@ Name: Easiness, Length: 75, dtype: bool
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">easy_courses</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
 </code></pre></div></div>
 
 <p>The data frame contains only the rows where the “Easiness” score is greater than 3.25:</p>
@@ -1857,11 +1857,11 @@ Name: Easiness, Length: 75, dtype: bool
 
 <p>The way this works can be easier to see when we use a smaller data frame.</p>
 
-<p>Here we take the first eight rows from the data frame, by using the <code class="highlighter-rouge">head</code> method.</p>
+<p>Here we take the first eight rows from the data frame, by using the <code class="language-plaintext highlighter-rouge">head</code> method.</p>
 
-<p>The <code class="highlighter-rouge">head</code> method can take an argument, which is the number of rows we want.</p>
+<p>The <code class="language-plaintext highlighter-rouge">head</code> method can take an argument, which is the number of rows we want.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_8</span> <span class="o">=</span> <span class="n">courses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_8</span> <span class="o">=</span> <span class="n">courses</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The result is a new data frame:</p>
@@ -1869,7 +1869,7 @@ Name: Easiness, Length: 75, dtype: bool
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">first_8</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.frame.DataFrame
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">first_8</span>
@@ -1986,7 +1986,7 @@ Name: Easiness, Length: 75, dtype: bool
 <span class="n">easiness_first_8</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.162754
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.162754
 1    3.063322
 2    2.710459
 3    3.316210
@@ -2003,7 +2003,7 @@ Name: Easiness, dtype: float64
 <span class="n">is_easy_first_8</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    False
 1    False
 2    False
 3     True
@@ -2014,7 +2014,7 @@ Name: Easiness, dtype: float64
 Name: Easiness, dtype: bool
 </code></pre></div></div>
 
-<p>We index into the <code class="highlighter-rouge">first_8</code> data frame with this Boolean series, to select the rows where <code class="highlighter-rouge">is_easy_first_8</code> has True, and throw away the rows where it has False.</p>
+<p>We index into the <code class="language-plaintext highlighter-rouge">first_8</code> data frame with this Boolean series, to select the rows where <code class="language-plaintext highlighter-rouge">is_easy_first_8</code> has True, and throw away the rows where it has False.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easy_first_8</span> <span class="o">=</span> <span class="n">first_8</span><span class="p">[</span><span class="n">is_easy_first_8</span><span class="p">]</span>
 <span class="n">easy_first_8</span>
@@ -2189,7 +2189,7 @@ Name: Easiness, dtype: bool
 <span class="n">easiness_first_8</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.162754
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.162754
 1    3.063322
 2    2.710459
 3    3.316210
@@ -2204,11 +2204,11 @@ Name: Easiness, dtype: float64
 
 <p>For now, you can convert the series to an array, like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easi_8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">easiness_first_8</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">easi_8</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">easiness_first_8</span><span class="p">)</span>
 <span class="n">easi_8</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.16275414, 3.06332232, 2.71045949, 3.31620986, 3.0538026 ,
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.16275414, 3.06332232, 2.71045949, 3.31620986, 3.0538026 ,
        2.65205418, 3.37982853, 3.17203268])
 </code></pre></div></div>
 
@@ -2218,14 +2218,14 @@ Name: Easiness, dtype: float64
 </span><span class="n">easi_8</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.1627541447114904
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.1627541447114904
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The first five values
 </span><span class="n">easi_8</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.16275414, 3.06332232, 2.71045949, 3.31620986, 3.0538026 ])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3.16275414, 3.06332232, 2.71045949, 3.31620986, 3.0538026 ])
 </code></pre></div></div>
 
 <p>You can think of a data frame as sequence of columns, where each column is series.</p>
@@ -2236,7 +2236,7 @@ Name: Easiness, dtype: float64
 <span class="n">disciplines</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0           English
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0           English
 1       Mathematics
 2           Biology
 3        Psychology
@@ -2251,7 +2251,7 @@ Name: Discipline, dtype: object
 <span class="n">clarity</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.756147
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    3.756147
 1    3.487379
 2    3.608331
 3    3.909520
@@ -2265,7 +2265,7 @@ Name: Clarity, dtype: float64
 <p>I can make a new data frame by inserting these two columns:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A new data frame
-</span><span class="n">thinner_courses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</span><span class="n">thinner_courses</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">thinner_courses</span><span class="p">[</span><span class="s">'Discipline'</span><span class="p">]</span> <span class="o">=</span> <span class="n">disciplines</span>
 <span class="n">thinner_courses</span><span class="p">[</span><span class="s">'Clarity'</span><span class="p">]</span> <span class="o">=</span> <span class="n">clarity</span>
 <span class="n">thinner_courses</span>

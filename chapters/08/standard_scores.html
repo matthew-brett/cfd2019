@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1175,7 +1175,7 @@
           <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">use</span><span class="p">(</span><span class="s">'fivethirtyeight'</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 </code></pre></div></div>
 
@@ -1196,8 +1196,8 @@ a useful measure of the center of a distribution.</p>
 
 <p>Download the data to your computer via this link: <a href="/cfd2019/data/ckd_clean.csv">ckd_clean.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ckd_clean.csv'</span><span class="p">)</span>
-<span class="n">ckd_full</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ckd_full</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'ckd_clean.csv'</span><span class="p">)</span>
+<span class="n">ckd_full</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1375,16 +1375,16 @@ therefore a couple of distributions.</p>
 <p>Let’s start with the White Blood Cell Count, usually abbreviated as WBC.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'White Blood Cell Count'</span><span class="p">]</span>
-<span class="n">wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count'</span><span class="p">);</span>
+<span class="n">wbc</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_5_0.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc</span><span class="p">.</span><span class="n">describe</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count      158.000000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count      158.000000
 mean      8475.949367
 std       3126.880181
 min       3800.000000
@@ -1398,16 +1398,16 @@ Name: White Blood Cell Count, dtype: float64
 <p>Compare this to Hemoglobin concentrations:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span> <span class="o">=</span> <span class="n">ckd_full</span><span class="p">[</span><span class="s">'Hemoglobin'</span><span class="p">]</span>
-<span class="n">hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin'</span><span class="p">);</span>
+<span class="n">hgb</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_8_0.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb</span><span class="p">.</span><span class="n">describe</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    158.000000
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    158.000000
 mean      13.687342
 std        2.882204
 min        3.100000
@@ -1425,10 +1425,10 @@ their units are so different.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use alpha to make the histograms a little transparent.
 # Label them for a legend.
-</span><span class="n">hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'HGB'</span><span class="p">)</span>
-<span class="n">wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'WBC'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"HGB and WBC together - HGB tiny spike at left"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</span><span class="n">hgb</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'HGB'</span><span class="p">)</span>
+<span class="n">wbc</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'WBC'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"HGB and WBC together - HGB tiny spike at left"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_12_0.png" alt="png" /></p>
@@ -1436,16 +1436,16 @@ their units are so different.</p>
 <p>We could try and fix this by subtracting the mean, as a center value, so
 the values are now <em>deviations</em> from the mean.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc_deviations</span> <span class="o">=</span> <span class="n">wbc</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
-<span class="n">wbc_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count deviations'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wbc_deviations</span> <span class="o">=</span> <span class="n">wbc</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
+<span class="n">wbc_deviations</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'White Blood Cell Count deviations'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_14_0.png" alt="png" /></p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
-<span class="n">hgb_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin deviations'</span><span class="p">);</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span> <span class="o">=</span> <span class="n">hgb</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<span class="n">hgb_deviations</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Hemoglobin deviations'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_15_0.png" alt="png" /></p>
@@ -1453,10 +1453,10 @@ the values are now <em>deviations</em> from the mean.</p>
 <p>The deviations each have a mean very very close to zero, and therefore,
 they have the same center:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc_deviations</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_deviations</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wbc_deviations</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_deviations</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(-1.8420145858692217e-13, 7.195369476051647e-16)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(-1.8420145858692217e-13, 7.195369476051647e-16)
 </code></pre></div></div>
 
 <p>We still cannot sensibly plot them on the same axes, because the WBC values have
@@ -1464,10 +1464,10 @@ a very different <em>spread</em>.  The WBC values completely dominate the x axis
 the graph.  We can’t reasonably compare the WBC deviations to the
 Hemoglobin deviations, because they have such different <em>units</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'HGB'</span><span class="p">)</span>
-<span class="n">wbc_deviations</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'WBC'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">"HGB and WBC deviations - you can't see HGB"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'HGB'</span><span class="p">)</span>
+<span class="n">wbc_deviations</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'WBC'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"HGB and WBC deviations - you can't see HGB"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_19_0.png" alt="png" /></p>
@@ -1487,7 +1487,7 @@ a measure of spread?</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_deviations</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0   -2.487342
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0   -2.487342
 1   -4.187342
 2   -2.887342
 3   -8.087342
@@ -1504,7 +1504,7 @@ Name: Hemoglobin, dtype: float64
 <span class="n">hgb_dev_sq</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     6.186869
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     6.186869
 1    17.533831
 2     8.336743
 3    65.405097
@@ -1517,32 +1517,32 @@ Name: Hemoglobin, dtype: float64
 Name: Hemoglobin, dtype: float64
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'HGB squared deviations'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'HGB squared deviations'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'HGB squared deviations')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'HGB squared deviations')
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_25_1.png" alt="png" /></p>
 
 <p>The center, or typical value, of this distribution, could be the <em>mean</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_dev_sq</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hgb_dev_sq_mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hgb_dev_sq</span><span class="p">)</span>
 <span class="n">hgb_dev_sq_mean</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
 </code></pre></div></div>
 
 <p>This is the <em>mean squared deviation</em>.  This is also called the
 <em>variance</em>.  Numpy has a function to calculate that in one shot:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The mean squared deviation is the variance
-</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+</span><span class="n">np</span><span class="p">.</span><span class="n">var</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.254523313571543
 </code></pre></div></div>
 
 <p>The mean squared deviation is a good indicator of the typical squared
@@ -1551,10 +1551,10 @@ deviation?</p>
 
 <p>We could take the square root of the mean squared deviation, like this:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">hgb_dev_sq_mean</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">hgb_dev_sq_mean</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
 </code></pre></div></div>
 
 <p>This is a measure of the spread of the distribution.  It is a measure of
@@ -1562,10 +1562,10 @@ the typical or average deviation.</p>
 
 <p>It is also called the <em>standard deviation</em>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.873068623192203
 </code></pre></div></div>
 
 <p>We can make our distribution have a standard center <em>and</em> a standard
@@ -1576,12 +1576,12 @@ close to 1.</p>
 <p>This version of the distribution, with mean 0 and standard deviation of
 1, is called the <em>standardized</em> distribution.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">standardized_hgb</span> <span class="o">=</span> <span class="n">hgb_deviations</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
-<span class="n">standardized_hgb</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin'</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">standardized_hgb</span> <span class="o">=</span> <span class="n">hgb_deviations</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
+<span class="n">standardized_hgb</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin')
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_35_1.png" alt="png" /></p>
@@ -1589,15 +1589,15 @@ close to 1.</p>
 <p>We can make a function to do this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">standard_units</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_hgb_again</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">hgb</span><span class="p">)</span>
-<span class="n">std_hgb_again</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin, again'</span><span class="p">)</span>
+<span class="n">std_hgb_again</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized Hemoglobin, again'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin, again')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized Hemoglobin, again')
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_38_1.png" alt="png" /></p>
@@ -1606,24 +1606,24 @@ close to 1.</p>
 distributions:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_wbc</span> <span class="o">=</span> <span class="n">standard_units</span><span class="p">(</span><span class="n">wbc</span><span class="p">)</span>
-<span class="n">std_wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized White Blood Cell Count'</span><span class="p">)</span>
+<span class="n">std_wbc</span><span class="p">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized White Blood Cell Count'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized White Blood Cell Count')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Text(0.5, 1.0, 'Standardized White Blood Cell Count')
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_40_1.png" alt="png" /></p>
 
 <p>Now we can put both these distributions on the same graph, to compare them directly.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_hgb_again</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'HGB'</span><span class="p">)</span>
-<span class="n">std_wbc</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'WBC'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized HGB and WBC'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std_hgb_again</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'HGB'</span><span class="p">)</span>
+<span class="n">std_wbc</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'WBC'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Standardized HGB and WBC'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.legend.Legend at 0x11ad2a9e8&gt;
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.legend.Legend at 0x11ad2a9e8&gt;
 </code></pre></div></div>
 
 <p><img src="../../images/chapters/08/standard_scores_42_1.png" alt="png" /></p>

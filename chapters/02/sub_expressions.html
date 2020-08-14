@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1191,16 +1191,16 @@ complex things from simple building blocks, according to simple rules.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.15</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
 </code></pre></div></div>
 
-<p>Here is the full process that Python goes through, when evaluating <code class="highlighter-rouge">(10.50 + 9.25) * 0.15</code>. Python will:</p>
+<p>Here is the full process that Python goes through, when evaluating <code class="language-plaintext highlighter-rouge">(10.50 + 9.25) * 0.15</code>. Python will:</p>
 
 <ul>
-  <li>evaluate the expression <code class="highlighter-rouge">10.50</code> to give the computer representation (CR) of 10.50;</li>
-  <li>evaluate the expression <code class="highlighter-rouge">9.25</code> to give the CR of 10.50;</li>
-  <li>evaluate the expression 10.50 <code class="highlighter-rouge">+</code> 9.25 to give the CR of 19.75;</li>
-  <li>evaluate the expression 19.75 <code class="highlighter-rouge">*</code> 0.15 to give the CR of 2.9625.</li>
+  <li>evaluate the expression <code class="language-plaintext highlighter-rouge">10.50</code> to give the computer representation (CR) of 10.50;</li>
+  <li>evaluate the expression <code class="language-plaintext highlighter-rouge">9.25</code> to give the CR of 10.50;</li>
+  <li>evaluate the expression 10.50 <code class="language-plaintext highlighter-rouge">+</code> 9.25 to give the CR of 19.75;</li>
+  <li>evaluate the expression 19.75 <code class="language-plaintext highlighter-rouge">*</code> 0.15 to give the CR of 2.9625.</li>
 </ul>
 
 <h2 id="sub-expressions">Sub-expressions</h2>
@@ -1214,45 +1214,45 @@ complex things from simple building blocks, according to simple rules.</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.75
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.75
 </code></pre></div></div>
 
 <p>The two sub-expressions are:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">10.50</code>: an expression that returns the CR of the number 10.50;</li>
-  <li><code class="highlighter-rouge">9.25</code>: an expression that returns the CR of the number 9.25.</li>
+  <li><code class="language-plaintext highlighter-rouge">10.50</code>: an expression that returns the CR of the number 10.50;</li>
+  <li><code class="language-plaintext highlighter-rouge">9.25</code>: an expression that returns the CR of the number 9.25.</li>
 </ul>
 
-<p>When Python evaluates <code class="highlighter-rouge">10.50 + 9.25</code>, it first evaluates these two sub-expressions, then evaluates the final result by adding the results of these two sub-expressions.</p>
+<p>When Python evaluates <code class="language-plaintext highlighter-rouge">10.50 + 9.25</code>, it first evaluates these two sub-expressions, then evaluates the final result by adding the results of these two sub-expressions.</p>
 
 <p>Reconsider:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.15</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.9625
 </code></pre></div></div>
 
 <p>There are four sub-expressions here:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">10.50</code> as above;</li>
-  <li><code class="highlighter-rouge">9.25</code> as above;</li>
-  <li><code class="highlighter-rouge">0.15</code> returns the CR of the number 0.15;</li>
-  <li><code class="highlighter-rouge">(10.50 + 9.25)</code> is a compound expression that is itself a sub-expression of
+  <li><code class="language-plaintext highlighter-rouge">10.50</code> as above;</li>
+  <li><code class="language-plaintext highlighter-rouge">9.25</code> as above;</li>
+  <li><code class="language-plaintext highlighter-rouge">0.15</code> returns the CR of the number 0.15;</li>
+  <li><code class="language-plaintext highlighter-rouge">(10.50 + 9.25)</code> is a compound expression that is itself a sub-expression of
 the full expression above.  It returns the CR of the
 number 19.75.</li>
 </ul>
 
-<p>Each of these sub-expressions will be evaluated in the process of evaluating <code class="highlighter-rouge">(10.50 + 9.25) * 0.15</code>.</p>
+<p>Each of these sub-expressions will be evaluated in the process of evaluating <code class="language-plaintext highlighter-rouge">(10.50 + 9.25) * 0.15</code>.</p>
 
 <p>Now consider:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">10.50</span> <span class="o">+</span> <span class="mf">9.25</span> <span class="o">*</span> <span class="mf">0.15</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11.8875
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11.8875
 </code></pre></div></div>
 
 <p>Be careful - remember the rules of <a href="https://en.wikipedia.org/wiki/Order_of_operations">operator precedence</a>.</p>
@@ -1260,25 +1260,25 @@ number 19.75.</li>
 <p>Let’s think again what Python will do here.  It will:</p>
 
 <ul>
-  <li>evaluate the expression <code class="highlighter-rouge">10.50</code> to gives the CR of 10.50;</li>
-  <li>evaluate the expression <code class="highlighter-rouge">9.25</code> to gives the CR of 10.50;</li>
-  <li>(because of the precedence rules) evaluate  9.25 <code class="highlighter-rouge">*</code> 1.15 to give the
+  <li>evaluate the expression <code class="language-plaintext highlighter-rouge">10.50</code> to gives the CR of 10.50;</li>
+  <li>evaluate the expression <code class="language-plaintext highlighter-rouge">9.25</code> to gives the CR of 10.50;</li>
+  <li>(because of the precedence rules) evaluate  9.25 <code class="language-plaintext highlighter-rouge">*</code> 1.15 to give the
 CR of 1.3875;</li>
-  <li>evaluate 10.50 <code class="highlighter-rouge">*</code> 1.3875 to give the CR of 11.8875.</li>
+  <li>evaluate 10.50 <code class="language-plaintext highlighter-rouge">*</code> 1.3875 to give the CR of 11.8875.</li>
 </ul>
 
 <p>So, these are the sub-expressions:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">10.50</code>;</li>
-  <li><code class="highlighter-rouge">9.25</code>;</li>
-  <li><code class="highlighter-rouge">0.15</code>;</li>
-  <li><code class="highlighter-rouge">9.25 * 0.15</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">10.50</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">9.25</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">0.15</code>;</li>
+  <li><code class="language-plaintext highlighter-rouge">9.25 * 0.15</code>.</li>
 </ul>
 
-<p>Note that <code class="highlighter-rouge">10.50 + 9.25</code> is <em>not</em> a sub-expression, because this does not return a value, in the process of evaluating the whole expression.  The value that <code class="highlighter-rouge">9.25</code> is involved in is 9.25 * 1.3875, where 1.3875 is the value that comes back from <code class="highlighter-rouge">9.25 * 0.15</code> above.</p>
+<p>Note that <code class="language-plaintext highlighter-rouge">10.50 + 9.25</code> is <em>not</em> a sub-expression, because this does not return a value, in the process of evaluating the whole expression.  The value that <code class="language-plaintext highlighter-rouge">9.25</code> is involved in is 9.25 * 1.3875, where 1.3875 is the value that comes back from <code class="language-plaintext highlighter-rouge">9.25 * 0.15</code> above.</p>
 
-<p>Let’s say I have imported my <code class="highlighter-rouge">cos</code> function (see the <a href="functions">functions</a> page):</p>
+<p>Let’s say I have imported my <code class="language-plaintext highlighter-rouge">cos</code> function (see the <a href="functions">functions</a> page):</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the cos function from the numpy library.
 </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span>
@@ -1289,29 +1289,29 @@ CR of 1.3875;</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.0
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">cos(0)</code> is an expression, because it is a recipe that returns a value.   In fact, it is a <a href="Calls">call expression</a>.</p>
+<p><code class="language-plaintext highlighter-rouge">cos(0)</code> is an expression, because it is a recipe that returns a value.   In fact, it is a <a href="Calls">call expression</a>.</p>
 
 <p>There is one sub-expression to this expression, which is:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">0</code> returns the CR of 0;</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> returns the CR of 0;</li>
 </ul>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
 </code></pre></div></div>
 
 <p>has three sub-expressions:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">0</code> returns the CR of 0;</li>
-  <li><code class="highlighter-rouge">cos( )</code> with argument 0, from above, returns the CR of the number 1;</li>
-  <li><code class="highlighter-rouge">2</code> returns the CR of 2.</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> returns the CR of 0;</li>
+  <li><code class="language-plaintext highlighter-rouge">cos( )</code> with argument 0, from above, returns the CR of the number 1;</li>
+  <li><code class="language-plaintext highlighter-rouge">2</code> returns the CR of 2.</li>
 </ul>
 
 <p>Finally, let’s say I have defined this variable:</p>
@@ -1324,7 +1324,7 @@ CR of 1.3875;</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.5
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10.5
 </code></pre></div></div>
 
 <p>It is an expression because it is a recipe that returns a value - in this

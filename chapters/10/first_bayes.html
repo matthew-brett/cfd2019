@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1214,19 +1214,19 @@ of 54.51) to the eventual mean for all the exams.</p>
 <p>How are we going to start on our solution to the BOX4, BOX2 reverse probability
 problem? Simulation!</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 %matplotlib inline
 plt.style.use('fivethirtyeight')
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make a box with 4 red balls and 1 green ball
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make a box with 4 red balls and 1 green ball
 box4 = np.repeat(['red', 'green'], [4, 1])
 box4
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make a box with 2 red balls and 3 green balls
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make a box with 2 red balls and 3 green balls
 box2 = np.repeat(['red', 'green'], [2, 3])
 box2
 </code></pre></div></div>
@@ -1238,7 +1238,7 @@ box2
   <li>Choose a ball at random from the resulting box.</li>
 </ul>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_iters = 10000
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_iters = 10000
 # The box for this trial.
 box_nos = np.repeat([1], n_iters)
 # The color of the ball we chose.
@@ -1260,7 +1260,7 @@ for i in np.arange(n_iters):
 
 <p>Last we put the results into a data frame for convenience:</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make these into a data frame.
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make these into a data frame.
 trial_results = pd.DataFrame()
 trial_results['box no'] = box_nos
 trial_results['ball color'] = ball_colors
@@ -1270,7 +1270,7 @@ trial_results.head()
 <p>Now we can see the proportion of trials on which we drew a red ball, where the
 box we got was BOX4.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Of the trials giving a red ball, what proportion came from box 4?
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Of the trials giving a red ball, what proportion came from box 4?
 red_ball_trials = trial_results[trial_results['ball color'] == 'red']
 p_box4 = np.count_nonzero(red_ball_trials['box no'] == 4) / len(red_ball_trials)
 p_box4
@@ -1294,7 +1294,7 @@ because the probability of BOX4 is 0.3 (30%).</p>
 a random sample.  So, the simulation proportions will be close to the
 probabilities we calculated above, but not exactly the same.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box4_trials = trial_results[trial_results['box no'] == 4]
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box4_trials = trial_results[trial_results['box no'] == 4]
 box2_trials = trial_results[trial_results['box no'] == 2]
 n_trials = len(trial_results)
 print('Box4 proportion', len(box4_trials) / n_trials)
@@ -1318,7 +1318,7 @@ BOX2 trials, because the probability of getting a red ball from BOX2 is 2 in
 is 0.3 (the width of the BOX4 branch) * 0.8 (the proportion of BOX4 trials
 that give red) = 0.24.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box4_and_red = box4_trials[box4_trials['ball color'] == 'red']
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box4_and_red = box4_trials[box4_trials['ball color'] == 'red']
 prop_box4_and_red = len(box4_and_red) / n_trials
 print('Box4 and red proportion', prop_box4_and_red)
 </code></pre></div></div>
@@ -1327,7 +1327,7 @@ print('Box4 and red proportion', prop_box4_and_red)
 is 0.7 (the width of the BOX2 branch) * 0.4 (the proportion of BOX2 trials
 that give red) = 0.28.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box2_and_red = box2_trials[box2_trials['ball color'] == 'red']
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>box2_and_red = box2_trials[box2_trials['ball color'] == 'red']
 prop_box2_and_red = len(box2_and_red) / n_trials
 print('Box2 and red proportion', prop_box2_and_red)
 </code></pre></div></div>
@@ -1336,7 +1336,7 @@ print('Box2 and red proportion', prop_box2_and_red)
 <em>and</em> red to the proportion that is BOX2 <em>and</em> red, because these are all the
 red trials.  This is 0.24 + 0.28 = 0.52.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_red = len(box4_and_red) + len(box2_and_red)
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n_red = len(box4_and_red) + len(box2_and_red)
 prop_red = n_red / n_trials
 print('Overall proportion of red', prop_red)
 </code></pre></div></div>
@@ -1345,7 +1345,7 @@ print('Overall proportion of red', prop_red)
 red.  So the proportion of <em>all</em> red trials, that are BOX4 <em>and</em> red, is 0.24 /
 0.52 = 0.4615385.</p>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('Proportion of all red trials that are box4', (prop_box4_and_red / prop_red))
+<div class="language-plaintext input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('Proportion of all red trials that are box4', (prop_box4_and_red / prop_red))
 </code></pre></div></div>
 
 <p>To go over the logic again:</p>

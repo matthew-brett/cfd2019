@@ -85,7 +85,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/first_pass_three_girls",
         "teaser":null},{
         "title": "2.4 Introduction to functions",
-        "excerpt":"This is a very short introduction to functions. We will soon go into more detail on functions, in the page on call expressions. For now, we start with something simple, the function cos. Remember functions from mathematics? We might write something like this, in mathematics: You can read $cos(0)$ as:...","categories": [],
+        "excerpt":"This is a very short introduction to functions. We will soon go into more detail on functions, in the page on call expressions. For now, we start with something simple, the function cos. Remember functions from mathematics? We might write something like this, in mathematics: \\[y = cos(0)\\]You can read...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/02/functions",
         "teaser":null},{
@@ -520,7 +520,7 @@ var store = [{
         "url": "https://matthew-brett.github.io/cfd2019/chapters/extra/extra",
         "teaser":null},{
         "title": "Deviations around the mean",
-        "excerpt":"Why the differences from the mean must add to zero. Have a look at this little bit of algebra to see why. Imagine I have four values $a, b, c, d$. Call the mean $\\mu$. As we know: Now subtract $\\mu$ from every one of $a, b, c, d$, and...","categories": [],
+        "excerpt":"Why the differences from the mean must add to zero. Have a look at this little bit of algebra to see why. Imagine I have four values $a, b, c, d$. Call the mean $\\mu$. As we know: \\[\\mu = (a + b + c + d) / 4\\]Now subtract...","categories": [],
         "tags": [],
         "url": "https://matthew-brett.github.io/cfd2019/chapters/extra/mean_deviations",
         "teaser":null},{

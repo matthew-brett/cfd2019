@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1167,61 +1167,61 @@ a surprisingly large number of situations, so it is worthwhile to
 learn about them.</p>
 
 <p>We will use the Numpy package to make ranges.  When we load the Numpy package,
-we always rename it as <code class="highlighter-rouge">np</code>, like this:</p>
+we always rename it as <code class="language-plaintext highlighter-rouge">np</code>, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load the Numpy package.
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<p>Ranges are defined  using the <code class="highlighter-rouge">np.arange</code> function, which takes either
+<p>Ranges are defined  using the <code class="language-plaintext highlighter-rouge">np.arange</code> function, which takes either
 one, two, or three arguments: a start, and end, and a ‘step’.</p>
 
-<p>If you pass one argument to <code class="highlighter-rouge">np.arange</code>, this becomes the <code class="highlighter-rouge">end</code> value,
-with <code class="highlighter-rouge">start=0</code>, <code class="highlighter-rouge">step=1</code> assumed.  Two arguments give the <code class="highlighter-rouge">start</code> and
-<code class="highlighter-rouge">end</code> with <code class="highlighter-rouge">step=1</code> assumed.  Three arguments give the <code class="highlighter-rouge">start</code>, <code class="highlighter-rouge">end</code>
-and <code class="highlighter-rouge">step</code> explicitly.</p>
+<p>If you pass one argument to <code class="language-plaintext highlighter-rouge">np.arange</code>, this becomes the <code class="language-plaintext highlighter-rouge">end</code> value,
+with <code class="language-plaintext highlighter-rouge">start=0</code>, <code class="language-plaintext highlighter-rouge">step=1</code> assumed.  Two arguments give the <code class="language-plaintext highlighter-rouge">start</code> and
+<code class="language-plaintext highlighter-rouge">end</code> with <code class="language-plaintext highlighter-rouge">step=1</code> assumed.  Three arguments give the <code class="language-plaintext highlighter-rouge">start</code>, <code class="language-plaintext highlighter-rouge">end</code>
+and <code class="language-plaintext highlighter-rouge">step</code> explicitly.</p>
 
-<p>A range always includes its <code class="highlighter-rouge">start</code> value, but does not include its
-<code class="highlighter-rouge">end</code> value.  It counts up by <code class="highlighter-rouge">step</code>, and it stops before it gets to
-the <code class="highlighter-rouge">end</code>.</p>
+<p>A range always includes its <code class="language-plaintext highlighter-rouge">start</code> value, but does not include its
+<code class="language-plaintext highlighter-rouge">end</code> value.  It counts up by <code class="language-plaintext highlighter-rouge">step</code>, and it stops before it gets to
+the <code class="language-plaintext highlighter-rouge">end</code>.</p>
 
-<p>Here is what <code class="highlighter-rouge">np.arange</code> does when you pass only one argument:</p>
+<p>Here is what <code class="language-plaintext highlighter-rouge">np.arange</code> does when you pass only one argument:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.arange(end): An array starting with 0 of increasing consecutive integers, stopping before end.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.arange(end): An array starting with 0 of increasing consecutive integers, stopping before end.
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4])
 </code></pre></div></div>
 
 <p>Notice how the array starts at 0 and goes only up to 4, not to the end value
 of 5.</p>
 
-<p>Put another way, <code class="highlighter-rouge">np.arange(end)</code> creates an array of increasing consecutive
-integers starting at 0 up to <em>but not including</em> the <code class="highlighter-rouge">end</code> value.</p>
+<p>Put another way, <code class="language-plaintext highlighter-rouge">np.arange(end)</code> creates an array of increasing consecutive
+integers starting at 0 up to <em>but not including</em> the <code class="language-plaintext highlighter-rouge">end</code> value.</p>
 
-<p>If you pass two arguments to <code class="highlighter-rouge">np.arange</code>:</p>
+<p>If you pass two arguments to <code class="language-plaintext highlighter-rouge">np.arange</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.arange(start, end): An array of consecutive increasing integers from start, stopping before end.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.arange(start, end): An array of consecutive increasing integers from start, stopping before end.
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 5, 6, 7, 8])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3, 4, 5, 6, 7, 8])
 </code></pre></div></div>
 
 <p>If you pass three arguments:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.arange(start, end, step): A range with a difference of step between each pair of consecutive values, starting from start and stopping before end.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.arange(start, end, step): A range with a difference of step between each pair of consecutive values, starting from start and stopping before end.
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 3,  8, 13, 18, 23, 28])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 3,  8, 13, 18, 23, 28])
 </code></pre></div></div>
 
 <p>This array starts at 3, then takes a step of 5 to get to 8, then another step
@@ -1230,10 +1230,10 @@ of 5 to get to 13, and so on.</p>
 <p>When you specify a step, the start, end, and step can all be either positive
 or negative and may be whole numbers or fractions.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1.5,  1. ,  0.5,  0. , -0.5, -1. , -1.5])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ 1.5,  1. ,  0.5,  0. , -0.5, -1. , -1.5])
 </code></pre></div></div>
 
 <div class="isa_info">

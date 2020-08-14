@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1177,15 +1177,15 @@
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'mode.chained_assignment'</span><span class="p">,</span><span class="s">'raise'</span><span class="p">)</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'mode.chained_assignment'</span><span class="p">,</span><span class="s">'raise'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>We return to the example data file that you may have seen in the <a href="/cfd2019/chapters/07/text_encoding">text encoding</a> page.</p>
 
 <p>You can download the data file from <a href="/cfd2019/data/imdblet_latin.csv">imdblet_latin.csv</a>.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin1'</span><span class="p">)</span>
-<span class="n">films</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'imdblet_latin.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin1'</span><span class="p">)</span>
+<span class="n">films</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>
@@ -1262,11 +1262,11 @@
 
 <p>Now imagine we are interested in the average rating across these films:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="s">'Rating'</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">ratings</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="s">'Rating'</span><span class="p">].</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ratings</span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
    ...
 TypeError: Could not convert 8.68.1N/K8.38.08.18.08.48.28.08.08.08.68.68.08.28.48.48.18.38.48.28.58.08.28.18.48.18.68.48.18.78.1 to numeric
 </code></pre></div></div>
@@ -1275,13 +1275,13 @@ TypeError: Could not convert 8.68.1N/K8.38.08.18.08.48.28.08.08.08.68.68.08.28.4
 
 <p>The problem is that we were expecting our ratings to be numbers, but in fact, they are strings.</p>
 
-<p>We can see what type of thing Pandas has stored by looking at the <code class="highlighter-rouge">dtype</code>
-attribute of a Series, or the <code class="highlighter-rouge">dtypes</code> attribute of a data frame.</p>
+<p>We can see what type of thing Pandas has stored by looking at the <code class="language-plaintext highlighter-rouge">dtype</code>
+attribute of a Series, or the <code class="language-plaintext highlighter-rouge">dtypes</code> attribute of a data frame.</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films</span><span class="p">.</span><span class="n">dtypes</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Votes     object
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Votes     object
 Rating    object
 Title     object
 Year       int64
@@ -1289,10 +1289,10 @@ Decade     int64
 dtype: object
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">dtype</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="p">.</span><span class="n">dtype</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('O')
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('O')
 </code></pre></div></div>
 
 <p>In fact both these bits of information say the same thing – that the ‘Rating’
@@ -1304,10 +1304,10 @@ storing text.</p>
 
 <p>A quick look at the first rows gives the answer:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    8.6
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    8.6
 1    8.1
 2    N/K
 3    8.3
@@ -1317,9 +1317,9 @@ Name: Rating, dtype: object
 
 <p>The film “Paris, Texas (1984)” has a value “N/K” for the rating. This can’t be a number, so Pandas stored this column in a format that allows it to store “N/K” as text.</p>
 
-<p>If that wasn’t obvious, another way of checking where the problem value is, to <code class="highlighter-rouge">apply</code> the function <code class="highlighter-rouge">float</code> to the column values.</p>
+<p>If that wasn’t obvious, another way of checking where the problem value is, to <code class="language-plaintext highlighter-rouge">apply</code> the function <code class="language-plaintext highlighter-rouge">float</code> to the column values.</p>
 
-<p>When we <code class="highlighter-rouge">apply</code> a function to a Series, it does this:</p>
+<p>When we <code class="language-plaintext highlighter-rouge">apply</code> a function to a Series, it does this:</p>
 
 <ul>
   <li>For each value in the Series it:
@@ -1336,28 +1336,28 @@ Series.</li>
 where each value in the new series is the result of calling the function on the
 original value.</p>
 
-<p>Recall that the <code class="highlighter-rouge">float</code> function converts the thing you pass into a floating
+<p>Recall that the <code class="language-plaintext highlighter-rouge">float</code> function converts the thing you pass into a floating
 point value:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'3.14'</span><span class="p">)</span>
 <span class="n">v</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.14
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float
 </code></pre></div></div>
 
-<p>Now we try applying <code class="highlighter-rouge">float</code> to the problematic column:</p>
+<p>Now we try applying <code class="language-plaintext highlighter-rouge">float</code> to the problematic column:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ratings</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
+<div class="language-plaintext output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ValueError                                Traceback (most recent call last)
    ...
 ValueError: could not convert string to float: 'N/K'
 </code></pre></div></div>
@@ -1368,7 +1368,7 @@ ValueError: could not convert string to float: 'N/K'
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recode_ratings</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s">'N/K'</span><span class="p">:</span>  <span class="c1"># Return missing value for 'N/K'
-</span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</span>        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">nan</span>
     <span class="c1"># Otherwise make text value into a float
 </span>    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1378,22 +1378,22 @@ ValueError: could not convert string to float: 'N/K'
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recode_ratings</span><span class="p">(</span><span class="s">'8.3'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.3
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8.3
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recode_ratings</span><span class="p">(</span><span class="s">'N/K'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nan
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nan
 </code></pre></div></div>
 
 <p>We make a new Series by calling the recode function:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_ratings</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">recode_ratings</span><span class="p">)</span>
-<span class="n">new_ratings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_ratings</span> <span class="o">=</span> <span class="n">ratings</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">recode_ratings</span><span class="p">)</span>
+<span class="n">new_ratings</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    8.6
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    8.6
 1    8.1
 2    NaN
 3    8.3
@@ -1403,9 +1403,9 @@ Name: Rating, dtype: float64
 
 <p>We can insert this back into a copy of the original data frame:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films_fixed</span> <span class="o">=</span> <span class="n">films</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">films_fixed</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'Rating'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_ratings</span>
-<span class="n">films_fixed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">films_fixed</span> <span class="o">=</span> <span class="n">films</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">films_fixed</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'Rating'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_ratings</span>
+<span class="n">films_fixed</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div>

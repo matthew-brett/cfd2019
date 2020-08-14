@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1167,69 +1167,69 @@
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 </code></pre></div></div>
 
-<p>One way to create an array is to make a sequence of values, such as a list, and pass these to the <code class="highlighter-rouge">np.array</code> function, like this:</p>
+<p>One way to create an array is to make a sequence of values, such as a list, and pass these to the <code class="language-plaintext highlighter-rouge">np.array</code> function, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">]</span>
-<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
 <span class="n">my_array</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2, 3.2, 2.1])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2, 3.2, 2.1])
 </code></pre></div></div>
 
-<p>Here we create the full 4 value array in one call to <code class="highlighter-rouge">np.array</code>.</p>
+<p>Here we create the full 4 value array in one call to <code class="language-plaintext highlighter-rouge">np.array</code>.</p>
 
 <p>Another way make an array is to build it up one value at a time.</p>
 
 <p>To do this, I can start with an empty array, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">an_empty_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">an_empty_list</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">an_empty_list</span><span class="p">)</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([], dtype=float64)
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([], dtype=float64)
 </code></pre></div></div>
 
-<p>Now imagine I want to build up the same array as I did above.  I can <em>append</em> each value to the array, using the <code class="highlighter-rouge">np.append</code> function.</p>
+<p>Now imagine I want to build up the same array as I did above.  I can <em>append</em> each value to the array, using the <code class="language-plaintext highlighter-rouge">np.append</code> function.</p>
 
-<p>As usual, you can check what the <code class="highlighter-rouge">np.append</code> function does by making a new cell in the notebook, and typing <code class="highlighter-rouge">np.append?</code> followed by Enter.  This will show you the help for <code class="highlighter-rouge">np.append</code>.</p>
+<p>As usual, you can check what the <code class="language-plaintext highlighter-rouge">np.append</code> function does by making a new cell in the notebook, and typing <code class="language-plaintext highlighter-rouge">np.append?</code> followed by Enter.  This will show you the help for <code class="language-plaintext highlighter-rouge">np.append</code>.</p>
 
-<p>You will find that <code class="highlighter-rouge">np.append</code> needs (at least) two <em>arguments</em>, which are:</p>
+<p>You will find that <code class="language-plaintext highlighter-rouge">np.append</code> needs (at least) two <em>arguments</em>, which are:</p>
 
 <ol>
-  <li>The array to append to, called <code class="highlighter-rouge">arr</code> in the documentation and</li>
-  <li>The stuff to append, called <code class="highlighter-rouge">values</code> in the documentation.</li>
+  <li>The array to append to, called <code class="language-plaintext highlighter-rouge">arr</code> in the documentation and</li>
+  <li>The stuff to append, called <code class="language-plaintext highlighter-rouge">values</code> in the documentation.</li>
 </ol>
 
 <p>Here we append a single number:</p>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">)</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2, 3.2])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2, 3.2])
 </code></pre></div></div>
 
-<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">)</span>
+<div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">)</span>
 <span class="n">a</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2, 3.2, 2.1])
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.1, 2.2, 3.2, 2.1])
 </code></pre></div></div>
 
 <p>This seems slow and laborious, but we will soon see this can be useful when we want to calculate and store a sequence of values.</p>

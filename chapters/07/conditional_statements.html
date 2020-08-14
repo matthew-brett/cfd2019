@@ -23,7 +23,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-14T11:24:43+01:00">
+  <meta property="article:published_time" content="2020-08-14T11:33:31+01:00">
 
 
 
@@ -1186,9 +1186,9 @@ of an expression. While conditional statements can appear anywhere,
 they appear most often within the body of a function in order to
 express alternative behavior depending on argument values.</p>
 
-<p>A conditional statement always begins with an <code class="highlighter-rouge">if</code> header, which is a single line followed by an indented body. The body is only executed if the expression directly following <code class="highlighter-rouge">if</code> (called the <em>if expression</em>) evaluates to a true value. If the <em>if expression</em> evaluates to a false value, then the body of the <code class="highlighter-rouge">if</code> is skipped.</p>
+<p>A conditional statement always begins with an <code class="language-plaintext highlighter-rouge">if</code> header, which is a single line followed by an indented body. The body is only executed if the expression directly following <code class="language-plaintext highlighter-rouge">if</code> (called the <em>if expression</em>) evaluates to a true value. If the <em>if expression</em> evaluates to a false value, then the body of the <code class="language-plaintext highlighter-rouge">if</code> is skipped.</p>
 
-<p>Let us start defining a function that returns the string <code class="highlighter-rouge">'Positive'</code>  for a positive number:</p>
+<p>Let us start defining a function that returns the string <code class="language-plaintext highlighter-rouge">'Positive'</code>  for a positive number:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="s">'Not sure yet'</span>
@@ -1197,18 +1197,18 @@ express alternative behavior depending on argument values.</p>
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
 
-<p>Let us work through what Python will do when we evaluate <code class="highlighter-rouge">classify(3)</code>.</p>
+<p>Let us work through what Python will do when we evaluate <code class="language-plaintext highlighter-rouge">classify(3)</code>.</p>
 
 <ol>
-  <li>Evaluate <code class="highlighter-rouge">classify</code> to the computer representation (CR) of the
+  <li>Evaluate <code class="language-plaintext highlighter-rouge">classify</code> to the computer representation (CR) of the
 function;</li>
-  <li>Evaluate <code class="highlighter-rouge">3</code> to give the CR of the integer 3</li>
+  <li>Evaluate <code class="language-plaintext highlighter-rouge">3</code> to give the CR of the integer 3</li>
   <li>
     <p>Call the CR of the function, with the CR of int 3. So:</p>
 
     <ol>
       <li>Python enters function world</li>
-      <li>The new variable <code class="highlighter-rouge">x</code> gets the value CR of int 3.</li>
+      <li>The new variable <code class="language-plaintext highlighter-rouge">x</code> gets the value CR of int 3.</li>
       <li>Python executes the function body</li>
     </ol>
   </li>
@@ -1216,38 +1216,38 @@ function;</li>
 
 <p>All this is revision from <a href="functions">functions</a>.</p>
 
-<p>What happens in the function body, with <code class="highlighter-rouge">x = 3</code>?</p>
+<p>What happens in the function body, with <code class="language-plaintext highlighter-rouge">x = 3</code>?</p>
 
 <ol>
-  <li>Python evaluates the assignment statement <code class="highlighter-rouge">result = 'Not sure yet'</code>. The
-<code class="highlighter-rouge">result</code> variable has the value: CR of “Not sure yet”.</li>
-  <li>Python evaluates the <em>if expression</em> <code class="highlighter-rouge">x &gt; 0</code>.  The result is the
-CR of <code class="highlighter-rouge">True</code>.  This is a true value, so Python will execute the body of
+  <li>Python evaluates the assignment statement <code class="language-plaintext highlighter-rouge">result = 'Not sure yet'</code>. The
+<code class="language-plaintext highlighter-rouge">result</code> variable has the value: CR of “Not sure yet”.</li>
+  <li>Python evaluates the <em>if expression</em> <code class="language-plaintext highlighter-rouge">x &gt; 0</code>.  The result is the
+CR of <code class="language-plaintext highlighter-rouge">True</code>.  This is a true value, so Python will execute the body of
 the if statement.</li>
-  <li>The body of the if statement is the single line <code class="highlighter-rouge">result = 'Positive'</code>.
-Python reassigns the <code class="highlighter-rouge">result</code> variable to have the value: CR of
+  <li>The body of the if statement is the single line <code class="language-plaintext highlighter-rouge">result = 'Positive'</code>.
+Python reassigns the <code class="language-plaintext highlighter-rouge">result</code> variable to have the value: CR of
 “Positive”.</li>
-  <li><code class="highlighter-rouge">return result</code> first evaluates <code class="highlighter-rouge">result</code> to get the CR of “Positive”,
+  <li><code class="language-plaintext highlighter-rouge">return result</code> first evaluates <code class="language-plaintext highlighter-rouge">result</code> to get the CR of “Positive”,
 then exits function world, returning this value.</li>
 </ol>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Positive'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Positive'
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">classify</code> function returns <code class="highlighter-rouge">'Positive'</code> if the input is a
-positive number, like <code class="highlighter-rouge">3</code>. But if the input is not a positive number,
-such as <code class="highlighter-rouge">-3</code>, then this happens, in the function body:</p>
+<p>The <code class="language-plaintext highlighter-rouge">classify</code> function returns <code class="language-plaintext highlighter-rouge">'Positive'</code> if the input is a
+positive number, like <code class="language-plaintext highlighter-rouge">3</code>. But if the input is not a positive number,
+such as <code class="language-plaintext highlighter-rouge">-3</code>, then this happens, in the function body:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">x</code> has the value CR of int -3.</li>
-  <li><code class="highlighter-rouge">result</code> gets the value: CR of “Not sure yet”.  So far this is the same as
-for the case of <code class="highlighter-rouge">x</code> equal to 3 above.</li>
-  <li><code class="highlighter-rouge">x &gt; 0</code> evaluates to <code class="highlighter-rouge">False</code>, so Python <em>skips the body of the if
+  <li><code class="language-plaintext highlighter-rouge">x</code> has the value CR of int -3.</li>
+  <li><code class="language-plaintext highlighter-rouge">result</code> gets the value: CR of “Not sure yet”.  So far this is the same as
+for the case of <code class="language-plaintext highlighter-rouge">x</code> equal to 3 above.</li>
+  <li><code class="language-plaintext highlighter-rouge">x &gt; 0</code> evaluates to <code class="language-plaintext highlighter-rouge">False</code>, so Python <em>skips the body of the if
 statement</em>.</li>
-  <li><code class="highlighter-rouge">return result</code> first evaluates <code class="highlighter-rouge">result</code> to get the CR of “Not sure yet”,
+  <li><code class="language-plaintext highlighter-rouge">return result</code> first evaluates <code class="language-plaintext highlighter-rouge">result</code> to get the CR of “Not sure yet”,
 (because this hasn’t changed) then exits function world, returning this
 value.</li>
 </ol>
@@ -1255,13 +1255,13 @@ value.</li>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Not sure yet'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Not sure yet'
 </code></pre></div></div>
 
-<p>Let us refine our function to return <code class="highlighter-rouge">Not positive</code> if the input is a
-negative number. We can do this by adding an <code class="highlighter-rouge">else</code> clause.  If the <em>if
+<p>Let us refine our function to return <code class="language-plaintext highlighter-rouge">Not positive</code> if the input is a
+negative number. We can do this by adding an <code class="language-plaintext highlighter-rouge">else</code> clause.  If the <em>if
 expression</em> evaluates to a true value, then Python executes the first
-clause, after the if expression, as before.  If it evaluates to a false value, Python executes the clause following the <code class="highlighter-rouge">else</code>, instead.</p>
+clause, after the if expression, as before.  If it evaluates to a false value, Python executes the clause following the <code class="language-plaintext highlighter-rouge">else</code>, instead.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="s">'Not sure yet'</span>
@@ -1272,9 +1272,9 @@ clause, after the if expression, as before.  If it evaluates to a false value, P
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
 
-<p>Imagine we evaluate <code class="highlighter-rouge">classify(-3)</code> again.  Python enters function world, and sets <code class="highlighter-rouge">x</code> to have the value CR of int -3.  It checks <code class="highlighter-rouge">x &gt; 0</code> and finds a false value, so it skips the first clause, and executes the clause following <code class="highlighter-rouge">else:</code>.  This <code class="highlighter-rouge">return</code>s <code class="highlighter-rouge">'Not positive'</code>.</p>
+<p>Imagine we evaluate <code class="language-plaintext highlighter-rouge">classify(-3)</code> again.  Python enters function world, and sets <code class="language-plaintext highlighter-rouge">x</code> to have the value CR of int -3.  It checks <code class="language-plaintext highlighter-rouge">x &gt; 0</code> and finds a false value, so it skips the first clause, and executes the clause following <code class="language-plaintext highlighter-rouge">else:</code>.  This <code class="language-plaintext highlighter-rouge">return</code>s <code class="language-plaintext highlighter-rouge">'Not positive'</code>.</p>
 
-<p>Notice that the <code class="highlighter-rouge">if</code> statement now deals with all possible values of <code class="highlighter-rouge">x</code>.  Whatever the value of <code class="highlighter-rouge">x</code> we with either execute <code class="highlighter-rouge">result = 'Positive'</code> or we will execute <code class="highlighter-rouge">result = 'Not positive'</code>.  We can now get rid of the first line in the function <code class="highlighter-rouge">result = 'Not sure yet'</code> because we will always change <code class="highlighter-rouge">result</code> from that value, in the <code class="highlighter-rouge">if</code> statement:</p>
+<p>Notice that the <code class="language-plaintext highlighter-rouge">if</code> statement now deals with all possible values of <code class="language-plaintext highlighter-rouge">x</code>.  Whatever the value of <code class="language-plaintext highlighter-rouge">x</code> we with either execute <code class="language-plaintext highlighter-rouge">result = 'Positive'</code> or we will execute <code class="language-plaintext highlighter-rouge">result = 'Not positive'</code>.  We can now get rid of the first line in the function <code class="language-plaintext highlighter-rouge">result = 'Not sure yet'</code> because we will always change <code class="language-plaintext highlighter-rouge">result</code> from that value, in the <code class="language-plaintext highlighter-rouge">if</code> statement:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Classify without the unneccessary first assignment.
 </span><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1285,9 +1285,9 @@ clause, after the if expression, as before.  If it evaluates to a false value, P
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
 
-<p>Now imagine we prefer our function to return <code class="highlighter-rouge">'Negative</code> for negative values and <code class="highlighter-rouge">Zero</code> if the input value is 0.  It seems like we need three clauses, one each for positive, negative and 0 values.</p>
+<p>Now imagine we prefer our function to return <code class="language-plaintext highlighter-rouge">'Negative</code> for negative values and <code class="language-plaintext highlighter-rouge">Zero</code> if the input value is 0.  It seems like we need three clauses, one each for positive, negative and 0 values.</p>
 
-<p>We can do this by adding an <code class="highlighter-rouge">elif</code> clause, where <code class="highlighter-rouge">elif</code> is Python’s
+<p>We can do this by adding an <code class="language-plaintext highlighter-rouge">elif</code> clause, where <code class="language-plaintext highlighter-rouge">elif</code> is Python’s
 shorthand for the phrase “else if”.</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1300,44 +1300,44 @@ shorthand for the phrase “else if”.</p>
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
 
-<p>Now <code class="highlighter-rouge">classify</code> returns the correct answer when the input is -3, 0, or 3:</p>
+<p>Now <code class="language-plaintext highlighter-rouge">classify</code> returns the correct answer when the input is -3, 0, or 3:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Positive'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Positive'
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Zero'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Zero'
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Negative'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Negative'
 </code></pre></div></div>
 
-<p>If the input is 3, Python enters function world, sets <code class="highlighter-rouge">x</code> to have the value 3,
-and evaluates the if expression <code class="highlighter-rouge">x &lt; 0</code>.  The expression is a true value, so
-Python executes the first clause, sets <code class="highlighter-rouge">result</code> to equal “Positive” and skips
-to the end of the <code class="highlighter-rouge">if</code> statement.  Finally it executes <code class="highlighter-rouge">return result</code> to return “Positive” from the function.</p>
+<p>If the input is 3, Python enters function world, sets <code class="language-plaintext highlighter-rouge">x</code> to have the value 3,
+and evaluates the if expression <code class="language-plaintext highlighter-rouge">x &lt; 0</code>.  The expression is a true value, so
+Python executes the first clause, sets <code class="language-plaintext highlighter-rouge">result</code> to equal “Positive” and skips
+to the end of the <code class="language-plaintext highlighter-rouge">if</code> statement.  Finally it executes <code class="language-plaintext highlighter-rouge">return result</code> to return “Positive” from the function.</p>
 
-<p>If the input is 0, Python enters function world, sets <code class="highlighter-rouge">x</code> to have the value 0, and evaluates the if expression <code class="highlighter-rouge">x &lt; 0</code>.  The expression is a false value, so Python moves on to the next clause, which is <code class="highlighter-rouge">elif x == 0:</code>. This has another <em>if expression</em> <code class="highlighter-rouge">x == 0</code>.  It is a true value, so Python executes this clause, and sets <code class="highlighter-rouge">result</code> equal to “Zero”.  Then it skips to the end of the <code class="highlighter-rouge">if</code> statement, and <code class="highlighter-rouge">return</code>s the value in <code class="highlighter-rouge">result</code>.</p>
+<p>If the input is 0, Python enters function world, sets <code class="language-plaintext highlighter-rouge">x</code> to have the value 0, and evaluates the if expression <code class="language-plaintext highlighter-rouge">x &lt; 0</code>.  The expression is a false value, so Python moves on to the next clause, which is <code class="language-plaintext highlighter-rouge">elif x == 0:</code>. This has another <em>if expression</em> <code class="language-plaintext highlighter-rouge">x == 0</code>.  It is a true value, so Python executes this clause, and sets <code class="language-plaintext highlighter-rouge">result</code> equal to “Zero”.  Then it skips to the end of the <code class="language-plaintext highlighter-rouge">if</code> statement, and <code class="language-plaintext highlighter-rouge">return</code>s the value in <code class="language-plaintext highlighter-rouge">result</code>.</p>
 
-<p>If the input is -3, Python enters function world, sets <code class="highlighter-rouge">x</code> to have the value -3, and evaluates the if expression <code class="highlighter-rouge">x &lt; 0</code>.  The expression is a false value, so Python moves on to the next clause, which is <code class="highlighter-rouge">elif x == 0</code>. This expression is also a false value so Python moves to the next clause, which is the <code class="highlighter-rouge">else:</code> clause, and executes that, setting <code class="highlighter-rouge">result</code> to be “Negative”.  Now we are at the end of the <code class="highlighter-rouge">if</code> statement, and we <code class="highlighter-rouge">return result</code>.</p>
+<p>If the input is -3, Python enters function world, sets <code class="language-plaintext highlighter-rouge">x</code> to have the value -3, and evaluates the if expression <code class="language-plaintext highlighter-rouge">x &lt; 0</code>.  The expression is a false value, so Python moves on to the next clause, which is <code class="language-plaintext highlighter-rouge">elif x == 0</code>. This expression is also a false value so Python moves to the next clause, which is the <code class="language-plaintext highlighter-rouge">else:</code> clause, and executes that, setting <code class="language-plaintext highlighter-rouge">result</code> to be “Negative”.  Now we are at the end of the <code class="language-plaintext highlighter-rouge">if</code> statement, and we <code class="language-plaintext highlighter-rouge">return result</code>.</p>
 
-<p>We can have as many <code class="highlighter-rouge">elif</code> clauses as we want.  For example, imagine we
+<p>We can have as many <code class="language-plaintext highlighter-rouge">elif</code> clauses as we want.  For example, imagine we
 want to classify the number into one of the following categories:</p>
 
 <ol>
-  <li>above 10 (<code class="highlighter-rouge">'Large positive'</code>)</li>
-  <li>from (not including) 0 through 10 (<code class="highlighter-rouge">'Small positive'</code>)</li>
-  <li>exactly 0 (<code class="highlighter-rouge">'Zero'</code>)</li>
-  <li>from (not including) 0 through -10 (<code class="highlighter-rouge">'Small negative'</code>)</li>
-  <li>below -10 (<code class="highlighter-rouge">'Large negative'</code>)</li>
+  <li>above 10 (<code class="language-plaintext highlighter-rouge">'Large positive'</code>)</li>
+  <li>from (not including) 0 through 10 (<code class="language-plaintext highlighter-rouge">'Small positive'</code>)</li>
+  <li>exactly 0 (<code class="language-plaintext highlighter-rouge">'Zero'</code>)</li>
+  <li>from (not including) 0 through -10 (<code class="language-plaintext highlighter-rouge">'Small negative'</code>)</li>
+  <li>below -10 (<code class="language-plaintext highlighter-rouge">'Large negative'</code>)</li>
 </ol>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1357,13 +1357,13 @@ want to classify the number into one of the following categories:</p>
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Large negative'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Large negative'
 </code></pre></div></div>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classify</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Zero'
+<div class="language-plaintext output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Zero'
 </code></pre></div></div>
 
 <h2 id="interlude---returning-early">Interlude - returning early</h2>
@@ -1380,8 +1380,8 @@ want to classify the number into one of the following categories:</p>
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></div>
 
-<p>You can see that, if <code class="highlighter-rouge">x</code> is greater than 0, then we reach <code class="highlighter-rouge">result
-= 'Positive'</code>.  In fact, when we get to that line, our work is done, and we might as well leave function world and send back the result.  We can do that by using another <code class="highlighter-rouge">return</code> statement, like this:</p>
+<p>You can see that, if <code class="language-plaintext highlighter-rouge">x</code> is greater than 0, then we reach <code class="language-plaintext highlighter-rouge">result
+= 'Positive'</code>.  In fact, when we get to that line, our work is done, and we might as well leave function world and send back the result.  We can do that by using another <code class="language-plaintext highlighter-rouge">return</code> statement, like this:</p>
 
 <div class="language-python input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">classify_returning_early</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -1394,10 +1394,10 @@ want to classify the number into one of the following categories:</p>
 
 <p>This will work exactly the same way as the original version above.  This way, as soon as we have the answer we need, we are breaking out of function world, and sending back the answer.</p>
 
-<p>Notice that we do not need a final <code class="highlighter-rouge">return</code> statement any more, because our
-<code class="highlighter-rouge">if</code> statement has covered all possible values.  Therefore, we will always
-<code class="highlighter-rouge">return</code> inside the <code class="highlighter-rouge">if</code> statement, and we will never reach any statements
-that follow the <code class="highlighter-rouge">if</code> statement.</p>
+<p>Notice that we do not need a final <code class="language-plaintext highlighter-rouge">return</code> statement any more, because our
+<code class="language-plaintext highlighter-rouge">if</code> statement has covered all possible values.  Therefore, we will always
+<code class="language-plaintext highlighter-rouge">return</code> inside the <code class="language-plaintext highlighter-rouge">if</code> statement, and we will never reach any statements
+that follow the <code class="language-plaintext highlighter-rouge">if</code> statement.</p>
 
 <p>Here is the new version in action:</p>
 
@@ -1406,7 +1406,7 @@ that follow the <code class="highlighter-rouge">if</code> statement.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">classify_returning_early</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Positive
+<div class="language-plaintext output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Positive
 Negative
 Zero
 
@@ -1419,7 +1419,7 @@ have the answer we need.</p>
 
 <p>A conditional statement can also have multiple clauses with multiple bodies, and only one of those bodies can ever be executed. The general format of a multi-clause conditional statement appears below.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if &lt;if expression&gt;:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if &lt;if expression&gt;:
     &lt;if body&gt;
 elif &lt;elif expression 0&gt;:
     &lt;elif body 0&gt;
@@ -1430,12 +1430,12 @@ else:
     &lt;else body&gt;
 </code></pre></div></div>
 
-<p>There is always exactly one <code class="highlighter-rouge">if</code> clause, but there can be any number of
-<code class="highlighter-rouge">elif</code> clauses. Python will evaluate the <code class="highlighter-rouge">if</code> and <code class="highlighter-rouge">elif</code> expressions in
+<p>There is always exactly one <code class="language-plaintext highlighter-rouge">if</code> clause, but there can be any number of
+<code class="language-plaintext highlighter-rouge">elif</code> clauses. Python will evaluate the <code class="language-plaintext highlighter-rouge">if</code> and <code class="language-plaintext highlighter-rouge">elif</code> expressions in
 the headers in order until one is found that is a true value, then
-execute the corresponding body. The <code class="highlighter-rouge">else</code> clause is optional. When an
-<code class="highlighter-rouge">else</code> header is provided, its <em>else body</em> is executed only if none of
-the header expressions of the previous clauses are true. The <code class="highlighter-rouge">else</code>
+execute the corresponding body. The <code class="language-plaintext highlighter-rouge">else</code> clause is optional. When an
+<code class="language-plaintext highlighter-rouge">else</code> header is provided, its <em>else body</em> is executed only if none of
+the header expressions of the previous clauses are true. The <code class="language-plaintext highlighter-rouge">else</code>
 clause must always come at the end (or not at all).</p>
 
 <p>Now try the <a href="../exercises/conditional_statements_exercises">exercises</a>.</p>
